@@ -1,0 +1,3 @@
+# C:/Users/Colton S Covert/Documents/GitHub/Pathways-Into-Darkness-Unity/data/hfs/Pathways_Extras/pidmaps/pid maps/lasciate.pict
+size: 59704
+no resource map

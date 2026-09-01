@@ -1,0 +1,265 @@
+Ground Floor 0.0m 00 29i
+	Red	Walther P4 Magazine x8
+	Pink	Walther P4 Magazine x7
+	Blue	Blue Rune
+	Dead German Soldier (John Doe)
+		Walther P4 Pistol x3
+		4 Walther P4 Magazines x8
+		Copy of Mein Kampf
+Never Stop Firing 2.7 01 40i
+	Yellow	Yellow Crystal
+	Red	Walther P4 Magazine x8
+	Pink	Walther P4 Magazine x5
+	Green	Opens adjacent door
+	Blue	Pull Chain
+	Orange	Door opened by chains
+	Ladder	to Ground Floor
+Lock&Load 2.7 02 39i
+	Yellow	Emerald
+	Red	Walther P4 Magazine x8
+	Pink	Walther P4 Magazine x4
+	Green	Opens adjacent door	
+	Blue	Closes adjacent door
+	Orange	Walther P4 Pistol x3
+	Violet Two Walther P4 Magazines x8
+	Light Blue	This door starts open
+	Dead German Soldier (NW) (Gunther)
+		Walther P4 Pistol x3
+		5 Walther P4 Magazines x8
+	Dead German Soldier (SE) (Cold Guy)
+		Walther P4 Pistol x6
+		5 Walther P4 Magazines x8
+	South-West Ladder	to Ground Floor
+	North-East Ladder	to They May Be Slow…
+They May Be Slow… 6.8 03 40i
+	Red	Walther P4 Magazine x8
+	Yellow	Silver Bowl
+	Blue	Blue Crystal
+	Violet	False Pillar
+	Orange	False Wall
+	Green	Hidden in Skulls
+		6 Walther P4 Magazines x8
+	Dead German Soldier (S) (Hans)
+		4 Walther P4 Magazines x8
+		Walther P4 Pistol x4
+		Nazi Propaganda
+	Dead German Soldier (N) (Roomy)
+		Walther P4 Pistol x7
+		6 Walther P4 Magazines x8
+		Silver Medal
+	West Teleporter to …But They're Hungry
+	East Teleporter to Evil Undead Phantasms Must Die
+…But They're Hungry 9.0 04 40i
+	Red	Walther P4 Magazine x8
+	Violet Two Walther P4 Magazines x8
+	Blue	Closes adjacent door
+	Light Blue	This door starts open
+	Orange	False Wall
+	Green	False Pillar
+	Dead German Soldier (No Name)
+		5 Walther P4 Magazines x8
+	Teleporter to They May Be Slow…
+Evil Undead Phantasms Must Die! 11.3 05 38i
+	Red	Walther P4 Magazine x8
+	Violet MP-41 Magazine x32
+	Yellow	Large Pearl
+	Orange	False Wall
+	Dead German Soldier (Claude)
+		Walther P4 Pistol x5
+		5 Walther P4 Magazines x8
+		Nazi Propaganda
+Ascension 13.6 06 33i
+	Red	Walther P4 Magazine x8
+	Violet Two Walther P4 Magazines x8
+	Yellow	Alien Pipes
+	Light Blue	This door starts open
+	Green	Opens adjacent door	
+	Blue	Closes adjacent door
+	Dead German Soldier (Joachim)
+		Walther P4 Pistol x3
+		4 Walther P4 Magazines x8
+		Copy of Mein Kampf
+Wrong Way! -2.4 07 40i
+	Red	Walther P4 Magazine x8
+	Pink	Walther P4 Magazine x5
+	Violet Two Walther P4 Magazines x8
+	Orange	Orange Crystal
+	Blue	Clear Blue Potion
+	Dead German Soldier (Behrens)
+		Walther P4 Pistol x8
+		5 Walther P4 Magazines x8
+Welcome, Tasty Primate -4.8 08 40i
+	Red	Walther P4 Magazine x8
+	Violet Two Walther P4 Magazines x8
+	Orange	Walther P4 Pistol x4
+	Yellow	Silver Key
+	Green	Opens adjacent door	
+	Dead German Soldier (Crazy Man)
+		5 Walther P4 Magazines x8
+		Copy of Mein Kampf
+All doors on previous two levels need silver key to operate and open from adjacent squares.
+We Can See In The Dark… Can You? -7.0m 09 22i
+	Red	Walther P4 Magazine x8
+	Violet Two Walther P4 Magazines x8
+	Orange	Canvas Bag containing 5 Walther P4 Magazines x8
+	Blue	Walther P4 Magazine x8 and a Bubbling Red Potion
+	Dead German Soldier (Light Phobic)
+		Walther P4 Pistol x6
+		5 Walther P4 Magazines x8
+Happy Happy, Carnage Carnage -12.6m 0E 35i
+	Gray	Easter Egg
+	Violet MP-41 Magazine x32
+	Red	Red Cloak
+	Light Blue	Two Clear Blue Potions and a Thick Brown Potion
+	Green	Opens adjacent door	
+	Blue	Closes adjacent door
+	Light Green	circle of green arrows
+	Yellow	circle of yellow arrows
+	Pink	This door starts open
+	Orange	False Wall
+	Dead German Soldier (S No Name)
+		Walther P4 Pistol x7
+		4 Walther P4 Magazines x8
+	Dead German Soldier (NW Paranoid)
+		MP-41 Submachine Gun x32
+		4 MP-41 Magazines x32
+	Dead German Soldier (NNW 1st Officer Friedrich)
+		MP-41 Submachine Gun x19
+		2 MP-41 Magazines x32
+		Canvas Bag containing 2 MP-41 Magazines x32
+	Dead German Soldier (NNE Capt. Muller)
+		MP-41 Submachine Gun x29
+		3 MP-41 Magazine x32
+		Nazi Propaganda
+		Alien Pipes
+	Dead German Soldier (NE Thomas)
+		Walther P4 Pistol x6
+		Walther P4 Magazine x8
+	West Ladder	to We Can See In The Dark… Can You?
+	East Ladder	to Labyrinth
+	North Teleporter	to (trap)
+	Middle Teleporter	to A Plague of Demons
+	South Teleporter	to (trap)
+	The circle of green arrows opens the three nearby North-South doors and closes the two nearby East-West doors. The circle of yellow arrows opens the two East-West doors.
+Feel The Power -2.4 0A 39i
+	Violet MP-41 Magazine x32
+	Blue	Clear Blue Potion
+	Yellow	Gold Ingot
+	Dead German Soldier (Walter)
+		Rusted MP-41 x26
+		3 MP-41 Magazines x32
+A Plague of Demons -4.5 0B 39i
+	Violet MP-41 Magazine x32
+	Green	Opens adjacent door	
+	Yellow	Cedar Box
+	Dead American Soldier (John)
+		Broken M-16 empty
+		M-16 Magazine empty
+		Infra-Red Goggles
+		40mm HE Cartridge
+Beware of Low-Flying Nightmares -7.5 0C 40i
+	Violet MP-41 Magazine x32
+	Gray	Diamond Necklace
+	Green	Opens adjacent door	
+	Orange	Gold Door
+	Yellow	Gold Ingot
+	Pink	Two Gold Ingots
+	Dead German Soldier (Gold Guy)
+		Rusted Walther P4 x3
+		Nazi Propaganda
+	The Gold Door requires the gold key to operate.
+The Labyrinth -9.1m 0D 40i
+	Contains Violet Crystal; Map reforms every time you enter.
+	North-West Ladder	to Happy Happy, Carnage Carnage
+	North-East Ladder	to Beware of Low-Flying Nightmares
+	South-West Ladder	to Need A Light?
+	South-East Ladder	to Lasciate Ogne Speranza, Voi Ch'Intrate
+Need A Light? -12.3 0F 37i
+	Green	Opens adjacent door	
+	Blue	Closes adjacent door
+	Red	Flashlight
+	Violet	Amethyst Ring and Thick Brown Potion
+	Orange	Bubbling Red Potion and Clear Blue Potion
+	Dead American Soldier (1st Ed)
+		Broken M-16 x14
+		M-16 Magazine empty
+		Colt .45 Pistol
+	Dead American Soldier (2nd Darren)
+		Broken M-16 x3
+		M-16 Magazine empty
+		M-79 Grenade Launcher with Fragmentation Cartridge
+		40mm Fragmentation Cartridge
+	Dead American Soldier (3rd Sean)
+		Colt .45 Pistol
+		Infra-Red Goggles
+		Flashlight
+		40mm Projectile Cartridge
+	Dead American Soldier (4th Jason)
+		Broken M-16 empty
+		Infra-Red Goggles
+		Radio Beacon
+		Colt .45 Pistol
+	Dead American Soldier (5th Steven)
+		Broken M-16 x6
+		40mm Projectile Cartridge
+		40mm Projectile Cartridge
+		40mm Projectile Cartridge
+		Radio Beacon
+Lasciate Ogne Speranza, Voi Ch'Intrate -12.8 10 40i
+	Red	Red Velvet Bag containing Clear Blue Potion
+	Blue	Clear Blue Potion
+	Gray	Sentinel
+Watch Yor Step -15.3 11 39i
+	Green	Green Crystal
+	Blue	Sapphire
+	Violet	Violet Pod
+	Gray	Sentinel
+	Light Blue	Violet Pod and Nuclear Device
+	Dead American Soldier (Greg)
+		Broken M-16
+		Colt .45 Pistol
+I'd Rather Be Surfing -19.2 12 40i
+	Gray	Sentinel
+	Blue	Clear Blue Potion
+	Green	Opens adjacent door	
+	Orange	Closes two nearby doors. They open in about 3 hours.
+	Light Blue	This door starts open
+	Dead Person (Pedro)
+		AK-47 Assault Rifle
+Warning: Earthquake Zone -22.7 13 37i
+	Green	Opens adjacent door	
+	Blue	Closes adjacent door
+	Orange	AK-47 SABOT Magazine x30
+	Gray Lead Box containing a Ruby Ring
+	Dead Person (Juan)
+		AK-47 Assault Rifle x19
+		3 AK-47 Magazines x30
+		Gas Mask
+	Red	AK-47 Assault Rifle x19
+	Pink	AK-47 Assault Rifle x6
+	Violet	Pale Violet Potion
+Don't Get Poisoned -1042.4 14 40i
+	Blue	Clear Blue Potion
+	Violet	Pale Violet Potion
+Please Excuse Our Dust -102.5 15 40i
+	Blue	Clear Blue Potion
+	Red	Bubbling Red Potion
+But Wait- That's Not All! -327.2 16 40i
+	Green	Opens adjacent door	
+	Orange	Closes adjacent door
+	Blue	Clear Blue Potion
+	Red	Bubbling Red Potion
+	Violet	Pale Violet Potion
+Where Only Fools Dare Tread -326.7 17 38i
+	Blue	Clear Blue Potion
+	Yellow	Ornate Glass Vial
+	Orange	AK-47 HE Magazine x30
+	Gray Black Crystal
+	Dead Person (SE Javier)
+		AK-47 Assault Rifle xHE21
+		3 AK-47 HE Magazines x30
+		AK-47 Magazine x30
+		Gold Key
+	Dead Person (NW Carlos)
+		AK-47 Assault Rifle x7
+Ok, Who Else Wants Some? -3276.8 18 40i

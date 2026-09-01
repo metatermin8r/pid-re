@@ -1,0 +1,33 @@
+Line 1856, hex 10 represents level for save 1
+Line 1856, hex 13 represents horizontal position for save 1
+Line 1872, hex 1 represents vertical position for save 1
+
+04 represents 1 map unit
+
+Items that must be searched count towards 40 (?) possible per level.
+Below is list of all levels, their height in meters, hex code for Line 1856, hex 10, and the number of dropable items, after all known are taken, at end of game. (See maps and Descriptions File)
+Ground Floor 0.0m 00 29i
+Never Stop Firing 2.7 01 40i
+Lock&Load 2.7 02 39i
+They May Be Slow… 6.8 03 40i
+…But They're Hungry 9.0 04 40i
+	Evil Undead Phantasms Must Die! 11.3 05 38i
+Ascension 13.6 06 33i
+Wrong Way! -2.4 07 40i
+Welcome, Tasty Primate -4.8 08 40i
+We Can See In The Dark… Can You? -7.0m 09 22i
+Happy Happy, Carnage Carnage -12.6m 0E 35i
+Feel The Power -2.4 0A 39i
+A Plague of Demons -4.5 0B 39i
+Beware of Low-Flying Nightmares -7.5 0C 40i
+The Labyrinth -9.1m 0D 40i
+Need A Light? -12.3 0F 37i
+Lasciate Ogne Speranza, Voi Ch'Intrate -12.8 10 40i
+Watch Yor Step -15.3 11 39i
+I'd Rather Be Surfing -19.2 12 40i
+Warning: Earthquake Zone -22.7 13 37i
+Don't Get Poisoned -1042.4 14 40i
+Please Excuse Our Dust -102.5 15 40i
+But Wait- That's Not All! -327.2 16 40i
+Where Only Fools Dare Tread -326.7 17 38i
+Ok, Who Else Wants Some? -3276.8 18 40i

@@ -1,0 +1,7 @@
+# TMPL / TEXT / STR# in Torch Docs.rsrc
+
+types: ['PICT', 'styl']
+has b'TMPL': False
+has b'STR#': False
+has b'STR ': False
+has b'TEXT': False

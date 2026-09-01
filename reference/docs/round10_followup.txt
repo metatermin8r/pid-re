@@ -1,0 +1,59 @@
+== decoded 376 via packbits@23 cons=120 out=376 ==
+00000000  00 00 02 10 03 ff 81 00 04 ee 81 00 05 dd 81 00  |.....ˇÅ..ÓÅ..›Å.|
+00000010  06 cc 81 00 07 bb 81 00 08 aa 81 00 09 99 81 00  |.ÃÅ..ªÅ..™Å..ôÅ.|
+00000020  0a 88 81 00 0b 77 81 00 0c 66 81 00 0d 55 81 00  |.àÅ..wÅ..fÅ..UÅ.|
+00000030  0e 44 81 00 0f 33 81 00 10 22 80 00 04 81 00 12  |.DÅ..3Å.."Ä..Å..|
+00000040  04 00 f0 03 e7 e7 ef ef ff ff 00 04 d2 d2 da fb  |....ÁÁÔÔˇˇ..““⁄˚|
+00000050  fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb  |˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚|
+00000060  fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb  |˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚|
+00000070  fb fb fb fb fb fb 00 00 00 00 00 00 bd bd c5 c5  |˚˚˚˚˚˚......ΩΩ≈≈|
+00000080  f6 f6 06 a7 a7 a7 a7 a7 a7 a7 a7 a7 a7 a7 a7 a7  |ˆˆ.ßßßßßßßßßßßßß|
+00000090  a7 a7 a7 a7 a7 a7 a7 a7 a7 a7 a7 a7 a7 a7 a7 a7  |ßßßßßßßßßßßßßßßß|
+000000a0  a7 a7 a7 a7 a7 a7 a7 a7 a7 a7 a7 a7 a7 a7 a7 a7  |ßßßßßßßßßßßßßßßß|
+000000b0  a7 a7 a7 a7 a7 a7 a7 a7 a7 a7 a7 a7 a7 a7 a7 a7  |ßßßßßßßßßßßßßßßß|
+000000c0  a7 a7 a7 a7 a7 a7 a7 a7 a7 a7 a7 a7 a7 a7 a7 a7  |ßßßßßßßßßßßßßßßß|
+000000d0  a7 a7 a7 a7 a7 a7 a7 a7 a7 a7 a7 a7 a7 af af af  |ßßßßßßßßßßßßßØØØ|
+000000e0  af af af af af af af af af af af af af af af af  |ØØØØØØØØØØØØØØØØ|
+000000f0  af af af af af af af af af af af af af af af af  |ØØØØØØØØØØØØØØØØ|
+00000100  af af af af af af af af af af af af af af af af  |ØØØØØØØØØØØØØØØØ|
+00000110  af af af af af af af af af af af af af af af af  |ØØØØØØØØØØØØØØØØ|
+00000120  af af af af af af af af af af af af af af af f1  |ØØØØØØØØØØØØØØØÒ|
+00000130  f1 f1 f1 f1 f1 f1 f1 f1 f1 f1 f1 f1 f1 f1 f1 07  |ÒÒÒÒÒÒÒÒÒÒÒÒÒÒÒ.|
+00000140  92 92 92 92 92 92 92 92 92 92 92 92 92 92 92 92  |íííííííííííííííí|
+00000150  92 92 92 92 92 92 92 92 92 92 92 92 92 92 92 92  |íííííííííííííííí|
+00000160  92 92 92 92 92 92 92 92 92 92 92 92 92 92 92 92  |íííííííííííííííí|
+00000170  92 92 92 92 92 92 92 92                          |íííííííí|
+  interesting u16: []
+  hdr[0:188] vs hdr[188:376] identical? False
+
+== packbits images A/B cons=7931/7204 end=15278 leftover=16350 ==
+  leftover packbits: A2=16384 cons=7897 B2=16384 cons=7207 hdr2=376 cons=182
+  leftover packbits FULL out=34060 vs 33144 d=+916 vs 16572 d=+17488
+
+== highbit @258 A=16384 cons=16392 B=14707 cons=14978 ==
+  highbit full @258 out=31095
+
+== 198 compact / clut range ==
+  compact filled=[3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
+  198 @258 in own compact 10440/18287
+  0x80+ density per KB:
+    195 packed=31628 80plus/KB=85.2 00-02/KB=92.3
+    196 packed=32727 80plus/KB=31.0 00-02/KB=31.1
+    197 packed=27838 80plus/KB=109.3 00-02/KB=90.1
+    198 packed=18545 80plus/KB=119.2 00-02/KB=95.3
+    199 packed=31733 80plus/KB=50.4 00-02/KB=48.5
+    200 packed=32253 80plus/KB=41.4 00-02/KB=41.1
+    201 packed=32428 80plus/KB=30.8 00-02/KB=29.2
+    202 packed=31396 80plus/KB=63.9 00-02/KB=66.0
+
+== packbits per-section 196/198 from @23 ==
+  196 ['280/280 cons=114', '64/64 cons=6', '32/32 cons=2', '32392/32392 cons=23870', '376/376 cons=163'] end=24178 left=8549
+    images A=16384 B=16384 leftover=8584
+  198 ['280/280 cons=114', '64/64 cons=6', '32/32 cons=2', '32392/32392 cons=17975', '376/376 cons=187'] end=18307 left=238
+    images A=16384 B=16384 leftover=291
+
+== T6 refined table at offset 11 ==
+  161 b6=5 u0=28992 u32@11=[1024, 9241680, 27888, 33554433] ok4=False leftover=n/a
+  162 b6=4 u0=14172 u32@11=[736, 768, 8991836, 33554433] ok4=False leftover=n/a
+  167 b6=16 u0=21184 u32@11=[664, 808, 20376, 33554433] ok4=False leftover=n/a
+  189 b6=6 u0=23272 u32@11=[344, 440, 22832, 33554433] ok4=False leftover=n/a

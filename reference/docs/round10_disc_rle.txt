@@ -1,0 +1,287 @@
+
+==== rsrc 195 packed=31628 u0=33144 b6=2 ====
+  compact=[3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
+  8-byte clut @ 24 n=1 idx=[0]
+  -- start @23 sl=31605 --
+    disc pal/pixel: out=42981 d_u0=+9837 d_32768=+10213 d_2x16384=+10213
+    disc pal/copy: out=39906 d_u0=+6762 d_32768=+7138 d_2x16384=+7138
+    disc pal/skip: out=42426 d_u0=+9282 d_32768=+9658 d_2x16384=+9658
+    disc+packbits-repeat: out=223814 d_u0=+190670 d_32768=+191046
+    highbit full: out=31865 d_u0=-1279
+    packbits full: out=67263 d_u0=+34119
+    row128 packbits: out=16384 cons=9777 rows=128 left=21828 row_cons_minmax=(4,156)
+      +imgB packbits: out=16384 cons=9321 rows=128 end=19121 left=12507
+    row128 highbit: out=16384 cons=16671 rows=128 left=14934 row_cons_minmax=(8,156)
+      +imgB highbit: out=13927 cons=14934 rows=109 end=31628 left=0
+  -- start @211 sl=31417 --
+    disc pal/pixel: out=40635 d_u0=+7491 d_32768=+7867 d_2x16384=+7867
+    disc pal/copy: out=39208 d_u0=+6064 d_32768=+6440 d_2x16384=+6440
+    disc pal/skip: out=40122 d_u0=+6978 d_32768=+7354 d_2x16384=+7354
+    disc+packbits-repeat: out=221299 d_u0=+188155 d_32768=+188531
+    highbit full: out=31145 d_u0=-1999
+    packbits full: out=66769 d_u0=+33625
+    row128 packbits: out=16384 cons=9800 rows=128 left=21617 row_cons_minmax=(4,156)
+      +imgB packbits: out=16384 cons=9394 rows=128 end=19405 left=12223
+    row128 highbit: out=16384 cons=17047 rows=128 left=14370 row_cons_minmax=(46,156)
+      +imgB highbit: out=13415 cons=14370 rows=105 end=31628 left=0
+  -- start @249 sl=31379 --
+    disc pal/pixel: out=40610 d_u0=+7466 d_32768=+7842 d_2x16384=+7842
+    disc pal/copy: out=39146 d_u0=+6002 d_32768=+6378 d_2x16384=+6378
+    disc pal/skip: out=40106 d_u0=+6962 d_32768=+7338 d_2x16384=+7338
+    disc+packbits-repeat: out=221148 d_u0=+188004 d_32768=+188380
+    highbit full: out=31103 d_u0=-2041
+    packbits full: out=66619 d_u0=+33475
+    row128 packbits: out=16384 cons=9917 rows=128 left=21462 row_cons_minmax=(4,156)
+      +imgB packbits: out=16384 cons=9386 rows=128 end=19552 left=12076
+    row128 highbit: out=16384 cons=17147 rows=128 left=14232 row_cons_minmax=(70,156)
+      +imgB highbit: out=13287 cons=14232 rows=104 end=31628 left=0
+  -- start @256 sl=31372 --
+    disc pal/pixel: out=40606 d_u0=+7462 d_32768=+7838 d_2x16384=+7838
+    disc pal/copy: out=39165 d_u0=+6021 d_32768=+6397 d_2x16384=+6397
+    disc pal/skip: out=40103 d_u0=+6959 d_32768=+7335 d_2x16384=+7335
+    disc+packbits-repeat: out=221144 d_u0=+188000 d_32768=+188376
+    highbit full: out=31096 d_u0=-2048
+    packbits full: out=66600 d_u0=+33456
+    row128 packbits: out=16384 cons=9910 rows=128 left=21462 row_cons_minmax=(4,156)
+      +imgB packbits: out=16384 cons=9386 rows=128 end=19552 left=12076
+    row128 highbit: out=16384 cons=17140 rows=128 left=14232 row_cons_minmax=(70,156)
+      +imgB highbit: out=13287 cons=14232 rows=104 end=31628 left=0
+  -- start @258 sl=31370 --
+    disc pal/pixel: out=40605 d_u0=+7461 d_32768=+7837 d_2x16384=+7837
+    disc pal/copy: out=39164 d_u0=+6020 d_32768=+6396 d_2x16384=+6396
+    disc pal/skip: out=40102 d_u0=+6958 d_32768=+7334 d_2x16384=+7334
+    disc+packbits-repeat: out=221143 d_u0=+187999 d_32768=+188375
+    highbit full: out=31095 d_u0=-2049
+    packbits full: out=66599 d_u0=+33455
+    row128 packbits: out=16384 cons=9908 rows=128 left=21462 row_cons_minmax=(4,156)
+      +imgB packbits: out=16384 cons=9386 rows=128 end=19552 left=12076
+    row128 highbit: out=16384 cons=17138 rows=128 left=14232 row_cons_minmax=(70,156)
+      +imgB highbit: out=13287 cons=14232 rows=104 end=31628 left=0
+  -- start @264 sl=31364 --
+    disc pal/pixel: out=40599 d_u0=+7455 d_32768=+7831 d_2x16384=+7831
+    disc pal/copy: out=39158 d_u0=+6014 d_32768=+6390 d_2x16384=+6390
+    disc pal/skip: out=40096 d_u0=+6952 d_32768=+7328 d_2x16384=+7328
+    disc+packbits-repeat: out=221137 d_u0=+187993 d_32768=+188369
+    highbit full: out=31089 d_u0=-2055
+    packbits full: out=66593 d_u0=+33449
+    row128 packbits: out=16384 cons=9902 rows=128 left=21462 row_cons_minmax=(4,156)
+      +imgB packbits: out=16384 cons=9386 rows=128 end=19552 left=12076
+    row128 highbit: out=16384 cons=17132 rows=128 left=14232 row_cons_minmax=(70,156)
+      +imgB highbit: out=13287 cons=14232 rows=104 end=31628 left=0
+
+==== rsrc 196 packed=32727 u0=33144 b6=2 ====
+  compact=[3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
+  8-byte clut @ 24 n=1 idx=[0]
+  -- start @23 sl=32704 --
+    disc pal/pixel: out=56019 d_u0=+22875 d_32768=+23251 d_2x16384=+23251
+    disc pal/copy: out=48356 d_u0=+15212 d_32768=+15588 d_2x16384=+15588
+    disc pal/skip: out=54461 d_u0=+21317 d_32768=+21693 d_2x16384=+21693
+    disc+packbits-repeat: out=110930 d_u0=+77786 d_32768=+78162
+    highbit full: out=34811 d_u0=+1667
+    packbits full: out=43500 d_u0=+10356
+    row128 packbits: out=16384 cons=13521 rows=128 left=19183 row_cons_minmax=(6,157)
+      +imgB packbits: out=16384 cons=14642 rows=128 end=28186 left=4541
+    row128 highbit: out=16384 cons=16104 rows=128 left=16600 row_cons_minmax=(8,159)
+      +imgB highbit: out=16120 cons=16600 rows=126 end=32727 left=0
+  -- start @211 sl=32516 --
+    disc pal/pixel: out=53673 d_u0=+20529 d_32768=+20905 d_2x16384=+20905
+    disc pal/copy: out=47677 d_u0=+14533 d_32768=+14909 d_2x16384=+14909
+    disc pal/skip: out=52157 d_u0=+19013 d_32768=+19389 d_2x16384=+19389
+    disc+packbits-repeat: out=108415 d_u0=+75271 d_32768=+75647
+    highbit full: out=34085 d_u0=+941
+    packbits full: out=42880 d_u0=+9736
+    row128 packbits: out=16384 cons=13715 rows=128 left=18801 row_cons_minmax=(16,157)
+      +imgB packbits: out=16384 cons=14788 rows=128 end=28714 left=4013
+    row128 highbit: out=16384 cons=16379 rows=128 left=16137 row_cons_minmax=(18,159)
+      +imgB highbit: out=15608 cons=16137 rows=122 end=32727 left=0
+  -- start @249 sl=32478 --
+    disc pal/pixel: out=53648 d_u0=+20504 d_32768=+20880 d_2x16384=+20880
+    disc pal/copy: out=47596 d_u0=+14452 d_32768=+14828 d_2x16384=+14828
+    disc pal/skip: out=52141 d_u0=+18997 d_32768=+19373 d_2x16384=+19373
+    disc+packbits-repeat: out=108264 d_u0=+75120 d_32768=+75496
+    highbit full: out=34008 d_u0=+864
+    packbits full: out=42769 d_u0=+9625
+    row128 packbits: out=16384 cons=13822 rows=128 left=18656 row_cons_minmax=(16,157)
+      +imgB packbits: out=16384 cons=14767 rows=128 end=28838 left=3889
+    row128 highbit: out=16384 cons=16446 rows=128 left=16032 row_cons_minmax=(34,159)
+      +imgB highbit: out=15480 cons=16032 rows=121 end=32727 left=0
+  -- start @256 sl=32471 --
+    disc pal/pixel: out=53644 d_u0=+20500 d_32768=+20876 d_2x16384=+20876
+    disc pal/copy: out=47634 d_u0=+14490 d_32768=+14866 d_2x16384=+14866
+    disc pal/skip: out=52138 d_u0=+18994 d_32768=+19370 d_2x16384=+19370
+    disc+packbits-repeat: out=108260 d_u0=+75116 d_32768=+75492
+    highbit full: out=33994 d_u0=+850
+    packbits full: out=42755 d_u0=+9611
+    row128 packbits: out=16384 cons=13815 rows=128 left=18656 row_cons_minmax=(16,157)
+      +imgB packbits: out=16384 cons=14767 rows=128 end=28838 left=3889
+    row128 highbit: out=16384 cons=16439 rows=128 left=16032 row_cons_minmax=(34,159)
+      +imgB highbit: out=15480 cons=16032 rows=121 end=32727 left=0
+  -- start @258 sl=32469 --
+    disc pal/pixel: out=53643 d_u0=+20499 d_32768=+20875 d_2x16384=+20875
+    disc pal/copy: out=47633 d_u0=+14489 d_32768=+14865 d_2x16384=+14865
+    disc pal/skip: out=52137 d_u0=+18993 d_32768=+19369 d_2x16384=+19369
+    disc+packbits-repeat: out=108259 d_u0=+75115 d_32768=+75491
+    highbit full: out=33993 d_u0=+849
+    packbits full: out=42754 d_u0=+9610
+    row128 packbits: out=16384 cons=13813 rows=128 left=18656 row_cons_minmax=(16,157)
+      +imgB packbits: out=16384 cons=14767 rows=128 end=28838 left=3889
+    row128 highbit: out=16384 cons=16437 rows=128 left=16032 row_cons_minmax=(34,159)
+      +imgB highbit: out=15480 cons=16032 rows=121 end=32727 left=0
+  -- start @264 sl=32463 --
+    disc pal/pixel: out=53637 d_u0=+20493 d_32768=+20869 d_2x16384=+20869
+    disc pal/copy: out=47627 d_u0=+14483 d_32768=+14859 d_2x16384=+14859
+    disc pal/skip: out=52131 d_u0=+18987 d_32768=+19363 d_2x16384=+19363
+    disc+packbits-repeat: out=108253 d_u0=+75109 d_32768=+75485
+    highbit full: out=33988 d_u0=+844
+    packbits full: out=42749 d_u0=+9605
+    row128 packbits: out=16384 cons=13807 rows=128 left=18656 row_cons_minmax=(16,157)
+      +imgB packbits: out=16384 cons=14767 rows=128 end=28838 left=3889
+    row128 highbit: out=16384 cons=16431 rows=128 left=16032 row_cons_minmax=(34,159)
+      +imgB highbit: out=15480 cons=16032 rows=121 end=32727 left=0
+
+==== rsrc 198 packed=18545 u0=33144 b6=2 ====
+  compact=[3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
+  8-byte clut @ 24 n=1 idx=[0]
+  -- start @23 sl=18522 --
+    disc pal/pixel: out=23357 d_u0=-9787 d_32768=-9411 d_2x16384=-9411
+    disc pal/copy: out=19654 d_u0=-13490 d_32768=-13114 d_2x16384=-13114
+    disc pal/skip: out=20138 d_u0=-13006 d_32768=-12630 d_2x16384=-12630
+    disc+packbits-repeat: out=122610 d_u0=+89466 d_32768=+89842
+    highbit full: out=18384 d_u0=-14760
+    packbits full: out=33767 d_u0=+623
+    row128 packbits: out=16384 cons=11261 rows=128 left=7261 row_cons_minmax=(4,204)
+      +imgB packbits: out=9573 cons=7261 rows=75 end=18545 left=0
+    row128 highbit: out=16384 cons=17763 rows=128 left=759 row_cons_minmax=(8,229)
+      +imgB highbit: out=717 cons=759 rows=6 end=18545 left=0
+  -- start @211 sl=18334 --
+    disc pal/pixel: out=21011 d_u0=-12133 d_32768=-11757 d_2x16384=-11757
+    disc pal/copy: out=18933 d_u0=-14211 d_32768=-13835 d_2x16384=-13835
+    disc pal/skip: out=17834 d_u0=-15310 d_32768=-14934 d_2x16384=-14934
+    disc+packbits-repeat: out=120095 d_u0=+86951 d_32768=+87327
+    highbit full: out=17641 d_u0=-15503
+    packbits full: out=32814 d_u0=-330
+    row128 packbits: out=16384 cons=11651 rows=128 left=6683 row_cons_minmax=(4,190)
+      +imgB packbits: out=8805 cons=6683 rows=69 end=18545 left=0
+    row128 highbit: out=16384 cons=18249 rows=128 left=85 row_cons_minmax=(115,229)
+      +imgB highbit: out=77 cons=85 rows=1 end=18545 left=0
+  -- start @249 sl=18296 --
+    disc pal/pixel: out=20986 d_u0=-12158 d_32768=-11782 d_2x16384=-11782
+    disc pal/copy: out=18894 d_u0=-14250 d_32768=-13874 d_2x16384=-13874
+    disc pal/skip: out=17818 d_u0=-15326 d_32768=-14950 d_2x16384=-14950
+    disc+packbits-repeat: out=119944 d_u0=+86800 d_32768=+87176
+    highbit full: out=17632 d_u0=-15512
+    packbits full: out=32873 d_u0=-271
+    row128 packbits: out=16384 cons=11613 rows=128 left=6683 row_cons_minmax=(4,204)
+      +imgB packbits: out=8805 cons=6683 rows=69 end=18545 left=0
+    row128 highbit: out=16384 cons=18211 rows=128 left=85 row_cons_minmax=(109,229)
+      +imgB highbit: out=77 cons=85 rows=1 end=18545 left=0
+  -- start @256 sl=18289 --
+    disc pal/pixel: out=20982 d_u0=-12162 d_32768=-11786 d_2x16384=-11786
+    disc pal/copy: out=18884 d_u0=-14260 d_32768=-13884 d_2x16384=-13884
+    disc pal/skip: out=17815 d_u0=-15329 d_32768=-14953 d_2x16384=-14953
+    disc+packbits-repeat: out=119940 d_u0=+86796 d_32768=+87172
+    highbit full: out=17592 d_u0=-15552
+    packbits full: out=32642 d_u0=-502
+    row128 packbits: out=16384 cons=11752 rows=128 left=6537 row_cons_minmax=(4,190)
+      +imgB packbits: out=8677 cons=6537 rows=68 end=18545 left=0
+    row128 highbit: out=16384 cons=18204 rows=128 left=85 row_cons_minmax=(115,229)
+      +imgB highbit: out=77 cons=85 rows=1 end=18545 left=0
+  -- start @258 sl=18287 --
+    disc pal/pixel: out=20981 d_u0=-12163 d_32768=-11787 d_2x16384=-11787
+    disc pal/copy: out=18883 d_u0=-14261 d_32768=-13885 d_2x16384=-13885
+    disc pal/skip: out=17814 d_u0=-15330 d_32768=-14954 d_2x16384=-14954
+    disc+packbits-repeat: out=119939 d_u0=+86795 d_32768=+87171
+    highbit full: out=17591 d_u0=-15553
+    packbits full: out=32641 d_u0=-503
+    row128 packbits: out=16384 cons=11750 rows=128 left=6537 row_cons_minmax=(4,190)
+      +imgB packbits: out=8677 cons=6537 rows=68 end=18545 left=0
+    row128 highbit: out=16384 cons=18202 rows=128 left=85 row_cons_minmax=(115,229)
+      +imgB highbit: out=77 cons=85 rows=1 end=18545 left=0
+  -- start @264 sl=18281 --
+    disc pal/pixel: out=20978 d_u0=-12166 d_32768=-11790 d_2x16384=-11790
+    disc pal/copy: out=18880 d_u0=-14264 d_32768=-13888 d_2x16384=-13888
+    disc pal/skip: out=17811 d_u0=-15333 d_32768=-14957 d_2x16384=-14957
+    disc+packbits-repeat: out=119936 d_u0=+86792 d_32768=+87168
+    highbit full: out=17590 d_u0=-15554
+    packbits full: out=32763 d_u0=-381
+    row128 packbits: out=16384 cons=11598 rows=128 left=6683 row_cons_minmax=(4,190)
+      +imgB packbits: out=8805 cons=6683 rows=69 end=18545 left=0
+    row128 highbit: out=16384 cons=18196 rows=128 left=85 row_cons_minmax=(115,218)
+      +imgB highbit: out=77 cons=85 rows=1 end=18545 left=0
+
+==== packed u16/u32 200-270 across 195-202 ====
+  @ 200 CONST b195=2f u16=12155
+  @ 201 CONST b195=7b u16=31611
+  @ 202 CONST b195=7b u16=31488
+  @ 203 CONST b195=00 u16=   15
+  @ 204 CONST b195=0f u16= 3874
+  @ 205 CONST b195=22 u16= 8738
+  @ 206 CONST b195=22 u16= 8741
+  @ 207 CONST b195=25 u16= 9509
+  @ 208 CONST b195=25 u16= 9570
+  @ 209 CONST b195=62 u16=25186
+  @ 210 CONST b195=62 u16=25088
+  @ 211 CONST b195=00 u16=   16  **u16=16
+  @ 212 CONST b195=10 u16= 4121
+  @ 213 CONST b195=19 u16= 6425
+  @ 214 CONST b195=19 u16= 6426
+  @ 215 CONST b195=1a u16= 6682
+  @ 216 CONST b195=1a u16= 6729
+  @ 217 CONST b195=49 u16=18761
+  @ 218 CONST b195=49 u16=18688
+  @ 219 CONST b195=00 u16=   17
+  @ 220 CONST b195=11 u16= 4353
+  @ 221 CONST b195=01 u16=  272
+  @ 222 CONST b195=10 u16= 4227
+  @ 223 CONST b195=83 u16=33585
+  @ 224 CONST b195=31 u16=12593
+  @ 225 CONST b195=31 u16=12544
+  @ 226 CONST b195=00 u16=   18
+  @ 227 CONST b195=12 u16= 4612
+  @ 228 CONST b195=04 u16= 1024
+  @ 229 CONST b195=00 u16=  128  **u16=128
+  @ 230 CONST b195=80 u16=32769
+  @ 231 CONST b195=01 u16=  284
+  @ 232 CONST b195=1c u16= 7168
+  @ 233 CONST b195=00 u16=  128  **u16=128
+  @ 234 CONST b195=80 u16=32769
+  @ 235 CONST b195=01 u16=  256  **u16=256
+  @ 236 CONST b195=00 u16=    0
+  @ 237 CONST b195=00 u16=  128  **u16=128
+  @ 238 CONST b195=80 u16=32769
+  @ 239 CONST b195=01 u16=  284
+  @ 240 CONST b195=1c u16= 7168
+  @ 241 CONST b195=00 u16=  130
+  @ 242 CONST b195=82 u16=33408
+  @ 243 CONST b195=80 u16=32768
+  @ 244 CONST b195=00 u16=  128  **u16=128
+  @ 245 CONST b195=80 u16=32775
+  @ 246 CONST b195=07 u16= 1792
+  @ 247 CONST b195=00 u16=  133
+  @ 248 CONST b195=85 u16=34112
+  @ 249 CONST b195=40 u16=16384  **u16=16384
+  @ 250 CONST b195=00 u16=    0
+  @ 251 CONST b195=00 u16=  128  **u16=128
+  @ 252 CONST b195=80 u16=32768
+  @ 253 CONST b195=00 u16=  128  **u16=128
+  @ 254 CONST b195=80 u16=32773
+  @ 255 CONST b195=05 u16= 1280
+  @ 256 CONST b195=00 u16=  144
+  @ 257 vary b195=90 u16=36875
+  @ 258 vary b195=0b u16= 2829
+  @ 259 vary b195=0d u16= 3340
+  @ 260 vary b195=0c u16= 3084
+  @ 261 vary b195=0c u16= 3083
+  @ 262 vary b195=0b u16= 2825
+  @ 263 vary b195=09 u16= 2310
+  @ 264 vary b195=06 u16= 1541
+  @ 265 vary b195=05 u16= 1286
+  @ 266 vary b195=06 u16= 1543
+  @ 267 vary b195=07 u16= 1801
+  @ 268 vary b195=09 u16= 2314
+  @ 269 vary b195=0a u16= 2571
+  @ 270 vary b195=0b u16= 2828
+
+==== 198 clut vs 0x11/0x12 ====
+  clut idx=[0]
+  compact-like records: [(29, 3, 3, 255, 129), (34, 4, 3, 238, 129), (39, 5, 3, 221, 129), (44, 6, 3, 204, 129), (49, 7, 3, 187, 129), (54, 8, 3, 170, 129), (59, 9, 3, 153, 129), (64, 10, 3, 136, 129), (69, 11, 3, 119, 129), (74, 12, 3, 102, 129), (79, 13, 3, 85, 129), (84, 14, 3, 68, 129), (89, 15, 3, 51, 129), (94, 16, 3, 34, 128), (103, 18, 4, 0, 240), (226, 18, 4, 0, 128), (256, 128, 3, 0, 4)] n=17

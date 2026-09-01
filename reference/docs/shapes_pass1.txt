@@ -1,0 +1,286 @@
+# texture_list (i16be x8). map value low 12 bits + 128 = .256 id
+
+## 00 Ground Floor  theme=plain (walls 64 -> 192)
+  [0] 64 var=0 set=64 rsrc=192 Plain-theme walls
+  [1] 25 var=0 set=25 rsrc=153 Plain-theme pillars
+  [2] 26 var=0 set=26 rsrc=154 Plain-theme scenery
+  [3] 27 var=0 set=27 rsrc=155 Plain-theme ladders
+  [4] 28 var=0 set=28 rsrc=156 Corpses
+  [5] -1 none
+  [6] -1 none
+  [7] -1 none
+
+## 01 Never Stop Firing  theme=plain (walls 64 -> 192)
+  [0] 64 var=0 set=64 rsrc=192 Plain-theme walls
+  [1] 25 var=0 set=25 rsrc=153 Plain-theme pillars
+  [2] 26 var=0 set=26 rsrc=154 Plain-theme scenery
+  [3] 27 var=0 set=27 rsrc=155 Plain-theme ladders
+  [4] -1 none
+  [5] -1 none
+  [6] -1 none
+  [7] -1 none
+
+## 02 Lock&Load  theme=plain (walls 64 -> 192)
+  [0] 64 var=0 set=64 rsrc=192 Plain-theme walls
+  [1] 25 var=0 set=25 rsrc=153 Plain-theme pillars
+  [2] 26 var=0 set=26 rsrc=154 Plain-theme scenery
+  [3] 27 var=0 set=27 rsrc=155 Plain-theme ladders
+  [4] 28 var=0 set=28 rsrc=156 Corpses
+  [5] -1 none
+  [6] -1 none
+  [7] -1 none
+
+## 03 They May Be Slow…  theme=plain (walls 64 -> 192)
+  [0] 64 var=0 set=64 rsrc=192 Plain-theme walls
+  [1] 25 var=0 set=25 rsrc=153 Plain-theme pillars
+  [2] 26 var=0 set=26 rsrc=154 Plain-theme scenery
+  [3] 27 var=0 set=27 rsrc=155 Plain-theme ladders
+  [4] 28 var=0 set=28 rsrc=156 Corpses
+  [5] -1 none
+  [6] -1 none
+  [7] -1 none
+
+## 04 …But They’re Hungry  theme=plain (walls 64 -> 192)
+  [0] 4160 var=1 set=64 rsrc=192 Plain-theme walls
+  [1] 25 var=0 set=25 rsrc=153 Plain-theme pillars
+  [2] 26 var=0 set=26 rsrc=154 Plain-theme scenery
+  [3] 27 var=0 set=27 rsrc=155 Plain-theme ladders
+  [4] 28 var=0 set=28 rsrc=156 Corpses
+  [5] -1 none
+  [6] -1 none
+  [7] -1 none
+
+## 05 Evil Undead Phantasms Must Die!  theme=plain (walls 64 -> 192)
+  [0] 4160 var=1 set=64 rsrc=192 Plain-theme walls
+  [1] 25 var=0 set=25 rsrc=153 Plain-theme pillars
+  [2] 26 var=0 set=26 rsrc=154 Plain-theme scenery
+  [3] 27 var=0 set=27 rsrc=155 Plain-theme ladders
+  [4] 28 var=0 set=28 rsrc=156 Corpses
+  [5] -1 none
+  [6] -1 none
+  [7] -1 none
+
+## 06 Ascension  theme=plain (walls 64 -> 192)
+  [0] 8256 var=2 set=64 rsrc=192 Plain-theme walls
+  [1] 4121 var=1 set=25 rsrc=153 Plain-theme pillars
+  [2] 4122 var=1 set=26 rsrc=154 Plain-theme scenery
+  [3] 27 var=0 set=27 rsrc=155 Plain-theme ladders
+  [4] 28 var=0 set=28 rsrc=156 Corpses
+  [5] -1 none
+  [6] -1 none
+  [7] -1 none
+
+## 07 Wrong Way!  theme=crystal (walls 66 -> 194)
+  [0] 66 var=0 set=66 rsrc=194 Crystal-theme walls
+  [1] 29 var=0 set=29 rsrc=157 Crystal-theme scenery
+  [2] 30 var=0 set=30 rsrc=158 Crystal-theme pillars
+  [3] 27 var=0 set=27 rsrc=155 Plain-theme ladders
+  [4] 31 var=0 set=31 rsrc=159 Crystal-theme ladders
+  [5] -1 none
+  [6] 32 var=0 set=32 rsrc=160 Corpses
+  [7] -1 none
+
+## 08 Welcome, Tasty Primate  theme=crystal (walls 66 -> 194)
+  [0] 66 var=0 set=66 rsrc=194 Crystal-theme walls
+  [1] 29 var=0 set=29 rsrc=157 Crystal-theme scenery
+  [2] 30 var=0 set=30 rsrc=158 Crystal-theme pillars
+  [3] 31 var=0 set=31 rsrc=159 Crystal-theme ladders
+  [4] -1 none
+  [5] 32 var=0 set=32 rsrc=160 Corpses
+  [6] -1 none
+  [7] -1 none
+
+## 09 We Can See In The Dark… Can You?  theme=crystal (walls 66 -> 194)
+  [0] 66 var=0 set=66 rsrc=194 Crystal-theme walls
+  [1] 29 var=0 set=29 rsrc=157 Crystal-theme scenery
+  [2] 30 var=0 set=30 rsrc=158 Crystal-theme pillars
+  [3] 31 var=0 set=31 rsrc=159 Crystal-theme ladders
+  [4] 32 var=0 set=32 rsrc=160 Corpses
+  [5] 34 var=0 set=34 rsrc=162 Rat things
+  [6] -1 none
+  [7] -1 none
+
+## 10 Feel the Power  theme=crystal (walls 66 -> 194)
+  [0] 4162 var=1 set=66 rsrc=194 Crystal-theme walls
+  [1] 29 var=0 set=29 rsrc=157 Crystal-theme scenery
+  [2] 8222 var=2 set=30 rsrc=158 Crystal-theme pillars
+  [3] 8223 var=2 set=31 rsrc=159 Crystal-theme ladders
+  [4] 27 var=0 set=27 rsrc=155 Plain-theme ladders
+  [5] 32 var=0 set=32 rsrc=160 Corpses
+  [6] -1 none
+  [7] -1 none
+
+## 11 A Plague of Demons  theme=crystal (walls 66 -> 194)
+  [0] 4162 var=1 set=66 rsrc=194 Crystal-theme walls
+  [1] 29 var=0 set=29 rsrc=157 Crystal-theme scenery
+  [2] 8222 var=2 set=30 rsrc=158 Crystal-theme pillars
+  [3] 8223 var=2 set=31 rsrc=159 Crystal-theme ladders
+  [4] 33 var=0 set=33 rsrc=161 Corpses
+  [5] -1 none
+  [6] -1 none
+  [7] -1 none
+
+## 12 Beware of Low-Flying Nightmares  theme=crystal (walls 66 -> 194)
+  [0] 4162 var=1 set=66 rsrc=194 Crystal-theme walls
+  [1] 29 var=0 set=29 rsrc=157 Crystal-theme scenery
+  [2] 8222 var=2 set=30 rsrc=158 Crystal-theme pillars
+  [3] 8223 var=2 set=31 rsrc=159 Crystal-theme ladders
+  [4] 32 var=0 set=32 rsrc=160 Corpses
+  [5] -1 none
+  [6] -1 none
+  [7] -1 none
+
+## 13 The Labyrinth  theme=crystal (walls 66 -> 194)
+  [0] 12354 var=3 set=66 rsrc=194 Crystal-theme walls
+  [1] 29 var=0 set=29 rsrc=157 Crystal-theme scenery
+  [2] 31 var=0 set=31 rsrc=159 Crystal-theme ladders
+  [3] -1 none
+  [4] -1 none
+  [5] -1 none
+  [6] -1 none
+  [7] -1 none
+
+## 14 Happy Happy, Carnage Carnage  theme=crystal (walls 66 -> 194)
+  [0] 8258 var=2 set=66 rsrc=194 Crystal-theme walls
+  [1] 12318 var=3 set=30 rsrc=158 Crystal-theme pillars
+  [2] 12319 var=3 set=31 rsrc=159 Crystal-theme ladders
+  [3] 29 var=0 set=29 rsrc=157 Crystal-theme scenery
+  [4] 32 var=0 set=32 rsrc=160 Corpses
+  [5] 28 var=0 set=28 rsrc=156 Corpses
+  [6] 35 var=0 set=35 rsrc=163 Crystal-theme extra scenery
+  [7] -1 none
+
+## 15 Need a Light?  theme=crystal (walls 66 -> 194)
+  [0] 8258 var=2 set=66 rsrc=194 Crystal-theme walls
+  [1] 12318 var=3 set=30 rsrc=158 Crystal-theme pillars
+  [2] 12319 var=3 set=31 rsrc=159 Crystal-theme ladders
+  [3] 33 var=0 set=33 rsrc=161 Corpses
+  [4] 29 var=0 set=29 rsrc=157 Crystal-theme scenery
+  [5] -1 none
+  [6] -1 none
+  [7] -1 none
+
+## 16 Lasciate Ogne Speranza, Voi Ch’Intrate  theme=vine (walls 65 -> 193)
+  [0] 65 var=0 set=65 rsrc=193 Vine-theme walls
+  [1] 31 var=0 set=31 rsrc=159 Crystal-theme ladders
+  [2] 4132 var=1 set=36 rsrc=164 Vine-theme pillars, ladders
+  [3] 38 var=0 set=38 rsrc=166 Lizard things, exploding pods
+  [4] 39 var=0 set=39 rsrc=167 Vine-theme scenery
+  [5] -1 none
+  [6] -1 none
+  [7] -1 none
+
+## 17 Watch Your Step  theme=vine (walls 65 -> 193)
+  [0] 65 var=0 set=65 rsrc=193 Vine-theme walls
+  [1] 39 var=0 set=39 rsrc=167 Vine-theme scenery
+  [2] 4132 var=1 set=36 rsrc=164 Vine-theme pillars, ladders
+  [3] 38 var=0 set=38 rsrc=166 Lizard things, exploding pods
+  [4] 33 var=0 set=33 rsrc=161 Corpses
+  [5] -1 none
+  [6] -1 none
+  [7] -1 none
+
+## 18 I’d Rather Be Surfing  theme=vine (walls 65 -> 193)
+  [0] 65 var=0 set=65 rsrc=193 Vine-theme walls
+  [1] 39 var=0 set=39 rsrc=167 Vine-theme scenery
+  [2] 4132 var=1 set=36 rsrc=164 Vine-theme pillars, ladders
+  [3] 37 var=0 set=37 rsrc=165 Corpses
+  [4] -1 none
+  [5] -1 none
+  [6] -1 none
+  [7] -1 none
+
+## 19 Warning: Earthquake Zone  theme=vine (walls 65 -> 193)
+  [0] 4161 var=1 set=65 rsrc=193 Vine-theme walls
+  [1] 4132 var=1 set=36 rsrc=164 Vine-theme pillars, ladders
+  [2] 39 var=0 set=39 rsrc=167 Vine-theme scenery
+  [3] 37 var=0 set=37 rsrc=165 Corpses
+  [4] -1 none
+  [5] -1 none
+  [6] -1 none
+  [7] -1 none
+
+## 20 Don’t Get Poisoned!  theme=vine (walls 65 -> 193)
+  [0] 8257 var=2 set=65 rsrc=193 Vine-theme walls
+  [1] 12324 var=3 set=36 rsrc=164 Vine-theme pillars, ladders
+  [2] 39 var=0 set=39 rsrc=167 Vine-theme scenery
+  [3] -1 none
+  [4] -1 none
+  [5] -1 none
+  [6] -1 none
+  [7] -1 none
+
+## 21 Please Excuse Our Dust  theme=vine (walls 65 -> 193)
+  [0] 8257 var=2 set=65 rsrc=193 Vine-theme walls
+  [1] 12324 var=3 set=36 rsrc=164 Vine-theme pillars, ladders
+  [2] 39 var=0 set=39 rsrc=167 Vine-theme scenery
+  [3] -1 none
+  [4] -1 none
+  [5] -1 none
+  [6] -1 none
+  [7] -1 none
+
+## 22 But Wait!— That’s Not All!  theme=vine (walls 65 -> 193)
+  [0] 8257 var=2 set=65 rsrc=193 Vine-theme walls
+  [1] 12324 var=3 set=36 rsrc=164 Vine-theme pillars, ladders
+  [2] 39 var=0 set=39 rsrc=167 Vine-theme scenery
+  [3] -1 none
+  [4] -1 none
+  [5] -1 none
+  [6] -1 none
+  [7] -1 none
+
+## 23 Where Only Fools Dare Tread  theme=vine (walls 65 -> 193)
+  [0] 8257 var=2 set=65 rsrc=193 Vine-theme walls
+  [1] 8228 var=2 set=36 rsrc=164 Vine-theme pillars, ladders
+  [2] 39 var=0 set=39 rsrc=167 Vine-theme scenery
+  [3] 37 var=0 set=37 rsrc=165 Corpses
+  [4] -1 none
+  [5] -1 none
+  [6] -1 none
+  [7] -1 none
+
+## 24 Ok, Who Else Wants Some?  theme=vine (walls 65 -> 193)
+  [0] 12353 var=3 set=65 rsrc=193 Vine-theme walls
+  [1] 12324 var=3 set=36 rsrc=164 Vine-theme pillars, ladders
+  [2] 39 var=0 set=39 rsrc=167 Vine-theme scenery
+  [3] -1 none
+  [4] -1 none
+  [5] -1 none
+  [6] -1 none
+  [7] -1 none
+
+# .256 128 size=49647
+00000000  00 01 94 a0 99 00 3b 00 00 04 e8 00 00 0c 48 00  |..î†ô.;...Ë...H.|
+00000010  00 0f f8 00 01 84 a8 02 00 00 01 00 9a 00 03 03  |..¯..Ñ®.....ö...|
+00000020  ff 81 00 04 03 ee 81 00 05 03 dd 81 00 06 03 cc  |ˇÅ...ÓÅ...›Å...Ã|
+00000030  81 00 07 03 bb 81 00 08 03 aa 81 00 09 03 99 81  |Å...ªÅ...™Å...ôÅ|
+00000040  00 0a 03 88 81 00 0b 03 77 81 00 0c 03 66 81 00  |...àÅ...wÅ...fÅ.|
+00000050  0d 03 55 81 00 0e 03 44 81 00 0f 03 33 81 00 10  |..UÅ...DÅ...3Å..|
+00000060  03 22 81 00 11 03 12 81 00 12 04 00 f8 13 00 00  |."Å....Å....¯...|
+00000070  a5 a5 ff ff 00 14 00 00 94 94 ff ff 00 15 00 00  |••ˇˇ....îîˇˇ....|
+00000080  83 83 ff ff 00 16 00 00 71 71 ff ff 00 17 00 00  |ÉÉˇˇ....qqˇˇ....|
+00000090  60 60 ff ff 00 18 00 00 4f 4f ff ff 00 19 00 00  |``ˇˇ....OOˇˇ....|
+000000a0  3e 3e ff ff 00 1a 00 00 37 37 e3 e3 00 1b 00 00  |>>ˇˇ....77„„....|
+000000b0  30 30 c7 c7 00 1c 00 00 29 29 aa aa 00 1d 00 00  |00««....))™™....|
+000000c0  22 22 8e 8e 00 1e 00 00 1b 1b 71 71 00 1f 00 00  |""éé......qq....|
+000000d0  14 14 55 55 00 20 00 00 0d 0d 38 38 00 21 00 00  |..UU. ....88.!..|
+000000e0  06 06 1c 1c 00 22 04 00 ac 23 df df 3c 3c 03 03  |....."..¨#ﬂﬂ<<..|
+000000f0  00 24 d7 d7 32 32 02 02 00 25 ce ce 28 28 02 02  |.$◊◊22...%ŒŒ((..|
+
+# clut 256 size=578 -- NOT a color table
+
+Copyright 1993 Bungie Software Products Corporation
+Portions Copyright 1993 Convergent Series, Incorporated
+
+#BPATHWAYS INTO DARKNESS
+Written and Designed by J
+clut 128: 128 bytes entries=15 first=(0, 59367, 61423, 65535)
+clut 129: 128 bytes entries=15 first=(0, 7680, 7680, 7680)
+clut 130: 128 bytes entries=15 first=(0, 15360, 7680, 7680)
+clut 131: 128 bytes entries=15 first=(0, 7680, 7680, 15360)
+clut 132: 128 bytes entries=15 first=(0, 7680, 15360, 15360)
+clut 133: 128 bytes entries=15 first=(0, 15360, 15360, 7680)
+clut 134: 128 bytes entries=15 first=(0, 7680, 15360, 7680)
+clut 135: 128 bytes entries=15 first=(0, 15360, 7680, 7680)
+wrote C:\Users\Colton S Covert\Documents\GitHub\Pathways-Into-Darkness-Unity\reference\palette.png from clut 128-135 (15 colors each)

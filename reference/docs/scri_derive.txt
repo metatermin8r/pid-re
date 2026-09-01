@@ -1,0 +1,86 @@
+scheme: skip 2 bytes (u16be length), XOR remainder with 00 01 02 ... wrap 256
+scri128 raw_len=2071 u16be@0=2071
+keystream_first32=00 01 02 03 04 05 06 07 08 09 0a 0b 0c 0d 0e 0f 10 11 12 13 14 15 16 17 18 19 1a 1b 1c 1d 1e 1f
+dec128_first64=00 2a 01 1c 00 01 00 0a 6e 61 7a 69 01 a2 00 01 00 00 00 ba 02 01 00 00 03 00 18 0a 00 01 00 4e 00 8a 00 8a 00 8a 00 5a 00 8a 00 f0 00 cc 00 cc 00 c0 00 c0 00 c0 00 42 00 66 00 96 00 96 00 7e
+dec128_ascii='\x00*\x01\x1c\x00\x01\x00\nnazi\x01¢\x00\x01\x00\x00\x00∫\x02\x01\x00\x00\x03\x00\x18\n\x00\x01\x00N\x00ä\x00ä\x00ä\x00Z\x00ä\x00\uf8ff\x00Ã\x00Ã\x00¿\x00¿\x00¿\x00B\x00f\x00ñ\x00ñ\x00~\x00¢\x00¢\x00¢\x00ÿ\x00ÿ\x00‰\x00‰\x02\x02\x00\x19\x01¢\x00\x00\x00\x00ˇ∆\x02\x01\x00\x1b\x01¢\x00\x00\x00\x00ˇ∫\x02\x01\x00\x1c\x01¢\x00\x00\x00\x00ˇÆ\x02\x01\x00\x1d\x01¢\x00\x00\x00\x00ˇ¢\x02\x01\x00\x1e\x01¢\x00\x00\x00\x00ˇñ\x02\x01\x00\x1f\x01¢\x00\x00\x00\x00ˇä\x02\x01\x00 \x01¢\x00\x00\x00\x00ˇ~\x02\x01\x00!\x01¢\x00\x00\x00\x00ˇr\x02\x01\x00"\x01¢\x00\x00\x00\x00ˇf\x02\x01\x00#\x01¢\x00\x00\x00\x00ˇZ\x04»'
+raw[6:10]=04 04 06 0d  dec[4:8]=00 01 00 0a
+
+scri 128: raw= 2071 match=66.66666666666667 pub='Who are you?  Am I dead?  I remember now'
+scri 129: raw=  209 match=n/a pub=''
+scri 130: raw= 1913 match=70.0 pub='Hello again.  I hope your P4 is still wo'
+scri 131: raw= 1901 match=60.869565217391305 pub='What are you?  What!s happening?\ndisturb'
+scri 132: raw= 2221 match=65.21739130434783 pub='Why are you back?  Leave!  Get out befor'
+scri 133: raw=  907 match=77.77777777777777 pub='Watch out for the specters, they!re ever'
+scri 134: raw= 1411 match=28.94736842105263 pub='Don!t take my gun, please.  Go away.  Th'
+scri 135: raw= 2178 match=n/a pub=''
+scri 136: raw= 1521 match=91.66666666666667 pub='monsters.  They still bother me, even no'
+scri 137: raw=  842 match=40.0 pub='blasphemer!\n\nNo, not twelve! hundreds.  '
+scri 138: raw= 2312 match=62.96296296296296 pub='Get that light away from me!  Get it awa'
+scri 139: raw= 3058 match=82.85714285714286 pub='Who are you?  You want my gold, don!t yo'
+scri 140: raw= 1645 match=66.66666666666667 pub='All this gold surrounding me, and I!ve g'
+scri 141: raw= 1188 match=64.28571428571429 pub='They never came back.  Muller never brou'
+scri 142: raw=  475 match=40.0 pub='No, no!! NO!   Keep them away from me.  '
+scri 143: raw= 2158 match=75.0 pub='Be careful, don!t step on those arrows p'
+scri 144: raw= 3125 match=78.37837837837837 pub='I knew that someone would eventually fol'
+scri 145: raw= 1431 match=81.25 pub='Don!t open those doors, leave now!  Leav'
+scri 146: raw= 1980 match=54.54545454545455 pub='Hey man, we all thought you were dead!  '
+scri 147: raw= 2326 match=60.0 pub='We gave you up for dead after the drop, '
+scri 148: raw= 1146 match=58.333333333333336 pub='I ran, I ran all the way back here.  But'
+scri 149: raw= 1739 match=61.111111111111114 pub='Beware the flames!  You need to find Gre'
+scri 150: raw=  740 match=42.857142857142854 pub='Flames, I see flames everywhere.\n\nMy nam'
+scri 151: raw= 1443 match=58.8235294117647 pub='Wow, we all thought you were dead.  It!s'
+scri 152: raw= 2314 match=41.37931034482759 pub='Hey, welcome back from the dead.  I was '
+scri 153: raw= 1637 match=88.88888888888889 pub='I don!t understand how you can still be '
+scri 154: raw= 2740 match=67.74193548387096 pub='Who are you?  What!s happening?  I thoug'
+scri 155: raw= 2129 match=75.0 pub='Uncorking that vial was the biggest mist'
+scri 156: raw=   14 match=0.0 pub='Mumble, mumble.  I don!t have a script, '
+scri 157: raw=   14 match=n/a pub=''
+
+corpse TypeAddl -> scri 128+addl
+  L0 'Ground Floor'
+    (14,6) addl=0 -> scri 128
+  L2 'Lock&Load'
+    (3,1) addl=2 -> scri 130
+    (26,26) addl=1 -> scri 129
+  L3 'They May Be Slow…'
+    (16,4) addl=3 -> scri 131
+    (13,19) addl=4 -> scri 132
+  L4 '…But They’re Hungry'
+    (27,2) addl=5 -> scri 133
+  L5 'Evil Undead Phantasms Must Die!'
+    (1,13) addl=6 -> scri 134
+  L6 'Ascension'
+    (5,4) addl=7 -> scri 135
+  L7 'Wrong Way!'
+    (18,11) addl=8 -> scri 136
+  L8 'Welcome, Tasty Primate'
+    (19,26) addl=9 -> scri 137
+  L9 'We Can See In The Dark… Can You?'
+    (9,17) addl=10 -> scri 138
+  L10 'Feel the Power'
+    (14,14) addl=11 -> scri 139
+  L11 'A Plague of Demons'
+    (16,7) addl=18 -> scri 146
+  L12 'Beware of Low-Flying Nightmares'
+    (22,25) addl=12 -> scri 140
+  L14 'Happy Happy, Carnage Carnage'
+    (16,1) addl=16 -> scri 144
+    (14,2) addl=15 -> scri 143
+    (12,3) addl=14 -> scri 142
+    (18,3) addl=17 -> scri 145
+    (14,18) addl=13 -> scri 141
+  L15 'Need a Light?'
+    (22,20) addl=19 -> scri 147
+    (2,23) addl=23 -> scri 151
+    (5,24) addl=22 -> scri 150
+    (8,25) addl=20 -> scri 148
+    (7,29) addl=21 -> scri 149
+  L17 'Watch Your Step'
+    (29,2) addl=24 -> scri 152
+  L18 'I’d Rather Be Surfing'
+    (30,3) addl=25 -> scri 153
+  L19 'Warning: Earthquake Zone'
+    (29,8) addl=26 -> scri 154
+  L23 'Where Only Fools Dare Tread'
+    (1,28) addl=200 -> SPECIAL 200 (Torch Carlos=200)
+    (2,29) addl=27 -> scri 155

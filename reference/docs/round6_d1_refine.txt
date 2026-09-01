@@ -1,0 +1,358 @@
+== Item by sector type ==
+  type=0 void n=1 unique=1 min=140 max=140
+  type=1 normal n=4553 unique=383 min=0 max=396
+  type=2 door n=2 unique=2 min=77 max=91
+  type=3 change_level n=56 unique=38 min=0 max=328
+  type=4 door_trigger n=115 unique=100 min=4 max=399
+  type=5 secret_door n=1 unique=1 min=284 max=284
+  type=6 corpse n=29 unique=27 min=60 max=379
+  type=7 pillar n=1030 unique=303 min=0 max=398
+  type=8 other_trigger n=36 unique=34 min=9 max=283
+  type=9 save n=43 unique=39 min=0 max=372
+item==-1 count=19734 item!=-1=5866
+type1_only_item_ids=[121, 191, 203, 205, 210, 213, 221, 229, 234, 241, 254, 264, 269, 270, 275, 276, 287, 288, 290, 293, 297, 298, 301, 302, 303, 304, 305, 306, 308, 309, 310, 313, 318, 320, 322, 326, 329, 331, 332, 334, 336, 337, 338, 339, 340, 352, 353, 357, 359, 361, 371, 373, 375, 380, 382, 387, 389, 390, 396] count=59
+shared_with_other_types=324
+
+== Ground Floor Item frequencies ==
+  item=  42 n=  1 locs=[(4, 1, 3)]
+  item=  53 n=  1 locs=[(5, 1, 1)]
+  item=  43 n=  1 locs=[(6, 1, 1)]
+  item=  57 n=  1 locs=[(7, 1, 1)]
+  item=  46 n=  1 locs=[(11, 1, 1)]
+  item=  14 n=  1 locs=[(15, 1, 7)]
+  item=  50 n=  1 locs=[(16, 1, 7)]
+  item=  24 n=  1 locs=[(17, 1, 7)]
+  item=  36 n=  1 locs=[(19, 1, 1)]
+  item=  37 n=  1 locs=[(21, 1, 1)]
+  item=  39 n=  1 locs=[(25, 1, 1)]
+  item=  92 n=  1 locs=[(27, 1, 1)]
+  item=  44 n=  1 locs=[(5, 2, 1)]
+  item=   0 n=  1 locs=[(6, 2, 9)]
+  item=  48 n=  1 locs=[(14, 2, 1)]
+  item=  34 n=  1 locs=[(15, 2, 1)]
+  item=  52 n=  1 locs=[(26, 2, 9)]
+  item=  45 n=  1 locs=[(7, 3, 1)]
+  item=  47 n=  1 locs=[(11, 3, 1)]
+  item=  12 n=  1 locs=[(15, 3, 7)]
+  item=  11 n=  1 locs=[(17, 3, 7)]
+  item=  35 n=  1 locs=[(20, 3, 1)]
+  item=  38 n=  1 locs=[(23, 3, 1)]
+  item=  40 n=  1 locs=[(26, 3, 1)]
+  item=  41 n=  1 locs=[(28, 3, 3)]
+  item=  13 n=  1 locs=[(15, 4, 7)]
+  item=  33 n=  1 locs=[(16, 4, 1)]
+  item=  10 n=  1 locs=[(17, 4, 7)]
+  item=  64 n=  1 locs=[(6, 5, 1)]
+  item=  68 n=  1 locs=[(9, 5, 1)]
+  item=  61 n=  1 locs=[(12, 5, 7)]
+  item=  17 n=  1 locs=[(13, 5, 7)]
+  item=  16 n=  1 locs=[(14, 5, 7)]
+  item=  26 n=  1 locs=[(15, 5, 1)]
+  item=  22 n=  1 locs=[(18, 5, 7)]
+  item=   9 n=  1 locs=[(19, 5, 7)]
+  item=   8 n=  1 locs=[(20, 5, 7)]
+  item=  76 n=  1 locs=[(23, 5, 1)]
+  item= 117 n=  1 locs=[(24, 5, 1)]
+  item=  81 n=  1 locs=[(26, 5, 1)]
+  item=  75 n=  1 locs=[(4, 6, 1)]
+  item=  60 n=  1 locs=[(8, 6, 1)]
+  item=  59 n=  1 locs=[(9, 6, 1)]
+  item=  89 n=  1 locs=[(10, 6, 1)]
+  item= 114 n=  1 locs=[(14, 6, 6)]
+  item=  93 n=  1 locs=[(16, 6, 4)]
+  item= 127 n=  1 locs=[(22, 6, 1)]
+  item=  78 n=  1 locs=[(23, 6, 1)]
+  item= 124 n=  1 locs=[(28, 6, 1)]
+  item=  63 n=  1 locs=[(6, 7, 1)]
+  item=  58 n=  1 locs=[(9, 7, 1)]
+  item=  69 n=  1 locs=[(10, 7, 1)]
+  item=  18 n=  1 locs=[(12, 7, 7)]
+  item=  32 n=  1 locs=[(13, 7, 7)]
+  item=  30 n=  1 locs=[(14, 7, 7)]
+  item=  29 n=  1 locs=[(15, 7, 1)]
+  item=   6 n=  1 locs=[(18, 7, 7)]
+  item=  51 n=  1 locs=[(19, 7, 7)]
+  item=  21 n=  1 locs=[(20, 7, 7)]
+  item= 118 n=  1 locs=[(23, 7, 1)]
+  item=  77 n=  1 locs=[(24, 7, 1)]
+  item=  82 n=  1 locs=[(26, 7, 1)]
+  item= 126 n=  1 locs=[(27, 7, 1)]
+  item=  83 n=  1 locs=[(28, 7, 1)]
+  item=  74 n=  1 locs=[(5, 8, 1)]
+  item=   3 n=  1 locs=[(15, 8, 7)]
+  item=   5 n=  1 locs=[(17, 8, 7)]
+  item=  66 n=  1 locs=[(4, 9, 1)]
+  item= 100 n=  1 locs=[(6, 9, 1)]
+  item=  62 n=  1 locs=[(9, 9, 1)]
+  item=  70 n=  1 locs=[(10, 9, 1)]
+  item=   2 n=  1 locs=[(15, 9, 7)]
+  item=  20 n=  1 locs=[(17, 9, 7)]
+  item=  79 n=  1 locs=[(22, 9, 1)]
+  item=  80 n=  1 locs=[(24, 9, 1)]
+  item= 123 n=  1 locs=[(28, 9, 1)]
+  item=  72 n=  1 locs=[(4, 10, 1)]
+  item=  90 n=  1 locs=[(5, 10, 9)]
+  item=   1 n=  1 locs=[(15, 10, 7)]
+  item=  28 n=  1 locs=[(16, 10, 1)]
+  item=  27 n=  1 locs=[(17, 10, 7)]
+  item= 120 n=  1 locs=[(22, 10, 1)]
+  item= 121 n=  1 locs=[(24, 10, 1)]
+  item=  85 n=  1 locs=[(25, 10, 1)]
+  item=  91 n=  1 locs=[(27, 10, 9)]
+  item=  73 n=  1 locs=[(4, 11, 3)]
+  item=  65 n=  1 locs=[(6, 11, 1)]
+  item=  71 n=  1 locs=[(8, 11, 1)]
+  item=  99 n=  1 locs=[(10, 11, 1)]
+  item= 122 n=  1 locs=[(24, 11, 1)]
+  item=  86 n=  1 locs=[(28, 11, 3)]
+  item=  25 n=  1 locs=[(16, 14, 1)]
+  item= 132 n=  1 locs=[(15, 16, 7)]
+  item= 113 n=  1 locs=[(16, 16, 1)]
+  item= 110 n=  1 locs=[(17, 16, 7)]
+  item=  97 n=  1 locs=[(15, 17, 7)]
+  item= 111 n=  1 locs=[(16, 17, 1)]
+  item= 106 n=  1 locs=[(17, 17, 7)]
+  item=  95 n=  1 locs=[(15, 18, 7)]
+  item= 134 n=  1 locs=[(16, 18, 1)]
+  item= 133 n=  1 locs=[(17, 18, 7)]
+  item= 112 n=  1 locs=[(15, 19, 7)]
+  item= 108 n=  1 locs=[(17, 19, 7)]
+  item= 131 n=  1 locs=[(15, 21, 7)]
+  item= 141 n=  1 locs=[(16, 21, 1)]
+  item= 105 n=  1 locs=[(17, 21, 7)]
+  item= 101 n=  1 locs=[(15, 22, 7)]
+  item= 142 n=  1 locs=[(16, 22, 1)]
+  item= 115 n=  1 locs=[(17, 22, 7)]
+  item= 102 n=  1 locs=[(15, 23, 7)]
+  item= 144 n=  1 locs=[(16, 23, 1)]
+  item= 103 n=  1 locs=[(17, 23, 7)]
+  item= 146 n=  1 locs=[(16, 24, 4)]
+  item= 148 n=  1 locs=[(16, 25, 1)]
+  item= 150 n=  1 locs=[(16, 26, 1)]
+  item= 130 n=  1 locs=[(16, 28, 1)]
+
+== group 42 raw @ 3956 ==
+00 00 4a 00 00 00 1e 00 cc 80 60 07 00 00 ff ff 00 00 4e 00 00 00 1e 00 cc 80 60 07 00 00 ff ff 00 00 52 00 00 00 16 00 cc 80 60 07 00 00 ff ff 00 00 4e 00 00 00 16 00 cc 80 60 07 00 00 ff ff 00 00 46 00 00 00 12 00 cc 80 60 07 00 00 ff ff
+as 10 x 8 bytes (id@1 state@3 qty@5 cat@7 per ItemCheatFile):
+  [0] 00 00 4a 00 00 00 1e 00  b1=00 b3=00 b5=00 b7=00  hi=00/4a/00/1e
+  [1] cc 80 60 07 00 00 ff ff  b1=80 b3=07 b5=00 b7=ff  hi=cc/60/00/ff
+  [2] 00 00 4e 00 00 00 1e 00  b1=00 b3=00 b5=00 b7=00  hi=00/4e/00/1e
+  [3] cc 80 60 07 00 00 ff ff  b1=80 b3=07 b5=00 b7=ff  hi=cc/60/00/ff
+  [4] 00 00 52 00 00 00 16 00  b1=00 b3=00 b5=00 b7=00  hi=00/52/00/16
+  [5] cc 80 60 07 00 00 ff ff  b1=80 b3=07 b5=00 b7=ff  hi=cc/60/00/ff
+  [6] 00 00 4e 00 00 00 16 00  b1=00 b3=00 b5=00 b7=00  hi=00/4e/00/16
+  [7] cc 80 60 07 00 00 ff ff  b1=80 b3=07 b5=00 b7=ff  hi=cc/60/00/ff
+  [8] 00 00 46 00 00 00 12 00  b1=00 b3=00 b5=00 b7=00  hi=00/46/00/12
+  [9] cc 80 60 07 00 00 ff ff  b1=80 b3=07 b5=00 b7=ff  hi=cc/60/00/ff
+
+== dpin search wanted IDs (unique groups) ==
+  16 Mein Kampf: byte1=5 byte0=0 u16low0=5 u16hi0=0
+    byte1 groups[:15]=[600, 715, 1687, 1967, 2193]
+  2E Walther P4: byte1=13 byte0=0 u16low0=13 u16hi0=0
+    byte1 groups[:15]=[59, 145, 257, 370, 602, 825, 1055, 1738, 2118, 2228, 2240, 2671, 2722]
+  33 Walther P4 Ammo: byte1=12 byte0=0 u16low0=12 u16hi0=0
+    byte1 groups[:15]=[145, 602, 1053, 1056, 1315, 1369, 1739, 1817, 1819, 1821, 1822, 2080]
+  41 Blue Crystal: byte1=8 byte0=0 u16low0=8 u16hi0=0
+    byte1 groups[:15]=[29, 147, 490, 1057, 1282, 1287, 1740, 2082]
+  28 Emerald: byte1=10 byte0=0 u16low0=10 u16hi0=0
+    byte1 groups[:15]=[256, 601, 712, 826, 832, 939, 1055, 1467, 1628, 1738]
+  23 Silver Bowl: byte1=7 byte0=0 u16low0=7 u16hi0=0
+    byte1 groups[:15]=[144, 601, 712, 825, 1628, 1967, 2654]
+  40 Yellow Crystal: byte1=8 byte0=0 u16low0=8 u16hi0=0
+    byte1 groups[:15]=[29, 146, 1060, 1282, 1623, 1740, 2082, 2421]
+
+== slots with wanted id AND qty in {3..8} count=0 ==
+
+qty-hit groups ? Ground Floor Item: []
+
+== decode selected groups (byte1=id byte3=st byte5=qty byte7=cat) ==
+
+group 0 used_on=[(0, 'Ground Floor', 6, 2, 9), (2, 'Lock&Load', 21, 23, 7), (3, 'They May Be Slow…', 30, 1, 3), (5, 'Evil Undead Phantasms Must Die!', 24, 5, 3), (6, 'Ascension', 11, 11, 7), (7, 'Wrong Way!', 10, 9, 3)]
+
+group 1 used_on=[(0, 'Ground Floor', 15, 10, 7), (1, 'Never Stop Firing', 21, 2, 1), (2, 'Lock&Load', 22, 23, 7), (3, 'They May Be Slow…', 1, 1, 3), (4, '…But They’re Hungry', 15, 30, 7), (5, 'Evil Undead Phantasms Must Die!', 24, 3, 1)]
+
+group 42 used_on=[(0, 'Ground Floor', 4, 1, 3), (2, 'Lock&Load', 26, 25, 1), (4, '…But They’re Hungry', 19, 27, 7), (5, 'Evil Undead Phantasms Must Die!', 26, 27, 1), (7, 'Wrong Way!', 11, 17, 1), (8, 'Welcome, Tasty Primate', 26, 7, 7)]
+  [0] 00 00 4a 00 00 00 1e 00 id=00 st=00 qty=0 cat=00 
+       u16be=(0,18944,0,7680)
+  [1] cc 80 60 07 00 00 ff ff id=80 st=07 qty=0 cat=ff 
+  [2] 00 00 4e 00 00 00 1e 00 id=00 st=00 qty=0 cat=00 
+       u16be=(0,19968,0,7680)
+  [3] cc 80 60 07 00 00 ff ff id=80 st=07 qty=0 cat=ff 
+  [4] 00 00 52 00 00 00 16 00 id=00 st=00 qty=0 cat=00 
+       u16be=(0,20992,0,5632)
+  [5] cc 80 60 07 00 00 ff ff id=80 st=07 qty=0 cat=ff 
+  [6] 00 00 4e 00 00 00 16 00 id=00 st=00 qty=0 cat=00 
+       u16be=(0,19968,0,5632)
+  [7] cc 80 60 07 00 00 ff ff id=80 st=07 qty=0 cat=ff 
+  [8] 00 00 46 00 00 00 12 00 id=00 st=00 qty=0 cat=00 
+       u16be=(0,17920,0,4608)
+  [9] cc 80 60 07 00 00 ff ff id=80 st=07 qty=0 cat=ff 
+
+group 59 used_on=[(0, 'Ground Floor', 9, 6, 1), (1, 'Never Stop Firing', 11, 11, 1), (2, 'Lock&Load', 25, 30, 7), (5, 'Evil Undead Phantasms Must Die!', 30, 15, 1), (7, 'Wrong Way!', 17, 20, 7), (10, 'Feel the Power', 28, 6, 1)]
+  [0] 00 00 6e 00 00 00 2a 00 id=00 st=00 qty=0 cat=00 
+       u16be=(0,28160,0,10752)
+  [1] c0 00 20 07 00 00 ff ff id=00 st=07 qty=0 cat=ff 
+  [2] 00 00 6d 84 00 00 07 10 id=00 st=84 qty=0 cat=10 
+  [3] cd 08 20 07 00 00 ff ff id=08 st=07 qty=0 cat=ff 
+  [4] 00 00 42 00 00 00 1a 00 id=00 st=00 qty=0 cat=00 
+       u16be=(0,16896,0,6656)
+  [5] cd 83 20 07 00 00 ff ff id=83 st=07 qty=0 cat=ff 
+  [6] 00 00 4d 13 00 00 36 52 id=00 st=13 qty=0 cat=52 
+  [7] c0 2e 20 07 00 00 ff fe id=2e st=07 qty=0 cat=fe Walther P4
+  [8] 00 00 3e 00 00 00 4a 00 id=00 st=00 qty=0 cat=00 
+       u16be=(0,15872,0,18944)
+  [9] cc 80 60 07 00 00 ff ff id=80 st=07 qty=0 cat=ff 
+
+group 114 used_on=[(0, 'Ground Floor', 14, 6, 6), (1, 'Never Stop Firing', 24, 2, 1), (2, 'Lock&Load', 12, 22, 7), (3, 'They May Be Slow…', 11, 16, 1), (4, '…But They’re Hungry', 12, 1, 1), (5, 'Evil Undead Phantasms Must Die!', 30, 6, 1)]
+  [1] 00 00 00 00 00 00 ff fe id=00 st=00 qty=0 cat=fe 
+       u16be=(0,0,0,65534)
+  [3] 00 00 00 00 00 00 ff fe id=00 st=00 qty=0 cat=fe 
+       u16be=(0,0,0,65534)
+  [5] 00 00 00 00 00 00 ff fe id=00 st=00 qty=0 cat=fe 
+       u16be=(0,0,0,65534)
+  [7] 00 00 00 00 00 00 ff fe id=00 st=00 qty=0 cat=fe 
+       u16be=(0,0,0,65534)
+  [9] 00 00 00 00 00 00 ff fe id=00 st=00 qty=0 cat=fe 
+       u16be=(0,0,0,65534)
+
+group 145 used_on=[(1, 'Never Stop Firing', 27, 27, 1), (2, 'Lock&Load', 2, 13, 1), (3, 'They May Be Slow…', 21, 5, 7), (4, '…But They’re Hungry', 27, 22, 7), (5, 'Evil Undead Phantasms Must Die!', 22, 10, 1), (7, 'Wrong Way!', 18, 3, 1)]
+  [0] 00 29 00 01 00 23 00 00 id=29 st=01 qty=35 cat=00 
+  [1] 00 2a 00 01 00 23 00 00 id=2a st=01 qty=35 cat=00 
+  [2] 00 2b 00 01 00 23 00 00 id=2b st=01 qty=35 cat=00 
+  [3] 00 2e 00 01 00 23 00 00 id=2e st=01 qty=35 cat=00 Walther P4
+  [4] 00 2f 00 01 00 23 00 00 id=2f st=01 qty=35 cat=00 
+  [5] 00 30 00 01 00 23 00 00 id=30 st=01 qty=35 cat=00 
+  [6] 00 31 00 01 00 23 00 00 id=31 st=01 qty=35 cat=00 
+  [7] 00 33 00 01 00 23 00 00 id=33 st=01 qty=35 cat=00 Walther P4 Ammo
+  [8] 00 34 00 01 00 23 00 00 id=34 st=01 qty=35 cat=00 
+  [9] 00 35 00 01 00 23 00 00 id=35 st=01 qty=35 cat=00 
+
+group 257 used_on=[(2, 'Lock&Load', 18, 3, 7), (3, 'They May Be Slow…', 19, 3, 1), (4, '…But They’re Hungry', 23, 15, 1), (7, 'Wrong Way!', 1, 21, 1), (9, 'We Can See In The Dark… Can You?', 27, 24, 1), (10, 'Feel the Power', 1, 25, 1)]
+  [0] 00 2e 00 01 00 23 00 00 id=2e st=01 qty=35 cat=00 Walther P4
+  [1] 00 44 00 01 00 23 00 00 id=44 st=01 qty=35 cat=00 
+  [2] 00 45 00 01 00 23 00 00 id=45 st=01 qty=35 cat=00 
+  [3] 00 49 00 01 00 23 00 00 id=49 st=01 qty=35 cat=00 
+  [4] 00 4a 00 01 00 23 00 00 id=4a st=01 qty=35 cat=00 
+  [5] 00 4b 00 01 00 23 00 00 id=4b st=01 qty=35 cat=00 
+  [6] 00 56 00 01 00 23 00 00 id=56 st=01 qty=35 cat=00 
+  [7] 00 57 00 01 00 23 00 00 id=57 st=01 qty=35 cat=00 
+  [8] 00 58 00 01 00 23 00 00 id=58 st=01 qty=35 cat=00 
+  [9] 00 59 00 01 00 23 00 00 id=59 st=01 qty=35 cat=00 
+
+group 370 used_on=[(8, 'Welcome, Tasty Primate', 10, 24, 9), (10, 'Feel the Power', 1, 9, 1), (11, 'A Plague of Demons', 26, 2, 4), (15, 'Need a Light?', 4, 18, 1), (22, 'But Wait!— That’s Not All!', 12, 15, 7)]
+  [2] 00 2e 00 01 00 23 00 00 id=2e st=01 qty=35 cat=00 Walther P4
+  [3] 00 4e 00 04 00 3c 00 00 id=4e st=04 qty=60 cat=00 
+  [4] 00 4f 00 04 00 3c 00 00 id=4f st=04 qty=60 cat=00 
+  [5] 00 51 00 01 00 23 00 00 id=51 st=01 qty=35 cat=00 
+  [6] 00 52 00 01 00 23 00 00 id=52 st=01 qty=35 cat=00 
+  [7] 00 53 00 01 00 23 00 00 id=53 st=01 qty=35 cat=00 
+  [8] 00 54 00 01 00 23 00 00 id=54 st=01 qty=35 cat=00 
+  [9] 00 55 00 01 00 23 00 00 id=55 st=01 qty=35 cat=00 
+
+group 602 used_on=[]
+  [0] 00 2a 00 04 00 3c 00 00 id=2a st=04 qty=60 cat=00 
+  [1] 00 2b 00 04 00 3c 00 00 id=2b st=04 qty=60 cat=00 
+  [2] 00 2c 00 04 00 3c 00 00 id=2c st=04 qty=60 cat=00 
+  [3] 00 2d 00 04 00 3c 00 00 id=2d st=04 qty=60 cat=00 
+  [4] 00 2e 00 04 00 3c 00 00 id=2e st=04 qty=60 cat=00 Walther P4
+  [5] 00 30 00 04 00 3c 00 00 id=30 st=04 qty=60 cat=00 
+  [6] 00 31 00 04 00 3c 00 00 id=31 st=04 qty=60 cat=00 
+  [7] 00 33 00 04 00 3c 00 00 id=33 st=04 qty=60 cat=00 Walther P4 Ammo
+  [8] 00 34 00 04 00 3c 00 00 id=34 st=04 qty=60 cat=00 
+  [9] 00 36 00 02 00 28 00 00 id=36 st=02 qty=40 cat=00 
+
+group 825 used_on=[]
+  [8] 00 2e 00 03 00 5a 00 00 id=2e st=03 qty=90 cat=00 Walther P4
+  [9] 00 23 00 03 00 5a 00 00 id=23 st=03 qty=90 cat=00 Silver Bowl
+
+group 1053 used_on=[]
+  [6] 00 2a 00 05 00 f0 00 00 id=2a st=05 qty=240 cat=00 
+  [7] 00 32 00 03 00 5a 00 00 id=32 st=03 qty=90 cat=00 
+  [8] 00 33 00 03 00 5a 00 00 id=33 st=03 qty=90 cat=00 Walther P4 Ammo
+  [9] 00 34 00 03 00 5a 00 00 id=34 st=03 qty=90 cat=00 
+
+group 1055 used_on=[]
+  [0] 01 28 00 03 00 5a 00 00 id=28 st=03 qty=90 cat=00 Emerald
+  [1] 01 29 00 03 00 5a 00 00 id=29 st=03 qty=90 cat=00 
+  [2] 01 2a 00 00 00 55 00 00 id=2a st=00 qty=85 cat=00 
+  [3] 01 2b 00 03 00 5a 00 00 id=2b st=03 qty=90 cat=00 
+  [4] 01 2c 00 03 00 5a 00 00 id=2c st=03 qty=90 cat=00 
+  [5] 01 2d 00 00 00 55 00 00 id=2d st=00 qty=85 cat=00 
+  [6] 01 2e 00 00 00 55 00 00 id=2e st=00 qty=85 cat=00 Walther P4
+  [7] 01 2f 00 00 00 55 00 00 id=2f st=00 qty=85 cat=00 
+  [8] 01 30 00 03 00 5a 00 00 id=30 st=03 qty=90 cat=00 
+  [9] 01 31 00 03 00 5a 00 00 id=31 st=03 qty=90 cat=00 
+
+group 1056 used_on=[]
+  [0] 01 32 00 00 00 55 00 00 id=32 st=00 qty=85 cat=00 
+  [1] 01 33 00 00 00 55 00 00 id=33 st=00 qty=85 cat=00 Walther P4 Ammo
+  [2] 01 34 00 03 00 5a 00 00 id=34 st=03 qty=90 cat=00 
+  [3] 01 35 00 03 00 5a 00 00 id=35 st=03 qty=90 cat=00 
+  [4] 01 36 00 00 00 55 00 00 id=36 st=00 qty=85 cat=00 
+  [5] 01 37 00 00 00 55 00 00 id=37 st=00 qty=85 cat=00 
+  [6] 01 38 00 00 00 55 00 00 id=38 st=00 qty=85 cat=00 
+  [7] 01 39 00 00 00 55 00 00 id=39 st=00 qty=85 cat=00 
+  [8] 01 3a 00 00 00 55 00 00 id=3a st=00 qty=85 cat=00 
+  [9] 01 3b 00 03 00 5a 00 00 id=3b st=03 qty=90 cat=00 
+
+group 1315 used_on=[]
+  [0] c0 33 20 00 00 00 00 68 id=33 st=00 qty=0 cat=68 Walther P4 Ammo
+  [1] 00 00 2e 14 00 00 29 8a id=00 st=14 qty=0 cat=8a 
+  [2] ce 8b 20 07 00 00 ff ff id=8b st=07 qty=0 cat=ff 
+  [3] 00 00 35 88 00 00 29 44 id=00 st=88 qty=0 cat=44 
+  [4] ce 85 20 07 00 00 ff ff id=85 st=07 qty=0 cat=ff 
+  [5] 00 00 3a c8 00 00 29 e4 id=00 st=c8 qty=0 cat=e4 
+  [6] ce 8b 20 07 00 00 ff ff id=8b st=07 qty=0 cat=ff 
+  [7] 00 00 4c 97 00 00 36 65 id=00 st=97 qty=0 cat=65 
+  [8] c6 02 e0 02 00 00 ff ff id=02 st=02 qty=0 cat=ff 
+  [9] 00 00 66 76 00 00 29 bb id=00 st=76 qty=0 cat=bb 
+
+group 1369 used_on=[]
+  [0] c0 32 20 00 00 00 ff fe id=32 st=00 qty=0 cat=fe 
+  [1] 00 00 42 08 00 00 1e 1e id=00 st=08 qty=0 cat=1e 
+  [2] c0 33 20 00 00 00 ff fe id=33 st=00 qty=0 cat=fe Walther P4 Ammo
+  [3] 00 00 42 2b 00 00 1e 1b id=00 st=2b qty=0 cat=1b 
+  [4] c0 33 20 00 00 00 ff fe id=33 st=00 qty=0 cat=fe Walther P4 Ammo
+  [5] 00 00 42 1d 00 00 1e 1c id=00 st=1d qty=0 cat=1c 
+  [6] c0 33 20 00 00 00 ff fe id=33 st=00 qty=0 cat=fe Walther P4 Ammo
+  [8] 00 00 00 00 00 00 ff fe id=00 st=00 qty=0 cat=fe 
+       u16be=(0,0,0,65534)
+
+group 1738 used_on=[]
+  [0] 01 26 00 00 00 55 00 00 id=26 st=00 qty=85 cat=00 
+  [1] 01 27 00 00 00 55 00 00 id=27 st=00 qty=85 cat=00 
+  [2] 01 28 00 00 00 55 00 00 id=28 st=00 qty=85 cat=00 Emerald
+  [3] 01 29 00 00 00 55 00 00 id=29 st=00 qty=85 cat=00 
+  [4] 01 2a 00 00 00 55 00 00 id=2a st=00 qty=85 cat=00 
+  [5] 01 2b 00 05 00 f0 00 00 id=2b st=05 qty=240 cat=00 
+  [6] 01 2c 00 05 00 f0 00 00 id=2c st=05 qty=240 cat=00 
+  [7] 01 2d 00 05 00 f0 00 00 id=2d st=05 qty=240 cat=00 
+  [8] 01 2e 00 05 00 f0 00 00 id=2e st=05 qty=240 cat=00 Walther P4
+  [9] 01 2f 00 05 00 f0 00 00 id=2f st=05 qty=240 cat=00 
+
+group 1739 used_on=[]
+  [0] 01 30 00 05 00 f0 00 00 id=30 st=05 qty=240 cat=00 
+  [1] 01 31 00 05 00 f0 00 00 id=31 st=05 qty=240 cat=00 
+  [2] 01 32 00 05 00 f0 00 00 id=32 st=05 qty=240 cat=00 
+  [3] 01 33 00 05 00 f0 00 00 id=33 st=05 qty=240 cat=00 Walther P4 Ammo
+  [4] 01 34 00 05 00 f0 00 00 id=34 st=05 qty=240 cat=00 
+  [5] 01 35 00 05 00 f0 00 00 id=35 st=05 qty=240 cat=00 
+  [6] 01 36 00 05 00 f0 00 00 id=36 st=05 qty=240 cat=00 
+  [7] 01 3a 00 05 00 f0 00 00 id=3a st=05 qty=240 cat=00 
+  [8] 01 3b 00 05 00 f0 00 00 id=3b st=05 qty=240 cat=00 
+  [9] 01 3c 00 05 00 f0 00 00 id=3c st=05 qty=240 cat=00 
+
+group 1817 used_on=[]
+  [0] c0 2a 20 00 00 00 00 15 id=2a st=00 qty=0 cat=15 
+  [1] 00 00 16 56 00 00 62 11 id=00 st=56 qty=0 cat=11 
+  [2] c0 06 20 00 00 00 01 52 id=06 st=00 qty=0 cat=52 
+  [3] 00 00 0a 25 00 00 5e 2a id=00 st=25 qty=0 cat=2a 
+  [4] c0 2a 20 00 00 00 00 14 id=2a st=00 qty=0 cat=14 
+  [5] 00 00 0a 2d 00 00 5e 29 id=00 st=2d qty=0 cat=29 
+  [6] c0 33 20 00 00 00 01 54 id=33 st=00 qty=0 cat=54 Walther P4 Ammo
+  [7] 00 00 0a 2c 00 00 5e 3f id=00 st=2c qty=0 cat=3f 
+  [8] c0 33 20 00 00 00 01 55 id=33 st=00 qty=0 cat=55 Walther P4 Ammo
+  [9] 00 00 07 f5 00 00 79 86 id=00 st=f5 qty=0 cat=86 
+
+empty_or_ff_groups=40 plausible_itemid_byte1=878
+slot4_ffff=5871/28760 = 0.204

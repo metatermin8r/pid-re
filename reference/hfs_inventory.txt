@@ -1,0 +1,772 @@
+scan_root: C:\Users\Colton S Covert\Documents\GitHub\Pathways-Into-Darkness-Unity\data\hfs
+file_count: 145
+
+path	size	appledouble_or_rsrc	has_resource_map	data_fork_note
+Installer_Disk_1/Pathways Installer	689610	False	False	
+Installer_Disk_1/Pathways Installer.rsrc	76894	True	True	
+Installer_Disk_2/Pathways Installer.2	767953	False	False	
+Installer_Disk_3/Pathways Installer.3	520633	False	False	
+Installer_Disk_3/Sound Manager 3.0/Sound Manager.rsrc	76993	True	True	
+Installer_Disk_3/Sound Manager 3.0/Sound.rsrc	46485	True	True	
+Installer_Disk_3/Sound Manager 3.0 READ ME	1310	False	False	
+Pathways 1/Pathways Installer	550291	False	False	
+Pathways 1/Pathways Installer.rsrc	180784	True	True	
+Pathways 2/Pathways Installer.2	732160	False	False	
+Pathways 3/Pathways Installer.3	526819	False	False	
+Pathways_1995/Bomb Code	321	False	False	
+Pathways_1995/DesktopPrinters DB.rsrc	286	True	True	
+Pathways_1995/Maps	420850	False	False	DATA-FORK Maps file (no resource map expected)
+Pathways_1995/OpenFolderListDF.rsrc	286	True	True	
+Pathways_1995/Pathways Into Darkness	213600	False	False	application DATA fork, 213600 bytes (cfrg present in resource fork)
+Pathways_1995/Pathways Into Darkness.rsrc	482440	True	True	
+Pathways_1995/Pathways Manual.rsrc	721825	True	True	
+Pathways_1995/Shapes.rsrc	1872611	True	True	
+Pathways_1995/Sounds.rsrc	729990	True	True	
+Pathways_Extras/Pathways GamePad Set	1080	False	False	
+Pathways_Extras/Pathways Guide v1.1.rsrc	756603	True	True	
+Pathways_Extras/Pathways Into Cheating ƒ/Pathways Into Cheating.rsrc	46982	True	True	
+Pathways_Extras/Pathways Into Cheating ƒ/Read Me	3624	False	False	
+Pathways_Extras/PID_Docs Folder/PIDMapReader.cp	754	False	False	
+Pathways_Extras/PID_Docs Folder/PIDMapReader.cp.rsrc	410	True	True	
+Pathways_Extras/PID_Docs Folder/PIDMapReader.h	6650	False	False	
+Pathways_Extras/PID_Docs Folder/PIDMapReader.h.rsrc	410	True	True	
+Pathways_Extras/PID_Docs Folder/Read Me	707	False	False	
+Pathways_Extras/PID_Docs Folder/Read Me.rsrc	332	True	True	
+Pathways_Extras/PID_Docs Folder/sector_types_sqr.gif	34618	False	False	
+Pathways_Extras/PID_Docs Folder/sector_types_sqr.gif.rsrc	14914	True	True	
+Pathways_Extras/PID_Docs Folder/SimpleVec.h	3435	False	False	
+Pathways_Extras/PID_Docs Folder/SimpleVec.h.rsrc	410	True	True	
+Pathways_Extras/pidmaps/pid maps/ascension.pict	45920	False	False	
+Pathways_Extras/pidmaps/pid maps/ascension.pict.rsrc	6349	True	True	
+Pathways_Extras/pidmaps/pid maps/beware_of.pict	57166	False	False	
+Pathways_Extras/pidmaps/pid maps/beware_of.pict.rsrc	6629	True	True	
+Pathways_Extras/pidmaps/pid maps/but_wait_a.pict	44732	False	False	
+Pathways_Extras/pidmaps/pid maps/but_wait_a.pict.rsrc	6281	True	True	
+Pathways_Extras/pidmaps/pid maps/but_wait_b.pict	44146	False	False	
+Pathways_Extras/pidmaps/pid maps/but_wait_b.pict.rsrc	6287	True	True	
+Pathways_Extras/pidmaps/pid maps/dark.pict	58122	False	False	
+Pathways_Extras/pidmaps/pid maps/dark.pict.rsrc	6667	True	True	
+Pathways_Extras/pidmaps/pid maps/dust.pict	44884	False	False	
+Pathways_Extras/pidmaps/pid maps/dust.pict.rsrc	6389	True	True	
+Pathways_Extras/pidmaps/pid maps/earthquake_zone.pict	46674	False	False	
+Pathways_Extras/pidmaps/pid maps/earthquake_zone.pict.rsrc	6287	True	True	
+Pathways_Extras/pidmaps/pid maps/evil_undead.pict	56276	False	False	
+Pathways_Extras/pidmaps/pid maps/evil_undead.pict.rsrc	6529	True	True	
+Pathways_Extras/pidmaps/pid maps/fools_dare_tread.pict	55802	False	False	
+Pathways_Extras/pidmaps/pid maps/fools_dare_tread.pict.rsrc	6577	True	True	
+Pathways_Extras/pidmaps/pid maps/ground_floor.pict	46154	False	False	
+Pathways_Extras/pidmaps/pid maps/ground_floor.pict.rsrc	6377	True	True	
+Pathways_Extras/pidmaps/pid maps/happy_carnage.pict	53962	False	False	
+Pathways_Extras/pidmaps/pid maps/happy_carnage.pict.rsrc	6573	True	True	
+Pathways_Extras/pidmaps/pid maps/hungry.pict	58666	False	False	
+Pathways_Extras/pidmaps/pid maps/hungry.pict.rsrc	6637	True	True	
+Pathways_Extras/pidmaps/pid maps/lasciate.pict	59704	False	False	
+Pathways_Extras/pidmaps/pid maps/lasciate.pict.rsrc	6637	True	True	
+Pathways_Extras/pidmaps/pid maps/lock&load.pict	56998	False	False	
+Pathways_Extras/pidmaps/pid maps/lock&load.pict.rsrc	6569	True	True	
+Pathways_Extras/pidmaps/pid maps/need_a_light.pict	52946	False	False	
+Pathways_Extras/pidmaps/pid maps/need_a_light.pict.rsrc	6553	True	True	
+Pathways_Extras/pidmaps/pid maps/never_stop_firing.pict	56604	False	False	
+Pathways_Extras/pidmaps/pid maps/never_stop_firing.pict.rsrc	6637	True	True	
+Pathways_Extras/pidmaps/pid maps/plague_of_demons.pict	55834	False	False	
+Pathways_Extras/pidmaps/pid maps/plague_of_demons.pict.rsrc	6581	True	True	
+Pathways_Extras/pidmaps/pid maps/poisoned_a.pict	45698	False	False	
+Pathways_Extras/pidmaps/pid maps/poisoned_a.pict.rsrc	6409	True	True	
+Pathways_Extras/pidmaps/pid maps/poisoned_b.pict	48294	False	False	
+Pathways_Extras/pidmaps/pid maps/poisoned_b.pict.rsrc	6475	True	True	
+Pathways_Extras/pidmaps/pid maps/power.pict	53954	False	False	
+Pathways_Extras/pidmaps/pid maps/power.pict.rsrc	6575	True	True	
+Pathways_Extras/pidmaps/pid maps/slow.pict	55980	False	False	
+Pathways_Extras/pidmaps/pid maps/slow.pict.rsrc	6561	True	True	
+Pathways_Extras/pidmaps/pid maps/step.pict	57340	False	False	
+Pathways_Extras/pidmaps/pid maps/step.pict.rsrc	6569	True	True	
+Pathways_Extras/pidmaps/pid maps/summary.pict	47624	False	False	
+Pathways_Extras/pidmaps/pid maps/summary.pict.rsrc	6857	True	True	
+Pathways_Extras/pidmaps/pid maps/surfing.pict	55946	False	False	
+Pathways_Extras/pidmaps/pid maps/surfing.pict.rsrc	6563	True	True	
+Pathways_Extras/pidmaps/pid maps/welcome_tasty.pict	58250	False	False	
+Pathways_Extras/pidmaps/pid maps/welcome_tasty.pict.rsrc	6651	True	True	
+Pathways_Extras/pidmaps/pid maps/wrong_way.pict	56548	False	False	
+Pathways_Extras/pidmaps/pid maps/wrong_way.pict.rsrc	6615	True	True	
+Pathways_Extras/pidmaps/README	2245	False	False	
+Pathways_Extras/PIDMaps Folder/Descriptions	7696	False	False	
+Pathways_Extras/PIDMaps Folder/Descriptions.rsrc	1312	True	True	
+Pathways_Extras/PIDMaps Folder/Hex reps_notes	1304	False	False	
+Pathways_Extras/PIDMaps Folder/Hex reps_notes.rsrc	1332	True	True	
+Pathways_Extras/PIDMaps Folder/PID Maps/A Plague of Demons	11921	False	False	
+Pathways_Extras/PIDMaps Folder/PID Maps/A Plague of Demons.rsrc	286	True	True	
+Pathways_Extras/PIDMaps Folder/PID Maps/Ascension	8211	False	False	
+Pathways_Extras/PIDMaps Folder/PID Maps/Ascension.rsrc	286	True	True	
+Pathways_Extras/PIDMaps Folder/PID Maps/Beware of Low-Flying Nightmares	13387	False	False	
+Pathways_Extras/PIDMaps Folder/PID Maps/Beware of Low-Flying Nightmares.rsrc	286	True	True	
+Pathways_Extras/PIDMaps Folder/PID Maps/But Wait!- That's Not All!	14016	False	False	
+Pathways_Extras/PIDMaps Folder/PID Maps/But Wait!- That's Not All!.rsrc	286	True	True	
+Pathways_Extras/PIDMaps Folder/PID Maps/Don't Get Poisoned	12719	False	False	
+Pathways_Extras/PIDMaps Folder/PID Maps/Don't Get Poisoned.rsrc	286	True	True	
+Pathways_Extras/PIDMaps Folder/PID Maps/Evil Undead Phantasms Must Die!	12440	False	False	
+Pathways_Extras/PIDMaps Folder/PID Maps/Evil Undead Phantasms Must Die!.rsrc	286	True	True	
+Pathways_Extras/PIDMaps Folder/PID Maps/Feel The Power	10519	False	False	
+Pathways_Extras/PIDMaps Folder/PID Maps/Feel The Power.rsrc	286	True	True	
+Pathways_Extras/PIDMaps Folder/PID Maps/Ground Floor	8956	False	False	
+Pathways_Extras/PIDMaps Folder/PID Maps/Ground Floor.rsrc	286	True	True	
+Pathways_Extras/PIDMaps Folder/PID Maps/Happy Happy, Carnage Carnage	13037	False	False	
+Pathways_Extras/PIDMaps Folder/PID Maps/Happy Happy, Carnage Carnage.rsrc	286	True	True	
+Pathways_Extras/PIDMaps Folder/PID Maps/I'd Rather Be Surfing	12900	False	False	
+Pathways_Extras/PIDMaps Folder/PID Maps/I'd Rather Be Surfing.rsrc	286	True	True	
+Pathways_Extras/PIDMaps Folder/PID Maps/Lasciate Ogne Speranza, Voi Ch…	13817	False	False	
+Pathways_Extras/PIDMaps Folder/PID Maps/Lasciate Ogne Speranza, Voi Ch….rsrc	286	True	True	
+Pathways_Extras/PIDMaps Folder/PID Maps/Lock&Load	13707	False	False	
+Pathways_Extras/PIDMaps Folder/PID Maps/Lock&Load.rsrc	286	True	True	
+Pathways_Extras/PIDMaps Folder/PID Maps/Need A Light_	10615	False	False	
+Pathways_Extras/PIDMaps Folder/PID Maps/Need A Light_.rsrc	286	True	True	
+Pathways_Extras/PIDMaps Folder/PID Maps/Never Stop Firing	13113	False	False	
+Pathways_Extras/PIDMaps Folder/PID Maps/Never Stop Firing.rsrc	286	True	True	
+Pathways_Extras/PIDMaps Folder/PID Maps/Please Excuse Our Dust	11311	False	False	
+Pathways_Extras/PIDMaps Folder/PID Maps/Please Excuse Our Dust.rsrc	286	True	True	
+Pathways_Extras/PIDMaps Folder/PID Maps/They May Be Slow…	13720	False	False	
+Pathways_Extras/PIDMaps Folder/PID Maps/They May Be Slow….rsrc	286	True	True	
+Pathways_Extras/PIDMaps Folder/PID Maps/Warning- Earthquake Zone	8528	False	False	
+Pathways_Extras/PIDMaps Folder/PID Maps/Warning- Earthquake Zone.rsrc	286	True	True	
+Pathways_Extras/PIDMaps Folder/PID Maps/Watch Your Step	12552	False	False	
+Pathways_Extras/PIDMaps Folder/PID Maps/Watch Your Step.rsrc	286	True	True	
+Pathways_Extras/PIDMaps Folder/PID Maps/We Can See In The Dark… Can Yo…	13546	False	False	
+Pathways_Extras/PIDMaps Folder/PID Maps/We Can See In The Dark… Can Yo….rsrc	286	True	True	
+Pathways_Extras/PIDMaps Folder/PID Maps/Welcome, Tasty Primate	13625	False	False	
+Pathways_Extras/PIDMaps Folder/PID Maps/Welcome, Tasty Primate.rsrc	286	True	True	
+Pathways_Extras/PIDMaps Folder/PID Maps/Where Only Fools Dare Tread	14390	False	False	
+Pathways_Extras/PIDMaps Folder/PID Maps/Where Only Fools Dare Tread.rsrc	286	True	True	
+Pathways_Extras/PIDMaps Folder/PID Maps/Wrong Way!	13188	False	False	
+Pathways_Extras/PIDMaps Folder/PID Maps/Wrong Way!.rsrc	286	True	True	
+Pathways_Extras/PIDMaps Folder/PID Maps/…But They're Hungry	14045	False	False	
+Pathways_Extras/PIDMaps Folder/PID Maps/…But They're Hungry.rsrc	286	True	True	
+Pathways_Extras/Torch 0.9.1 folder/Torch 0.9.1	260192	False	False	
+Pathways_Extras/Torch 0.9.1 folder/Torch 0.9.1.rsrc	541585	True	True	
+Pathways_Extras/Torch 0.9.1 folder/Torch Docs	5609	False	False	
+Pathways_Extras/Torch 0.9.1 folder/Torch Docs.rsrc	81238	True	True	
+PID_Japanese_1/Pathways Installer	1144909	False	False	
+PID_Japanese_1/Pathways Installer.rsrc	78532	True	True	
+PID_Japanese_1/ïKÇ∏Ç®ì«Ç›Ç≠ÇæÇ≥Ç¢	511	False	False	
+PID_Japanese_2/Pathways Installer.2	854286	False	False	
+
+=== types of interest ===
+
+'.256'  ** LOOK **
+  Pathways_1995/Shapes.rsrc x50
+'8BIM'  ** not in v2.0 app fork **
+  Pathways_Extras/PID_Docs Folder/sector_types_sqr.gif.rsrc x11
+'ALRT'
+  Installer_Disk_1/Pathways Installer.rsrc x16
+  Installer_Disk_3/Sound Manager 3.0/Sound.rsrc x3
+  Pathways 1/Pathways Installer.rsrc x16
+  Pathways_1995/Pathways Into Darkness.rsrc x15
+  Pathways_1995/Pathways Manual.rsrc x1
+  Pathways_Extras/Pathways Guide v1.1.rsrc x1
+  Pathways_Extras/Pathways Into Cheating ƒ/Pathways Into Cheating.rsrc x3
+  Pathways_Extras/Torch 0.9.1 folder/Torch 0.9.1.rsrc x3
+  PID_Japanese_1/Pathways Installer.rsrc x16
+'BNDL'
+  Installer_Disk_1/Pathways Installer.rsrc x1
+  Installer_Disk_3/Sound Manager 3.0/Sound Manager.rsrc x1
+  Installer_Disk_3/Sound Manager 3.0/Sound.rsrc x1
+  Pathways 1/Pathways Installer.rsrc x1
+  Pathways_1995/Pathways Into Darkness.rsrc x1
+  Pathways_1995/Pathways Manual.rsrc x1
+  Pathways_Extras/Pathways Guide v1.1.rsrc x1
+  Pathways_Extras/Pathways Into Cheating ƒ/Pathways Into Cheating.rsrc x1
+  Pathways_Extras/Torch 0.9.1 folder/Torch 0.9.1.rsrc x1
+  PID_Japanese_1/Pathways Installer.rsrc x1
+'CDEF'  ** not in v2.0 app fork **
+  Installer_Disk_3/Sound Manager 3.0/Sound.rsrc x1
+'CNTL'  ** not in v2.0 app fork **
+  Pathways 1/Pathways Installer.rsrc x1
+  Pathways_1995/Pathways Manual.rsrc x2
+  Pathways_Extras/Pathways Guide v1.1.rsrc x3
+  Pathways_Extras/Pathways Into Cheating ƒ/Pathways Into Cheating.rsrc x1
+  PID_Japanese_1/Pathways Installer.rsrc x1
+'CODE'
+  Installer_Disk_1/Pathways Installer.rsrc x3
+  Pathways 1/Pathways Installer.rsrc x3
+  Pathways_1995/Pathways Into Darkness.rsrc x17
+  Pathways_1995/Pathways Manual.rsrc x12
+  Pathways_Extras/Pathways Guide v1.1.rsrc x13
+  Pathways_Extras/Pathways Into Cheating ƒ/Pathways Into Cheating.rsrc x4
+  PID_Japanese_1/Pathways Installer.rsrc x3
+'CURS'  ** not in v2.0 app fork **
+  Pathways_Extras/Torch 0.9.1 folder/Torch 0.9.1.rsrc x1
+'Clea'  ** not in v2.0 app fork **
+  Installer_Disk_1/Pathways Installer.rsrc x1
+  Pathways 1/Pathways Installer.rsrc x1
+  PID_Japanese_1/Pathways Installer.rsrc x1
+'Colr'  ** not in v2.0 app fork **
+  Installer_Disk_1/Pathways Installer.rsrc x1
+  Pathways 1/Pathways Installer.rsrc x1
+  PID_Japanese_1/Pathways Installer.rsrc x1
+'DATA'  ** not in v2.0 app fork **
+  Installer_Disk_1/Pathways Installer.rsrc x1
+  Pathways 1/Pathways Installer.rsrc x1
+  Pathways_Extras/Pathways Into Cheating ƒ/Pathways Into Cheating.rsrc x1
+  PID_Japanese_1/Pathways Installer.rsrc x1
+'DCMP'  ** not in v2.0 app fork **
+  Installer_Disk_1/Pathways Installer.rsrc x1
+  Pathways 1/Pathways Installer.rsrc x1
+  PID_Japanese_1/Pathways Installer.rsrc x1
+'DITL'
+  Installer_Disk_1/Pathways Installer.rsrc x22
+  Installer_Disk_3/Sound Manager 3.0/Sound.rsrc x9
+  Pathways 1/Pathways Installer.rsrc x23
+  Pathways_1995/Pathways Into Darkness.rsrc x28
+  Pathways_1995/Pathways Manual.rsrc x6
+  Pathways_Extras/Pathways Guide v1.1.rsrc x6
+  Pathways_Extras/Pathways Into Cheating ƒ/Pathways Into Cheating.rsrc x5
+  Pathways_Extras/Torch 0.9.1 folder/Torch 0.9.1.rsrc x3
+  PID_Japanese_1/Pathways Installer.rsrc x22
+'DLOG'
+  Installer_Disk_1/Pathways Installer.rsrc x6
+  Installer_Disk_3/Sound Manager 3.0/Sound.rsrc x1
+  Pathways 1/Pathways Installer.rsrc x7
+  Pathways_1995/Pathways Into Darkness.rsrc x13
+  Pathways_1995/Pathways Manual.rsrc x5
+  Pathways_Extras/Pathways Guide v1.1.rsrc x5
+  Pathways_Extras/Pathways Into Cheating ƒ/Pathways Into Cheating.rsrc x1
+  PID_Japanese_1/Pathways Installer.rsrc x6
+'DREL'  ** not in v2.0 app fork **
+  Installer_Disk_1/Pathways Installer.rsrc x1
+  Pathways 1/Pathways Installer.rsrc x1
+  Pathways_Extras/Pathways Into Cheating ƒ/Pathways Into Cheating.rsrc x1
+  PID_Japanese_1/Pathways Installer.rsrc x1
+'Dk@P'  ** not in v2.0 app fork **
+  Pathways_1995/Pathways Manual.rsrc x1
+  Pathways_Extras/Pathways Guide v1.1.rsrc x1
+'ExpS'  ** not in v2.0 app fork **
+  Installer_Disk_1/Pathways Installer.rsrc x1
+  Pathways 1/Pathways Installer.rsrc x1
+  PID_Japanese_1/Pathways Installer.rsrc x1
+'FOND'
+  Pathways_1995/Pathways Into Darkness.rsrc x1
+'FONT'
+  Pathways_1995/Pathways Into Darkness.rsrc x2
+'FREF'
+  Installer_Disk_1/Pathways Installer.rsrc x4
+  Installer_Disk_3/Sound Manager 3.0/Sound Manager.rsrc x1
+  Installer_Disk_3/Sound Manager 3.0/Sound.rsrc x1
+  Pathways 1/Pathways Installer.rsrc x4
+  Pathways_1995/Pathways Into Darkness.rsrc x8
+  Pathways_1995/Pathways Manual.rsrc x1
+  Pathways_Extras/Pathways Guide v1.1.rsrc x1
+  Pathways_Extras/Pathways Into Cheating ƒ/Pathways Into Cheating.rsrc x1
+  Pathways_Extras/Torch 0.9.1 folder/Torch 0.9.1.rsrc x1
+  PID_Japanese_1/Pathways Installer.rsrc x4
+'Feat'  ** not in v2.0 app fork **
+  Installer_Disk_1/Pathways Installer.rsrc x1
+  Pathways 1/Pathways Installer.rsrc x1
+  PID_Japanese_1/Pathways Installer.rsrc x1
+'Font'  ** not in v2.0 app fork **
+  Installer_Disk_1/Pathways Installer.rsrc x2
+  Pathways 1/Pathways Installer.rsrc x2
+  PID_Japanese_1/Pathways Installer.rsrc x2
+'ICN#'
+  Installer_Disk_1/Pathways Installer.rsrc x6
+  Installer_Disk_3/Sound Manager 3.0/Sound Manager.rsrc x1
+  Installer_Disk_3/Sound Manager 3.0/Sound.rsrc x1
+  Pathways 1/Pathways Installer.rsrc x5
+  Pathways_1995/Pathways Into Darkness.rsrc x5
+  Pathways_1995/Pathways Manual.rsrc x2
+  Pathways_Extras/Pathways Guide v1.1.rsrc x2
+  Pathways_Extras/Pathways Into Cheating ƒ/Pathways Into Cheating.rsrc x1
+  Pathways_Extras/PID_Docs Folder/sector_types_sqr.gif.rsrc x1
+  Pathways_Extras/Torch 0.9.1 folder/Torch 0.9.1.rsrc x1
+  PID_Japanese_1/Pathways Installer.rsrc x5
+'ICON'
+  Installer_Disk_1/Pathways Installer.rsrc x1
+  Installer_Disk_3/Sound Manager 3.0/Sound Manager.rsrc x4
+  Installer_Disk_3/Sound Manager 3.0/Sound.rsrc x4
+  Pathways 1/Pathways Installer.rsrc x1
+  Pathways_1995/Pathways Into Darkness.rsrc x2
+  Pathways_1995/Pathways Manual.rsrc x6
+  Pathways_Extras/Pathways Guide v1.1.rsrc x6
+  PID_Japanese_1/Pathways Installer.rsrc x1
+'IInf'  ** not in v2.0 app fork **
+  Installer_Disk_1/Pathways Installer.rsrc x1
+  Pathways 1/Pathways Installer.rsrc x1
+  PID_Japanese_1/Pathways Installer.rsrc x1
+'ILic'  ** not in v2.0 app fork **
+  Pathways 1/Pathways Installer.rsrc x1
+  PID_Japanese_1/Pathways Installer.rsrc x1
+'INIT'  ** not in v2.0 app fork **
+  Installer_Disk_1/Pathways Installer.rsrc x1
+  Installer_Disk_3/Sound Manager 3.0/Sound Manager.rsrc x1
+  Pathways 1/Pathways Installer.rsrc x1
+  PID_Japanese_1/Pathways Installer.rsrc x1
+'IPDe'  ** not in v2.0 app fork **
+  Installer_Disk_1/Pathways Installer.rsrc x1
+  Pathways 1/Pathways Installer.rsrc x1
+'IPac'  ** not in v2.0 app fork **
+  Installer_Disk_1/Pathways Installer.rsrc x1
+  Pathways 1/Pathways Installer.rsrc x1
+  PID_Japanese_1/Pathways Installer.rsrc x1
+'LDEF'  ** not in v2.0 app fork **
+  Installer_Disk_1/Pathways Installer.rsrc x1
+  Pathways 1/Pathways Installer.rsrc x1
+  Pathways_Extras/Torch 0.9.1 folder/Torch 0.9.1.rsrc x1
+  PID_Japanese_1/Pathways Installer.rsrc x1
+'MBAR'
+  Pathways_1995/Pathways Into Darkness.rsrc x1
+'MENU'
+  Installer_Disk_3/Sound Manager 3.0/Sound.rsrc x2
+  Pathways_1995/Pathways Into Darkness.rsrc x5
+  Pathways_1995/Pathways Manual.rsrc x4
+  Pathways_Extras/Pathways Guide v1.1.rsrc x4
+  Pathways_Extras/Pathways Into Cheating ƒ/Pathways Into Cheating.rsrc x9
+'MPSR'  ** not in v2.0 app fork **
+  Pathways_Extras/PID_Docs Folder/PIDMapReader.cp.rsrc x1
+  Pathways_Extras/PID_Docs Folder/PIDMapReader.h.rsrc x1
+  Pathways_Extras/PID_Docs Folder/SimpleVec.h.rsrc x1
+'MWBB'  ** not in v2.0 app fork **
+  Pathways_Extras/PID_Docs Folder/PIDMapReader.cp.rsrc x1
+  Pathways_Extras/PID_Docs Folder/PIDMapReader.h.rsrc x1
+  Pathways_Extras/PID_Docs Folder/SimpleVec.h.rsrc x1
+'Merg'  ** not in v2.0 app fork **
+  Installer_Disk_1/Pathways Installer.rsrc x1
+  PID_Japanese_1/Pathways Installer.rsrc x1
+'MnSy'  ** not in v2.0 app fork **
+  Installer_Disk_1/Pathways Installer.rsrc x1
+  Pathways 1/Pathways Installer.rsrc x1
+  PID_Japanese_1/Pathways Installer.rsrc x1
+'NFNT'
+  Pathways_1995/Pathways Into Darkness.rsrc x1
+'NumF'  ** not in v2.0 app fork **
+  Installer_Disk_1/Pathways Installer.rsrc x1
+  Pathways 1/Pathways Installer.rsrc x1
+  PID_Japanese_1/Pathways Installer.rsrc x1
+'PICT'  ** LOOK **
+  Installer_Disk_1/Pathways Installer.rsrc x8
+  Installer_Disk_3/Sound Manager 3.0/Sound.rsrc x4
+  Pathways 1/Pathways Installer.rsrc x16
+  Pathways_1995/Pathways Manual.rsrc x26
+  Pathways_Extras/Pathways Guide v1.1.rsrc x27
+  Pathways_Extras/Pathways Into Cheating ƒ/Pathways Into Cheating.rsrc x1
+  Pathways_Extras/PID_Docs Folder/sector_types_sqr.gif.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/ascension.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/beware_of.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/but_wait_a.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/but_wait_b.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/dark.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/dust.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/earthquake_zone.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/evil_undead.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/fools_dare_tread.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/ground_floor.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/happy_carnage.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/hungry.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/lasciate.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/lock&load.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/need_a_light.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/never_stop_firing.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/plague_of_demons.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/poisoned_a.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/poisoned_b.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/power.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/slow.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/step.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/summary.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/surfing.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/welcome_tasty.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/wrong_way.pict.rsrc x1
+  Pathways_Extras/Torch 0.9.1 folder/Torch 0.9.1.rsrc x2
+  Pathways_Extras/Torch 0.9.1 folder/Torch Docs.rsrc x5
+  PID_Japanese_1/Pathways Installer.rsrc x12
+'PLPC'  ** not in v2.0 app fork **
+  Pathways_Extras/Torch 0.9.1 folder/Torch 0.9.1.rsrc x1
+'PMul'  ** not in v2.0 app fork **
+  Installer_Disk_1/Pathways Installer.rsrc x1
+  Pathways 1/Pathways Installer.rsrc x1
+'POpt'  ** not in v2.0 app fork **
+  Installer_Disk_1/Pathways Installer.rsrc x1
+  Pathways 1/Pathways Installer.rsrc x1
+  PID_Japanese_1/Pathways Installer.rsrc x1
+'PPrf'  ** not in v2.0 app fork **
+  Pathways_Extras/pidmaps/pid maps/ascension.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/beware_of.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/but_wait_a.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/but_wait_b.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/dark.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/dust.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/earthquake_zone.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/evil_undead.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/fools_dare_tread.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/ground_floor.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/happy_carnage.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/hungry.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/lasciate.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/lock&load.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/need_a_light.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/never_stop_firing.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/plague_of_demons.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/poisoned_a.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/poisoned_b.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/power.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/slow.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/step.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/summary.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/surfing.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/welcome_tasty.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/wrong_way.pict.rsrc x1
+'PREC'  ** not in v2.0 app fork **
+  Pathways_Extras/pidmaps/pid maps/ascension.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/beware_of.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/but_wait_a.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/but_wait_b.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/dark.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/dust.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/earthquake_zone.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/evil_undead.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/fools_dare_tread.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/ground_floor.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/happy_carnage.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/hungry.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/lasciate.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/lock&load.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/need_a_light.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/never_stop_firing.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/plague_of_demons.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/poisoned_a.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/poisoned_b.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/power.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/slow.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/step.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/summary.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/surfing.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/welcome_tasty.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/wrong_way.pict.rsrc x1
+'PUBs'  ** not in v2.0 app fork **
+  Pathways_Extras/pidmaps/pid maps/ascension.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/beware_of.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/but_wait_a.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/but_wait_b.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/dark.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/dust.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/earthquake_zone.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/evil_undead.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/fools_dare_tread.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/ground_floor.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/happy_carnage.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/hungry.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/lasciate.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/lock&load.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/need_a_light.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/never_stop_firing.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/plague_of_demons.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/poisoned_a.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/poisoned_b.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/power.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/slow.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/step.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/summary.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/surfing.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/welcome_tasty.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/wrong_way.pict.rsrc x1
+'Prog'  ** not in v2.0 app fork **
+  Installer_Disk_1/Pathways Installer.rsrc x1
+  Pathways 1/Pathways Installer.rsrc x1
+  PID_Japanese_1/Pathways Installer.rsrc x1
+'Pset'  ** not in v2.0 app fork **
+  Installer_Disk_1/Pathways Installer.rsrc x1
+  Pathways 1/Pathways Installer.rsrc x1
+  PID_Japanese_1/Pathways Installer.rsrc x1
+'Rect'  ** not in v2.0 app fork **
+  Installer_Disk_1/Pathways Installer.rsrc x2
+  Pathways 1/Pathways Installer.rsrc x2
+  PID_Japanese_1/Pathways Installer.rsrc x2
+'SIZE'
+  Installer_Disk_1/Pathways Installer.rsrc x1
+  Pathways 1/Pathways Installer.rsrc x3
+  Pathways_1995/Pathways Into Darkness.rsrc x1
+  Pathways_1995/Pathways Manual.rsrc x3
+  Pathways_Extras/Pathways Guide v1.1.rsrc x1
+  Pathways_Extras/Pathways Into Cheating ƒ/Pathways Into Cheating.rsrc x1
+  Pathways_Extras/Torch 0.9.1 folder/Torch 0.9.1.rsrc x1
+  PID_Japanese_1/Pathways Installer.rsrc x1
+'STR '
+  Installer_Disk_1/Pathways Installer.rsrc x7
+  Installer_Disk_3/Sound Manager 3.0/Sound Manager.rsrc x19
+  Installer_Disk_3/Sound Manager 3.0/Sound.rsrc x8
+  Pathways 1/Pathways Installer.rsrc x15
+  Pathways_1995/Pathways Into Darkness.rsrc x1
+  Pathways_1995/Pathways Manual.rsrc x17
+  Pathways_Extras/Pathways Guide v1.1.rsrc x34
+  Pathways_Extras/PID_Docs Folder/sector_types_sqr.gif.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/ascension.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/beware_of.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/but_wait_a.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/but_wait_b.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/dark.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/dust.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/earthquake_zone.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/evil_undead.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/fools_dare_tread.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/ground_floor.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/happy_carnage.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/hungry.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/lasciate.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/lock&load.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/need_a_light.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/never_stop_firing.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/plague_of_demons.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/poisoned_a.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/poisoned_b.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/power.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/slow.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/step.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/summary.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/surfing.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/welcome_tasty.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/wrong_way.pict.rsrc x1
+  PID_Japanese_1/Pathways Installer.rsrc x13
+'STR#'
+  Installer_Disk_1/Pathways Installer.rsrc x1
+  Installer_Disk_3/Sound Manager 3.0/Sound.rsrc x1
+  Pathways 1/Pathways Installer.rsrc x1
+  Pathways_1995/Pathways Into Darkness.rsrc x28
+  Pathways_1995/Pathways Manual.rsrc x2
+  Pathways_Extras/Pathways Guide v1.1.rsrc x2
+  Pathways_Extras/Pathways Into Cheating ƒ/Pathways Into Cheating.rsrc x1
+  Pathways_Extras/Torch 0.9.1 folder/Torch 0.9.1.rsrc x1
+  PID_Japanese_1/Pathways Installer.rsrc x1
+'STi1'  ** not in v2.0 app fork **
+  Installer_Disk_1/Pathways Installer.rsrc x1
+  Pathways 1/Pathways Installer.rsrc x1
+  PID_Japanese_1/Pathways Installer.rsrc x1
+'Setg'  ** not in v2.0 app fork **
+  Installer_Disk_1/Pathways Installer.rsrc x1
+  Pathways 1/Pathways Installer.rsrc x1
+  PID_Japanese_1/Pathways Installer.rsrc x1
+'TEXT'  ** not in v2.0 app fork **
+  Pathways 1/Pathways Installer.rsrc x1
+  Pathways_1995/Pathways Manual.rsrc x13
+  Pathways_Extras/Pathways Guide v1.1.rsrc x30
+  PID_Japanese_1/Pathways Installer.rsrc x1
+'TMPL'  ** not in v2.0 app fork **
+  Pathways_Extras/Pathways Into Cheating ƒ/Pathways Into Cheating.rsrc x1
+'WDEF'
+  Pathways_1995/Pathways Into Darkness.rsrc x1
+'WIND'  ** not in v2.0 app fork **
+  Pathways_Extras/Pathways Guide v1.1.rsrc x1
+  Pathways_Extras/Pathways Into Cheating ƒ/Pathways Into Cheating.rsrc x1
+'Wndo'  ** not in v2.0 app fork **
+  Pathways_1995/Pathways Manual.rsrc x13
+  Pathways_Extras/Pathways Guide v1.1.rsrc x30
+'ZERO'  ** not in v2.0 app fork **
+  Installer_Disk_1/Pathways Installer.rsrc x1
+  Pathways 1/Pathways Installer.rsrc x1
+  Pathways_Extras/Pathways Into Cheating ƒ/Pathways Into Cheating.rsrc x1
+  PID_Japanese_1/Pathways Installer.rsrc x1
+'cPPC'  ** not in v2.0 app fork **
+  Pathways_Extras/Torch 0.9.1 folder/Torch 0.9.1.rsrc x1
+'cdev'  ** not in v2.0 app fork **
+  Installer_Disk_3/Sound Manager 3.0/Sound.rsrc x1
+'cfrg'
+  Pathways_1995/Pathways Into Darkness.rsrc x1
+  Pathways_Extras/Torch 0.9.1 folder/Torch 0.9.1.rsrc x1
+'cicn'
+  Installer_Disk_1/Pathways Installer.rsrc x1
+  Pathways 1/Pathways Installer.rsrc x1
+  Pathways_1995/Pathways Into Darkness.rsrc x2
+  PID_Japanese_1/Pathways Installer.rsrc x1
+'clut'
+  Pathways_1995/Pathways Into Darkness.rsrc x9
+  Pathways_Extras/pidmaps/pid maps/ascension.pict.rsrc x3
+  Pathways_Extras/pidmaps/pid maps/beware_of.pict.rsrc x3
+  Pathways_Extras/pidmaps/pid maps/but_wait_a.pict.rsrc x3
+  Pathways_Extras/pidmaps/pid maps/but_wait_b.pict.rsrc x3
+  Pathways_Extras/pidmaps/pid maps/dark.pict.rsrc x3
+  Pathways_Extras/pidmaps/pid maps/dust.pict.rsrc x3
+  Pathways_Extras/pidmaps/pid maps/earthquake_zone.pict.rsrc x3
+  Pathways_Extras/pidmaps/pid maps/evil_undead.pict.rsrc x3
+  Pathways_Extras/pidmaps/pid maps/fools_dare_tread.pict.rsrc x3
+  Pathways_Extras/pidmaps/pid maps/ground_floor.pict.rsrc x3
+  Pathways_Extras/pidmaps/pid maps/happy_carnage.pict.rsrc x3
+  Pathways_Extras/pidmaps/pid maps/hungry.pict.rsrc x3
+  Pathways_Extras/pidmaps/pid maps/lasciate.pict.rsrc x3
+  Pathways_Extras/pidmaps/pid maps/lock&load.pict.rsrc x3
+  Pathways_Extras/pidmaps/pid maps/need_a_light.pict.rsrc x3
+  Pathways_Extras/pidmaps/pid maps/never_stop_firing.pict.rsrc x3
+  Pathways_Extras/pidmaps/pid maps/plague_of_demons.pict.rsrc x3
+  Pathways_Extras/pidmaps/pid maps/poisoned_a.pict.rsrc x3
+  Pathways_Extras/pidmaps/pid maps/poisoned_b.pict.rsrc x3
+  Pathways_Extras/pidmaps/pid maps/power.pict.rsrc x3
+  Pathways_Extras/pidmaps/pid maps/slow.pict.rsrc x3
+  Pathways_Extras/pidmaps/pid maps/step.pict.rsrc x3
+  Pathways_Extras/pidmaps/pid maps/summary.pict.rsrc x3
+  Pathways_Extras/pidmaps/pid maps/surfing.pict.rsrc x3
+  Pathways_Extras/pidmaps/pid maps/welcome_tasty.pict.rsrc x3
+  Pathways_Extras/pidmaps/pid maps/wrong_way.pict.rsrc x3
+'cnt#'  ** not in v2.0 app fork **
+  Pathways_Extras/Pathways Guide v1.1.rsrc x1
+'crsr'
+  Pathways_1995/Pathways Into Darkness.rsrc x9
+'dcmp'  ** not in v2.0 app fork **
+  Pathways_Extras/Torch 0.9.1 folder/Torch 0.9.1.rsrc x1
+'dctb'
+  Pathways_1995/Pathways Into Darkness.rsrc x12
+'dpin'
+  Pathways_1995/Pathways Into Darkness.rsrc x1
+'foot'  ** not in v2.0 app fork **
+  Pathways_1995/Pathways Manual.rsrc x1
+  Pathways_Extras/Pathways Guide v1.1.rsrc x1
+'icl4'
+  Installer_Disk_1/Pathways Installer.rsrc x4
+  Installer_Disk_3/Sound Manager 3.0/Sound Manager.rsrc x1
+  Installer_Disk_3/Sound Manager 3.0/Sound.rsrc x1
+  Pathways 1/Pathways Installer.rsrc x4
+  Pathways_1995/Pathways Into Darkness.rsrc x5
+  Pathways_1995/Pathways Manual.rsrc x2
+  Pathways_Extras/Pathways Guide v1.1.rsrc x1
+  Pathways_Extras/Pathways Into Cheating ƒ/Pathways Into Cheating.rsrc x1
+  Pathways_Extras/Torch 0.9.1 folder/Torch 0.9.1.rsrc x1
+  PID_Japanese_1/Pathways Installer.rsrc x4
+'icl8'
+  Installer_Disk_1/Pathways Installer.rsrc x4
+  Installer_Disk_3/Sound Manager 3.0/Sound Manager.rsrc x1
+  Installer_Disk_3/Sound Manager 3.0/Sound.rsrc x1
+  Pathways 1/Pathways Installer.rsrc x4
+  Pathways_1995/Pathways Into Darkness.rsrc x5
+  Pathways_1995/Pathways Manual.rsrc x2
+  Pathways_Extras/Pathways Guide v1.1.rsrc x2
+  Pathways_Extras/Pathways Into Cheating ƒ/Pathways Into Cheating.rsrc x1
+  Pathways_Extras/PID_Docs Folder/sector_types_sqr.gif.rsrc x1
+  Pathways_Extras/Torch 0.9.1 folder/Torch 0.9.1.rsrc x1
+  PID_Japanese_1/Pathways Installer.rsrc x4
+'ics#'
+  Installer_Disk_1/Pathways Installer.rsrc x4
+  Installer_Disk_3/Sound Manager 3.0/Sound Manager.rsrc x1
+  Installer_Disk_3/Sound Manager 3.0/Sound.rsrc x1
+  Pathways 1/Pathways Installer.rsrc x4
+  Pathways_1995/Pathways Into Darkness.rsrc x5
+  Pathways_1995/Pathways Manual.rsrc x2
+  Pathways_Extras/Pathways Guide v1.1.rsrc x1
+  Pathways_Extras/Pathways Into Cheating ƒ/Pathways Into Cheating.rsrc x1
+  Pathways_Extras/Torch 0.9.1 folder/Torch 0.9.1.rsrc x1
+  PID_Japanese_1/Pathways Installer.rsrc x4
+'ics4'
+  Installer_Disk_1/Pathways Installer.rsrc x4
+  Installer_Disk_3/Sound Manager 3.0/Sound Manager.rsrc x1
+  Installer_Disk_3/Sound Manager 3.0/Sound.rsrc x1
+  Pathways 1/Pathways Installer.rsrc x4
+  Pathways_1995/Pathways Into Darkness.rsrc x5
+  Pathways_1995/Pathways Manual.rsrc x2
+  Pathways_Extras/Pathways Guide v1.1.rsrc x1
+  Pathways_Extras/Pathways Into Cheating ƒ/Pathways Into Cheating.rsrc x1
+  Pathways_Extras/Torch 0.9.1 folder/Torch 0.9.1.rsrc x1
+  PID_Japanese_1/Pathways Installer.rsrc x4
+'ics8'
+  Installer_Disk_1/Pathways Installer.rsrc x4
+  Installer_Disk_3/Sound Manager 3.0/Sound Manager.rsrc x1
+  Installer_Disk_3/Sound Manager 3.0/Sound.rsrc x1
+  Pathways 1/Pathways Installer.rsrc x4
+  Pathways_1995/Pathways Into Darkness.rsrc x5
+  Pathways_1995/Pathways Manual.rsrc x2
+  Pathways_Extras/Pathways Guide v1.1.rsrc x1
+  Pathways_Extras/Pathways Into Cheating ƒ/Pathways Into Cheating.rsrc x1
+  Pathways_Extras/Torch 0.9.1 folder/Torch 0.9.1.rsrc x1
+  PID_Japanese_1/Pathways Installer.rsrc x4
+'lpch'  ** not in v2.0 app fork **
+  Installer_Disk_3/Sound Manager 3.0/Sound Manager.rsrc x8
+'mach'  ** not in v2.0 app fork **
+  Installer_Disk_3/Sound Manager 3.0/Sound.rsrc x1
+'mstr'  ** not in v2.0 app fork **
+  Pathways_1995/Pathways Manual.rsrc x2
+  Pathways_Extras/Pathways Guide v1.1.rsrc x2
+'nrct'  ** not in v2.0 app fork **
+  Installer_Disk_3/Sound Manager 3.0/Sound.rsrc x1
+'pInf'  ** not in v2.0 app fork **
+  Pathways_1995/Pathways Manual.rsrc x25
+'pjst'  ** not in v2.0 app fork **
+  Pathways_Extras/Pathways Guide v1.1.rsrc x26
+'pnot'  ** not in v2.0 app fork **
+  Pathways_Extras/PID_Docs Folder/sector_types_sqr.gif.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/ascension.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/beware_of.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/but_wait_a.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/but_wait_b.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/dark.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/dust.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/earthquake_zone.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/evil_undead.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/fools_dare_tread.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/ground_floor.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/happy_carnage.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/hungry.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/lasciate.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/lock&load.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/need_a_light.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/never_stop_firing.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/plague_of_demons.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/poisoned_a.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/poisoned_b.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/power.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/slow.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/step.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/summary.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/surfing.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/welcome_tasty.pict.rsrc x1
+  Pathways_Extras/pidmaps/pid maps/wrong_way.pict.rsrc x1
+'ppat'
+  Pathways_1995/Pathways Into Darkness.rsrc x1
+'proc'  ** not in v2.0 app fork **
+  Installer_Disk_3/Sound Manager 3.0/Sound Manager.rsrc x2
+'pscl'  ** not in v2.0 app fork **
+  Pathways_Extras/Pathways Guide v1.1.rsrc x26
+'påth'
+  Pathways_1995/Pathways Into Darkness.rsrc x1
+'rQDF'  ** not in v2.0 app fork **
+  Pathways_1995/Pathways Manual.rsrc x1
+  Pathways_Extras/Pathways Guide v1.1.rsrc x1
+'sTwD'  ** not in v2.0 app fork **
+  Pathways_1995/Pathways Manual.rsrc x1
+  Pathways_Extras/Pathways Guide v1.1.rsrc x1
+'sad '  ** not in v2.0 app fork **
+  Installer_Disk_3/Sound Manager 3.0/Sound Manager.rsrc x1
+'scri'
+  Pathways_1995/Pathways Into Darkness.rsrc x30
+'sift'  ** not in v2.0 app fork **
+  Installer_Disk_3/Sound Manager 3.0/Sound Manager.rsrc x8
+'snd '  ** LOOK **
+  Installer_Disk_3/Sound Manager 3.0/Sound Manager.rsrc x1
+  Installer_Disk_3/Sound Manager 3.0/Sound.rsrc x1
+  Pathways_1995/Sounds.rsrc x86
+'sndP'  ** not in v2.0 app fork **
+  Installer_Disk_3/Sound Manager 3.0/Sound.rsrc x4
+'soun'  ** not in v2.0 app fork **
+  Installer_Disk_3/Sound Manager 3.0/Sound.rsrc x1
+'styl'  ** not in v2.0 app fork **
+  Pathways 1/Pathways Installer.rsrc x1
+  Pathways_1995/Pathways Manual.rsrc x13
+  Pathways_Extras/Pathways Guide v1.1.rsrc x30
+  Pathways_Extras/PID_Docs Folder/Read Me.rsrc x1
+  Pathways_Extras/PIDMaps Folder/Descriptions.rsrc x1
+  Pathways_Extras/PIDMaps Folder/Hex reps_notes.rsrc x1
+  Pathways_Extras/Torch 0.9.1 folder/Torch Docs.rsrc x1
+  PID_Japanese_1/Pathways Installer.rsrc x1
+'sysz'  ** not in v2.0 app fork **
+  Installer_Disk_3/Sound Manager 3.0/Sound Manager.rsrc x1
+'thng'  ** not in v2.0 app fork **
+  Installer_Disk_3/Sound Manager 3.0/Sound Manager.rsrc x9
+  Installer_Disk_3/Sound Manager 3.0/Sound.rsrc x4
+'trÇh'  ** not in v2.0 app fork **
+  Pathways_Extras/Torch 0.9.1 folder/Torch 0.9.1.rsrc x1
+'vers'
+  Installer_Disk_1/Pathways Installer.rsrc x2
+  Installer_Disk_3/Sound Manager 3.0/Sound Manager.rsrc x1
+  Installer_Disk_3/Sound Manager 3.0/Sound.rsrc x1
+  Pathways 1/Pathways Installer.rsrc x2
+  Pathways_1995/Pathways Into Darkness.rsrc x1
+  Pathways_1995/Pathways Manual.rsrc x2
+  Pathways_Extras/Pathways Guide v1.1.rsrc x2
+  Pathways_Extras/Pathways Into Cheating ƒ/Pathways Into Cheating.rsrc x1
+  Pathways_Extras/Torch 0.9.1 folder/Torch 0.9.1.rsrc x2
+  PID_Japanese_1/Pathways Installer.rsrc x2
+'xtr2'  ** not in v2.0 app fork **
+  Pathways_1995/Pathways Manual.rsrc x1
+  Pathways_Extras/Pathways Guide v1.1.rsrc x1
+'∏îÇ '  ** not in v2.0 app fork **
+  Pathways_Extras/Pathways Into Cheating ƒ/Pathways Into Cheating.rsrc x1

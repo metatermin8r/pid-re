@@ -1,0 +1,106 @@
+# C:/Users/Colton S Covert/Documents/GitHub/Pathways-Into-Darkness-Unity/data/cd/hfs/Installer_Disk_3/Sound Manager 3.0/Sound Manager.rsrc
+source: raw-rsrc
+resource_bytes: 76993
+types: 19
+
+'BNDL': 1 resources:
+  (128): 28 bytes
+
+'FREF': 1 resources:
+  (128): 7 bytes
+
+'ICN#': 1 resources:
+  (128): 256 bytes
+
+'ICON': 4 resources:
+  (-16563): 128 bytes
+  (-16561): 128 bytes
+  (-16560): 128 bytes
+  (-16557): 128 bytes
+
+'INIT': 1 resources:
+  (0): 3136 bytes
+
+'STR ': 19 resources:
+  (-16587): 99 bytes
+  (-16586): 97 bytes
+  (-16583): 172 bytes
+  (-16582): 139 bytes
+  (-16581): 139 bytes
+  (-16580): 143 bytes
+  (-16579): 170 bytes
+  (-16578): 85 bytes
+  (-16577): 84 bytes
+  (-16568): 18 bytes
+  (-16567): 22 bytes
+  (-16566): 22 bytes
+  (-16563): 9 bytes
+  (-16562): 13 bytes
+  (-16561): 12 bytes
+  (-16560): 13 bytes
+  (-16559): 24 bytes
+  (-16558): 22 bytes
+  (-16557): 21 bytes
+
+'icl4': 1 resources:
+  (128): 512 bytes
+
+'icl8': 1 resources:
+  (128): 1024 bytes
+
+'ics#': 1 resources:
+  (128): 64 bytes
+
+'ics4': 1 resources:
+  (128): 128 bytes
+
+'ics8': 1 resources:
+  (128): 256 bytes
+
+'lpch': 8 resources:
+  (1): 13 bytes
+  (2): 13 bytes
+  (4): 107 bytes
+  (8): 13 bytes
+  (16): 13 bytes
+  (31): 162 bytes
+  (32): 13 bytes
+  (63): 15505 bytes
+
+'proc': 2 resources:
+  (-16498): 7094 bytes
+  (-16497): 11512 bytes
+
+'sad ': 1 resources:
+  (0): 24 bytes
+
+'sift': 8 resources:
+  (-16566): 2496 bytes
+  (-16563): 4518 bytes
+  (-16562): 4580 bytes
+  (-16561): 9576 bytes
+  (-16560): 758 bytes
+  (-16559): 2082 bytes
+  (-16558): 3166 bytes
+  (-16557): 3158 bytes
+
+'snd ': 1 resources:
+  (128): 3048 bytes  name=Barking Pumpkin
+
+'sysz': 1 resources:
+  (0): 4 bytes
+
+'thng': 9 resources:
+  (-16567): 44 bytes
+  (-16566): 44 bytes
+  (-16563): 44 bytes
+  (-16562): 44 bytes
+  (-16561): 44 bytes
+  (-16560): 44 bytes
+  (-16559): 44 bytes
+  (-16558): 44 bytes
+  (-16557): 44 bytes
+
+'vers': 1 resources:
+  (1): 43 bytes
+

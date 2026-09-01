@@ -1,0 +1,173 @@
+scri_count: 30
+sizes:
+  128: 2071
+  129: 209
+  130: 1913
+  131: 1901
+  132: 2221
+  133: 907
+  134: 1411
+  135: 2178
+  136: 1521
+  137: 842
+  138: 2312
+  139: 3058
+  140: 1645
+  141: 1188
+  142: 475
+  143: 2158
+  144: 3125
+  145: 1431
+  146: 1980
+  147: 2326
+  148: 1146
+  149: 1739
+  150: 740
+  151: 1443
+  152: 2314
+  153: 1637
+  154: 2740
+  155: 2129
+  156: 14
+  157: 14
+
+non_stub_ids: 128..155 (28)
+stub_ids: [156, 157]
+common_prefix_all: 0 bytes  
+common_prefix_nonstub: 0 bytes  
+common_prefix_stubs: 2 bytes  00 00
+
+first 16 bytes of each (or full blob if shorter):
+  128 len= 2071  08 17 00 2b 03 1f 04 04 06 0d 66 68 70 62 0d af   u16be[0]=2071  u32be[0]=135725099
+  129 len=  209  00 d1 00 06 02 45 04 04 06 0d 66 68 70 62 0e 0c   u16be[0]=209  u32be[0]=13697030
+  130 len= 1913  07 79 00 31 03 0b 04 04 06 0d 66 68 70 62 0d af   u16be[0]=1913  u32be[0]=125370417
+  131 len= 1901  07 6d 00 28 03 07 04 04 06 0d 66 68 70 62 0d af   u16be[0]=1901  u32be[0]=124583976
+  132 len= 2221  08 ad 00 3b 03 31 04 04 06 0d 66 68 70 62 0d af   u16be[0]=2221  u32be[0]=145555515
+  133 len=  907  03 8b 00 18 02 9f 04 04 06 0d 66 68 70 62 0e 0c   u16be[0]=907  u32be[0]=59441176
+  134 len= 1411  05 83 00 2e 02 e5 04 04 06 0d 66 68 70 62 0e 0c   u16be[0]=1411  u32be[0]=92471342
+  135 len= 2178  08 82 00 37 03 3d 04 04 06 0d 66 68 70 62 0d af   u16be[0]=2178  u32be[0]=142737463
+  136 len= 1521  05 f1 00 31 02 dd 04 04 06 0d 66 68 70 62 0e 0c   u16be[0]=1521  u32be[0]=99680305
+  137 len=  842  03 4a 00 18 02 9f 04 04 06 0d 66 68 70 62 0e 0c   u16be[0]=842  u32be[0]=55181336
+  138 len= 2312  09 08 00 3c 03 69 04 04 06 0d 66 68 70 62 0c 0d   u16be[0]=2312  u32be[0]=151519292
+  139 len= 3058  0b f2 00 43 03 7b 04 04 06 0d 66 68 70 62 0e 0c   u16be[0]=3058  u32be[0]=200409155
+  140 len= 1645  06 6d 00 2c 02 f7 04 04 06 0d 66 68 70 62 0e 0c   u16be[0]=1645  u32be[0]=107806764
+  141 len= 1188  04 a4 00 20 02 b5 04 04 06 0d 66 68 70 62 0e 0c   u16be[0]=1188  u32be[0]=77856800
+  142 len=  475  01 db 00 0f 02 6b 04 04 06 0d 66 68 70 62 0e 0c   u16be[0]=475  u32be[0]=31129615
+  143 len= 2158  08 6e 00 36 03 2b 04 04 06 0d 66 68 70 62 0e 0c   u16be[0]=2158  u32be[0]=141426742
+  144 len= 3125  0c 35 00 55 03 e5 04 04 06 0d 66 68 70 62 0e 0c   u16be[0]=3125  u32be[0]=204800085
+  145 len= 1431  05 97 00 26 02 cf 04 04 06 0d 66 68 70 62 0e 0c   u16be[0]=1431  u32be[0]=93782054
+  146 len= 1980  07 bc 00 2b 03 0b 04 04 06 0d 6c 7c 6e 6e 0d af   u16be[0]=1980  u32be[0]=129761323
+  147 len= 2326  09 16 00 3f 03 5f 04 04 06 0d 6c 7c 6e 6e 0e 0c   u16be[0]=2326  u32be[0]=152436799
+  148 len= 1146  04 7a 00 2a 02 c9 04 04 06 0d 6c 7c 6e 6e 0e 0c   u16be[0]=1146  u32be[0]=75104298
+  149 len= 1739  06 cb 00 2c 02 fd 04 04 06 0d 6c 7c 6e 6e 0e 0c   u16be[0]=1739  u32be[0]=113967148
+  150 len=  740  02 e4 00 17 02 95 04 04 06 0d 6c 7c 6e 6e 0e 0c   u16be[0]=740  u32be[0]=48496663
+  151 len= 1443  05 a3 00 21 02 c9 04 04 06 0d 6c 7c 6e 6e 0d af   u16be[0]=1443  u32be[0]=94568481
+  152 len= 2314  09 0a 00 38 03 27 04 04 06 0d 6c 7c 6e 6e 0d af   u16be[0]=2314  u32be[0]=151650360
+  153 len= 1637  06 65 00 2f 02 f5 04 04 06 0d 6b 7c 68 65 0c 0d   u16be[0]=1637  u32be[0]=107282479
+  154 len= 2740  0a b4 00 38 03 5b 04 04 06 0d 6b 7c 68 65 0d af   u16be[0]=2740  u32be[0]=179568696
+  155 len= 2129  08 51 00 39 03 2b 04 04 06 0d 6b 7c 68 65 0e 0c   u16be[0]=2129  u32be[0]=139526201
+  156 len=   14  00 00 4e 7a 00 00 3f c9 35 5c 00 00 3d 60         u16be[0]=0  u32be[0]=20090
+  157 len=   14  00 00 20 2c 00 00 09 c3 35 5c 00 00 70 63         u16be[0]=0  u32be[0]=8236
+
+hex of stubs:
+--- scri 156 (14 bytes) ---
+00000000  00 00 4e 7a 00 00 3f c9 35 5c 00 00 3d 60        |..Nz..?…5\..=`|
+--- scri 157 (14 bytes) ---
+00000000  00 00 20 2c 00 00 09 c3 35 5c 00 00 70 63        |.. ,...√5\..pc|
+
+14-byte-header hypothesis:
+  stub 156 bytes: 00 00 4e 7a 00 00 3f c9 35 5c 00 00 3d 60
+  non-stubs whose first 14 equal stub: []
+  unique first-14 among non-stubs: 28
+    00 d1 00 06 02 45 04 04 06 0d 66 68 70 62  -> [129]
+    01 db 00 0f 02 6b 04 04 06 0d 66 68 70 62  -> [142]
+    02 e4 00 17 02 95 04 04 06 0d 6c 7c 6e 6e  -> [150]
+    03 4a 00 18 02 9f 04 04 06 0d 66 68 70 62  -> [137]
+    03 8b 00 18 02 9f 04 04 06 0d 66 68 70 62  -> [133]
+    04 7a 00 2a 02 c9 04 04 06 0d 6c 7c 6e 6e  -> [148]
+    04 a4 00 20 02 b5 04 04 06 0d 66 68 70 62  -> [141]
+    05 83 00 2e 02 e5 04 04 06 0d 66 68 70 62  -> [134]
+    05 97 00 26 02 cf 04 04 06 0d 66 68 70 62  -> [145]
+    05 a3 00 21 02 c9 04 04 06 0d 6c 7c 6e 6e  -> [151]
+    05 f1 00 31 02 dd 04 04 06 0d 66 68 70 62  -> [136]
+    06 65 00 2f 02 f5 04 04 06 0d 6b 7c 68 65  -> [153]
+    06 6d 00 2c 02 f7 04 04 06 0d 66 68 70 62  -> [140]
+    06 cb 00 2c 02 fd 04 04 06 0d 6c 7c 6e 6e  -> [149]
+    07 6d 00 28 03 07 04 04 06 0d 66 68 70 62  -> [131]
+    07 79 00 31 03 0b 04 04 06 0d 66 68 70 62  -> [130]
+    07 bc 00 2b 03 0b 04 04 06 0d 6c 7c 6e 6e  -> [146]
+    08 17 00 2b 03 1f 04 04 06 0d 66 68 70 62  -> [128]
+    08 51 00 39 03 2b 04 04 06 0d 6b 7c 68 65  -> [155]
+    08 6e 00 36 03 2b 04 04 06 0d 66 68 70 62  -> [143]
+    08 82 00 37 03 3d 04 04 06 0d 66 68 70 62  -> [135]
+    08 ad 00 3b 03 31 04 04 06 0d 66 68 70 62  -> [132]
+    09 08 00 3c 03 69 04 04 06 0d 66 68 70 62  -> [138]
+    09 0a 00 38 03 27 04 04 06 0d 6c 7c 6e 6e  -> [152]
+    09 16 00 3f 03 5f 04 04 06 0d 6c 7c 6e 6e  -> [147]
+    0a b4 00 38 03 5b 04 04 06 0d 6b 7c 68 65  -> [154]
+    0b f2 00 43 03 7b 04 04 06 0d 66 68 70 62  -> [139]
+    0c 35 00 55 03 e5 04 04 06 0d 66 68 70 62  -> [144]
+
+u16be at 0 vs (len-2) / (len-14):
+  128: u16=2071  len=2071  len-2=2069  len-14=2057  u16==len=True  u16==(len-2)=False  u16==(len-14)=False
+  129: u16=209  len=209  len-2=207  len-14=195  u16==len=True  u16==(len-2)=False  u16==(len-14)=False
+  130: u16=1913  len=1913  len-2=1911  len-14=1899  u16==len=True  u16==(len-2)=False  u16==(len-14)=False
+  131: u16=1901  len=1901  len-2=1899  len-14=1887  u16==len=True  u16==(len-2)=False  u16==(len-14)=False
+  132: u16=2221  len=2221  len-2=2219  len-14=2207  u16==len=True  u16==(len-2)=False  u16==(len-14)=False
+  133: u16=907  len=907  len-2=905  len-14=893  u16==len=True  u16==(len-2)=False  u16==(len-14)=False
+  134: u16=1411  len=1411  len-2=1409  len-14=1397  u16==len=True  u16==(len-2)=False  u16==(len-14)=False
+  135: u16=2178  len=2178  len-2=2176  len-14=2164  u16==len=True  u16==(len-2)=False  u16==(len-14)=False
+  136: u16=1521  len=1521  len-2=1519  len-14=1507  u16==len=True  u16==(len-2)=False  u16==(len-14)=False
+  137: u16=842  len=842  len-2=840  len-14=828  u16==len=True  u16==(len-2)=False  u16==(len-14)=False
+  138: u16=2312  len=2312  len-2=2310  len-14=2298  u16==len=True  u16==(len-2)=False  u16==(len-14)=False
+  139: u16=3058  len=3058  len-2=3056  len-14=3044  u16==len=True  u16==(len-2)=False  u16==(len-14)=False
+  140: u16=1645  len=1645  len-2=1643  len-14=1631  u16==len=True  u16==(len-2)=False  u16==(len-14)=False
+  141: u16=1188  len=1188  len-2=1186  len-14=1174  u16==len=True  u16==(len-2)=False  u16==(len-14)=False
+  142: u16=475  len=475  len-2=473  len-14=461  u16==len=True  u16==(len-2)=False  u16==(len-14)=False
+  143: u16=2158  len=2158  len-2=2156  len-14=2144  u16==len=True  u16==(len-2)=False  u16==(len-14)=False
+  144: u16=3125  len=3125  len-2=3123  len-14=3111  u16==len=True  u16==(len-2)=False  u16==(len-14)=False
+  145: u16=1431  len=1431  len-2=1429  len-14=1417  u16==len=True  u16==(len-2)=False  u16==(len-14)=False
+  146: u16=1980  len=1980  len-2=1978  len-14=1966  u16==len=True  u16==(len-2)=False  u16==(len-14)=False
+  147: u16=2326  len=2326  len-2=2324  len-14=2312  u16==len=True  u16==(len-2)=False  u16==(len-14)=False
+  148: u16=1146  len=1146  len-2=1144  len-14=1132  u16==len=True  u16==(len-2)=False  u16==(len-14)=False
+  149: u16=1739  len=1739  len-2=1737  len-14=1725  u16==len=True  u16==(len-2)=False  u16==(len-14)=False
+  150: u16=740  len=740  len-2=738  len-14=726  u16==len=True  u16==(len-2)=False  u16==(len-14)=False
+  151: u16=1443  len=1443  len-2=1441  len-14=1429  u16==len=True  u16==(len-2)=False  u16==(len-14)=False
+  152: u16=2314  len=2314  len-2=2312  len-14=2300  u16==len=True  u16==(len-2)=False  u16==(len-14)=False
+  153: u16=1637  len=1637  len-2=1635  len-14=1623  u16==len=True  u16==(len-2)=False  u16==(len-14)=False
+  154: u16=2740  len=2740  len-2=2738  len-14=2726  u16==len=True  u16==(len-2)=False  u16==(len-14)=False
+  155: u16=2129  len=2129  len-2=2127  len-14=2115  u16==len=True  u16==(len-2)=False  u16==(len-14)=False
+  156: u16=0  len=14  len-2=12  len-14=0  u16==len=False  u16==(len-2)=False  u16==(len-14)=True
+  157: u16=0  len=14  len-2=12  len-14=0  u16==len=False  u16==(len-2)=False  u16==(len-14)=True
+
+STR# 2018 level-name hypothesis (scri 128+N == name N):
+  STR#2018 count: 28
+  non-stub scri count: 28
+  N=00 scri 128 name='Ground Floor'  raw_hits=[]  pascal_hits=[]  also_in_scri=[]
+  N=01 scri 129 name='Never Stop Firing'  raw_hits=[]  pascal_hits=[]  also_in_scri=[]
+  N=02 scri 130 name='Lock&Load'  raw_hits=[]  pascal_hits=[]  also_in_scri=[]
+  N=03 scri 131 name='They May Be Slow...'  raw_hits=[]  pascal_hits=[]  also_in_scri=[]
+  N=04 scri 132 name='...But They’re Hungry'  raw_hits=[]  pascal_hits=[]  also_in_scri=[]
+  N=05 scri 133 name='Evil Undead Phantasms Must Die!'  raw_hits=[]  pascal_hits=[]  also_in_scri=[]
+  N=06 scri 134 name='Ascension'  raw_hits=[]  pascal_hits=[]  also_in_scri=[]
+  N=07 scri 135 name='Wrong Way!'  raw_hits=[]  pascal_hits=[]  also_in_scri=[]
+  N=08 scri 136 name='Welcome, Tasty Primate'  raw_hits=[]  pascal_hits=[]  also_in_scri=[]
+  N=09 scri 137 name='We Can See In The Dark... Can You?'  raw_hits=[]  pascal_hits=[]  also_in_scri=[]
+  N=10 scri 138 name='Feel The Power'  raw_hits=[]  pascal_hits=[]  also_in_scri=[]
+  N=11 scri 139 name='A Plague of Demons'  raw_hits=[]  pascal_hits=[]  also_in_scri=[]
+  N=12 scri 140 name='Beware of Low-Flying Nightmares'  raw_hits=[]  pascal_hits=[]  also_in_scri=[]
+  N=13 scri 141 name='The Labyrinth'  raw_hits=[]  pascal_hits=[]  also_in_scri=[]
+  N=14 scri 142 name='Happy Happy, Carnage Carnage'  raw_hits=[]  pascal_hits=[]  also_in_scri=[]
+  N=15 scri 143 name='Need A Light?'  raw_hits=[]  pascal_hits=[]  also_in_scri=[]
+  N=16 scri 144 name='Lasciate Ogne Speranza, Voi Ch’Intrate'  raw_hits=[]  pascal_hits=[]  also_in_scri=[]
+  N=17 scri 145 name='Watch Your Step'  raw_hits=[]  pascal_hits=[]  also_in_scri=[]
+  N=18 scri 146 name='I’d Rather Be Surfing'  raw_hits=[]  pascal_hits=[]  also_in_scri=[]
+  N=19 scri 147 name='Warning: Earthquake Zone'  raw_hits=[]  pascal_hits=[]  also_in_scri=[]
+  N=20 scri 148 name='Don’t Get Poisoned'  raw_hits=[]  pascal_hits=[]  also_in_scri=[]
+  N=21 scri 149 name='Please Excuse Our Dust'  raw_hits=[]  pascal_hits=[]  also_in_scri=[]
+  N=22 scri 150 name='But Wait!— That’s Not All!'  raw_hits=[]  pascal_hits=[]  also_in_scri=[]
+  N=23 scri 151 name='Where Only Fool Dare Tread'  raw_hits=[]  pascal_hits=[]  also_in_scri=[]
+  N=24 scri 152 name='Ok, Who Else Wants Some?'  raw_hits=[]  pascal_hits=[]  also_in_scri=[]
+  N=25 scri 153 name='Entrance To Hell'  raw_hits=[]  pascal_hits=[]  also_in_scri=[]
+  N=26 scri 154 name='Search Me!'  raw_hits=[]  pascal_hits=[]  also_in_scri=[]
+  N=27 scri 155 name='Carnage From Above'  raw_hits=[]  pascal_hits=[]  also_in_scri=[]

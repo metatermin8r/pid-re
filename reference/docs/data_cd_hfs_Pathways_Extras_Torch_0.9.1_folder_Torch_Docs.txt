@@ -1,0 +1,216 @@
+Torch 0.9.1
+Ben Semmler — ben@torquerod.com
+14 April 2000
+
+0.9.1 Notes
+ - Memory bloat is now gone; Torch now uses five times less memory.
+ - Speed increases in loading and saving.
+ - Many cosmetic and interface improvements.
+ - Torch can now properly save and close files.
+ - The sector colors can be edited.
+ - Opening a sector or level that is open now brings the window forward, instead of creating a new instance.
+ - New Texture window to edit the level texture info.
+ - The level picture updates when you change a sector's type.
+ - Map file discoveries:
+    - The secret door's additional information indicates the holographic wall.
+    - Most of the texture information has been sorted out.
+    - Only eight unknown bytes left (not counting the dpin resource)!
+ - BUG: The Level Change window displays wrong data when it is first opened.  Just select a different door, and it should fix itself.
+
+About Torch
+Torch is a simple hack to edit the Pathways map file.  A few things to note before you start: Pathways doesn't seem to like when parts of the map has changed.  Therefore, you might crash after changing something.  I have listed below things that have crashed for me, but your results might vary.
+    Special thanks to Loren Petrich, who made his header available.  He really did all of the hard work.
+
+Operating Instructions
+Launch Torch, and open a copy of the map.  If all goes well, you should have a list of the levels, the number of levels, and the file size.  Double click a level name, and a window similar to the one below should appear.
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Name
+Must be under 128 character long.
+
+Number
+The level number.  I don't believe it has to correspond to its position in the file, but I wouldn't chance it.
+
+Height
+The height/depth of the level, multiplied by ten.
+
+Monster
+The available monsters.
+
+Rate
+The value here seems to be related to how fast the monsters regenerate.  Setting this to zero seems to use the "default" number.  It seems that monsters have placement items, not unlike Marathon.  However, monsters will appear in sectors that are not visible to the player, then hunt him down.
+
+Unknown
+There are now eight unknown bytes.  I still suspect these to be longs.  However, changing them seems to do nothing.
+
+Sector Viewer
+The Pathways map is made up of 1024 sectors, arranged in a 32x32 grid.  The Viewer is a visual representation of the level, based on sector type.  Click on a sector to bring up the Sector window.  The listed colors are the defaults.
+    - White: Void (inaccessible)
+    - Black: Normal
+    - Blue: Door
+    - Yellow: Level Change (ladder, teleporter)
+    - Green: Door Trigger
+    - Dark Blue: Secret Door (holographic wall)
+    - Gray: PLSB
+    - Magenta: Pillar
+    - Orange: Other Trigger
+    - Red: Save Rune
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Sector Type
+This is how the sector acts, along with how it should look in the map.  Some types have a slot for additional information.
+
+Additional Info
+This will change, based on the sector type.
+    - Door: Door List Index
+    - Change Level: Change List Index
+    - Door Trigger: Most of these should be self explanatory.  The Open Neighbor Door With Flag checks to see if you have the Alien Gemstone.  I'm assuming that Close with Flag works similarly.  There are a few unknown types: two on Need A Light, probably to check if you have killed the Blue Meanie; a bunch for Watch Your Step, which seem to be related to the purple pods; and three for Lasciate Ogne Speranza, where number one might be something to do with Sentinels.
+    - Secret Door: The which side of the sector the holographic wall is on.
+    - Corpse: The ID of the scri resource.  This number must be 0 to 27 inclusive, otherwise you'll crash.  To have the map draw Carlos, enter 200.
+
+Item Number
+I haven't been able to successfully place items.  My theory is that Pathways has predefined "item groups."  It's very possible that this data is stored in the "dpin" resource in Pathways.
+
+Walls
+Wall X is top wall of the sector, while Wall Y is the left wall.  The others are corners.
+    - Switchable Wall and Variable Wall Corner: These are used on The Labyrinth to change the direction of walls.
+    - Fancy Corners: A normal wall, but there is a different texture in the corners.  These are used everywhere underground.
+    - Short Walls and Cutoff Corners: The Short walls have to coincide with a Cutoff Corner.  Otherwise, you'll get some weird popping.
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Every door in Pathways is defined in a list of doors for that level.  Hit command-D while looking at the Level window to open this list.  Fairly self-explanatory.  The directions are if you are looking down on the map, and not looking at it in the game.
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Just like doors, there is a list of level changes.  The type is for the info window in the game: "Descending to …", etc.  The coordinates are where the player is dropped in the level.
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+The texture window controls the appearance of the levels.  The labels on the side were guesses; they don't seem to hold true.  Select which group of shapes you want to use, and then enter the variation number in the field.  The variation number has to do with the color tables; 0-3 are acceptable values.  Some shapes don't like certain variations.  The floor and ceiling textures are probably in the "dpin" resource.
+
+Additional Notes
+    - The Chain door triggers opens the door with index zero.
+    - I have crashed when a pillar sector has the same item number of another sector.
+
+Version History
+0.9 (1 April 2000)
+    - Initial release.

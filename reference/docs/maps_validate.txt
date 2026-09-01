@@ -1,0 +1,230 @@
+wall_type_violations: 0
+sector_type_violations: 0
+type_addl_violations: 1
+L23('Where Only Fools Dare Tread') sec=897 (1,28) Corpse TypeAddl=200 (not 0-27)
+dest_level_violations: 0
+change_level_links: 121
+ 0 'Ground Floor' ( 4, 1) addl=1 -> L2 'Lock&Load' type=0 xy=(1,30)
+ 0 'Ground Floor' (28, 3) addl=0 -> L1 'Never Stop Firing' type=0 xy=(16,30)
+ 0 'Ground Floor' ( 4,11) addl=2 -> L7 'Wrong Way!' type=1 xy=(14,13)
+ 0 'Ground Floor' (28,11) addl=3 -> L10 'Feel the Power' type=1 xy=(1,28)
+ 1 'Never Stop Firing' (16,30) addl=0 -> L0 'Ground Floor' type=1 xy=(28,3)
+ 2 'Lock&Load' (30, 1) addl=1 -> L3 'They May Be Slow…' type=0 xy=(15,30)
+ 2 'Lock&Load' ( 1,30) addl=0 -> L0 'Ground Floor' type=1 xy=(4,1)
+ 3 'They May Be Slow…' ( 1, 1) addl=1 -> L4 '…But They’re Hungry' type=0 xy=(2,30)
+ 3 'They May Be Slow…' (30, 1) addl=2 -> L4 '…But They’re Hungry' type=0 xy=(29,30)
+ 3 'They May Be Slow…' ( 2,25) addl=3 -> L4 '…But They’re Hungry' type=3 xy=(15,29)
+ 3 'They May Be Slow…' ( 5,25) addl=4 -> L5 'Evil Undead Phantasms Must Die!' type=3 xy=(19,23)
+ 3 'They May Be Slow…' (15,30) addl=0 -> L2 'Lock&Load' type=1 xy=(30,1)
+ 4 '…But They’re Hungry' (24, 5) addl=3 -> L5 'Evil Undead Phantasms Must Die!' type=0 xy=(24,5)
+ 4 '…But They’re Hungry' ( 5,25) addl=2 -> L5 'Evil Undead Phantasms Must Die!' type=0 xy=(5,24)
+ 4 '…But They’re Hungry' (15,29) addl=4 -> L3 'They May Be Slow…' type=2 xy=(2,25)
+ 4 '…But They’re Hungry' ( 2,30) addl=0 -> L3 'They May Be Slow…' type=1 xy=(1,1)
+ 4 '…But They’re Hungry' (29,30) addl=1 -> L3 'They May Be Slow…' type=1 xy=(30,1)
+ 5 'Evil Undead Phantasms Must Die!' (24, 5) addl=1 -> L4 '…But They’re Hungry' type=1 xy=(24,5)
+ 5 'Evil Undead Phantasms Must Die!' (20,21) addl=2 -> L6 'Ascension' type=0 xy=(8,22)
+ 5 'Evil Undead Phantasms Must Die!' (19,23) addl=3 -> L2 'Lock&Load' type=2 xy=(27,2)
+ 5 'Evil Undead Phantasms Must Die!' ( 5,24) addl=0 -> L4 '…But They’re Hungry' type=1 xy=(5,25)
+ 6 'Ascension' ( 8,22) addl=0 -> L5 'Evil Undead Phantasms Must Die!' type=1 xy=(20,21)
+ 7 'Wrong Way!' ( 1, 1) addl=5 -> L8 'Welcome, Tasty Primate' type=1 xy=(1,1)
+ 7 'Wrong Way!' (10, 9) addl=1 -> L8 'Welcome, Tasty Primate' type=1 xy=(9,11)
+ 7 'Wrong Way!' (18, 9) addl=4 -> L8 'Welcome, Tasty Primate' type=1 xy=(17,11)
+ 7 'Wrong Way!' (14,13) addl=0 -> L0 'Ground Floor' type=0 xy=(4,11)
+ 7 'Wrong Way!' (10,17) addl=2 -> L8 'Welcome, Tasty Primate' type=1 xy=(9,19)
+ 7 'Wrong Way!' (18,17) addl=3 -> L8 'Welcome, Tasty Primate' type=1 xy=(17,19)
+ 7 'Wrong Way!' (29,30) addl=6 -> L8 'Welcome, Tasty Primate' type=1 xy=(30,30)
+ 8 'Welcome, Tasty Primate' ( 1, 1) addl=4 -> L7 'Wrong Way!' type=0 xy=(1,1)
+ 8 'Welcome, Tasty Primate' ( 9,11) addl=0 -> L7 'Wrong Way!' type=0 xy=(10,9)
+ 8 'Welcome, Tasty Primate' (17,11) addl=3 -> L7 'Wrong Way!' type=0 xy=(18,9)
+ 8 'Welcome, Tasty Primate' ( 3,17) addl=6 -> L9 'We Can See In The Dark… Can You?' type=1 xy=(4,26)
+ 8 'Welcome, Tasty Primate' ( 9,19) addl=1 -> L7 'Wrong Way!' type=0 xy=(10,17)
+ 8 'Welcome, Tasty Primate' (17,19) addl=2 -> L7 'Wrong Way!' type=0 xy=(18,17)
+ 8 'Welcome, Tasty Primate' (30,30) addl=5 -> L7 'Wrong Way!' type=0 xy=(29,30)
+ 9 'We Can See In The Dark… Can You?' (29,10) addl=2 -> L14 'Happy Happy, Carnage Carnage' type=1 xy=(13,11)
+ 9 'We Can See In The Dark… Can You?' ( 4,26) addl=0 -> L8 'Welcome, Tasty Primate' type=0 xy=(3,17)
+10 'Feel the Power' ( 1, 6) addl=1 -> L11 'A Plague of Demons' type=1 xy=(16,13)
+10 'Feel the Power' ( 1,28) addl=0 -> L0 'Ground Floor' type=0 xy=(28,11)
+11 'A Plague of Demons' ( 1, 9) addl=1 -> L12 'Beware of Low-Flying Nightmares' type=1 xy=(15,16)
+11 'A Plague of Demons' (16,13) addl=0 -> L10 'Feel the Power' type=0 xy=(1,6)
+12 'Beware of Low-Flying Nightmares' (30, 1) addl=1 -> L13 'The Labyrinth' type=1 xy=(16,17)
+12 'Beware of Low-Flying Nightmares' (15,16) addl=0 -> L11 'A Plague of Demons' type=0 xy=(1,9)
+13 'The Labyrinth' ( 1, 1) addl=0 -> L14 'Happy Happy, Carnage Carnage' type=1 xy=(17,11)
+13 'The Labyrinth' (30, 1) addl=1 -> L12 'Beware of Low-Flying Nightmares' type=0 xy=(30,1)
+13 'The Labyrinth' ( 1,30) addl=2 -> L15 'Need a Light?' type=1 xy=(16,14)
+13 'The Labyrinth' (30,30) addl=3 -> L16 'Lasciate Ogne Speranza, Voi Ch’Intrate' type=1 xy=(15,1)
+14 'Happy Happy, Carnage Carnage' (29, 5) addl=2 -> L20 'Don’t Get Poisoned!' type=2 xy=(2,2)
+14 'Happy Happy, Carnage Carnage' (13,11) addl=0 -> L9 'We Can See In The Dark… Can You?' type=0 xy=(29,10)
+14 'Happy Happy, Carnage Carnage' (17,11) addl=1 -> L13 'The Labyrinth' type=0 xy=(16,17)
+14 'Happy Happy, Carnage Carnage' (29,11) addl=4 -> L11 'A Plague of Demons' type=2 xy=(16,9)
+14 'Happy Happy, Carnage Carnage' (29,23) addl=3 -> L20 'Don’t Get Poisoned!' type=2 xy=(2,2)
+15 'Need a Light?' (16,14) addl=0 -> L13 'The Labyrinth' type=0 xy=(16,17)
+16 'Lasciate Ogne Speranza, Voi Ch’Intrate' (15, 1) addl=0 -> L13 'The Labyrinth' type=0 xy=(16,18)
+16 'Lasciate Ogne Speranza, Voi Ch’Intrate' (29, 4) addl=3 -> L18 'I’d Rather Be Surfing' type=1 xy=(8,18)
+16 'Lasciate Ogne Speranza, Voi Ch’Intrate' (10,23) addl=1 -> L17 'Watch Your Step' type=1 xy=(2,20)
+16 'Lasciate Ogne Speranza, Voi Ch’Intrate' (21,25) addl=2 -> L17 'Watch Your Step' type=1 xy=(30,24)
+17 'Watch Your Step' ( 2,20) addl=0 -> L16 'Lasciate Ogne Speranza, Voi Ch’Intrate' type=0 xy=(10,23)
+17 'Watch Your Step' (30,24) addl=1 -> L16 'Lasciate Ogne Speranza, Voi Ch’Intrate' type=0 xy=(21,25)
+18 'I’d Rather Be Surfing' (25, 7) addl=1 -> L19 'Warning: Earthquake Zone' type=1 xy=(13,3)
+18 'I’d Rather Be Surfing' ( 8,18) addl=0 -> L16 'Lasciate Ogne Speranza, Voi Ch’Intrate' type=0 xy=(29,4)
+19 'Warning: Earthquake Zone' (13, 3) addl=1 -> L18 'I’d Rather Be Surfing' type=0 xy=(25,7)
+19 'Warning: Earthquake Zone' (13, 9) addl=0 -> L20 'Don’t Get Poisoned!' type=3 xy=(6,6)
+20 'Don’t Get Poisoned!' ( 4, 7) addl=0 -> L20 'Don’t Get Poisoned!' type=2 xy=(7,21)
+20 'Don’t Get Poisoned!' ( 8, 7) addl=3 -> L20 'Don’t Get Poisoned!' type=2 xy=(7,23)
+20 'Don’t Get Poisoned!' ( 6, 9) addl=4 -> L20 'Don’t Get Poisoned!' type=3 xy=(27,25)
+20 'Don’t Get Poisoned!' ( 9,11) addl=7 -> L20 'Don’t Get Poisoned!' type=2 xy=(25,27)
+20 'Don’t Get Poisoned!' (29,14) addl=10 -> L20 'Don’t Get Poisoned!' type=2 xy=(29,27)
+20 'Don’t Get Poisoned!' ( 7,21) addl=1 -> L20 'Don’t Get Poisoned!' type=3 xy=(4,7)
+20 'Don’t Get Poisoned!' ( 7,23) addl=2 -> L20 'Don’t Get Poisoned!' type=3 xy=(8,7)
+20 'Don’t Get Poisoned!' (27,25) addl=5 -> L20 'Don’t Get Poisoned!' type=3 xy=(6,9)
+20 'Don’t Get Poisoned!' (25,27) addl=6 -> L20 'Don’t Get Poisoned!' type=2 xy=(9,11)
+20 'Don’t Get Poisoned!' (29,27) addl=9 -> L20 'Don’t Get Poisoned!' type=2 xy=(29,14)
+20 'Don’t Get Poisoned!' (18,29) addl=8 -> L21 'Please Excuse Our Dust' type=3 xy=(28,29)
+21 'Please Excuse Our Dust' (12, 2) addl=3 -> L21 'Please Excuse Our Dust' type=2 xy=(29,7)
+21 'Please Excuse Our Dust' (25, 7) addl=0 -> L21 'Please Excuse Our Dust' type=2 xy=(22,11)
+21 'Please Excuse Our Dust' (29, 7) addl=2 -> L21 'Please Excuse Our Dust' type=2 xy=(12,2)
+21 'Please Excuse Our Dust' (27, 9) addl=4 -> L21 'Please Excuse Our Dust' type=3 xy=(3,25)
+21 'Please Excuse Our Dust' (22,11) addl=1 -> L21 'Please Excuse Our Dust' type=2 xy=(25,7)
+21 'Please Excuse Our Dust' (15,18) addl=7 -> L21 'Please Excuse Our Dust' type=3 xy=(1,27)
+21 'Please Excuse Our Dust' ( 3,20) addl=12 -> L22 'But Wait!— That’s Not All!' type=3 xy=(7,10)
+21 'Please Excuse Our Dust' ( 3,25) addl=5 -> L21 'Please Excuse Our Dust' type=3 xy=(27,9)
+21 'Please Excuse Our Dust' ( 1,27) addl=6 -> L21 'Please Excuse Our Dust' type=2 xy=(15,18)
+21 'Please Excuse Our Dust' ( 5,27) addl=8 -> L21 'Please Excuse Our Dust' type=2 xy=(19,30)
+21 'Please Excuse Our Dust' (28,29) addl=13 -> L20 'Don’t Get Poisoned!' type=3 xy=(18,29)
+21 'Please Excuse Our Dust' (19,30) addl=9 -> L21 'Please Excuse Our Dust' type=3 xy=(5,27)
+22 'But Wait!— That’s Not All!' ( 3, 2) addl=4 -> L22 'But Wait!— That’s Not All!' type=3 xy=(28,30)
+22 'But Wait!— That’s Not All!' (29, 2) addl=12 -> L0 'Ground Floor' type=4 xy=(0,0)
+22 'But Wait!— That’s Not All!' ( 1, 4) addl=6 -> L22 'But Wait!— That’s Not All!' type=2 xy=(24,6)
+22 'But Wait!— That’s Not All!' (24, 6) addl=8 -> L0 'Ground Floor' type=4 xy=(0,0)
+22 'But Wait!— That’s Not All!' ( 1, 7) addl=5 -> L22 'But Wait!— That’s Not All!' type=2 xy=(2,12)
+22 'But Wait!— That’s Not All!' ( 3, 9) addl=3 -> L22 'But Wait!— That’s Not All!' type=3 xy=(28,23)
+22 'But Wait!— That’s Not All!' ( 7,10) addl=0 -> L21 'Please Excuse Our Dust' type=3 xy=(2,10)
+22 'But Wait!— That’s Not All!' ( 2,12) addl=7 -> L0 'Ground Floor' type=4 xy=(0,0)
+22 'But Wait!— That’s Not All!' (26,18) addl=13 -> L23 'Where Only Fools Dare Tread' type=3 xy=(23,27)
+22 'But Wait!— That’s Not All!' ( 2,23) addl=10 -> L0 'Ground Floor' type=4 xy=(0,0)
+22 'But Wait!— That’s Not All!' (28,23) addl=2 -> L22 'But Wait!— That’s Not All!' type=3 xy=(3,9)
+22 'But Wait!— That’s Not All!' (30,25) addl=11 -> L22 'But Wait!— That’s Not All!' type=2 xy=(29,2)
+22 'But Wait!— That’s Not All!' (30,28) addl=9 -> L22 'But Wait!— That’s Not All!' type=2 xy=(2,23)
+22 'But Wait!— That’s Not All!' (28,30) addl=1 -> L22 'But Wait!— That’s Not All!' type=3 xy=(3,2)
+23 'Where Only Fools Dare Tread' ( 3, 1) addl=0 -> L23 'Where Only Fools Dare Tread' type=3 xy=(1,3)
+23 'Where Only Fools Dare Tread' ( 9, 1) addl=15 -> L23 'Where Only Fools Dare Tread' type=3 xy=(5,3)
+23 'Where Only Fools Dare Tread' ( 1, 3) addl=1 -> L23 'Where Only Fools Dare Tread' type=2 xy=(3,7)
+23 'Where Only Fools Dare Tread' ( 5, 3) addl=3 -> L23 'Where Only Fools Dare Tread' type=2 xy=(9,7)
+23 'Where Only Fools Dare Tread' ( 7, 3) addl=12 -> L24 'Ok, Who Else Wants Some?' type=2 xy=(14,19)
+23 'Where Only Fools Dare Tread' (11, 3) addl=14 -> L23 'Where Only Fools Dare Tread' type=2 xy=(9,7)
+23 'Where Only Fools Dare Tread' ( 3, 5) addl=2 -> L23 'Where Only Fools Dare Tread' type=3 xy=(3,1)
+23 'Where Only Fools Dare Tread' ( 9, 5) addl=13 -> L23 'Where Only Fools Dare Tread' type=3 xy=(5,9)
+23 'Where Only Fools Dare Tread' ( 3, 7) addl=4 -> L23 'Where Only Fools Dare Tread' type=3 xy=(3,5)
+23 'Where Only Fools Dare Tread' ( 9, 7) addl=8 -> L23 'Where Only Fools Dare Tread' type=3 xy=(1,9)
+23 'Where Only Fools Dare Tread' ( 1, 9) addl=5 -> L23 'Where Only Fools Dare Tread' type=2 xy=(7,9)
+23 'Where Only Fools Dare Tread' ( 5, 9) addl=7 -> L23 'Where Only Fools Dare Tread' type=2 xy=(7,3)
+23 'Where Only Fools Dare Tread' ( 7, 9) addl=9 -> L23 'Where Only Fools Dare Tread' type=2 xy=(3,11)
+23 'Where Only Fools Dare Tread' (11, 9) addl=11 -> L23 'Where Only Fools Dare Tread' type=2 xy=(3,1)
+23 'Where Only Fools Dare Tread' (13, 9) addl=16 -> L23 'Where Only Fools Dare Tread' type=2 xy=(11,9)
+23 'Where Only Fools Dare Tread' ( 3,11) addl=6 -> L23 'Where Only Fools Dare Tread' type=3 xy=(9,11)
+23 'Where Only Fools Dare Tread' ( 9,11) addl=10 -> L23 'Where Only Fools Dare Tread' type=3 xy=(11,9)
+23 'Where Only Fools Dare Tread' (23,27) addl=17 -> L22 'But Wait!— That’s Not All!' type=3 xy=(26,18)
+24 'Ok, Who Else Wants Some?' ( 3, 4) addl=1 -> L18 'I’d Rather Be Surfing' type=3 xy=(2,2)
+24 'Ok, Who Else Wants Some?' (14,13) addl=0 -> L24 'Ok, Who Else Wants Some?' type=3 xy=(14,19)
+
+levels=25
+
+## 00 Ground Floor  height10=0  lv#=0
+  types: void=810 normal=160 door=3 change_level=4 door_trigger=3 corpse=1 pillar=39 save=4
+  save=4 corpse=1 change_level=4 door=3 secret_door=0
+
+## 01 Never Stop Firing  height10=27  lv#=1
+  types: void=546 normal=447 door=5 change_level=1 door_trigger=7 pillar=17 save=1
+  save=1 corpse=0 change_level=1 door=5 secret_door=0
+
+## 02 Lock&Load  height10=27  lv#=2
+  types: void=524 normal=390 door=11 change_level=2 door_trigger=11 corpse=2 pillar=73 other_trigger=8 save=3
+  save=3 corpse=2 change_level=2 door=11 secret_door=0
+
+## 03 They May Be Slow…  height10=68  lv#=3
+  types: void=568 normal=343 change_level=5 secret_door=3 corpse=2 pillar=101 save=2
+  save=2 corpse=2 change_level=5 door=0 secret_door=3
+
+## 04 …But They’re Hungry  height10=90  lv#=4
+  types: void=520 normal=417 door=2 change_level=5 door_trigger=2 secret_door=1 corpse=1 pillar=74 save=2
+  save=2 corpse=1 change_level=5 door=2 secret_door=1
+
+## 05 Evil Undead Phantasms Must Die!  height10=113  lv#=5
+  types: void=461 normal=556 change_level=4 secret_door=1 corpse=1 save=1
+  save=1 corpse=1 change_level=4 door=0 secret_door=1
+
+## 06 Ascension  height10=136  lv#=6
+  types: void=829 normal=125 door=6 change_level=1 door_trigger=6 corpse=1 pillar=44 other_trigger=11 save=1
+  save=1 corpse=1 change_level=1 door=6 secret_door=0
+
+## 07 Wrong Way!  height10=-24  lv#=7
+  types: void=509 normal=437 door=15 change_level=7 door_trigger=29 corpse=1 pillar=24 save=2
+  save=2 corpse=1 change_level=7 door=15 secret_door=0
+
+## 08 Welcome, Tasty Primate  height10=-48  lv#=8
+  types: void=565 normal=370 door=1 change_level=7 door_trigger=2 corpse=1 pillar=76 save=2
+  save=2 corpse=1 change_level=7 door=1 secret_door=0
+
+## 09 We Can See In The Dark… Can You?  height10=-70  lv#=9
+  types: void=609 normal=388 change_level=2 corpse=1 pillar=22 save=2
+  save=2 corpse=1 change_level=2 door=0 secret_door=0
+
+## 10 Feel the Power  height10=-24  lv#=10
+  types: void=450 normal=569 change_level=2 corpse=1 save=2
+  save=2 corpse=1 change_level=2 door=0 secret_door=0
+
+## 11 A Plague of Demons  height10=-45  lv#=11
+  types: void=487 normal=516 door=6 change_level=2 door_trigger=10 corpse=1 save=2
+  save=2 corpse=1 change_level=2 door=6 secret_door=0
+
+## 12 Beware of Low-Flying Nightmares  height10=-75  lv#=12
+  types: void=503 normal=462 door=9 change_level=2 door_trigger=16 corpse=1 pillar=29 save=2
+  save=2 corpse=1 change_level=2 door=9 secret_door=0
+
+## 13 The Labyrinth  height10=-91  lv#=13
+  types: void=499 normal=521 change_level=4
+  save=0 corpse=0 change_level=4 door=0 secret_door=0
+
+## 14 Happy Happy, Carnage Carnage  height10=-126  lv#=14
+  types: void=578 normal=407 door=7 change_level=5 door_trigger=8 secret_door=1 corpse=5 pillar=12 save=1
+  save=1 corpse=5 change_level=5 door=7 secret_door=1
+
+## 15 Need a Light?  height10=-123  lv#=15
+  types: void=519 normal=447 door=8 change_level=1 door_trigger=17 corpse=5 pillar=26 save=1
+  save=1 corpse=5 change_level=1 door=8 secret_door=0
+
+## 16 Lasciate Ogne Speranza, Voi Ch’Intrate  height10=-128  lv#=16
+  types: void=552 normal=350 change_level=4 door_trigger=4 pillar=110 save=4
+  save=4 corpse=0 change_level=4 door=0 secret_door=0
+
+## 17 Watch Your Step  height10=-153  lv#=17
+  types: void=528 normal=379 change_level=2 door_trigger=52 corpse=1 pillar=61 save=1
+  save=1 corpse=1 change_level=2 door=0 secret_door=0
+
+## 18 I’d Rather Be Surfing  height10=-192  lv#=18
+  types: void=503 normal=445 door=7 change_level=2 door_trigger=8 corpse=1 pillar=56 save=2
+  save=2 corpse=1 change_level=2 door=7 secret_door=0
+
+## 19 Warning: Earthquake Zone  height10=-227  lv#=19
+  types: void=852 normal=75 door=7 change_level=2 door_trigger=11 corpse=1 pillar=54 other_trigger=20 save=2
+  save=2 corpse=1 change_level=2 door=7 secret_door=0
+
+## 20 Don’t Get Poisoned!  height10=-10424  lv#=20
+  types: void=587 normal=410 change_level=11 pillar=15 save=1
+  save=1 corpse=0 change_level=11 door=0 secret_door=0
+
+## 21 Please Excuse Our Dust  height10=-1025  lv#=21
+  types: void=495 normal=501 change_level=12 pillar=15 save=1
+  save=1 corpse=0 change_level=12 door=0 secret_door=0
+
+## 22 But Wait!— That’s Not All!  height10=-3272  lv#=22
+  types: void=528 normal=349 door=11 change_level=14 door_trigger=16 pillar=105 save=1
+  save=1 corpse=0 change_level=14 door=11 secret_door=0
+
+## 23 Where Only Fools Dare Tread  height10=-3267  lv#=23
+  types: void=505 normal=421 change_level=18 corpse=2 pillar=75 save=3
+  save=3 corpse=2 change_level=18 door=0 secret_door=0
+
+## 24 Ok, Who Else Wants Some?  height10=-32768  lv#=24
+  types: void=843 normal=177 change_level=2 pillar=2
+  save=0 corpse=0 change_level=2 door=0 secret_door=0
+

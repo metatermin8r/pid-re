@@ -1,0 +1,236 @@
+Pathways Into Darkness 1.0
+
+--------------------------
+
+   # disable modification checking code
+
+     - CODE 1, offset 02E0
+
+       - change 67
+
+             to 60
+
+   # bypass monster sequence dialog
+
+     - CODE 2, offset 11E6
+
+       - change 4EAD 04EA 7200 3200 4A81
+
+             to 1D7C 0000 FFF2 6000 00F8
+
+
+
+
+
+Pathways Into Darkness 1.1
+
+--------------------------
+
+   # disable modification checking code
+
+     - CODE 1, offset 02CE
+
+       - change 67
+
+             to 60
+
+   # bypass monster sequence dialog
+
+     - CODE 2, offset 11EC
+
+       - change 4EAD 04E2
+
+             to 6600 012C
+
+   # fix "Divide By Zero" bug
+
+     - CODE 5, offset 4BD4
+
+       - change 3228 0006 48C1
+
+             to 7200 3228 0006
+
+     - CODE 5, offset 4BFE
+
+       - change 3228 0006 48C1
+
+             to 7200 3228 0006
+
+     - CODE 5, offset 4C28
+
+       - change 3228 0006 48C1
+
+             to 7200 3228 0006
+
+   # Allows save anywhere, not just at a save rune
+
+     - CODE 2, offset 0706
+
+       - change 6716
+
+             to 6516
+
+   ? Gives whatever weapon you have unlimited ammo
+
+     - CODE 6, offset 5952
+
+       - change 6774
+
+             to 6074
+
+   ? increase healing rate by a factor of six & adjust internal
+
+     game time to compensate
+
+     - CODE 7, offset 2404
+
+       - change 0006
+
+             to 0002
+
+     - CODE 7, offset 3410
+
+       - change 6270
+
+             to 20D0
+
+     - CODE 7, offset 2608
+
+       - change 6270
+
+             to 20D0
+
+     - CODE 7, offset 2618
+
+       - change 6270
+
+             to 20D0
+
+     - CODE 7, offset 262C
+
+       - change 3138
+
+             to 1068
+
+     - CODE 7, offset 263A
+
+       - change 6270
+
+             to 20D0
+
+     - CODE 7, offset 2C0A
+
+       - change 0006 9780
+
+             to 0002 3280
+
+     - CODE 7, offset 2C16
+
+       - change 0009 E340
+
+             to 0003 4BC0
+
+   ? increase maximum health points accrued based on treasure
+
+     picked up
+
+     - CODE 6, offset 2210
+
+       - change E588
+
+             to E788
+
+     - CODE 6, offset 221C
+
+       - change 003C
+
+             to 0064
+
+   ? increase efficacy of Violet Potion by x4
+
+     - CODE 6, offset 230D
+
+       - change 3C
+
+             to 0F
+
+   ? increase game speed by removing multiple key checking
+
+     - CODE 1, offset 0352
+
+       - change C046
+
+             to 4240
+
+   # a special "Terminator" set of saved games (1500 hp, lots of
+
+     weaponry, extra crystals, etc) is available from me by sending
+
+     some mail to my address, geoff@tara.apana.org.au
+
+
+
+
+
+Pathways Into Darkness 2.0 (PPC)
+
+--------------------------------
+
+   ? bypasses manual-look-up
+
+     - open the data fork with a sector editor
+
+     - offset $000184D4 (# 99540)
+
+     - change 4182 02EC
+
+           to 4800 02EC
+
+     - offset $0001B55C (#111964)
+
+     - change 4180 0030
+
+           to 4800 0030
+
+   ? activate hidden 'turbo' modes
+
+     - during game play, hold down Control and type:
+
+       - turbo (puts game into high speed)
+
+       - carnage (shows 'score' screen)
+
+       - reset (resets time-elapsed clock)
+
+
+
+
+
+Pathways Into Darkness 2.0 (68k)
+
+--------------------------------
+
+   ? bypasses manual-look-up
+
+     - CODE 1, offset 0396
+
+       - change 6D
+
+             to 60
+
+     - CODE 2, offset 10C4
+
+       - change 67
+
+             to 60
+
+   ? activate hidden 'turbo' modes
+
+     - during game play, hold down Control and type:
+
+       - turbo (puts game into high speed)
+
+       - carnage (extra monsters?)
+
+       - reset (resets time-elapsed clock)
+

@@ -1,0 +1,3 @@
+# C:/Users/Colton S Covert/Documents/GitHub/Pathways-Into-Darkness-Unity/data/hfs/Installer_Disk_1/Pathways Installer
+size: 689610
+no resource map

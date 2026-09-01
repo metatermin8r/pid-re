@@ -1,0 +1,2377 @@
+scan_root: C:\Users\Colton S Covert\Documents\GitHub\Pathways-Into-Darkness-Unity\data\cd
+file_count: 162
+
+path	size	hidden_or_dot	zero_data_fork	has_rsrc_sibling_or_map
+hfs/Installer_Disk_1/Pathways Installer	689610	False	False	True
+hfs/Installer_Disk_1/Pathways Installer.rsrc	76894	False	False	True
+hfs/Installer_Disk_2/Pathways Installer.2	767953	False	False	False
+hfs/Installer_Disk_3/Pathways Installer.3	520633	False	False	False
+hfs/Installer_Disk_3/Sound Manager 3.0/Sound Manager.rsrc	76993	False	False	True
+hfs/Installer_Disk_3/Sound Manager 3.0/Sound.rsrc	46485	False	False	True
+hfs/Installer_Disk_3/Sound Manager 3.0 READ ME	1310	False	False	False
+hfs/Pathways_1995/Bomb Code	321	False	False	False
+hfs/Pathways_1995/DesktopPrinters DB.rsrc	286	False	False	True
+hfs/Pathways_1995/Maps	420850	False	False	False
+hfs/Pathways_1995/OpenFolderListDF.rsrc	286	False	False	True
+hfs/Pathways_1995/Pathways Into Darkness	213600	False	False	True
+hfs/Pathways_1995/Pathways Into Darkness.rsrc	482440	False	False	True
+hfs/Pathways_1995/Pathways Manual.rsrc	721825	False	False	True
+hfs/Pathways_1995/Shapes.rsrc	1872611	False	False	True
+hfs/Pathways_1995/Sounds.rsrc	729990	False	False	True
+hfs/Pathways_Extras/Pathways GamePad Set	1080	False	False	False
+hfs/Pathways_Extras/Pathways Guide v1.1.rsrc	756603	False	False	True
+hfs/Pathways_Extras/Pathways Into Cheating ƒ/Pathways Into Cheating.rsrc	46982	False	False	True
+hfs/Pathways_Extras/Pathways Into Cheating ƒ/Read Me	3624	False	False	False
+hfs/Pathways_Extras/PID_Docs Folder/PIDMapReader.cp	754	False	False	True
+hfs/Pathways_Extras/PID_Docs Folder/PIDMapReader.cp.rsrc	410	False	False	True
+hfs/Pathways_Extras/PID_Docs Folder/PIDMapReader.h	6650	False	False	True
+hfs/Pathways_Extras/PID_Docs Folder/PIDMapReader.h.rsrc	410	False	False	True
+hfs/Pathways_Extras/PID_Docs Folder/Read Me	707	False	False	True
+hfs/Pathways_Extras/PID_Docs Folder/Read Me.rsrc	332	False	False	True
+hfs/Pathways_Extras/PID_Docs Folder/sector_types_sqr.gif	34618	False	False	True
+hfs/Pathways_Extras/PID_Docs Folder/sector_types_sqr.gif.rsrc	14914	False	False	True
+hfs/Pathways_Extras/PID_Docs Folder/SimpleVec.h	3435	False	False	True
+hfs/Pathways_Extras/PID_Docs Folder/SimpleVec.h.rsrc	410	False	False	True
+hfs/Pathways_Extras/pidmaps/pid maps/ascension.pict	45920	False	False	True
+hfs/Pathways_Extras/pidmaps/pid maps/ascension.pict.rsrc	6349	False	False	True
+hfs/Pathways_Extras/pidmaps/pid maps/beware_of.pict	57166	False	False	True
+hfs/Pathways_Extras/pidmaps/pid maps/beware_of.pict.rsrc	6629	False	False	True
+hfs/Pathways_Extras/pidmaps/pid maps/but_wait_a.pict	44732	False	False	True
+hfs/Pathways_Extras/pidmaps/pid maps/but_wait_a.pict.rsrc	6281	False	False	True
+hfs/Pathways_Extras/pidmaps/pid maps/but_wait_b.pict	44146	False	False	True
+hfs/Pathways_Extras/pidmaps/pid maps/but_wait_b.pict.rsrc	6287	False	False	True
+hfs/Pathways_Extras/pidmaps/pid maps/dark.pict	58122	False	False	True
+hfs/Pathways_Extras/pidmaps/pid maps/dark.pict.rsrc	6667	False	False	True
+hfs/Pathways_Extras/pidmaps/pid maps/dust.pict	44884	False	False	True
+hfs/Pathways_Extras/pidmaps/pid maps/dust.pict.rsrc	6389	False	False	True
+hfs/Pathways_Extras/pidmaps/pid maps/earthquake_zone.pict	46674	False	False	True
+hfs/Pathways_Extras/pidmaps/pid maps/earthquake_zone.pict.rsrc	6287	False	False	True
+hfs/Pathways_Extras/pidmaps/pid maps/evil_undead.pict	56276	False	False	True
+hfs/Pathways_Extras/pidmaps/pid maps/evil_undead.pict.rsrc	6529	False	False	True
+hfs/Pathways_Extras/pidmaps/pid maps/fools_dare_tread.pict	55802	False	False	True
+hfs/Pathways_Extras/pidmaps/pid maps/fools_dare_tread.pict.rsrc	6577	False	False	True
+hfs/Pathways_Extras/pidmaps/pid maps/ground_floor.pict	46154	False	False	True
+hfs/Pathways_Extras/pidmaps/pid maps/ground_floor.pict.rsrc	6377	False	False	True
+hfs/Pathways_Extras/pidmaps/pid maps/happy_carnage.pict	53962	False	False	True
+hfs/Pathways_Extras/pidmaps/pid maps/happy_carnage.pict.rsrc	6573	False	False	True
+hfs/Pathways_Extras/pidmaps/pid maps/hungry.pict	58666	False	False	True
+hfs/Pathways_Extras/pidmaps/pid maps/hungry.pict.rsrc	6637	False	False	True
+hfs/Pathways_Extras/pidmaps/pid maps/lasciate.pict	59704	False	False	True
+hfs/Pathways_Extras/pidmaps/pid maps/lasciate.pict.rsrc	6637	False	False	True
+hfs/Pathways_Extras/pidmaps/pid maps/lock&load.pict	56998	False	False	True
+hfs/Pathways_Extras/pidmaps/pid maps/lock&load.pict.rsrc	6569	False	False	True
+hfs/Pathways_Extras/pidmaps/pid maps/need_a_light.pict	52946	False	False	True
+hfs/Pathways_Extras/pidmaps/pid maps/need_a_light.pict.rsrc	6553	False	False	True
+hfs/Pathways_Extras/pidmaps/pid maps/never_stop_firing.pict	56604	False	False	True
+hfs/Pathways_Extras/pidmaps/pid maps/never_stop_firing.pict.rsrc	6637	False	False	True
+hfs/Pathways_Extras/pidmaps/pid maps/plague_of_demons.pict	55834	False	False	True
+hfs/Pathways_Extras/pidmaps/pid maps/plague_of_demons.pict.rsrc	6581	False	False	True
+hfs/Pathways_Extras/pidmaps/pid maps/poisoned_a.pict	45698	False	False	True
+hfs/Pathways_Extras/pidmaps/pid maps/poisoned_a.pict.rsrc	6409	False	False	True
+hfs/Pathways_Extras/pidmaps/pid maps/poisoned_b.pict	48294	False	False	True
+hfs/Pathways_Extras/pidmaps/pid maps/poisoned_b.pict.rsrc	6475	False	False	True
+hfs/Pathways_Extras/pidmaps/pid maps/power.pict	53954	False	False	True
+hfs/Pathways_Extras/pidmaps/pid maps/power.pict.rsrc	6575	False	False	True
+hfs/Pathways_Extras/pidmaps/pid maps/slow.pict	55980	False	False	True
+hfs/Pathways_Extras/pidmaps/pid maps/slow.pict.rsrc	6561	False	False	True
+hfs/Pathways_Extras/pidmaps/pid maps/step.pict	57340	False	False	True
+hfs/Pathways_Extras/pidmaps/pid maps/step.pict.rsrc	6569	False	False	True
+hfs/Pathways_Extras/pidmaps/pid maps/summary.pict	47624	False	False	True
+hfs/Pathways_Extras/pidmaps/pid maps/summary.pict.rsrc	6857	False	False	True
+hfs/Pathways_Extras/pidmaps/pid maps/surfing.pict	55946	False	False	True
+hfs/Pathways_Extras/pidmaps/pid maps/surfing.pict.rsrc	6563	False	False	True
+hfs/Pathways_Extras/pidmaps/pid maps/welcome_tasty.pict	58250	False	False	True
+hfs/Pathways_Extras/pidmaps/pid maps/welcome_tasty.pict.rsrc	6651	False	False	True
+hfs/Pathways_Extras/pidmaps/pid maps/wrong_way.pict	56548	False	False	True
+hfs/Pathways_Extras/pidmaps/pid maps/wrong_way.pict.rsrc	6615	False	False	True
+hfs/Pathways_Extras/pidmaps/README	2245	False	False	False
+hfs/Pathways_Extras/PIDMaps Folder/Descriptions	7696	False	False	True
+hfs/Pathways_Extras/PIDMaps Folder/Descriptions.rsrc	1312	False	False	True
+hfs/Pathways_Extras/PIDMaps Folder/Hex reps_notes	1304	False	False	True
+hfs/Pathways_Extras/PIDMaps Folder/Hex reps_notes.rsrc	1332	False	False	True
+hfs/Pathways_Extras/PIDMaps Folder/PID Maps/A Plague of Demons	11921	False	False	True
+hfs/Pathways_Extras/PIDMaps Folder/PID Maps/A Plague of Demons.rsrc	286	False	False	True
+hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Ascension	8211	False	False	True
+hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Ascension.rsrc	286	False	False	True
+hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Beware of Low-Flying Nightmares	13387	False	False	True
+hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Beware of Low-Flying Nightmares.rsrc	286	False	False	True
+hfs/Pathways_Extras/PIDMaps Folder/PID Maps/But Wait!- That's Not All!	14016	False	False	True
+hfs/Pathways_Extras/PIDMaps Folder/PID Maps/But Wait!- That's Not All!.rsrc	286	False	False	True
+hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Don't Get Poisoned	12719	False	False	True
+hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Don't Get Poisoned.rsrc	286	False	False	True
+hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Evil Undead Phantasms Must Die!	12440	False	False	True
+hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Evil Undead Phantasms Must Die!.rsrc	286	False	False	True
+hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Feel The Power	10519	False	False	True
+hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Feel The Power.rsrc	286	False	False	True
+hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Ground Floor	8956	False	False	True
+hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Ground Floor.rsrc	286	False	False	True
+hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Happy Happy, Carnage Carnage	13037	False	False	True
+hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Happy Happy, Carnage Carnage.rsrc	286	False	False	True
+hfs/Pathways_Extras/PIDMaps Folder/PID Maps/I'd Rather Be Surfing	12900	False	False	True
+hfs/Pathways_Extras/PIDMaps Folder/PID Maps/I'd Rather Be Surfing.rsrc	286	False	False	True
+hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Lasciate Ogne Speranza, Voi Ch…	13817	False	False	True
+hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Lasciate Ogne Speranza, Voi Ch….rsrc	286	False	False	True
+hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Lock&Load	13707	False	False	True
+hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Lock&Load.rsrc	286	False	False	True
+hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Need A Light_	10615	False	False	True
+hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Need A Light_.rsrc	286	False	False	True
+hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Never Stop Firing	13113	False	False	True
+hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Never Stop Firing.rsrc	286	False	False	True
+hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Please Excuse Our Dust	11311	False	False	True
+hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Please Excuse Our Dust.rsrc	286	False	False	True
+hfs/Pathways_Extras/PIDMaps Folder/PID Maps/They May Be Slow…	13720	False	False	True
+hfs/Pathways_Extras/PIDMaps Folder/PID Maps/They May Be Slow….rsrc	286	False	False	True
+hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Warning- Earthquake Zone	8528	False	False	True
+hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Warning- Earthquake Zone.rsrc	286	False	False	True
+hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Watch Your Step	12552	False	False	True
+hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Watch Your Step.rsrc	286	False	False	True
+hfs/Pathways_Extras/PIDMaps Folder/PID Maps/We Can See In The Dark… Can Yo…	13546	False	False	True
+hfs/Pathways_Extras/PIDMaps Folder/PID Maps/We Can See In The Dark… Can Yo….rsrc	286	False	False	True
+hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Welcome, Tasty Primate	13625	False	False	True
+hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Welcome, Tasty Primate.rsrc	286	False	False	True
+hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Where Only Fools Dare Tread	14390	False	False	True
+hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Where Only Fools Dare Tread.rsrc	286	False	False	True
+hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Wrong Way!	13188	False	False	True
+hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Wrong Way!.rsrc	286	False	False	True
+hfs/Pathways_Extras/PIDMaps Folder/PID Maps/…But They're Hungry	14045	False	False	True
+hfs/Pathways_Extras/PIDMaps Folder/PID Maps/…But They're Hungry.rsrc	286	False	False	True
+hfs/Pathways_Extras/Torch 0.9.1 folder/Torch 0.9.1	260192	False	False	True
+hfs/Pathways_Extras/Torch 0.9.1 folder/Torch 0.9.1.rsrc	541585	False	False	True
+hfs/Pathways_Extras/Torch 0.9.1 folder/Torch Docs	5609	False	False	True
+hfs/Pathways_Extras/Torch 0.9.1 folder/Torch Docs.rsrc	81238	False	False	True
+pathwaysintodarkness/checksum.md5	106	False	False	False
+pathwaysintodarkness/docs_1994/HintBook.pdf	11279057	False	False	False
+pathwaysintodarkness/docs_1994/Manual.pdf	6423653	False	False	False
+pathwaysintodarkness/docs_1994/Package.pdf	3422665	False	False	False
+pathwaysintodarkness/docs_web/-cheats.txt	4051	False	False	False
+pathwaysintodarkness/docs_web/-hacks.txt	3499	False	False	False
+pathwaysintodarkness/docs_web/BasicSurvivalGuide_1_1.txt	26047	False	False	False
+pathwaysintodarkness/docs_web/boxfront_1993.jpg	528001	False	False	False
+pathwaysintodarkness/docs_web/boxrear_1993.jpg	537490	False	False	False
+pathwaysintodarkness/docs_web/DeadScriptsDescrip.txt	1291	False	False	False
+pathwaysintodarkness/docs_web/DeadScriptsPart1.txt	13153	False	False	False
+pathwaysintodarkness/docs_web/DeadScriptsPart2.txt	14117	False	False	False
+pathwaysintodarkness/docs_web/Ident256ShapeRsrcs.txt	2881	False	False	False
+pathwaysintodarkness/docs_web/ItemCheatFile_3_10.txt	35077	False	False	False
+pathwaysintodarkness/docs_web/Namedroppers.txt	5434	False	False	False
+pathwaysintodarkness/docs_web/PointTotalsSpoilers.txt	7485	False	False	False
+pathwaysintodarkness/docs_web/SuperdudeSavedGame.txt	101453	False	False	False
+pathwaysintodarkness/docs_web/Walkthrough.txt	20380	False	False	False
+pathwaysintodarkness/floppies_1994/about.txt	150	False	False	False
+pathwaysintodarkness/floppies_1994/checksum_floppies.md5	165	False	False	False
+pathwaysintodarkness/floppies_1994/Installer_Disk_1.dsk	819200	False	False	False
+pathwaysintodarkness/floppies_1994/Installer_Disk_2.dsk	819200	False	False	False
+pathwaysintodarkness/floppies_1994/Installer_Disk_3.dsk	819200	False	False	False
+pathwaysintodarkness/Pathways_1995.dsk	4620288	False	False	False
+pathwaysintodarkness/Pathways_Extras.dsk	3834880	False	False	False
+
+=== resource type union ===
+
+'.256'
+  hfs/Pathways_1995/Shapes.rsrc x50
+'8BIM'
+  hfs/Pathways_Extras/PID_Docs Folder/sector_types_sqr.gif.rsrc x11
+'ALRT'
+  hfs/Installer_Disk_1/Pathways Installer.rsrc x16
+  hfs/Installer_Disk_3/Sound Manager 3.0/Sound.rsrc x3
+  hfs/Pathways_1995/Pathways Into Darkness.rsrc x15
+  hfs/Pathways_1995/Pathways Manual.rsrc x1
+  hfs/Pathways_Extras/Pathways Guide v1.1.rsrc x1
+  hfs/Pathways_Extras/Pathways Into Cheating ƒ/Pathways Into Cheating.rsrc x3
+  hfs/Pathways_Extras/Torch 0.9.1 folder/Torch 0.9.1.rsrc x3
+'BNDL'
+  hfs/Installer_Disk_1/Pathways Installer.rsrc x1
+  hfs/Installer_Disk_3/Sound Manager 3.0/Sound Manager.rsrc x1
+  hfs/Installer_Disk_3/Sound Manager 3.0/Sound.rsrc x1
+  hfs/Pathways_1995/Pathways Into Darkness.rsrc x1
+  hfs/Pathways_1995/Pathways Manual.rsrc x1
+  hfs/Pathways_Extras/Pathways Guide v1.1.rsrc x1
+  hfs/Pathways_Extras/Pathways Into Cheating ƒ/Pathways Into Cheating.rsrc x1
+  hfs/Pathways_Extras/Torch 0.9.1 folder/Torch 0.9.1.rsrc x1
+'CDEF'
+  hfs/Installer_Disk_3/Sound Manager 3.0/Sound.rsrc x1
+'cdev'
+  hfs/Installer_Disk_3/Sound Manager 3.0/Sound.rsrc x1
+'cfrg'
+  hfs/Pathways_1995/Pathways Into Darkness.rsrc x1
+  hfs/Pathways_Extras/Torch 0.9.1 folder/Torch 0.9.1.rsrc x1
+'cicn'
+  hfs/Installer_Disk_1/Pathways Installer.rsrc x1
+  hfs/Pathways_1995/Pathways Into Darkness.rsrc x2
+'Clea'
+  hfs/Installer_Disk_1/Pathways Installer.rsrc x1
+'clut'
+  hfs/Pathways_1995/Pathways Into Darkness.rsrc x9
+  hfs/Pathways_Extras/pidmaps/pid maps/ascension.pict.rsrc x3
+  hfs/Pathways_Extras/pidmaps/pid maps/beware_of.pict.rsrc x3
+  hfs/Pathways_Extras/pidmaps/pid maps/but_wait_a.pict.rsrc x3
+  hfs/Pathways_Extras/pidmaps/pid maps/but_wait_b.pict.rsrc x3
+  hfs/Pathways_Extras/pidmaps/pid maps/dark.pict.rsrc x3
+  hfs/Pathways_Extras/pidmaps/pid maps/dust.pict.rsrc x3
+  hfs/Pathways_Extras/pidmaps/pid maps/earthquake_zone.pict.rsrc x3
+  hfs/Pathways_Extras/pidmaps/pid maps/evil_undead.pict.rsrc x3
+  hfs/Pathways_Extras/pidmaps/pid maps/fools_dare_tread.pict.rsrc x3
+  hfs/Pathways_Extras/pidmaps/pid maps/ground_floor.pict.rsrc x3
+  hfs/Pathways_Extras/pidmaps/pid maps/happy_carnage.pict.rsrc x3
+  hfs/Pathways_Extras/pidmaps/pid maps/hungry.pict.rsrc x3
+  hfs/Pathways_Extras/pidmaps/pid maps/lasciate.pict.rsrc x3
+  hfs/Pathways_Extras/pidmaps/pid maps/lock&load.pict.rsrc x3
+  hfs/Pathways_Extras/pidmaps/pid maps/need_a_light.pict.rsrc x3
+  hfs/Pathways_Extras/pidmaps/pid maps/never_stop_firing.pict.rsrc x3
+  hfs/Pathways_Extras/pidmaps/pid maps/plague_of_demons.pict.rsrc x3
+  hfs/Pathways_Extras/pidmaps/pid maps/poisoned_a.pict.rsrc x3
+  hfs/Pathways_Extras/pidmaps/pid maps/poisoned_b.pict.rsrc x3
+  hfs/Pathways_Extras/pidmaps/pid maps/power.pict.rsrc x3
+  hfs/Pathways_Extras/pidmaps/pid maps/slow.pict.rsrc x3
+  hfs/Pathways_Extras/pidmaps/pid maps/step.pict.rsrc x3
+  hfs/Pathways_Extras/pidmaps/pid maps/summary.pict.rsrc x3
+  hfs/Pathways_Extras/pidmaps/pid maps/surfing.pict.rsrc x3
+  hfs/Pathways_Extras/pidmaps/pid maps/welcome_tasty.pict.rsrc x3
+  hfs/Pathways_Extras/pidmaps/pid maps/wrong_way.pict.rsrc x3
+'cnt#'
+  hfs/Pathways_Extras/Pathways Guide v1.1.rsrc x1
+'CNTL'
+  hfs/Pathways_1995/Pathways Manual.rsrc x2
+  hfs/Pathways_Extras/Pathways Guide v1.1.rsrc x3
+  hfs/Pathways_Extras/Pathways Into Cheating ƒ/Pathways Into Cheating.rsrc x1
+'CODE'
+  hfs/Installer_Disk_1/Pathways Installer.rsrc x3
+  hfs/Pathways_1995/Pathways Into Darkness.rsrc x17
+  hfs/Pathways_1995/Pathways Manual.rsrc x12
+  hfs/Pathways_Extras/Pathways Guide v1.1.rsrc x13
+  hfs/Pathways_Extras/Pathways Into Cheating ƒ/Pathways Into Cheating.rsrc x4
+'Colr'
+  hfs/Installer_Disk_1/Pathways Installer.rsrc x1
+'cPPC'
+  hfs/Pathways_Extras/Torch 0.9.1 folder/Torch 0.9.1.rsrc x1
+'crsr'
+  hfs/Pathways_1995/Pathways Into Darkness.rsrc x9
+'CURS'
+  hfs/Pathways_Extras/Torch 0.9.1 folder/Torch 0.9.1.rsrc x1
+'DATA'
+  hfs/Installer_Disk_1/Pathways Installer.rsrc x1
+  hfs/Pathways_Extras/Pathways Into Cheating ƒ/Pathways Into Cheating.rsrc x1
+'DCMP'
+  hfs/Installer_Disk_1/Pathways Installer.rsrc x1
+'dcmp'
+  hfs/Pathways_Extras/Torch 0.9.1 folder/Torch 0.9.1.rsrc x1
+'dctb'
+  hfs/Pathways_1995/Pathways Into Darkness.rsrc x12
+'DITL'
+  hfs/Installer_Disk_1/Pathways Installer.rsrc x22
+  hfs/Installer_Disk_3/Sound Manager 3.0/Sound.rsrc x9
+  hfs/Pathways_1995/Pathways Into Darkness.rsrc x28
+  hfs/Pathways_1995/Pathways Manual.rsrc x6
+  hfs/Pathways_Extras/Pathways Guide v1.1.rsrc x6
+  hfs/Pathways_Extras/Pathways Into Cheating ƒ/Pathways Into Cheating.rsrc x5
+  hfs/Pathways_Extras/Torch 0.9.1 folder/Torch 0.9.1.rsrc x3
+'Dk@P'
+  hfs/Pathways_1995/Pathways Manual.rsrc x1
+  hfs/Pathways_Extras/Pathways Guide v1.1.rsrc x1
+'DLOG'
+  hfs/Installer_Disk_1/Pathways Installer.rsrc x6
+  hfs/Installer_Disk_3/Sound Manager 3.0/Sound.rsrc x1
+  hfs/Pathways_1995/Pathways Into Darkness.rsrc x13
+  hfs/Pathways_1995/Pathways Manual.rsrc x5
+  hfs/Pathways_Extras/Pathways Guide v1.1.rsrc x5
+  hfs/Pathways_Extras/Pathways Into Cheating ƒ/Pathways Into Cheating.rsrc x1
+'dpin'
+  hfs/Pathways_1995/Pathways Into Darkness.rsrc x1
+'DREL'
+  hfs/Installer_Disk_1/Pathways Installer.rsrc x1
+  hfs/Pathways_Extras/Pathways Into Cheating ƒ/Pathways Into Cheating.rsrc x1
+'ExpS'
+  hfs/Installer_Disk_1/Pathways Installer.rsrc x1
+'Feat'
+  hfs/Installer_Disk_1/Pathways Installer.rsrc x1
+'FOND'
+  hfs/Pathways_1995/Pathways Into Darkness.rsrc x1
+'Font'
+  hfs/Installer_Disk_1/Pathways Installer.rsrc x2
+'FONT'
+  hfs/Pathways_1995/Pathways Into Darkness.rsrc x2
+'foot'
+  hfs/Pathways_1995/Pathways Manual.rsrc x1
+  hfs/Pathways_Extras/Pathways Guide v1.1.rsrc x1
+'FREF'
+  hfs/Installer_Disk_1/Pathways Installer.rsrc x4
+  hfs/Installer_Disk_3/Sound Manager 3.0/Sound Manager.rsrc x1
+  hfs/Installer_Disk_3/Sound Manager 3.0/Sound.rsrc x1
+  hfs/Pathways_1995/Pathways Into Darkness.rsrc x8
+  hfs/Pathways_1995/Pathways Manual.rsrc x1
+  hfs/Pathways_Extras/Pathways Guide v1.1.rsrc x1
+  hfs/Pathways_Extras/Pathways Into Cheating ƒ/Pathways Into Cheating.rsrc x1
+  hfs/Pathways_Extras/Torch 0.9.1 folder/Torch 0.9.1.rsrc x1
+'icl4'
+  hfs/Installer_Disk_1/Pathways Installer.rsrc x4
+  hfs/Installer_Disk_3/Sound Manager 3.0/Sound Manager.rsrc x1
+  hfs/Installer_Disk_3/Sound Manager 3.0/Sound.rsrc x1
+  hfs/Pathways_1995/Pathways Into Darkness.rsrc x5
+  hfs/Pathways_1995/Pathways Manual.rsrc x2
+  hfs/Pathways_Extras/Pathways Guide v1.1.rsrc x1
+  hfs/Pathways_Extras/Pathways Into Cheating ƒ/Pathways Into Cheating.rsrc x1
+  hfs/Pathways_Extras/Torch 0.9.1 folder/Torch 0.9.1.rsrc x1
+'icl8'
+  hfs/Installer_Disk_1/Pathways Installer.rsrc x4
+  hfs/Installer_Disk_3/Sound Manager 3.0/Sound Manager.rsrc x1
+  hfs/Installer_Disk_3/Sound Manager 3.0/Sound.rsrc x1
+  hfs/Pathways_1995/Pathways Into Darkness.rsrc x5
+  hfs/Pathways_1995/Pathways Manual.rsrc x2
+  hfs/Pathways_Extras/Pathways Guide v1.1.rsrc x2
+  hfs/Pathways_Extras/Pathways Into Cheating ƒ/Pathways Into Cheating.rsrc x1
+  hfs/Pathways_Extras/PID_Docs Folder/sector_types_sqr.gif.rsrc x1
+  hfs/Pathways_Extras/Torch 0.9.1 folder/Torch 0.9.1.rsrc x1
+'ICN#'
+  hfs/Installer_Disk_1/Pathways Installer.rsrc x6
+  hfs/Installer_Disk_3/Sound Manager 3.0/Sound Manager.rsrc x1
+  hfs/Installer_Disk_3/Sound Manager 3.0/Sound.rsrc x1
+  hfs/Pathways_1995/Pathways Into Darkness.rsrc x5
+  hfs/Pathways_1995/Pathways Manual.rsrc x2
+  hfs/Pathways_Extras/Pathways Guide v1.1.rsrc x2
+  hfs/Pathways_Extras/Pathways Into Cheating ƒ/Pathways Into Cheating.rsrc x1
+  hfs/Pathways_Extras/PID_Docs Folder/sector_types_sqr.gif.rsrc x1
+  hfs/Pathways_Extras/Torch 0.9.1 folder/Torch 0.9.1.rsrc x1
+'ICON'
+  hfs/Installer_Disk_1/Pathways Installer.rsrc x1
+  hfs/Installer_Disk_3/Sound Manager 3.0/Sound Manager.rsrc x4
+  hfs/Installer_Disk_3/Sound Manager 3.0/Sound.rsrc x4
+  hfs/Pathways_1995/Pathways Into Darkness.rsrc x2
+  hfs/Pathways_1995/Pathways Manual.rsrc x6
+  hfs/Pathways_Extras/Pathways Guide v1.1.rsrc x6
+'ics#'
+  hfs/Installer_Disk_1/Pathways Installer.rsrc x4
+  hfs/Installer_Disk_3/Sound Manager 3.0/Sound Manager.rsrc x1
+  hfs/Installer_Disk_3/Sound Manager 3.0/Sound.rsrc x1
+  hfs/Pathways_1995/Pathways Into Darkness.rsrc x5
+  hfs/Pathways_1995/Pathways Manual.rsrc x2
+  hfs/Pathways_Extras/Pathways Guide v1.1.rsrc x1
+  hfs/Pathways_Extras/Pathways Into Cheating ƒ/Pathways Into Cheating.rsrc x1
+  hfs/Pathways_Extras/Torch 0.9.1 folder/Torch 0.9.1.rsrc x1
+'ics4'
+  hfs/Installer_Disk_1/Pathways Installer.rsrc x4
+  hfs/Installer_Disk_3/Sound Manager 3.0/Sound Manager.rsrc x1
+  hfs/Installer_Disk_3/Sound Manager 3.0/Sound.rsrc x1
+  hfs/Pathways_1995/Pathways Into Darkness.rsrc x5
+  hfs/Pathways_1995/Pathways Manual.rsrc x2
+  hfs/Pathways_Extras/Pathways Guide v1.1.rsrc x1
+  hfs/Pathways_Extras/Pathways Into Cheating ƒ/Pathways Into Cheating.rsrc x1
+  hfs/Pathways_Extras/Torch 0.9.1 folder/Torch 0.9.1.rsrc x1
+'ics8'
+  hfs/Installer_Disk_1/Pathways Installer.rsrc x4
+  hfs/Installer_Disk_3/Sound Manager 3.0/Sound Manager.rsrc x1
+  hfs/Installer_Disk_3/Sound Manager 3.0/Sound.rsrc x1
+  hfs/Pathways_1995/Pathways Into Darkness.rsrc x5
+  hfs/Pathways_1995/Pathways Manual.rsrc x2
+  hfs/Pathways_Extras/Pathways Guide v1.1.rsrc x1
+  hfs/Pathways_Extras/Pathways Into Cheating ƒ/Pathways Into Cheating.rsrc x1
+  hfs/Pathways_Extras/Torch 0.9.1 folder/Torch 0.9.1.rsrc x1
+'IInf'
+  hfs/Installer_Disk_1/Pathways Installer.rsrc x1
+'INIT'
+  hfs/Installer_Disk_1/Pathways Installer.rsrc x1
+  hfs/Installer_Disk_3/Sound Manager 3.0/Sound Manager.rsrc x1
+'IPac'
+  hfs/Installer_Disk_1/Pathways Installer.rsrc x1
+'IPDe'
+  hfs/Installer_Disk_1/Pathways Installer.rsrc x1
+'LDEF'
+  hfs/Installer_Disk_1/Pathways Installer.rsrc x1
+  hfs/Pathways_Extras/Torch 0.9.1 folder/Torch 0.9.1.rsrc x1
+'lpch'
+  hfs/Installer_Disk_3/Sound Manager 3.0/Sound Manager.rsrc x8
+'mach'
+  hfs/Installer_Disk_3/Sound Manager 3.0/Sound.rsrc x1
+'MBAR'
+  hfs/Pathways_1995/Pathways Into Darkness.rsrc x1
+'MENU'
+  hfs/Installer_Disk_3/Sound Manager 3.0/Sound.rsrc x2
+  hfs/Pathways_1995/Pathways Into Darkness.rsrc x5
+  hfs/Pathways_1995/Pathways Manual.rsrc x4
+  hfs/Pathways_Extras/Pathways Guide v1.1.rsrc x4
+  hfs/Pathways_Extras/Pathways Into Cheating ƒ/Pathways Into Cheating.rsrc x9
+'Merg'
+  hfs/Installer_Disk_1/Pathways Installer.rsrc x1
+'MnSy'
+  hfs/Installer_Disk_1/Pathways Installer.rsrc x1
+'MPSR'
+  hfs/Pathways_Extras/PID_Docs Folder/PIDMapReader.cp.rsrc x1
+  hfs/Pathways_Extras/PID_Docs Folder/PIDMapReader.h.rsrc x1
+  hfs/Pathways_Extras/PID_Docs Folder/SimpleVec.h.rsrc x1
+'mstr'
+  hfs/Pathways_1995/Pathways Manual.rsrc x2
+  hfs/Pathways_Extras/Pathways Guide v1.1.rsrc x2
+'MWBB'
+  hfs/Pathways_Extras/PID_Docs Folder/PIDMapReader.cp.rsrc x1
+  hfs/Pathways_Extras/PID_Docs Folder/PIDMapReader.h.rsrc x1
+  hfs/Pathways_Extras/PID_Docs Folder/SimpleVec.h.rsrc x1
+'NFNT'
+  hfs/Pathways_1995/Pathways Into Darkness.rsrc x1
+'nrct'
+  hfs/Installer_Disk_3/Sound Manager 3.0/Sound.rsrc x1
+'NumF'
+  hfs/Installer_Disk_1/Pathways Installer.rsrc x1
+'PICT'
+  hfs/Installer_Disk_1/Pathways Installer.rsrc x8
+  hfs/Installer_Disk_3/Sound Manager 3.0/Sound.rsrc x4
+  hfs/Pathways_1995/Pathways Manual.rsrc x26
+  hfs/Pathways_Extras/Pathways Guide v1.1.rsrc x27
+  hfs/Pathways_Extras/Pathways Into Cheating ƒ/Pathways Into Cheating.rsrc x1
+  hfs/Pathways_Extras/PID_Docs Folder/sector_types_sqr.gif.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/ascension.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/beware_of.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/but_wait_a.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/but_wait_b.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/dark.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/dust.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/earthquake_zone.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/evil_undead.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/fools_dare_tread.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/ground_floor.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/happy_carnage.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/hungry.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/lasciate.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/lock&load.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/need_a_light.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/never_stop_firing.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/plague_of_demons.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/poisoned_a.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/poisoned_b.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/power.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/slow.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/step.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/summary.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/surfing.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/welcome_tasty.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/wrong_way.pict.rsrc x1
+  hfs/Pathways_Extras/Torch 0.9.1 folder/Torch 0.9.1.rsrc x2
+  hfs/Pathways_Extras/Torch 0.9.1 folder/Torch Docs.rsrc x5
+'pInf'
+  hfs/Pathways_1995/Pathways Manual.rsrc x25
+'pjst'
+  hfs/Pathways_Extras/Pathways Guide v1.1.rsrc x26
+'PLPC'
+  hfs/Pathways_Extras/Torch 0.9.1 folder/Torch 0.9.1.rsrc x1
+'PMul'
+  hfs/Installer_Disk_1/Pathways Installer.rsrc x1
+'pnot'
+  hfs/Pathways_Extras/PID_Docs Folder/sector_types_sqr.gif.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/ascension.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/beware_of.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/but_wait_a.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/but_wait_b.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/dark.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/dust.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/earthquake_zone.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/evil_undead.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/fools_dare_tread.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/ground_floor.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/happy_carnage.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/hungry.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/lasciate.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/lock&load.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/need_a_light.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/never_stop_firing.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/plague_of_demons.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/poisoned_a.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/poisoned_b.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/power.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/slow.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/step.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/summary.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/surfing.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/welcome_tasty.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/wrong_way.pict.rsrc x1
+'POpt'
+  hfs/Installer_Disk_1/Pathways Installer.rsrc x1
+'ppat'
+  hfs/Pathways_1995/Pathways Into Darkness.rsrc x1
+'PPrf'
+  hfs/Pathways_Extras/pidmaps/pid maps/ascension.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/beware_of.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/but_wait_a.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/but_wait_b.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/dark.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/dust.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/earthquake_zone.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/evil_undead.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/fools_dare_tread.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/ground_floor.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/happy_carnage.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/hungry.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/lasciate.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/lock&load.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/need_a_light.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/never_stop_firing.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/plague_of_demons.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/poisoned_a.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/poisoned_b.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/power.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/slow.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/step.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/summary.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/surfing.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/welcome_tasty.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/wrong_way.pict.rsrc x1
+'PREC'
+  hfs/Pathways_Extras/pidmaps/pid maps/ascension.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/beware_of.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/but_wait_a.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/but_wait_b.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/dark.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/dust.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/earthquake_zone.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/evil_undead.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/fools_dare_tread.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/ground_floor.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/happy_carnage.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/hungry.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/lasciate.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/lock&load.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/need_a_light.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/never_stop_firing.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/plague_of_demons.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/poisoned_a.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/poisoned_b.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/power.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/slow.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/step.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/summary.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/surfing.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/welcome_tasty.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/wrong_way.pict.rsrc x1
+'proc'
+  hfs/Installer_Disk_3/Sound Manager 3.0/Sound Manager.rsrc x2
+'Prog'
+  hfs/Installer_Disk_1/Pathways Installer.rsrc x1
+'pscl'
+  hfs/Pathways_Extras/Pathways Guide v1.1.rsrc x26
+'Pset'
+  hfs/Installer_Disk_1/Pathways Installer.rsrc x1
+'PUBs'
+  hfs/Pathways_Extras/pidmaps/pid maps/ascension.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/beware_of.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/but_wait_a.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/but_wait_b.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/dark.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/dust.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/earthquake_zone.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/evil_undead.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/fools_dare_tread.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/ground_floor.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/happy_carnage.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/hungry.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/lasciate.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/lock&load.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/need_a_light.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/never_stop_firing.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/plague_of_demons.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/poisoned_a.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/poisoned_b.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/power.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/slow.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/step.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/summary.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/surfing.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/welcome_tasty.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/wrong_way.pict.rsrc x1
+'påth'
+  hfs/Pathways_1995/Pathways Into Darkness.rsrc x1
+'Rect'
+  hfs/Installer_Disk_1/Pathways Installer.rsrc x2
+'rQDF'
+  hfs/Pathways_1995/Pathways Manual.rsrc x1
+  hfs/Pathways_Extras/Pathways Guide v1.1.rsrc x1
+'sad '
+  hfs/Installer_Disk_3/Sound Manager 3.0/Sound Manager.rsrc x1
+'scri'
+  hfs/Pathways_1995/Pathways Into Darkness.rsrc x30
+'Setg'
+  hfs/Installer_Disk_1/Pathways Installer.rsrc x1
+'sift'
+  hfs/Installer_Disk_3/Sound Manager 3.0/Sound Manager.rsrc x8
+'SIZE'
+  hfs/Installer_Disk_1/Pathways Installer.rsrc x1
+  hfs/Pathways_1995/Pathways Into Darkness.rsrc x1
+  hfs/Pathways_1995/Pathways Manual.rsrc x3
+  hfs/Pathways_Extras/Pathways Guide v1.1.rsrc x1
+  hfs/Pathways_Extras/Pathways Into Cheating ƒ/Pathways Into Cheating.rsrc x1
+  hfs/Pathways_Extras/Torch 0.9.1 folder/Torch 0.9.1.rsrc x1
+'snd '
+  hfs/Installer_Disk_3/Sound Manager 3.0/Sound Manager.rsrc x1
+  hfs/Installer_Disk_3/Sound Manager 3.0/Sound.rsrc x1
+  hfs/Pathways_1995/Sounds.rsrc x86
+'sndP'
+  hfs/Installer_Disk_3/Sound Manager 3.0/Sound.rsrc x4
+'soun'
+  hfs/Installer_Disk_3/Sound Manager 3.0/Sound.rsrc x1
+'STi1'
+  hfs/Installer_Disk_1/Pathways Installer.rsrc x1
+'STR '
+  hfs/Installer_Disk_1/Pathways Installer.rsrc x7
+  hfs/Installer_Disk_3/Sound Manager 3.0/Sound Manager.rsrc x19
+  hfs/Installer_Disk_3/Sound Manager 3.0/Sound.rsrc x8
+  hfs/Pathways_1995/Pathways Into Darkness.rsrc x1
+  hfs/Pathways_1995/Pathways Manual.rsrc x17
+  hfs/Pathways_Extras/Pathways Guide v1.1.rsrc x34
+  hfs/Pathways_Extras/PID_Docs Folder/sector_types_sqr.gif.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/ascension.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/beware_of.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/but_wait_a.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/but_wait_b.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/dark.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/dust.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/earthquake_zone.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/evil_undead.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/fools_dare_tread.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/ground_floor.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/happy_carnage.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/hungry.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/lasciate.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/lock&load.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/need_a_light.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/never_stop_firing.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/plague_of_demons.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/poisoned_a.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/poisoned_b.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/power.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/slow.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/step.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/summary.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/surfing.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/welcome_tasty.pict.rsrc x1
+  hfs/Pathways_Extras/pidmaps/pid maps/wrong_way.pict.rsrc x1
+'STR#'
+  hfs/Installer_Disk_1/Pathways Installer.rsrc x1
+  hfs/Installer_Disk_3/Sound Manager 3.0/Sound.rsrc x1
+  hfs/Pathways_1995/Pathways Into Darkness.rsrc x28
+  hfs/Pathways_1995/Pathways Manual.rsrc x2
+  hfs/Pathways_Extras/Pathways Guide v1.1.rsrc x2
+  hfs/Pathways_Extras/Pathways Into Cheating ƒ/Pathways Into Cheating.rsrc x1
+  hfs/Pathways_Extras/Torch 0.9.1 folder/Torch 0.9.1.rsrc x1
+'sTwD'
+  hfs/Pathways_1995/Pathways Manual.rsrc x1
+  hfs/Pathways_Extras/Pathways Guide v1.1.rsrc x1
+'styl'
+  hfs/Pathways_1995/Pathways Manual.rsrc x13
+  hfs/Pathways_Extras/Pathways Guide v1.1.rsrc x30
+  hfs/Pathways_Extras/PID_Docs Folder/Read Me.rsrc x1
+  hfs/Pathways_Extras/PIDMaps Folder/Descriptions.rsrc x1
+  hfs/Pathways_Extras/PIDMaps Folder/Hex reps_notes.rsrc x1
+  hfs/Pathways_Extras/Torch 0.9.1 folder/Torch Docs.rsrc x1
+'sysz'
+  hfs/Installer_Disk_3/Sound Manager 3.0/Sound Manager.rsrc x1
+'TEXT'
+  hfs/Pathways_1995/Pathways Manual.rsrc x13
+  hfs/Pathways_Extras/Pathways Guide v1.1.rsrc x30
+'thng'
+  hfs/Installer_Disk_3/Sound Manager 3.0/Sound Manager.rsrc x9
+  hfs/Installer_Disk_3/Sound Manager 3.0/Sound.rsrc x4
+'TMPL'
+  hfs/Pathways_Extras/Pathways Into Cheating ƒ/Pathways Into Cheating.rsrc x1
+'trÇh'
+  hfs/Pathways_Extras/Torch 0.9.1 folder/Torch 0.9.1.rsrc x1
+'vers'
+  hfs/Installer_Disk_1/Pathways Installer.rsrc x2
+  hfs/Installer_Disk_3/Sound Manager 3.0/Sound Manager.rsrc x1
+  hfs/Installer_Disk_3/Sound Manager 3.0/Sound.rsrc x1
+  hfs/Pathways_1995/Pathways Into Darkness.rsrc x1
+  hfs/Pathways_1995/Pathways Manual.rsrc x2
+  hfs/Pathways_Extras/Pathways Guide v1.1.rsrc x2
+  hfs/Pathways_Extras/Pathways Into Cheating ƒ/Pathways Into Cheating.rsrc x1
+  hfs/Pathways_Extras/Torch 0.9.1 folder/Torch 0.9.1.rsrc x2
+'WDEF'
+  hfs/Pathways_1995/Pathways Into Darkness.rsrc x1
+'WIND'
+  hfs/Pathways_Extras/Pathways Guide v1.1.rsrc x1
+  hfs/Pathways_Extras/Pathways Into Cheating ƒ/Pathways Into Cheating.rsrc x1
+'Wndo'
+  hfs/Pathways_1995/Pathways Manual.rsrc x13
+  hfs/Pathways_Extras/Pathways Guide v1.1.rsrc x30
+'xtr2'
+  hfs/Pathways_1995/Pathways Manual.rsrc x1
+  hfs/Pathways_Extras/Pathways Guide v1.1.rsrc x1
+'ZERO'
+  hfs/Installer_Disk_1/Pathways Installer.rsrc x1
+  hfs/Pathways_Extras/Pathways Into Cheating ƒ/Pathways Into Cheating.rsrc x1
+'∏îÇ '
+  hfs/Pathways_Extras/Pathways Into Cheating ƒ/Pathways Into Cheating.rsrc x1
+
+=== compare vs known 1995 app+shapes+sounds types ===
+cd_only: ['8BIM', 'CDEF', 'CNTL', 'CURS', 'Clea', 'Colr', 'DATA', 'DCMP', 'DREL', 'Dk@P', 'ExpS', 'Feat', 'Font', 'IInf', 'INIT', 'IPDe', 'IPac', 'LDEF', 'MPSR', 'MWBB', 'Merg', 'MnSy', 'NumF', 'PICT', 'PLPC', 'PMul', 'POpt', 'PPrf', 'PREC', 'PUBs', 'Prog', 'Pset', 'Rect', 'STi1', 'Setg', 'TEXT', 'TMPL', 'WIND', 'Wndo', 'ZERO', 'cPPC', 'cdev', 'cnt#', 'dcmp', 'foot', 'lpch', 'mach', 'mstr', 'nrct', 'pInf', 'pjst', 'pnot', 'proc', 'pscl', 'påth', 'rQDF', 'sTwD', 'sad ', 'sift', 'sndP', 'soun', 'styl', 'sysz', 'thng', 'trÇh', 'xtr2', '∏îÇ\xa0']
+known_1995_missing_on_cd_tree: []
+
+=== PICT / snd / .256 ===
+PICT: ['hfs/Installer_Disk_1/Pathways Installer.rsrc x8', 'hfs/Installer_Disk_3/Sound Manager 3.0/Sound.rsrc x4', 'hfs/Pathways_1995/Pathways Manual.rsrc x26', 'hfs/Pathways_Extras/Pathways Guide v1.1.rsrc x27', 'hfs/Pathways_Extras/Pathways Into Cheating ƒ/Pathways Into Cheating.rsrc x1', 'hfs/Pathways_Extras/PID_Docs Folder/sector_types_sqr.gif.rsrc x1', 'hfs/Pathways_Extras/pidmaps/pid maps/ascension.pict.rsrc x1', 'hfs/Pathways_Extras/pidmaps/pid maps/beware_of.pict.rsrc x1', 'hfs/Pathways_Extras/pidmaps/pid maps/but_wait_a.pict.rsrc x1', 'hfs/Pathways_Extras/pidmaps/pid maps/but_wait_b.pict.rsrc x1', 'hfs/Pathways_Extras/pidmaps/pid maps/dark.pict.rsrc x1', 'hfs/Pathways_Extras/pidmaps/pid maps/dust.pict.rsrc x1', 'hfs/Pathways_Extras/pidmaps/pid maps/earthquake_zone.pict.rsrc x1', 'hfs/Pathways_Extras/pidmaps/pid maps/evil_undead.pict.rsrc x1', 'hfs/Pathways_Extras/pidmaps/pid maps/fools_dare_tread.pict.rsrc x1', 'hfs/Pathways_Extras/pidmaps/pid maps/ground_floor.pict.rsrc x1', 'hfs/Pathways_Extras/pidmaps/pid maps/happy_carnage.pict.rsrc x1', 'hfs/Pathways_Extras/pidmaps/pid maps/hungry.pict.rsrc x1', 'hfs/Pathways_Extras/pidmaps/pid maps/lasciate.pict.rsrc x1', 'hfs/Pathways_Extras/pidmaps/pid maps/lock&load.pict.rsrc x1', 'hfs/Pathways_Extras/pidmaps/pid maps/need_a_light.pict.rsrc x1', 'hfs/Pathways_Extras/pidmaps/pid maps/never_stop_firing.pict.rsrc x1', 'hfs/Pathways_Extras/pidmaps/pid maps/plague_of_demons.pict.rsrc x1', 'hfs/Pathways_Extras/pidmaps/pid maps/poisoned_a.pict.rsrc x1', 'hfs/Pathways_Extras/pidmaps/pid maps/poisoned_b.pict.rsrc x1', 'hfs/Pathways_Extras/pidmaps/pid maps/power.pict.rsrc x1', 'hfs/Pathways_Extras/pidmaps/pid maps/slow.pict.rsrc x1', 'hfs/Pathways_Extras/pidmaps/pid maps/step.pict.rsrc x1', 'hfs/Pathways_Extras/pidmaps/pid maps/summary.pict.rsrc x1', 'hfs/Pathways_Extras/pidmaps/pid maps/surfing.pict.rsrc x1', 'hfs/Pathways_Extras/pidmaps/pid maps/welcome_tasty.pict.rsrc x1', 'hfs/Pathways_Extras/pidmaps/pid maps/wrong_way.pict.rsrc x1', 'hfs/Pathways_Extras/Torch 0.9.1 folder/Torch 0.9.1.rsrc x2', 'hfs/Pathways_Extras/Torch 0.9.1 folder/Torch Docs.rsrc x5']
+snd : ['hfs/Installer_Disk_3/Sound Manager 3.0/Sound Manager.rsrc x1', 'hfs/Installer_Disk_3/Sound Manager 3.0/Sound.rsrc x1', 'hfs/Pathways_1995/Sounds.rsrc x86']
+.256: ['hfs/Pathways_1995/Shapes.rsrc x50']
+
+=== dpin ===
+hfs/Pathways_1995/Pathways Into Darkness.rsrc id=128 size=230676 first16=00 0c 0b 3c 00 00 00 00 00 00 00 00 00 00 00 00 u16@0=12 u16@2=2876 size==596+N*80 -> N=2876 match_u2=True
+
+=== map-named files ===
+hfs/Pathways_1995/Maps size=420850 rsrc=False
+hfs/Pathways_Extras/PID_Docs Folder/PIDMapReader.cp size=754 rsrc=False
+hfs/Pathways_Extras/PID_Docs Folder/PIDMapReader.cp.rsrc size=410 rsrc=True
+hfs/Pathways_Extras/PID_Docs Folder/PIDMapReader.h size=6650 rsrc=False
+hfs/Pathways_Extras/PID_Docs Folder/PIDMapReader.h.rsrc size=410 rsrc=True
+
+=== name hints (tool/edit/debug/test/map/docs) ===
+hfs/Pathways_1995/Maps	420850
+hfs/Pathways_Extras/Pathways Guide v1.1.rsrc	756603
+hfs/Pathways_Extras/Pathways Into Cheating ƒ/Pathways Into Cheating.rsrc	46982
+hfs/Pathways_Extras/Pathways Into Cheating ƒ/Read Me	3624
+hfs/Pathways_Extras/PID_Docs Folder/PIDMapReader.cp	754
+hfs/Pathways_Extras/PID_Docs Folder/PIDMapReader.cp.rsrc	410
+hfs/Pathways_Extras/PID_Docs Folder/PIDMapReader.h	6650
+hfs/Pathways_Extras/PID_Docs Folder/PIDMapReader.h.rsrc	410
+hfs/Pathways_Extras/PID_Docs Folder/Read Me	707
+hfs/Pathways_Extras/PID_Docs Folder/Read Me.rsrc	332
+hfs/Pathways_Extras/PID_Docs Folder/sector_types_sqr.gif	34618
+hfs/Pathways_Extras/PID_Docs Folder/sector_types_sqr.gif.rsrc	14914
+hfs/Pathways_Extras/PID_Docs Folder/SimpleVec.h	3435
+hfs/Pathways_Extras/PID_Docs Folder/SimpleVec.h.rsrc	410
+hfs/Pathways_Extras/pidmaps/pid maps/ascension.pict	45920
+hfs/Pathways_Extras/pidmaps/pid maps/ascension.pict.rsrc	6349
+hfs/Pathways_Extras/pidmaps/pid maps/beware_of.pict	57166
+hfs/Pathways_Extras/pidmaps/pid maps/beware_of.pict.rsrc	6629
+hfs/Pathways_Extras/pidmaps/pid maps/but_wait_a.pict	44732
+hfs/Pathways_Extras/pidmaps/pid maps/but_wait_a.pict.rsrc	6281
+hfs/Pathways_Extras/pidmaps/pid maps/but_wait_b.pict	44146
+hfs/Pathways_Extras/pidmaps/pid maps/but_wait_b.pict.rsrc	6287
+hfs/Pathways_Extras/pidmaps/pid maps/dark.pict	58122
+hfs/Pathways_Extras/pidmaps/pid maps/dark.pict.rsrc	6667
+hfs/Pathways_Extras/pidmaps/pid maps/dust.pict	44884
+hfs/Pathways_Extras/pidmaps/pid maps/dust.pict.rsrc	6389
+hfs/Pathways_Extras/pidmaps/pid maps/earthquake_zone.pict	46674
+hfs/Pathways_Extras/pidmaps/pid maps/earthquake_zone.pict.rsrc	6287
+hfs/Pathways_Extras/pidmaps/pid maps/evil_undead.pict	56276
+hfs/Pathways_Extras/pidmaps/pid maps/evil_undead.pict.rsrc	6529
+hfs/Pathways_Extras/pidmaps/pid maps/fools_dare_tread.pict	55802
+hfs/Pathways_Extras/pidmaps/pid maps/fools_dare_tread.pict.rsrc	6577
+hfs/Pathways_Extras/pidmaps/pid maps/ground_floor.pict	46154
+hfs/Pathways_Extras/pidmaps/pid maps/ground_floor.pict.rsrc	6377
+hfs/Pathways_Extras/pidmaps/pid maps/happy_carnage.pict	53962
+hfs/Pathways_Extras/pidmaps/pid maps/happy_carnage.pict.rsrc	6573
+hfs/Pathways_Extras/pidmaps/pid maps/hungry.pict	58666
+hfs/Pathways_Extras/pidmaps/pid maps/hungry.pict.rsrc	6637
+hfs/Pathways_Extras/pidmaps/pid maps/lasciate.pict	59704
+hfs/Pathways_Extras/pidmaps/pid maps/lasciate.pict.rsrc	6637
+hfs/Pathways_Extras/pidmaps/pid maps/lock&load.pict	56998
+hfs/Pathways_Extras/pidmaps/pid maps/lock&load.pict.rsrc	6569
+hfs/Pathways_Extras/pidmaps/pid maps/need_a_light.pict	52946
+hfs/Pathways_Extras/pidmaps/pid maps/need_a_light.pict.rsrc	6553
+hfs/Pathways_Extras/pidmaps/pid maps/never_stop_firing.pict	56604
+hfs/Pathways_Extras/pidmaps/pid maps/never_stop_firing.pict.rsrc	6637
+hfs/Pathways_Extras/pidmaps/pid maps/plague_of_demons.pict	55834
+hfs/Pathways_Extras/pidmaps/pid maps/plague_of_demons.pict.rsrc	6581
+hfs/Pathways_Extras/pidmaps/pid maps/poisoned_a.pict	45698
+hfs/Pathways_Extras/pidmaps/pid maps/poisoned_a.pict.rsrc	6409
+hfs/Pathways_Extras/pidmaps/pid maps/poisoned_b.pict	48294
+hfs/Pathways_Extras/pidmaps/pid maps/poisoned_b.pict.rsrc	6475
+hfs/Pathways_Extras/pidmaps/pid maps/power.pict	53954
+hfs/Pathways_Extras/pidmaps/pid maps/power.pict.rsrc	6575
+hfs/Pathways_Extras/pidmaps/pid maps/slow.pict	55980
+hfs/Pathways_Extras/pidmaps/pid maps/slow.pict.rsrc	6561
+hfs/Pathways_Extras/pidmaps/pid maps/step.pict	57340
+hfs/Pathways_Extras/pidmaps/pid maps/step.pict.rsrc	6569
+hfs/Pathways_Extras/pidmaps/pid maps/summary.pict	47624
+hfs/Pathways_Extras/pidmaps/pid maps/summary.pict.rsrc	6857
+hfs/Pathways_Extras/pidmaps/pid maps/surfing.pict	55946
+hfs/Pathways_Extras/pidmaps/pid maps/surfing.pict.rsrc	6563
+hfs/Pathways_Extras/pidmaps/pid maps/welcome_tasty.pict	58250
+hfs/Pathways_Extras/pidmaps/pid maps/welcome_tasty.pict.rsrc	6651
+hfs/Pathways_Extras/pidmaps/pid maps/wrong_way.pict	56548
+hfs/Pathways_Extras/pidmaps/pid maps/wrong_way.pict.rsrc	6615
+hfs/Pathways_Extras/pidmaps/README	2245
+hfs/Pathways_Extras/PIDMaps Folder/Descriptions	7696
+hfs/Pathways_Extras/PIDMaps Folder/Descriptions.rsrc	1312
+hfs/Pathways_Extras/PIDMaps Folder/Hex reps_notes	1304
+hfs/Pathways_Extras/PIDMaps Folder/Hex reps_notes.rsrc	1332
+hfs/Pathways_Extras/PIDMaps Folder/PID Maps/A Plague of Demons	11921
+hfs/Pathways_Extras/PIDMaps Folder/PID Maps/A Plague of Demons.rsrc	286
+hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Ascension	8211
+hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Ascension.rsrc	286
+hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Beware of Low-Flying Nightmares	13387
+hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Beware of Low-Flying Nightmares.rsrc	286
+hfs/Pathways_Extras/PIDMaps Folder/PID Maps/But Wait!- That's Not All!	14016
+hfs/Pathways_Extras/PIDMaps Folder/PID Maps/But Wait!- That's Not All!.rsrc	286
+hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Don't Get Poisoned	12719
+hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Don't Get Poisoned.rsrc	286
+hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Evil Undead Phantasms Must Die!	12440
+hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Evil Undead Phantasms Must Die!.rsrc	286
+hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Feel The Power	10519
+hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Feel The Power.rsrc	286
+hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Ground Floor	8956
+hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Ground Floor.rsrc	286
+hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Happy Happy, Carnage Carnage	13037
+hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Happy Happy, Carnage Carnage.rsrc	286
+hfs/Pathways_Extras/PIDMaps Folder/PID Maps/I'd Rather Be Surfing	12900
+hfs/Pathways_Extras/PIDMaps Folder/PID Maps/I'd Rather Be Surfing.rsrc	286
+hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Lasciate Ogne Speranza, Voi Ch…	13817
+hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Lasciate Ogne Speranza, Voi Ch….rsrc	286
+hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Lock&Load	13707
+hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Lock&Load.rsrc	286
+hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Need A Light_	10615
+hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Need A Light_.rsrc	286
+hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Never Stop Firing	13113
+hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Never Stop Firing.rsrc	286
+hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Please Excuse Our Dust	11311
+hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Please Excuse Our Dust.rsrc	286
+hfs/Pathways_Extras/PIDMaps Folder/PID Maps/They May Be Slow…	13720
+hfs/Pathways_Extras/PIDMaps Folder/PID Maps/They May Be Slow….rsrc	286
+hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Warning- Earthquake Zone	8528
+hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Warning- Earthquake Zone.rsrc	286
+hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Watch Your Step	12552
+hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Watch Your Step.rsrc	286
+hfs/Pathways_Extras/PIDMaps Folder/PID Maps/We Can See In The Dark… Can Yo…	13546
+hfs/Pathways_Extras/PIDMaps Folder/PID Maps/We Can See In The Dark… Can Yo….rsrc	286
+hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Welcome, Tasty Primate	13625
+hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Welcome, Tasty Primate.rsrc	286
+hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Where Only Fools Dare Tread	14390
+hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Where Only Fools Dare Tread.rsrc	286
+hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Wrong Way!	13188
+hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Wrong Way!.rsrc	286
+hfs/Pathways_Extras/PIDMaps Folder/PID Maps/…But They're Hungry	14045
+hfs/Pathways_Extras/PIDMaps Folder/PID Maps/…But They're Hungry.rsrc	286
+hfs/Pathways_Extras/Torch 0.9.1 folder/Torch 0.9.1	260192
+hfs/Pathways_Extras/Torch 0.9.1 folder/Torch 0.9.1.rsrc	541585
+hfs/Pathways_Extras/Torch 0.9.1 folder/Torch Docs	5609
+hfs/Pathways_Extras/Torch 0.9.1 folder/Torch Docs.rsrc	81238
+pathwaysintodarkness/docs_1994/HintBook.pdf	11279057
+pathwaysintodarkness/docs_1994/Manual.pdf	6423653
+pathwaysintodarkness/docs_1994/Package.pdf	3422665
+pathwaysintodarkness/docs_web/-cheats.txt	4051
+pathwaysintodarkness/docs_web/-hacks.txt	3499
+pathwaysintodarkness/docs_web/BasicSurvivalGuide_1_1.txt	26047
+pathwaysintodarkness/docs_web/boxfront_1993.jpg	528001
+pathwaysintodarkness/docs_web/boxrear_1993.jpg	537490
+pathwaysintodarkness/docs_web/DeadScriptsDescrip.txt	1291
+pathwaysintodarkness/docs_web/DeadScriptsPart1.txt	13153
+pathwaysintodarkness/docs_web/DeadScriptsPart2.txt	14117
+pathwaysintodarkness/docs_web/Ident256ShapeRsrcs.txt	2881
+pathwaysintodarkness/docs_web/ItemCheatFile_3_10.txt	35077
+pathwaysintodarkness/docs_web/Namedroppers.txt	5434
+pathwaysintodarkness/docs_web/PointTotalsSpoilers.txt	7485
+pathwaysintodarkness/docs_web/SuperdudeSavedGame.txt	101453
+pathwaysintodarkness/docs_web/Walkthrough.txt	20380
+
+=== large non-resource-map files: first 64 hex + strings in 4KB ===
+--- hfs/Installer_Disk_1/Pathways Installer size=689610  ---
+  00000000  41 a7 00 01 12 50 61 74 68 77 61 79 73 20 49 6e   |A....Pathways In|
+  00000010  73 74 61 6c 6c 65 72 86 02 62 00 00 29 40 00 00   |staller..b..)@..|
+  00000020  00 00 00 00 00 d7 3b 1e 00 ff ff ff 00 ff ff ff   |......;.........|
+  00000030  00 00 01 1c 00 00 00 00 29 40 00 00 11 44 00 00   |........)@...D..|
+  str@0005 Pathways InstallerÜ
+  str@0044 STinSTin
+  str@004e ©»h©©»h©
+  str@0062 BìSIT!
+  str@006c .(rLau
+  str@007d Mapsesys Into Darknessnly)3
+  str@00b8 ˇˇˇˇmapspåth
+  str@00ec Ù<∂ˆM¢çÚr
+  str@00ff r€Ö˚˘€+÷%ŸÏˆ±Eª<◊Õn›Ã€“÷„∑f€ÿŒ36(
+  str@0121 ÈéwëÂúê[å/
+  str@012e Y${@n9?…&
+  str@0138 Ÿ=Yº<∂#ÉE¬ìl≤
+  str@0146 Ÿó◊ìÖÏé,'Y»‚Ä‹rí}
+  str@016d æ–€≠‹MvÑóÃ
+  str@017b l“¿ŒﬁF9ËÏr“õy˘y9b;?ØÅﬂ˘/¸.ΩŒIÊ$;øÛJ]åœ∫&Ê5…K°
+  str@01ad Ìj7Àk7
+  str@01b4 \¿eíB?áô^oÌ:Ì
+  str@01c2 ¯j‡€§ß
+  str@01cb †˙ŒŒâ’wÊQÓ	Ä;<==œÅÔ‚Á
+  str@01e2 #˘}Œé°B°Xp∂eã7Ês√√«E‚¬Ûø
+--- hfs/Installer_Disk_2/Pathways Installer.2 size=767953  ---
+  00000000  41 a7 00 02 12 50 61 74 68 77 61 79 73 20 49 6e   |A....Pathways In|
+  00000010  73 74 61 6c 6c 65 72 86 02 62 00 00 29 40 00 00   |staller..b..)@..|
+  00000020  00 00 00 00 00 d7 3b 1e 00 ff ff ff 00 ff ff ff   |......;.........|
+  00000030  00 00 01 1c 00 00 00 00 29 40 00 00 11 44 00 00   |........)@...D..|
+  str@0005 Pathways InstallerÜ
+  str@0044 STinSTin
+  str@004e ©»h©©»h©
+  str@0063 ü∫^Z“C,
+  str@006c  è‘ëåQôáÉ≤
+  str@0077 ⁄“ãsêÀa˚öR–
+  str@0084 8P∫s(√
+  str@0090 5ìçxò‚Ï
+  str@0098 Ø÷…≠;ú
+  str@00a0 |Eﬂ›‘Ë
+  str@00b6 ;ñ•
+o»ùÈ´óP
+  str@00c9 }¨®Kúñ8ê3öZƒà
+ ù
+œ{◊Ã/-⁄Ïæ≈»¢
+  str@00e7 RÆZò„Âj{ÖΩX˜∞
+  str@00f5 ê—∂"yÕ
+  str@00fc Ò†‰Âê≈ú(ˇ©Í
+  str@010b í·≤Ikê›ÇM•›*!s
+  str@011a ≈…Ï4∑"V
+  str@0128 í∞F◊	Á
+  str@0134 DMh˙√~bHóIdlWÒRFÛE/±¿
+  str@014b y†}zË·/—ºqÕ
+--- hfs/Installer_Disk_3/Pathways Installer.3 size=520633  ---
+  00000000  41 a7 00 03 12 50 61 74 68 77 61 79 73 20 49 6e   |A....Pathways In|
+  00000010  73 74 61 6c 6c 65 72 86 02 62 00 00 29 40 00 00   |staller..b..)@..|
+  00000020  00 00 00 00 00 d7 3b 1e 00 ff ff ff 00 ff ff ff   |......;.........|
+  00000030  00 00 01 1c 00 00 00 00 29 40 00 00 11 44 00 00   |........)@...D..|
+  str@0005 Pathways InstallerÜ
+  str@0044 STinSTin
+  str@004e ©»h©©»h©
+  str@0067 Soundsys Into Darknessnly)3
+  str@00a2 ˇˇˇˇsndzpåth
+  str@00b0 ßÜ‡É©¶N˘
+  str@00e5 ff¢9CFˆÜÄÃ
+  str@00f1 ùù!"≥ar <Â¡Î31`
+  str@0110 `dÄ/0ÚÄ
+  str@0129 öô9¥sff
+  str@0131 Õ±â§ÊŸ8õÜÜ
+  str@0145 ·ïÊ–√™ÆÆk–7ií◊@–ÆÉ=∆
+  str@015a ÏÏ»a$áŸ
+  str@0162 ÉgßûÁ9æ˚˛À}˜}Í€Ω˜}ÍÅﬁ˚Ó˚ÀÌøøÔ”î◊ÎÌ¬Ég
+  str@018e |ˆØû˝‘
+  str@0195 Ê?˙˜g∑„ˇ/m>wﬂ_u
+  str@01a7 ö¥„/ÓªÔ>©Ä¶
+  str@01b3 ˘d¨ˇrﬂGxx·é√ùˇœ∑n>è8>¥n˝%ﬂq¸ı´ƒŸÓh>˜
+  str@01d9 ?zF—?ﬂ˜Èñﬂﬂ˜9
+  str@01e8 }ˇÒ£g∑ﬂ˜%ú˝
+--- hfs/Installer_Disk_3/Sound Manager 3.0 READ ME size=1310  ---
+  00000000  53 4f 55 4e 44 20 4d 41 4e 41 47 45 52 20 33 2e   |SOUND MANAGER 3.|
+  00000010  30 20 49 4e 53 54 41 4c 4c 41 54 49 4f 4e 20 4e   |0 INSTALLATION N|
+  00000020  4f 54 45 53 0d 0d 59 6f 75 20 73 68 6f 75 6c 64   |OTES..You should|
+  00000030  20 6f 6e 6c 79 20 69 6e 73 74 61 6c 6c 20 53 6f   | only install So|
+  str@0000 SOUND MANAGER 3.0 INSTALLATION NOTES//You should only install Sound Manager 3.0 
+--- hfs/Pathways_1995/Maps size=420850  ---
+  00000000  0c 47 72 6f 75 6e 64 20 46 6c 6f 6f 72 6f 20 44   |.Ground Flooro D|
+  00000010  61 72 6b 6e 65 73 73 c9 00 00 00 00 00 00 00 00   |arkness.........|
+  00000020  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  00000030  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  str@0001 Ground Flooro Darkness…
+  str@0098 ˇˇˇˇˇˇ
+--- hfs/Pathways_1995/Pathways Into Darkness size=213600  ---
+  00000000  4a 6f 79 21 70 65 66 66 70 77 70 63 00 00 00 01   |Joy!peffpwpc....|
+  00000010  a9 c8 65 47 00 00 00 00 00 00 00 00 00 00 00 00   |..eG............|
+  00000020  00 03 00 02 00 00 00 00 ff ff ff ff 00 00 00 00   |................|
+  00000030  00 03 1c f8 00 03 1c f8 00 03 1c f8 00 00 12 20   |............... |
+  str@0000 Joy!peffpwpc
+  str@0086 
+‹ˇˇˇˇ
+  str@0590 K @:BŸD+Öy
+  str@05a2 InterfaceLib
+  str@05af MathLib
+  str@05b7 StdCLib
+  str@05bf NewRoutineDescriptor
+  str@05d4 DisposeRoutineDescriptor
+  str@05ed NewControl
+  str@05f8 SetControlTitle
+  str@0608 GetControlTitle
+  str@0618 HideControl
+  str@0624 ShowControl
+  str@0630 DrawControls
+  str@063d HiliteControl
+  str@064b MoveControl
+  str@0657 SizeControl
+  str@0663 SetControlValue
+  str@0673 GetControlValue
+  str@0683 GetControlMinimum
+--- hfs/Pathways_Extras/Pathways GamePad Set size=1080  ---
+  00000000  14 50 61 74 68 77 61 79 73 20 47 61 6d 65 50 61   |.Pathways GamePa|
+  00000010  64 20 53 65 74 73 73 00 00 00 00 00 00 00 00 00   |d Setss.........|
+  00000020  00 01 00 01 01 01 00 03 00 03 01 00 00 01 00 7e   |...............~|
+  00000030  00 00 00 03 00 01 00 01 00 7b 00 00 00 03 00 01   |.........{......|
+  str@0001 Pathways GamePad Setss
+  str@0243 àPathways Into Darkness/-----------------/Bungie Software//In the main window, u
+--- hfs/Pathways_Extras/Pathways Into Cheating ƒ/Read Me size=3624  ---
+  00000000  57 65 6c 63 6f 6d 65 20 54 6f 20 50 61 74 68 77   |Welcome To Pathw|
+  00000010  61 79 73 20 69 6e 74 6f 20 43 68 65 61 74 69 6e   |ays into Cheatin|
+  00000020  67 21 0d 0d 53 79 6e 6f 70 73 69 73 3a 20 54 68   |g!..Synopsis: Th|
+  00000030  69 73 20 70 72 6f 67 72 61 6d 20 77 69 6c 6c 20   |is program will |
+  str@0000 Welcome To Pathways into Cheating!//Synopsis: This program will allow you to edi
+--- hfs/Pathways_Extras/PID_Docs Folder/PIDMapReader.h size=6650  ---
+  00000000  2f 2f 20 48 65 72 65 20 61 72 65 20 73 6f 6d 65   |// Here are some|
+  00000010  20 64 65 66 69 6e 69 74 69 6f 6e 73 20 66 6f 72   | definitions for|
+  00000020  20 74 68 65 20 50 61 74 68 77 61 79 73 20 69 6e   | the Pathways in|
+  00000030  74 6f 20 44 61 72 6b 6e 65 73 73 20 6d 61 70 20   |to Darkness map |
+  str@0000 // Here are some definitions for the Pathways into Darkness map file/// /// Comp
+--- hfs/Pathways_Extras/PID_Docs Folder/sector_types_sqr.gif size=34618  ---
+  00000000  47 49 46 38 39 61 e0 02 f0 02 b3 00 00 ff ff ff   |GIF89a..........|
+  00000010  ff 94 94 dc 04 00 ff fa 6d 8f ca 00 06 8c 00 78   |........m......x|
+  00000020  ff fb 18 ab ff 00 0a d4 00 00 00 00 00 00 00 00   |................|
+  00000030  00 00 00 00 00 00 00 00 00 00 00 00 00 2c 00 00   |.............,..|
+  str@0000 GIF89a‡
+  str@000d ˇˇˇˇîî‹
+  str@0048 ˇ0…I´Ω8ÎÕªˇ`(édiûh™ÆlÎæp,œtmﬂxÆÔ|Ôˇ¿†pH,
+  str@0071 è»§r…l:ü–®tJ≠ZØÿ¨vÀÌzø‡∞xL.õœË¥zÕnªﬂ∏|NØ€Ô¯º~œÔ˚ˇÄÅÇÉÑÖÜáàâäãåçéèêëíìîïñóòôöõúù
+  str@00ef ÃÕŒÃ∆…¬—““4’ÿŸÿ
+  str@0106 ‚B…‹»$⁄Í⁄ﬁ‰9ÎÒÓÚÙÎ,Ÿ@ıÓdø¿€
+  str@012a :ÄÙÆÈ[xNôÑy”∆E‘∞Ôáπ
+  str@013f E,îg–·ªç ˇ!Ü
+  str@0150 êh˙·C»q
+  str@015b â≈\)cdK
+  str@0163 "ø±‘IqbÜä'
+  str@0171 ¬&ªù@k
+  str@017e 4{05£“dÇÄ._Bkzl¶U
+  str@0190 N’5‰y’gRp
+  str@019e 3]ÿåeªÓxãı!›ß(¢Úòöf
+  str@01b5 rzΩã÷n0¿Å}Ç5Àÿ£`ÆK
+  str@01cc .eçweBﬁõ
+  str@01d5 û‰ŒgGËù´8≠>,~
+  str@01ea àC´pMª1›œˆ6Wf´
+  str@0200 ~tˆW“jM◊≠í˙om‚ém«.Ì‚9YÎoqãÌ
+--- hfs/Pathways_Extras/PID_Docs Folder/SimpleVec.h size=3435  ---
+  00000000  2f 2f 20 48 65 72 65 20 61 72 65 20 73 6f 6d 65   |// Here are some|
+  00000010  20 28 72 65 6c 61 74 69 76 65 6c 79 29 20 73 69   | (relatively) si|
+  00000020  6d 70 6c 65 20 76 65 63 74 6f 72 20 61 6e 64 20   |mple vector and |
+  00000030  61 72 72 61 79 20 6f 62 6a 65 63 74 73 0d 2f 2f   |array objects.//|
+  str@0000 // Here are some (relatively) simple vector and array objects/// set up using te
+--- hfs/Pathways_Extras/pidmaps/pid maps/ascension.pict size=45920  ---
+  00000000  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  00000010  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  00000020  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  00000030  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  str@026e ˇˇˇˇˇˇ
+  str@0276 ÓÓÓÓÓÓ
+  str@027e ››››››
+  str@0286 ÃÃÃÃÃÃ
+  str@028e ªªªªªª
+  str@0296 ™™™™™™
+  str@029e ôôôôôô
+  str@02a6 àààààà
+  str@02ae wwwwww
+  str@02b6 ffffff
+  str@02be UUUUUU
+  str@02c6 DDDDDD
+  str@02ce 333333
+  str@02d6 """"""
+  str@03de ¯¯··KK
+  str@03e6 ¯¯◊◊<<
+  str@03ee ¯¯ÕÕ--
+  str@0456 ïïˇˇàà
+  str@045e qqÏÏkk
+  str@0466 NNÿÿMM
+--- hfs/Pathways_Extras/pidmaps/pid maps/beware_of.pict size=57166  ---
+  00000000  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  00000010  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  00000020  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  00000030  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  str@026e ˇˇˇˇˇˇ
+  str@0276 ÓÓÓÓÓÓ
+  str@027e ››››››
+  str@0286 ÃÃÃÃÃÃ
+  str@028e ªªªªªª
+  str@0296 ™™™™™™
+  str@029e ôôôôôô
+  str@02a6 àààààà
+  str@02ae wwwwww
+  str@02b6 ffffff
+  str@02be UUUUUU
+  str@02c6 DDDDDD
+  str@02ce 333333
+  str@02d6 """"""
+  str@03de ¯¯··KK
+  str@03e6 ¯¯◊◊<<
+  str@03ee ¯¯ÕÕ--
+  str@0456 ïïˇˇàà
+  str@045e qqÏÏkk
+  str@0466 NNÿÿMM
+--- hfs/Pathways_Extras/pidmaps/pid maps/but_wait_a.pict size=44732  ---
+  00000000  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  00000010  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  00000020  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  00000030  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  str@026e ˇˇˇˇˇˇ
+  str@0276 ÓÓÓÓÓÓ
+  str@027e ››››››
+  str@0286 ÃÃÃÃÃÃ
+  str@028e ªªªªªª
+  str@0296 ™™™™™™
+  str@029e ôôôôôô
+  str@02a6 àààààà
+  str@02ae wwwwww
+  str@02b6 ffffff
+  str@02be UUUUUU
+  str@02c6 DDDDDD
+  str@02ce 333333
+  str@02d6 """"""
+  str@03de ¯¯··KK
+  str@03e6 ¯¯◊◊<<
+  str@03ee ¯¯ÕÕ--
+  str@0456 ïïˇˇàà
+  str@045e qqÏÏkk
+  str@0466 NNÿÿMM
+--- hfs/Pathways_Extras/pidmaps/pid maps/but_wait_b.pict size=44146  ---
+  00000000  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  00000010  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  00000020  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  00000030  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  str@026e ˇˇˇˇˇˇ
+  str@0276 ÓÓÓÓÓÓ
+  str@027e ››››››
+  str@0286 ÃÃÃÃÃÃ
+  str@028e ªªªªªª
+  str@0296 ™™™™™™
+  str@029e ôôôôôô
+  str@02a6 àààààà
+  str@02ae wwwwww
+  str@02b6 ffffff
+  str@02be UUUUUU
+  str@02c6 DDDDDD
+  str@02ce 333333
+  str@02d6 """"""
+  str@03de ¯¯··KK
+  str@03e6 ¯¯◊◊<<
+  str@03ee ¯¯ÕÕ--
+  str@0456 ïïˇˇàà
+  str@045e qqÏÏkk
+  str@0466 NNÿÿMM
+--- hfs/Pathways_Extras/pidmaps/pid maps/dark.pict size=58122  ---
+  00000000  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  00000010  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  00000020  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  00000030  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  str@026e ˇˇˇˇˇˇ
+  str@0276 ÓÓÓÓÓÓ
+  str@027e ››››››
+  str@0286 ÃÃÃÃÃÃ
+  str@028e ªªªªªª
+  str@0296 ™™™™™™
+  str@029e ôôôôôô
+  str@02a6 àààààà
+  str@02ae wwwwww
+  str@02b6 ffffff
+  str@02be UUUUUU
+  str@02c6 DDDDDD
+  str@02ce 333333
+  str@02d6 """"""
+  str@03de ¯¯··KK
+  str@03e6 ¯¯◊◊<<
+  str@03ee ¯¯ÕÕ--
+  str@0456 ïïˇˇàà
+  str@045e qqÏÏkk
+  str@0466 NNÿÿMM
+--- hfs/Pathways_Extras/pidmaps/pid maps/dust.pict size=44884  ---
+  00000000  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  00000010  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  00000020  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  00000030  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  str@026e ˇˇˇˇˇˇ
+  str@0276 ÓÓÓÓÓÓ
+  str@027e ››››››
+  str@0286 ÃÃÃÃÃÃ
+  str@028e ªªªªªª
+  str@0296 ™™™™™™
+  str@029e ôôôôôô
+  str@02a6 àààààà
+  str@02ae wwwwww
+  str@02b6 ffffff
+  str@02be UUUUUU
+  str@02c6 DDDDDD
+  str@02ce 333333
+  str@02d6 """"""
+  str@03de ¯¯··KK
+  str@03e6 ¯¯◊◊<<
+  str@03ee ¯¯ÕÕ--
+  str@0456 ïïˇˇàà
+  str@045e qqÏÏkk
+  str@0466 NNÿÿMM
+--- hfs/Pathways_Extras/pidmaps/pid maps/earthquake_zone.pict size=46674  ---
+  00000000  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  00000010  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  00000020  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  00000030  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  str@026e ˇˇˇˇˇˇ
+  str@0276 ÓÓÓÓÓÓ
+  str@027e ››››››
+  str@0286 ÃÃÃÃÃÃ
+  str@028e ªªªªªª
+  str@0296 ™™™™™™
+  str@029e ôôôôôô
+  str@02a6 àààààà
+  str@02ae wwwwww
+  str@02b6 ffffff
+  str@02be UUUUUU
+  str@02c6 DDDDDD
+  str@02ce 333333
+  str@02d6 """"""
+  str@03de ¯¯··KK
+  str@03e6 ¯¯◊◊<<
+  str@03ee ¯¯ÕÕ--
+  str@0456 ïïˇˇàà
+  str@045e qqÏÏkk
+  str@0466 NNÿÿMM
+--- hfs/Pathways_Extras/pidmaps/pid maps/evil_undead.pict size=56276  ---
+  00000000  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  00000010  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  00000020  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  00000030  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  str@026e ˇˇˇˇˇˇ
+  str@0276 ÓÓÓÓÓÓ
+  str@027e ››››››
+  str@0286 ÃÃÃÃÃÃ
+  str@028e ªªªªªª
+  str@0296 ™™™™™™
+  str@029e ôôôôôô
+  str@02a6 àààààà
+  str@02ae wwwwww
+  str@02b6 ffffff
+  str@02be UUUUUU
+  str@02c6 DDDDDD
+  str@02ce 333333
+  str@02d6 """"""
+  str@03de ¯¯··KK
+  str@03e6 ¯¯◊◊<<
+  str@03ee ¯¯ÕÕ--
+  str@0456 ïïˇˇàà
+  str@045e qqÏÏkk
+  str@0466 NNÿÿMM
+--- hfs/Pathways_Extras/pidmaps/pid maps/fools_dare_tread.pict size=55802  ---
+  00000000  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  00000010  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  00000020  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  00000030  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  str@026e ˇˇˇˇˇˇ
+  str@0276 ÓÓÓÓÓÓ
+  str@027e ››››››
+  str@0286 ÃÃÃÃÃÃ
+  str@028e ªªªªªª
+  str@0296 ™™™™™™
+  str@029e ôôôôôô
+  str@02a6 àààààà
+  str@02ae wwwwww
+  str@02b6 ffffff
+  str@02be UUUUUU
+  str@02c6 DDDDDD
+  str@02ce 333333
+  str@02d6 """"""
+  str@03de ¯¯··KK
+  str@03e6 ¯¯◊◊<<
+  str@03ee ¯¯ÕÕ--
+  str@0456 ïïˇˇàà
+  str@045e qqÏÏkk
+  str@0466 NNÿÿMM
+--- hfs/Pathways_Extras/pidmaps/pid maps/ground_floor.pict size=46154  ---
+  00000000  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  00000010  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  00000020  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  00000030  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  str@026e ˇˇˇˇˇˇ
+  str@0276 ÓÓÓÓÓÓ
+  str@027e ››››››
+  str@0286 ÃÃÃÃÃÃ
+  str@028e ªªªªªª
+  str@0296 ™™™™™™
+  str@029e ôôôôôô
+  str@02a6 àààààà
+  str@02ae wwwwww
+  str@02b6 ffffff
+  str@02be UUUUUU
+  str@02c6 DDDDDD
+  str@02ce 333333
+  str@02d6 """"""
+  str@03de ¯¯··KK
+  str@03e6 ¯¯◊◊<<
+  str@03ee ¯¯ÕÕ--
+  str@0456 ïïˇˇàà
+  str@045e qqÏÏkk
+  str@0466 NNÿÿMM
+--- hfs/Pathways_Extras/pidmaps/pid maps/happy_carnage.pict size=53962  ---
+  00000000  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  00000010  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  00000020  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  00000030  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  str@026e ˇˇˇˇˇˇ
+  str@0276 ÓÓÓÓÓÓ
+  str@027e ››››››
+  str@0286 ÃÃÃÃÃÃ
+  str@028e ªªªªªª
+  str@0296 ™™™™™™
+  str@029e ôôôôôô
+  str@02a6 àààààà
+  str@02ae wwwwww
+  str@02b6 ffffff
+  str@02be UUUUUU
+  str@02c6 DDDDDD
+  str@02ce 333333
+  str@02d6 """"""
+  str@03de ¯¯··KK
+  str@03e6 ¯¯◊◊<<
+  str@03ee ¯¯ÕÕ--
+  str@0456 ïïˇˇàà
+  str@045e qqÏÏkk
+  str@0466 NNÿÿMM
+--- hfs/Pathways_Extras/pidmaps/pid maps/hungry.pict size=58666  ---
+  00000000  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  00000010  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  00000020  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  00000030  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  str@026e ˇˇˇˇˇˇ
+  str@0276 ÓÓÓÓÓÓ
+  str@027e ››››››
+  str@0286 ÃÃÃÃÃÃ
+  str@028e ªªªªªª
+  str@0296 ™™™™™™
+  str@029e ôôôôôô
+  str@02a6 àààààà
+  str@02ae wwwwww
+  str@02b6 ffffff
+  str@02be UUUUUU
+  str@02c6 DDDDDD
+  str@02ce 333333
+  str@02d6 """"""
+  str@03de ¯¯··KK
+  str@03e6 ¯¯◊◊<<
+  str@03ee ¯¯ÕÕ--
+  str@0456 ïïˇˇàà
+  str@045e qqÏÏkk
+  str@0466 NNÿÿMM
+--- hfs/Pathways_Extras/pidmaps/pid maps/lasciate.pict size=59704  ---
+  00000000  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  00000010  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  00000020  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  00000030  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  str@026e ˇˇˇˇˇˇ
+  str@0276 ÓÓÓÓÓÓ
+  str@027e ››››››
+  str@0286 ÃÃÃÃÃÃ
+  str@028e ªªªªªª
+  str@0296 ™™™™™™
+  str@029e ôôôôôô
+  str@02a6 àààààà
+  str@02ae wwwwww
+  str@02b6 ffffff
+  str@02be UUUUUU
+  str@02c6 DDDDDD
+  str@02ce 333333
+  str@02d6 """"""
+  str@03de ¯¯··KK
+  str@03e6 ¯¯◊◊<<
+  str@03ee ¯¯ÕÕ--
+  str@0456 ïïˇˇàà
+  str@045e qqÏÏkk
+  str@0466 NNÿÿMM
+--- hfs/Pathways_Extras/pidmaps/pid maps/lock&load.pict size=56998  ---
+  00000000  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  00000010  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  00000020  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  00000030  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  str@026e ˇˇˇˇˇˇ
+  str@0276 ÓÓÓÓÓÓ
+  str@027e ››››››
+  str@0286 ÃÃÃÃÃÃ
+  str@028e ªªªªªª
+  str@0296 ™™™™™™
+  str@029e ôôôôôô
+  str@02a6 àààààà
+  str@02ae wwwwww
+  str@02b6 ffffff
+  str@02be UUUUUU
+  str@02c6 DDDDDD
+  str@02ce 333333
+  str@02d6 """"""
+  str@03de ¯¯··KK
+  str@03e6 ¯¯◊◊<<
+  str@03ee ¯¯ÕÕ--
+  str@0456 ïïˇˇàà
+  str@045e qqÏÏkk
+  str@0466 NNÿÿMM
+--- hfs/Pathways_Extras/pidmaps/pid maps/need_a_light.pict size=52946  ---
+  00000000  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  00000010  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  00000020  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  00000030  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  str@026e ˇˇˇˇˇˇ
+  str@0276 ÓÓÓÓÓÓ
+  str@027e ››››››
+  str@0286 ÃÃÃÃÃÃ
+  str@028e ªªªªªª
+  str@0296 ™™™™™™
+  str@029e ôôôôôô
+  str@02a6 àààààà
+  str@02ae wwwwww
+  str@02b6 ffffff
+  str@02be UUUUUU
+  str@02c6 DDDDDD
+  str@02ce 333333
+  str@02d6 """"""
+  str@03de ¯¯··KK
+  str@03e6 ¯¯◊◊<<
+  str@03ee ¯¯ÕÕ--
+  str@0456 ïïˇˇàà
+  str@045e qqÏÏkk
+  str@0466 NNÿÿMM
+--- hfs/Pathways_Extras/pidmaps/pid maps/never_stop_firing.pict size=56604  ---
+  00000000  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  00000010  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  00000020  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  00000030  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  str@026e ˇˇˇˇˇˇ
+  str@0276 ÓÓÓÓÓÓ
+  str@027e ››››››
+  str@0286 ÃÃÃÃÃÃ
+  str@028e ªªªªªª
+  str@0296 ™™™™™™
+  str@029e ôôôôôô
+  str@02a6 àààààà
+  str@02ae wwwwww
+  str@02b6 ffffff
+  str@02be UUUUUU
+  str@02c6 DDDDDD
+  str@02ce 333333
+  str@02d6 """"""
+  str@03de ¯¯··KK
+  str@03e6 ¯¯◊◊<<
+  str@03ee ¯¯ÕÕ--
+  str@0456 ïïˇˇàà
+  str@045e qqÏÏkk
+  str@0466 NNÿÿMM
+--- hfs/Pathways_Extras/pidmaps/pid maps/plague_of_demons.pict size=55834  ---
+  00000000  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  00000010  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  00000020  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  00000030  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  str@026e ˇˇˇˇˇˇ
+  str@0276 ÓÓÓÓÓÓ
+  str@027e ››››››
+  str@0286 ÃÃÃÃÃÃ
+  str@028e ªªªªªª
+  str@0296 ™™™™™™
+  str@029e ôôôôôô
+  str@02a6 àààààà
+  str@02ae wwwwww
+  str@02b6 ffffff
+  str@02be UUUUUU
+  str@02c6 DDDDDD
+  str@02ce 333333
+  str@02d6 """"""
+  str@03de ¯¯··KK
+  str@03e6 ¯¯◊◊<<
+  str@03ee ¯¯ÕÕ--
+  str@0456 ïïˇˇàà
+  str@045e qqÏÏkk
+  str@0466 NNÿÿMM
+--- hfs/Pathways_Extras/pidmaps/pid maps/poisoned_a.pict size=45698  ---
+  00000000  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  00000010  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  00000020  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  00000030  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  str@026e ˇˇˇˇˇˇ
+  str@0276 ÓÓÓÓÓÓ
+  str@027e ››››››
+  str@0286 ÃÃÃÃÃÃ
+  str@028e ªªªªªª
+  str@0296 ™™™™™™
+  str@029e ôôôôôô
+  str@02a6 àààààà
+  str@02ae wwwwww
+  str@02b6 ffffff
+  str@02be UUUUUU
+  str@02c6 DDDDDD
+  str@02ce 333333
+  str@02d6 """"""
+  str@03de ¯¯··KK
+  str@03e6 ¯¯◊◊<<
+  str@03ee ¯¯ÕÕ--
+  str@0456 ïïˇˇàà
+  str@045e qqÏÏkk
+  str@0466 NNÿÿMM
+--- hfs/Pathways_Extras/pidmaps/pid maps/poisoned_b.pict size=48294  ---
+  00000000  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  00000010  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  00000020  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  00000030  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  str@026e ˇˇˇˇˇˇ
+  str@0276 ÓÓÓÓÓÓ
+  str@027e ››››››
+  str@0286 ÃÃÃÃÃÃ
+  str@028e ªªªªªª
+  str@0296 ™™™™™™
+  str@029e ôôôôôô
+  str@02a6 àààààà
+  str@02ae wwwwww
+  str@02b6 ffffff
+  str@02be UUUUUU
+  str@02c6 DDDDDD
+  str@02ce 333333
+  str@02d6 """"""
+  str@03de ¯¯··KK
+  str@03e6 ¯¯◊◊<<
+  str@03ee ¯¯ÕÕ--
+  str@0456 ïïˇˇàà
+  str@045e qqÏÏkk
+  str@0466 NNÿÿMM
+--- hfs/Pathways_Extras/pidmaps/pid maps/power.pict size=53954  ---
+  00000000  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  00000010  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  00000020  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  00000030  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  str@026e ˇˇˇˇˇˇ
+  str@0276 ÓÓÓÓÓÓ
+  str@027e ››››››
+  str@0286 ÃÃÃÃÃÃ
+  str@028e ªªªªªª
+  str@0296 ™™™™™™
+  str@029e ôôôôôô
+  str@02a6 àààààà
+  str@02ae wwwwww
+  str@02b6 ffffff
+  str@02be UUUUUU
+  str@02c6 DDDDDD
+  str@02ce 333333
+  str@02d6 """"""
+  str@03de ¯¯··KK
+  str@03e6 ¯¯◊◊<<
+  str@03ee ¯¯ÕÕ--
+  str@0456 ïïˇˇàà
+  str@045e qqÏÏkk
+  str@0466 NNÿÿMM
+--- hfs/Pathways_Extras/pidmaps/pid maps/slow.pict size=55980  ---
+  00000000  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  00000010  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  00000020  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  00000030  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  str@026e ˇˇˇˇˇˇ
+  str@0276 ÓÓÓÓÓÓ
+  str@027e ››››››
+  str@0286 ÃÃÃÃÃÃ
+  str@028e ªªªªªª
+  str@0296 ™™™™™™
+  str@029e ôôôôôô
+  str@02a6 àààààà
+  str@02ae wwwwww
+  str@02b6 ffffff
+  str@02be UUUUUU
+  str@02c6 DDDDDD
+  str@02ce 333333
+  str@02d6 """"""
+  str@03de ¯¯··KK
+  str@03e6 ¯¯◊◊<<
+  str@03ee ¯¯ÕÕ--
+  str@0456 ïïˇˇàà
+  str@045e qqÏÏkk
+  str@0466 NNÿÿMM
+--- hfs/Pathways_Extras/pidmaps/pid maps/step.pict size=57340  ---
+  00000000  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  00000010  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  00000020  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  00000030  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  str@026e ˇˇˇˇˇˇ
+  str@0276 ÓÓÓÓÓÓ
+  str@027e ››››››
+  str@0286 ÃÃÃÃÃÃ
+  str@028e ªªªªªª
+  str@0296 ™™™™™™
+  str@029e ôôôôôô
+  str@02a6 àààààà
+  str@02ae wwwwww
+  str@02b6 ffffff
+  str@02be UUUUUU
+  str@02c6 DDDDDD
+  str@02ce 333333
+  str@02d6 """"""
+  str@03de ¯¯··KK
+  str@03e6 ¯¯◊◊<<
+  str@03ee ¯¯ÕÕ--
+  str@0456 ïïˇˇàà
+  str@045e qqÏÏkk
+  str@0466 NNÿÿMM
+--- hfs/Pathways_Extras/pidmaps/pid maps/summary.pict size=47624  ---
+  00000000  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  00000010  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  00000020  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  00000030  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  str@026e ˇˇˇˇˇˇ
+  str@0276 ÓÓÓÓÓÓ
+  str@027e ››››››
+  str@0286 ÃÃÃÃÃÃ
+  str@028e ªªªªªª
+  str@0296 ™™™™™™
+  str@029e ôôôôôô
+  str@02a6 àààààà
+  str@02ae wwwwww
+  str@02b6 ffffff
+  str@02be UUUUUU
+  str@02c6 DDDDDD
+  str@02ce 333333
+  str@02d6 """"""
+  str@03de ¯¯··KK
+  str@03e6 ¯¯◊◊<<
+  str@03ee ¯¯ÕÕ--
+  str@0456 ïïˇˇàà
+  str@045e qqÏÏkk
+  str@0466 NNÿÿMM
+--- hfs/Pathways_Extras/pidmaps/pid maps/surfing.pict size=55946  ---
+  00000000  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  00000010  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  00000020  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  00000030  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  str@026e ˇˇˇˇˇˇ
+  str@0276 ÓÓÓÓÓÓ
+  str@027e ››››››
+  str@0286 ÃÃÃÃÃÃ
+  str@028e ªªªªªª
+  str@0296 ™™™™™™
+  str@029e ôôôôôô
+  str@02a6 àààààà
+  str@02ae wwwwww
+  str@02b6 ffffff
+  str@02be UUUUUU
+  str@02c6 DDDDDD
+  str@02ce 333333
+  str@02d6 """"""
+  str@03de ¯¯··KK
+  str@03e6 ¯¯◊◊<<
+  str@03ee ¯¯ÕÕ--
+  str@0456 ïïˇˇàà
+  str@045e qqÏÏkk
+  str@0466 NNÿÿMM
+--- hfs/Pathways_Extras/pidmaps/pid maps/welcome_tasty.pict size=58250  ---
+  00000000  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  00000010  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  00000020  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  00000030  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  str@026e ˇˇˇˇˇˇ
+  str@0276 ÓÓÓÓÓÓ
+  str@027e ››››››
+  str@0286 ÃÃÃÃÃÃ
+  str@028e ªªªªªª
+  str@0296 ™™™™™™
+  str@029e ôôôôôô
+  str@02a6 àààààà
+  str@02ae wwwwww
+  str@02b6 ffffff
+  str@02be UUUUUU
+  str@02c6 DDDDDD
+  str@02ce 333333
+  str@02d6 """"""
+  str@03de ¯¯··KK
+  str@03e6 ¯¯◊◊<<
+  str@03ee ¯¯ÕÕ--
+  str@0456 ïïˇˇàà
+  str@045e qqÏÏkk
+  str@0466 NNÿÿMM
+--- hfs/Pathways_Extras/pidmaps/pid maps/wrong_way.pict size=56548  ---
+  00000000  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  00000010  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  00000020  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  00000030  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  str@026e ˇˇˇˇˇˇ
+  str@0276 ÓÓÓÓÓÓ
+  str@027e ››››››
+  str@0286 ÃÃÃÃÃÃ
+  str@028e ªªªªªª
+  str@0296 ™™™™™™
+  str@029e ôôôôôô
+  str@02a6 àààààà
+  str@02ae wwwwww
+  str@02b6 ffffff
+  str@02be UUUUUU
+  str@02c6 DDDDDD
+  str@02ce 333333
+  str@02d6 """"""
+  str@03de ¯¯··KK
+  str@03e6 ¯¯◊◊<<
+  str@03ee ¯¯ÕÕ--
+  str@0456 ïïˇˇàà
+  str@045e qqÏÏkk
+  str@0466 NNÿÿMM
+--- hfs/Pathways_Extras/pidmaps/README size=2245  ---
+  00000000  54 68 65 20 66 6f 6c 64 65 72 20 22 70 69 64 20   |The folder "pid |
+  00000010  6d 61 70 73 22 20 63 6f 6e 74 61 69 6e 73 20 50   |maps" contains P|
+  00000020  49 43 54 20 66 6f 72 6d 61 74 20 6d 61 70 73 20   |ICT format maps |
+  00000030  6f 66 20 74 68 65 20 67 61 6d 65 0d 22 50 61 74   |of the game."Pat|
+  str@0000 The folder "pid maps" contains PICT format maps of the game/"Pathways Into Darkn
+--- hfs/Pathways_Extras/PIDMaps Folder/Descriptions size=7696  ---
+  00000000  47 72 6f 75 6e 64 20 46 6c 6f 6f 72 20 30 2e 30   |Ground Floor 0.0|
+  00000010  6d 20 30 30 20 32 39 69 0d 09 52 65 64 09 57 61   |m 00 29i..Red.Wa|
+  00000020  6c 74 68 65 72 20 50 34 20 4d 61 67 61 7a 69 6e   |lther P4 Magazin|
+  00000030  65 20 78 38 0d 09 50 69 6e 6b 09 57 61 6c 74 68   |e x8..Pink.Walth|
+  str@0000 Ground Floor 0.0m 00 29i/	Red	Walther P4 Magazine x8/	Pink	Walther P4 Magazine x
+--- hfs/Pathways_Extras/PIDMaps Folder/Hex reps_notes size=1304  ---
+  00000000  4c 69 6e 65 20 31 38 35 36 2c 20 68 65 78 20 31   |Line 1856, hex 1|
+  00000010  30 20 72 65 70 72 65 73 65 6e 74 73 20 6c 65 76   |0 represents lev|
+  00000020  65 6c 20 66 6f 72 20 73 61 76 65 20 31 0d 4c 69   |el for save 1.Li|
+  00000030  6e 65 20 31 38 35 36 2c 20 68 65 78 20 31 33 20   |ne 1856, hex 13 |
+  str@0000 Line 1856, hex 10 represents level for save 1/Line 1856, hex 13 represents horiz
+--- hfs/Pathways_Extras/PIDMaps Folder/PID Maps/A Plague of Demons size=11921  ---
+  00000000  47 49 46 38 39 61 58 01 10 01 c4 00 00 ff ff ff   |GIF89aX.........|
+  00000010  fd f6 00 41 00 a4 bc 0f 00 84 7a 52 dd d5 ac 00   |...A......zR....|
+  00000020  62 00 49 41 20 94 8c 5a a5 9b 73 bc b4 83 ce c6   |b.IA ..Z..s.....|
+  00000030  94 51 49 30 63 5a 39 6a 62 41 7a 72 49 00 00 00   |.QI0cZ9jbAzrI...|
+  str@0000 GIF89aX
+  str@0019 ÑzR›’¨
+  str@0022 IA îåZ•õsº¥ÉŒ∆îQI0cZ9jbAzrI
+  str@007c Àhñ¶à¶Îô™/
+  str@0087 ∑#/ø∂åœ¸Ó≥=‡œ5¨
+  str@0097 â¬$ri,ﬁîMËì9çRu“òvÀÌzø‡∞xL.õœË¥zÕnªﬂ∏|NØ€Ô÷|uèΩÊ˛Gz}ÇÄNÉ|ÖYâ~ÅàçáêãÑèíéÜïxôöõúù
+  str@011f ÷◊ÿŸ⁄€‹›ﬁﬂ‡·‚„‰ÂÊÁËÈ-‘
+  str@0136 ∏»nÿ
+Ú◊
+
+  str@013f 
+Ÿı˜Òˆ¯¸˚˙Ù¸
+  str@0154 ˛;»p°√Å/!>,(ê"BÖ
+  str@0165 ≠!p‡b≈Ñ
+  str@0174 ∂.Ïöˇ‹#ÜÈéµ
+  str@018c »ys'Oú={Ó
+  str@0196 
+‘fQù?}
+  str@019e Ujî)“•CõF}*5ÈT°V≥B’*ï(«
+  str@01b6 \©Í§ySﬂ
+  str@01be y
+4•D¥†Åœ∑oq∆Ö;îÓLªrï‚›K7o›æ|·˙Ω
+  str@01df ∏∞‡¿s/'>¨ÿÓ‚«z·>∏Vg‰Ω¥pr»±Ê
+  str@01fb qd∆†!ˇ/˝Y4a“£M
+  str@020a ^Ì9uÈ◊ÆcüÓ+óuc¶÷‹%ªg
+--- hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Ascension size=8211  ---
+  00000000  47 49 46 38 39 61 58 01 10 01 c4 00 00 ff ff ff   |GIF89aX.........|
+  00000010  00 ac ee 84 7a 52 94 8c 5a fd f6 00 00 62 00 dd   |....zR..Z....b..|
+  00000020  d5 ac 00 00 d6 41 00 a4 a5 9b 73 63 5a 39 bc b4   |.....A....scZ9..|
+  00000030  83 ce c6 94 6a 62 41 7a 72 49 49 41 20 51 49 30   |....jbAzrIIA QI0|
+  str@0000 GIF89aX
+  str@0011 ¨ÓÑzRîåZ˝ˆ
+  str@0027 §•õscZ9º¥ÉŒ∆îjbAzrIIA QI0º
+  str@007c Ãhñ¶à¶Îô™/
+  str@0087 ∑#/ø∂åœ¸Ó≥=‡œ5¨
+  str@0097 â¬$ri,ﬁîMËì9çRu“òvÀÌzø‡∞xL.õœË¥zÕnªﬂ∏|NØ€Ô÷|uèΩÊ˛Gz}ÇÄNÉ|ÖYâ~ÅàçáêãÑèíéÜïxôöõúù
+  str@0122 ∏»ÿ◊⁄÷€ﬁ‹‡¬ê“ÊÁË“‚:
+  str@0136 +Î9ÈÒÚÛÙ]
+  str@0140 ˜öÔ·˚‰˙˝¸’¸
+  str@0153 ‚¿´«∞°C1
+  str@015c /¥K¿ ·¿3
+  str@0165 ª˝€x±c6é
+  str@0171 «‚ﬁΩäﬂRˇF…H2§Àë/[¬ú)≥&õä
+  str@018a (‚S¯∞ßœütLÍ¥òè Õî,ë
+  str@019e µô¥)?Å&
+  str@01ac †X≥j›rP(
+  str@01b5 ≠`√äÌ¬-¡¡Æ;ì
+  str@01c2 u
+rÌR•môæµ˙Œ`W™;c.
+  str@01dd $Z4.\ër/≥E|8fcqÄ
+  str@01ee KU˚d±cÀn
+--- hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Beware of Low-Flying Nightmares size=13387  ---
+  00000000  47 49 46 38 39 61 58 01 10 01 c4 00 00 ff ff ff   |GIF89aX.........|
+  00000010  f6 00 83 fd f6 00 63 5a 39 6a 62 41 41 00 a4 bc   |......cZ9jbAA...|
+  00000020  0f 00 fd 62 00 00 62 00 dd d5 ac 7a 72 49 84 7a   |...b..b....zrI.z|
+  00000030  52 84 84 84 94 8c 5a a5 9b 73 bc b4 83 ce c6 94   |R.....Z..s......|
+  str@0000 GIF89aX
+  str@0016 cZ9jbAA
+  str@0028 ›’¨zrIÑzRÑÑÑîåZ•õsº¥ÉŒ∆îIA QI0
+  str@0078 ˇ`"&–hñ¶à¶Îô™/
+  str@0087 ∑#/ø∂åœ¸Ó≥=‡œ5¨
+  str@0097 â¬$ri,ﬁîMËì9çRu“òvÀÌzø‡∞xL.õœË¥zÕnªﬂ∏|NØ€Ô÷|uèΩÊ˛Gz}ÇÄNÉ|ÖYâ~ÅàçáêãÑèíéÜïxôöõúù
+  str@011f ÷◊ÿŸ⁄€‹›ﬁ-‘ﬂ‚„ÿ
+  str@012f ∏»+‰ÍÎ◊Ê¬…ƒ9nÿ
+  str@0146 
+˙Ù˘ˆı˚w/‡5
+  str@0154 îKCœû5|
+  str@015c !Ûó/"6Ñ
+€I„“ê†≈k
+  str@016e #B¯X0"∆Ö”ŒˇÈ–
+  str@0182 Hà0ìÊL	5q⁄Ïß¿¶Oü8y
+  str@0197 ¡Ê?50e“,™SÁP°Mâ
+  str@01a7 µ∂ë#Ñò7ôﬁÃπ
+  str@01b3 Í÷¢Côj=jßﬁ
+  str@01c4 ∂m€ön„äï+
+  str@01d7 ¨›æs€‚•˙.m<æÄˇ&Æ
+  str@01e8 w∞º6WıùÖÛò2‚∏ä˝⁄Õ¨ı-]úÑ—XcÀ¯Ûf”°´‚∏ÏñÛœ¿ûÎJH›rà>Öì›ô1
+  str@0225 o™`¿M~
+--- hfs/Pathways_Extras/PIDMaps Folder/PID Maps/But Wait!- That's Not All! size=14016  ---
+  00000000  47 49 46 38 39 61 58 01 10 01 c4 00 00 ff ff ff   |GIF89aX.........|
+  00000010  00 00 d6 bc 0f 00 41 00 a4 84 7a 52 94 8c 5a fd   |......A...zR..Z.|
+  00000020  62 00 00 62 00 dd d5 ac a5 9b 73 63 5a 39 bc b4   |b..b......scZ9..|
+  00000030  83 ce c6 94 6a 62 41 7a 72 49 49 41 20 51 49 30   |....jbAzrIIA QI0|
+  str@0000 GIF89aX
+  str@0018 §ÑzRîåZ˝b
+  str@0025 ›’¨•õscZ9º¥ÉŒ∆îjbAzrIIA QI0º
+  str@0078 ˇ ""Ãhñ¶à¶Îô™/
+  str@0087 ∑#/ø∂åœ¸Ó≥=‡œ5¨
+  str@0097 â¬$ri,ﬁîMËì9çRu“òvÀÌzø‡∞xL.õœË¥zÕnªﬂ∏|NØ€Ô÷|uèΩÊ˛Gz}ÇÄNÉ|ÖYâ~ÅàçáêãÑèíéÜïxôöõúù
+  str@0124 €‹›ﬁﬂ‡·‚„‰Â„Ÿ¬÷»ÿ◊“Ór›
+  str@0140 ﬁı˜Òˆ¯¸˚˙Ù¸
+  str@014d ∏-_?Ç	
+$Ë
+  str@016f ÄÙ(r‰Gí$Eˇ¢<ŸëeHì*UB–G—åº
+  str@018b ™€©≥'.D
+  str@0196 :ÙcQ¢1ë
+  str@019e -π4)—¶
+  str@01a5 ëF%ÍÄ€Oûu
+  str@01af $∏á≥bÕØl∂	ï
+µ,Ÿ≥J—>U˚
+  str@01c5 ¬6f>G‹[ÿ
+  str@01ce ùô∏’⁄›kÑ¡
+  str@01dc (p@8Â‡¬
+  str@01e5 ;0Lxq‚∆å
+  str@01f7 ´|õ˜jãû7πbï¯DoƒŒÈLWÒÀ
+--- hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Don't Get Poisoned size=12719  ---
+  00000000  47 49 46 38 39 61 58 01 10 01 c4 00 00 ff ff ff   |GIF89aX.........|
+  00000010  6a 62 41 bc 07 00 7a 72 49 dd d5 ac 00 00 d6 41   |jbA...zrI......A|
+  00000020  00 a4 84 7a 52 94 8c 5a a5 9b 73 bc b4 83 ce c6   |...zR..Z..s.....|
+  00000030  94 51 49 30 63 5a 39 4a 42 18 49 41 20 51 49 28   |.QI0cZ9JB.IA QI(|
+  str@0000 GIF89aX
+  str@000d ˇˇˇjbAº
+  str@0016 zrI›’¨
+  str@0021 §ÑzRîåZ•õsº¥ÉŒ∆îQI0cZ9JB
+  str@003a IA QI(
+  str@007c Àhñ¶à¶Îô™/
+  str@0087 ∑#/ø∂åœ¸Ó≥=‡œ5¨
+  str@0097 â¬$ri,ﬁîMËì9çRu“òvÀÌzø‡∞xL.õœË¥zÕnªﬂ∏|NØ€Ô÷|uèΩÊ˛Gz}ÇÄNÉ|ÖYâ~ÅàçáêãÑèíéÜïxôöõúù
+  str@011e ’÷◊ÿŸ⁄€◊
+  str@0127 ∏»À$‹„‰ÂÊ€ﬁ¬…ƒ·È∆Î8÷
+ÛÚ
+  str@013f 
+ÿ
+ˆ¯˙÷	
+  str@0148 	›§±π6Ô^µ|
+  str@0153 Î%<»O·æÖ
+  str@0160 –ö¿7Ìö‹c˜ËKµ
+  str@0175 í%Sˇ>Hyr%…ì
+  str@0188 õ7mB¿ô≥ßÉû;
+  str@0197 4Ëœ¢8ìBà)3ZAM
+  str@01a6 4XIµ™K´W±¢§:¿¢∫å‡(I
+  str@01ba Jñ,O≥eè¶Ωπˆ¨P∑
+  str@01cd Ø.Xå	Ó)àìCKµ©XG
+--- hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Evil Undead Phantasms Must Die! size=12440  ---
+  00000000  47 49 46 38 39 61 58 01 10 01 c4 00 00 ff ff ff   |GIF89aX.........|
+  00000010  bc 0f 00 fd 62 00 fd f6 00 6a 62 41 41 00 a4 dd   |....b....jbAA...|
+  00000020  d5 ac a5 9b 73 49 41 20 7a 72 49 bc b4 83 ce c6   |....sIA zrI.....|
+  00000030  94 51 49 30 63 5a 39 84 7a 52 94 8c 5a bc 00 00   |.QI0cZ9.zR..Z...|
+  str@0000 GIF89aX
+  str@001e §›’¨•õsIA zrIº¥ÉŒ∆îQI0cZ9ÑzRîåZº
+  str@007c Àhñ¶à¶Îô™/
+  str@0087 ∑#/ø∂åœ¸Ó≥=‡œ5¨
+  str@0097 â¬$ri,ﬁîMËì9çRu“òvÀÌzø‡∞xL.õœË¥zÕnªﬂ∏|NØ€Ô÷|uèΩÊ˛Gz}ÇÄNÉ|ÖYâ~ÅàçáêãÑèíéÜïxôöõúù
+  str@011e ’÷◊ÿŸ⁄€‹›ﬁﬂ‡·‚„‰⁄HÂŸÁË÷∆…ƒÀÌZ◊
+ı÷
+
+  str@0142 
+ÿ¯˙Ù˘˚ˇ¸ıª
+  str@015e Ñ(Q·√à
+  str@0166 V£ò±‡Ç
+  str@0174 Bè Eˇ≤õQr†∆è!Wrí◊DﬂªG_™
+  str@019e Eä‘(”•A°
+  str@01a7 UöÙi’®N£FLt+U•^≠ÇMê‡ÎO°˝HÓ
+  str@01c8 iYÆıŸ∂È[õ“ƒ‘S†ÈœÇ
+  str@01de :X∞S√t/
+  str@01e6 ÆäxÒa≈ç##û,ôraÀó
+  str@01f7 'êy‚/f«õ´±
+  str@0204 t	ö»‹|‘«
+  str@0219 ôs3û≠{∞„¶è
+  str@022b ¢GO&.49
+  str@0233 œ∏}øñÉ∫è>ë≠ï°9≠†*O
+--- hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Feel The Power size=10519  ---
+  00000000  47 49 46 38 39 61 58 01 10 01 c4 00 00 ff ff ff   |GIF89aX.........|
+  00000010  7a 72 49 fd f6 00 bc 0f 00 84 7a 52 dd d5 ac 00   |zrI.......zR....|
+  00000020  00 d6 41 00 a4 94 8c 5a a5 9b 73 bc b4 83 ce c6   |..A....Z..s.....|
+  00000030  94 49 41 20 51 49 30 63 5a 39 6a 62 41 00 00 00   |.IA QI0cZ9jbA...|
+  str@0000 GIF89aX
+  str@000d ˇˇˇzrI˝ˆ
+  str@0019 ÑzR›’¨
+  str@0024 §îåZ•õsº¥ÉŒ∆îIA QI0cZ9jbA
+  str@007c Àhñ¶à¶Îô™/
+  str@0087 ∑#/ø∂åœ¸Ó≥=‡œ5¨
+  str@0097 â¬$ri,ﬁîMËì9çRu“òvÀÌzø‡∞xL.õœË¥zÕnªﬂ∏|NØ€Ô÷|uèΩÊ˛Gz}ÇÄNÉ|ÖYâ~ÅàçáêãÑèíéÜïxôöõúù
+  str@011f ÷◊ÿŸ⁄€‹›ﬁ›
+  str@012a 5ﬂ„‰ÂÊÁËÈ◊·¬…ƒ‘Wnÿ
+Ù◊
+
+  str@0154  HÄMÕºz÷ˆ
+  str@015e ú8œ`EÑ
+  str@0165 $^§hœbGÑ
+  str@016e 1j¸àM!√ut‡ˇ5…˜Ó—
+  str@0182 4`0ìÊÃ
+  str@0189 5mÍ‘âÛ_
+  str@0191 ú6}ÚÃ	
+  str@019b 6˘9L(ÛËP§Oë
+  str@01a7 %zìÍŒ®XßB’*µj◊†
+  str@01bc ßRi1Ë)–§
+  str@01c8 P„∆Õ9WÆ›ªrÈnµ
+--- hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Ground Floor size=8956  ---
+  00000000  47 49 46 38 39 61 58 01 10 01 c4 00 00 ff ff ff   |GIF89aX.........|
+  00000010  6a 62 41 7a 72 49 00 00 d6 f6 00 83 dd d5 ac 84   |jbAzrI..........|
+  00000020  7a 52 94 8c 5a a5 9b 73 bc b4 83 ce c6 94 63 5a   |zR..Z..s......cZ|
+  00000030  39 bc 0f 00 49 41 20 4a 42 18 52 4a 18 bc 00 00   |9...IA JB.RJ....|
+  str@0000 GIF89aX
+  str@000d ˇˇˇjbAzrI
+  str@001b É›’¨ÑzRîåZ•õsº¥ÉŒ∆îcZ9º
+  str@0043 QI(QI0
+  str@007d hñ¶à¶Îô™/
+  str@0087 ∑#/ø∂åœ¸Ó≥=‡œ5¨
+  str@0097 â¬$ri,ﬁîMËì9çRu“òvÀÌzø‡∞xL.õœË¥zÕnªﬂ∏|NØ€Ô÷|uèΩÊ˛Gz}ÇÄNÉ|ÖYâ~ÅàçáêãÑèíéÜïxôöõúù
+  str@0133 ∏»‘Ítÿ	Ò◊	
+  str@013e 	ŸÙˆı˜˚◊
+  str@014a ÚÕÎ7P†5|¸
+  str@0166 Pƒ»—bƒãÿ
+  str@0170 @Ä≠Nª&ˆàˇa∫c/AÄ	/`∆Ñ9AÊÃõ/n>x‡†ÁN
+  str@0192 ?ÅÚ‹	PÄP
+  str@019c $ÙD™4ÈRßN{BU*µ)’©Eôj≠∫UkT¨
+  str@01b7 åN}jïÏV∞b≠ÊºYsm€∂9ﬂ⁄î
+  str@01cd 7ÓÑ|“¥ƒK†È$"
+  str@01de lì`üK
+  str@01e5 ÛLÃò1U«çëF~úòr‰
+  str@01f5 ì3_nlY™ÊÕâ
+  str@0202 \ó¥Ë“Ç
+--- hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Happy Happy, Carnage Carnage size=13037  ---
+  00000000  47 49 46 38 39 61 58 01 10 01 c4 00 00 ff ff ff   |GIF89aX.........|
+  00000010  00 ac ee 94 8c 5a fd f6 00 f6 00 83 84 84 84 84   |.....Z..........|
+  00000020  7a 52 fd 62 00 51 49 30 49 41 20 00 62 00 17 b4   |zR.b.QI0IA .b...|
+  00000030  0f 00 00 d6 41 00 a4 63 5a 39 a5 9b 73 bc b4 83   |....A..cZ9..s...|
+  str@0000 GIF89aX
+  str@0011 ¨ÓîåZ˝ˆ
+  str@001b ÉÑÑÑÑzR˝b
+  str@0025 QI0IA 
+  str@0036 §cZ9•õsº¥ÉŒ∆î›’¨jbAzrIº
+  str@0078 ˇ†$J—hñ¶à¶Îô™/
+  str@0087 ∑#/ø∂åœ¸Ó≥=‡œ5¨
+  str@0097 â¬$ri,ﬁîMËì9çRu“òvÀÌzø‡∞xL.õœË¥zÕnªﬂ∏|NØ€Ô÷|uèΩÊ˛Gz}ÇÄNÉ|ÖYâ~ÅàçáêãÑèíéÜïxôöõúù
+  str@011e ’÷◊ÿŸ⁄€◊H‹ﬂ‡·‚„‰ÂÊÁ-+ËÎÊ
+  str@0142 ÿ˜˘Û¯◊
+  str@014b tõaØ^µ}˙¸ı„WM¿
+  str@015d *¥7Qbƒ
+  str@0166 &ºò±·Cé
+  str@0173 †@kZÊˇ
+  str@0189 ˘àa:SÌ¡
+  str@0196 ä@Ë–£	é
+  str@019e M*¥(øî%
+  str@01a7 eJ‘Ë“•Të^EêÇR´Uì~
+  str@01ba ªïlÿ¨X«~Ì™∂mŸ©Cü
+  str@01ce -X§j∑≤}€
+--- hfs/Pathways_Extras/PIDMaps Folder/PID Maps/I'd Rather Be Surfing size=12900  ---
+  00000000  47 49 46 38 39 61 58 01 10 01 c4 00 00 ff ff ff   |GIF89aX.........|
+  00000010  00 00 d6 7a 72 49 00 ac ee bc 0f 00 fd 62 00 00   |...zrI.......b..|
+  00000020  62 00 84 84 84 dd d5 ac 84 7a 52 94 8c 5a a5 9b   |b........zR..Z..|
+  00000030  73 bc b4 83 ce c6 94 49 41 20 51 49 30 63 5a 39   |s......IA QI0cZ9|
+  str@0000 GIF89aX
+  str@0022 ÑÑÑ›’¨ÑzRîåZ•õsº¥ÉŒ∆îIA QI0cZ9jbA
+  str@0078 ˇ ""Õhñ¶à¶Îô™/
+  str@0087 ∑#/ø∂åœ¸Ó≥=‡œ5¨
+  str@0097 â¬$ri,ﬁîMËì9çRu“òvÀÌzø‡∞xL.õœË¥zÕnªﬂ∏|NØ€Ô÷|uèΩÊ˛Gz}ÇÄNÉ|ÖYâ~ÅàçáêãÑèíéÜïxôöõúù
+  str@012e 5„ÁËÈÍÎ·Â¬…ƒ9'÷
+  str@0144 ¯˙¸◊˚˘˛˘ª
+  str@015e lp0°55
+  str@0172 Q$Ià(9ˇ¶
+  str@017b ©“ZEÖ”p›»
+  str@0196 ˙s(Q†Eã
+  str@01a0 ≥ÈÉÄbp˙\Í
+  str@01aa iU£LóRÖöFÍN™BèbΩ
+V)”ë
+  str@01c3  ∂¨’∞Y›é
+  str@01dc ˇ’:80÷¡_ˇ
+∏xâ/b¡Ö
+  str@01f8 ˛;91gÕ†!
+  str@0201 éLz¥i£ïÂµ°ò//
+  str@0214 M˚l€Ö
+  str@021b X^(˚4Ó⁄cw£©÷W≤Ò€õs+ˇÕ<ysœ¿©
+wß$_B◊‘Cë`Ä5ß
+  str@024a øV)yÒCœõ
+--- hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Lasciate Ogne Speranza, Voi Ch… size=13817  ---
+  00000000  47 49 46 38 39 61 58 01 10 01 c4 00 00 ff ff ff   |GIF89aX.........|
+  00000010  00 00 d6 bc 0f 00 dd d5 ac 84 7a 52 84 84 84 49   |..........zR...I|
+  00000020  41 20 94 8c 5a a5 9b 73 bc b4 83 ce c6 94 51 49   |A ..Z..s......QI|
+  00000030  30 63 5a 39 6a 62 41 7a 72 49 bc 00 00 c6 00 00   |0cZ9jbAzrI......|
+  str@0000 GIF89aX
+  str@0016 ›’¨ÑzRÑÑÑIA îåZ•õsº¥ÉŒ∆îQI0cZ9jbAzrIº
+  str@007d hñ¶à¶Îô™/
+  str@0087 ∑#/ø∂åœ¸Ó≥=‡œ5¨
+  str@0097 â¬$ri,ﬁîMËì9çRu“òvÀÌzø‡∞xL.õœË¥zÕnªﬂ∏|NØ€Ô÷|uèΩÊ˛Gz}ÇÄNÉ|ÖYâ~ÅàçáêãÑèíéÜïxôöõúù
+  str@0128 ∏»‘›„’ﬂ¬…ƒÀ∆Ë·‡ÏÔ'÷	ÛÚ
+  str@013f 	ÿ	ˆ¯˙◊˘˜÷
+  str@014b  ∏&≠K?z’¸]
+  str@0156 8–[¡ág‘
+  str@015e πóÓ—ój
+  str@0166 ,0∞ë„∆
+  str@0185 ”#Àñ87ÕK†Èè
+  str@0195 /9T®L£5É:p∏Nb∫üHã
+]ZÓú”vV›ar£
+  str@01b3 ¡=ûpr∏ÑäîËI≥Gç¢ïπ†jŒ
+  str@01cc Èˆ≠›äCÓ/
+  str@01da 	Œ¬d‡†0M¬Ü;"vp∏0„éåe÷≈⁄î
+  str@01f7 ”åÃqÚª´üµäv
+  str@0204 N¿°/E°qYr∂
+  str@0210 ¯¥¡Ów/(Iä©+◊j›˘uÌì∏Kè÷MºÔ
+  str@022e ø® %πÁ„úãÖXMz7Èw≥√Ÿôúì∏é
+--- hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Lock&Load size=13707  ---
+  00000000  47 49 46 38 39 61 58 01 10 01 c4 00 00 ff ff ff   |GIF89aX.........|
+  00000010  84 7a 52 00 ac ee fd 62 00 f6 00 83 94 8c 5a fd   |.zR....b......Z.|
+  00000020  f6 00 4a 42 18 00 62 00 00 00 d6 41 00 a4 63 5a   |..JB..b....A..cZ|
+  00000030  39 a5 9b 73 bc b4 83 ce c6 94 dd d5 ac 6a 62 41   |9..s.........jbA|
+  str@0000 GIF89aX
+  str@000d ˇˇˇÑzR
+  str@001b ÉîåZ˝ˆ
+  str@002d §cZ9•õsº¥ÉŒ∆î›’¨jbAzrI∆
+  str@0046 QI QI(º
+  str@0078 ˇ‡#>Œhñ¶à¶Îô™/
+  str@0087 ∑#/ø∂åœ¸Ó≥=‡œ5¨
+  str@0097 â¬$ri,ﬁîMËì9çRu“òvÀÌzø‡∞xL.õœË¥zÕnªﬂ∏|NØ€Ô÷|uèΩÊ˛Gz}ÇÄNÉ|ÖYâ~ÅàçáêãÑèíéÜïxôöõúù
+  str@011e ’÷◊ÿŸ⁄€‹›ﬁŸØﬂ‚„‰ÂÊÁËÈÍ÷
+  str@0136 ∏»À”÷/ÛÚ
+  str@013f /ÿ/ˆ¯˙÷
+  str@014d Xè`µÅ◊
+  str@0155 `pMå@z
+  str@016e =Ç¨÷1„ƒê◊Jˇ¢\y≤öBÜÏ∏¿#rè
+  str@0187 ¶/.!P8∞ìÁN
+=}
+= 
+  str@0198 (Q£@ˇE(
+  str@01a1 i”ü=£R
+  str@01b2 î´S≠>ïv
+  str@01c0 ñ~5Îu+S±k«éu
+◊≠‹µR©⁄ô◊@”
+  str@01e5 #>\ÿÎ·
+--- hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Need A Light_ size=10615  ---
+  00000000  47 49 46 38 39 61 58 01 10 01 c4 00 00 ff ff ff   |GIF89aX.........|
+  00000010  00 00 d6 bc 0f 00 41 00 a4 84 7a 52 94 8c 5a fd   |......A...zR..Z.|
+  00000020  62 00 00 62 00 dd d5 ac a5 9b 73 63 5a 39 bc b4   |b..b......scZ9..|
+  00000030  83 ce c6 94 6a 62 41 7a 72 49 49 41 20 51 49 30   |....jbAzrIIA QI0|
+  str@0000 GIF89aX
+  str@0018 §ÑzRîåZ˝b
+  str@0025 ›’¨•õscZ9º¥ÉŒ∆îjbAzrIIA QI0º
+  str@0078 ˇ ""Ãhñ¶à¶Îô™/
+  str@0087 ∑#/ø∂åœ¸Ó≥=‡œ5¨
+  str@0097 â¬$ri,ﬁîMËì9çRu“òvÀÌzø‡∞xL.õœË¥zÕnªﬂ∏|NØ€Ô÷|uèΩÊ˛Gz}ÇÄNÉ|ÖYâ~ÅàçáêãÑèíéÜïxôöõúù
+  str@011f ÷◊ÿŸ⁄€‹›ﬁﬂ‡·‚„‰ÂÊÁËÈ-‘
+  str@0140 Ÿı˜Òˆ¯¸˚˙Ù¸
+  str@0154 ˛;»ZÅ
+  str@0174 ∂.Ïöˇ‹#ÜÈéµ
+  str@0180 / <ê9S&
+  str@0188 ö5s>»ys'Oú={Ó
+  str@0196 
+‘fQù?}
+  str@019e Ujî)“•?!:H:¥i’ßV©jÖ∫5+◊Ø^≠“º©Ôéº
+  str@01bf öR"b†¿ß[∑8·æ
+  str@01cc :wf›∏JÔÍùãó.ﬂΩo˚÷ı
+  str@01e5 '>¨∏1„«;
+  str@01f3 Z89‰Xkk8ÔbœéAC&<⁄Óg“¢
+  str@020b Ã∫3Í◊¶C√n}:∂jkÓí›3yπ›
+  str@0224 *ç˘@ÅÉ„Bç#ß©‹AÚ„ŒôC
+--- hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Never Stop Firing size=13113  ---
+  00000000  47 49 46 38 39 61 58 01 10 01 c4 00 00 ff ff ff   |GIF89aX.........|
+  00000010  7a 72 49 00 00 d6 84 7a 52 f6 00 83 fd f6 00 fd   |zrI....zR.......|
+  00000020  62 00 dd d5 ac 00 62 07 51 49 28 94 8c 5a a5 9b   |b.....b.QI(..Z..|
+  00000030  73 bc b4 83 ce c6 94 63 5a 39 6a 62 41 4a 42 18   |s......cZ9jbAJB.|
+  str@0000 GIF89aX
+  str@000d ˇˇˇzrI
+  str@0028 QI(îåZ•õsº¥ÉŒ∆îcZ9jbAJB
+  str@007c Õhñ¶à¶Îô™/
+  str@0087 ∑#/ø∂åœ¸Ó≥=‡œ5¨
+  str@0097 â¬$ri,ﬁîMËì9çRu“òvÀÌzø‡∞xL.õœË¥zÕnªﬂ∏|NØ€Ô÷|uèΩÊ˛Gz}ÇÄNÉ|ÖYâ~ÅàçáêãÑèíéÜïxôöõúù
+  str@0126 ∏»â€·‚„‰Â·HÊÈÍ÷›¬…ƒÀY'÷
+  str@0149 ‹§ëπV/_µ}
+  str@0153 Ô%<»œöÇ
+  str@015d >å®Ø°¬~ˇ
+  str@0166 ‚†gè·¬
+  str@0182 DÄ0ìÊÃ
+  str@0189 5mÍ§	¡¶AÅ
+  str@0198 ÁNùFãﬁ¨i
+  str@01a4 M#<Eö3jQ•?g
+  str@01b0 ï…ìjOØJèZÌä3+P
+  str@01c0 5˝i‡‡´[∑9·æÖ
+  str@01ce •±wﬂ(±ù˚6ÓWøW˘
+Ê
+  str@01df ∏´€∫’¥∂
+  str@01e7 lXÓ‹¬Ä
+--- hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Please Excuse Our Dust size=11311  ---
+  00000000  47 49 46 38 39 61 58 01 10 01 c4 00 00 ff ff ff   |GIF89aX.........|
+  00000010  7a 72 49 00 00 d6 84 7a 52 bc 0f 00 dd d5 ac 94   |zrI....zR.......|
+  00000020  8c 5a a5 9b 73 bc b4 83 ce c6 94 49 41 20 51 49   |.Z..s......IA QI|
+  00000030  30 63 5a 39 6a 62 41 bc 00 00 c6 00 00 00 00 00   |0cZ9jbA.........|
+  str@0000 GIF89aX
+  str@000d ˇˇˇzrI
+  str@001c ›’¨îåZ•õsº¥ÉŒ∆îIA QI0cZ9jbAº
+  str@007c …hñ¶à¶Îô™/
+  str@0087 ∑#/ø∂åœ¸Ó≥=‡œ5¨
+  str@0097 â¬$ri,ﬁîMËì9çRu“òvÀÌzø‡∞xL.õœË¥zÕnªﬂ∏|NØ€Ô÷|uèΩÊ˛Gz}ÇÄNÉ|ÖYâ~ÅàçáêãÑèíéÜïxôöõúù
+  str@012c ∏»À∆…ƒÊ„¬ËÂ]◊
+  str@013f ÿÙˆı˜˚˙˘Û˝
+  str@014b ˛´ÜÔöÅ
+  str@015c ÆIõH±]0{È
+  str@0176 &Iˇ¢LYR•Jî.[éîy2&¬
+  str@0189 ,W∆Ñ	sAæä@Éíâá@”ü
+  str@019c V*UZíÈRûOõÍ|
+í™T®T£Z}
+  str@01c2 ÖìCKµ§[µ
+  str@01cb ]zµÍ\ßwÈ6≠[Wd5°Äç~ma/‚⁄ufJ,‘ÈQ
+  str@01f4 …ê/WŒåô2JÀù5É
+  str@0202 ¿`‰A«ú7{Vp
+  str@021c 6˚Ñ∆b◊Ÿ
+  str@0225 ‘&|!Ò„¡ëW
+  str@022f Ÿ5πÛ∑+1ÓÜm
+--- hfs/Pathways_Extras/PIDMaps Folder/PID Maps/They May Be Slow… size=13720  ---
+  00000000  47 49 46 38 39 61 58 01 10 01 c4 00 00 ff ff ff   |GIF89aX.........|
+  00000010  00 00 d6 fd 62 00 94 8c 5a fd f6 00 30 00 9c 84   |....b...Z...0...|
+  00000020  7a 52 00 62 00 dd d5 ac a5 9b 73 63 5a 39 bc b4   |zR.b......scZ9..|
+  00000030  83 ce c6 94 6a 62 41 7a 72 49 49 41 20 51 49 30   |....jbAzrIIA QI0|
+  str@0000 GIF89aX
+  str@0025 ›’¨•õscZ9º¥ÉŒ∆îjbAzrIIA QI0º
+  str@0078 ˇ ""Ãhñ¶à¶Îô™/
+  str@0087 ∑#/ø∂åœ¸Ó≥=‡œ5¨
+  str@0097 â¬$ri,ﬁîMËì9çRu“òvÀÌzø‡∞xL.õœË¥zÕnªﬂ∏|NØ€Ô÷|uèΩÊ˛Gz}ÇÄNÉ|ÖYâ~ÅàçáêãÑèíéÜïxôöõúù
+  str@011e ’÷◊ÿŸ÷
+  str@0125 ∏ª⁄ﬂ‡ﬂ‹¬…ƒ‘·ËÈÍÎ€Ê›Â»9'÷
+  str@0145 	◊“5ÙÏU[Ä
+  str@0150 ¡|÷ˆık˜OÕµz
+  str@015e 4Xa≈j
+  str@0166 8à» „Fä
+  str@016f ˙„≤LH>wÜæˇTK–
+  str@017f ó/]BÄI
+  str@018b ∞î˘ ¶œû3
+  str@019e ÑÈ3®R°K5:
+  str@01a8 :SjSöJâ÷Å®È
+  str@01be Ü„åE˙Zv,S±o{û≠ˆÆdZ?l€ÜçK∂,_ΩÄ˘Œï◊Fgæ
+  str@01e5 „»ÎWÔL∫/´Åm˚˜oL»EœHvLπ≥cæN˚˙ÖÄ˘Æï|˝
+  str@0209 ´UÏ•ÑƒΩH
+  str@0212 8òÌt*–“ÒÍÚx/4ˆÏ©0e”Üi˚%nx»Ì∫„˝“˜û¬ÅCˇM’Å
+--- hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Warning- Earthquake Zone size=8528  ---
+  00000000  47 49 46 38 39 61 58 01 10 01 c4 00 00 ff ff ff   |GIF89aX.........|
+  00000010  00 ac ee fc 61 00 a5 9b 73 00 62 00 00 00 d6 40   |....a...s.b....@|
+  00000020  00 a4 84 84 84 bb b3 82 63 5a 39 ce c6 94 dc d4   |........cZ9.....|
+  00000030  ab 84 7a 52 94 8c 5a 69 61 40 79 71 48 4a 42 18   |..zR..Zia@yqHJB.|
+  str@0000 GIF89aX
+  str@0021 §ÑÑÑª≥ÇcZ9Œ∆î‹‘´ÑzRîåZia@yqHJB
+  str@007d hñ¶à¶Îô™/
+  str@0087 ∑#/ø∂åœ¸Ó≥=‡œ5¨
+  str@0097 â¬$ri,ﬁîMËì9çRu“òvÀÌzø‡∞xL.õœË¥zÕnªﬂ∏|NØ€Ô÷|uèΩÊ˛Gz}ÇÄNÉ|ÖYâ~ÅàçáêãÑèíéÜïxôöõúù
+  str@0122 ∏»ÿ◊⁄÷€ﬁ‹‡¬ê“ÊÁË“‚:
+  str@0136 +Î9ÈÒÚÛÙ]
+  str@0140 ˜öÔ·˚‰˙˝¸’¸
+  str@0153 ‚¿´«∞°C1
+  str@0165 ª˝€x±c6é
+  str@0171 «‚ﬁΩäﬂRˇF…H2§Àë/[¬ú)≥&õä
+  str@018a (‚S¯∞ßœütLÍ¥òè Õî,ë
+  str@019e µô¥)?Å&
+  str@01ac †X≥j›rP(
+  str@01b5 ≠`√äÌ¬m¿¡Æ;ì
+  str@01c2 u
+rÌR•môæµ˙Œ`W™;c.
+  str@01dd $Z4.\ër/≥E|8fcqÄ
+  str@01ee KU˚d±cÀn
+  str@0200 ¥S ößﬂ”®—/f¿ÄjÉ
+  str@0210 õ0'f,ªqf⁄ú[˘≥ã†
+--- hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Watch Your Step size=12552  ---
+  00000000  47 49 46 38 39 61 58 01 10 01 c4 00 00 ff ff ff   |GIF89aX.........|
+  00000010  00 ac ee bc 0f 00 7a 72 49 00 62 00 84 84 84 dd   |......zrI.b.....|
+  00000020  d5 ac 00 00 d6 41 00 a4 84 7a 52 94 8c 5a a5 9b   |.....A...zR..Z..|
+  00000030  73 bc b4 83 ce c6 94 49 41 20 51 49 30 63 5a 39   |s......IA QI0cZ9|
+  str@0000 GIF89aX
+  str@001c ÑÑÑ›’¨
+  str@0027 §ÑzRîåZ•õsº¥ÉŒ∆îIA QI0cZ9jbA
+  str@007c Õhñ¶à¶Îô™/
+  str@0087 ∑#/ø∂åœ¸Ó≥=‡œ5¨
+  str@0097 â¬$ri,ﬁîMËì9çRu“òvÀÌzø‡∞xL.õœË¥zÕnªﬂ∏|NØ€Ô÷|uèΩÊ˛Gz}ÇÄNÉ|ÖYâ~ÅàçáêãÑèíéÜïxôöõúù
+  str@014c §7∞ö@}
+  str@015d ˆ˚wmb¬Ö
+  str@0165 #BÃ»—`Cè
+  str@016e ?*¸hq#Hì
+  str@017f {ƒ0}©∂ ¬
+  str@0189 7qﬁ|êSßO
+  str@0197 ”ﬂÄ†=â&›πÙ'R†Oá2Ö™îÍT©?ï
+  str@01b0 ’:‡hU¨B¡6/
+  str@01bb µÏW≥W£rıöˆÏ◊ú<
+  str@01ca ﬁë«@”ü
+  str@01d2 †Í’€ìÔﬁ°
+  str@01dd ˛€ój‡¬É˜"∆y∏1a¡ê
+  str@01ee KVÏòÚdøó/géº∏Ûﬂ
+  str@01fe ÎË4X`Ø.ú
+--- hfs/Pathways_Extras/PIDMaps Folder/PID Maps/We Can See In The Dark… Can Yo… size=13546  ---
+  00000000  47 49 46 38 39 61 58 01 10 01 c4 00 00 ff ff ff   |GIF89aX.........|
+  00000010  00 00 d6 bc 0f 00 41 00 a4 84 7a 52 94 8c 5a fd   |......A...zR..Z.|
+  00000020  62 00 dd d5 ac a5 9b 73 49 41 20 bc b4 83 ce c6   |b......sIA .....|
+  00000030  94 51 49 30 63 5a 39 6a 62 41 7a 72 49 bc 00 00   |.QI0cZ9jbAzrI...|
+  str@0000 GIF89aX
+  str@0018 §ÑzRîåZ˝b
+  str@0022 ›’¨•õsIA º¥ÉŒ∆îQI0cZ9jbAzrIº
+  str@007c Àhñ¶à¶Îô™/
+  str@0087 ∑#/ø∂åœ¸Ó≥=‡œ5¨
+  str@0097 â¬$ri,ﬁîMËì9çRu“òvÀÌzø‡∞xL.õœË¥zÕnªﬂ∏|NØ€Ô÷|uèΩÊ˛Gz}ÇÄNÉ|ÖYâ~ÅàçáêãÑèíéÜïxôöõúù
+  str@0121 ÿŸ⁄€‹›ﬁﬂ‡·‹
+  str@012d ∏»‘‰¬÷ÊÂÍÌ“3Ÿ
+ÚÒ
+  str@0146 ˆŸ˚˝ÓÂ”Üœ
+  str@0155 @†ÌùC8Áöÿ#ÜÈ·
+  str@0166 0H∞ë„F
+  str@017d eÇï/;ÇÙg±Ê3y
+4E\ó
+  str@018f [Éó@É∆
+  str@019f ∫ÙÂÉlÏv∂ìJïùõÑˆrB¥È≈Á—¶EïÇu
+  str@01d1 
+Ä2–ò†¡Éø.˝
+  str@01dd ˛¯†¡«}
+  str@01e6 v–˜Ô…éÇ
+  str@01ee øåÏÚdLµv£jÓπ9
+  str@01fc UúYß>∫÷y.
+  str@0206 ºzª!åß≠„”lÆUÀÊÜÁÀâ¢9ÎŒº
+--- hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Welcome, Tasty Primate size=13625  ---
+  00000000  47 49 46 38 39 61 58 01 10 01 c4 00 00 ff ff ff   |GIF89aX.........|
+  00000010  bc 07 00 fd 62 00 fd f6 00 6a 62 41 41 00 a4 dd   |....b....jbAA...|
+  00000020  d5 ac a5 9b 73 4a 42 18 7a 72 49 bc b4 83 ce c6   |....sJB.zrI.....|
+  00000030  94 51 49 28 63 5a 39 84 7a 52 94 8c 5a bc 00 00   |.QI(cZ9.zR..Z...|
+  str@0000 GIF89aX
+  str@001e §›’¨•õsJB
+  str@0028 zrIº¥ÉŒ∆îQI(cZ9ÑzRîåZº
+  str@007c Àhñ¶à¶Îô™/
+  str@0087 ∑#/ø∂åœ¸Ó≥=‡œ5¨
+  str@0097 â¬$ri,ﬁîMËì9çRu“òvÀÌzø‡∞xL.õœË¥zÕnªﬂ∏|NØ€Ô÷|uèΩÊ˛Gz}ÇÄNÉ|ÖYâ~ÅàçáêãÑèíéÜïxôöõúù
+  str@011e ’÷◊ÿŸ⁄€‹›ﬁﬂ‡·‚„‰Â‡HÊÈ‹
+  str@0135 ∏»À∆,÷
+ÛÚ
+  str@0146 	˜÷¸¸·”w-ﬂøz
+  str@0155 L∏¿‡@Ü
+  str@015e D¯∞¢Dà
+  str@0166 ˆ√»—bµ
+  str@016f \”Rê^µà
+  str@017c R§µ6Ôà‹#ÜÈÀG
+  str@018b ‰‘ôì¡Nû@Å˙Ïó¿'O¢B
+  str@019e 5ä i”•
+  str@01a5 êBmÍÙiO•W©Nµ
+  str@01b2 ¥™◊≠P•fÂ
+  str@01bb ¥ÍNüˇH≤ƒ©ì,÷Æ[ÕZM
+  str@01dd Ó˚W´‡¬Éü
+--- hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Where Only Fools Dare Tread size=14390  ---
+  00000000  47 49 46 38 39 61 58 01 10 01 c4 00 00 ff ff ff   |GIF89aX.........|
+  00000010  00 00 d6 fd f6 00 bc 0f 00 fd 62 00 dd d5 ac 84   |..........b.....|
+  00000020  7a 52 84 84 84 49 41 20 94 8c 5a a5 9b 73 bc b4   |zR...IA ..Z..s..|
+  00000030  83 ce c6 94 51 49 30 63 5a 39 6a 62 41 7a 72 49   |....QI0cZ9jbAzrI|
+  str@0000 GIF89aX
+  str@001c ›’¨ÑzRÑÑÑIA îåZ•õsº¥ÉŒ∆îQI0cZ9jbAzrI
+  str@007c Ãhñ¶à¶Îô™/
+  str@0087 ∑#/ø∂åœ¸Ó≥=‡œ5¨
+  str@0097 â¬$ri,ﬁîMËì9çRu“òvÀÌzø‡∞xL.õœË¥zÕnªﬂ∏|NØ€Ô÷|uèΩÊ˛Gz}ÇÄNÉ|ÖYâ~ÅàçáêãÑèíéÜïxôöõúù
+  str@011e ’÷◊ÿŸ⁄€◊H‹ﬂ‡ﬂﬁ·‰ÂÊÁËØË⁄
+  str@0136 ∏»À∆ê^◊
+  str@0143 ÿ¯˙Ù˘◊
+
+  str@014b (Ë6„ûΩj¸ˆ˝Û◊ØZ¿Å÷¥–;» !CÖ/
+  str@0169 !c≈Ö˜@"
+  str@0177 	ˇÇôÿ$Éá*Â¿#¢è
+  str@018b 4@∞ìÁŒ
+  str@0198 (—û@˚I|©ìÁ—üAç
+  str@01af 4µ:¥hT®TÅrÑ‡ïhŸ∞_ªJE˙
+  str@01cb m[Möñz
+  str@01d2 4âb‡¿¨_øA
+  str@01e5 ˇ/lñ1aøÜÎ"Ó´∏±b«N+
+  str@01f8 ∆Ã˘≤Á¬á
+  str@0204 rËvt^ÍÀ
+  str@020c 'áòjî7
+--- hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Wrong Way! size=13188  ---
+  00000000  47 49 46 38 39 61 58 01 10 01 c4 00 00 ff ff ff   |GIF89aX.........|
+  00000010  6a 62 41 f6 00 83 bc 0f 00 fd 62 00 a5 9b 73 dd   |jbA.......b...s.|
+  00000020  d5 ac 00 00 d6 41 00 a4 49 41 20 7a 72 49 bc b4   |.....A..IA zrI..|
+  00000030  83 ce c6 94 51 49 30 63 5a 39 84 7a 52 94 8c 5a   |....QI0cZ9.zR..Z|
+  str@0000 GIF89aX
+  str@000d ˇˇˇjbAˆ
+  str@001c •õs›’¨
+  str@0027 §IA zrIº¥ÉŒ∆îQI0cZ9ÑzRîåZº
+  str@007c Ãhñ¶à¶Îô™/
+  str@0087 ∑#/ø∂åœ¸Ó≥=‡œ5¨
+  str@0097 â¬$ri,ﬁîMËì9çRu“òvÀÌzø‡∞xL.õœË¥zÕnªﬂ∏|NØ€Ô÷|uèΩÊ˛Gz}ÇÄNÉ|ÖYâ~ÅàçáêãÑèíéÜïxôöõúù
+  str@011e ’÷◊ÿŸ⁄€‹›ﬁﬂ‡‡
+  str@012c ∏»‘·ÁËÈ‹„¬…ƒÀ”÷
+  str@0142 ˆ¯˙◊˘˜˝¸Í˝
+  str@0157 °¿5i]˙—;
+  str@0166 ^ÃHP„5Ü
+  str@016e ≠µÅG‰ﬁªG_™ˇ
+  str@017b – AKó-
+  str@0187 Mô6oŒƒâ”&œù1Å÷‘ôÛg—†>}6¯
+  str@01a0 ëãJñ.ï
+  str@01a7 5*µ'—™B≠R})ìi¥y
+  str@01b7 4˝a‡ ßY≥3—ûM∫6m—µQ€¬uÀˆ,›∏f
+  str@01d8 Y∏jÂ
+∂;∑‡úz´ë{√†¿Ω∞prh©V÷0·√o1◊/|π3Áœh
+  str@0200 (n:˘Øe–õ3{VçZÈË3}ß‹s
+--- hfs/Pathways_Extras/PIDMaps Folder/PID Maps/…But They're Hungry size=14045  ---
+  00000000  47 49 46 38 39 61 58 01 10 01 c4 00 00 ff ff ff   |GIF89aX.........|
+  00000010  00 ac ee 84 7a 52 94 8c 5a fd 62 00 dd d5 ac 00   |....zR..Z.b.....|
+  00000020  62 00 00 00 d6 41 00 a4 a5 9b 73 63 5a 39 bc b4   |b....A....scZ9..|
+  00000030  83 ce c6 94 6a 62 41 7a 72 49 4a 42 18 51 49 28   |....jbAzrIJB.QI(|
+  str@0000 GIF89aX
+  str@0011 ¨ÓÑzRîåZ˝b
+  str@0027 §•õscZ9º¥ÉŒ∆îjbAzrIJB
+  str@007c Ãhñ¶à¶Îô™/
+  str@0087 ∑#/ø∂åœ¸Ó≥=‡œ5¨
+  str@0097 â¬$ri,ﬁîMËì9çRu“òvÀÌzø‡∞xL.õœË¥zÕnªﬂ∏|NØ€Ô÷|uèΩÊ˛Gz}ÇÄNÉ|ÖYâ~ÅàçáêãÑèíéÜïxôöõúù
+  str@011e ’÷◊ÿŸ⁄€‹÷H›‡ﬁQ·‰ÂÊÁËÈÍÎÁ
+  str@0137 ∏»ÀY'÷
+  str@0146 ˘÷˚˝∞-¿w-¡Ä
+  str@0152 ◊¥\´Áè¡¿Ü
+  str@016e AﬁÛò1$Ië
+  str@0183 |	QbB2Òà‰#ÜÈKµ
+  str@019a ¢GãÚsêÙË“¢Pá>(ÍOaƒ†R°&Õz¥Íå´Fß6Ej
+  str@01bc ¬“±O«N’JîÌZµbÀæï
+  str@01d1 LÀ¶•Î∂Ó÷æÄ·íı⁄â°¶?
+  str@01e5 ¨]º∏-„«ê≈>v@qû‚»í
+  str@01f7 SÆˆı2f«òCÉŒÃxt÷“êMõ
+  str@020b ˝XuÍ◊≠a/ﬁ‹≥Mƒ|
+  str@0224 ˇÜ¿πÛÔ·≈+ˆ
+  str@022f >ºµc◊±£˚ûŒ<ıh‡–©øï]Ω4Ò›ÔíÂCò€
+--- hfs/Pathways_Extras/Torch 0.9.1 folder/Torch 0.9.1 size=260192  ---
+  00000000  4a 6f 79 21 70 65 66 66 70 77 70 63 00 00 00 01   |Joy!peffpwpc....|
+  00000010  ae 64 a4 c8 00 00 00 00 00 00 00 00 00 00 00 00   |.d..............|
+  00000020  00 03 00 02 00 00 00 00 ff ff ff ff 00 00 00 00   |................|
+  00000030  00 03 c2 b0 00 03 c2 b0 00 03 c2 b0 00 00 12 80   |................|
+  str@0000 Joy!peffpwpc
+  str@08f0 AppearanceLib
+  str@08fe StandardAlert
+  str@090c STRuntime
+  str@0916 RuntimeReraiseException
+  str@092e RuntimeNilObject
+  str@093f RuntimeStackCheck
+  str@0951 RuntimeUnlockObject
+  str@0965 RuntimeUnlockString
+  str@0979 RuntimeDisposeStringArray
+  str@0993 RuntimeDisposeIntArray
+  str@09aa RuntimeDisposeObjectArray
+  str@09c4 RuntimeDisposeFastBooleanArray
+  str@09e3 RuntimeBackgroundTask
+  str@09f9 RuntimeMenuArrayReference
+  str@0a13 RuntimeLockObject
+  str@0a25 RuntimeMenuReference
+  str@0a3a enableMenuItems
+  str@0a4a BinaryStreamClose
+  str@0a5c RuntimeDirectWriteIntArray
+--- hfs/Pathways_Extras/Torch 0.9.1 folder/Torch Docs size=5609  ---
+  00000000  54 6f 72 63 68 20 30 2e 39 2e 31 0d 42 65 6e 20   |Torch 0.9.1.Ben |
+  00000010  53 65 6d 6d 6c 65 72 20 d1 20 62 65 6e 40 74 6f   |Semmler . ben@to|
+  00000020  72 71 75 65 72 6f 64 2e 63 6f 6d 0d 31 34 20 41   |rquerod.com.14 A|
+  00000030  70 72 69 6c 20 32 30 30 30 0d 0d 30 2e 39 2e 31   |pril 2000..0.9.1|
+  str@0000 Torch 0.9.1/Ben Semmler — ben@torquerod.com/14 April 2000//0.9.1 Notes/ - Memory
+  str@061b //////////////////////////////////////////Name/Must be under 128 character long.
+  str@0afa /////////////////////////Sector Type/This is how the sector acts, along with how
+--- pathwaysintodarkness/floppies_1994/Installer_Disk_1.dsk size=819200 HFS/HFS+ volume (BD/H+ at 0x400) ---
+  00000000  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  00000010  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  00000020  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  00000030  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  str@0400 BD©»izÀÂZe
+  str@0425 Pathways Installer Disk 1
+  str@0600 ˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇ
+--- pathwaysintodarkness/floppies_1994/Installer_Disk_2.dsk size=819200 HFS/HFS+ volume (BD/H+ at 0x400) ---
+  00000000  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  00000010  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  00000020  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  00000030  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  str@0400 BD©»k/©»q
+  str@0425 Pathways Installer Disk 2
+  str@0600 ˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇ
+--- pathwaysintodarkness/floppies_1994/Installer_Disk_3.dsk size=819200 HFS/HFS+ volume (BD/H+ at 0x400) ---
+  00000000  50 4b 4b 54 50 4b 4b 54 50 4b 4b 54 50 4b 4b 54   |PKKTPKKTPKKTPKKT|
+  00000010  50 4b 4b 54 50 4b 4b 54 50 4b 4b 54 50 4b 4b 54   |PKKTPKKTPKKTPKKT|
+  00000020  50 4b 4b 54 50 4b 4b 54 50 4b 4b 54 50 4b 4b 54   |PKKTPKKTPKKTPKKT|
+  00000030  50 4b 4b 54 50 4b 4b 54 50 4b 4b 54 50 4b 4b 54   |PKKTPKKTPKKTPKKT|
+  str@0000 PKKTPKKTPKKTPKKTPKKTPKKTPKKTPKKTPKKTPKKTPKKTPKKTPKKTPKKTPKKTPKKTPKKTPKKTPKKTPKKT
+  str@0425 Pathways Installer Disk 3
+  str@0600 ˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇ
+--- pathwaysintodarkness/Pathways_1995.dsk size=4620288 HFS/HFS+ volume (BD/H+ at 0x400) ---
+  00000000  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  00000010  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  00000020  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  00000030  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  str@0400 BD¨kŸÖ…
+  str@0423 6
+Pathways ƒ
+  str@0600 ˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇ¸
+  str@0623 ˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇ
+--- pathwaysintodarkness/Pathways_Extras.dsk size=3834880 HFS/HFS+ volume (BD/H+ at 0x400) ---
+  00000000  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  00000010  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  00000020  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  00000030  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   |................|
+  str@0425 Pathways Extras
+  str@0600 ˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇˇ

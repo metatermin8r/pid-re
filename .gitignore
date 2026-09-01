@@ -1,6 +1,8 @@
 # Original game data — never commit
 /data/*
 !/data/.gitkeep
+/reference/dpin_128.bin
+/reference/scri/
 
 # Local Python env
 .venv/

@@ -1,0 +1,87 @@
+Identifications of PID .256 shapes resources
+From: Loren Petrich <petrich@netcom.com>
+Newsgroups: alt.games.marathon
+Subject: More Pathways Into Darkness Identifications
+Message-ID: <090420001945175496%petrich@netcom.com>
+Date: Mon, 10 Apr 2000 02:45:16 GMT
+NNTP-Posting-Host: 24.1.102.83
+Organization: @Home Network
+Xref: news.tcd.ie alt.games.marathon:60628
+
+
+   Here are all the identifications of PID .256 shapes resources I have
+been able to perform; it is likely that some of the still-unknown ones
+had never made it into the game.
+
+   One weird thing is I can't find out how the floors and ceilings are
+encoded in the map file or in the 'dpin' resource.
+
+   However, some of these entries are listed as 128 + something; that
+something is how they are referred to in the map file.
+
+   I did it by copying one of the resources and replacing another
+resource with that copy; then I looked for what looked like that copied
+resource. Thus, if I replace #130 with #128, I notice that the
+Headlesses look suspiciously like items to be picked up.
+
+   Sometimes this approach produces crashes, however, but even then, I
+could guess the likely source of the crash.
+
+128: Pickup items, dialog-box "PID" title, save rune, etc.; sets
+overall color table
+129: Nightmare, Greater Nightmare
+130: Headless
+131: Phantasm
+132: Ghoul
+133: Zombie, Ghast
+134: Shocking sphere
+135: Blue Meanie
+136: Barney?
+137: Demon
+139: Ooze, Green Ooze
+140: Wraith
+141: Sentinel
+142: Skitter, Venomous Skitter
+148: Walther Pistol
+149: MP-41 Submachine Gun
+150: AK-47 Assault Rifle
+151: M-79 Grenade Launcher
+152: Survival knife
+153: Plain-theme pillars (128 + 25)
+154: Plain-theme scenery (128 + 26)
+155: Plain-theme ladders (128 + 27)
+156: Corpses (128 + 28)
+157: Crystal-theme scenery (128 + 29)
+158: Crystal-theme pillars (128 + 30)
+159: Crystal-theme ladders (128 + 31)
+160: Corpses (128 + 32)
+161: Corpses (128 + 33)
+162: Rat things (128 + 34)
+163: Crystal-theme extra scenery (128 + 35)
+164: Vine-theme pillars, ladders (128 + 36)
+165: Corpses (128 + 37)
+166: Lizard things, exploding pods (128 + 38)
+167: Vine-theme scenery (128 + 39)
+187: Pyramid-blowing-up cutscene?
+188: Game-selection graphics (soldier in a jungle coming across a
+Central American pyramid)
+189: ?
+190: Map-display graphics (sprites for map parts)
+191: About-box graphics
+192: Plain-theme walls (128 + 64)
+193: Vine-theme walls (128 + 65)
+194: Crystal-theme walls (128 + 66)
+195: Mottled gray floor/ceiling
+196: Pink/gray checkerboard floor/ceiling
+197: Blue or green floor/ceiling with black splotches
+198: Big cyan polkadotted floor/ceiling
+199: Dark purple floor/ceiling with inscriptions
+200: ?
+201: ?
+202: Irregular-orientation green-striped floor/ceiling
+
+-- 
+Loren Petrich
+petrich@netcom.com
+Happiness is a fast Macintosh
+And a fast train

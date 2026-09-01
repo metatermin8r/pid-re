@@ -1,0 +1,33 @@
+# C:/Users/Colton S Covert/Documents/GitHub/Pathways-Into-Darkness-Unity/data/cd/hfs/Pathways_Extras/PID_Docs Folder/sector_types_sqr.gif.rsrc
+source: raw-rsrc
+resource_bytes: 14914
+types: 6
+
+'8BIM': 11 resources:
+  (1001): 120 bytes
+  (1005): 16 bytes
+  (1011): 8 bytes
+  (1013): 72 bytes
+  (1016): 112 bytes
+  (1032): 16 bytes
+  (1034): 1 bytes
+  (1036): 7355 bytes
+  (1037): 4 bytes
+  (1044): 4 bytes
+  (10000): 10 bytes
+
+'ICN#': 1 resources:
+  (-16455): 256 bytes
+
+'PICT': 1 resources:
+  (28712): 5288 bytes
+
+'STR ': 1 resources:
+  (-16396): 24 bytes
+
+'icl8': 1 resources:
+  (-16455): 1024 bytes
+
+'pnot': 1 resources:
+  (0): 14 bytes
+

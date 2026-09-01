@@ -1,0 +1,485 @@
+== T3 .256 128 size=49647 ==
+first16=00 01 94 a0 99 00 3b 00 00 04 e8 00 00 0c 48 00
+u32be[0]=103584
+u16be[0..6]=(1, 38048, 39168, 15104)
+u32be from 8 (raw)=['0x4e800', '0xc4800', '0xff800', '0x184a802', '0x100', '0x9a000303']
+u32be from 8 >>8=[1256, 3144, 4088, 99496, 1, 10092547]
+ascending u32be from 8: count=3 first=[1256, 3144, 4088] last=[1256, 3144, 4088]
+header fields vs chunk count 3: {'u16@0': 1, 'u16@2': 38048, 'u16@4': 39168, 'u16@6': 15104, 'u32@0': 103584, 'u32@4': 2566929152}
+
+== T3 first 5 chunks of 128 ==
+  chunk0 off=1256 len=1888 first32=00 84 9b 00 78 ff c9 10 00 80 06 00 00 80 07 00 00 82 19 00 1e 12 00 80 06 00 00 80 08 00 00 82
+       u16wh=(132,39680) u8wh=(0,132) 8bpp=1888px 4bpp=3776px u16wh*1=5237760 u16wh+hdr=-
+  chunk1 off=3144 len=944 first32=2a 2c 30 10 02 80 2e 02 28 80 2b 10 02 83 2e 2d 2b 2a 03 28 82 2c 2d 2f 1b 02 81 2d 2a 01 28 81
+       u16wh=(10796,12304) u8wh=(42,44) 8bpp=944px 4bpp=1888px u16wh*1=big u16wh+hdr=-
+  chunk2 off=4088 len=45559 first32=0b 77 7a 79 06 9c 0c 76 7a 7a 00 79 00 78 00 77 86 74 0d 9c 9c 0a 73 77 00 78 89 77 76 77 79 79
+       u16wh=(2935,31353) u8wh=(11,119) 8bpp=45559px 4bpp=91118px u16wh*1=big u16wh+hdr=-
+
+== T3 chunk length histogram 128 ==
+  n=3 min=944 max=45559 median=1888
+  most_common=[(1888, 1), (944, 1), (45559, 1)]
+
+== T3 same parse on 129/148/192/153 ==
+  129 Nightmare, Greater Nightmare             size= 59909 chunks=   3 len_min=288 len_max=57037 hdr=00 02 b9 08 99 00 18 00 00 07 18 00 00 0a 18 00
+       first_offs=[1816, 2584, 2872] first_lens=[768, 288, 57037]
+       chunk0_32=00 05 00 00 01 50 01 a0 01 43 10 00 81 06 40 02 00 85 01 b4 01 98 01 43 10 00 8c 06 40 00 00 01
+  148 Walther Pistol                           size=  7197 chunks=   3 len_min=48 len_max=6469 hdr=00 00 3d dc 99 00 06 00 00 01 e8 00 00 02 a8 00
+       first_offs=[488, 680, 728] first_lens=[192, 48, 6469]
+       chunk0_32=05 16 00 82 3b 00 48 07 00 85 10 98 00 3b 00 64 07 00 85 27 a4 00 39 00 57 05 00 18 02 80 3c 36
+  192 Plain-theme walls                        size=167155 chunks=   3 len_min=368 len_max=164139 hdr=00 02 d6 88 ff 00 16 00 00 07 98 00 00 0a 58 00
+       first_offs=[1944, 2648, 3016] first_lens=[704, 368, 164139]
+       chunk0_32=00 00 80 07 18 00 80 04 00 00 80 08 18 00 80 05 00 00 80 09 18 00 80 01 00 00 80 0a 18 00 80 01
+  153 Plain-theme pillars                      size=  6864 chunks=   3 len_min=48 len_max=5544 hdr=00 00 24 8c c5 00 03 00 00 04 98 00 00 04 f8 00
+       first_offs=[1176, 1272, 1320] first_lens=[96, 48, 5544]
+       chunk0_32=20 00 59 07 00 85 1d 68 00 17 00 16 05 00 06 02 84 11 10 0f 0c 0b 08 0a 84 0b 0d 10 10 11 0a 02
+
+== T3 all 50 .256 ==
+  128 size= 49647 chunks=   3 Pickup items / dialog PID title / save rune / overall color table
+  129 size= 59909 chunks=   3 Nightmare, Greater Nightmare
+  130 size= 52199 chunks=   3 Headless
+  131 size= 29786 chunks=   3 Phantasm
+  132 size= 84995 chunks=   3 Ghoul
+  133 size= 84549 chunks=   3 Zombie, Ghast
+  134 size=  8508 chunks=   3 Shocking sphere
+  135 size= 43298 chunks=   3 Blue Meanie
+  136 size= 26246 chunks=   3 Barney?
+  137 size= 40297 chunks=   3 Demon
+  139 size= 65404 chunks=   3 Ooze, Green Ooze
+  140 size= 23293 chunks=   3 Wraith
+  141 size= 21460 chunks=   3 Sentinel
+  142 size= 53676 chunks=   3 Skitter, Venomous Skitter
+  148 size=  7197 chunks=   3 Walther Pistol
+  149 size= 11074 chunks=   3 MP-41 Submachine Gun
+  150 size=  8302 chunks=   3 AK-47 Assault Rifle
+  151 size=  8294 chunks=   3 M-79 Grenade Launcher
+  152 size=  6375 chunks=   3 Survival knife
+  153 size=  6864 chunks=   3 Plain-theme pillars
+  154 size= 10226 chunks=   3 Plain-theme scenery
+  155 size= 11242 chunks=   3 Plain-theme ladders
+  156 size= 12544 chunks=   3 Corpses
+  157 size=  5132 chunks=   3 Crystal-theme scenery
+  158 size=  7563 chunks=   3 Crystal-theme pillars
+  159 size= 16736 chunks=   3 Crystal-theme ladders
+  160 size=  9562 chunks=   3 Corpses
+  161 size= 14200 chunks=   2 Corpses
+  162 size=  5090 chunks=   3 Rat things
+  163 size=  3723 chunks=   3 Crystal-theme extra scenery
+  164 size= 26648 chunks=   3 Vine-theme pillars, ladders
+  165 size=  9493 chunks=   3 Corpses
+  166 size=  6913 chunks=   3 Lizard things, exploding pods
+  167 size=  9231 chunks=   0 Vine-theme scenery
+  187 size=322278 chunks=   3 Pyramid-blowing-up cutscene?
+  188 size= 46839 chunks=   3 Game-selection graphics
+  189 size= 12738 chunks=   0 ?
+  190 size=  5602 chunks=   3 Map-display graphics
+  191 size= 29545 chunks=   3 About-box graphics
+  192 size=167155 chunks=   3 Plain-theme walls
+  193 size= 56661 chunks=   3 Vine-theme walls
+  194 size=152475 chunks=   3 Crystal-theme walls
+  195 size= 31628 chunks=   3 Mottled gray floor/ceiling
+  196 size= 32727 chunks=   3 Pink/gray checkerboard floor/ceiling
+  197 size= 27838 chunks=   3 Blue or green floor/ceiling with black splotches
+  198 size= 18545 chunks=   3 Big cyan polkadotted floor/ceiling
+  199 size= 31733 chunks=   3 Dark purple floor/ceiling with inscriptions
+  200 size= 32253 chunks=   3 ?
+  201 size= 32428 chunks=   3 ?
+  202 size= 31396 chunks=   3 Irregular-orientation green-striped floor/ceiling
+
+== T3 bpp hint (common lengths vs w*h) ==
+  top lengths: [(64, 12), (32, 12), (128, 8), (48, 7), (192, 6), (96, 6), (320, 3), (208, 3), (992, 2), (560, 2), (224, 2), (256, 2), (80, 2), (448, 2), (16, 2), (1888, 1), (944, 1), (45559, 1), (768, 1), (288, 1)]
+  16x16 8bpp +0hdr = 256 hits=2
+  16x16 4bpp +0hdr = 128 hits=8
+  32x32 4bpp +0hdr = 512 hits=1
+  8x8 8bpp +0hdr = 64 hits=12
+  8x8 4bpp +0hdr = 32 hits=12
+  24x24 8bpp +0hdr = 576 hits=1
+  24x24 4bpp +0hdr = 288 hits=1
+  20x20 4bpp +8hdr = 208 hits=3
+
+== T4 clut 128-135 ==
+clut 128: bytes=128 seed=0 flags=0 size=14 n=15
+  [ 0] idx= 0 raw=(59367,61423,65535) hex16=(e7e7,efef,ffff) rgb8=(231,239,255)
+  [ 1] idx= 1 raw=(53970,56026,64507) hex16=(d2d2,dada,fbfb) rgb8=(210,218,251)
+  [ 2] idx= 2 raw=(48573,50629,63222) hex16=(bdbd,c5c5,f6f6) rgb8=(189,197,246)
+  [ 3] idx= 3 raw=(42919,44975,61937) hex16=(a7a7,afaf,f1f1) rgb8=(167,175,241)
+  [ 4] idx= 4 raw=(37522,39578,60909) hex16=(9292,9a9a,eded) rgb8=(146,154,237)
+  [ 5] idx= 5 raw=(32125,34181,59624) hex16=(7d7d,8585,e8e8) rgb8=(125,133,232)
+  [ 6] idx= 6 raw=(26471,28527,58339) hex16=(6767,6f6f,e3e3) rgb8=(103,111,227)
+  [ 7] idx= 7 raw=(21074,23130,57054) hex16=(5252,5a5a,dede) rgb8=( 82, 90,222)
+  [ 8] idx= 8 raw=(18504,20303,50886) hex16=(4848,4f4f,c6c6) rgb8=( 72, 79,198)
+  [ 9] idx= 9 raw=(16191,17733,44461) hex16=(3f3f,4545,adad) rgb8=( 63, 69,173)
+  [10] idx=10 raw=(13621,14906,38036) hex16=(3535,3a3a,9494) rgb8=( 53, 58,148)
+  [11] idx=11 raw=(11308,12079,31611) hex16=(2c2c,2f2f,7b7b) rgb8=( 44, 47,123)
+  [12] idx=12 raw=( 8738, 9509,25186) hex16=(2222,2525,6262) rgb8=( 34, 37, 98)
+  [13] idx=13 raw=( 6425, 6682,18761) hex16=(1919,1a1a,4949) rgb8=( 25, 26, 73)
+  [14] idx=14 raw=( 4112, 4112,12593) hex16=(1010,1010,3131) rgb8=( 16, 16, 49)
+  wrote C:\Users\Colton S Covert\Documents\GitHub\Pathways-Into-Darkness-Unity\reference\palettes\clut_128.png
+clut 129: bytes=128 seed=0 flags=0 size=14 n=15
+  [ 0] idx= 0 raw=( 7680, 7680, 7680) hex16=(1e00,1e00,1e00) rgb8=( 30, 30, 30)
+  [ 1] idx= 1 raw=( 7168, 7168, 7168) hex16=(1c00,1c00,1c00) rgb8=( 28, 28, 28)
+  [ 2] idx= 2 raw=( 6656, 6656, 6656) hex16=(1a00,1a00,1a00) rgb8=( 26, 26, 26)
+  [ 3] idx= 3 raw=( 6144, 6144, 6144) hex16=(1800,1800,1800) rgb8=( 24, 24, 24)
+  [ 4] idx= 4 raw=( 5632, 5632, 5632) hex16=(1600,1600,1600) rgb8=( 22, 22, 22)
+  [ 5] idx= 5 raw=( 5120, 5120, 5120) hex16=(1400,1400,1400) rgb8=( 20, 20, 20)
+  [ 6] idx= 6 raw=( 4608, 4608, 4608) hex16=(1200,1200,1200) rgb8=( 18, 18, 18)
+  [ 7] idx= 7 raw=( 4096, 4096, 4096) hex16=(1000,1000,1000) rgb8=( 16, 16, 16)
+  [ 8] idx= 8 raw=( 3584, 3584, 3584) hex16=(0e00,0e00,0e00) rgb8=( 14, 14, 14)
+  [ 9] idx= 9 raw=( 3072, 3072, 3072) hex16=(0c00,0c00,0c00) rgb8=( 12, 12, 12)
+  [10] idx=10 raw=( 2560, 2560, 2560) hex16=(0a00,0a00,0a00) rgb8=( 10, 10, 10)
+  [11] idx=11 raw=( 2048, 2048, 2048) hex16=(0800,0800,0800) rgb8=(  8,  8,  8)
+  [12] idx=12 raw=( 1536, 1536, 1536) hex16=(0600,0600,0600) rgb8=(  6,  6,  6)
+  [13] idx=13 raw=( 1024, 1024, 1024) hex16=(0400,0400,0400) rgb8=(  4,  4,  4)
+  [14] idx=14 raw=(  512,  512,  512) hex16=(0200,0200,0200) rgb8=(  2,  2,  2)
+  wrote C:\Users\Colton S Covert\Documents\GitHub\Pathways-Into-Darkness-Unity\reference\palettes\clut_129.png
+clut 130: bytes=128 seed=0 flags=0 size=14 n=15
+  [ 0] idx= 0 raw=(15360, 7680, 7680) hex16=(3c00,1e00,1e00) rgb8=( 60, 30, 30)
+  [ 1] idx= 1 raw=(14336, 7168, 7168) hex16=(3800,1c00,1c00) rgb8=( 56, 28, 28)
+  [ 2] idx= 2 raw=(13312, 6656, 6656) hex16=(3400,1a00,1a00) rgb8=( 52, 26, 26)
+  [ 3] idx= 3 raw=(12288, 6144, 6144) hex16=(3000,1800,1800) rgb8=( 48, 24, 24)
+  [ 4] idx= 4 raw=(11264, 5632, 5632) hex16=(2c00,1600,1600) rgb8=( 44, 22, 22)
+  [ 5] idx= 5 raw=(10240, 5120, 5120) hex16=(2800,1400,1400) rgb8=( 40, 20, 20)
+  [ 6] idx= 6 raw=( 9216, 4608, 4608) hex16=(2400,1200,1200) rgb8=( 36, 18, 18)
+  [ 7] idx= 7 raw=( 8192, 4096, 4096) hex16=(2000,1000,1000) rgb8=( 32, 16, 16)
+  [ 8] idx= 8 raw=( 7168, 3584, 3584) hex16=(1c00,0e00,0e00) rgb8=( 28, 14, 14)
+  [ 9] idx= 9 raw=( 6144, 3072, 3072) hex16=(1800,0c00,0c00) rgb8=( 24, 12, 12)
+  [10] idx=10 raw=( 5120, 2560, 2560) hex16=(1400,0a00,0a00) rgb8=( 20, 10, 10)
+  [11] idx=11 raw=( 4096, 2048, 2048) hex16=(1000,0800,0800) rgb8=( 16,  8,  8)
+  [12] idx=12 raw=( 3072, 1536, 1536) hex16=(0c00,0600,0600) rgb8=( 12,  6,  6)
+  [13] idx=13 raw=( 2048, 1024, 1024) hex16=(0800,0400,0400) rgb8=(  8,  4,  4)
+  [14] idx=14 raw=( 1024,  512,  512) hex16=(0400,0200,0200) rgb8=(  4,  2,  2)
+  wrote C:\Users\Colton S Covert\Documents\GitHub\Pathways-Into-Darkness-Unity\reference\palettes\clut_130.png
+clut 131: bytes=128 seed=0 flags=0 size=14 n=15
+  [ 0] idx= 0 raw=( 7680, 7680,15360) hex16=(1e00,1e00,3c00) rgb8=( 30, 30, 60)
+  [ 1] idx= 1 raw=( 7168, 7168,14336) hex16=(1c00,1c00,3800) rgb8=( 28, 28, 56)
+  [ 2] idx= 2 raw=( 6656, 6656,13312) hex16=(1a00,1a00,3400) rgb8=( 26, 26, 52)
+  [ 3] idx= 3 raw=( 6144, 6144,12288) hex16=(1800,1800,3000) rgb8=( 24, 24, 48)
+  [ 4] idx= 4 raw=( 5632, 5632,11264) hex16=(1600,1600,2c00) rgb8=( 22, 22, 44)
+  [ 5] idx= 5 raw=( 5120, 5120,10240) hex16=(1400,1400,2800) rgb8=( 20, 20, 40)
+  [ 6] idx= 6 raw=( 4608, 4608, 9216) hex16=(1200,1200,2400) rgb8=( 18, 18, 36)
+  [ 7] idx= 7 raw=( 4096, 4096, 8192) hex16=(1000,1000,2000) rgb8=( 16, 16, 32)
+  [ 8] idx= 8 raw=( 3584, 3584, 7168) hex16=(0e00,0e00,1c00) rgb8=( 14, 14, 28)
+  [ 9] idx= 9 raw=( 3072, 3072, 6144) hex16=(0c00,0c00,1800) rgb8=( 12, 12, 24)
+  [10] idx=10 raw=( 2560, 2560, 5120) hex16=(0a00,0a00,1400) rgb8=( 10, 10, 20)
+  [11] idx=11 raw=( 2048, 2048, 4096) hex16=(0800,0800,1000) rgb8=(  8,  8, 16)
+  [12] idx=12 raw=( 1536, 1536, 3072) hex16=(0600,0600,0c00) rgb8=(  6,  6, 12)
+  [13] idx=13 raw=( 1024, 1024, 2048) hex16=(0400,0400,0800) rgb8=(  4,  4,  8)
+  [14] idx=14 raw=(  512,  512, 1024) hex16=(0200,0200,0400) rgb8=(  2,  2,  4)
+  wrote C:\Users\Colton S Covert\Documents\GitHub\Pathways-Into-Darkness-Unity\reference\palettes\clut_131.png
+clut 132: bytes=128 seed=0 flags=0 size=14 n=15
+  [ 0] idx= 0 raw=( 7680,15360,15360) hex16=(1e00,3c00,3c00) rgb8=( 30, 60, 60)
+  [ 1] idx= 1 raw=( 7168,14336,14336) hex16=(1c00,3800,3800) rgb8=( 28, 56, 56)
+  [ 2] idx= 2 raw=( 6656,13312,13312) hex16=(1a00,3400,3400) rgb8=( 26, 52, 52)
+  [ 3] idx= 3 raw=( 6144,12288,12288) hex16=(1800,3000,3000) rgb8=( 24, 48, 48)
+  [ 4] idx= 4 raw=( 5632,11264,11264) hex16=(1600,2c00,2c00) rgb8=( 22, 44, 44)
+  [ 5] idx= 5 raw=( 5120,10240,10240) hex16=(1400,2800,2800) rgb8=( 20, 40, 40)
+  [ 6] idx= 6 raw=( 4608, 9216, 9216) hex16=(1200,2400,2400) rgb8=( 18, 36, 36)
+  [ 7] idx= 7 raw=( 4096, 8192, 8192) hex16=(1000,2000,2000) rgb8=( 16, 32, 32)
+  [ 8] idx= 8 raw=( 3584, 7168, 7168) hex16=(0e00,1c00,1c00) rgb8=( 14, 28, 28)
+  [ 9] idx= 9 raw=( 3072, 6144, 6144) hex16=(0c00,1800,1800) rgb8=( 12, 24, 24)
+  [10] idx=10 raw=( 2560, 5120, 5120) hex16=(0a00,1400,1400) rgb8=( 10, 20, 20)
+  [11] idx=11 raw=( 2048, 4096, 4096) hex16=(0800,1000,1000) rgb8=(  8, 16, 16)
+  [12] idx=12 raw=( 1536, 3072, 3072) hex16=(0600,0c00,0c00) rgb8=(  6, 12, 12)
+  [13] idx=13 raw=( 1024, 2048, 2048) hex16=(0400,0800,0800) rgb8=(  4,  8,  8)
+  [14] idx=14 raw=(  512, 1024, 1024) hex16=(0200,0400,0400) rgb8=(  2,  4,  4)
+  wrote C:\Users\Colton S Covert\Documents\GitHub\Pathways-Into-Darkness-Unity\reference\palettes\clut_132.png
+clut 133: bytes=128 seed=0 flags=0 size=14 n=15
+  [ 0] idx= 0 raw=(15360,15360, 7680) hex16=(3c00,3c00,1e00) rgb8=( 60, 60, 30)
+  [ 1] idx= 1 raw=(14336,14336, 7168) hex16=(3800,3800,1c00) rgb8=( 56, 56, 28)
+  [ 2] idx= 2 raw=(13312,13312, 6656) hex16=(3400,3400,1a00) rgb8=( 52, 52, 26)
+  [ 3] idx= 3 raw=(12288,12288, 6144) hex16=(3000,3000,1800) rgb8=( 48, 48, 24)
+  [ 4] idx= 4 raw=(11264,11264, 5632) hex16=(2c00,2c00,1600) rgb8=( 44, 44, 22)
+  [ 5] idx= 5 raw=(10240,10240, 5120) hex16=(2800,2800,1400) rgb8=( 40, 40, 20)
+  [ 6] idx= 6 raw=( 9216, 9216, 4608) hex16=(2400,2400,1200) rgb8=( 36, 36, 18)
+  [ 7] idx= 7 raw=( 8192, 8192, 4096) hex16=(2000,2000,1000) rgb8=( 32, 32, 16)
+  [ 8] idx= 8 raw=( 7168, 7168, 3584) hex16=(1c00,1c00,0e00) rgb8=( 28, 28, 14)
+  [ 9] idx= 9 raw=( 6144, 6144, 3072) hex16=(1800,1800,0c00) rgb8=( 24, 24, 12)
+  [10] idx=10 raw=( 5120, 5120, 2560) hex16=(1400,1400,0a00) rgb8=( 20, 20, 10)
+  [11] idx=11 raw=( 4096, 4096, 2048) hex16=(1000,1000,0800) rgb8=( 16, 16,  8)
+  [12] idx=12 raw=( 3072, 3072, 1536) hex16=(0c00,0c00,0600) rgb8=( 12, 12,  6)
+  [13] idx=13 raw=( 2048, 2048, 1024) hex16=(0800,0800,0400) rgb8=(  8,  8,  4)
+  [14] idx=14 raw=( 1024, 1024,  512) hex16=(0400,0400,0200) rgb8=(  4,  4,  2)
+  wrote C:\Users\Colton S Covert\Documents\GitHub\Pathways-Into-Darkness-Unity\reference\palettes\clut_133.png
+clut 134: bytes=128 seed=0 flags=0 size=14 n=15
+  [ 0] idx= 0 raw=( 7680,15360, 7680) hex16=(1e00,3c00,1e00) rgb8=( 30, 60, 30)
+  [ 1] idx= 1 raw=( 7168,14336, 7168) hex16=(1c00,3800,1c00) rgb8=( 28, 56, 28)
+  [ 2] idx= 2 raw=( 6656,13312, 6656) hex16=(1a00,3400,1a00) rgb8=( 26, 52, 26)
+  [ 3] idx= 3 raw=( 6144,12288, 6144) hex16=(1800,3000,1800) rgb8=( 24, 48, 24)
+  [ 4] idx= 4 raw=( 5632,11264, 5632) hex16=(1600,2c00,1600) rgb8=( 22, 44, 22)
+  [ 5] idx= 5 raw=( 5120,10240, 5120) hex16=(1400,2800,1400) rgb8=( 20, 40, 20)
+  [ 6] idx= 6 raw=( 4608, 9216, 4608) hex16=(1200,2400,1200) rgb8=( 18, 36, 18)
+  [ 7] idx= 7 raw=( 4096, 8192, 4096) hex16=(1000,2000,1000) rgb8=( 16, 32, 16)
+  [ 8] idx= 8 raw=( 3584, 7168, 3584) hex16=(0e00,1c00,0e00) rgb8=( 14, 28, 14)
+  [ 9] idx= 9 raw=( 3072, 6144, 3072) hex16=(0c00,1800,0c00) rgb8=( 12, 24, 12)
+  [10] idx=10 raw=( 2560, 5120, 2560) hex16=(0a00,1400,0a00) rgb8=( 10, 20, 10)
+  [11] idx=11 raw=( 2048, 4096, 2048) hex16=(0800,1000,0800) rgb8=(  8, 16,  8)
+  [12] idx=12 raw=( 1536, 3072, 1536) hex16=(0600,0c00,0600) rgb8=(  6, 12,  6)
+  [13] idx=13 raw=( 1024, 2048, 1024) hex16=(0400,0800,0400) rgb8=(  4,  8,  4)
+  [14] idx=14 raw=(  512, 1024,  512) hex16=(0200,0400,0200) rgb8=(  2,  4,  2)
+  wrote C:\Users\Colton S Covert\Documents\GitHub\Pathways-Into-Darkness-Unity\reference\palettes\clut_134.png
+clut 135: bytes=128 seed=0 flags=0 size=14 n=15
+  [ 0] idx= 0 raw=(15360, 7680, 7680) hex16=(3c00,1e00,1e00) rgb8=( 60, 30, 30)
+  [ 1] idx= 1 raw=(14336, 7168, 7168) hex16=(3800,1c00,1c00) rgb8=( 56, 28, 28)
+  [ 2] idx= 2 raw=(13312, 6656, 6656) hex16=(3400,1a00,1a00) rgb8=( 52, 26, 26)
+  [ 3] idx= 3 raw=(12288, 6144, 6144) hex16=(3000,1800,1800) rgb8=( 48, 24, 24)
+  [ 4] idx= 4 raw=(11264, 5632, 5632) hex16=(2c00,1600,1600) rgb8=( 44, 22, 22)
+  [ 5] idx= 5 raw=(10240, 5120, 5120) hex16=(2800,1400,1400) rgb8=( 40, 20, 20)
+  [ 6] idx= 6 raw=( 9216, 4608, 4608) hex16=(2400,1200,1200) rgb8=( 36, 18, 18)
+  [ 7] idx= 7 raw=( 8192, 4096, 4096) hex16=(2000,1000,1000) rgb8=( 32, 16, 16)
+  [ 8] idx= 8 raw=( 7168, 3584, 3584) hex16=(1c00,0e00,0e00) rgb8=( 28, 14, 14)
+  [ 9] idx= 9 raw=( 6144, 3072, 3072) hex16=(1800,0c00,0c00) rgb8=( 24, 12, 12)
+  [10] idx=10 raw=( 5120, 2560, 2560) hex16=(1400,0a00,0a00) rgb8=( 20, 10, 10)
+  [11] idx=11 raw=( 4096, 2048, 2048) hex16=(1000,0800,0800) rgb8=( 16,  8,  8)
+  [12] idx=12 raw=( 3072, 1536, 1536) hex16=(0c00,0600,0600) rgb8=( 12,  6,  6)
+  [13] idx=13 raw=( 2048, 1024, 1024) hex16=(0800,0400,0400) rgb8=(  8,  4,  4)
+  [14] idx=14 raw=( 1024,  512,  512) hex16=(0400,0200,0200) rgb8=(  4,  2,  2)
+  wrote C:\Users\Colton S Covert\Documents\GitHub\Pathways-Into-Darkness-Unity\reference\palettes\clut_135.png
+
+== T4 texture_list variation/set ==
+L00 Ground Floor
+  [0]     64 var=0 set= 64 rsrc=192 Plain-theme walls
+  [1]     25 var=0 set= 25 rsrc=153 Plain-theme pillars
+  [2]     26 var=0 set= 26 rsrc=154 Plain-theme scenery
+  [3]     27 var=0 set= 27 rsrc=155 Plain-theme ladders
+  [4]     28 var=0 set= 28 rsrc=156 Corpses
+  [5] -1
+  [6] -1
+  [7] -1
+L01 Never Stop Firing
+  [0]     64 var=0 set= 64 rsrc=192 Plain-theme walls
+  [1]     25 var=0 set= 25 rsrc=153 Plain-theme pillars
+  [2]     26 var=0 set= 26 rsrc=154 Plain-theme scenery
+  [3]     27 var=0 set= 27 rsrc=155 Plain-theme ladders
+  [4] -1
+  [5] -1
+  [6] -1
+  [7] -1
+L02 Lock&Load
+  [0]     64 var=0 set= 64 rsrc=192 Plain-theme walls
+  [1]     25 var=0 set= 25 rsrc=153 Plain-theme pillars
+  [2]     26 var=0 set= 26 rsrc=154 Plain-theme scenery
+  [3]     27 var=0 set= 27 rsrc=155 Plain-theme ladders
+  [4]     28 var=0 set= 28 rsrc=156 Corpses
+  [5] -1
+  [6] -1
+  [7] -1
+L03 They May Be Slow…
+  [0]     64 var=0 set= 64 rsrc=192 Plain-theme walls
+  [1]     25 var=0 set= 25 rsrc=153 Plain-theme pillars
+  [2]     26 var=0 set= 26 rsrc=154 Plain-theme scenery
+  [3]     27 var=0 set= 27 rsrc=155 Plain-theme ladders
+  [4]     28 var=0 set= 28 rsrc=156 Corpses
+  [5] -1
+  [6] -1
+  [7] -1
+L04 …But They’re Hungry
+  [0]   4160 var=1 set= 64 rsrc=192 Plain-theme walls
+  [1]     25 var=0 set= 25 rsrc=153 Plain-theme pillars
+  [2]     26 var=0 set= 26 rsrc=154 Plain-theme scenery
+  [3]     27 var=0 set= 27 rsrc=155 Plain-theme ladders
+  [4]     28 var=0 set= 28 rsrc=156 Corpses
+  [5] -1
+  [6] -1
+  [7] -1
+L05 Evil Undead Phantasms Must Die!
+  [0]   4160 var=1 set= 64 rsrc=192 Plain-theme walls
+  [1]     25 var=0 set= 25 rsrc=153 Plain-theme pillars
+  [2]     26 var=0 set= 26 rsrc=154 Plain-theme scenery
+  [3]     27 var=0 set= 27 rsrc=155 Plain-theme ladders
+  [4]     28 var=0 set= 28 rsrc=156 Corpses
+  [5] -1
+  [6] -1
+  [7] -1
+L06 Ascension
+  [0]   8256 var=2 set= 64 rsrc=192 Plain-theme walls
+  [1]   4121 var=1 set= 25 rsrc=153 Plain-theme pillars
+  [2]   4122 var=1 set= 26 rsrc=154 Plain-theme scenery
+  [3]     27 var=0 set= 27 rsrc=155 Plain-theme ladders
+  [4]     28 var=0 set= 28 rsrc=156 Corpses
+  [5] -1
+  [6] -1
+  [7] -1
+L07 Wrong Way!
+  [0]     66 var=0 set= 66 rsrc=194 Crystal-theme walls
+  [1]     29 var=0 set= 29 rsrc=157 Crystal-theme scenery
+  [2]     30 var=0 set= 30 rsrc=158 Crystal-theme pillars
+  [3]     27 var=0 set= 27 rsrc=155 Plain-theme ladders
+  [4]     31 var=0 set= 31 rsrc=159 Crystal-theme ladders
+  [5] -1
+  [6]     32 var=0 set= 32 rsrc=160 Corpses
+  [7] -1
+L08 Welcome, Tasty Primate
+  [0]     66 var=0 set= 66 rsrc=194 Crystal-theme walls
+  [1]     29 var=0 set= 29 rsrc=157 Crystal-theme scenery
+  [2]     30 var=0 set= 30 rsrc=158 Crystal-theme pillars
+  [3]     31 var=0 set= 31 rsrc=159 Crystal-theme ladders
+  [4] -1
+  [5]     32 var=0 set= 32 rsrc=160 Corpses
+  [6] -1
+  [7] -1
+L09 We Can See In The Dark… Can You?
+  [0]     66 var=0 set= 66 rsrc=194 Crystal-theme walls
+  [1]     29 var=0 set= 29 rsrc=157 Crystal-theme scenery
+  [2]     30 var=0 set= 30 rsrc=158 Crystal-theme pillars
+  [3]     31 var=0 set= 31 rsrc=159 Crystal-theme ladders
+  [4]     32 var=0 set= 32 rsrc=160 Corpses
+  [5]     34 var=0 set= 34 rsrc=162 Rat things
+  [6] -1
+  [7] -1
+L10 Feel the Power
+  [0]   4162 var=1 set= 66 rsrc=194 Crystal-theme walls
+  [1]     29 var=0 set= 29 rsrc=157 Crystal-theme scenery
+  [2]   8222 var=2 set= 30 rsrc=158 Crystal-theme pillars
+  [3]   8223 var=2 set= 31 rsrc=159 Crystal-theme ladders
+  [4]     27 var=0 set= 27 rsrc=155 Plain-theme ladders
+  [5]     32 var=0 set= 32 rsrc=160 Corpses
+  [6] -1
+  [7] -1
+L11 A Plague of Demons
+  [0]   4162 var=1 set= 66 rsrc=194 Crystal-theme walls
+  [1]     29 var=0 set= 29 rsrc=157 Crystal-theme scenery
+  [2]   8222 var=2 set= 30 rsrc=158 Crystal-theme pillars
+  [3]   8223 var=2 set= 31 rsrc=159 Crystal-theme ladders
+  [4]     33 var=0 set= 33 rsrc=161 Corpses
+  [5] -1
+  [6] -1
+  [7] -1
+L12 Beware of Low-Flying Nightmares
+  [0]   4162 var=1 set= 66 rsrc=194 Crystal-theme walls
+  [1]     29 var=0 set= 29 rsrc=157 Crystal-theme scenery
+  [2]   8222 var=2 set= 30 rsrc=158 Crystal-theme pillars
+  [3]   8223 var=2 set= 31 rsrc=159 Crystal-theme ladders
+  [4]     32 var=0 set= 32 rsrc=160 Corpses
+  [5] -1
+  [6] -1
+  [7] -1
+L13 The Labyrinth
+  [0]  12354 var=3 set= 66 rsrc=194 Crystal-theme walls
+  [1]     29 var=0 set= 29 rsrc=157 Crystal-theme scenery
+  [2]     31 var=0 set= 31 rsrc=159 Crystal-theme ladders
+  [3] -1
+  [4] -1
+  [5] -1
+  [6] -1
+  [7] -1
+L14 Happy Happy, Carnage Carnage
+  [0]   8258 var=2 set= 66 rsrc=194 Crystal-theme walls
+  [1]  12318 var=3 set= 30 rsrc=158 Crystal-theme pillars
+  [2]  12319 var=3 set= 31 rsrc=159 Crystal-theme ladders
+  [3]     29 var=0 set= 29 rsrc=157 Crystal-theme scenery
+  [4]     32 var=0 set= 32 rsrc=160 Corpses
+  [5]     28 var=0 set= 28 rsrc=156 Corpses
+  [6]     35 var=0 set= 35 rsrc=163 Crystal-theme extra scenery
+  [7] -1
+L15 Need a Light?
+  [0]   8258 var=2 set= 66 rsrc=194 Crystal-theme walls
+  [1]  12318 var=3 set= 30 rsrc=158 Crystal-theme pillars
+  [2]  12319 var=3 set= 31 rsrc=159 Crystal-theme ladders
+  [3]     33 var=0 set= 33 rsrc=161 Corpses
+  [4]     29 var=0 set= 29 rsrc=157 Crystal-theme scenery
+  [5] -1
+  [6] -1
+  [7] -1
+L16 Lasciate Ogne Speranza, Voi Ch’Intrate
+  [0]     65 var=0 set= 65 rsrc=193 Vine-theme walls
+  [1]     31 var=0 set= 31 rsrc=159 Crystal-theme ladders
+  [2]   4132 var=1 set= 36 rsrc=164 Vine-theme pillars, ladders
+  [3]     38 var=0 set= 38 rsrc=166 Lizard things, exploding pods
+  [4]     39 var=0 set= 39 rsrc=167 Vine-theme scenery
+  [5] -1
+  [6] -1
+  [7] -1
+L17 Watch Your Step
+  [0]     65 var=0 set= 65 rsrc=193 Vine-theme walls
+  [1]     39 var=0 set= 39 rsrc=167 Vine-theme scenery
+  [2]   4132 var=1 set= 36 rsrc=164 Vine-theme pillars, ladders
+  [3]     38 var=0 set= 38 rsrc=166 Lizard things, exploding pods
+  [4]     33 var=0 set= 33 rsrc=161 Corpses
+  [5] -1
+  [6] -1
+  [7] -1
+L18 I’d Rather Be Surfing
+  [0]     65 var=0 set= 65 rsrc=193 Vine-theme walls
+  [1]     39 var=0 set= 39 rsrc=167 Vine-theme scenery
+  [2]   4132 var=1 set= 36 rsrc=164 Vine-theme pillars, ladders
+  [3]     37 var=0 set= 37 rsrc=165 Corpses
+  [4] -1
+  [5] -1
+  [6] -1
+  [7] -1
+L19 Warning: Earthquake Zone
+  [0]   4161 var=1 set= 65 rsrc=193 Vine-theme walls
+  [1]   4132 var=1 set= 36 rsrc=164 Vine-theme pillars, ladders
+  [2]     39 var=0 set= 39 rsrc=167 Vine-theme scenery
+  [3]     37 var=0 set= 37 rsrc=165 Corpses
+  [4] -1
+  [5] -1
+  [6] -1
+  [7] -1
+L20 Don’t Get Poisoned!
+  [0]   8257 var=2 set= 65 rsrc=193 Vine-theme walls
+  [1]  12324 var=3 set= 36 rsrc=164 Vine-theme pillars, ladders
+  [2]     39 var=0 set= 39 rsrc=167 Vine-theme scenery
+  [3] -1
+  [4] -1
+  [5] -1
+  [6] -1
+  [7] -1
+L21 Please Excuse Our Dust
+  [0]   8257 var=2 set= 65 rsrc=193 Vine-theme walls
+  [1]  12324 var=3 set= 36 rsrc=164 Vine-theme pillars, ladders
+  [2]     39 var=0 set= 39 rsrc=167 Vine-theme scenery
+  [3] -1
+  [4] -1
+  [5] -1
+  [6] -1
+  [7] -1
+L22 But Wait!— That’s Not All!
+  [0]   8257 var=2 set= 65 rsrc=193 Vine-theme walls
+  [1]  12324 var=3 set= 36 rsrc=164 Vine-theme pillars, ladders
+  [2]     39 var=0 set= 39 rsrc=167 Vine-theme scenery
+  [3] -1
+  [4] -1
+  [5] -1
+  [6] -1
+  [7] -1
+L23 Where Only Fools Dare Tread
+  [0]   8257 var=2 set= 65 rsrc=193 Vine-theme walls
+  [1]   8228 var=2 set= 36 rsrc=164 Vine-theme pillars, ladders
+  [2]     39 var=0 set= 39 rsrc=167 Vine-theme scenery
+  [3]     37 var=0 set= 37 rsrc=165 Corpses
+  [4] -1
+  [5] -1
+  [6] -1
+  [7] -1
+L24 Ok, Who Else Wants Some?
+  [0]  12353 var=3 set= 65 rsrc=193 Vine-theme walls
+  [1]  12324 var=3 set= 36 rsrc=164 Vine-theme pillars, ladders
+  [2]     39 var=0 set= 39 rsrc=167 Vine-theme scenery
+  [3] -1
+  [4] -1
+  [5] -1
+  [6] -1
+  [7] -1
+
+== T4 variations per slot ==
+  slot 0: vars={0: 10, 1: 6, 2: 7, 3: 2} sets=[64, 65, 66] n_neg1=0
+  slot 1: vars={0: 16, 1: 2, 3: 6, 2: 1} sets=[25, 29, 30, 31, 36, 39] n_neg1=0
+  slot 2: vars={0: 16, 1: 4, 2: 3, 3: 2} sets=[26, 30, 31, 36, 39] n_neg1=0
+  slot 3: vars={0: 17, 2: 3} sets=[27, 29, 31, 33, 37, 38] n_neg1=5
+  slot 4: vars={0: 15} sets=[27, 28, 29, 31, 32, 33, 39] n_neg1=10
+  slot 5: vars={0: 4} sets=[28, 32, 34] n_neg1=21
+  slot 6: vars={0: 2} sets=[32, 35] n_neg1=23
+  slot 7: vars={} sets=[] n_neg1=25
+
+== T4 slot ranges / floor-ceiling 195-202 ==
+  slot 0: used_on=25/25 raw_min=64 raw_max=12354 rsrc=[192, 193, 194] floor_ceil=[]
+  slot 1: used_on=25/25 raw_min=25 raw_max=12324 rsrc=[153, 157, 158, 159, 164, 167] floor_ceil=[]
+  slot 2: used_on=25/25 raw_min=26 raw_max=12319 rsrc=[154, 158, 159, 164, 167] floor_ceil=[]
+  slot 3: used_on=20/25 raw_min=27 raw_max=8223 rsrc=[155, 157, 159, 161, 165, 166] floor_ceil=[]
+  slot 4: used_on=15/25 raw_min=27 raw_max=39 rsrc=[155, 156, 157, 159, 160, 161, 167] floor_ceil=[]
+  slot 5: used_on=4/25 raw_min=28 raw_max=34 rsrc=[156, 160, 162] floor_ceil=[]
+  slot 6: used_on=2/25 raw_min=32 raw_max=35 rsrc=[160, 163] floor_ceil=[]
+  slot 7: used_on=0/25 raw_min=None raw_max=None rsrc=[] floor_ceil=[]
+
+all variations seen: [0, 1, 2, 3]  clut ids 128-135 => N=0..7
+inferred: variation 0-3 documented; observed set listed above

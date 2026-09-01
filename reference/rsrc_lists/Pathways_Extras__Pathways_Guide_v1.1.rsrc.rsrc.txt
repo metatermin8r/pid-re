@@ -1,0 +1,336 @@
+# C:/Users/Colton S Covert/Documents/GitHub/Pathways-Into-Darkness-Unity/data/hfs/Pathways_Extras/Pathways Guide v1.1.rsrc
+source: raw-rsrc
+resource_bytes: 756603
+types: 33
+
+'ALRT': 1 resources:
+  (129): 12 bytes  name=alrt
+
+'BNDL': 1 resources:
+  (128): 28 bytes
+
+'CNTL': 3 resources:
+  (256): 24 bytes  name=stdv
+  (257): 24 bytes  name=stdh
+  (258): 24 bytes  name=cont
+
+'CODE': 13 resources:
+  (0): 784 bytes
+  (1): 2194 bytes  name=Main
+  (2): 2092 bytes  name=UnivProcs
+  (3): 5328 bytes  name=WindowStuff
+  (5): 234 bytes  name=FileStuff
+  (7): 5908 bytes  name=PrintStuff
+  (8): 3806 bytes  name=Contents
+  (10): 2192 bytes  name=Events
+  (11): 5598 bytes  name=SegmentPurge
+  (12): 630 bytes  name=SegmentMain
+  (13): 132 bytes  name=SANELIB
+  (14): 580 bytes  name=%A5Init
+  (15): 646 bytes  name=PASLIB
+
+'DITL': 6 resources:
+  (129): 40 bytes  name=alrt
+  (130): 202 bytes  name=font
+  (132): 178 bytes  name=prt2
+  (200): 76 bytes  name=prt1
+  (2999): 108 bytes  name=cust
+  (3000): 586 bytes  name=abDlg
+
+'DLOG': 5 resources:
+  (130): 21 bytes  name=font
+  (132): 31 bytes  name=prt2
+  (200): 29 bytes  name=prt1
+  (2999): 31 bytes  name=cust
+  (3000): 31 bytes  name=abDlg
+
+'Dk@P': 1 resources:
+  (0): 35 bytes  name=Owner resource
+
+'FREF': 1 resources:
+  (128): 7 bytes
+
+'ICN#': 2 resources:
+  (-16455): 256 bytes
+  (128): 256 bytes
+
+'ICON': 6 resources:
+  (0): 128 bytes
+  (1): 128 bytes
+  (2): 128 bytes
+  (128): 128 bytes
+  (2999): 128 bytes
+  (3001): 128 bytes
+
+'MENU': 4 resources:
+  (1): 43 bytes  name=apl
+  (2): 20 bytes  name=File
+  (3): 72 bytes  name=Edit
+  (4): 47 bytes  name=cntl
+
+'PICT': 27 resources:
+  (128): 586 bytes
+  (2001): 62900 bytes
+  (7001): 15094 bytes
+  (8001): 25570 bytes
+  (9001): 27080 bytes
+  (10001): 28116 bytes
+  (11001): 29488 bytes
+  (12001): 24674 bytes
+  (13001): 15262 bytes
+  (14001): 25218 bytes
+  (15001): 28560 bytes
+  (16001): 22296 bytes
+  (17001): 24566 bytes
+  (18001): 26906 bytes
+  (19001): 22700 bytes
+  (20001): 25996 bytes
+  (22001): 21846 bytes
+  (23001): 30692 bytes
+  (24001): 27174 bytes
+  (25001): 27142 bytes
+  (26001): 17294 bytes
+  (27001): 29826 bytes
+  (28001): 27026 bytes
+  (29001): 29916 bytes
+  (30001): 26274 bytes
+  (30002): 15200 bytes
+  (31001): 23454 bytes
+
+'SIZE': 1 resources:
+  (-1): 10 bytes
+
+'STR ': 34 resources:
+  (1000): 13 bytes  name=ftxt
+  (2001): 6 bytes
+  (2002): 17 bytes
+  (2003): 21 bytes
+  (2004): 34 bytes
+  (2005): 9 bytes
+  (2006): 13 bytes
+  (2007): 18 bytes
+  (2008): 10 bytes
+  (2009): 20 bytes
+  (2010): 22 bytes
+  (2011): 33 bytes
+  (2012): 10 bytes
+  (2013): 11 bytes
+  (2014): 23 bytes
+  (2015): 15 bytes
+  (2016): 19 bytes
+  (2017): 33 bytes
+  (2018): 29 bytes
+  (2019): 33 bytes
+  (2020): 14 bytes
+  (2021): 14 bytes
+  (2022): 39 bytes
+  (2023): 17 bytes
+  (2024): 22 bytes
+  (2025): 26 bytes
+  (2026): 20 bytes
+  (2027): 23 bytes
+  (2028): 26 bytes
+  (2029): 28 bytes
+  (2030): 21 bytes
+  (2999): 25 bytes  name=cust
+  (3000): 116 bytes  name=ctx1
+  (3001): 1 bytes  name=ctx2
+
+'STR#': 2 resources:
+  (128): 358 bytes  name=Misc Strings
+  (129): 158 bytes  name=Menu Strings
+
+'TEXT': 30 resources:
+  (128): 572 bytes
+  (129): 7440 bytes
+  (130): 4649 bytes
+  (131): 1638 bytes
+  (132): 637 bytes
+  (133): 479 bytes
+  (134): 347 bytes
+  (135): 392 bytes
+  (136): 624 bytes
+  (137): 514 bytes
+  (138): 478 bytes
+  (139): 324 bytes
+  (140): 551 bytes
+  (141): 506 bytes
+  (142): 358 bytes
+  (143): 522 bytes
+  (144): 478 bytes
+  (145): 1412 bytes
+  (146): 424 bytes
+  (147): 390 bytes
+  (148): 1732 bytes
+  (149): 533 bytes
+  (150): 496 bytes
+  (151): 581 bytes
+  (152): 531 bytes
+  (153): 740 bytes
+  (154): 732 bytes
+  (155): 683 bytes
+  (156): 1017 bytes
+  (157): 554 bytes
+
+'WIND': 1 resources:
+  (2): 27 bytes  name=cont
+
+'Wndo': 30 resources:
+  (128): 20 bytes
+  (129): 20 bytes
+  (130): 20 bytes
+  (131): 20 bytes
+  (132): 20 bytes
+  (133): 20 bytes
+  (134): 20 bytes
+  (135): 20 bytes
+  (136): 20 bytes
+  (137): 20 bytes
+  (138): 20 bytes
+  (139): 20 bytes
+  (140): 20 bytes
+  (141): 20 bytes
+  (142): 20 bytes
+  (143): 20 bytes
+  (144): 20 bytes
+  (145): 20 bytes
+  (146): 20 bytes
+  (147): 20 bytes
+  (148): 20 bytes
+  (149): 20 bytes
+  (150): 20 bytes
+  (151): 20 bytes
+  (152): 20 bytes
+  (153): 20 bytes
+  (154): 20 bytes
+  (155): 20 bytes
+  (156): 20 bytes
+  (157): 20 bytes
+
+'cnt#': 1 resources:
+  (128): 2 bytes
+
+'foot': 1 resources:
+  (128): 18 bytes
+
+'icl4': 1 resources:
+  (-16455): 512 bytes
+
+'icl8': 2 resources:
+  (-16455): 1024 bytes
+  (128): 1024 bytes
+
+'ics#': 1 resources:
+  (-16455): 64 bytes
+
+'ics4': 1 resources:
+  (-16455): 128 bytes
+
+'ics8': 1 resources:
+  (-16455): 256 bytes
+
+'mstr': 2 resources:
+  (100): 5 bytes  name=Quit Menu
+  (101): 5 bytes  name=Quit Item
+
+'pjst': 26 resources:
+  (2001): 2 bytes
+  (7001): 2 bytes
+  (8001): 2 bytes
+  (9001): 2 bytes
+  (10001): 2 bytes
+  (11001): 2 bytes
+  (12001): 2 bytes
+  (13001): 2 bytes
+  (14001): 2 bytes
+  (15001): 2 bytes
+  (16001): 2 bytes
+  (17001): 2 bytes
+  (18001): 2 bytes
+  (19001): 2 bytes
+  (20001): 2 bytes
+  (22001): 2 bytes
+  (23001): 2 bytes
+  (24001): 2 bytes
+  (25001): 2 bytes
+  (26001): 2 bytes
+  (27001): 2 bytes
+  (28001): 2 bytes
+  (29001): 2 bytes
+  (30001): 2 bytes
+  (30002): 2 bytes
+  (31001): 2 bytes
+
+'pscl': 26 resources:
+  (2001): 1 bytes
+  (7001): 1 bytes
+  (8001): 1 bytes
+  (9001): 1 bytes
+  (10001): 1 bytes
+  (11001): 1 bytes
+  (12001): 1 bytes
+  (13001): 1 bytes
+  (14001): 1 bytes
+  (15001): 1 bytes
+  (16001): 1 bytes
+  (17001): 1 bytes
+  (18001): 1 bytes
+  (19001): 1 bytes
+  (20001): 1 bytes
+  (22001): 1 bytes
+  (23001): 1 bytes
+  (24001): 1 bytes
+  (25001): 1 bytes
+  (26001): 1 bytes
+  (27001): 1 bytes
+  (28001): 1 bytes
+  (29001): 1 bytes
+  (30001): 1 bytes
+  (30002): 1 bytes
+  (31001): 1 bytes
+
+'rQDF': 1 resources:
+  (128): 54 bytes  name=font
+
+'sTwD': 1 resources:
+  (128): 10 bytes
+
+'styl': 30 resources:
+  (128): 42 bytes
+  (129): 82 bytes
+  (130): 62 bytes
+  (131): 222 bytes
+  (132): 62 bytes
+  (133): 62 bytes
+  (134): 82 bytes
+  (135): 62 bytes
+  (136): 62 bytes
+  (137): 62 bytes
+  (138): 62 bytes
+  (139): 62 bytes
+  (140): 62 bytes
+  (141): 62 bytes
+  (142): 62 bytes
+  (143): 62 bytes
+  (144): 62 bytes
+  (145): 62 bytes
+  (146): 62 bytes
+  (147): 62 bytes
+  (148): 62 bytes
+  (149): 62 bytes
+  (150): 62 bytes
+  (151): 62 bytes
+  (152): 62 bytes
+  (153): 62 bytes
+  (154): 62 bytes
+  (155): 62 bytes
+  (156): 62 bytes
+  (157): 62 bytes
+
+'vers': 2 resources:
+  (1): 53 bytes
+  (2): 43 bytes
+
+'xtr2': 1 resources:
+  (128): 1 bytes
+

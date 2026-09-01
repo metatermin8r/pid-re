@@ -1,0 +1,231 @@
+# C:/Users/Colton S Covert/Documents/GitHub/Pathways-Into-Darkness-Unity/data/hfs/PID_Japanese_1/Pathways Installer.rsrc
+source: raw-rsrc
+resource_bytes: 78532
+types: 45
+
+'ALRT': 16 resources:
+  (128): 12 bytes
+  (129): 12 bytes
+  (130): 12 bytes
+  (133): 12 bytes
+  (134): 12 bytes
+  (135): 12 bytes
+  (136): 12 bytes
+  (137): 12 bytes
+  (138): 12 bytes
+  (139): 12 bytes
+  (265): 12 bytes
+  (1025): 12 bytes
+  (1026): 12 bytes
+  (1199): 12 bytes
+  (1600): 12 bytes
+  (1601): 12 bytes
+
+'BNDL': 1 resources:
+  (128): 52 bytes
+
+'CNTL': 1 resources:
+  (1500): 23 bytes
+
+'CODE': 3 resources:
+  (0): 160 bytes
+  (1): 1266 bytes
+  (2): 16169 bytes
+
+'Clea': 1 resources:
+  (128): 1496 bytes
+
+'Colr': 1 resources:
+  (128): 6 bytes  name=stat colr
+
+'DATA': 1 resources:
+  (0): 1078 bytes
+
+'DCMP': 1 resources:
+  (128): 870 bytes
+
+'DITL': 22 resources:
+  (128): 78 bytes
+  (130): 96 bytes
+  (133): 66 bytes
+  (134): 126 bytes
+  (135): 158 bytes
+  (136): 150 bytes
+  (137): 140 bytes
+  (138): 128 bytes
+  (139): 76 bytes
+  (181): 110 bytes
+  (265): 176 bytes
+  (1000): 36 bytes
+  (1025): 92 bytes
+  (1026): 132 bytes
+  (1050): 36 bytes
+  (1099): 58 bytes
+  (1199): 50 bytes
+  (1500): 86 bytes
+  (1550): 136 bytes
+  (1600): 124 bytes
+  (1601): 114 bytes
+  (15000): 164 bytes
+
+'DLOG': 6 resources:
+  (1000): 21 bytes
+  (1050): 21 bytes
+  (1099): 21 bytes
+  (1500): 30 bytes
+  (1550): 21 bytes
+  (15000): 21 bytes
+
+'DREL': 1 resources:
+  (0): 0 bytes
+
+'ExpS': 1 resources:
+  (0): 4 bytes
+
+'FREF': 4 resources:
+  (128): 7 bytes
+  (129): 7 bytes
+  (130): 7 bytes
+  (131): 7 bytes
+
+'Feat': 1 resources:
+  (2): 8 bytes
+
+'Font': 2 resources:
+  (128): 1 bytes  name=Num/Name
+  (129): 1 bytes  name=Size
+
+'ICN#': 5 resources:
+  (128): 256 bytes
+  (129): 256 bytes
+  (130): 256 bytes
+  (131): 256 bytes
+  (1500): 256 bytes
+
+'ICON': 1 resources:
+  (1099): 128 bytes
+
+'IInf': 1 resources:
+  (1000): 144 bytes
+
+'ILic': 1 resources:
+  (1500): 2804 bytes
+
+'INIT': 1 resources:
+  (128): 146 bytes
+
+'IPac': 1 resources:
+  (15000): 3358 bytes
+
+'LDEF': 1 resources:
+  (15000): 681 bytes
+
+'Merg': 1 resources:
+  (128): 1 bytes
+
+'MnSy': 1 resources:
+  (1600): 18 bytes
+
+'NumF': 1 resources:
+  (0): 2 bytes
+
+'PICT': 12 resources:
+  (128): 353 bytes
+  (129): 2078 bytes
+  (1000): 1001 bytes
+  (1050): 15705 bytes
+  (15000): 1426 bytes
+  (15001): 1426 bytes
+  (15002): 1426 bytes
+  (15003): 1506 bytes
+  (15016): 1426 bytes
+  (15017): 1426 bytes
+  (15018): 1426 bytes
+  (15019): 1506 bytes
+
+'POpt': 1 resources:
+  (15000): 10 bytes
+
+'Prog': 1 resources:
+  (1): 8 bytes
+
+'Pset': 1 resources:
+  (128): 1491 bytes
+
+'Rect': 2 resources:
+  (0): 8 bytes  name=fName
+  (1): 8 bytes  name=count
+
+'SIZE': 1 resources:
+  (-1): 10 bytes
+
+'STR ': 13 resources:
+  (512): 15 bytes  name=prompt
+  (514): 17 bytes
+  (4006): 11 bytes
+  (15000): 17 bytes
+  (15001): 31 bytes
+  (15002): 17 bytes
+  (15003): 18 bytes
+  (15004): 13 bytes
+  (15016): 204 bytes
+  (15017): 185 bytes
+  (15018): 67 bytes
+  (15019): 169 bytes
+  (15020): 71 bytes
+
+'STR#': 1 resources:
+  (128): 15 bytes
+
+'STi1': 1 resources:
+  (0): 47 bytes  name=Owner resource
+
+'Setg': 1 resources:
+  (0): 16 bytes
+
+'TEXT': 1 resources:
+  (1500): 998 bytes
+
+'ZERO': 1 resources:
+  (0): 58 bytes
+
+'cicn': 1 resources:
+  (1099): 906 bytes
+
+'icl4': 4 resources:
+  (128): 512 bytes
+  (129): 512 bytes
+  (130): 512 bytes
+  (131): 512 bytes
+
+'icl8': 4 resources:
+  (128): 1024 bytes
+  (129): 1024 bytes
+  (130): 1024 bytes
+  (131): 1024 bytes
+
+'ics#': 4 resources:
+  (128): 64 bytes
+  (129): 64 bytes
+  (130): 64 bytes
+  (131): 64 bytes
+
+'ics4': 4 resources:
+  (128): 128 bytes
+  (129): 128 bytes
+  (130): 128 bytes
+  (131): 128 bytes
+
+'ics8': 4 resources:
+  (128): 256 bytes
+  (129): 256 bytes
+  (130): 256 bytes
+  (131): 256 bytes
+
+'styl': 1 resources:
+  (1500): 114 bytes
+
+'vers': 2 resources:
+  (1): 62 bytes
+  (2): 42 bytes
+

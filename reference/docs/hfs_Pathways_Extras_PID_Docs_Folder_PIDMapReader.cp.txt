@@ -1,0 +1,29 @@
+// This implements my shapes I/O object methods
+
+#include <MacMemory.h>
+#include "PIDMapReader.h"
+
+
+OSErr PID_ReadLevels(FSSpec *Spec, simple_vector<PID_Level> &LevelList) {
+	
+	OSErr Err;
+	LevelList.reallocate(0);
+
+	short FileRef;
+	Err = FSpOpenDF(Spec,fsRdPerm,&FileRef);
+	if (Err != noErr) {FSClose(FileRef); return Err;}
+	
+	long NBytes;
+	Err = GetEOF(FileRef,&NBytes);
+	if (Err != noErr) {FSClose(FileRef); return Err;}
+	long NLevels = NBytes/sizeof(PID_Level);
+	
+	LevelList.reallocate(NLevels);
+	if (LevelList.get_len() <= 0) {FSClose(FileRef); return Err;}
+	
+	NBytes = NLevels*sizeof(PID_Level);
+	Err = FSRead(FileRef,&NBytes,(byte *)LevelList.begin());
+	if (Err != noErr) {FSClose(FileRef); LevelList.reallocate(0); return Err;}
+	
+	return noErr;
+}

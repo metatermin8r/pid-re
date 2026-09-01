@@ -1,0 +1,17 @@
+=== STR# 202 length=826 raw=826 compressed=False name=None ===
+count: 4
+  [000] REALbasic Runtime Failure: Could not get plugin’s Table Of Contents.   Be sure to check www.realsoftware.com/realbasicbeta.html for the latest REALbasic build.
+  [001] REALbasic Runtime Failure: Invalid class definition.  Please report the error using the REALbugs application that came with the product.  Be sure to check www.realsoftware.com/realbasicbeta.html for the latest REALbasic build.
+  [002] REALbasic Runtime Failure: Unknown Class.  Please report the error using the REALbugs application that came with the product.  Be sure to check www.realsoftware.com/realbasicbeta.html for the latest REALbasic build.
+  [003] REALbasic Runtime Failure: Failed Assertion.  Please report the error using REALbugs; include the file name and line number below.  Be sure to check www.realsoftware.com/realbasicbeta.html for the latest REALbasic build.
+
+# no b'STR '
+
+# no b'TEXT'
+
+=== vers 1 length=37 raw=37 compressed=False name=None ===
+{'major': 0, 'minor': 145, 'dev_stage': 128, 'pre_release': 0, 'region': 0, 'short': '0.9.1', 'long': 'v0.9.1 ©2000 Ben Semmler'}
+
+=== vers 2 length=34 raw=34 compressed=False name=None ===
+{'major': 0, 'minor': 145, 'dev_stage': 128, 'pre_release': 0, 'region': 0, 'short': '0.9.1', 'long': 'A Pathways Map Editor'}
+

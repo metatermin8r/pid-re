@@ -1,0 +1,76 @@
+region: offset 596, as successive 16-byte units (2876*5 = 14380 slots)
+each slot: 8 u16be fields at bytes 0,2,4,6,8,10,12,14
+ranges: 0 | 0xffff | 1-27 | 28-2875 | 2876-32767 | 32768-65535
+
+=== u16 column 0  byte 0 ===
+  0: 9908
+  0xffff: 131
+  1-27: 205
+  28-2875: 659
+  2876-32767: 2
+  32768-65535: 3606
+  nonzero_non_ffff min=1 max=54159
+
+=== u16 column 1  byte 2 ===
+  0: 6395
+  0xffff: 202
+  1-27: 1123
+  28-2875: 251
+  2876-32767: 5818
+  32768-65535: 793
+  nonzero_non_ffff min=1 max=57351
+
+=== u16 column 2  byte 4 ===
+  0: 13171
+  0xffff: 307
+  1-27: 46
+  28-2875: 855
+  2876-32767: 1
+  32768-65535: 307
+  nonzero_non_ffff min=1 max=12000
+
+=== u16 column 3  byte 6 ===
+  0: 4638
+  0xffff: 2927
+  1-27: 144
+  28-2875: 793
+  2876-32767: 3329
+  32768-65535: 5476
+  nonzero_non_ffff min=2 max=65534
+
+=== u16 column 4  byte 8 ===
+  0: 9748
+  0xffff: 128
+  1-27: 202
+  28-2875: 663
+  2876-32767: 0
+  32768-65535: 3767
+  nonzero_non_ffff min=1 max=54159
+
+=== u16 column 5  byte 10 ===
+  0: 6403
+  0xffff: 202
+  1-27: 878
+  28-2875: 262
+  2876-32767: 5995
+  32768-65535: 842
+  nonzero_non_ffff min=1 max=57351
+
+=== u16 column 6  byte 12 ===
+  0: 13172
+  0xffff: 311
+  1-27: 42
+  28-2875: 853
+  2876-32767: 2
+  32768-65535: 311
+  nonzero_non_ffff min=1 max=5500
+
+=== u16 column 7  byte 14 ===
+  0: 4304
+  0xffff: 2944
+  1-27: 145
+  28-2875: 768
+  2876-32767: 3244
+  32768-65535: 5919
+  nonzero_non_ffff min=1 max=65534
+

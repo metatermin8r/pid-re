@@ -1,0 +1,3 @@
+# C:/Users/Colton S Covert/Documents/GitHub/Pathways-Into-Darkness-Unity/data/hfs/PID_Japanese_2/Pathways Installer.2
+size: 854286
+no resource map

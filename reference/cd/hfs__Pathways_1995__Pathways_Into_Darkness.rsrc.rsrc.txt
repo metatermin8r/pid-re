@@ -1,0 +1,291 @@
+# C:/Users/Colton S Covert/Documents/GitHub/Pathways-Into-Darkness-Unity/data/cd/hfs/Pathways_1995/Pathways Into Darkness.rsrc
+source: raw-rsrc
+resource_bytes: 482440
+types: 32
+
+'ALRT': 15 resources:
+  (128): 14 bytes
+  (129): 14 bytes
+  (130): 14 bytes
+  (1000): 14 bytes
+  (1001): 14 bytes
+  (2000): 14 bytes
+  (2001): 14 bytes
+  (2002): 14 bytes
+  (2003): 14 bytes
+  (2005): 14 bytes
+  (2006): 14 bytes
+  (2007): 14 bytes
+  (2008): 14 bytes
+  (2009): 14 bytes
+  (27309): 14 bytes
+
+'BNDL': 1 resources:
+  (128): 60 bytes
+
+'CODE': 17 resources:
+  (0): 2856 bytes
+  (1): 10526 bytes
+  (2): 20968 bytes
+  (3): 25196 bytes
+  (4): 8058 bytes
+  (5): 20560 bytes
+  (6): 9094 bytes
+  (7): 19128 bytes
+  (8): 5400 bytes
+  (9): 1666 bytes
+  (10): 128 bytes
+  (11): 4944 bytes
+  (12): 2536 bytes
+  (13): 4092 bytes
+  (14): 1528 bytes
+  (15): 7596 bytes
+  (16): 130 bytes
+
+'DITL': 28 resources:
+  (128): 212 bytes
+  (129): 72 bytes
+  (130): 594 bytes
+  (131): 70 bytes
+  (132): 476 bytes
+  (1001): 136 bytes
+  (2000): 130 bytes
+  (2001): 186 bytes
+  (2002): 106 bytes
+  (2003): 50 bytes
+  (2004): 186 bytes
+  (2006): 326 bytes
+  (2007): 32 bytes
+  (2008): 60 bytes
+  (2009): 658 bytes
+  (2010): 56 bytes
+  (2011): 52 bytes
+  (2012): 34 bytes
+  (2013): 614 bytes
+  (2014): 502 bytes
+  (2015): 220 bytes
+  (2016): 306 bytes
+  (2017): 312 bytes
+  (2018): 392 bytes
+  (2019): 160 bytes
+  (2020): 34 bytes
+  (5000): 80 bytes
+  (27309): 50 bytes
+
+'DLOG': 13 resources:
+  (130): 24 bytes
+  (2000): 24 bytes
+  (2001): 24 bytes
+  (2002): 24 bytes
+  (2003): 24 bytes
+  (2004): 24 bytes
+  (2005): 24 bytes
+  (2006): 24 bytes
+  (2007): 24 bytes
+  (2008): 21 bytes
+  (2009): 24 bytes
+  (2010): 24 bytes
+  (5000): 24 bytes
+
+'FOND': 1 resources:
+  (3): 66 bytes
+
+'FONT': 2 resources:
+  (394): 2642 bytes
+  (396): 3176 bytes
+
+'FREF': 8 resources:
+  (128): 7 bytes
+  (129): 7 bytes
+  (130): 7 bytes
+  (131): 7 bytes
+  (132): 7 bytes
+  (133): 7 bytes
+  (134): 7 bytes
+  (135): 7 bytes
+
+'ICN#': 5 resources:
+  (128): 256 bytes
+  (129): 256 bytes
+  (130): 256 bytes
+  (131): 256 bytes
+  (132): 256 bytes
+
+'ICON': 2 resources:
+  (128): 128 bytes
+  (129): 128 bytes
+
+'MBAR': 1 resources:
+  (128): 12 bytes
+
+'MENU': 5 resources:
+  (128): 43 bytes
+  (129): 125 bytes
+  (130): 72 bytes
+  (131): 84 bytes
+  (132): 96 bytes
+
+'NFNT': 1 resources:
+  (32646): 2642 bytes
+
+'SIZE': 1 resources:
+  (-1): 10 bytes
+
+'STR ': 1 resources:
+  (27309): 80 bytes
+
+'STR#': 28 resources:
+  (128): 1804 bytes
+  (1000): 606 bytes
+  (1001): 8189 bytes
+  (1002): 1830 bytes
+  (1003): 2009 bytes
+  (1004): 1147 bytes
+  (2000): 915 bytes
+  (2001): 150 bytes
+  (2002): 564 bytes
+  (2003): 44 bytes
+  (2004): 54 bytes
+  (2005): 556 bytes
+  (2006): 124 bytes
+  (2007): 25 bytes
+  (2008): 57 bytes
+  (2009): 59 bytes
+  (2010): 18 bytes
+  (2011): 15 bytes
+  (2012): 58 bytes
+  (2013): 241 bytes
+  (2014): 43 bytes
+  (2015): 63 bytes
+  (2016): 44 bytes
+  (2017): 262 bytes
+  (2018): 589 bytes
+  (2019): 47 bytes
+  (2020): 79 bytes
+  (2021): 70 bytes
+
+'WDEF': 1 resources:
+  (128): 2102 bytes
+
+'cfrg': 1 resources:
+  (0): 100 bytes
+
+'cicn': 2 resources:
+  (128): 634 bytes
+  (129): 626 bytes
+
+'clut': 9 resources:
+  (128): 128 bytes
+  (129): 128 bytes
+  (130): 128 bytes
+  (131): 128 bytes
+  (132): 128 bytes
+  (133): 128 bytes
+  (134): 128 bytes
+  (135): 128 bytes
+  (256): 578 bytes
+
+'crsr': 9 resources:
+  (500): 242 bytes
+  (501): 242 bytes
+  (502): 242 bytes
+  (503): 242 bytes
+  (504): 242 bytes
+  (505): 242 bytes
+  (506): 242 bytes
+  (507): 242 bytes
+  (508): 242 bytes
+
+'dctb': 12 resources:
+  (130): 8 bytes
+  (2000): 8 bytes
+  (2001): 8 bytes
+  (2002): 8 bytes
+  (2003): 8 bytes
+  (2004): 8 bytes
+  (2005): 8 bytes
+  (2006): 8 bytes
+  (2007): 8 bytes
+  (2008): 8 bytes
+  (2009): 8 bytes
+  (2010): 8 bytes
+
+'dpin': 1 resources:
+  (128): 230676 bytes
+
+'icl4': 5 resources:
+  (128): 512 bytes
+  (129): 512 bytes
+  (130): 512 bytes
+  (131): 512 bytes
+  (132): 512 bytes
+
+'icl8': 5 resources:
+  (128): 1024 bytes
+  (129): 1024 bytes
+  (130): 1024 bytes
+  (131): 1024 bytes
+  (132): 1024 bytes
+
+'ics#': 5 resources:
+  (128): 64 bytes
+  (129): 64 bytes
+  (130): 64 bytes
+  (131): 64 bytes
+  (132): 64 bytes
+
+'ics4': 5 resources:
+  (128): 128 bytes
+  (129): 128 bytes
+  (130): 128 bytes
+  (131): 128 bytes
+  (132): 128 bytes
+
+'ics8': 5 resources:
+  (128): 256 bytes
+  (129): 256 bytes
+  (130): 256 bytes
+  (131): 256 bytes
+  (132): 256 bytes
+
+'ppat': 1 resources:
+  (128): 134 bytes
+
+'påth': 1 resources:
+  (0): 43 bytes
+
+'scri': 30 resources:
+  (128): 2071 bytes
+  (129): 209 bytes
+  (130): 1913 bytes
+  (131): 1901 bytes
+  (132): 2221 bytes
+  (133): 907 bytes
+  (134): 1411 bytes
+  (135): 2178 bytes
+  (136): 1521 bytes
+  (137): 842 bytes
+  (138): 2312 bytes
+  (139): 3058 bytes
+  (140): 1645 bytes
+  (141): 1188 bytes
+  (142): 475 bytes
+  (143): 2158 bytes
+  (144): 3125 bytes
+  (145): 1431 bytes
+  (146): 1980 bytes
+  (147): 2326 bytes
+  (148): 1146 bytes
+  (149): 1739 bytes
+  (150): 740 bytes
+  (151): 1443 bytes
+  (152): 2314 bytes
+  (153): 1637 bytes
+  (154): 2740 bytes
+  (155): 2129 bytes
+  (156): 14 bytes
+  (157): 14 bytes
+
+'vers': 1 resources:
+  (1): 54 bytes
+

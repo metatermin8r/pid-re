@@ -1,0 +1,61 @@
+Maps size=420850
+consecutive Pascal strings from 0, stopped at 0xd (13)
+count=1
+  @0x0000 len=12 'Ground Floor'
+
+known name search (Pascal length+payload):
+'Ground Floor': [0]
+'Never Stop Firing': [16834]
+'Lock&Load': [33668]
+'They May Be Slow…': [50502]
+"…But They're Hungry": NOT FOUND
+'Evil Undead Phantasms Must Die!': [84170]
+'Ascension': [101004]
+'Wrong Way!': [117838]
+'Welcome, Tasty Primate': [134672]
+'We Can See In The Dark… Can You?': [151506]
+'Happy Happy, Carnage Carnage': [235676]
+'Feel The Power': NOT FOUND
+'A Plague of Demons': [185174]
+'Beware of Low-Flying Nightmares': [202008]
+'The Labyrinth': [218842]
+'Need A Light?': NOT FOUND
+"Lasciate Ogne Speranza, Voi Ch'Intrate": NOT FOUND
+'Watch Your Step': [286178]
+"I'd Rather Be Surfing": NOT FOUND
+'Warning: Earthquake Zone': [319846]
+"Don't Get Poisoned": NOT FOUND
+'Please Excuse Our Dust': [353514]
+"But Wait!- That's Not All!": NOT FOUND
+'Where Only Fools Dare Tread': [387182]
+'Entrance To Hell': NOT FOUND
+'Search Me!': NOT FOUND
+'Carnage From Above': NOT FOUND
+'Ok, Who Else Wants Some?': [404016]
+
+record names N=25 stride=0x41c2:
+  record 0 @ 0x0: Ground Floor
+  record 1 @ 0x41c2: Never Stop Firing
+  record 2 @ 0x8384: Lock&Load
+  record 3 @ 0xc546: They May Be Slow…
+  record 4 @ 0x10708: …But They’re Hungry
+  record 5 @ 0x148ca: Evil Undead Phantasms Must Die!
+  record 6 @ 0x18a8c: Ascension
+  record 7 @ 0x1cc4e: Wrong Way!
+  record 8 @ 0x20e10: Welcome, Tasty Primate
+  record 9 @ 0x24fd2: We Can See In The Dark… Can You?
+  record 10 @ 0x29194: Feel the Power
+  record 11 @ 0x2d356: A Plague of Demons
+  record 12 @ 0x31518: Beware of Low-Flying Nightmares
+  record 13 @ 0x356da: The Labyrinth
+  record 14 @ 0x3989c: Happy Happy, Carnage Carnage
+  record 15 @ 0x3da5e: Need a Light?
+  record 16 @ 0x41c20: Lasciate Ogne Speranza, Voi Ch’Intrate
+  record 17 @ 0x45de2: Watch Your Step
+  record 18 @ 0x49fa4: I’d Rather Be Surfing
+  record 19 @ 0x4e166: Warning: Earthquake Zone
+  record 20 @ 0x52328: Don’t Get Poisoned!
+  record 21 @ 0x564ea: Please Excuse Our Dust
+  record 22 @ 0x5a6ac: But Wait!— That’s Not All!
+  record 23 @ 0x5e86e: Where Only Fools Dare Tread
+  record 24 @ 0x62a30: Ok, Who Else Wants Some?

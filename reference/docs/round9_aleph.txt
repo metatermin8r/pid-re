@@ -1,0 +1,66 @@
+Shapes.shpA size=9294149
+index entries=32
+  coll  0 off8=    1024 len8=  153025 type=3 colors=253 cluts=1 hl=0 ll=59 bmp=59 names=[]
+       exported 6 uncompressed bitmaps
+  coll  1 off8=  154049 len8=  384998 type=2 colors=224 cluts=1 hl=27 ll=72 bmp=60 names=[fist.idle, fist.punching, pistol.idle, pistol.firing, pistol.reloading, shotgun.idle, shotgun.firing, shotgun.reloading, Assault rifle.idle, Assault rifle.firing, Assault rifle.reloading, Fusion pistol.idle]
+       exported 0 uncompressed bitmaps
+  coll  2 off8=  774454 len8=   97559 type=2 colors=93 cluts=1 hl=9 ll=6 bmp=6 names=[jugger.idle, jugger.firing, jug.missile shot, jug.hit, jug.missile, dying, exploding, teleport, dead]
+       exported 0 uncompressed bitmaps
+  coll  3 off8=  872013 len8=   14949 type=2 colors=51 cluts=1 hl=7 ll=6 bmp=6 names=[Tick.idle, Tick.Moving, Tick.attacking, tick.death, tick.hit, tick.corpse, tick.hitting ground]
+       exported 0 uncompressed bitmaps
+  coll  4 off8=  886962 len8=  176981 type=2 colors=85 cluts=1 hl=30 ll=161 bmp=86 names=[rocket, rocket explosion, rocket contrail, grenade, grenade contrail, alien weapon explosion, flame, burned body, burning body, grenade explosion, Blood splash, minor fusion projectile]
+       exported 0 uncompressed bitmaps
+  coll  5 off8= 1063943 len8=  115888 type=2 colors=82 cluts=1 hl=11 ll=34 bmp=22 names=[RUNNING, STANDING, Firing, Hard Death, Explosion, projectile, DEAD Hard, being hit, spark, soft death, Dead Soft]
+       exported 0 uncompressed bitmaps
+  coll  6 off8= 1179831 len8=  537803 type=2 colors=224 cluts=8 hl=35 ll=403 bmp=204 names=[running legs, fist idle, fist firing, pistol idle, pistol firing, pistol x2 idle, pistol x2 firing, stationary legs, dying soft, dying hard, soft dead bodies, hard dead bodies]
+       exported 0 uncompressed bitmaps
+  coll  7 off8= 1717634 len8=   81990 type=2 colors=202 cluts=1 hl=34 ll=146 bmp=51 names=[Don Pistola, De Great Plasma Pistola, Le Superior Assault Rifle, Pistola Ammo, The Fine Plasma Cell, Great Assault Ammo, Assault Grenade Enema, SpankDaddyo™, invisibility, there jerky., Invincible. Ah, can’t touch this, Mr. Spaceheater, Gassage For De Heater]
+       exported 0 uncompressed bitmaps
+  coll  8 off8= 1799624 len8=  115861 type=2 colors=99 cluts=2 hl=11 ll=46 bmp=35 names=[running, standing, firing gun, dying soft, being hit, grenade, ghast stationary, dead soft, blood splash, ghast firing, missile]
+       exported 0 uncompressed bitmaps
+  coll  9 off8= 1915485 len8=   74987 type=2 colors=66 cluts=2 hl=13 ll=40 bmp=27 names=[moving, dying (hard), attacking, dying (soft), being hit, dead frames (soft), dead frames (hard), stationary, blood splash, missile, projectile explosion, melee explosion]
+       exported 0 uncompressed bitmaps
+  coll 10 off8= 1990472 len8=   43605 type=2 colors=35 cluts=1 hl=9 ll=31 bmp=19 names=[idle & moving, unused, firing, being hit, projectile, projectile explosion, dying, hit spark, teleport]
+       exported 0 uncompressed bitmaps
+  coll 11 off8= 2034077 len8=   96508 type=2 colors=51 cluts=2 hl=14 ll=47 bmp=30 names=[stationary, running, projectile attacking, dying, dead, blood splash, lava projectile, lava detonation, melee projectile detonation, hit, rock projectile, rock detonation]
+       exported 0 uncompressed bitmaps
+  coll 12 off8= 2130585 len8=  211446 type=2 colors=99 cluts=1 hl=29 ll=39 bmp=35 names=[Blue Headless, Blue Nightmare, Blue Phantasm, Blue Ghoul, Blue Zombie/Ghast, Superblue Meanie, Blue Wraith, Blue Skitter, Orange Headless, Orange Nightmare, Orange Phantasm, Orange Ghoul]
+       exported 0 uncompressed bitmaps
+  coll 13 off8= 2342031 len8=   79288 type=2 colors=83 cluts=1 hl=14 ll=20 bmp=14 names=[Run, SoftDeath, dying hard, soft dead, hard dead, minor fusion attack, stationary, projectile, teleporting out, teleporting in, flinch, assimilated explosion]
+       exported 0 uncompressed bitmaps
+  coll 14 off8= 2421319 len8=   64610 type=2 colors=67 cluts=2 hl=8 ll=25 bmp=16 names=[stationary, moving, firing, dying soft, dead soft, hit, projectile, dead hard]
+       exported 0 uncompressed bitmaps
+  coll 15 off8= 2485929 len8=  116248 type=2 colors=115 cluts=2 hl=8 ll=24 bmp=18 names=[moving, firing, dying, exploding, dead, projectile, projectile detonation, hit spark]
+       exported 0 uncompressed bitmaps
+  coll 16 off8= 2602177 len8=   53056 type=2 colors=67 cluts=1 hl=8 ll=26 bmp=13 names=[idle, attacking, dying, moving, bolt, contrail, explosion, being hit]
+       exported 0 uncompressed bitmaps
+  coll 17 off8= 2655233 len8= 1139126 type=1 colors=179 cluts=1 hl=0 ll=71 bmp=67 names=[]
+       exported 6 uncompressed bitmaps
+  coll 18 off8= 3794359 len8=  511836 type=1 colors=184 cluts=1 hl=0 ll=48 bmp=30 names=[]
+       exported 6 uncompressed bitmaps
+  coll 19 off8= 4306195 len8=  630026 type=1 colors=124 cluts=1 hl=0 ll=52 bmp=37 names=[]
+       exported 6 uncompressed bitmaps
+  coll 20 off8= 4936221 len8=  596342 type=1 colors=231 cluts=1 hl=0 ll=35 bmp=35 names=[]
+       exported 6 uncompressed bitmaps
+  coll 21 off8= 5532563 len8=  511492 type=1 colors=231 cluts=1 hl=0 ll=30 bmp=30 names=[]
+       exported 6 uncompressed bitmaps
+  coll 22 off8= 6044055 len8=  124390 type=2 colors=256 cluts=1 hl=24 ll=68 bmp=47 names=[small water splash, big water splash, enter water, exit water, pistol clip, short light, short light.broken, long light, long light.broken, siren, rocks, water filtration device]
+       exported 0 uncompressed bitmaps
+  coll 23 off8= 6168445 len8=   48290 type=2 colors=256 cluts=1 hl=21 ll=55 bmp=31 names=[small lava splash, big lava splash, enter lava, Dirt light, Dirt dark, Bones, leg bone, ribcage, skull, light hanging, light #2 hanging, probe camera]
+       exported 0 uncompressed bitmaps
+  coll 24 off8= 6216735 len8=   73827 type=2 colors=256 cluts=1 hl=18 ll=57 bmp=39 names=[small sewage splash, large sewage splash, enter sewage, exit sewage, Junk, Short lamp, Short Lamp.broken, Long lamp, Long Lamp.broken, Antenna.big, Antenna.small, Alien Container]
+       exported 0 uncompressed bitmaps
+  coll 25 off8= 6290562 len8=  109873 type=2 colors=256 cluts=1 hl=18 ll=58 bmp=39 names=[small ydnar splash™, large ydnar splash™, enter jjaro slime, exit jjarro slime, Long Rod, Short lamp, Short Lamp.broken, Long lamp, Long Lamp.broken, Juggernaut Ship.BIG, Sun Small, jjarro cylinder]
+       exported 0 uncompressed bitmaps
+  coll 26 off8= 6400435 len8=   61821 type=2 colors=256 cluts=1 hl=21 ll=53 bmp=36 names=[small splash, big splash, enter alien water, exit alien water, green light, green light broken, alien object 1, alien object 2, light sparks, Pfhor skeleton, Pfhor mask, Pfhor blood]
+       exported 0 uncompressed bitmaps
+  coll 27 off8= 6462256 len8=  141786 type=1 colors=231 cluts=1 hl=0 ll=1 bmp=1 names=[]
+       exported 1 uncompressed bitmaps
+  coll 28 off8= 7161828 len8=  141786 type=1 colors=231 cluts=1 hl=0 ll=1 bmp=1 names=[]
+       exported 1 uncompressed bitmaps
+  coll 29 off8= 7861400 len8=  141786 type=1 colors=231 cluts=1 hl=0 ll=1 bmp=1 names=[]
+       exported 1 uncompressed bitmaps
+  coll 30 off8= 8560972 len8=  141786 type=1 colors=231 cluts=1 hl=0 ll=1 bmp=1 names=[]
+       exported 1 uncompressed bitmaps
+  coll 31 off8= 9260544 len8=   33605 type=2 colors=35 cluts=1 hl=9 ll=10 bmp=8 names=[EC.idle, EC.moving, EC.attack, EC.death, EC.flame, EC.corpse, EC.projectile, EC.projectile detonation, EC.blood splash]
+       exported 0 uncompressed bitmaps

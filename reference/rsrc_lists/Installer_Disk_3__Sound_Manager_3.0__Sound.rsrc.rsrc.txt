@@ -1,0 +1,110 @@
+# C:/Users/Colton S Covert/Documents/GitHub/Pathways-Into-Darkness-Unity/data/hfs/Installer_Disk_3/Sound Manager 3.0/Sound.rsrc
+source: raw-rsrc
+resource_bytes: 46485
+types: 25
+
+'ALRT': 3 resources:
+  (-10000): 14 bytes
+  (-1006): 14 bytes
+  (-1005): 14 bytes
+
+'BNDL': 1 resources:
+  (-4064): 28 bytes
+
+'CDEF': 1 resources:
+  (3): 1836 bytes
+
+'DITL': 9 resources:
+  (-10000): 34 bytes
+  (-4064): 16 bytes
+  (-1006): 116 bytes
+  (-1005): 52 bytes
+  (-1004): 90 bytes
+  (-1003): 202 bytes
+  (-1002): 210 bytes
+  (-1001): 82 bytes
+  (-1000): 114 bytes
+
+'DLOG': 1 resources:
+  (-1004): 24 bytes
+
+'FREF': 1 resources:
+  (-4064): 7 bytes
+
+'ICN#': 1 resources:
+  (-4064): 256 bytes
+
+'ICON': 4 resources:
+  (-1003): 128 bytes
+  (-1002): 128 bytes
+  (-1001): 128 bytes
+  (-1000): 128 bytes
+
+'MENU': 2 resources:
+  (-4048): 16 bytes
+  (-1000): 16 bytes
+
+'PICT': 4 resources:
+  (-10000): 2701 bytes
+  (-4046): 103 bytes
+  (-1001): 2366 bytes
+  (-1000): 2528 bytes
+
+'STR ': 8 resources:
+  (-1007): 13 bytes
+  (-1006): 34 bytes
+  (-1005): 10 bytes
+  (-1004): 10 bytes
+  (-1003): 8 bytes
+  (-1002): 10 bytes
+  (-1001): 9 bytes
+  (-1000): 13 bytes
+
+'STR#': 1 resources:
+  (-1000): 661 bytes
+
+'cdev': 1 resources:
+  (-4064): 3880 bytes
+
+'icl4': 1 resources:
+  (-4064): 512 bytes
+
+'icl8': 1 resources:
+  (-4064): 1024 bytes
+
+'ics#': 1 resources:
+  (-4064): 64 bytes
+
+'ics4': 1 resources:
+  (-4064): 128 bytes
+
+'ics8': 1 resources:
+  (-4064): 256 bytes
+
+'mach': 1 resources:
+  (-4064): 4 bytes
+
+'nrct': 1 resources:
+  (-4064): 10 bytes
+
+'snd ': 1 resources:
+  (-4064): 10922 bytes
+
+'sndP': 4 resources:
+  (-1003): 2312 bytes
+  (-1002): 4426 bytes
+  (-1001): 2714 bytes
+  (-1000): 6496 bytes
+
+'soun': 1 resources:
+  (0): 20 bytes
+
+'thng': 4 resources:
+  (-1003): 44 bytes
+  (-1002): 44 bytes
+  (-1001): 44 bytes
+  (-1000): 44 bytes
+
+'vers': 1 resources:
+  (1): 50 bytes
+

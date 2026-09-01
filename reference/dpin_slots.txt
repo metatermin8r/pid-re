@@ -1,0 +1,156 @@
+model: 5 slots of 16 bytes in each 80-byte row
+slots: 0=[0:16] 1=[16:32] 2=[32:48] 3=[48:64] 4=[64:80]
+rows: 2876
+
+=== slot 0  bytes 0-15 ===
+per-column nonzero (16):
+  0 751
+  1 850
+  2 1369
+  3 1421
+  4 93
+  5 239
+  6 1844
+  7 1788
+  8 782
+  9 873
+  10 1424
+  11 1486
+  12 90
+  13 238
+  14 1903
+  15 1911
+rows entirely zero: 97
+u16be positions 0,2,4,6,8,10,12,14  count of 0xffff:
+  u16[0] @byte 0  ffff=26
+  u16[1] @byte 2  ffff=37
+  u16[2] @byte 4  ffff=62
+  u16[3] @byte 6  ffff=588
+  u16[4] @byte 8  ffff=25
+  u16[5] @byte 10  ffff=41
+  u16[6] @byte 12  ffff=63
+  u16[7] @byte 14  ffff=589
+
+=== slot 1  bytes 16-31 ===
+per-column nonzero (16):
+  0 754
+  1 854
+  2 1374
+  3 1426
+  4 88
+  5 240
+  6 1840
+  7 1790
+  8 786
+  9 872
+  10 1413
+  11 1481
+  12 91
+  13 241
+  14 1896
+  15 1912
+rows entirely zero: 94
+u16be positions 0,2,4,6,8,10,12,14  count of 0xffff:
+  u16[0] @byte 0  ffff=28
+  u16[1] @byte 2  ffff=41
+  u16[2] @byte 4  ffff=59
+  u16[3] @byte 6  ffff=583
+  u16[4] @byte 8  ffff=27
+  u16[5] @byte 10  ffff=40
+  u16[6] @byte 12  ffff=62
+  u16[7] @byte 14  ffff=588
+
+=== slot 2  bytes 32-47 ===
+per-column nonzero (16):
+  0 753
+  1 867
+  2 1372
+  3 1439
+  4 91
+  5 242
+  6 1849
+  7 1801
+  8 784
+  9 879
+  10 1415
+  11 1482
+  12 91
+  13 245
+  14 1897
+  15 1909
+rows entirely zero: 92
+u16be positions 0,2,4,6,8,10,12,14  count of 0xffff:
+  u16[0] @byte 0  ffff=26
+  u16[1] @byte 2  ffff=43
+  u16[2] @byte 4  ffff=60
+  u16[3] @byte 6  ffff=585
+  u16[4] @byte 8  ffff=24
+  u16[5] @byte 10  ffff=42
+  u16[6] @byte 12  ffff=62
+  u16[7] @byte 14  ffff=596
+
+=== slot 3  bytes 48-63 ===
+per-column nonzero (16):
+  0 750
+  1 864
+  2 1370
+  3 1437
+  4 92
+  5 246
+  6 1838
+  7 1807
+  8 790
+  9 883
+  10 1416
+  11 1484
+  12 90
+  13 244
+  14 1886
+  15 1919
+rows entirely zero: 92
+u16be positions 0,2,4,6,8,10,12,14  count of 0xffff:
+  u16[0] @byte 0  ffff=25
+  u16[1] @byte 2  ffff=41
+  u16[2] @byte 4  ffff=63
+  u16[3] @byte 6  ffff=584
+  u16[4] @byte 8  ffff=26
+  u16[5] @byte 10  ffff=40
+  u16[6] @byte 12  ffff=60
+  u16[7] @byte 14  ffff=576
+
+=== slot 4  bytes 64-79 ===
+per-column nonzero (16):
+  0 755
+  1 855
+  2 1364
+  3 1431
+  4 94
+  5 242
+  6 1845
+  7 1794
+  8 786
+  9 874
+  10 1418
+  11 1478
+  12 94
+  13 240
+  14 1904
+  15 1905
+rows entirely zero: 91
+u16be positions 0,2,4,6,8,10,12,14  count of 0xffff:
+  u16[0] @byte 0  ffff=26
+  u16[1] @byte 2  ffff=40
+  u16[2] @byte 4  ffff=63
+  u16[3] @byte 6  ffff=587
+  u16[4] @byte 8  ffff=26
+  u16[5] @byte 10  ffff=39
+  u16[6] @byte 12  ffff=64
+  u16[7] @byte 14  ffff=595
+
+slot nonzero-column profiles equal?
+  slot 0: (751, 850, 1369, 1421, 93, 239, 1844, 1788, 782, 873, 1424, 1486, 90, 238, 1903, 1911)
+  slot 1: (754, 854, 1374, 1426, 88, 240, 1840, 1790, 786, 872, 1413, 1481, 91, 241, 1896, 1912)
+  slot 2: (753, 867, 1372, 1439, 91, 242, 1849, 1801, 784, 879, 1415, 1482, 91, 245, 1897, 1909)
+  slot 3: (750, 864, 1370, 1437, 92, 246, 1838, 1807, 790, 883, 1416, 1484, 90, 244, 1886, 1919)
+  slot 4: (755, 855, 1364, 1431, 94, 242, 1845, 1794, 786, 874, 1418, 1478, 94, 240, 1904, 1905)
+all five profiles identical: False

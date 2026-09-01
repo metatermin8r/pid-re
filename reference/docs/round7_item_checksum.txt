@@ -1,0 +1,207 @@
+== T1(a) per-level Item uniqueness ==
+L00 'Ground Floor'                             n= 116 distinct= 116 unique=True
+L01 'Never Stop Firing'                        n= 175 distinct= 175 unique=True
+L02 'Lock&Load'                                n= 228 distinct= 228 unique=True
+L03 'They May Be Slow…'                        n= 215 distinct= 215 unique=True
+L04 '…But They’re Hungry'                      n= 240 distinct= 240 unique=True
+L05 'Evil Undead Phantasms Must Die!'          n= 159 distinct= 159 unique=True
+L06 'Ascension'                                n= 109 distinct= 109 unique=True
+L07 'Wrong Way!'                               n= 313 distinct= 313 unique=True
+L08 'Welcome, Tasty Primate'                   n= 316 distinct= 316 unique=True
+L09 'We Can See In The Dark… Can You?'         n= 289 distinct= 289 unique=True
+L10 'Feel the Power'                           n= 350 distinct= 350 unique=True
+L11 'A Plague of Demons'                       n= 330 distinct= 330 unique=True
+L12 'Beware of Low-Flying Nightmares'          n= 314 distinct= 314 unique=True
+L13 'The Labyrinth'                            n= 294 distinct= 294 unique=True
+L14 'Happy Happy, Carnage Carnage'             n= 275 distinct= 275 unique=True
+L15 'Need a Light?'                            n= 300 distinct= 300 unique=True
+L16 'Lasciate Ogne Speranza, Voi Ch’Intrate'   n= 296 distinct= 296 unique=True
+L17 'Watch Your Step'                          n= 247 distinct= 247 unique=True
+L18 'I’d Rather Be Surfing'                    n= 240 distinct= 240 unique=True
+L19 'Warning: Earthquake Zone'                 n= 138 distinct= 138 unique=True
+L20 'Don’t Get Poisoned!'                      n= 187 distinct= 187 unique=True
+L21 'Please Excuse Our Dust'                   n= 207 distinct= 207 unique=True
+L22 'But Wait!— That’s Not All!'               n= 255 distinct= 255 unique=True
+L23 'Where Only Fools Dare Tread'              n= 258 distinct= 258 unique=True
+L24 'Ok, Who Else Wants Some?'                 n=  15 distinct=  15 unique=True
+ANY_LEVEL_HAS_DUPLICATES=False
+
+== T1(b) min/max / 0..399 coverage ==
+L00 min=  0 max=150 n=116 distinct=116 span=151 holes_in_span=35 used_of_0_399=116 contiguous_0_N=False
+L01 min=  1 max=207 n=175 distinct=175 span=207 holes_in_span=32 used_of_0_399=175 contiguous_0_N=False
+L02 min=  0 max=286 n=228 distinct=228 span=287 holes_in_span=59 used_of_0_399=228 contiguous_0_N=False
+L03 min=  0 max=298 n=215 distinct=215 span=299 holes_in_span=84 used_of_0_399=215 contiguous_0_N=False
+L04 min=  1 max=301 n=240 distinct=240 span=301 holes_in_span=61 used_of_0_399=240 contiguous_0_N=False
+L05 min=  0 max=187 n=159 distinct=159 span=188 holes_in_span=29 used_of_0_399=159 contiguous_0_N=False
+L06 min=  0 max=149 n=109 distinct=109 span=150 holes_in_span=41 used_of_0_399=109 contiguous_0_N=False
+L07 min=  0 max=345 n=313 distinct=313 span=346 holes_in_span=33 used_of_0_399=313 contiguous_0_N=False
+L08 min=  0 max=370 n=316 distinct=316 span=371 holes_in_span=55 used_of_0_399=316 contiguous_0_N=False
+L09 min=  0 max=336 n=289 distinct=289 span=337 holes_in_span=48 used_of_0_399=289 contiguous_0_N=False
+L10 min=  0 max=382 n=350 distinct=350 span=383 holes_in_span=33 used_of_0_399=350 contiguous_0_N=False
+L11 min=  0 max=374 n=330 distinct=330 span=375 holes_in_span=45 used_of_0_399=330 contiguous_0_N=False
+L12 min=  0 max=372 n=314 distinct=314 span=373 holes_in_span=59 used_of_0_399=314 contiguous_0_N=False
+L13 min=  0 max=293 n=294 distinct=294 span=294 holes_in_span=0 used_of_0_399=294 contiguous_0_N=True
+L14 min=  0 max=336 n=275 distinct=275 span=337 holes_in_span=62 used_of_0_399=275 contiguous_0_N=False
+L15 min=  0 max=372 n=300 distinct=300 span=373 holes_in_span=73 used_of_0_399=300 contiguous_0_N=False
+L16 min=  0 max=363 n=296 distinct=296 span=364 holes_in_span=68 used_of_0_399=296 contiguous_0_N=False
+L17 min=  0 max=296 n=247 distinct=247 span=297 holes_in_span=50 used_of_0_399=247 contiguous_0_N=False
+L18 min=  0 max=282 n=240 distinct=240 span=283 holes_in_span=43 used_of_0_399=240 contiguous_0_N=False
+L19 min=  1 max=178 n=138 distinct=138 span=178 holes_in_span=40 used_of_0_399=138 contiguous_0_N=False
+L20 min=  0 max=218 n=187 distinct=187 span=219 holes_in_span=32 used_of_0_399=187 contiguous_0_N=False
+L21 min=  1 max=247 n=207 distinct=207 span=247 holes_in_span=40 used_of_0_399=207 contiguous_0_N=False
+L22 min=  0 max=399 n=255 distinct=255 span=400 holes_in_span=145 used_of_0_399=255 contiguous_0_N=False
+L23 min=  0 max=307 n=258 distinct=258 span=308 holes_in_span=50 used_of_0_399=258 contiguous_0_N=False
+L24 min=  0 max= 15 n= 15 distinct= 15 span= 16 holes_in_span=1 used_of_0_399=15 contiguous_0_N=False
+
+== T1(c) vs Descriptions Ni ==
+desc headers parsed: 25
+L00 'Ground Floor'                             Item!=-1=116 Type1+Item= 66 desc=29 'Ground Floor 0.0m 00 29i' no_match all-Ni=87 t1-Ni=37
+L01 'Never Stop Firing'                        Item!=-1=175 Type1+Item=153 desc=40 'Never Stop Firing 2.7 01 40i' no_match all-Ni=135 t1-Ni=113
+L02 'Lock&Load'                                Item!=-1=228 Type1+Item=139 desc=39 'Lock&Load 2.7 02 39i' no_match all-Ni=189 t1-Ni=100
+L03 'They May Be Slow…'                        Item!=-1=215 Type1+Item=107 desc=40 'They May Be Slow… 6.8 03 40i' no_match all-Ni=175 t1-Ni=67
+L04 '…But They’re Hungry'                      Item!=-1=240 Type1+Item=158 desc=40 "…But They're Hungry 9.0 04 40i" no_match all-Ni=200 t1-Ni=118
+L05 'Evil Undead Phantasms Must Die!'          Item!=-1=159 Type1+Item=154 desc=38 'Evil Undead Phantasms Must Die! 11.3 05 38i' no_match all-Ni=121 t1-Ni=116
+L06 'Ascension'                                Item!=-1=109 Type1+Item= 47 desc=33 'Ascension 13.6 06 33i' no_match all-Ni=76 t1-Ni=14
+L07 'Wrong Way!'                               Item!=-1=313 Type1+Item=276 desc=40 'Wrong Way! -2.4 07 40i' no_match all-Ni=273 t1-Ni=236
+L08 'Welcome, Tasty Primate'                   Item!=-1=316 Type1+Item=228 desc=40 'Welcome, Tasty Primate -4.8 08 40i' no_match all-Ni=276 t1-Ni=188
+L09 'We Can See In The Dark… Can You?'         Item!=-1=289 Type1+Item=262 desc=22 'We Can See In The Dark… Can You? -7.0m 09 22i' no_match all-Ni=267 t1-Ni=240
+L10 'Feel the Power'                           Item!=-1=350 Type1+Item=345 desc=39 'Feel The Power -2.4 0A 39i' no_match all-Ni=311 t1-Ni=306
+L11 'A Plague of Demons'                       Item!=-1=330 Type1+Item=323 desc=39 'A Plague of Demons -4.5 0B 39i' no_match all-Ni=291 t1-Ni=284
+L12 'Beware of Low-Flying Nightmares'          Item!=-1=314 Type1+Item=268 desc=40 'Beware of Low-Flying Nightmares -7.5 0C 40i' no_match all-Ni=274 t1-Ni=228
+L13 'The Labyrinth'                            Item!=-1=294 Type1+Item=290 desc=40 'The Labyrinth -9.1m 0D 40i' no_match all-Ni=254 t1-Ni=250
+L14 'Happy Happy, Carnage Carnage'             Item!=-1=275 Type1+Item=248 desc=35 'Happy Happy, Carnage Carnage -12.6m 0E 35i' no_match all-Ni=240 t1-Ni=213
+L15 'Need a Light?'                            Item!=-1=300 Type1+Item=252 desc=37 'Need A Light? -12.3 0F 37i' no_match all-Ni=263 t1-Ni=215
+L16 'Lasciate Ogne Speranza, Voi Ch’Intrate'   Item!=-1=296 Type1+Item=174 desc=40 "Lasciate Ogne Speranza, Voi Ch'Intrate -12.8 10 40i" no_match all-Ni=256 t1-Ni=134
+L17 'Watch Your Step'                          Item!=-1=247 Type1+Item=136 desc=None None
+L18 'I’d Rather Be Surfing'                    Item!=-1=240 Type1+Item=174 desc=40 "I'd Rather Be Surfing -19.2 12 40i" no_match all-Ni=200 t1-Ni=134
+L19 'Warning: Earthquake Zone'                 Item!=-1=138 Type1+Item= 55 desc=37 'Warning: Earthquake Zone -22.7 13 37i' no_match all-Ni=101 t1-Ni=18
+L20 'Don’t Get Poisoned!'                      Item!=-1=187 Type1+Item=170 desc=40 "Don't Get Poisoned -1042.4 14 40i" no_match all-Ni=147 t1-Ni=130
+L21 'Please Excuse Our Dust'                   Item!=-1=207 Type1+Item=191 desc=40 'Please Excuse Our Dust -102.5 15 40i' no_match all-Ni=167 t1-Ni=151
+L22 'But Wait!— That’s Not All!'               Item!=-1=255 Type1+Item=146 desc=40 "But Wait- That's Not All! -327.2 16 40i" no_match all-Ni=215 t1-Ni=106
+L23 'Where Only Fools Dare Tread'              Item!=-1=258 Type1+Item=178 desc=38 'Where Only Fools Dare Tread -326.7 17 38i' no_match all-Ni=220 t1-Ni=140
+L24 'Ok, Who Else Wants Some?'                 Item!=-1= 15 Type1+Item= 13 desc=40 'Ok, Who Else Wants Some? -3276.8 18 40i' no_match all-Ni=-25 t1-Ni=-27
+
+== T1(d) Item value vs sector Type (global) ==
+  type=0 void             n=   1 unique=  1 min=140 max=140
+  type=1 normal           n=4553 unique=383 min=0 max=396
+  type=2 door             n=   2 unique=  2 min=77 max=91
+  type=3 change_level     n=  56 unique= 38 min=0 max=328
+  type=4 door_trigger     n= 115 unique=100 min=4 max=399
+  type=5 secret_door      n=   1 unique=  1 min=284 max=284
+  type=6 corpse           n=  29 unique= 27 min=60 max=379
+  type=7 pillar           n=1030 unique=303 min=0 max=398
+  type=8 other_trigger    n=  36 unique= 34 min=9 max=283
+  type=9 save             n=  43 unique= 39 min=0 max=372
+Item values used with >1 sector type: 324
+  item=0 types=[1, 3, 7, 9]
+  item=1 types=[1, 3, 7, 9]
+  item=2 types=[1, 3, 7]
+  item=3 types=[1, 3, 7]
+  item=4 types=[1, 3, 4, 7]
+  item=5 types=[1, 7]
+  item=6 types=[1, 4, 7]
+  item=7 types=[1, 7]
+  item=8 types=[1, 4, 7]
+  item=9 types=[1, 4, 7, 8]
+  item=10 types=[1, 3, 4, 7]
+  item=11 types=[1, 7]
+  item=12 types=[1, 3, 7, 8]
+  item=13 types=[1, 3, 7, 8]
+  item=14 types=[1, 3, 4, 7, 8]
+
+== T1(e) unused 376,377,378,383,393 ==
+  376: used=False []
+  377: used=False []
+  378: used=False []
+  383: used=False []
+  393: used=False []
+globally unused in 0..399: [376, 377, 378, 383, 393]
+
+== T2 stored unknown1 ==
+L00 i32=(16857,11485) u16=(16857,11485) hex=(0x41d9,0x2cdd) high_words_zero=True bytes=00 00 41 d9 00 00 2c dd
+L01 i32=(14745,24384) u16=(14745,24384) hex=(0x3999,0x5f40) high_words_zero=True bytes=00 00 39 99 00 00 5f 40
+L02 i32=(28551,2560) u16=(28551,2560) hex=(0x6f87,0x0a00) high_words_zero=True bytes=00 00 6f 87 00 00 0a 00
+L03 i32=(5632,26112) u16=(5632,26112) hex=(0x1600,0x6600) high_words_zero=True bytes=00 00 16 00 00 00 66 00
+L04 i32=(30199,13263) u16=(30199,13263) hex=(0x75f7,0x33cf) high_words_zero=True bytes=00 00 75 f7 00 00 33 cf
+L05 i32=(1536,14848) u16=(1536,14848) hex=(0x0600,0x3a00) high_words_zero=True bytes=00 00 06 00 00 00 3a 00
+L06 i32=(16654,15983) u16=(16654,15983) hex=(0x410e,0x3e6f) high_words_zero=True bytes=00 00 41 0e 00 00 3e 6f
+L07 i32=(14848,6656) u16=(14848,6656) hex=(0x3a00,0x1a00) high_words_zero=True bytes=00 00 3a 00 00 00 1a 00
+L08 i32=(9625,26597) u16=(9625,26597) hex=(0x2599,0x67e5) high_words_zero=True bytes=00 00 25 99 00 00 67 e5
+L09 i32=(24805,29081) u16=(24805,29081) hex=(0x60e5,0x7199) high_words_zero=True bytes=00 00 60 e5 00 00 71 99
+L10 i32=(27136,3584) u16=(27136,3584) hex=(0x6a00,0x0e00) high_words_zero=True bytes=00 00 6a 00 00 00 0e 00
+L11 i32=(29184,17920) u16=(29184,17920) hex=(0x7200,0x4600) high_words_zero=True bytes=00 00 72 00 00 00 46 00
+L12 i32=(12900,9408) u16=(12900,9408) hex=(0x3264,0x24c0) high_words_zero=True bytes=00 00 32 64 00 00 24 c0
+L13 i32=(1536,31232) u16=(1536,31232) hex=(0x0600,0x7a00) high_words_zero=True bytes=00 00 06 00 00 00 7a 00
+L14 i32=(15872,11776) u16=(15872,11776) hex=(0x3e00,0x2e00) high_words_zero=True bytes=00 00 3e 00 00 00 2e 00
+L15 i32=(2560,26112) u16=(2560,26112) hex=(0x0a00,0x6600) high_words_zero=True bytes=00 00 0a 00 00 00 66 00
+L16 i32=(15872,1536) u16=(15872,1536) hex=(0x3e00,0x0600) high_words_zero=True bytes=00 00 3e 00 00 00 06 00
+L17 i32=(30267,6664) u16=(30267,6664) hex=(0x763b,0x1a08) high_words_zero=True bytes=00 00 76 3b 00 00 1a 08
+L18 i32=(11897,13868) u16=(11897,13868) hex=(0x2e79,0x362c) high_words_zero=True bytes=00 00 2e 79 00 00 36 2c
+L19 i32=(19111,17344) u16=(19111,17344) hex=(0x4aa7,0x43c0) high_words_zero=True bytes=00 00 4a a7 00 00 43 c0
+L20 i32=(29184,19968) u16=(29184,19968) hex=(0x7200,0x4e00) high_words_zero=True bytes=00 00 72 00 00 00 4e 00
+L21 i32=(15326,15091) u16=(15326,15091) hex=(0x3bde,0x3af3) high_words_zero=True bytes=00 00 3b de 00 00 3a f3
+L22 i32=(17702,23446) u16=(17702,23446) hex=(0x4526,0x5b96) high_words_zero=True bytes=00 00 45 26 00 00 5b 96
+L23 i32=(21522,20070) u16=(21522,20070) hex=(0x5412,0x4e66) high_words_zero=True bytes=00 00 54 12 00 00 4e 66
+L24 i32=(13354,17840) u16=(13354,17840) hex=(0x342a,0x45b0) high_words_zero=True bytes=00 00 34 2a 00 00 45 b0
+
+== T2 expected-spot check ==
+  rec0 stored_u16=(16857,11485) expected=(16857,11485) match=(True,True)
+  rec1 stored_u16=(14745,24384) expected=(14745,24384) match=(True,True)
+  rec2 stored_u16=(28551,2560) expected=(28551,2560) match=(True,True)
+  rec24 stored_u16=(13354,17840) expected=(13354,17840) match=(True,True)
+
+== T2 checksum hunt (match all 25 against either stored u16) ==
+  sum_u16                sectors        match_a= 0 match_b= 0 e.g. rec0=42007
+  xor_u16                sectors        match_a= 0 match_b= 0 e.g. rec0=34639
+  sum_bytes              sectors        match_a= 0 match_b= 0 e.g. rec0=14852
+  crc16_ccitt_ffff       sectors        match_a= 0 match_b= 0 e.g. rec0=10961
+  crc16_ccitt_0000       sectors        match_a= 0 match_b= 0 e.g. rec0=9422
+  crc16_ccitt_1d0f       sectors        match_a= 0 match_b= 0 e.g. rec0=58399
+  crc16_ibm_0000         sectors        match_a= 0 match_b= 0 e.g. rec0=55291
+  crc16_ibm_ffff         sectors        match_a= 0 match_b= 0 e.g. rec0=10281
+  crc16_ibm_reflected    sectors        match_a= 0 match_b= 0 e.g. rec0=16897
+  sum_u16                whole_ex_unk   match_a= 0 match_b= 0 e.g. rec0=60742
+  xor_u16                whole_ex_unk   match_a= 0 match_b= 0 e.g. rec0=28696
+  sum_bytes              whole_ex_unk   match_a= 0 match_b= 0 e.g. rec0=33622
+  crc16_ccitt_ffff       whole_ex_unk   match_a= 0 match_b= 0 e.g. rec0=9667
+  crc16_ccitt_0000       whole_ex_unk   match_a= 0 match_b= 0 e.g. rec0=2150
+  crc16_ccitt_1d0f       whole_ex_unk   match_a= 0 match_b= 0 e.g. rec0=40339
+  crc16_ibm_0000         whole_ex_unk   match_a= 0 match_b= 0 e.g. rec0=2667
+  crc16_ibm_ffff         whole_ex_unk   match_a= 0 match_b= 0 e.g. rec0=40190
+  crc16_ibm_reflected    whole_ex_unk   match_a= 0 match_b= 0 e.g. rec0=6601
+  sum_u16                name           match_a= 0 match_b= 0 e.g. rec0=18158
+  xor_u16                name           match_a= 0 match_b= 0 e.g. rec0=2280
+  sum_bytes              name           match_a= 0 match_b= 0 e.g. rec0=2352
+  crc16_ccitt_ffff       name           match_a= 0 match_b= 0 e.g. rec0=39505
+  crc16_ccitt_0000       name           match_a= 0 match_b= 0 e.g. rec0=27227
+  crc16_ccitt_1d0f       name           match_a= 0 match_b= 0 e.g. rec0=55504
+  crc16_ibm_0000         name           match_a= 0 match_b= 0 e.g. rec0=43812
+  crc16_ibm_ffff         name           match_a= 0 match_b= 0 e.g. rec0=54523
+  crc16_ibm_reflected    name           match_a= 0 match_b= 0 e.g. rec0=43570
+  sum_u16                header         match_a= 0 match_b= 0 e.g. rec0=47077
+  xor_u16                header         match_a= 0 match_b= 0 e.g. rec0=39507
+  sum_bytes              header         match_a= 0 match_b= 0 e.g. rec0=19317
+  crc16_ccitt_ffff       header         match_a= 0 match_b= 0 e.g. rec0=19090
+  crc16_ccitt_0000       header         match_a= 0 match_b= 0 e.g. rec0=1920
+  crc16_ccitt_1d0f       header         match_a= 0 match_b= 0 e.g. rec0=20067
+  crc16_ibm_0000         header         match_a= 0 match_b= 0 e.g. rec0=28300
+  crc16_ibm_ffff         header         match_a= 0 match_b= 0 e.g. rec0=37247
+  crc16_ibm_reflected    header         match_a= 0 match_b= 0 e.g. rec0=5674
+  sum_u16                header_ex_unk  match_a= 0 match_b= 0 e.g. rec0=18735
+  xor_u16                header_ex_unk  match_a= 0 match_b= 0 e.g. rec0=63319
+  sum_bytes              header_ex_unk  match_a= 0 match_b= 0 e.g. rec0=18770
+  crc16_ccitt_ffff       header_ex_unk  match_a= 0 match_b= 0 e.g. rec0=56586
+  crc16_ccitt_0000       header_ex_unk  match_a= 0 match_b= 0 e.g. rec0=35546
+  crc16_ccitt_1d0f       header_ex_unk  match_a= 0 match_b= 0 e.g. rec0=54927
+  crc16_ibm_0000         header_ex_unk  match_a= 0 match_b= 0 e.g. rec0=3545
+  crc16_ibm_ffff         header_ex_unk  match_a= 0 match_b= 0 e.g. rec0=7344
+  crc16_ibm_reflected    header_ex_unk  match_a= 0 match_b= 0 e.g. rec0=48268
+
+FULL_MATCHES=NONE
+
+== T2 extra: rec0 computed dump ==
+  sectors len=16384 sum_u16=42007 xor=34639 sumb=14852 ccitt=10961
+  whole_ex_unk len=16826 sum_u16=60742 xor=28696 sumb=33622 ccitt=9667
+  name len=128 sum_u16=18158 xor=2280 sumb=2352 ccitt=39505
+  header len=450 sum_u16=47077 xor=39507 sumb=19317 ccitt=19090
+  header_ex_unk len=442 sum_u16=18735 xor=63319 sumb=18770 ccitt=56586

@@ -1,0 +1,73 @@
+== Ground Floor name='Ground Floor' height10=0 ==
+save-rune count=4
+  SAVE (x=6, y=2) sector=70 Item=0 TypeAddl=0
+  SAVE (x=26, y=2) sector=90 Item=52 TypeAddl=0
+  SAVE (x=5, y=10) sector=325 Item=90 TypeAddl=0
+  SAVE (x=27, y=10) sector=347 Item=91 TypeAddl=0
+corpse count=1
+  CORPSE (x=14, y=6) sector=206 Item=114 TypeAddl=0
+
+== Pathways Into Cheating types=['DATA', 'ZERO', 'DREL', 'CODE', 'SIZE', 'vers', 'TMPL', 'ics#', 'FREF', '¸\x94\x82Ê', 'BNDL', 'icl4', 'icl8', 'ICN#', 'ics4', 'ics8', 'PICT', 'CNTL', 'WIND', 'DLOG', 'STR#', 'DITL', 'ALRT', 'MENU'] ==
+
+== STR# ==
+STR# 128 name=b'error list' size=362
+  [000] The Shit has hit the fan.
+  [001] There are no saved games in this file.
+  [002] There is no room to add another item.
+  [003] Hmmm... Oddly enough, I don’t know what that item is. Oh well.
+  [004] You probably should have a positive amount of ammo.
+  [005] Your vitality and max vitality should be greater than 0 and less than 32768.
+  [006] Colt .45 Ammo can’t have more than 0 rounds (or PID will crash).
+
+== DITL ==
+
+--- DITL 256 name=b'error alert' size=34 ---
+  [00] button       rect=(81, 142, 101, 200) en=True text='OK'
+  [01] staticText   rect=(12, 75, 65, 297) en=False text='^0'
+
+--- DITL 128 name=b'PiC About' size=362 ---
+  [00] button       rect=(158, 200, 178, 258) en=True text='OK'
+  [01] staticText   rect=(44, 84, 62, 375) en=False text='A Pathways into Darkness Character Editor'
+  [02] staticText   rect=(101, 41, 153, 418) en=False text='This software is not sanctioned by or made by Bungie Software, so don’t hassle them if it doesn’t work. I cannot guantee that it works, so USE AT YOUR OWN RISK!'
+  [03] staticText   rect=(62, 80, 100, 379) en=False text='By Alain Roy © 1993 Written in Think C 5.0.4 (Some parts may be © 1993 by Symantec)'
+  [04] picItem      rect=(2, 192, 41, 267) en=False raw=00 80
+
+--- DITL 129 name=b'Harvey' size=252 ---
+  [00] userItem     rect=(8, 22, 28, 339) en=True
+  [01] editText     rect=(40, 86, 56, 132) en=True text='4000.0'
+  [02] editText     rect=(40, 271, 56, 318) en=True text='4000.0'
+  [03] checkBox     rect=(67, 20, 85, 123) en=True text='Left-Handed'
+  [04] userItem     rect=(116, 20, 273, 187) en=True
+  [05] staticText   rect=(94, 20, 110, 186) en=False text='All Items:'
+  [06] staticText   rect=(10, 20, 26, 110) en=False text='Game to Edit:'
+  [07] staticText   rect=(40, 20, 56, 77) en=False text='Vitality:'
+  [08] staticText   rect=(40, 139, 56, 265) en=False text='Maximum Vitality:'
+  [09] button       rect=(116, 201, 136, 300) en=True text='Add Item'
+  [10] button       rect=(145, 201, 165, 300) en=True text='Delete Item'
+
+--- DITL 257 name='' size=120 ---
+  [00] button       rect=(55, 268, 75, 326) en=True text='Save'
+  [01] button       rect=(55, 187, 75, 245) en=True text='Cancel'
+  [02] button       rect=(55, 30, 75, 106) en=True text='Don’t Save'
+  [03] staticText   rect=(14, 35, 33, 322) en=False text='Save PID Saved Games file before closing?'
+
+--- DITL 130 name=b'item selector' size=152 ---
+  [00] button       rect=(121, 221, 141, 279) en=True text='OK'
+  [01] button       rect=(93, 222, 113, 280) en=True text='Cancel'
+  [02] userItem     rect=(62, 8, 82, 281) en=False
+  [03] editText     rect=(97, 84, 114, 121) en=True text='0'
+  [04] staticText   rect=(98, 10, 114, 74) en=False text='Quantity:'
+  [05] staticText   rect=(21, 10, 37, 114) en=False text='Select an Item:'
+  [06] picItem      rect=(12, 205, 51, 280) en=False raw=00 80
+  [07] userItem     rect=(121, 221, 141, 279) en=False
+
+== MENU (field names) ==
+MENU 128 title='\x14' items=['About PiC...', '-']
+MENU 129 title='File' items=['New...', 'Open...', 'Close', 'Save...', 'Quit']
+MENU 130 title='Edit' items=['Undo', '-', 'Cut', 'Copy', 'Paste', 'Clear']
+MENU 131 title='Quick Cheats' items=['Moderate Cheats', 'Massive Cheats', 'Teleport']
+MENU 132 title='Moderate Cheats' items=['Increase Vitality', 'Extra Walther Ammo', 'Recharge Crystals', 'Teach me how to use a Walther']
+MENU 133 title='Massive Cheats' items=['Max out Vitality', 'Arm me to the teeth', 'Crystalize me', 'Gimme something to drink', 'Reset Time', 'Raise Skill Levels']
+MENU 134 title='Bogus' items=['Test', 'No Test']
+MENU 135 title='Items' items=['Copy of Mein Kampf22', 'Digital Watch01', 'InfraRed Goggles03', 'FlashLight02', 'Gas Mask04', 'Map00', 'Nazi Propaganda23', 'Nuclear Device16', 'Radio Beacon17', 'Red Cloak14', 'Silver Medal61', '-', 'Canvas Bag06', 'Cedar Box08', 'Lead Box10', 'Ornate Glass Vial12', 'Red Velvet Bag09', '-', 'Bubbling Red Potion19', 'Clear Blue Potion18', 'Pale Violet Potion21', 'Thick Brown Potion20', '-', 'AK-47 Assault Rifle49', 'Colt .45 Pistol47', 'M-79 Grenade Launcher50', 'MP-41 Submachine Gun48', 'Survival Knife45', 'Walther P4 Pistol46', '-', '40mm Frag Cartridge59', '40mm HE Cartridge58', '40mm Projectile Cartridge60', 'AK-47 HE Magazine54', 'AK-47 Magazine53', 'AK-47 SABOT Magazine55', 'Colt .45 Magazine57', 'M-16 Magazine56', 'MP-41 Magazine52', 'Walther P4 Magazine51', '-', 'Black Crystal70', 'Blue Crystal65', 'Green Crystal69', 'Orange Crystal66', 'Violet Crystal68', 'Yellow Crystal64', '-', 'Alien Gemstone32', 'Alien Pipes33', 'Amethyst Ring30', 'Diamond Necklace31', 'Emerald40', 'Gold Ingot37', 'Gold Key36', 'Large Pearl41', 'Ruby Ring29', 'Sapphire38', 'Silver Bowl35', 'Silver Key34', '-', 'Broken M-1625', 'Broken AK-4726', 'Broken MP-4127', 'Broken Walther P428']
+MENU 136 title='Teleport' items=['Ground Floor', 'Ascension', 'See in the Dark?', 'Plague of Demons', 'Low-Flying Nightmares', 'Carnage!', 'Watch Your Step...', 'Dusty', 'Don’t Tread', 'You Really Want Some?', 'You’ve never been here', 'Stay out of here!']

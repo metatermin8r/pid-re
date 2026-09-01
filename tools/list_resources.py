@@ -17,6 +17,7 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT / "tools"))
 
 from mac_containers import load_resource_payload  # noqa: E402
+from mac_text import decode_mac_roman  # noqa: E402
 
 SKIP_SUFFIXES = {".sit", ".hqx", ".zip", ".dmg", ".pdf", ".txt", ".md", ".jpg", ".jpeg", ".png"}
 SKIP_DIR_NAMES = {".git", ".venv", "venv", "tools", "docs", "formats"}
@@ -54,8 +55,12 @@ def list_one(path: Path) -> str | None:
         lines.append(f"'{label}': {len(resources)} resources:")
         for res_id in sorted(resources):
             res = resources[res_id]
-            name = res.name if res.name else ""
-            extra = f"  name={name!r}" if name else ""
+            raw_name = res.name
+            if raw_name:
+                name = decode_mac_roman(raw_name) if isinstance(raw_name, bytes) else str(raw_name)
+                extra = f"  name={name}"
+            else:
+                extra = ""
             lines.append(f"  ({res_id}): {res.length} bytes{extra}")
         lines.append("")
     return "\n".join(lines) + "\n"

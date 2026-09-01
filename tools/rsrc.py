@@ -17,6 +17,15 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "tools"))
 
 from mac_containers import load_resource_payload  # noqa: E402
+from mac_text import (  # noqa: E402
+    decode_mac_roman,
+    format_string_list,
+    hexdump_mac_roman,
+    parse_menu,
+    parse_str,
+    parse_str_list,
+    parse_vers,
+)
 
 
 def _open_rf(path: Path):
@@ -44,6 +53,41 @@ def cmd_list(path: Path) -> None:
     sys.stdout.write(text)
 
 
+def _print_text_resource(type_code: bytes, data: bytes) -> None:
+    if type_code == b"STR#":
+        parsed = parse_str_list(data)
+        if parsed is None:
+            raise SystemExit("STR# did not parse as count + Pascal strings")
+        print(f"count: {len(parsed)}")
+        print(format_string_list(parsed))
+        return
+    if type_code == b"STR ":
+        parsed = parse_str(data)
+        if parsed is None:
+            raise SystemExit("STR  did not parse as a Pascal string")
+        print(parsed.replace("\r", "\n"))
+        return
+    if type_code == b"MENU":
+        parsed = parse_menu(data)
+        if parsed is None:
+            raise SystemExit("MENU did not parse")
+        print(f"menu_id: {parsed['id']}")
+        print(f"title: {parsed['title']}")
+        print(format_string_list(parsed["items"]))
+        return
+    if type_code == b"vers":
+        parsed = parse_vers(data)
+        if parsed is None:
+            raise SystemExit("vers did not parse")
+        print(f"short: {parsed['short']}")
+        print(f"long: {parsed['long']}")
+        return
+    text = decode_mac_roman(data).replace("\r", "\n")
+    sys.stdout.write(text)
+    if not text.endswith("\n"):
+        sys.stdout.write("\n")
+
+
 def cmd_read(path: Path, type_code: str, res_id: int, as_text: bool) -> None:
     rf, payload = _open_rf(path)
     key = _type_bytes(type_code)
@@ -55,19 +99,13 @@ def cmd_read(path: Path, type_code: str, res_id: int, as_text: bool) -> None:
     data = res.data
     header = f"Resource {type_code!r} ({res_id}): {len(data)} bytes, source={payload.source}"
     if res.name:
-        header += f", name={res.name!r}"
+        name = decode_mac_roman(res.name) if isinstance(res.name, bytes) else res.name
+        header += f", name={name}"
     print(header)
     if as_text:
-        text = data.decode("mac_roman", errors="replace").replace("\r", "\n")
-        sys.stdout.write(text)
-        if not text.endswith("\n"):
-            sys.stdout.write("\n")
+        _print_text_resource(key, data)
         return
-    for offset in range(0, len(data), 16):
-        chunk = data[offset : offset + 16]
-        hexpart = " ".join(f"{b:02x}" for b in chunk)
-        asciipart = "".join(chr(b) if 32 <= b < 127 else "." for b in chunk)
-        print(f"{offset:08x}  {hexpart:<48}  |{asciipart}|")
+    print(hexdump_mac_roman(data))
 
 
 def main() -> int:
