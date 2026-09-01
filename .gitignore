@@ -1,0 +1,24 @@
+# Original game data — never commit
+/data/*
+!/data/.gitkeep
+
+# Local Python env
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+
+# Downloaded third-party binaries (unar, etc.)
+/tools/bin/*
+!/tools/bin/.gitkeep
+
+# Editor / OS junk
+.idea/
+.vscode/
+*.swp
+Thumbs.db
+Desktop.ini
+.DS_Store
+*.iml

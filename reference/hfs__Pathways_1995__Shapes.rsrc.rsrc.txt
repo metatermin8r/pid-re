@@ -1,0 +1,57 @@
+# C:/Users/Colton S Covert/Documents/GitHub/Pathways-Into-Darkness-Unity/data/hfs/Pathways_1995/Shapes.rsrc
+source: raw-rsrc
+resource_bytes: 1872611
+types: 1
+
+'.256': 50 resources:
+  (128): 49647 bytes
+  (129): 59909 bytes
+  (130): 52199 bytes
+  (131): 29786 bytes
+  (132): 84995 bytes
+  (133): 84549 bytes
+  (134): 8508 bytes
+  (135): 43298 bytes
+  (136): 26246 bytes
+  (137): 40297 bytes
+  (139): 65404 bytes
+  (140): 23293 bytes
+  (141): 21460 bytes
+  (142): 53676 bytes
+  (148): 7197 bytes
+  (149): 11074 bytes
+  (150): 8302 bytes
+  (151): 8294 bytes
+  (152): 6375 bytes
+  (153): 6864 bytes
+  (154): 10226 bytes
+  (155): 11242 bytes
+  (156): 12544 bytes
+  (157): 5132 bytes
+  (158): 7563 bytes
+  (159): 16736 bytes
+  (160): 9562 bytes
+  (161): 14200 bytes
+  (162): 5090 bytes
+  (163): 3723 bytes
+  (164): 26648 bytes
+  (165): 9493 bytes
+  (166): 6913 bytes
+  (167): 9231 bytes
+  (187): 322278 bytes
+  (188): 46839 bytes
+  (189): 12738 bytes
+  (190): 5602 bytes
+  (191): 29545 bytes
+  (192): 167155 bytes
+  (193): 56661 bytes
+  (194): 152475 bytes
+  (195): 31628 bytes
+  (196): 32727 bytes
+  (197): 27838 bytes
+  (198): 18545 bytes
+  (199): 31733 bytes
+  (200): 32253 bytes
+  (201): 32428 bytes
+  (202): 31396 bytes
+

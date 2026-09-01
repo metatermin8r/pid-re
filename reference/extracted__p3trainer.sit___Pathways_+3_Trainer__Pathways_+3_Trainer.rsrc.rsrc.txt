@@ -1,0 +1,67 @@
+# C:/Users/Colton S Covert/Documents/GitHub/Pathways-Into-Darkness-Unity/data/extracted/p3trainer.sit_/Pathways +3 Trainer/Pathways +3 Trainer.rsrc
+source: appledouble
+resource_bytes: 74705
+types: 14
+
+'CODE': 3 resources:
+  (0): 104 bytes
+  (1): 578 bytes
+  (2): 4246 bytes
+
+'DATA': 1 resources:
+  (0): 188 bytes
+
+'DITL': 2 resources:
+  (128): 232 bytes
+  (129): 278 bytes
+
+'DLOG': 2 resources:
+  (128): 34 bytes
+  (129): 24 bytes
+
+'DREL': 1 resources:
+  (0): 0 bytes
+
+'Echo': 1 resources:
+  (128): 0 bytes
+
+'PICT': 13 resources:
+  (128): 1724 bytes
+  (129): 16158 bytes
+  (130): 592 bytes
+  (131): 5840 bytes
+  (132): 3028 bytes
+  (133): 3840 bytes
+  (134): 2956 bytes
+  (135): 5446 bytes
+  (136): 3878 bytes
+  (137): 382 bytes
+  (138): 398 bytes
+  (139): 624 bytes
+  (140): 636 bytes
+
+'PSyn': 1 resources:
+  (128): 4712 bytes  name=b'Polyphonic Synthesize\x00'
+
+'SIZE': 1 resources:
+  (-1): 10 bytes
+
+'STrI': 1 resources:
+  (128): 5396 bytes
+
+'ZERO': 1 resources:
+  (0): 4 bytes
+
+'clut': 4 resources:
+  (134): 2056 bytes
+  (177): 2056 bytes
+  (777): 2056 bytes
+  (999): 2056 bytes
+
+'dctb': 2 resources:
+  (128): 48 bytes
+  (129): 48 bytes
+
+'pltt': 1 resources:
+  (128): 4112 bytes
+

@@ -1,0 +1,74 @@
+# C:/Users/Colton S Covert/Documents/GitHub/Pathways-Into-Darkness-Unity/data/hfs/Pathways_Extras/Torch 0.9.1 folder/Torch 0.9.1.rsrc
+source: raw-rsrc
+resource_bytes: 541585
+types: 21
+
+'ALRT': 3 resources:
+  (131): 12 bytes
+  (132): 12 bytes
+  (133): 14 bytes
+
+'BNDL': 1 resources:
+  (128): 28 bytes
+
+'CURS': 1 resources:
+  (200): 68 bytes
+
+'DITL': 3 resources:
+  (131): 68 bytes
+  (132): 50 bytes
+  (133): 50 bytes
+
+'FREF': 1 resources:
+  (128): 7 bytes
+
+'ICN#': 1 resources:
+  (128): 256 bytes
+
+'LDEF': 1 resources:
+  (128): 6 bytes
+
+'PICT': 2 resources:
+  (132): 5208 bytes
+  (133): 490 bytes
+
+'PLPC': 1 resources:
+  (128): 36030 bytes
+
+'SIZE': 1 resources:
+  (-1): 10 bytes
+
+'STR#': 1 resources:
+  (202): 826 bytes
+
+'cPPC': 1 resources:
+  (128): 1055645 bytes
+
+'cfrg': 1 resources:
+  (0): 132 bytes
+
+'dcmp': 1 resources:
+  (200): 162 bytes
+
+'icl4': 1 resources:
+  (128): 512 bytes
+
+'icl8': 1 resources:
+  (128): 1024 bytes
+
+'ics#': 1 resources:
+  (128): 64 bytes
+
+'ics4': 1 resources:
+  (128): 128 bytes
+
+'ics8': 1 resources:
+  (128): 256 bytes
+
+'trÇh': 1 resources:
+  (0): 1 bytes
+
+'vers': 2 resources:
+  (1): 37 bytes
+  (2): 34 bytes
+

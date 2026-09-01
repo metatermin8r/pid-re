@@ -1,0 +1,203 @@
+# C:/Users/Colton S Covert/Documents/GitHub/Pathways-Into-Darkness-Unity/data/extracted/PathwaysDemo/Pathways Demo ƒ/Pathways into Darkness.rsrc
+source: appledouble
+resource_bytes: 197088
+types: 27
+
+'ALRT': 13 resources:
+  (128): 14 bytes
+  (129): 14 bytes
+  (130): 14 bytes
+  (1000): 14 bytes
+  (1001): 14 bytes
+  (2000): 14 bytes
+  (2001): 14 bytes
+  (2002): 14 bytes
+  (2003): 14 bytes
+  (2005): 14 bytes
+  (2006): 14 bytes
+  (2007): 14 bytes
+  (2008): 14 bytes
+
+'BNDL': 1 resources:
+  (128): 60 bytes
+
+'CODE': 16 resources:
+  (0): 2432 bytes
+  (1): 7010 bytes
+  (2): 15714 bytes
+  (3): 7116 bytes
+  (4): 19434 bytes
+  (5): 21532 bytes
+  (6): 25110 bytes
+  (7): 5352 bytes
+  (8): 1654 bytes
+  (9): 58 bytes
+  (10): 5866 bytes
+  (11): 2310 bytes
+  (12): 4124 bytes
+  (13): 1272 bytes
+  (14): 4986 bytes
+  (15): 130 bytes
+
+'DITL': 20 resources:
+  (128): 212 bytes
+  (129): 72 bytes
+  (130): 594 bytes
+  (131): 70 bytes
+  (132): 476 bytes
+  (1001): 96 bytes
+  (2000): 130 bytes
+  (2001): 186 bytes
+  (2002): 118 bytes
+  (2003): 50 bytes
+  (2004): 186 bytes
+  (2006): 326 bytes
+  (2007): 32 bytes
+  (2008): 60 bytes
+  (2009): 658 bytes
+  (2010): 148 bytes
+  (2011): 52 bytes
+  (2012): 34 bytes
+  (2013): 614 bytes
+  (2014): 502 bytes
+
+'DLOG': 7 resources:
+  (130): 24 bytes
+  (2000): 24 bytes
+  (2001): 24 bytes
+  (2002): 24 bytes
+  (2003): 24 bytes
+  (2005): 24 bytes
+  (2006): 24 bytes
+
+'FOND': 1 resources:
+  (3): 60 bytes
+
+'FREF': 8 resources:
+  (128): 7 bytes
+  (129): 7 bytes
+  (130): 7 bytes
+  (131): 7 bytes
+  (132): 7 bytes
+  (133): 7 bytes
+  (134): 7 bytes
+  (135): 7 bytes
+
+'ICN#': 5 resources:
+  (128): 256 bytes
+  (129): 256 bytes
+  (130): 256 bytes
+  (131): 256 bytes
+  (132): 256 bytes
+
+'ICON': 2 resources:
+  (128): 128 bytes
+  (129): 128 bytes
+
+'MBAR': 1 resources:
+  (128): 12 bytes
+
+'MENU': 5 resources:
+  (128): 43 bytes
+  (129): 125 bytes
+  (130): 72 bytes
+  (131): 100 bytes
+  (132): 96 bytes
+
+'NFNT': 1 resources:
+  (32646): 2642 bytes
+
+'SIZE': 1 resources:
+  (-1): 10 bytes
+
+'STR#': 4 resources:
+  (128): 1668 bytes
+  (1000): 606 bytes
+  (1001): 8982 bytes
+  (1002): 702 bytes
+
+'cicn': 2 resources:
+  (128): 634 bytes
+  (129): 626 bytes
+
+'clut': 3 resources:
+  (128): 128 bytes
+  (129): 128 bytes
+  (256): 723 bytes
+
+'dctb': 7 resources:
+  (130): 8 bytes
+  (2000): 8 bytes
+  (2001): 8 bytes
+  (2003): 8 bytes
+  (2004): 8 bytes
+  (2005): 8 bytes
+  (2006): 8 bytes
+
+'dpin': 1 resources:
+  (128): 24258 bytes
+
+'icl4': 5 resources:
+  (128): 512 bytes
+  (129): 512 bytes
+  (130): 512 bytes
+  (131): 512 bytes
+  (132): 512 bytes
+
+'icl8': 5 resources:
+  (128): 1024 bytes
+  (129): 1024 bytes
+  (130): 1024 bytes
+  (131): 1024 bytes
+  (132): 1024 bytes
+
+'ics#': 5 resources:
+  (128): 64 bytes
+  (129): 64 bytes
+  (130): 64 bytes
+  (131): 64 bytes
+  (132): 64 bytes
+
+'ics4': 5 resources:
+  (128): 128 bytes
+  (129): 128 bytes
+  (130): 128 bytes
+  (131): 128 bytes
+  (132): 128 bytes
+
+'ics8': 5 resources:
+  (128): 256 bytes
+  (129): 256 bytes
+  (130): 256 bytes
+  (131): 256 bytes
+  (132): 256 bytes
+
+'ppat': 1 resources:
+  (128): 134 bytes
+
+'påth': 1 resources:
+  (0): 28 bytes
+
+'scri': 18 resources:
+  (128): 3404 bytes
+  (129): 1303 bytes
+  (130): 1376 bytes
+  (131): 1430 bytes
+  (132): 211 bytes
+  (133): 1278 bytes
+  (134): 91 bytes
+  (135): 91 bytes
+  (136): 91 bytes
+  (137): 91 bytes
+  (138): 593 bytes
+  (139): 1195 bytes
+  (140): 91 bytes
+  (141): 91 bytes
+  (142): 91 bytes
+  (143): 91 bytes
+  (144): 122 bytes
+  (145): 91 bytes
+
+'vers': 1 resources:
+  (128): 80 bytes
+

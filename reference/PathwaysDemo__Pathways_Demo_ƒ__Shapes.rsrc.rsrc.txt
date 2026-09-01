@@ -1,0 +1,25 @@
+# C:/Users/Colton S Covert/Documents/GitHub/Pathways-Into-Darkness-Unity/data/extracted/PathwaysDemo/Pathways Demo ƒ/Shapes.rsrc
+source: appledouble
+resource_bytes: 689050
+types: 1
+
+'.256': 18 resources:
+  (128): 49647 bytes
+  (129): 59104 bytes
+  (130): 52199 bytes
+  (131): 29786 bytes
+  (133): 72694 bytes
+  (148): 7197 bytes
+  (152): 6375 bytes
+  (153): 6492 bytes
+  (154): 10226 bytes
+  (155): 9529 bytes
+  (156): 12544 bytes
+  (157): 5132 bytes
+  (158): 7563 bytes
+  (159): 16736 bytes
+  (190): 5441 bytes
+  (191): 29545 bytes
+  (192): 155783 bytes
+  (194): 152475 bytes
+

@@ -1,0 +1,6 @@
+# Phase 0 toolchain. Keep this permissive-licensed only.
+rsrcfork>=1.8.0
+Pillow>=10.0.0
+numpy>=1.26.0
+kaitaistruct>=0.10
+machfs>=1.2.4

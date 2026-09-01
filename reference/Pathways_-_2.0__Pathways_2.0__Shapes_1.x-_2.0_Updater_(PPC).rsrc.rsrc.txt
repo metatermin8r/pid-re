@@ -1,0 +1,42 @@
+# C:/Users/Colton S Covert/Documents/GitHub/Pathways-Into-Darkness-Unity/data/extracted/Pathways_-_2.0/Pathways 2.0/Shapes 1.x-_2.0 Updater (PPC).rsrc
+source: appledouble
+resource_bytes: 13720
+types: 11
+
+'ALRT': 1 resources:
+  (1100): 12 bytes
+
+'ApMh': 1 resources:
+  (0): 39 bytes
+
+'BNDL': 1 resources:
+  (128): 28 bytes
+
+'CODE': 2 resources:
+  (0): 24 bytes
+  (1): 12190 bytes
+
+'DITL': 3 resources:
+  (1100): 34 bytes
+  (1101): 260 bytes
+  (1102): 30 bytes
+
+'DLOG': 2 resources:
+  (1101): 25 bytes
+  (1102): 21 bytes
+
+'FREF': 1 resources:
+  (128): 7 bytes
+
+'ICN#': 1 resources:
+  (128): 256 bytes
+
+'SIZE': 1 resources:
+  (-1): 10 bytes
+
+'STR ': 1 resources:
+  (-16396): 12 bytes
+
+'Zaps': 1 resources:
+  (1295): 158 bytes
+

@@ -1,0 +1,92 @@
+# Resource-fork inventory
+
+scan_root: C:\Users\Colton S Covert\Documents\GitHub\Pathways-Into-Darkness-Unity\data
+
+- extracted/p3trainer.sit_/Pathways +3 Trainer/Pathways +3 Trainer.rsrc -> extracted__p3trainer.sit___Pathways_+3_Trainer__Pathways_+3_Trainer.rsrc.rsrc.txt
+- extracted/pathways-i-d-11/Pathways-ID/Pathways 1.image.rsrc -> extracted__pathways-i-d-11__Pathways-ID__Pathways_1.image.rsrc.rsrc.txt
+- extracted/pathways-i-d-11/Pathways-ID/Pathways 2.image.rsrc -> extracted__pathways-i-d-11__Pathways-ID__Pathways_2.image.rsrc.rsrc.txt
+- extracted/pathways-i-d-11/Pathways-ID/Pathways 3.image.rsrc -> extracted__pathways-i-d-11__Pathways-ID__Pathways_3.image.rsrc.rsrc.txt
+- extracted/pathways-i-d-11/Pathways-ID/ReadMe.txt.rsrc -> extracted__pathways-i-d-11__Pathways-ID__ReadMe.txt.rsrc.rsrc.txt
+- extracted/Pathways_-_2.0/Pathways 2.0/Pathways 1.1-_2.0 Updater (68k).rsrc -> extracted__Pathways_-_2.0__Pathways_2.0__Pathways_1.1-_2.0_Updater_(68k).rsrc.rsrc.txt
+- extracted/Pathways_-_2.0/Pathways 2.0/Pathways 1.1-_2.0 Updater (PPC).rsrc -> extracted__Pathways_-_2.0__Pathways_2.0__Pathways_1.1-_2.0_Updater_(PPC).rsrc.rsrc.txt
+- extracted/Pathways_-_2.0/Pathways 2.0/Pathways V. 1.0 -_ V. 1.1.rsrc -> extracted__Pathways_-_2.0__Pathways_2.0__Pathways_V._1.0_-__V._1.1.rsrc.rsrc.txt
+- extracted/Pathways_-_2.0/Pathways 2.0/Shapes 1.x-_2.0 Updater (PPC).rsrc -> extracted__Pathways_-_2.0__Pathways_2.0__Shapes_1.x-_2.0_Updater_(PPC).rsrc.rsrc.txt
+- extracted/Pathways_into_Cheating/Pathways into Cheating/Pathways Into Cheating ƒ/Pathways Into Cheating.rsrc -> extracted__Pathways_into_Cheating__Pathways_into_Cheating__Pathways_Into_Cheating_ƒ__Pathways_Into_Cheating.rsrc.rsrc.txt
+- extracted/PathwaysDemo/Pathways Demo ƒ/Pathways into Darkness.rsrc -> extracted__PathwaysDemo__Pathways_Demo_ƒ__Pathways_into_Darkness.rsrc.rsrc.txt
+- extracted/PathwaysDemo/Pathways Demo ƒ/Shapes.rsrc -> extracted__PathwaysDemo__Pathways_Demo_ƒ__Shapes.rsrc.rsrc.txt
+- extracted/PathwaysDemo/Pathways Demo ƒ/Sounds.rsrc -> extracted__PathwaysDemo__Pathways_Demo_ƒ__Sounds.rsrc.rsrc.txt
+- extracted/PathwaysGuide/Pathways Guide ƒ/Pathways Guide.rsrc -> extracted__PathwaysGuide__Pathways_Guide_ƒ__Pathways_Guide.rsrc.rsrc.txt
+- hfs/Installer_Disk_1/Pathways Installer.rsrc -> hfs__Installer_Disk_1__Pathways_Installer.rsrc.rsrc.txt
+- hfs/Installer_Disk_3/Sound Manager 3.0/Sound Manager.rsrc -> hfs__Installer_Disk_3__Sound_Manager_3.0__Sound_Manager.rsrc.rsrc.txt
+- hfs/Installer_Disk_3/Sound Manager 3.0/Sound.rsrc -> hfs__Installer_Disk_3__Sound_Manager_3.0__Sound.rsrc.rsrc.txt
+- hfs/Pathways 1/Pathways Installer.rsrc -> hfs__Pathways_1__Pathways_Installer.rsrc.rsrc.txt
+- hfs/Pathways_1995/DesktopPrinters DB.rsrc -> hfs__Pathways_1995__DesktopPrinters_DB.rsrc.rsrc.txt
+- hfs/Pathways_1995/OpenFolderListDF.rsrc -> hfs__Pathways_1995__OpenFolderListDF.rsrc.rsrc.txt
+- hfs/Pathways_1995/Pathways Into Darkness.rsrc -> hfs__Pathways_1995__Pathways_Into_Darkness.rsrc.rsrc.txt
+- hfs/Pathways_1995/Pathways Manual.rsrc -> hfs__Pathways_1995__Pathways_Manual.rsrc.rsrc.txt
+- hfs/Pathways_1995/Shapes.rsrc -> hfs__Pathways_1995__Shapes.rsrc.rsrc.txt
+- hfs/Pathways_1995/Sounds.rsrc -> hfs__Pathways_1995__Sounds.rsrc.rsrc.txt
+- hfs/Pathways_Extras/Pathways Guide v1.1.rsrc -> hfs__Pathways_Extras__Pathways_Guide_v1.1.rsrc.rsrc.txt
+- hfs/Pathways_Extras/Pathways Into Cheating ƒ/Pathways Into Cheating.rsrc -> hfs__Pathways_Extras__Pathways_Into_Cheating_ƒ__Pathways_Into_Cheating.rsrc.rsrc.txt
+- hfs/Pathways_Extras/PID_Docs Folder/PIDMapReader.cp.rsrc -> hfs__Pathways_Extras__PID_Docs_Folder__PIDMapReader.cp.rsrc.rsrc.txt
+- hfs/Pathways_Extras/PID_Docs Folder/PIDMapReader.h.rsrc -> hfs__Pathways_Extras__PID_Docs_Folder__PIDMapReader.h.rsrc.rsrc.txt
+- hfs/Pathways_Extras/PID_Docs Folder/Read Me.rsrc -> hfs__Pathways_Extras__PID_Docs_Folder__Read_Me.rsrc.rsrc.txt
+- hfs/Pathways_Extras/PID_Docs Folder/sector_types_sqr.gif.rsrc -> hfs__Pathways_Extras__PID_Docs_Folder__sector_types_sqr.gif.rsrc.rsrc.txt
+- hfs/Pathways_Extras/PID_Docs Folder/SimpleVec.h.rsrc -> hfs__Pathways_Extras__PID_Docs_Folder__SimpleVec.h.rsrc.rsrc.txt
+- hfs/Pathways_Extras/pidmaps/pid maps/ascension.pict.rsrc -> hfs__Pathways_Extras__pidmaps__pid_maps__ascension.pict.rsrc.rsrc.txt
+- hfs/Pathways_Extras/pidmaps/pid maps/beware_of.pict.rsrc -> hfs__Pathways_Extras__pidmaps__pid_maps__beware_of.pict.rsrc.rsrc.txt
+- hfs/Pathways_Extras/pidmaps/pid maps/but_wait_a.pict.rsrc -> hfs__Pathways_Extras__pidmaps__pid_maps__but_wait_a.pict.rsrc.rsrc.txt
+- hfs/Pathways_Extras/pidmaps/pid maps/but_wait_b.pict.rsrc -> hfs__Pathways_Extras__pidmaps__pid_maps__but_wait_b.pict.rsrc.rsrc.txt
+- hfs/Pathways_Extras/pidmaps/pid maps/dark.pict.rsrc -> hfs__Pathways_Extras__pidmaps__pid_maps__dark.pict.rsrc.rsrc.txt
+- hfs/Pathways_Extras/pidmaps/pid maps/dust.pict.rsrc -> hfs__Pathways_Extras__pidmaps__pid_maps__dust.pict.rsrc.rsrc.txt
+- hfs/Pathways_Extras/pidmaps/pid maps/earthquake_zone.pict.rsrc -> hfs__Pathways_Extras__pidmaps__pid_maps__earthquake_zone.pict.rsrc.rsrc.txt
+- hfs/Pathways_Extras/pidmaps/pid maps/evil_undead.pict.rsrc -> hfs__Pathways_Extras__pidmaps__pid_maps__evil_undead.pict.rsrc.rsrc.txt
+- hfs/Pathways_Extras/pidmaps/pid maps/fools_dare_tread.pict.rsrc -> hfs__Pathways_Extras__pidmaps__pid_maps__fools_dare_tread.pict.rsrc.rsrc.txt
+- hfs/Pathways_Extras/pidmaps/pid maps/ground_floor.pict.rsrc -> hfs__Pathways_Extras__pidmaps__pid_maps__ground_floor.pict.rsrc.rsrc.txt
+- hfs/Pathways_Extras/pidmaps/pid maps/happy_carnage.pict.rsrc -> hfs__Pathways_Extras__pidmaps__pid_maps__happy_carnage.pict.rsrc.rsrc.txt
+- hfs/Pathways_Extras/pidmaps/pid maps/hungry.pict.rsrc -> hfs__Pathways_Extras__pidmaps__pid_maps__hungry.pict.rsrc.rsrc.txt
+- hfs/Pathways_Extras/pidmaps/pid maps/lasciate.pict.rsrc -> hfs__Pathways_Extras__pidmaps__pid_maps__lasciate.pict.rsrc.rsrc.txt
+- hfs/Pathways_Extras/pidmaps/pid maps/lock&load.pict.rsrc -> hfs__Pathways_Extras__pidmaps__pid_maps__lock&load.pict.rsrc.rsrc.txt
+- hfs/Pathways_Extras/pidmaps/pid maps/need_a_light.pict.rsrc -> hfs__Pathways_Extras__pidmaps__pid_maps__need_a_light.pict.rsrc.rsrc.txt
+- hfs/Pathways_Extras/pidmaps/pid maps/never_stop_firing.pict.rsrc -> hfs__Pathways_Extras__pidmaps__pid_maps__never_stop_firing.pict.rsrc.rsrc.txt
+- hfs/Pathways_Extras/pidmaps/pid maps/plague_of_demons.pict.rsrc -> hfs__Pathways_Extras__pidmaps__pid_maps__plague_of_demons.pict.rsrc.rsrc.txt
+- hfs/Pathways_Extras/pidmaps/pid maps/poisoned_a.pict.rsrc -> hfs__Pathways_Extras__pidmaps__pid_maps__poisoned_a.pict.rsrc.rsrc.txt
+- hfs/Pathways_Extras/pidmaps/pid maps/poisoned_b.pict.rsrc -> hfs__Pathways_Extras__pidmaps__pid_maps__poisoned_b.pict.rsrc.rsrc.txt
+- hfs/Pathways_Extras/pidmaps/pid maps/power.pict.rsrc -> hfs__Pathways_Extras__pidmaps__pid_maps__power.pict.rsrc.rsrc.txt
+- hfs/Pathways_Extras/pidmaps/pid maps/slow.pict.rsrc -> hfs__Pathways_Extras__pidmaps__pid_maps__slow.pict.rsrc.rsrc.txt
+- hfs/Pathways_Extras/pidmaps/pid maps/step.pict.rsrc -> hfs__Pathways_Extras__pidmaps__pid_maps__step.pict.rsrc.rsrc.txt
+- hfs/Pathways_Extras/pidmaps/pid maps/summary.pict.rsrc -> hfs__Pathways_Extras__pidmaps__pid_maps__summary.pict.rsrc.rsrc.txt
+- hfs/Pathways_Extras/pidmaps/pid maps/surfing.pict.rsrc -> hfs__Pathways_Extras__pidmaps__pid_maps__surfing.pict.rsrc.rsrc.txt
+- hfs/Pathways_Extras/pidmaps/pid maps/welcome_tasty.pict.rsrc -> hfs__Pathways_Extras__pidmaps__pid_maps__welcome_tasty.pict.rsrc.rsrc.txt
+- hfs/Pathways_Extras/pidmaps/pid maps/wrong_way.pict.rsrc -> hfs__Pathways_Extras__pidmaps__pid_maps__wrong_way.pict.rsrc.rsrc.txt
+- hfs/Pathways_Extras/PIDMaps Folder/Descriptions.rsrc -> hfs__Pathways_Extras__PIDMaps_Folder__Descriptions.rsrc.rsrc.txt
+- hfs/Pathways_Extras/PIDMaps Folder/Hex reps_notes.rsrc -> hfs__Pathways_Extras__PIDMaps_Folder__Hex_reps_notes.rsrc.rsrc.txt
+- hfs/Pathways_Extras/PIDMaps Folder/PID Maps/A Plague of Demons.rsrc -> hfs__Pathways_Extras__PIDMaps_Folder__PID_Maps__A_Plague_of_Demons.rsrc.rsrc.txt
+- hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Ascension.rsrc -> hfs__Pathways_Extras__PIDMaps_Folder__PID_Maps__Ascension.rsrc.rsrc.txt
+- hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Beware of Low-Flying Nightmares.rsrc -> hfs__Pathways_Extras__PIDMaps_Folder__PID_Maps__Beware_of_Low-Flying_Nightmares.rsrc.rsrc.txt
+- hfs/Pathways_Extras/PIDMaps Folder/PID Maps/But Wait!- That's Not All!.rsrc -> hfs__Pathways_Extras__PIDMaps_Folder__PID_Maps__But_Wait!-_That's_Not_All!.rsrc.rsrc.txt
+- hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Don't Get Poisoned.rsrc -> hfs__Pathways_Extras__PIDMaps_Folder__PID_Maps__Don't_Get_Poisoned.rsrc.rsrc.txt
+- hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Evil Undead Phantasms Must Die!.rsrc -> hfs__Pathways_Extras__PIDMaps_Folder__PID_Maps__Evil_Undead_Phantasms_Must_Die!.rsrc.rsrc.txt
+- hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Feel The Power.rsrc -> hfs__Pathways_Extras__PIDMaps_Folder__PID_Maps__Feel_The_Power.rsrc.rsrc.txt
+- hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Ground Floor.rsrc -> hfs__Pathways_Extras__PIDMaps_Folder__PID_Maps__Ground_Floor.rsrc.rsrc.txt
+- hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Happy Happy, Carnage Carnage.rsrc -> hfs__Pathways_Extras__PIDMaps_Folder__PID_Maps__Happy_Happy,_Carnage_Carnage.rsrc.rsrc.txt
+- hfs/Pathways_Extras/PIDMaps Folder/PID Maps/I'd Rather Be Surfing.rsrc -> hfs__Pathways_Extras__PIDMaps_Folder__PID_Maps__I'd_Rather_Be_Surfing.rsrc.rsrc.txt
+- hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Lasciate Ogne Speranza, Voi Ch….rsrc -> hfs__Pathways_Extras__PIDMaps_Folder__PID_Maps__Lasciate_Ogne_Speranza,_Voi_Ch….rsrc.rsrc.txt
+- hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Lock&Load.rsrc -> hfs__Pathways_Extras__PIDMaps_Folder__PID_Maps__Lock&Load.rsrc.rsrc.txt
+- hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Need A Light_.rsrc -> hfs__Pathways_Extras__PIDMaps_Folder__PID_Maps__Need_A_Light_.rsrc.rsrc.txt
+- hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Never Stop Firing.rsrc -> hfs__Pathways_Extras__PIDMaps_Folder__PID_Maps__Never_Stop_Firing.rsrc.rsrc.txt
+- hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Please Excuse Our Dust.rsrc -> hfs__Pathways_Extras__PIDMaps_Folder__PID_Maps__Please_Excuse_Our_Dust.rsrc.rsrc.txt
+- hfs/Pathways_Extras/PIDMaps Folder/PID Maps/They May Be Slow….rsrc -> hfs__Pathways_Extras__PIDMaps_Folder__PID_Maps__They_May_Be_Slow….rsrc.rsrc.txt
+- hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Warning- Earthquake Zone.rsrc -> hfs__Pathways_Extras__PIDMaps_Folder__PID_Maps__Warning-_Earthquake_Zone.rsrc.rsrc.txt
+- hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Watch Your Step.rsrc -> hfs__Pathways_Extras__PIDMaps_Folder__PID_Maps__Watch_Your_Step.rsrc.rsrc.txt
+- hfs/Pathways_Extras/PIDMaps Folder/PID Maps/We Can See In The Dark… Can Yo….rsrc -> hfs__Pathways_Extras__PIDMaps_Folder__PID_Maps__We_Can_See_In_The_Dark…_Can_Yo….rsrc.rsrc.txt
+- hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Welcome, Tasty Primate.rsrc -> hfs__Pathways_Extras__PIDMaps_Folder__PID_Maps__Welcome,_Tasty_Primate.rsrc.rsrc.txt
+- hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Where Only Fools Dare Tread.rsrc -> hfs__Pathways_Extras__PIDMaps_Folder__PID_Maps__Where_Only_Fools_Dare_Tread.rsrc.rsrc.txt
+- hfs/Pathways_Extras/PIDMaps Folder/PID Maps/Wrong Way!.rsrc -> hfs__Pathways_Extras__PIDMaps_Folder__PID_Maps__Wrong_Way!.rsrc.rsrc.txt
+- hfs/Pathways_Extras/PIDMaps Folder/PID Maps/…But They're Hungry.rsrc -> hfs__Pathways_Extras__PIDMaps_Folder__PID_Maps__…But_They're_Hungry.rsrc.rsrc.txt
+- hfs/Pathways_Extras/Torch 0.9.1 folder/Torch 0.9.1.rsrc -> hfs__Pathways_Extras__Torch_0.9.1_folder__Torch_0.9.1.rsrc.rsrc.txt
+- hfs/Pathways_Extras/Torch 0.9.1 folder/Torch Docs.rsrc -> hfs__Pathways_Extras__Torch_0.9.1_folder__Torch_Docs.rsrc.rsrc.txt
+- hfs/PID_Japanese_1/Pathways Installer.rsrc -> hfs__PID_Japanese_1__Pathways_Installer.rsrc.rsrc.txt
+
+files_with_resources: 85
+files_skipped: 101

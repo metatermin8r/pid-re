@@ -1,0 +1,39 @@
+# C:/Users/Colton S Covert/Documents/GitHub/Pathways-Into-Darkness-Unity/data/extracted/PathwaysDemo/Pathways Demo ƒ/Sounds.rsrc
+source: appledouble
+resource_bytes: 244135
+types: 1
+
+'snd ': 32 resources:
+  (10000): 4650 bytes
+  (10001): 4298 bytes
+  (10006): 3690 bytes
+  (10008): 4818 bytes
+  (10010): 8010 bytes
+  (10020): 5482 bytes
+  (10021): 8490 bytes
+  (10040): 1386 bytes
+  (10050): 5866 bytes
+  (10060): 4394 bytes
+  (10070): 1642 bytes
+  (10080): 5706 bytes
+  (10085): 5226 bytes
+  (10120): 15530 bytes
+  (10140): 21674 bytes
+  (10150): 3306 bytes
+  (10160): 2458 bytes
+  (10170): 8374 bytes
+  (10171): 6721 bytes
+  (10172): 7194 bytes
+  (10180): 4682 bytes
+  (10220): 20522 bytes
+  (10230): 17450 bytes
+  (10240): 4778 bytes
+  (10250): 16506 bytes
+  (10260): 14858 bytes
+  (10270): 5802 bytes
+  (10280): 2958 bytes
+  (10290): 9898 bytes
+  (10310): 9834 bytes
+  (10312): 5058 bytes
+  (10330): 2068 bytes
+
