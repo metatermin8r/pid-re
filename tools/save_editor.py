@@ -10,7 +10,12 @@ Usage:
   python tools/save_editor.py inspect <savefile>
   python tools/save_editor.py warp <savefile> --level N --x X --y Y -o <out>
   python tools/save_editor.py warp <savefile> --level N --arrival -o <out>
+  python tools/save_editor.py set <savefile> [--hp N] [--maxhp N] [--clock SEC] [--facing N] -o <out>
+  python tools/save_editor.py item <savefile> --list [--base B]
+  python tools/save_editor.py item <savefile> --slot N --qty Q -o <out>
+  python tools/save_editor.py verify <savefile>
   python tools/save_editor.py diff <a> <b>
+  python tools/save_editor.py gui [savefile]
 """
 
 from __future__ import annotations
@@ -51,6 +56,7 @@ TEMPLATE_END = TEMPLATE_BASE + TEMPLATE_BYTES  # 267192
 # Named-save title slots (Pascal strings). Observed, not a full struct claim.
 NAME_SLOT = 128
 NAME_SLOTS = 8
+PLAYER_STRIDE = 2876  # confirmed: record k is at k*2876
 
 KNOWN_FIELDS = (
     (OFF_CLOCK, 4, "clock"),
@@ -76,6 +82,27 @@ def u32(data: bytes, off: int) -> int:
 
 def put_u16(buf: bytearray, off: int, value: int) -> None:
     struct.pack_into(">H", buf, off, value)
+
+
+def put_u32(buf: bytearray, off: int, value: int) -> None:
+    struct.pack_into(">I", buf, off, value)
+
+
+def refuse_in_place(src: Path, dst: Path) -> None:
+    if dst.resolve() == src.resolve():
+        raise SystemExit("error: refuse to modify in place; -o must be a different path")
+
+
+def require_u16(name: str, value: int) -> int:
+    if value < 0 or value > 0xFFFF:
+        raise SystemExit(f"error: {name}={value} does not fit u16be (0..65535); refused")
+    return value
+
+
+def require_u32(name: str, value: int) -> int:
+    if value < 0 or value > 0xFFFFFFFF:
+        raise SystemExit(f"error: {name}={value} does not fit u32be (0..4294967295); refused")
+    return value
 
 
 class LevelIndex:
@@ -281,6 +308,321 @@ def field_name_at(file_off: int, bases: list[int]) -> str:
     return ",".join(labels) if labels else "-"
 
 
+def select_targets(scan: dict, base_arg: int | None) -> list[dict]:
+    live = [d for d in scan["all6"] if not in_template_region(d["base"])]
+    ghost = [d for d in scan["all6"] if in_template_region(d["base"])]
+    print(f"all6_count={len(scan['all6'])} pre_template={len(live)} in_template={len(ghost)}")
+    for d in scan["all6"]:
+        print(
+            f"  hit B={d['base']} (0x{d['base']:X}) in_template={in_template_region(d['base'])} "
+            f"L{d['level']} ({d['x']},{d['y']})"
+        )
+    if base_arg is not None:
+        chosen = [d for d in scan["all6"] if d["base"] == base_arg]
+        if not chosen:
+            raise SystemExit(f"error: --base {base_arg} did not pass all 6 gates")
+        if in_template_region(base_arg):
+            raise SystemExit(
+                f"error: --base {base_arg} is inside the static template region "
+                f"[{TEMPLATE_BASE},{TEMPLATE_END}); refuse to write templates"
+            )
+        return chosen
+    if len(live) == 0:
+        raise SystemExit("error: no pre-template base passed all 6 gates")
+    if len(live) > 1:
+        listing = " ".join(f"B={d['base']}" for d in live)
+        raise SystemExit(
+            f"error: {len(live)} pre-template bases passed the gate ({listing}); "
+            f"pass --base B to choose one. Named saves in one file are different games."
+        )
+    return live
+
+
+def record_bytes(
+    data: bytes,
+    buf: bytearray,
+    off: int,
+    n: int,
+    name: str,
+    changes: list[tuple[int, int, int, str]],
+) -> None:
+    for i in range(n):
+        if data[off + i] == buf[off + i]:
+            continue
+        print(
+            f"change_byte {name} file_off={off + i} (0x{off + i:X}) "
+            f"old={data[off + i]:02X} new={buf[off + i]:02X}"
+        )
+        changes.append((off + i, data[off + i], buf[off + i], name))
+
+
+def write_u16_field(
+    data: bytes,
+    buf: bytearray,
+    off: int,
+    new: int,
+    name: str,
+    changes: list[tuple[int, int, int, str]],
+) -> None:
+    old = u16(data, off)
+    if old == new:
+        print(f"unchanged {name} @{off} (0x{off:X}) = {old}")
+        return
+    put_u16(buf, off, new)
+    print(
+        f"change {name} file_off={off} (0x{off:X}) "
+        f"old_u16={old} new_u16={new} "
+        f"old_bytes={data[off]:02X} {data[off + 1]:02X} "
+        f"new_bytes={buf[off]:02X} {buf[off + 1]:02X}"
+    )
+    record_bytes(data, buf, off, 2, name, changes)
+
+
+def write_u32_field(
+    data: bytes,
+    buf: bytearray,
+    off: int,
+    new: int,
+    name: str,
+    changes: list[tuple[int, int, int, str]],
+) -> None:
+    old = u32(data, off)
+    if old == new:
+        print(f"unchanged {name} @{off} (0x{off:X}) = {old}")
+        return
+    put_u32(buf, off, new)
+    print(
+        f"change {name} file_off={off} (0x{off:X}) "
+        f"old_u32={old} new_u32={new} "
+        f"old_bytes={' '.join(f'{data[off + i]:02X}' for i in range(4))} "
+        f"new_bytes={' '.join(f'{buf[off + i]:02X}' for i in range(4))}"
+    )
+    record_bytes(data, buf, off, 4, name, changes)
+
+
+def commit_output(
+    out_path: Path,
+    data: bytes,
+    buf: bytearray,
+    targets: list[dict],
+    levels: LevelIndex,
+    changes: list[tuple[int, int, int, str]],
+    *,
+    allow_overheal: bool = False,
+    expect: dict | None = None,
+) -> int:
+    out_bytes = bytes(buf)
+    out_scan = scan_bases(out_bytes, levels)
+    for decoded in targets:
+        flags, after = gate_flags(out_bytes, decoded["base"], levels)
+        failed = [i + 1 for i, ok in enumerate(flags) if not ok]
+        overheal_only = (
+            allow_overheal
+            and failed == [5]
+            and after["hp"] is not None
+            and after["max_hp"] is not None
+            and after["hp"] > after["max_hp"]
+            and after["max_hp"] < 10000
+            and after["hp"] > 0
+        )
+        if overheal_only:
+            print(
+                f"WARNING: output B={decoded['base']} fails G5 "
+                f"(hp={after['hp']} > max_hp={after['max_hp']}); "
+                f"writing anyway because --allow-overheal. "
+                f"Game behaviour with cur > max is UNTESTED."
+            )
+        elif not all(flags):
+            raise SystemExit(
+                f"error: output fails gate at B={decoded['base']} failed={failed}; not writing"
+            )
+        if expect is not None:
+            for key, want in expect.items():
+                if after.get(key) != want:
+                    raise SystemExit(
+                        f"error: output B={decoded['base']} decoded {key}="
+                        f"{after.get(key)} != requested {want}; not writing"
+                    )
+    if not out_scan["all6"] and not allow_overheal:
+        raise SystemExit("error: output has zero all-6 bases; not writing")
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    out_path.write_bytes(out_bytes)
+    print(f"wrote {out_path} bytes={len(out_bytes)} changes={len(changes)}")
+    print(
+        "WARNING: output is unverified until loaded in Infinite Mac. "
+        "No checksum was computed or updated; whether saves carry one is unknown."
+    )
+    return 0
+
+
+class EditRefused(Exception):
+    """A write was refused. Message is safe to show in a UI."""
+
+
+def apply_player_edits(
+    data: bytes,
+    decoded: dict,
+    levels: LevelIndex,
+    *,
+    hp: int | None = None,
+    max_hp: int | None = None,
+    clock_seconds: int | None = None,
+    facing: int | None = None,
+    level: int | None = None,
+    x: int | None = None,
+    y: int | None = None,
+    item_qtys: dict[int, int] | None = None,
+    allow_overheal: bool = False,
+) -> tuple[bytearray, list[tuple[int, int, int, str]], dict, list[str]]:
+    """Apply field edits to one live player base. Raises EditRefused."""
+    base = decoded["base"]
+    if in_template_region(base):
+        raise EditRefused(
+            f"B={base} is inside the static template region "
+            f"[{TEMPLATE_BASE},{TEMPLATE_END}); refuse to write templates"
+        )
+
+    def check_u16(name: str, value: int) -> int:
+        if value < 0 or value > 0xFFFF:
+            raise EditRefused(f"{name}={value} does not fit u16be (0..65535)")
+        return value
+
+    warnings: list[str] = []
+    new_hp = decoded["hp"] if hp is None else check_u16("hp", hp)
+    new_max = decoded["max_hp"] if max_hp is None else check_u16("maxhp", max_hp)
+    if new_hp > new_max and not allow_overheal:
+        raise EditRefused(
+            f"hp={new_hp} exceeds maxhp={new_max}; "
+            f"enable Allow overheal to write anyway (game behaviour UNTESTED)"
+        )
+    if new_hp > new_max and allow_overheal:
+        warnings.append(
+            f"writing hp={new_hp} > maxhp={new_max}. "
+            f"Game behaviour with cur > max is UNTESTED."
+        )
+
+    clock_ticks = None
+    if clock_seconds is not None:
+        if clock_seconds < 0:
+            raise EditRefused(f"clock seconds={clock_seconds} is negative")
+        clock_ticks = clock_seconds * 60
+        if clock_ticks > 0xFFFFFFFF:
+            raise EditRefused(f"clock seconds={clock_seconds} does not fit u32be ticks")
+        if clock_ticks >= CLOCK_MAX:
+            raise EditRefused(
+                f"clock {clock_seconds}s stores {clock_ticks} ticks; "
+                f"G6 requires ticks < {CLOCK_MAX}"
+            )
+
+    if facing is not None:
+        check_u16("facing", facing)
+
+    new_level = decoded["level"] if level is None else level
+    new_x = decoded["x"] if x is None else x
+    new_y = decoded["y"] if y is None else y
+    if level is not None or x is not None or y is not None:
+        if not (0 <= new_level <= 24):
+            raise EditRefused(f"level={new_level} not in 0..24")
+        if not (0 <= new_x <= 31 and 0 <= new_y <= 31):
+            raise EditRefused(f"x/y out of 0..31 ({new_x},{new_y})")
+        st, sn = levels.sector(new_level, new_x, new_y)
+        if st in (0, 7):
+            raise EditRefused(
+                f"refuse warp to L{new_level} ({new_x},{new_y}) type={st} {sn} "
+                f"(not standable: Void or Pillar)"
+            )
+
+    buf = bytearray(data)
+    changes: list[tuple[int, int, int, str]] = []
+    expect: dict = {}
+
+    if hp is not None or max_hp is not None:
+        print(
+            "hp_copies=1 write_only=+0x0754/+0x0756 "
+            "(Task A: no second copy in all 9 records)"
+        )
+    if hp is not None:
+        write_u16_field(data, buf, base + OFF_HP, new_hp, "hp", changes)
+        expect["hp"] = new_hp
+    if max_hp is not None:
+        write_u16_field(data, buf, base + OFF_MAXHP, new_max, "max_hp", changes)
+        expect["max_hp"] = new_max
+    if clock_ticks is not None:
+        write_u32_field(data, buf, base + OFF_CLOCK, clock_ticks, "clock", changes)
+        expect["clock"] = clock_ticks
+    if facing is not None:
+        print(
+            "facing_width=UNKNOWN corpus_+0x091C_always_0=YES "
+            "observed_values_live_in_+0x091D"
+        )
+        old_b0 = data[base + OFF_FACING]
+        old_b1 = data[base + OFF_FACING + 1]
+        print(
+            f"facing_before u16be={u16(data, base + OFF_FACING)} "
+            f"b+0x091C={old_b0} (0x{old_b0:02X}) "
+            f"b+0x091D={old_b1} (0x{old_b1:02X})"
+        )
+        if facing > 255:
+            warnings.append(
+                f"--facing {facing} sets +0x091C nonzero; "
+                f"every corpus record has +0x091C=0. Width UNTESTED."
+            )
+        write_u16_field(data, buf, base + OFF_FACING, facing, "facing", changes)
+        new_b0 = buf[base + OFF_FACING]
+        new_b1 = buf[base + OFF_FACING + 1]
+        print(
+            f"facing_after u16be={u16(bytes(buf), base + OFF_FACING)} "
+            f"b+0x091C={new_b0} (0x{new_b0:02X}) "
+            f"b+0x091D={new_b1} (0x{new_b1:02X})"
+        )
+        expect["facing"] = facing
+    if level is not None:
+        write_u16_field(data, buf, base + OFF_LEVEL, new_level, "level", changes)
+        expect["level"] = new_level
+    if x is not None:
+        write_u16_field(data, buf, base + OFF_X, new_x, "x", changes)
+        expect["x"] = new_x
+    if y is not None:
+        write_u16_field(data, buf, base + OFF_Y, new_y, "y", changes)
+        expect["y"] = new_y
+
+    if item_qtys:
+        recs = read_inventory(data, base)
+        term = next((i for i, rec in enumerate(recs) if rec[0] == 0xFFFF), None)
+        if term is None:
+            raise EditRefused(
+                f"inventory at B={base} has no FFFF terminator within the read limit"
+            )
+        for slot, qty in sorted(item_qtys.items()):
+            check_u16(f"inv[{slot}].qty", qty)
+            if slot < 0 or slot > term:
+                raise EditRefused(
+                    f"slot {slot} is past the FFFF terminator at slot {term}"
+                )
+            if recs[slot][0] == 0xFFFF:
+                raise EditRefused(f"slot {slot} is the FFFF terminator; refused")
+            rec_off = base + OFF_INV + slot * 8
+            before = recs[slot]
+            print(
+                f"item_before slot={slot} id={before[0]} state={before[1]} "
+                f"qty={before[2]} catalog={before[3]}"
+            )
+            write_u16_field(data, buf, rec_off + 4, qty, f"inv[{slot}].qty", changes)
+            after = struct.unpack_from(">4H", bytes(buf), rec_off)
+            print(
+                f"item_after slot={slot} id={after[0]} state={after[1]} "
+                f"qty={after[2]} catalog={after[3]}"
+            )
+            if after[0] != before[0] or after[1] != before[1] or after[3] != before[3]:
+                raise EditRefused("id/state/catalog changed; not writing")
+            if after[2] != qty:
+                raise EditRefused("qty write did not stick; not writing")
+
+    if not changes:
+        raise EditRefused("no fields changed")
+    return buf, changes, expect, warnings
+
+
 def print_decoded(decoded: dict, data: bytes, prefix: str = "") -> None:
     base = decoded["base"]
     clock = decoded["clock"]
@@ -380,8 +722,7 @@ def resolve_warp_target(
 def cmd_warp(path: Path, levels: LevelIndex, args: argparse.Namespace) -> int:
     data = path.read_bytes()
     out_path = Path(args.output)
-    if out_path.resolve() == path.resolve():
-        raise SystemExit("error: refuse to modify in place; -o must be a different path")
+    refuse_in_place(path, out_path)
 
     level, x, y = resolve_warp_target(args, levels)
     st, sn = levels.sector(level, x, y)
@@ -392,91 +733,243 @@ def cmd_warp(path: Path, levels: LevelIndex, args: argparse.Namespace) -> int:
         )
 
     scan = scan_bases(data, levels)
-    live = [d for d in scan["all6"] if not in_template_region(d["base"])]
-    ghost = [d for d in scan["all6"] if in_template_region(d["base"])]
-    print(f"all6_count={len(scan['all6'])} pre_template={len(live)} in_template={len(ghost)}")
-    for d in scan["all6"]:
-        print(
-            f"  hit B={d['base']} (0x{d['base']:X}) in_template={in_template_region(d['base'])} "
-            f"L{d['level']} ({d['x']},{d['y']})"
-        )
-
-    if args.base is not None:
-        chosen = [d for d in scan["all6"] if d["base"] == args.base]
-        if not chosen:
-            raise SystemExit(f"error: --base {args.base} did not pass all 6 gates")
-        if in_template_region(args.base):
-            raise SystemExit(
-                f"error: --base {args.base} is inside the static template region "
-                f"[{TEMPLATE_BASE},{TEMPLATE_END}); refuse to write templates"
-            )
-        targets = chosen
-    else:
-        if len(live) == 0:
-            raise SystemExit("error: no pre-template base passed all 6 gates")
-        if len(live) > 1:
-            listing = " ".join(f"B={d['base']}" for d in live)
-            raise SystemExit(
-                f"error: {len(live)} pre-template bases passed the gate ({listing}); "
-                f"pass --base B to choose one. Named saves in one file are different games."
-            )
-        targets = live
+    targets = select_targets(scan, args.base)
 
     buf = bytearray(data)
     changes: list[tuple[int, int, int, str]] = []
     for decoded in targets:
         base = decoded["base"]
-        writes = (
-            (base + OFF_LEVEL, decoded["level"], level, "level"),
-            (base + OFF_X, decoded["x"], x, "x"),
-            (base + OFF_Y, decoded["y"], y, "y"),
-        )
-        for off, old, new, name in writes:
-            if old == new:
-                print(f"unchanged {name} @{off} (0x{off:X}) = {old}")
-                continue
-            put_u16(buf, off, new)
-            print(
-                f"change {name} file_off={off} (0x{off:X}) "
-                f"old_u16={old} new_u16={new} "
-                f"old_bytes={data[off]:02X} {data[off+1]:02X} "
-                f"new_bytes={buf[off]:02X} {buf[off+1]:02X}"
-            )
-            for i in (0, 1):
-                if data[off + i] == buf[off + i]:
-                    continue
-                print(
-                    f"change_byte {name} file_off={off+i} (0x{off+i:X}) "
-                    f"old={data[off+i]:02X} new={buf[off+i]:02X}"
-                )
-                changes.append((off + i, data[off + i], buf[off + i], name))
+        write_u16_field(data, buf, base + OFF_LEVEL, level, "level", changes)
+        write_u16_field(data, buf, base + OFF_X, x, "x", changes)
+        write_u16_field(data, buf, base + OFF_Y, y, "y", changes)
 
-    out_bytes = bytes(buf)
-    out_scan = scan_bases(out_bytes, levels)
-    for decoded in targets:
-        flags, after = gate_flags(out_bytes, decoded["base"], levels)
-        if not all(flags):
-            failed = [i + 1 for i, ok in enumerate(flags) if not ok]
-            raise SystemExit(
-                f"error: output fails gate at B={decoded['base']} failed={failed}; not writing"
-            )
-        if after["level"] != level or after["x"] != x or after["y"] != y:
-            raise SystemExit(
-                f"error: output B={decoded['base']} decoded "
-                f"L{after['level']} ({after['x']},{after['y']}) != requested "
-                f"L{level} ({x},{y}); not writing"
-            )
-    if not out_scan["all6"]:
-        raise SystemExit("error: output has zero all-6 bases; not writing")
-
-    out_path.parent.mkdir(parents=True, exist_ok=True)
-    out_path.write_bytes(out_bytes)
-    print(f"wrote {out_path} bytes={len(out_bytes)} changes={len(changes)}")
-    print(
-        "WARNING: output is unverified until loaded in Infinite Mac. "
-        "No checksum was computed or updated; whether saves carry one is unknown."
+    return commit_output(
+        out_path, data, buf, targets, levels, changes, expect={"level": level, "x": x, "y": y}
     )
-    return 0
+
+
+def cmd_set(path: Path, levels: LevelIndex, args: argparse.Namespace) -> int:
+    if args.hp is None and args.maxhp is None and args.clock is None and args.facing is None:
+        raise SystemExit("error: set requires at least one of --hp --maxhp --clock --facing")
+    data = path.read_bytes()
+    out_path = Path(args.output)
+    refuse_in_place(path, out_path)
+
+    scan = scan_bases(data, levels)
+    targets = select_targets(scan, args.base)
+
+    if args.hp is not None:
+        require_u16("--hp", args.hp)
+    if args.maxhp is not None:
+        require_u16("--maxhp", args.maxhp)
+    clock_ticks = None
+    if args.clock is not None:
+        if args.clock < 0:
+            raise SystemExit(f"error: --clock {args.clock} is negative; refused")
+        clock_ticks = require_u32("--clock ticks (seconds*60)", args.clock * 60)
+        if clock_ticks >= CLOCK_MAX:
+            raise SystemExit(
+                f"error: --clock {args.clock}s stores {clock_ticks} ticks; "
+                f"G6 requires ticks < {CLOCK_MAX}; refused"
+            )
+    if args.facing is not None:
+        require_u16("--facing", args.facing)
+
+    buf = bytearray(data)
+    changes: list[tuple[int, int, int, str]] = []
+    for decoded in targets:
+        base = decoded["base"]
+        new_hp = decoded["hp"] if args.hp is None else args.hp
+        new_max = decoded["max_hp"] if args.maxhp is None else args.maxhp
+        if new_hp > new_max and not args.allow_overheal:
+            raise SystemExit(
+                f"error: hp={new_hp} exceeds maxhp={new_max}; "
+                f"pass --allow-overheal to write anyway (game behaviour UNTESTED)"
+            )
+        if new_hp > new_max and args.allow_overheal:
+            print(
+                f"WARNING: writing hp={new_hp} > maxhp={new_max}. "
+                f"Game behaviour with cur > max is UNTESTED."
+            )
+        if args.hp is not None or args.maxhp is not None:
+            print(
+                "hp_copies=1 write_only=+0x0754/+0x0756 "
+                "(Task A: no second copy in all 9 records)"
+            )
+        if args.hp is not None:
+            write_u16_field(data, buf, base + OFF_HP, new_hp, "hp", changes)
+        if args.maxhp is not None:
+            write_u16_field(data, buf, base + OFF_MAXHP, new_max, "max_hp", changes)
+        if clock_ticks is not None:
+            write_u32_field(data, buf, base + OFF_CLOCK, clock_ticks, "clock", changes)
+            print(
+                f"clock_seconds_in={args.clock} clock_ticks_stored={clock_ticks} "
+                f"(x60)"
+            )
+        if args.facing is not None:
+            # Width of facing is UNKNOWN. Corpus: +0x091C is always 0x00;
+            # observed values 0,1,2,12 live in the byte at +0x091D. Writing
+            # N as u16be at +0x091C reproduces that layout when N < 256.
+            # HYPOTHESIS, not a width claim.
+            old_b0 = data[base + OFF_FACING]
+            old_b1 = data[base + OFF_FACING + 1]
+            old_u16 = u16(data, base + OFF_FACING)
+            print(
+                f"facing_width=UNKNOWN corpus_+0x091C_always_0=YES "
+                f"observed_values_live_in_+0x091D"
+            )
+            print(
+                f"facing_before u16be={old_u16} "
+                f"b+0x091C={old_b0} (0x{old_b0:02X}) "
+                f"b+0x091D={old_b1} (0x{old_b1:02X})"
+            )
+            if args.facing > 255:
+                print(
+                    f"WARNING: --facing {args.facing} sets +0x091C nonzero; "
+                    f"every corpus record has +0x091C=0. Width UNTESTED."
+                )
+            write_u16_field(data, buf, base + OFF_FACING, args.facing, "facing", changes)
+            new_b0 = buf[base + OFF_FACING]
+            new_b1 = buf[base + OFF_FACING + 1]
+            print(
+                f"facing_after u16be={u16(bytes(buf), base + OFF_FACING)} "
+                f"b+0x091C={new_b0} (0x{new_b0:02X}) "
+                f"b+0x091D={new_b1} (0x{new_b1:02X})"
+            )
+
+    expect = {}
+    if args.hp is not None:
+        expect["hp"] = args.hp
+    if args.maxhp is not None:
+        expect["max_hp"] = args.maxhp
+    if clock_ticks is not None:
+        expect["clock"] = clock_ticks
+    return commit_output(
+        out_path,
+        data,
+        buf,
+        targets,
+        levels,
+        changes,
+        allow_overheal=bool(args.allow_overheal),
+        expect=expect or None,
+    )
+
+
+def cmd_item(path: Path, levels: LevelIndex, args: argparse.Namespace) -> int:
+    data = path.read_bytes()
+    scan = scan_bases(data, levels)
+
+    if args.list and args.slot is None:
+        if args.base is not None:
+            targets = select_targets(scan, args.base)
+        else:
+            live = [d for d in scan["all6"] if not in_template_region(d["base"])]
+            if not live:
+                raise SystemExit("error: no pre-template base passed all 6 gates")
+            print(
+                f"all6_count={len(scan['all6'])} pre_template={len(live)} "
+                f"(listing all live bases; pass --base to restrict)"
+            )
+            targets = live
+        for decoded in targets:
+            print_decoded(enrich(decoded, levels), data)
+        return 0
+
+    if args.slot is None or args.qty is None:
+        raise SystemExit("error: item write needs --slot N and --qty Q (or --list)")
+    if args.output is None:
+        raise SystemExit("error: item write needs -o <out>")
+    out_path = Path(args.output)
+    refuse_in_place(path, out_path)
+    require_u16("--qty", args.qty)
+    if args.slot < 0:
+        raise SystemExit(f"error: --slot {args.slot} is negative; refused")
+
+    targets = select_targets(scan, args.base)
+    buf = bytearray(data)
+    changes: list[tuple[int, int, int, str]] = []
+    for decoded in targets:
+        base = decoded["base"]
+        recs = read_inventory(data, base)
+        term = next((i for i, rec in enumerate(recs) if rec[0] == 0xFFFF), None)
+        if term is None:
+            raise SystemExit(
+                f"error: inventory at B={base} has no FFFF terminator within the read limit; refused"
+            )
+        if args.slot > term:
+            raise SystemExit(
+                f"error: --slot {args.slot} is past the FFFF terminator at slot {term}; refused"
+            )
+        if recs[args.slot][0] == 0xFFFF:
+            raise SystemExit(
+                f"error: --slot {args.slot} is the FFFF terminator (id=65535); refused"
+            )
+        rec_off = base + OFF_INV + args.slot * 8
+        before = recs[args.slot]
+        print(
+            f"item_before slot={args.slot} id={before[0]} state={before[1]} "
+            f"qty={before[2]} catalog={before[3]} "
+            f"raw={data[rec_off:rec_off + 8].hex()}"
+        )
+        qty_off = rec_off + 4
+        write_u16_field(data, buf, qty_off, args.qty, f"inv[{args.slot}].qty", changes)
+        after = struct.unpack_from(">4H", bytes(buf), rec_off)
+        print(
+            f"item_after slot={args.slot} id={after[0]} state={after[1]} "
+            f"qty={after[2]} catalog={after[3]} "
+            f"raw={bytes(buf[rec_off:rec_off + 8]).hex()}"
+        )
+        if after[0] != before[0] or after[1] != before[1] or after[3] != before[3]:
+            raise SystemExit("error: id/state/catalog changed; not writing")
+        if after[2] != args.qty:
+            raise SystemExit("error: qty write did not stick; not writing")
+
+    return commit_output(out_path, data, buf, targets, levels, changes)
+
+
+def cmd_verify(path: Path, levels: LevelIndex) -> int:
+    data = path.read_bytes()
+    print(f"file={path}")
+    print(f"size={len(data)}")
+    scan = scan_bases(data, levels)
+    print(f"candidates={scan['n_candidates']} too_small={scan['too_small']}")
+    print(
+        "gate_pass G1_level={0} G2_x={1} G3_y={2} G4_standable={3} "
+        "G5_hp={4} G6_clock={5}".format(*scan["gate_pass"])
+    )
+    print("n_gates_hist=" + " ".join(f"{i}:{n}" for i, n in enumerate(scan["n_gates_hist"])))
+    print(f"all6_count={len(scan['all6'])}")
+    names = ("G1_level", "G2_x", "G3_y", "G4_standable", "G5_hp", "G6_clock")
+
+    def emit(base: int, tag: str) -> None:
+        flags, decoded = gate_flags(data, base, levels)
+        parts = " ".join(
+            f"{name}={'PASS' if ok else 'FAIL'}" for name, ok in zip(names, flags)
+        )
+        print(
+            f"{tag} B={base} (0x{base:X}) score={sum(flags)}/6 {parts} "
+            f"lv={decoded['level']} x={decoded['x']} y={decoded['y']} "
+            f"hp={decoded['hp']} max_hp={decoded['max_hp']} clock={decoded['clock']}"
+        )
+
+    print("stride_k*2876:")
+    for k in range(NAME_SLOTS):
+        base = k * PLAYER_STRIDE
+        if base + SCAN_NEED > len(data):
+            print(f"  k={k} B={base} SKIP too_short")
+            continue
+        emit(base, f"  k={k}")
+    print("all6_hits:")
+    if not scan["all6"]:
+        print("  NONE")
+        print("best10:")
+        for score, _neg, base, flags, decoded in scan["best10"]:
+            emit(base, "  best")
+    else:
+        for decoded in scan["all6"]:
+            emit(decoded["base"], "  hit")
+    return 0 if scan["all6"] else 1
 
 
 def cmd_diff(path_a: Path, path_b: Path, levels: LevelIndex) -> int:
@@ -527,9 +1020,37 @@ def build_parser() -> argparse.ArgumentParser:
     warp.add_argument("--base", type=int, default=None, help="player-region base if several pass")
     warp.add_argument("-o", "--output", type=Path, required=True)
 
+    s = sub.add_parser("set", help="write hp / maxhp / clock / facing on one player base")
+    s.add_argument("savefile", type=Path)
+    s.add_argument("--hp", type=int, default=None)
+    s.add_argument("--maxhp", type=int, default=None)
+    s.add_argument("--clock", type=int, default=None, help="game time in seconds (stored as seconds*60)")
+    s.add_argument("--facing", type=int, default=None, help="written as u16be at +0x091C; width UNKNOWN")
+    s.add_argument(
+        "--allow-overheal",
+        action="store_true",
+        help="allow current HP > max HP (game behaviour UNTESTED)",
+    )
+    s.add_argument("--base", type=int, default=None)
+    s.add_argument("-o", "--output", type=Path, required=True)
+
+    item = sub.add_parser("item", help="list or change quantity of an existing inventory record")
+    item.add_argument("savefile", type=Path)
+    item.add_argument("--list", action="store_true")
+    item.add_argument("--slot", type=int, default=None)
+    item.add_argument("--qty", type=int, default=None)
+    item.add_argument("--base", type=int, default=None)
+    item.add_argument("-o", "--output", type=Path, default=None)
+
+    ver = sub.add_parser("verify", help="re-run the six-gate scan; print pass/fail per base")
+    ver.add_argument("savefile", type=Path)
+
     diff = sub.add_parser("diff", help="byte-level greppable save diff")
     diff.add_argument("a", type=Path)
     diff.add_argument("b", type=Path)
+
+    gui = sub.add_parser("gui", help="open the save-editor window")
+    gui.add_argument("savefile", type=Path, nargs="?", default=None)
     return p
 
 
@@ -543,8 +1064,19 @@ def main(argv: list[str] | None = None) -> int:
         return cmd_inspect(args.savefile, levels)
     if args.cmd == "warp":
         return cmd_warp(args.savefile, levels, args)
+    if args.cmd == "set":
+        return cmd_set(args.savefile, levels, args)
+    if args.cmd == "item":
+        return cmd_item(args.savefile, levels, args)
+    if args.cmd == "verify":
+        return cmd_verify(args.savefile, levels)
     if args.cmd == "diff":
         return cmd_diff(args.a, args.b, levels)
+    if args.cmd == "gui":
+        sys.path.insert(0, str(Path(__file__).resolve().parent))
+        from save_editor_gui import run_gui
+
+        return run_gui(args.savefile, args.export_dir)
     raise SystemExit(f"unknown command {args.cmd}")
 
 
