@@ -1,0 +1,375 @@
+Round 19 — DoorTrigger propagation
+Solid walls: 32/33 on edges 0/1. Open door = ignore 32/33 when
+stepping onto or off a Type 2 sector marked open.
+Start set: every Type 3 + Type 9 + southmost non-Void.
+Open actions: 129 OpenNgbrDoor, 130 AlienPipes, 131 Silver, 132 Gold,
+141 Flag, 6 Chain1, 7 Chain2. Close actions never open.
+
+========== (a) Type 4 DoorTrigger on levels 7-15 ==========
+
+--- L07 Wrong Way!  triggers=29 doors=15 ---
+  ( 7, 3) REACH Item=  -1 addl=131 OpenNgbrDoor_Silver    adj4=(7,4)# 1
+  (14, 3) REACH Item=  -1 addl=131 OpenNgbrDoor_Silver    adj4=(14,4)# 0
+  (21, 3) REACH Item=  -1 addl=131 OpenNgbrDoor_Silver    adj4=(21,4)# 2
+  ( 7, 5) REACH Item=  -1 addl=131 OpenNgbrDoor_Silver    adj4=(7,4)# 1
+  (14, 5) REACH Item=  -1 addl=131 OpenNgbrDoor_Silver    adj4=(14,4)# 0
+  (21, 5) REACH Item=  -1 addl=131 OpenNgbrDoor_Silver    adj4=(21,4)# 2
+  ( 4, 6) REACH Item=  -1 addl=131 OpenNgbrDoor_Silver    adj4=(5,6)# 3
+  ( 6, 6) REACH Item=  -1 addl=131 OpenNgbrDoor_Silver    adj4=(5,6)# 3
+  (22, 6) REACH Item=  -1 addl=131 OpenNgbrDoor_Silver    adj4=(23,6)# 11
+  (24, 6) REACH Item=  -1 addl=131 OpenNgbrDoor_Silver    adj4=(23,6)# 11
+  (14, 7) REACH Item=  -1 addl=131 OpenNgbrDoor_Silver    adj4=(14,8)# 12
+  (14, 9) REACH Item=  29 addl=131 OpenNgbrDoor_Silver    adj4=(14,8)# 12
+  ( 4,13) REACH Item=  -1 addl=131 OpenNgbrDoor_Silver    adj4=(5,13)# 4
+  ( 6,13) REACH Item=  -1 addl=131 OpenNgbrDoor_Silver    adj4=(5,13)# 4
+  ( 8,13) REACH Item=  -1 addl=131 OpenNgbrDoor_Silver    adj4=(9,13)# 13
+  (10,13) REACH Item=  -1 addl=131 OpenNgbrDoor_Silver    adj4=(9,13)# 13
+  (18,13) REACH Item=  -1 addl=131 OpenNgbrDoor_Silver    adj4=(19,13)# 14
+  (20,13) REACH Item=  -1 addl=131 OpenNgbrDoor_Silver    adj4=(19,13)# 14
+  (22,13) REACH Item=  -1 addl=131 OpenNgbrDoor_Silver    adj4=(23,13)# 10
+  (24,13) REACH Item=  -1 addl=131 OpenNgbrDoor_Silver    adj4=(23,13)# 10
+  ( 4,20) REACH Item=  -1 addl=131 OpenNgbrDoor_Silver    adj4=(5,20)# 5
+  ( 6,20) REACH Item= 163 addl=131 OpenNgbrDoor_Silver    adj4=(5,20)# 5
+  (22,20) SEAL Item=  -1 addl=131 OpenNgbrDoor_Silver    adj4=(23,20)# 9
+  (24,20) SEAL Item=  -1 addl=131 OpenNgbrDoor_Silver    adj4=(23,20)# 9
+  ( 7,21) REACH Item=  -1 addl=131 OpenNgbrDoor_Silver    adj4=(7,22)# 6
+  (21,21) SEAL Item=  24 addl=131 OpenNgbrDoor_Silver    adj4=(21,22)# 8
+  ( 7,23) REACH Item=  -1 addl=131 OpenNgbrDoor_Silver    adj4=(7,22)# 6
+  (14,23) REACH Item=  -1 addl=131 OpenNgbrDoor_Silver    adj4=(14,22)# 7
+  (21,23) SEAL Item=  -1 addl=131 OpenNgbrDoor_Silver    adj4=(21,22)# 8
+
+--- L08 Welcome, Tasty Primate  triggers=2 doors=1 ---
+  (13,18) REACH Item= 236 addl=131 OpenNgbrDoor_Silver    adj4=(13,19)# 0
+  (13,20) REACH Item= 109 addl=131 OpenNgbrDoor_Silver    adj4=(13,19)# 0
+
+--- L09 We Can See In The Dark… Can You?  triggers=0 doors=0 ---
+  (no Type 4 on this level)
+
+--- L10 Feel the Power  triggers=0 doors=0 ---
+  (no Type 4 on this level)
+
+--- L11 A Plague of Demons  triggers=10 doors=6 ---
+  (26, 2) SEAL Item= 370 addl=129 OpenNgbrDoor           adj4=(27,2)# 4
+  (28, 2) REACH Item=  -1 addl=129 OpenNgbrDoor           adj4=(27,2)# 4
+  (29, 3) REACH Item=  -1 addl=129 OpenNgbrDoor           adj4=(29,4)# 1
+  (29, 5) SEAL Item=  -1 addl=129 OpenNgbrDoor           adj4=(29,4)# 1
+  (30,17) SEAL Item=  -1 addl=129 OpenNgbrDoor           adj4=(29,17)# 2
+  (16,24) SEAL Item=  -1 addl=129 OpenNgbrDoor           adj4=(17,24)# 0
+  (18,24) SEAL Item=  -1 addl=129 OpenNgbrDoor           adj4=(17,24)# 0
+  (22,24) SEAL Item= 345 addl=129 OpenNgbrDoor           adj4=(23,24)# 5
+  (24,24) SEAL Item=  -1 addl=129 OpenNgbrDoor           adj4=(23,24)# 5
+  (23,28) SEAL Item=  -1 addl=131 OpenNgbrDoor_Silver    adj4=(22,28)# 3
+
+--- L12 Beware of Low-Flying Nightmares  triggers=16 doors=9 ---
+  ( 8, 3) SEAL Item= 209 addl=129 OpenNgbrDoor           adj4=(9,3)# 7
+  (10, 3) SEAL Item=  55 addl=129 OpenNgbrDoor           adj4=(9,3)# 7
+  (21, 8) SEAL Item=  -1 addl=129 OpenNgbrDoor           adj4=(21,9)# 6
+  (29, 8) SEAL Item=  -1 addl=129 OpenNgbrDoor           adj4=(29,9)# 4
+  ( 4,10) SEAL Item= 122 addl=129 OpenNgbrDoor           adj4=(4,11)# 8
+  (21,10) SEAL Item= 246 addl=129 OpenNgbrDoor           adj4=(21,9)# 6
+  (29,10) REACH Item= 138 addl=129 OpenNgbrDoor           adj4=(29,9)# 4
+  ( 4,12) SEAL Item=  -1 addl=129 OpenNgbrDoor           adj4=(4,11)# 8
+  (17,19) REACH Item=  16 addl=129 OpenNgbrDoor           adj4=(17,20)# 0
+  (17,21) SEAL Item= 149 addl=129 OpenNgbrDoor           adj4=(17,20)# 0
+  ( 3,22) SEAL Item= 252 addl=129 OpenNgbrDoor           adj4=(3,23)# 2
+  (27,22) SEAL Item=  -1 addl=129 OpenNgbrDoor           adj4=(27,23)# 3
+  ( 3,24) SEAL Item= 268 addl=129 OpenNgbrDoor           adj4=(3,23)# 2
+  (24,25) SEAL Item= 291 addl=132 OpenNgbrDoor_Gold      adj4=(23,25)# 1
+  (14,28) SEAL Item= 321 addl=129 OpenNgbrDoor           adj4=(15,28)# 5
+  (16,28) REACH Item= 323 addl=129 OpenNgbrDoor           adj4=(15,28)# 5
+
+--- L13 The Labyrinth  triggers=0 doors=0 ---
+  (no Type 4 on this level)
+
+--- L14 Happy Happy, Carnage Carnage  triggers=8 doors=7 ---
+  (10, 2) REACH Item=  32 addl=129 OpenNgbrDoor           adj4=(11,2)# 2
+  (20, 2) REACH Item=  37 addl=129 OpenNgbrDoor           adj4=(19,2)# 3
+  (15, 3) SEAL Item= 272 addl= 12 Unknown_HHCC_1         adj4=(15,4)# 1
+  (15, 8) SEAL Item= 273 addl= 13 Unknown_HHCC_2         adj4=-
+  ( 3,10) REACH Item=  -1 addl= 17 Unknown_HHCC_3         adj4=(3,11)# 6
+  ( 3,12) REACH Item=  64 addl=129 OpenNgbrDoor           adj4=(3,11)# 6
+  (27,16) REACH Item=  -1 addl= 17 Unknown_HHCC_3         adj4=(27,17)# 5
+  (27,18) REACH Item=  56 addl=129 OpenNgbrDoor           adj4=(27,17)# 5
+
+--- L15 Need a Light?  triggers=17 doors=8 ---
+  (14, 4) REACH Item= 312 addl=129 OpenNgbrDoor           adj4=(14,5)# 4
+  (18, 4) REACH Item=  68 addl=128 CloseNgbrDoor          adj4=(18,5)# 5
+  (14, 6) REACH Item=  74 addl=128 CloseNgbrDoor          adj4=(14,5)# 4
+  (18, 6) REACH Item=  76 addl=129 OpenNgbrDoor           adj4=(18,5)# 5
+  (16,10) REACH Item= 119 addl=129 OpenNgbrDoor           adj4=(16,11)# 0
+  (16,12) REACH Item=  -1 addl=129 OpenNgbrDoor           adj4=(16,11)# 0
+  (12,14) REACH Item= 146 addl=129 OpenNgbrDoor           adj4=(13,14)# 3
+  (14,14) REACH Item=  -1 addl=129 OpenNgbrDoor           adj4=(13,14)# 3
+  (18,14) REACH Item= 148 addl=129 OpenNgbrDoor           adj4=(19,14)# 1
+  (20,14) REACH Item= 150 addl=129 OpenNgbrDoor           adj4=(19,14)# 1
+  (16,16) REACH Item= 166 addl=129 OpenNgbrDoor           adj4=(16,17)# 2
+  (16,18) REACH Item= 184 addl=129 OpenNgbrDoor           adj4=(16,17)# 2
+  ( 4,20) REACH Item= 199 addl=135 Unknown_NAL_2          adj4=(4,21)# 7
+  ( 4,22) REACH Item= 214 addl=129 OpenNgbrDoor           adj4=(4,21)# 7
+  ( 8,26) REACH Item= 256 addl=128 CloseNgbrDoor          adj4=(9,26)# 6
+  (10,26) REACH Item= 258 addl=129 OpenNgbrDoor           adj4=(9,26)# 6
+  ( 8,27) SEAL Item= 268 addl=134 Unknown_NAL_1          adj4=-
+
+========== (c) neighbor definition bake-off (keys ON) ==========
+Score = sum reachable on L7-L15 except L13. Orphans = reachable open
+triggers that matched zero Type 2 doors.
+def        L07 L08 L09 L10 L11 L12 L13 L14 L15  sum*-13  orphans
+adj4        283   44   13    5   25   89    4  249  412     1120        0
+adj8        283   44   13    5   25   89    4  249  412     1120        0
+radius2     283   44   13    5   25   89    4  249  412     1120        0
+radius3     283   44   13    5   25   89    4  249  412     1120        0
+nearest     283   44   13    5   25   89    4  249  412     1120        0
+index0      283   44   13    5   10   56    4  207  412     1030        0
+hybrid      283   44   13    5   25   89    4  249  412     1120        0
+reach-max defs: adj4, adj8, radius2, radius3, nearest, hybrid (all 1120). Using adj4: OpenNgbr* is 4-adjacent in every observed case; wider radii open extra doors that do not change connectivity.
+
+========== (b) reachability before vs after (adj4, keys ON) ==========
+ Lv name                                   nv before_r before_s after_r after_s opened
+  0 Ground Floor                          214      214        0     214       0      1
+  1 Never Stop Firing                     478      478        0     478       0      4
+  2 Lock&Load                             500      500        0     500       0     10
+  3 They May Be Slow…                     456      451        5     451       5      0
+  4 …But They’re Hungry                   504      503        1     503       1      0
+  5 Evil Undead Phantasms Must Die!       563      563        0     563       0      0
+  6 Ascension                             195      195        0     195       0      1
+  7 Wrong Way!                            515      283      232     283     232     13
+  8 Welcome, Tasty Primate                459       44      415      44     415      1
+  9 We Can See In The Dark… Can You?      415       13      402      13     402      0
+ 10 Feel the Power                        574        5      569       5     569      0
+ 11 A Plague of Demons                    537       10      527      25     512      2
+ 12 Beware of Low-Flying Nightmares       521       54      467      89     432      3
+ 13 The Labyrinth                         525        4      521       4     521      0
+ 14 Happy Happy, Carnage Carnage          446      207      239     249     197      4
+ 15 Need a Light?                         505      412       93     412      93      8
+ 16 Lasciate Ogne Speranza, Voi Ch’Intrate  472      472        0     472       0      0
+ 17 Watch Your Step                       496      496        0     496       0      0
+ 18 I’d Rather Be Surfing                 521      521        0     521       0      6
+ 19 Warning: Earthquake Zone              172      172        0     172       0      6
+ 20 Don’t Get Poisoned!                   437      428        9     428       9      0
+ 21 Please Excuse Our Dust                529      529        0     529       0      0
+ 22 But Wait!— That’s Not All!            496      496        0     496       0     11
+ 23 Where Only Fools Dare Tread           519      519        0     519       0      0
+ 24 Ok, Who Else Wants Some?              181       57      124      57     124      0
+
+--- doors each reachable trigger opens (adj4, keys ON), L7-15 ---
+L07 Wrong Way!:
+  trigger (7,3) OpenNgbrDoor_Silver -> door(7,4)# 1
+  trigger (14,3) OpenNgbrDoor_Silver -> door(14,4)# 0
+  trigger (21,3) OpenNgbrDoor_Silver -> door(21,4)# 2
+  trigger (4,6) OpenNgbrDoor_Silver -> door(5,6)# 3
+  trigger (22,6) OpenNgbrDoor_Silver -> door(23,6)# 11
+  trigger (14,7) OpenNgbrDoor_Silver -> door(14,8)# 12
+  trigger (4,13) OpenNgbrDoor_Silver -> door(5,13)# 4
+  trigger (8,13) OpenNgbrDoor_Silver -> door(9,13)# 13
+  trigger (18,13) OpenNgbrDoor_Silver -> door(19,13)# 14
+  trigger (22,13) OpenNgbrDoor_Silver -> door(23,13)# 10
+  trigger (4,20) OpenNgbrDoor_Silver -> door(5,20)# 5
+  trigger (7,21) OpenNgbrDoor_Silver -> door(7,22)# 6
+  trigger (14,23) OpenNgbrDoor_Silver -> door(14,22)# 7
+  Type 2 far-side (4-neighbors after propagation):
+    (7,4)#1 OPEN WY=0 WX=33 nbrs=['(7,3)t=4R', '(8,4)t=0void', '(7,5)t=4R', '(6,4)t=0void']
+    (14,4)#0 OPEN WY=0 WX=33 nbrs=['(14,3)t=4R', '(15,4)t=0void', '(14,5)t=4R', '(13,4)t=0void']
+    (21,4)#2 OPEN WY=0 WX=33 nbrs=['(21,3)t=4R', '(22,4)t=0void', '(21,5)t=4R', '(20,4)t=0void']
+    (5,6)#3 OPEN WY=33 WX=0 nbrs=['(5,5)t=0void', '(6,6)t=4R', '(5,7)t=0void', '(4,6)t=4R']
+    (23,6)#11 OPEN WY=33 WX=0 nbrs=['(23,5)t=0void', '(24,6)t=4R', '(23,7)t=0void', '(22,6)t=4R']
+    (14,8)#12 OPEN WY=0 WX=33 nbrs=['(14,7)t=4R', '(15,8)t=0void', '(14,9)t=4R', '(13,8)t=0void']
+    (5,13)#4 OPEN WY=33 WX=0 nbrs=['(5,12)t=0void', '(6,13)t=4R', '(5,14)t=0void', '(4,13)t=4R']
+    (9,13)#13 OPEN WY=33 WX=0 nbrs=['(9,12)t=0void', '(10,13)t=4R', '(9,14)t=0void', '(8,13)t=4R']
+    (19,13)#14 OPEN WY=33 WX=0 nbrs=['(19,12)t=0void', '(20,13)t=4R', '(19,14)t=0void', '(18,13)t=4R']
+    (23,13)#10 OPEN WY=33 WX=0 nbrs=['(23,12)t=0void', '(24,13)t=4R', '(23,14)t=0void', '(22,13)t=4R']
+    (5,20)#5 OPEN WY=33 WX=0 nbrs=['(5,19)t=0void', '(6,20)t=4R', '(5,21)t=0void', '(4,20)t=4R']
+    (23,20)#9 S WY=33 WX=0 nbrs=['(23,19)t=0void', '(24,20)t=4S', '(23,21)t=0void', '(22,20)t=4S']
+    (7,22)#6 OPEN WY=0 WX=33 nbrs=['(7,21)t=4R', '(8,22)t=0void', '(7,23)t=4R', '(6,22)t=0void']
+    (14,22)#7 OPEN WY=0 WX=33 nbrs=['(14,21)t=1R', '(15,22)t=0void', '(14,23)t=4R', '(13,22)t=0void']
+    (21,22)#8 S WY=0 WX=33 nbrs=['(21,21)t=4S', '(22,22)t=0void', '(21,23)t=4S', '(20,22)t=0void']
+L08 Welcome, Tasty Primate:
+  trigger (13,18) OpenNgbrDoor_Silver -> door(13,19)# 0
+  Type 2 far-side (4-neighbors after propagation):
+    (13,19)#0 OPEN WY=0 WX=33 nbrs=['(13,18)t=4R', '(14,19)t=0void', '(13,20)t=4R', '(12,19)t=0void']
+L11 A Plague of Demons:
+  trigger (28,2) OpenNgbrDoor -> door(27,2)# 4
+  trigger (29,3) OpenNgbrDoor -> door(29,4)# 1
+  Type 2 far-side (4-neighbors after propagation):
+    (27,2)#4 OPEN WY=33 WX=0 nbrs=['(27,1)t=0void', '(28,2)t=4R', '(27,3)t=0void', '(26,2)t=4R']
+    (29,4)#1 OPEN WY=0 WX=33 nbrs=['(29,3)t=4R', '(30,4)t=0void', '(29,5)t=4R', '(28,4)t=0void']
+    (29,17)#2 S WY=33 WX=0 nbrs=['(29,16)t=0void', '(30,17)t=4S', '(29,18)t=0void', '(28,17)t=1S']
+    (17,24)#0 S WY=33 WX=0 nbrs=['(17,23)t=0void', '(18,24)t=4S', '(17,25)t=0void', '(16,24)t=4S']
+    (23,24)#5 S WY=33 WX=33 nbrs=['(23,23)t=0void', '(24,24)t=4S', '(23,25)t=0void', '(22,24)t=4S']
+    (22,28)#3 S WY=33 WX=0 nbrs=['(22,27)t=0void', '(23,28)t=4S', '(22,29)t=0void', '(21,28)t=1S']
+L12 Beware of Low-Flying Nightmares:
+  trigger (29,10) OpenNgbrDoor -> door(29,9)# 4
+  trigger (17,19) OpenNgbrDoor -> door(17,20)# 0
+  trigger (16,28) OpenNgbrDoor -> door(15,28)# 5
+  Type 2 far-side (4-neighbors after propagation):
+    (9,3)#7 S WY=33 WX=0 nbrs=['(9,2)t=0void', '(10,3)t=4S', '(9,4)t=0void', '(8,3)t=4S']
+    (21,9)#6 S WY=0 WX=33 nbrs=['(21,8)t=4S', '(22,9)t=0void', '(21,10)t=4S', '(20,9)t=0void']
+    (29,9)#4 OPEN WY=0 WX=33 nbrs=['(29,8)t=4R', '(30,9)t=0void', '(29,10)t=4R', '(28,9)t=0void']
+    (4,11)#8 S WY=0 WX=33 nbrs=['(4,10)t=4S', '(5,11)t=0void', '(4,12)t=4S', '(3,11)t=0void']
+    (17,20)#0 OPEN WY=33 WX=33 nbrs=['(17,19)t=4R', '(18,20)t=0void', '(17,21)t=4R', '(16,20)t=0void']
+    (3,23)#2 S WY=33 WX=33 nbrs=['(3,22)t=4S', '(4,23)t=0void', '(3,24)t=4S', '(2,23)t=0void']
+    (27,23)#3 S WY=0 WX=33 nbrs=['(27,22)t=4S', '(28,23)t=0void', '(27,24)t=1S', '(26,23)t=0void']
+    (23,25)#1 S WY=33 WX=0 nbrs=['(23,24)t=0void', '(24,25)t=4S', '(23,26)t=0void', '(22,25)t=6S']
+    (15,28)#5 OPEN WY=33 WX=0 nbrs=['(15,27)t=0void', '(16,28)t=4R', '(15,29)t=0void', '(14,28)t=4R']
+L14 Happy Happy, Carnage Carnage:
+  trigger (10,2) OpenNgbrDoor -> door(11,2)# 2
+  trigger (20,2) OpenNgbrDoor -> door(19,2)# 3
+  trigger (3,12) OpenNgbrDoor -> door(3,11)# 6
+  trigger (27,18) OpenNgbrDoor -> door(27,17)# 5
+  Type 2 far-side (4-neighbors after propagation):
+    (11,2)#2 OPEN WY=33 WX=33 nbrs=['(11,1)t=0void', '(12,2)t=1R', '(11,3)t=0void', '(10,2)t=4R']
+    (19,2)#3 OPEN WY=33 WX=0 nbrs=['(19,1)t=0void', '(20,2)t=4R', '(19,3)t=0void', '(18,2)t=1R']
+    (13,4)#0 R WY=0 WX=33 nbrs=['(13,3)t=1R', '(14,4)t=0void', '(13,5)t=1R', '(12,4)t=0void']
+    (15,4)#1 R WY=0 WX=33 nbrs=['(15,3)t=4R', '(16,4)t=0void', '(15,5)t=1R', '(14,4)t=0void']
+    (17,4)#4 R WY=0 WX=33 nbrs=['(17,3)t=1R', '(18,4)t=0void', '(17,5)t=1R', '(16,4)t=0void']
+    (3,11)#6 OPEN WY=0 WX=33 nbrs=['(3,10)t=4R', '(4,11)t=0void', '(3,12)t=4R', '(2,11)t=0void']
+    (27,17)#5 OPEN WY=0 WX=33 nbrs=['(27,16)t=4R', '(28,17)t=0void', '(27,18)t=4R', '(26,17)t=0void']
+L15 Need a Light?:
+  trigger (14,4) OpenNgbrDoor -> door(14,5)# 4
+  trigger (18,6) OpenNgbrDoor -> door(18,5)# 5
+  trigger (16,10) OpenNgbrDoor -> door(16,11)# 0
+  trigger (12,14) OpenNgbrDoor -> door(13,14)# 3
+  trigger (18,14) OpenNgbrDoor -> door(19,14)# 1
+  trigger (16,16) OpenNgbrDoor -> door(16,17)# 2
+  trigger (4,22) OpenNgbrDoor -> door(4,21)# 7
+  trigger (10,26) OpenNgbrDoor -> door(9,26)# 6
+  Type 2 far-side (4-neighbors after propagation):
+    (14,5)#4 OPEN WY=0 WX=33 nbrs=['(14,4)t=4R', '(15,5)t=0void', '(14,6)t=4R', '(13,5)t=0void']
+    (18,5)#5 OPEN WY=0 WX=33 nbrs=['(18,4)t=4R', '(19,5)t=0void', '(18,6)t=4R', '(17,5)t=0void']
+    (16,11)#0 OPEN WY=0 WX=33 nbrs=['(16,10)t=4R', '(17,11)t=0void', '(16,12)t=4R', '(15,11)t=0void']
+    (13,14)#3 OPEN WY=33 WX=0 nbrs=['(13,13)t=0void', '(14,14)t=4R', '(13,15)t=0void', '(12,14)t=4R']
+    (19,14)#1 OPEN WY=33 WX=33 nbrs=['(19,13)t=0void', '(20,14)t=4R', '(19,15)t=0void', '(18,14)t=4R']
+    (16,17)#2 OPEN WY=33 WX=33 nbrs=['(16,16)t=4R', '(17,17)t=0void', '(16,18)t=4R', '(15,17)t=0void']
+    (4,21)#7 OPEN WY=0 WX=33 nbrs=['(4,20)t=4R', '(5,21)t=0void', '(4,22)t=4R', '(3,21)t=0void']
+    (9,26)#6 OPEN WY=33 WX=0 nbrs=['(9,25)t=0void', '(10,26)t=4R', '(9,27)t=0void', '(8,26)t=4R']
+
+========== (d) key-gated content (adj4) ==========
+WITHOUT = only 129/130/6/7. WITH = also 131 silver, 132 gold, 141 flag.
+ Lv name                                 no_key with_key  gated
+  0 Ground Floor                            214      214      0
+  1 Never Stop Firing                       478      478      0
+  2 Lock&Load                               500      500      0
+  3 They May Be Slow…                       451      451      0
+  4 …But They’re Hungry                     503      503      0
+  5 Evil Undead Phantasms Must Die!         563      563      0
+  6 Ascension                               195      195      0
+  7 Wrong Way!                              283      283      0
+  8 Welcome, Tasty Primate                   44       44      0
+  9 We Can See In The Dark… Can You?         13       13      0
+ 10 Feel the Power                            5        5      0
+ 11 A Plague of Demons                       25       25      0
+ 12 Beware of Low-Flying Nightmares          89       89      0
+ 13 The Labyrinth                             4        4      0
+ 14 Happy Happy, Carnage Carnage            249      249      0
+ 15 Need a Light?                           412      412      0
+ 16 Lasciate Ogne Speranza, Voi Ch’Intrate    472      472      0
+ 17 Watch Your Step                         496      496      0
+ 18 I’d Rather Be Surfing                   521      521      0
+ 19 Warning: Earthquake Zone                172      172      0
+ 20 Don’t Get Poisoned!                     428      428      0
+ 21 Please Excuse Our Dust                  529      529      0
+ 22 But Wait!— That’s Not All!              496      496      0
+ 23 Where Only Fools Dare Tread             519      519      0
+ 24 Ok, Who Else Wants Some?                 57       57      0
+
+--- footnote: treat HHCC/NAL unknowns as open (adj4, keys ON) ---
+  L14 after+unknown r=249 sealed=197 (keys-only sealed=197) extra_open=1
+    Unknown_HHCC_3 (3,10) -> (3,11)
+    Unknown_HHCC_3 (27,16) -> (27,17)
+    Unknown_HHCC_1 (15,3) -> (15,4)
+  L15 after+unknown r=412 sealed=93 (keys-only sealed=93) extra_open=0
+    Unknown_NAL_2 (4,20) -> (4,21)
+
+========== (e) remains sealed after adj4 + keys ==========
+  L03 They May Be Slow…: sealed=5/456  1:normal=2, 5:secret_door=3
+  L04 …But They’re Hungry: sealed=1/504  5:secret_door=1
+  L07 Wrong Way!: sealed=232/515  1:normal=209, 2:door=2, 4:door_trigger=4, 7:pillar=17
+    sealed triggers: [(22, 20), (24, 20), (21, 21), (21, 23)]
+    sealed doors: [(23, 20), (21, 22)]
+  L08 Welcome, Tasty Primate: sealed=415/459  1:normal=345, 6:corpse=1, 7:pillar=69
+    sealed triggers: (none)
+    sealed doors: (none)
+  L09 We Can See In The Dark… Can You?: sealed=402/415  1:normal=383, 6:corpse=1, 7:pillar=18
+    sealed triggers: (none)
+    sealed doors: (none)
+  L10 Feel the Power: sealed=569/574  1:normal=568, 6:corpse=1
+    sealed triggers: (none)
+    sealed doors: (none)
+  L11 A Plague of Demons: sealed=512/537  1:normal=501, 2:door=4, 4:door_trigger=6, 6:corpse=1
+    sealed triggers: [(30, 17), (16, 24), (18, 24), (22, 24), (24, 24), (23, 28)]
+    sealed doors: [(29, 17), (17, 24), (23, 24), (22, 28)]
+  L12 Beware of Low-Flying Nightmares: sealed=432/521  1:normal=398, 2:door=6, 4:door_trigger=10, 6:corpse=1, 7:pillar=17
+    sealed triggers: [(8, 3), (10, 3), (21, 8), (4, 10), (21, 10), (4, 12), (3, 22), (27, 22), (3, 24), (24, 25)]
+    sealed doors: [(9, 3), (21, 9), (4, 11), (3, 23), (27, 23), (23, 25)]
+  L13 The Labyrinth: sealed=521/525  1:normal=521  [Labyrinth: stored geometry regenerates; ignore]
+  L14 Happy Happy, Carnage Carnage: sealed=197/446  1:normal=182, 5:secret_door=1, 6:corpse=2, 7:pillar=12
+    sealed triggers: (none)
+    sealed doors: (none)
+  L15 Need a Light?: sealed=93/505  1:normal=70, 4:door_trigger=1, 6:corpse=5, 7:pillar=17
+    sealed triggers: [(8, 27)]
+    sealed doors: (none)
+  L20 Don’t Get Poisoned!: sealed=9/437  1:normal=9  [3x3 island; see (f)]
+  L24 Ok, Who Else Wants Some?: sealed=124/181  1:normal=124  [endgame; see structure below]
+
+========== (e2) L24 Ok, Who Else Wants Some? structure ==========
+void-separated 4-islands: 34  sizes=[33, 18, 18, 10, 9, 9, 8, 8, 6, 6, 6, 5, 5, 4, 3, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1]
+Type 2=0 Type 4=0 DoorList used=0
+  island 00 n= 33 reach= 33 bbox=(12..16,13..19) types=1:30,3:1,7:2 items=[4, 15, 7, 5, 13, 0, 8, 6, 14, 10, 2, 9]...
+  island 01 n= 18 reach=  0 bbox=(26..30,1..6) types=1:18 items=[]
+  island 02 n= 18 reach= 18 bbox=(1..5,1..6) types=1:17,3:1 items=[]
+  island 03 n= 10 reach=  0 bbox=(28..30,24..30) types=1:10 items=[]
+  island 04 n=  9 reach=  0 bbox=(12..15,26..30) types=1:9 items=[]
+  island 05 n=  9 reach=  0 bbox=(7..9,1..6) types=1:9 items=[]
+  island 06 n=  8 reach=  0 bbox=(24..26,26..30) types=1:8 items=[]
+  island 07 n=  8 reach=  0 bbox=(20..22,26..30) types=1:8 items=[]
+  island 08 n=  6 reach=  0 bbox=(12..14,2..5) types=1:6 items=[]
+  island 09 n=  6 reach=  0 bbox=(17..19,2..5) types=1:6 items=[]
+  island 10 n=  6 reach=  6 bbox=(1..3,27..30) types=1:6 items=[]
+  island 11 n=  5 reach=  0 bbox=(16..17,27..30) types=1:5 items=[]
+  island 12 n=  5 reach=  0 bbox=(19..20,27..30) types=1:5 items=[]
+  island 13 n=  4 reach=  0 bbox=(6..9,30..30) types=1:4 items=[]
+  island 14 n=  3 reach=  0 bbox=(7..9,26..26) types=1:3 items=[]
+  island 15 n=  3 reach=  0 bbox=(7..9,28..28) types=1:3 items=[]
+  island 16 n=  2 reach=  0 bbox=(22..23,4..4) types=1:2 items=[]
+  island 17 n=  2 reach=  0 bbox=(17..18,1..1) types=1:2 items=[]
+  island 18 n=  2 reach=  0 bbox=(12..13,1..1) types=1:2 items=[]
+  island 19 n=  2 reach=  0 bbox=(3..4,26..26) types=1:2 items=[]
+  island 20 n=  2 reach=  0 bbox=(24..24,2..3) types=1:2 items=[]
+  island 21 n=  2 reach=  0 bbox=(11..11,2..3) types=1:2 items=[]
+  island 22 n=  2 reach=  0 bbox=(24..24,5..6) types=1:2 items=[]
+  island 23 n=  2 reach=  0 bbox=(22..23,7..7) types=1:2 items=[]
+  island 24 n=  2 reach=  0 bbox=(12..13,6..6) types=1:2 items=[]
+  island 25 n=  2 reach=  0 bbox=(16..16,2..3) types=1:2 items=[]
+  island 26 n=  2 reach=  0 bbox=(22..23,1..1) types=1:2 items=[]
+  island 27 n=  2 reach=  0 bbox=(17..18,6..6) types=1:2 items=[]
+  island 28 n=  1 reach=  0 bbox=(21..21,2..2) types=1:1 items=[]
+  island 29 n=  1 reach=  0 bbox=(10..10,29..29) types=1:1 items=[]
+  island 30 n=  1 reach=  0 bbox=(1..1,26..26) types=1:1 items=[]
+  island 31 n=  1 reach=  0 bbox=(6..6,27..27) types=1:1 items=[]
+  island 32 n=  1 reach=  0 bbox=(25..25,24..24) types=1:1 items=[]
+  island 33 n=  1 reach=  0 bbox=(21..21,6..6) types=1:1 items=[]
+
+========== (f) L20 3x3 block (1-3,1-3) ==========
+  (1,1) type=1 normal Item=218 addl=0 walls=[0:64/129 1:64/130 2:0/0 3:160/132 4:0/0 5:0/0]
+  (2,1) type=1 normal Item=213 addl=0 walls=[0:32/128 1:0/0 2:0/0 3:0/0 4:0/0 5:0/0]
+  (3,1) type=1 normal Item=216 addl=0 walls=[0:96/130 1:0/0 2:160/132 3:0/0 4:0/0 5:0/0]
+  (1,2) type=1 normal Item=-1 addl=0 walls=[0:0/0 1:32/128 2:0/0 3:0/0 4:0/0 5:0/0]
+  (2,2) type=1 normal Item=217 addl=0 walls=[0:0/0 1:0/0 2:0/0 3:0/0 4:0/0 5:0/0]
+  (3,2) type=1 normal Item=210 addl=0 walls=[0:0/0 1:0/0 2:0/0 3:0/0 4:0/0 5:0/0]
+  (1,3) type=1 normal Item=214 addl=0 walls=[0:0/0 1:96/129 2:0/0 3:0/0 4:0/0 5:160/132]
+  (2,3) type=1 normal Item=215 addl=0 walls=[0:0/0 1:0/0 2:0/0 3:0/0 4:0/0 5:0/0]
+  (3,3) type=1 normal Item=212 addl=0 walls=[0:0/0 1:0/0 2:0/0 3:0/0 4:160/132 5:0/0]
+  4-neighbors of the 3x3 (outside the block):
+    (0,2) type=0 void Item=-1 addl=0 WY=32 WX=0
+    (2,0) type=0 void Item=-1 addl=0 WY=0 WX=32
+    (3,0) type=0 void Item=-1 addl=0 WY=0 WX=32
+    (4,1) type=0 void Item=-1 addl=0 WY=32 WX=64
+    (1,0) type=0 void Item=-1 addl=0 WY=0 WX=32
+    (0,1) type=0 void Item=-1 addl=0 WY=32 WX=0
+    (2,4) type=0 void Item=-1 addl=0 WY=32 WX=32
+    (4,3) type=0 void Item=-1 addl=0 WY=32 WX=96
+    (3,4) type=0 void Item=-1 addl=0 WY=96 WX=32
+    (4,2) type=0 void Item=-1 addl=0 WY=32 WX=32
+    (1,4) type=0 void Item=-1 addl=0 WY=64 WX=32
+    (0,3) type=0 void Item=-1 addl=0 WY=32 WX=0
+
+Ground Floor sanity: before=214 after=214 (expect 214/214)

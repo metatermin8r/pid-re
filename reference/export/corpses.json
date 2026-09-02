@@ -1,0 +1,292 @@
+[
+  {
+    "level": 0,
+    "level_name": "Ground Floor",
+    "x": 14,
+    "y": 6,
+    "item": 114,
+    "type_addl": 0,
+    "scri_id": 128,
+    "dialogue": "Who are you?  Am I dead?  I remember now ...\nI don’t understand, what do you mean?Are you trying to confuse me?  What are you saying?All my friends are dead now.  Seven above, the rest below.  Muller killed them all...I ... I don’t remember my name.  I can see my face in a mirror— shaving in the jungle this morning, before we broke camp and came here— but I don’t remember my name.Muller never told us what our mission here was— just that we would be in the jungle for a few months.  This jungle is a humid, sticky hell.  I remember Cologne...Let’s not talk about the jungle...Nothing, nothing.  I can’t remember anything.We camped a few miles away.  That was my last night outside.Muller shot me in the back because I wouldn’t follow him through this door— but he didn’t come back.  He got what he deserved...Muller had some strange musical instrument he brought from Germany.  When he played it on that rune in the middle of the floor, those two locked doors opened.I didn’t see it for long, but it was bizarre brass device covered with a green cloth.WHAT’S HAPPENING?  Who are you?— WHAT ARE YOU?  Am I dead?  Where am I?Muller was our captain.  An ugly, short little man.  Totally devoted to our country.  A real bastard.  He shot me twice in the back.Yes, this has happened before.  This same weird, speechless, disembodied sort of conversation.  I don’t remember more, sorry...Cologne ... God, I’ll never see it again.  Are you sure I’m dead?  How can you KNOW?  How could I be talking to you, if I were dead?We were all from Germany.That strange drawing on the floor, where the four corridors meet."
+  },
+  {
+    "level": 2,
+    "level_name": "Lock&Load",
+    "x": 3,
+    "y": 1,
+    "item": 267,
+    "type_addl": 2,
+    "scri_id": 130,
+    "dialogue": "Hello again.  I hope your P4 is still working well.  If it’s not, take mine.You handle that P4 well, for a foreigner.\n4\nI don’t understand, what do you mean?I don’t follow you.Say that again?My name is Gunther, I think.  It’s so hard to remember things, with so much time alone to think ...It’s horrible, being conscious but deprived of nearly all your senses like this.  I wonder how long it will last ...I was leading a group of four men and we stumbled on five of those long-tongued monsters.  Hans and Behrens ran, and I died trying to give Joachim time to escape— he was wounded.Hans was in charge of carrying most of our ammunition, because he couldn’t shoot straight.  He wasn’t with the group when they came back, so if you can find him ask him what he did with all of it.I don’t remember Behrens very well, he mostly kept to himself.Joachim and I were good friends, I hope he made it out.Nobody liked Muller.  I was no exception.  He didn’t even tell us why we were here.  I hardly even know where I am.Those headless things disgust me.  There were so many of them after a while that we started killing them with our knives, to conserve ammunition.  The zombies were a different story ...The only way to stop those zombies is to shoot them until they dissolve.It’s obvious from the way you talk that you’re not from Germany, or even Europe.  You must be from the States.You have a Yankee accent."
+  },
+  {
+    "level": 2,
+    "level_name": "Lock&Load",
+    "x": 26,
+    "y": 26,
+    "item": 281,
+    "type_addl": 1,
+    "scri_id": 129,
+    "dialogue": "I’m cold, so cold ...\nI don’t remember.  I’m so cold ...Death is so cold and lonely.  I can’t recall ... anything ..."
+  },
+  {
+    "level": 3,
+    "level_name": "They May Be Slow…",
+    "x": 16,
+    "y": 4,
+    "item": 273,
+    "type_addl": 3,
+    "scri_id": 131,
+    "dialogue": "What are you?  What’s happening?Why are you back?  Go away.  Don’t disturb me.\nWhat are you saying?  I can’t understand you.What?You’re confusing me.  I don’t understand.Muller was the leader of our expedition, how did you know him?  Never mind.  I don’t care.I don’t remember my name.  I don’t remember my family.  All I remember is this dusty room and those people who have passed through it since I died.I don’t remember them, I told you, I DON’T REMEMBER THEM.A group of people passed through here years ago and one of their group walked through the opposite wall of this room.  I don’t know how he did it.I’d point to it, if I could, but I’m sort of dead, sorry.  It’s opposite the entrance you came in, if you want to try.They were speaking Spanish.  I couldn’t tell where they were from, specifically.Isn’t it obvious?  Or didn’t you notice that both my legs are missing?  I can still see that headless thing chewing and clawing at me ...I hate them, I HATE THEM.  Don’t talk about them.  Go away, please go away.I have no idea.  A lot of us thought we were coming to North America to train Mexican troops for an invasion of Texas and California, but they were wrong, obviously.Hans ran through here, alone, a few hours after I died.  He ran right into two of those zombies and fled in the direction he came.  He looked badly hurt.We all hated those zombies.  The only way to stop them from attacking was to shoot them until they dissolved.I didn’t know him very well."
+  },
+  {
+    "level": 3,
+    "level_name": "They May Be Slow…",
+    "x": 13,
+    "y": 19,
+    "item": 77,
+    "type_addl": 4,
+    "scri_id": 132,
+    "dialogue": "Why are you back?  Leave!  Get out before they come back …We just couldn’t kill them; our bullets went right through those phantasms!  Watch out, they’re everywhere.\n4\nI don’t understand.  Please leave, please.You don’t make any sense.  Leave, please.Yes, leave!My name is Hans ... I think I remember being called Hans.Muller, damn him.  This is all his fault.  I’m sure he’s dead, somewhere ...I didn’t know him very well, sorry.  I was a new recruit.Of all the first missions I could have been sent on, I had to come to this place.Muller never told us why we were here.  I died for nothing, I’m sure.One of those shadowy things enveloped and killed me.  Nothing seemed to hurt it— bullets, knives, grenades.  I ran as far as I could, wounded, but I finally died here.Our machetes worked great on the headless creatures, and we saved bullets by killing them that way, but blades didn’t hurt the specters.The grenades worked great on the headless creatures, but we only had about thirty of them and we used them too fast.Muller called them shades.  There’s this horrible, chilling moment when they scream and your vision flickers and you wonder if you’re going to die.  We never found a way to kill them.Their screams are awful, don’t make me think about it.He called them shades because you can see through them, like they’re just shadows.  They have two, glowing red eyes.  Run as fast as you can, if you see one.I jumped down the ladder from the level above and ran all the way here.  Somewhere on the way I hid most of my spare clips in a room full of bones, stuffed in a skull.  Search there if you need them."
+  },
+  {
+    "level": 4,
+    "level_name": "…But They’re Hungry",
+    "x": 27,
+    "y": 2,
+    "item": 64,
+    "type_addl": 5,
+    "scri_id": 133,
+    "dialogue": "Watch out for the specters, they’re everywhere.\nI don’t have a name.  Not anymore.Names don’t matter now.I was running from a specter when I met three of those ghastly zombie creatures.  They surrounded me and clubbed me with their bones.I hate those translucent things.  Run from them, it’s all you can do.I much preferred the headless things, which stopped spitting at you when you shot them.  The only way to stop a zombie is to kill it.We were all covered with their green goo by the time we got this far.  It smelled revolting.It was really easy to dodge the zombie bones, if you had space to move around.  I was trapped."
+  },
+  {
+    "level": 5,
+    "level_name": "Evil Undead Phantasms Must Die!",
+    "x": 1,
+    "y": 13,
+    "item": 78,
+    "type_addl": 6,
+    "scri_id": 134,
+    "dialogue": "Don’t take my gun, please.  Go away.  They’re following you.  Don’t you see them?\nI don’t understand.What do you mean?Claude is dead now.  He wants you to leave.I hardly remember him ...Muller!  I’ve been trying to recall his name for years.  He’s the one that brought us to this place.  I hope he died here.  None of us liked him.I remember seeing the pyramid from outside, during the day, and thinking that it looked empty and abandoned.I couldn’t have been more wrong.Don’t take it, please!  I’ll need it if they come back.  They haven’t seen me yet.The specters!  Please leave, before they find me.A specter got so close to me I could hardly see.  It was cold and dark, just like now.  I was already wounded ...Don’t make me think about it.  It’s one of the few things I do remember, and it was horrible.I got hurt badly a few minutes before the specter got me.  We were ambushed by headless creatures, and three of them surrounded me ..."
+  },
+  {
+    "level": 6,
+    "level_name": "Ascension",
+    "x": 5,
+    "y": 4,
+    "item": 126,
+    "type_addl": 7,
+    "scri_id": 135,
+    "dialogue": "Why are you back?  Leave!  Get out before they come back …What a miserable place to spend eternity.  Death is far worse than you can imagine.\nI don’t understand.Say that again?My name is Joachim.I crawled into this dead end after I was wounded.  While the others were fighting a group of zombies, a headless creature found me.  After that, Muller turned back and left.We met one zombie wearing blue, instead of the usual red, and it raised it’s arms and made the ground shake like an earthquake.  Muller and Friedrich killed it quickly.They’re blind, weak monsters, but I couldn’t fight it off because I was hurt.I let one of those phantasms get too close to me.  That was nearly the end.Muller only brought the expedition this far, and then turned back.  It took him almost a day, with seven deaths, to realize we were going the wrong way.Muller was an idiot.  Even I could tell this was the wrong way.Friedrich was Muller’s second.  He survived this far.Muller was looking for something to help Germany in the war, I don’t know what it was— he never told us anything.I think Behrens made it out when the group retreated, but I’m not sure.He died on a lower level.Sometimes I wonder if the war even started, or how it is going, or whether it’s over.  Most of the time I don’t care.Those invincible phantasms are finally what convinced Muller we should turn back, I think.  There are at least three on this level, you should turn back, too.If only we’d had some grenades left ...Three of them were Claude, Hans and Gunther ... I can’t remember the other four, or whether Behrens made it out or not."
+  },
+  {
+    "level": 7,
+    "level_name": "Wrong Way!",
+    "x": 18,
+    "y": 11,
+    "item": 217,
+    "type_addl": 8,
+    "scri_id": 136,
+    "dialogue": "You scared me, I thought you were one of those big rock-throwing monsters.  They still bother me, even now.\n-\n-41\nI don’t understand you.What?  You’re not making any sense.If Muller hadn’t let us use all the grenades early, on those pathetic headless creatures, I might still be alive now.He’s dead.Behrens, I think my name is Behrens.  It’s hard not to forget, over all this time.Death isn’t final and abrupt, like I expected.  You’re only truly dead when you’ve forgotten everything— when you remember nothing of your former self.My skull was crushed by one of those huge ghouls.  They’re not very tough to kill, but they sure hit hard.  I saw Muller killed two with his knife.I didn’t know Friedrich very well.I saw Muller unload an entire clip from his machine pistol into a group of those monsters, and then kill the last two with his knife.Yes, the MP-41.  We had several of them.  The group took mine when they left.There were eighteen of us, I think, and I doubt anyone left alive.  I never saw anyone come back this way."
+  },
+  {
+    "level": 8,
+    "level_name": "Welcome, Tasty Primate",
+    "x": 19,
+    "y": 26,
+    "item": 362,
+    "type_addl": 9,
+    "scri_id": 137,
+    "dialogue": "It was twelve days ago, it must have been.\nYou’re not making any sense, are you all right?Leave me now, blasphemer!No, not twelve— hundreds.  Sixteen Sundays, even.  I’ve been counting.  I can tell you haven’t.I’m not dead, I’ve only settled down to rest for a moment.  Go along, I’ll catch up with you soon.Names are unimportant, but I know yours.  I’ll never tell him, don’t worry.  I know better.You know.  I can’t say.  He who rises with the tides, master of all things small and insignificant.Not the tides, fool!  Don’t you understand?It doesn’t matter.Grenades ... Mmmm ... tasty."
+  },
+  {
+    "level": 9,
+    "level_name": "We Can See In The Dark… Can You?",
+    "x": 9,
+    "y": 17,
+    "item": 327,
+    "type_addl": 10,
+    "scri_id": 138,
+    "dialogue": "Get that light away from me!  Get it away!  No lights!  They’re coming!\nThey’re attracted to your light.  Fool!  Get away from me!Those things, those things!  They’re all around, they hide in the corners until they see light ...Are they following you?  You don’t have any lights, do you?  Stay away ...\nWhat?  WHAT?I don’t understand you.That name sounds familiar, but I don’t know why ...I remember that name ... for some reason I don’t think I liked Muller, whoever he was.I don’t remember my name.  It’s been so long since I heard it.  I don’t even remember my family, or my home.I think my mother was dead.  My father was in the party.The Nazis.  My father was so proud I was selected to go on this expedition.We never even knew why we were here.  I thought we were sent to plan an invasion of the southern United States from Mexico, but then we ended up in the jungle ...I hate the jungle.  It was never humid and sticky like this at home.I don’t know, I can’t remember anything.  Nothing.  Why do you keep asking questions?  Why can’t you leave me alone?It’s ok.  It’s frustrating, being like this.Those things, those rats with wings, haven’t you seen them?  They swarmed my torch before I could put it out ...I was the first man down the ladder, and suddenly I was surrounded by these shrieking things.  I ran, but they followed me ...The same ladder you must have come down to get here.I didn’t think to put it out.  I was such a fool.I hear them screaming now, don’t you?They swarm to lights, biting and scratching anything in sight.There was a lot of speculation about what we would do in Mexico, but we were all wrong— and still don’t know the real answer."
+  },
+  {
+    "level": 10,
+    "level_name": "Feel the Power",
+    "x": 14,
+    "y": 14,
+    "item": 379,
+    "type_addl": 11,
+    "scri_id": 139,
+    "dialogue": "Who are you?  You want my gold, don’t you?  Don’t take my gold!\nI can’t understand you.What are you trying to say?You’re not making any sense.Walter.  I remember Muller saying my name when he sent me to find the ingots.  I hate Muller.No, it’s MINE!  Don’t take it!  Mine, mine, mine!Those slime things were everywhere, roaming the corridors in groups of three.  I ran as fast as I could, but they got me ...Don’t take it, it’s mine!  It’s all I have left, all I have to look at.  There’s plenty more ...Somewhere a few ladders down there’s a huge gold door Muller gave us the key for.  There are eleven more ingots down there, don’t take mine!  Get your own!Muller sent us to get one ingot and a wooden box, he said they were extremely important.  I was leaving though, there was no way I was going back down to try to find him.Muller said we needed all twelve ingots, but that the box would duplicate things which were placed inside it so we should only get one.  We found the box ...The box worked like he said, but the ingots wouldn’t fit inside it.  I dropped it when I was attacked by the invisible demons, it was useless.  But I kept the ingot.Muller was just greedy.  He was probably planning to kill us all and take the gold for himself.  I would have.I had the key, but someone took it.  A group of people passed by, speaking Spanish, and their leader took it.I couldn’t understand what he was saying, but it seemed like he was expecting to find the key.You’ll find it easily enough, there’s only one way to go.  There are invisible demons on the level below this one, watch out.  I escaped them.  I ran.They had weapons even better than our machine pistols.  I couldn’t understand what they were saying.Their weapons fired faster and did more damage to those slime things.  I wish we’d had weapons like that.We didn’t meet them on the way down, but they were everywhere when I came back.  It was like everything was asleep and we slowly woke it up.The pyramid slowly awoke behind his, trapping us down here.One of the oozes turned a corner in front of me while I was running from a ghoul.  I ran into him before I knew it ...Everything.  The slimes, those flying fish, the demons.  They woke up behind us and waited for me to return.Running was my only defense down here, alone.I was leaving as fast as I could.  I wasn’t about to stay down here if I could help it ...I hate this place."
+  },
+  {
+    "level": 11,
+    "level_name": "A Plague of Demons",
+    "x": 16,
+    "y": 7,
+    "item": 106,
+    "type_addl": 18,
+    "scri_id": 146,
+    "dialogue": "Hey man, we all thought you were dead!  How’d you get down this far by yourself?  Never mind.  I’m glad to see you, but hurry up and catch the others.Why are you back?  Go down, get the bomb, and blow this place up!\n-\n-16\nWhat?  I didn’t understand.I don’t know anything about that, man.You know my name, come on.  I’m John, remember?  You’re joking, right?You shouldn’t joke with dead people, man, they’re in no mood for it.After we’d been wandering around here for a few minutes, we were attacked by these invisible creatures.  Two of them got me.I’ve got a pair, take mine.  It helps being able to see them, but the things are fast!  Be careful.We could see the creatures through the infra-red goggles, but it didn’t help when they attacked.  I got hurt bad, the guys stayed with me until I died.I was carrying one of the extraction beacons, but they took it after I died.  They left my broken M-16.Where’s yours?  I bet it was damaged when your ’chute didn’t open, never mind.   I wish I had mine to give you.Steven was carrying the bomb when they left.  But man, they’re in serious trouble.  You could see it.  They were losing hope.Everybody was getting tired— nobody expected to be fighting the things we’ve been meeting.  It’s too weird.  Hurry up and find them, they need you.Steven changed the code after you were lost, but I don’t know what it is.If anybody survives, I bet it’ll be Greg.  No offense, of course, it just seems like he could live through anything.Yeah, it’s ok.  Not like it bothers me much now."
+  },
+  {
+    "level": 12,
+    "level_name": "Beware of Low-Flying Nightmares",
+    "x": 22,
+    "y": 25,
+    "item": 368,
+    "type_addl": 12,
+    "scri_id": 140,
+    "dialogue": "All this gold surrounding me, and I’ve got no use for it.  Take it all, get it out of my sight.\nM\nSorry, I don’t understand what you mean.I don’t remember anything about that.I can’t understand you.I can’t remember it anymore.  Everything is slipping away.Every time I try, I can recall less and less of my life in Germany.  It’s frightening.My family lived in Prague, Germany.Walter shot me.  You should have seen his eyes when he saw the gold.  I knew he would try to leave without us, I just didn’t think he’d kill me.We’d already found the cedar box, and he wanted it all for himself.  I hope the creatures got him on the way out.  He couldn’t leave without the gemstone, anyway.Haven’t you seen them?  It takes them a while to wake up after a group passes through, but then they stay awake for years.I overheard Muller speaking of a strange gemstone which would open the door that locked us inside the pyramid.You know, the door on the ground floor.The cedar box was supposed to be able to duplicate any item placed inside it.I overheard Muller saying that he wouldn’t let us leave unless we were each carrying our weight in gold.Muller was a greedy bastard.This is all Muller’s fault.  I hate him."
+  },
+  {
+    "level": 14,
+    "level_name": "Happy Happy, Carnage Carnage",
+    "x": 16,
+    "y": 1,
+    "item": 274,
+    "type_addl": 16,
+    "scri_id": 144,
+    "dialogue": "I knew that someone would eventually follow us.  It’s been over fifty years, hasn’t it?  Is the war still going on?\nSorry, I can’t help you with that.I don’t understand what you mean.Try to be more clear, I don’t understand.People have told you about the cedar box?  It is an art object of great value, but is otherwise useless.No one should have told you about the vial!  Who said that?  Friedrich?  I’ll kill him ...Or maybe not.I gave Walter a gold key, and told him he was looking for a fortune in gold, but I was only appealing to his sense of greed.  There is no gold.I sent Walter to retrieve something, but it is a worthless archaeological artifact.  You’d have no interest in it.Nothing you’d be interested in.You probably already know how to use the pipes.  The doors at the base of the pyramid are almost always sealed and there’s no other way to get down.That rune painted on the floor will open the three doors in front of you and open the treasure room.  We killed all the monsters inside, there’s no danger.Friedrich was my second in command.  He was the only one who stood by me and at the end.  All the others tried to run.I thought the war might continue for a great length of time.  How are your people holding off the invasion of the States?How can I trust you that the war is over?  You must be losing, Yankee, or you would not lie like that.Make up your mind.  Is the second great war still being fought?I am Muller, these are the last of my men.We were sent by a university in Munich on an archaeological expedition.Our expedition was from Germany.We were attacked by many strange monsters, and my men panicked and we were killed.We didn’t expect to find strange beasts like we discovered here.  We were entirely unprepared.We would have brought bigger guns if we’d known what we’d find here.What war?  The second great war.There is a fortune in ancient relics behind these doors.  We almost retrieved them, but died after we had killed all the monsters guarding it.We were looking for several lost Mayan artifacts.I know nothing about the crystals.Hans was a fool.Joachim was lazy and insubordinate.I allowed the men to use their grenades early, and it didn’t leave us any for later, like we needed."
+  },
+  {
+    "level": 14,
+    "level_name": "Happy Happy, Carnage Carnage",
+    "x": 14,
+    "y": 2,
+    "item": 267,
+    "type_addl": 15,
+    "scri_id": 143,
+    "dialogue": "Be careful, don’t step on those arrows painted on the floor.  You don’t want to find out what’s behind those doors!\n1938mexicoSorry, I didn’t understand you.What?My name is Friedrich.Muller, our commander, opened those doors by stepping on that painted rune.  At least twenty monsters came pouring out.Somehow stepping on the rune caused the three doors on the far wall to open.They killed us all.  The last four members of the expedition, unless Walter and whoever went with him survived.Who would have thought there was someplace on Earth like this ...We were searching the pyramid and it’s dungeons for what Muller described to me as “a small glass vial of immense power.”He wouldn’t want me to tell you this, but he was convinced that it contained the essence of an imprisoned demon.If it was ever released, it would cause destruction on a massive scale.  Muller wanted to use it for the war, of course.  It was all nonsense.Muller was always thinking about the war, and about the glory he would win for the Fatherland.Muller gave Walter a gold key and sent him to recover a large amount of gold and a strange wooden box.The box was made of cedar.  Muller didn’t tell me what it was supposed to do, or what it had to do with the gold.Muller maintained that there was some reason we needed the gold— other than his greed— but I never quite believed him.Germany, of course.  Sometimes I wonder what happened after the war was started.  It was 1938 when we came to Mexico.It was 1938 when we came to Mexico.I was Muller’s first officer on this expedition.  He revealed few of his plans to me, however."
+  },
+  {
+    "level": 14,
+    "level_name": "Happy Happy, Carnage Carnage",
+    "x": 12,
+    "y": 3,
+    "item": 279,
+    "type_addl": 14,
+    "scri_id": 142,
+    "dialogue": "No, no!— NO!   Keep them away from me.  Please!\nDon’t let them get me again, it was horrible.  Please!Don’t let them out, please, PLEASE!  Promise me you won’t let them out!  You’re going to let them out, I can tell ...Go ahead, open them!I was hiding in this corner when Muller died.  This was all his fault."
+  },
+  {
+    "level": 14,
+    "level_name": "Happy Happy, Carnage Carnage",
+    "x": 18,
+    "y": 3,
+    "item": 261,
+    "type_addl": 17,
+    "scri_id": 145,
+    "dialogue": "Don’t open those doors, leave now!  Leave while you still can!\n-41\nHurry, leave now!  Stop talking to me.Get out of here, now!  Run!My name is Thomas.He’s dead.  They’re all dead.  Muller should have turned back long before there were only four of us left.  We all wanted him to.Do you need one?  They’re all over this room, but we’ve used most of the ammunition, sorry.Muller hardly even warned us before he opened the doors.  I think he knew what was going to happen, which makes him even more stupid.Muller stepped on that rune in front of the center door.  It killed us all.The rune opens all three doors, and even with one person with a machine pistol covering each door it was hopeless.All kinds of monsters.  Those ghastly pale humanoids, the flying beasts, the slimes.  It was too much.  We only killed a few.There are hundreds of monsters in there, and they come swarming out and surround you.  There’s no way to kill them all!Especially when using the MP-41, you can run out of ammunition really quick in this place."
+  },
+  {
+    "level": 14,
+    "level_name": "Happy Happy, Carnage Carnage",
+    "x": 14,
+    "y": 18,
+    "item": 271,
+    "type_addl": 13,
+    "scri_id": 141,
+    "dialogue": "They never came back.  Muller never brought any of them back.  They’re all dead, even Muller.\n-\n-41\nYou don’t make any sense.I don’t understand.The man covering my back bolted when we were attacked.  One of those flying gas-filled monsters hit me from behind.I spun around and pushed my MP-41 into it’s squishy forehead and fired until it exploded.  The concussion killed me.I never had a name.Muller thought he knew everything about this place, but I guess he was wrong.  I guess he died for it, too.I hate it, I hate it.All the people I came down here with.  We all wanted to leave, a long time before we reached this spot, but Muller dragged us on.Everybody who left after I died had an MP-41.  If you want one, just look for their bodies.  They never came back, so they’re rotting around here somewhere ...And they all deserve it, especially Muller."
+  },
+  {
+    "level": 15,
+    "level_name": "Need a Light?",
+    "x": 22,
+    "y": 20,
+    "item": 356,
+    "type_addl": 19,
+    "scri_id": 147,
+    "dialogue": "We gave you up for dead after the drop, I’m glad you made it.  I wish I could help you.\nI didn’t understand what you said.I don’t know anything about that.Say that again?I’d rather be in Bosnia, or even Somalia, rather than be dead at the bottom of this hole.Ok, ok.  Bad jokeThis mission started out bad and only got worse.  We had a horrible getting this far down, and it only gets worse.This is Ed, who do I look like?  Sorry, I guess it might be sort of hard to tell.I accidentally triggered one of the doors after we came down the ladder.  One of those green things cooked me.  The guys carried me here.An unpleasant sensation, I can assure you.Man, I hate the doors in this place.  Half of them don’t open, but the half that does open makes you wish they’d all stay shut.Yeah, one of those killed me.  I’ll never see Anna again.  Promise me you’ll call her when you get back ...Don’t joke with me, man, please call her.Ok.  That makes me feel better.  You’ve got to make it out, now.  Don’t forget.Steven was furious after your ’chute didn’t open.  It set the tone for the whole mission.I don’t remember what happened to John.  I’m starting to forget lots of things.About ten minutes after everybody left, I saw Greg come running through here.  He was carrying the bomb.I don’t know what happened to him, or most of the others for that matter.The team had all three beacons when they left me here.  I don’t know where they are now.We lost John a few hours before I died, and that left Steven, Greg, Jason, Darren and Sean.  Greg was the only one I ever saw again.I’m sort of incapacitated or I’d help, I mean.That is, dead.You remember the mission, don’t you?  Don’t mess with me, man ..."
+  },
+  {
+    "level": 15,
+    "level_name": "Need a Light?",
+    "x": 2,
+    "y": 23,
+    "item": 372,
+    "type_addl": 23,
+    "scri_id": 151,
+    "dialogue": "Wow, we all thought you were dead.  It’s a good thing you made it, you’re probably the last hope now.Come on, get moving.  You’ve got to find Greg and the bomb and bring this whole place down.  Don’t worry about us.\nI don’t understand what you mean.Sorry, say that again?I can’t help you with that.I’m Steven.  If I weren’t dead I’d be insulted that you didn’t recognize me.You’ll see soon enough, I can’t really describe what happened.There’s this huge blue creature around the corner, watch out.  I was the first one to get burned.  I’m glad we left Greg outside the door.I’ve got a beacon, and I think it survived the fire.  I hope it still works.Greg was carrying the bomb when he got separated from us by that sliding door, we tried to stop it from closing but it was too strong.  Find him, he needs your help.Thanks for reminding me, I almost forgot.  We changed the first three digits of the code from ‘287’ to ‘658’ because you were separated from us.We lost john a day ago when we were attacked by these invisible monsters.Ed is somewhere down the corridor behind me, I heard him die right after I did."
+  },
+  {
+    "level": 15,
+    "level_name": "Need a Light?",
+    "x": 5,
+    "y": 24,
+    "item": 362,
+    "type_addl": 22,
+    "scri_id": 150,
+    "dialogue": "Flames, I see flames everywhere.\nMy name doesn’t matter anymore.Of course I’m jason, man.That huge, blue grinning thing torched us all.We never stopped firing at it.  Back up around a corner, fire, back up, fire.  It’s gotta be hurting.  You can kill it.We saw a little blood, our bullets were hurting it— but it didn’t seem to care.I’m coding this script in the afternoon of July 22nd, do you think we’ll make MacWorld on August 3rd?I don’t know if you can kill it, man, but try as hard as you can."
+  },
+  {
+    "level": 15,
+    "level_name": "Need a Light?",
+    "x": 8,
+    "y": 25,
+    "item": 360,
+    "type_addl": 20,
+    "scri_id": 148,
+    "dialogue": "I ran, I ran all the way back here.  But it followed me.  It killed everyone else.\n-79infra-redinfraredI don’t know anything about that anymore.I don’t understand ...My name doesn’t matter.  Yours won’t either, in a moment.Shhh!  That’s my name, but don’t tell him!It, IT.  All I see are flames.  You’ll find out fast enough, you’re locked in here too, just like we were.... and the only way to leave is through that thing— good luck!Burning and searing.  All I remember is smoke and fire.Everyone’s dead.  Greg, Steven, Ed.  You too.  You shouldn’t have come down here.  You’ll never leave now.Maybe I didn’t see Greg die, but he died somewhere else.  Everyone did.Forget that, man!  Try to get out of here, maybe you can make it, who knows.  But forget that!"
+  },
+  {
+    "level": 15,
+    "level_name": "Need a Light?",
+    "x": 7,
+    "y": 29,
+    "item": 349,
+    "type_addl": 21,
+    "scri_id": 149,
+    "dialogue": "Beware the flames!  You need to find Greg.  How’d you get down the ladder at the base of the pyramid?  Those doors shut behind us.\nWhat?  I don’t understand.Say again?Sorry, man, you’re not making any sense.I’m Sean, man, who do you think I am?  Are you sure you’re ok?We all died by fire.  Darren was the last, but after I died it chased him around the corner into that dead end.He lost it as soon as he saw the thing, and I don’t think he was fully aware of what was happening even when he died.You’ll find it soon enough.You’ll find the flames soon enough.I hope you can find an intact beacon, or you’re really toast.Greg has the bomb.  You need to find him and complete the mission.  Steven changed the code, I don’t know what it is.Yes, the mission.  Don’t tell me you don’t remember the mission ...Steve was the first one to die.  You’ll find his body up the corridor a bit.  Be careful.That thing will probably attack you when you get close to Steven’s body, so watch out.Ed bought it as soon as we reached this level.  It saved him the trouble of dying here, with the rest of us.John died before we realized we needed the infra-red goggles to see those snakes a few levels ago.The first few doors we walked through in this pyramid sealed behind us, and we had no way to go but down."
+  },
+  {
+    "level": 17,
+    "level_name": "Watch Your Step",
+    "x": 29,
+    "y": 2,
+    "item": 296,
+    "type_addl": 24,
+    "scri_id": 152,
+    "dialogue": "Hey, welcome back from the dead.  I was wondering why you weren’t around when I showed up.  Is everybody else dead?  I thought so.Did you plant the bomb already?  Did you even find it?  There isn’t much time, man, move it!\n-16\nI don’t understand what you mean.You’re not making any sense.Say that again?Man, I hate those zombie things.  You’ve got to nail them as soon as they appear to stop them from causing an earthquake.  They can use that power even when they can’t see you, so watch out!This is Greg, dude.  I guess maybe it’s hard to recognize me in this state, that’s ok.Those spider things were all around me, but I didn’t stop firing until I ran out of bullets.  Then something hit me like a dish washer— it must have been one of those zombies.Yeah, like a dish washer dropped from three stories or something.  I don’t even remember getting hit before that.  I was spanking them until I died.Man, I’ll never get to play Street Fighter again.  But Jason always beat me after I got that big bruise on my brain, so I guess it’s no big loss.Spiders.  They’re everywhere.  Can’t stand ’em.I don’t have a beacon.  I got cut off from the rest of the group two levels ago, and they had all three.  I hope you found one, you’ll need it.I hid the bomb inside one of those exploding pods directly south of here, right before I died.  Somehow it just enveloped it, without blowing up.I think the pods are triggered by heat, which is why the bomb— or the monsters for that matter— don’t set them off.Steven changed the code after you were lost, but I never knew what it was.  Did you find Steven?  Did he tell you?I think everybody’s dead.  You’re the last hope.  You’ve got to find the bomb and detonate it.Ninjas, too.  They’re everywhere."
+  },
+  {
+    "level": 18,
+    "level_name": "I’d Rather Be Surfing",
+    "x": 30,
+    "y": 3,
+    "item": 137,
+    "type_addl": 25,
+    "scri_id": 153,
+    "dialogue": "I don’t understand how you can still be alive, I just don’t understand ...I know what’s going to happen now: you’re going to suffocate here, just like me.  The doors won’t open for hours.\nWhat?I don’t understand you.Somehow my companions got through, before the door shut, but I was trapped inside.I was the last in line of six men, and the door slammed shut right as I was about to pass out of the room, trapping me.  They tried, I heard them, but there was no way to open the door.My name is Pedro.I was trapped here, like you, and suffocated.  It was very painful.  You should consider ... the alternatives.Long after you’ve used up all the oxygen in this tiny room, the doors will open.  Just like they did after I died.  They will open and wait for someone else ...I can only remember Juan, who was slowly dying of a snakebite in the jungle, Javier and Carlos.Juan got bitten by a snake none of us recognized in the jungle, a day before we found the pyramid.  He slowly got worse and worse, but he outlived me ...Javier was the leader of our little group.  It was his idea to come here.I didn’t know Carlos very well.I’ll leave that up to your imagination."
+  },
+  {
+    "level": 19,
+    "level_name": "Warning: Earthquake Zone",
+    "x": 29,
+    "y": 8,
+    "item": 132,
+    "type_addl": 26,
+    "scri_id": 154,
+    "dialogue": "Who are you?  What’s happening?  I thought I was dead— are you just a dream?  I haven’t seen a living person in years.Welcome back.  Come back as often as you like.  I’m so lonely.\nI don’t understand what you mean.You’re not making sense.Javier was obsessed with power.  From what he said, I gathered the type he was looking for was of the destructive sort.I don’t know why, but the creatures weren’t in the least bit interested in me but they fell on my companions and devoured them.  Maybe it’s because I was weak with poison and hardly moved.I think my name is Juan.  I can’t remember any of my companions names.Pedro was trapped behind a door on a higher level.  We tried to get him out, but we couldn’t move the door, so we left.  I wonder what happened ...He ran past the monsters and around a corner.  I don’t know if he made it or not.I was poisoned by a venomous snake in the jungle.  Down here, two days later, I suddenly became weak and collapsed.  I died quickly.I was part of a six-man group looking for some sort of enchanted bottle— I never really believed it.  But we were ambushed here, and all died.These green, humanoid slimes attacked us, and devoured everyone but myself.  For some reason they completely ignored me, and took my friends.They killed and then absorbed everyone, until only their weapons were left.  Maybe Javier and Carlos escaped, but I doubt it.  I ran back here and hid.You should be able to find their weapons, if someone else hasn’t taking them.  It’s nearby.It was horrible, watching their bodies being pushed into those green thing’s chest and disappear.I don’t know what kind of snake it was that got me in the jungle.  It was a very slow venom, finally becoming potent right before our group was ambushed.Sometimes I have the most horrible dreams.  Or maybe they are real.  Do dead men dream?It seems like forever since my companions and I passed through here.It was all Javier’s idea.  He said the bottle held great power, and that we would find much gold on the way.We didn’t find any gold, and I doubt Javier ever found his bottle.  We were too greedy.Greed is why I died."
+  },
+  {
+    "level": 23,
+    "level_name": "Where Only Fools Dare Tread",
+    "x": 1,
+    "y": 28,
+    "item": 307,
+    "type_addl": 200,
+    "scri_id": 328,
+    "dialogue": null
+  },
+  {
+    "level": 23,
+    "level_name": "Where Only Fools Dare Tread",
+    "x": 2,
+    "y": 29,
+    "item": 60,
+    "type_addl": 27,
+    "scri_id": 155,
+    "dialogue": "Uncorking that vial was the biggest mistake I ever made in my life.\nI don’t understand.You’re not making any sense.What did you say?My name is Javier.  That’s Carlos, over there without his head.I couldn’t wait to find out what was inside.  The old man told me it was powerful, I just didn’t understand what he meant.He was a friend’s grandfather.  When he was young, a group of Germans camped near his village and he spied on them ...They were looking for this vial that killed me.  He stole their maps and copied them.  He gave them to us forty years later.The maps I had have rotted by now.  They were mostly useless, anyway, but they told us the only way to escape this place.The old man said it contained the trapped spirit of some powerful being.  I didn’t know how right he was.Carlos never really wanted to come, I’m totally responsible for his death.  And the others, too.All six of them.  And they’re all dead because of me and this stupid, useless bottle.We took the gold key from a dead body, far above us, but we never found the gold door which it opened.Juan and Pedro both died far above us.  It’s all my fault.The German’s notes said that the only way to open the exit at the base of the pyramid was with an alien gemstone.This stone is at the bottom of the pyramid’s dungeons, supposedly.  We never found it.All I can do is think that I am responsible for their deaths.I know something appeared, when I opened the bottle.  But I don’t know what it was.  I hardly got a glimpse of it.We wondered why the old man never followed the Germans himself.  Now I guess we know."
+  }
+]

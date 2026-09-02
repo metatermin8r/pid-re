@@ -1,0 +1,33 @@
+Phase 0 result table  —  movement rule {32}
+reachable = arrival + Type 9 + door fixed-point; components on non-Void
+
+ Lv name                                   nv reach comp  item corp trig
+  0 Ground Floor                          214   214    1   116    1    3
+  1 Never Stop Firing                     478   478    1   175    0    7
+  2 Lock&Load                             500   500    1   228    2   19
+  3 They May Be Slow…                     456   449    8   215    2    0
+  4 …But They’re Hungry                   504   503    4   240    1    2
+  5 Evil Undead Phantasms Must Die!       563   563    2   159    1    0
+  6 Ascension                             195   195    1   109    1   17
+  7 Wrong Way!                            515   515    1   313    1   29
+  8 Welcome, Tasty Primate                459   459    1   316    1    2
+  9 We Can See In The Dark… Can You?      415   415    1   289    1    0
+ 10 Feel the Power                        574   574    1   350    1    0
+ 11 A Plague of Demons                    537   537    1   330    1   10
+ 12 Beware of Low-Flying Nightmares       521   521    1   314    1   16
+ 13 The Labyrinth                         525   525    1   294    0    0
+ 14 Happy Happy, Carnage Carnage          446   446    1   275    5    8
+ 15 Need a Light?                         505   505    1   300    5   17
+ 16 Lasciate Ogne Speranza, Voi Ch’Intrate  472   472    1   296    0    4
+ 17 Watch Your Step                       496   496    1   247    1   52
+ 18 I’d Rather Be Surfing                 521   521    1   240    1    8
+ 19 Warning: Earthquake Zone              172   172    1   138    1   31
+ 20 Don’t Get Poisoned!                   437   437    5   187    0    0
+ 21 Please Excuse Our Dust                529   529    4   207    0    0
+ 22 But Wait!— That’s Not All!            496   496    2   255    0   16
+ 23 Where Only Fools Dare Tread           519   519    5   258    2    0
+ 24 Ok, Who Else Wants Some?              181    33   34    15    0    0
+
+Ground Floor vs Earhart T:
+  nv=214 reach=214 bbox=(4, 1, 28, 30) stem_narrow=True bar_wide=True
+  landmarks={'stem_save': True, 'nw_ladder': True, 'ne_ladder': True, 'sw_down': True, 'se_feel': True}

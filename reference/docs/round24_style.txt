@@ -1,0 +1,209 @@
+Round 24 — wall semantics by construction style
+Direction N/W, slots (0,1). Arrival seeds + Type 9 + door fixed-point.
+
+(i) sector type parsing unchanged: violations=0  wall-type violations=0  (both must be 0)
+
+========== (a) per-level style + 32/33 component shatter ==========
+ Lv name                                   nv 32/33  frac short geom wallC  maxW
+  0 Ground Floor                          214    31 0.072    94    1     1   214
+  1 Never Stop Firing                     478    63 0.066   314    1     1   478
+  2 Lock&Load                             500    56 0.056   246    1     1   500
+  3 They May Be Slow…                     456    83 0.091   242    1     8   427
+  4 …But They’re Hungry                   504    93 0.092   257    2     4   247
+  5 Evil Undead Phantasms Must Die!       563    61 0.054   380    1     2   560
+  6 Ascension                             195    23 0.059    90    1     1   195
+  7 Wrong Way!                            515   623 0.605     0    1   163   169
+  8 Welcome, Tasty Primate                459   665 0.724     0    1   223    25
+  9 We Can See In The Dark… Can You?      415   739 0.890     0    1   324     7
+ 10 Feel the Power                        574   637 0.555     0    1   140    43
+ 11 A Plague of Demons                    537   685 0.638     0    1   203    55
+ 12 Beware of Low-Flying Nightmares       521   665 0.638     0    1   189    35
+ 13 The Labyrinth                         525   639 0.609     0    1   134   202
+ 14 Happy Happy, Carnage Carnage          446   597 0.669     0    1   175   201
+ 15 Need a Light?                         505   395 0.391     0    1    73   390
+ 16 Lasciate Ogne Speranza, Voi Ch’Intrate  472    11 0.012   305    1     1   472
+ 17 Watch Your Step                       496     2 0.002   332    1     1   496
+ 18 I’d Rather Be Surfing                 521     9 0.009   353    1     1   521
+ 19 Warning: Earthquake Zone              172     0 0.000   102    1     1   172
+ 20 Don’t Get Poisoned!                   437     2 0.002   336    5     5   252
+ 21 Please Excuse Our Dust                529     0 0.000   250    4     4   260
+ 22 But Wait!— That’s Not All!            496     0 0.000   311    2     2   255
+ 23 Where Only Fools Dare Tread           519     0 0.000   349    5     5   435
+ 24 Ok, Who Else Wants Some?              181    24 0.066   153   34    34    33
+
+  zero short walls: [7, 8, 9, 10, 11, 12, 13, 14, 15]
+  has short walls:  [0, 1, 2, 3, 4, 5, 6, 16, 17, 18, 19, 20, 21, 22, 23, 24]
+  split is 7-15 (plus L24 has shorts; L13 has zero shorts).
+
+========== (b) type 32 vs 33 on edges 0/1 (non-Void) ==========
+ Lv name                                     32     33  33frac
+  0 Ground Floor                             31      0   0.000
+  1 Never Stop Firing                        63      0   0.000
+  2 Lock&Load                                56      0   0.000
+  3 They May Be Slow…                        83      0   0.000
+  4 …But They’re Hungry                      93      0   0.000
+  5 Evil Undead Phantasms Must Die!          61      0   0.000
+  6 Ascension                                23      0   0.000
+  7 Wrong Way!                                0    623   1.000
+  8 Welcome, Tasty Primate                    0    665   1.000
+  9 We Can See In The Dark… Can You?          0    739   1.000
+ 10 Feel the Power                            0    637   1.000
+ 11 A Plague of Demons                        0    685   1.000
+ 12 Beware of Low-Flying Nightmares           0    665   1.000
+ 13 The Labyrinth                             0    639   1.000
+ 14 Happy Happy, Carnage Carnage              0    597   1.000
+ 15 Need a Light?                             0    395   1.000
+ 16 Lasciate Ogne Speranza, Voi Ch’Intrate     11      0   0.000
+ 17 Watch Your Step                           2      0   0.000
+ 18 I’d Rather Be Surfing                     9      0   0.000
+ 19 Warning: Earthquake Zone                  0      0   0.000
+ 20 Don’t Get Poisoned!                       2      0   0.000
+ 21 Please Excuse Our Dust                    0      0   0.000
+ 22 But Wait!— That’s Not All!                0      0   0.000
+ 23 Where Only Fools Dare Tread               0      0   0.000
+ 24 Ok, Who Else Wants Some?                 24      0   0.000
+
+========== (e) texture distribution (edges 0/1, top values) ==========
+  L00 0:[0×303]  32:[11×10,10×6,0×6,16×6]  64:[2×10,1×9,20×4,21×1]  96:[2×9,1×6,18×2,20×2]  128:[3×40,13×3,8×1]
+  L01 0:[0×579]  32:[10×19,11×15,0×13,16×8]  64:[2×30,1×27,21×18,20×16]  96:[1×37,2×34,21×13,20×11]  128:[3×94,13×5,8×1]
+  L02 0:[0×698]  32:[11×16,0×13,10×12,16×9]  64:[2×18,1×15,20×6,19×4]  96:[1×19,2×19,20×7,21×3]  128:[3×125,13×11]
+  L03 0:[0×587]  32:[0×24,10×21,11×19,16×6]  64:[1×20,21×19,2×17,20×17]  96:[2×24,21×20,1×20,20×19]  128:[3×59]
+  L04 0:[0×658]  32:[11×23,10×20,0×18,5×9]  64:[1×32,2×27,21×10,20×8]  96:[2×27,1×20,19×12,20×9]  128:[3×64,8×10,13×2]
+  L05 0:[0×685]  32:[0×15,10×15,11×13,16×7]  64:[1×15,2×12,19×8,21×5]  96:[1×15,2×11,19×8,21×7]  128:[3×241,8×28]
+  L06 0:[0×277]  32:[0×10,11×4,10×3,16×2]  64:[2×5,1×5,20×3,18×1]  96:[2×6,1×4,20×1,18×1]  128:[3×52,13×8]
+  L07 0:[0×407]  33:[127×266,4×102,3×73,2×73]
+  L08 0:[0×253]  33:[127×316,3×101,2×101,4×81]
+  L09 0:[0×91]  33:[127×342,4×149,3×103,2×103]
+  L10 0:[0×511]  33:[127×352,0×141,3×72,2×72]
+  L11 0:[0×389]  33:[127×353,0×110,3×91,2×91]
+  L12 0:[0×377]  33:[127×285,4×232,3×52,2×52]
+  L13 1:[1×218,0×193]  33:[127×180,1×105,3×103,2×103]
+  L14 0:[0×295]  33:[127×295,4×99,3×59,2×59]
+  L15 0:[0×615]  33:[127×136,4×79,1×50,0×44]
+  L16 0:[0×628]  32:[128×11]  64:[130×48,129×38]  96:[129×48,130×38]  128:[131×133]
+  L17 0:[0×658]  32:[128×2]  64:[129×44,130×43]  96:[130×44,129×43]  128:[131×158]
+  L18 0:[0×680]  32:[128×9]  64:[129×49,130×30]  96:[130×49,129×30]  128:[131×188,140×7]
+  L19 0:[0×242]  64:[129×15,130×12]  96:[130×15,129×12]  128:[131×41,140×7]
+  L20 0:[0×536]  32:[128×2]  64:[130×66,129×32]  96:[129×66,130×32]  128:[131×140]
+  L21 0:[0×808]  64:[129×21,130×21]  96:[130×21,129×21]  128:[131×166]
+  L22 0:[0×681]  64:[129×40,130×39]  96:[130×40,129×39]  128:[131×142,140×11]
+  L23 0:[0×689]  64:[130×40,129×34]  96:[129×40,130×34]  128:[131×201]
+  L24 0:[0×185]  32:[128×24]  64:[130×21,129×15]  96:[129×22,130×14]  128:[131×81]
+
+========== (c/d/e/f) blocking-rule scan ==========
+rule                                        reach  sealed  maxC  maxX  gates
+  enum{}                                    11082     148    34     0  L13=525 T5
+  enum{128}                                 11082     148    34     0  L13=525 T5
+  enum{96}                                  11082     148    34     0  L13=525 T5
+  enum{96,128}                              11082     148    34     0  L13=525 T5
+  enum{64}                                  11082     148    34     0  L13=525 T5
+  enum{64,128}                              11082     148    34     0  L13=525 T5
+  enum{64,96}                               11082     148    34     0  L13=525 T5
+  enum{64,96,128}                           11082     148    34     0  L13=525 T5
+  enum{33}                                   7897    3333   324   323  T5 shatter[7, 8, 9, 10, 11, 12, 13, 14, 15]
+  enum{33,128}                               7897    3333   324   323  T5 shatter[7, 8, 9, 10, 11, 12, 13, 14, 15]
+  enum{33,96}                                7897    3333   324   323  T5 shatter[7, 8, 9, 10, 11, 12, 13, 14, 15]
+  enum{33,96,128}                            7897    3333   324   323  T5 shatter[7, 8, 9, 10, 11, 12, 13, 14, 15]
+  enum{33,64}                                7897    3333   324   323  T5 shatter[7, 8, 9, 10, 11, 12, 13, 14, 15]
+  enum{33,64,128}                            7897    3333   324   323  T5 shatter[7, 8, 9, 10, 11, 12, 13, 14, 15]
+  enum{33,64,96}                             7897    3333   324   323  T5 shatter[7, 8, 9, 10, 11, 12, 13, 14, 15]
+  enum{33,64,96,128}                         7897    3333   324   323  T5 shatter[7, 8, 9, 10, 11, 12, 13, 14, 15]
+  enum{32}                                  11074     156    34     7  L13=525 shatter[3]
+  enum{32,128}                              11074     156    34     7  L13=525 shatter[3]
+  enum{32,96}                               11074     156    34     7  L13=525 shatter[3]
+  enum{32,96,128}                           11074     156    34     7  L13=525 shatter[3]
+  enum{32,64}                               11074     156    34     7  L13=525 shatter[3]
+  enum{32,64,128}                           11074     156    34     7  L13=525 shatter[3]
+  enum{32,64,96}                            11074     156    34     7  L13=525 shatter[3]
+  enum{32,64,96,128}                        11074     156    34     7  L13=525 shatter[3]
+  enum{32,33}                                7889    3341   324   323  shatter[3, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+  enum{32,33,128}                            7889    3341   324   323  shatter[3, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+  enum{32,33,96}                             7889    3341   324   323  shatter[3, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+  enum{32,33,96,128}                         7889    3341   324   323  shatter[3, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+  enum{32,33,64}                             7889    3341   324   323  shatter[3, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+  enum{32,33,64,128}                         7889    3341   324   323  shatter[3, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+  enum{32,33,64,96}                          7889    3341   324   323  shatter[3, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+  enum{32,33,64,96,128}                      7889    3341   324   323  shatter[3, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+  33+tex127 passable; 32/33 else block      11000     230    34     7  L13=525 shatter[3]
+  33+tex127 passable; any nonzero blocks    10476     754   347   346  L13=1 shatter[3, 13]
+  bit1 (0x01)                                7696    3534   525   524  L13=1 T5 shatter[7, 8, 9, 10, 11, 12, 13, 14, 15]
+  bit32 (0x20)                               7889    3341   324   323  shatter[3, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+  bit64 (0x40)                              11082     148    34     0  L13=525 T5
+  bit128 (0x80)                             11082     148    34     0  L13=525 T5
+
+  gate-passers: 0
+  NO rule passed every gate. Reporting fewest-sealed anyway.
+
+========== (h) winner ==========
+  enum{}  sealed=148  max_comps=34  max_extra=0
+  gates: GF=True T=True L13=False (525) T5=False
+ Lv name                                   nv reach sealed geomC wallC  maxW extra
+  0 Ground Floor                          214   214      0     1     1   214     0
+  1 Never Stop Firing                     478   478      0     1     1   478     0
+  2 Lock&Load                             500   500      0     1     1   500     0
+  3 They May Be Slow…                     456   456      0     1     1   456     0
+  4 …But They’re Hungry                   504   504      0     2     2   263     0
+  5 Evil Undead Phantasms Must Die!       563   563      0     1     1   563     0
+  6 Ascension                             195   195      0     1     1   195     0
+  7 Wrong Way!                            515   515      0     1     1   515     0
+  8 Welcome, Tasty Primate                459   459      0     1     1   459     0
+  9 We Can See In The Dark… Can You?      415   415      0     1     1   415     0
+ 10 Feel the Power                        574   574      0     1     1   574     0
+ 11 A Plague of Demons                    537   537      0     1     1   537     0
+ 12 Beware of Low-Flying Nightmares       521   521      0     1     1   521     0
+ 13 The Labyrinth                         525   525      0     1     1   525     0
+ 14 Happy Happy, Carnage Carnage          446   446      0     1     1   446     0
+ 15 Need a Light?                         505   505      0     1     1   505     0
+ 16 Lasciate Ogne Speranza, Voi Ch’Intrate  472   472      0     1     1   472     0
+ 17 Watch Your Step                       496   496      0     1     1   496     0
+ 18 I’d Rather Be Surfing                 521   521      0     1     1   521     0
+ 19 Warning: Earthquake Zone              172   172      0     1     1   172     0
+ 20 Don’t Get Poisoned!                   437   437      0     5     5   252     0
+ 21 Please Excuse Our Dust                529   529      0     4     4   260     0
+ 22 But Wait!— That’s Not All!            496   496      0     2     2   255     0
+ 23 Where Only Fools Dare Tread           519   519      0     5     5   435     0
+ 24 Ok, Who Else Wants Some?              181    33    148    34    34    33     0
+
+========== headline: wall-aware component counts ==========
+ Lv name                                  32/33 C winner C  geom C
+  0 Ground Floor                                1        1       1
+  1 Never Stop Firing                           1        1       1
+  2 Lock&Load                                   1        1       1
+  3 They May Be Slow…                           8        1       1
+  4 …But They’re Hungry                         4        2       2
+  5 Evil Undead Phantasms Must Die!             2        1       1
+  6 Ascension                                   1        1       1
+  7 Wrong Way!                                163        1       1
+  8 Welcome, Tasty Primate                    223        1       1
+  9 We Can See In The Dark… Can You?          324        1       1
+ 10 Feel the Power                            140        1       1
+ 11 A Plague of Demons                        203        1       1
+ 12 Beware of Low-Flying Nightmares           189        1       1
+ 13 The Labyrinth                             134        1       1
+ 14 Happy Happy, Carnage Carnage              175        1       1
+ 15 Need a Light?                              73        1       1
+ 16 Lasciate Ogne Speranza, Voi Ch’Intrate        1        1       1
+ 17 Watch Your Step                             1        1       1
+ 18 I’d Rather Be Surfing                       1        1       1
+ 19 Warning: Earthquake Zone                    1        1       1
+ 20 Don’t Get Poisoned!                         5        5       5
+ 21 Please Excuse Our Dust                      4        4       4
+ 22 But Wait!— That’s Not All!                  2        2       2
+ 23 Where Only Fools Dare Tread                 5        5       5
+ 24 Ok, Who Else Wants Some?                   34       34      34
+
+========== named tests (c, inverse, tex127) per-level sealed ==========
+
+--- enum{32} sealed=156 L9c=1 L10c=1 ---
+  L9 415/415  L10 574/574  GF 214/214  L13 525
+
+--- 33+tex127 passable; 32/33 else block sealed=230 L9c=1 L10c=1 ---
+  L9 415/415  L10 574/574  GF 214/214  L13 525
+
+--- enum{33} sealed=3333 L9c=324 L10c=140 ---
+  L9 12/415  L10 4/574  GF 214/214  L13 202
+
+--- enum{32,33} sealed=3341 L9c=324 L10c=140 ---
+  L9 12/415  L10 4/574  GF 214/214  L13 202
+
+  wrote L00_style.png … L24_style.png under 'enum{}'

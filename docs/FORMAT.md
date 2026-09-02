@@ -1,13 +1,16 @@
-# Pathways Into Darkness — file format notes
+# Pathways Into Darkness — file format specification
 
-Canonical *observed* layout. No offset, field size, or type belongs here
-until it has been seen in bytes. Hypotheses go in a clearly marked section
-and are moved here only after a parser assertion passes.
+Phase 0 standalone spec. Every offset, field size, and type here has been
+seen in the v2.0 bytes (or is marked as still open). Hypotheses stay in
+**Open questions**. Dead ends stay in **Disproven**.
 
-Kaitai specs in `formats/` are the machine-readable counterpart. Update
-this file in the same commit as any parser change.
+Kaitai: `formats/pid_level.ksy`. Hand parser: `tools/pid_level.py`.
+Generated parsers: `tools/generated/pid_maps.py` (Python) and
+`tools/generated/PidMaps.cs` (C#, Unity). Unity import JSON:
+`tools/export_level.py`.
 
 Per-file type/ID dumps: `reference/` (see `reference/INDEX.md`).
+The narrative of how this was solved is `docs/JOURNAL.md`.
 
 ---
 
@@ -92,7 +95,14 @@ exists in the local docs zip; not copied here.
 
 | Build | Types |
 |---|---|
-| Demo / v2.0 `Sounds.rsrc` | `snd ` only |
+| Demo `Sounds.rsrc` | `snd ` ×32 |
+| v2.0 `Sounds.rsrc` | `snd ` ×86 |
+
+v2.0: all 86 parse as Sound Manager **format 1**, `stdSH`, 8-bit mono PCM.
+None are format 2, `extSH`, or compressed (`cmpSH`). Sample rates are the
+classic Mac clocks: 72 at 11127.3 Hz, 14 at 22254.5–22257.0 Hz. Durations
+0.040 s (10630) to 4.739 s (10720). Extracted to `reference/sounds/snd_<id>.wav`
+by `tools/extract_sounds.py`. Report: `reference/docs/sounds.txt`.
 
 ### Maps (data fork)
 
@@ -108,7 +118,9 @@ files sits at `i * 0x41C2`, and both file sizes divide evenly by that
 stride. See `reference/full_dump/MAPS_STRINGS.md`.
 
 Machine-readable spec: `formats/pid_level.ksy`. Parser: `tools/pid_level.py`.
-Kaitai-generated Python: `tools/generated/pid_maps.py`.
+Kaitai-generated Python: `tools/generated/pid_maps.py`. Kaitai-generated
+C#: `tools/generated/PidMaps.cs` (namespace `Pid.Formats`; needs NuGet
+`KaitaiStruct.Runtime.CSharp`). JSON export: `tools/export_level.py`.
 
 Field knowledge comes from Petrich/Semmler (`PIDMapReader.h` / Torch,
 CD extras). Their **code** is not in this repo. Offsets below were
@@ -126,7 +138,7 @@ all 25 levels, 4 px/sector, origin 16, pitch 144).
 | 0x86 | i32be × 2 | `unknown1`. High words are 0; low words vary. Unknown. No runtime effect observed (Semmler / Torch). Not any tested checksum (u16 sum / XOR / byte-sum / CRC-16 CCITT / CRC-16 IBM). Deprioritised. |
 | 0x8E | i16be × 8 | `texture_list`. −1 = none. Low 12 bits + 128 = `.256` id. High 4 bits = variation 0–3 (all four occur). Slot 0 is always walls (192/193/194). Slots 5–7 are often −1. Slot 7 is **never** set. No slot maps to floor/ceiling resources 195–202. |
 | 0x9E | 15 × 8 | `door_list`: i16 x, y, direction (0–3), texture |
-| 0x116 | 20 × 8 | `level_change_list`: i16 type, level, x, y |
+| 0x116 | 20 × 8 | `level_change_list`: i16 type, dest level, dest x, y. `x,y` is the drop tile on the dest level, not the departure. |
 | 0x1B6 | 3 × 4 | `monster_list`: i16 type, frequency |
 | 0x1C2 | 1024 × 16 | `sector_list` |
 
@@ -136,8 +148,141 @@ at 0x84 is 0 for Ground Floor.
 `unknown1` is **not** uncleared name-slot garbage: the values change
 with the level.
 
-Level-change `type` 4 appears (But Wait → Ground Floor). The documented
-0–3 enum does not cover it.
+Level-change `type` 4 appears (But Wait → Ground Floor). The ksy enum
+stores it as `undocumented_4`; meaning is unknown. Unused slots are
+`type = -1`.
+
+Sector index is **row-major**: `i = y*32 + x`, x right, y down. Ground
+Floor under that rule is a T with the stem south, matching the
+published map. Transpose (`i = x*32 + y`) rotates the T onto its side
+(stem east) and is wrong. Confirmed by `reference/levels/L00_rowmajor.png`
+vs `L00_transposed.png`.
+
+### Sector wall model (six WallList slots)
+
+Each sector stores six `(u8 type, u8 texture)` pairs. Only the first
+two are walls. South and east faces are the north / west walls of the
+neighbouring sector. This is the stored-edge model, not four
+independent walls per tile.
+
+| Index | Petrich name | Role |
+|---|---|---|
+| 0 | `Wall_Y` | own north / −Y edge |
+| 1 | `Wall_X` | own west / −X edge |
+| 2 | `Corner_HighX_LowY` | corner. Never blocks. |
+| 3 | `Corner_LowX_LowY` | corner. Never blocks. |
+| 4 | `Corner_HighX_HighY` | corner. Never blocks. |
+| 5 | `Corner_LowX_HighY` | corner. Never blocks. |
+
+Petrich’s names are correct. Semmler’s Torch line “Wall X is top,
+Wall Y is left” is **transposed**: treating slot 1 as north and slot
+0 as west breaks Ground Floor (178 / 214 reachable; the T collapses).
+
+The assignment is not a naming preference. It was brute-forced over
+all 30 ordered slot pairs and all 4 direction conventions (N/W, S/E,
+N/E, S/W) on those pairs (`tools/round22_slots.py`,
+`tools/round23_dirs.py`). The only combination that keeps Ground
+Floor 214 / 214 as a T (stem south at x≈15–17, bar north at x=4–28),
+keeps L3 / L4 Type 5 secret closets sealed, and does not invent
+phantom corridors is **slots (0, 1) as N / W**.
+
+Census over all 25600 sectors:
+
+| Slot | types 32+33 | type 160 | other non-zero |
+|---|---|---|---|
+| 0 | 12205 | 0 | 1, 64, 96, 128 |
+| 1 | 12177 | 0 | 1, 64, 96, 128 |
+| 2–5 | **0** | 1807–1856 each | type 1 only (1024, L13) |
+
+Slots 2–5 never hold a movement wall. Using any of them as an “edge”
+is the same as having no barrier in that direction.
+
+### Movement rule
+
+`blocks_movement` is true only for wall type **32**. Everything else
+on an edge is either a drawn face or generator / decoration data.
+
+| Type | Name | Movement | Where it lives |
+|---|---|---|---|
+| 32 | `Wall` | **blocks** | edges 0 / 1 only |
+| 33 | `Wall_FancyCorners` | **draw-only** | edges 0 / 1 only |
+| 64 / 96 / 128 | short low / high / both | do not block | edges 0 / 1 |
+| 1 | `SwitchableWallCorner` | Labyrinth generator input, not a collider | L13 only: 207 + 204 on edges, **1024 on every corner slot** (all 4096 corner slots; unique in the file) |
+| 160 | `CutoffCorner` | decorative | slots 2–5 only |
+
+Type 32 and type 33 form a **hard partition by level**. No level
+mixes them on edges. That is an authoring-tool signature (two
+wall-placement modes), not two textures for one wall type.
+
+| Band | Levels | Edge solids | Short 64/96/128 | Theme |
+|---|---|---|---|---|
+| Surface / deep | 0–6, 16–24 | all **32** | used | ordinary masonry |
+| Mid-pyramid | 7–15 | all **33** | **zero** | crystal walls (`.256` 194) |
+
+Treating 33 as a collider shatters 7–15 (L9 → 324 components,
+largest 7; L10 → 140, largest 43). That is not authored sealing.
+Under `{32}`-only the arrival flood covers every non-Void tile on
+the playable floors except L3 / L4 Type 5 secret closets (real
+type-32 barriers). Extra components elsewhere are void-separated
+islands, designed traps (L20), or the L24 credit graphic — not
+shattered type-33 walls. L9 is 415 / 415, L10 is 574 / 574, stored
+L13 is 525 / 525. Report: `reference/docs/phase0_table.txt`. Final
+renders: `reference/levels/L00.png` … `L24.png`.
+
+**The Labyrinth (L13) gate is dropped.** The earlier “L13 = 202,
+corners boxed” target treated type 33 as solid. The stored maze is
+all-33, so under the real rule it opens to **525 / 525**. Its walls
+are not barriers in the data. Descriptions documents that the maze
+the player walks is generated at load; L13’s type-1
+`SwitchableWallCorner` on all 4096 corner slots (plus 411 edge hits)
+is unique in the game and is the presumed generator input. Semmler:
+“used on The Labyrinth to change the direction of walls.” The
+stored 525-tile blob is the template, not the walkable floor.
+
+### Transition semantics
+
+Arrival `(x, y)` for level N lives in the **source** level’s
+`LevelChangeList`, not on the destination. A level’s own Type 3
+sectors are departures. Type 3 `type_addl` indexes that list.
+Southmost-non-Void is not an entrance. Flood seeds = every live
+entry with dest Level == N, plus the dest’s Type 9 saves.
+
+`level_change_list`: 20 slots. Empty unused is `Type=-1, Level=0,
+x=0, y=0` (368 slots). A few Type=-1 slots hold leftover dest
+coords and are skipped. Live entries are Type 0–3 with dest level
+0–24 and x,y on the 32-grid: **118 edges**. Type 4 is undocumented
+(But Wait → Ground Floor). Graph: `reference/export/transition_graph.json`.
+
+Ladders are two-way. Teleporters and traps are one-way. Happy
+Happy’s north and south teleporters (`SecretDownward`) both drop
+into the isolated 3×3 room on Don’t Get Poisoned (L20 (2,2), Items
+210–218, no Type 3 exit) — a designed trap.
+
+L24 (Ok, Who Else Wants Some?) is not a floor plan. Petrich’s
+sector-type sheet draws a 1993 / snail credit graphic. Arrival is
+(14,19) from L23, a 33-tile hub among 34 void-separated islands.
+
+### Doors
+
+Type 2 `type_addl` is the `door_list` index (0–14). Type 4
+`type_addl` is the trigger action (Petrich): 129 OpenNgbrDoor, 131
+silver, 132 gold, 141 flag, 130 AlienPipes, 6/7 Chain, 128
+CloseNgbrDoor. Every OpenNgbr* trigger on the 25 levels is
+4-adjacent to exactly one Type 2. Opening that door (ignore a type
+32 when stepping onto or off the Type 2) and re-flooding to a fixed
+point grows L11 / L12 / L14. It does not move L7, L8, or L15: those
+Type 2 tiles sit in already-open corridors. L9 / L10 / L13 have
+zero Type 2 and zero Type 4. Silver / gold keys are progression
+gates (Welcome, Tasty Primate; Beware of Low-Flying Nightmares),
+not extra-tile unlocks from the start set. Chain1/2 are not
+4-adjacent to a door; Torch’s “door index 0” matches L1.
+
+L9 / L10 (and all of 7–15) use type 33 only. Those bytes mark drawn
+faces. Light Phobic (L9 (9,17) scri 138) and Walter (L10 (14,14)
+scri 139) sit in the main reachable blob. Item ids are not
+contiguous `0..N` except on L13. Reports: `round19_doors.txt`,
+`round20_arrive.txt`, `round21_walls.txt`, `round22_slots.txt`,
+`round23_dirs.txt`, `round24_style.txt`.
 
 ### Sector (16 bytes) at `record + 450 + 16*i`
 
@@ -469,42 +614,53 @@ Item-indexed array.
 `Sector.Item` 114: **not confirmed** as a save-block index. No
 before/after pair in this file.
 
-### Saved Games AAA / AAB (two named games, 2026-09-01)
+### Saved Games AAA / AAB (two named games)
 
-File: `reference/saves/Saved Games AAA-AAB` **276564** bytes
-(+9112 vs the one-name file). Not two loose files. Pascal names
-`AAA` @0 and `AAB` @128 (two 128-byte name slots). Protocol: knife
-only, kill one Headless, save AAA, pick up one Walther magazine,
-return, save AAB.
+Two captures, both 276564 = 267452+9112 (k=1). Names `AAA` @0,
+`AAB` @128. Blocks 0–24 at 39392+N×9112 are **templates** (byte-
+identical across saves). They do not shrink on pickup.
 
-There is **one** Ground Floor packed list. It is **85 records** —
-same count and same bytes as the earlier mid-game save’s L0 list.
-Pickup did **not** shrink or mutate that list. It is a level
-template, not live loot. The 26th 9112-byte region (39392+25×9112)
-is **not** a second L0: its header[132:] is a 32×32 LSB bitmap of
-explored Ground Floor sectors (save alcove and John Doe set).
-L0–L24 headers remain the identical `00 00 ff fe` frame.
+**r14** (`reference/saves/Saved Games r14`) supersedes the 4:23 PM
+file. Player-region clocks @`0x074A` / +2876: **6808 vs 6963**
+(113.47 s / 116.05 s, Δ **2.58 s**). Not under a second. Inventory
+still APPENDS `00 33 00 00 00 07 ff ff` at slot 9; knife catalog
+`FFFF`→`0003`.
 
-Player copies sit **2876** bytes apart (same number as the `dpin`
-row count). Isolated AAA vs AAB deltas:
+Cross-file (r14 vs one-name `reference/saves/Saved Games`, 267452):
+blocks 0–23 at 39392 are **byte-identical**. Only L24 differs (55
+bytes, later records / leftover pointers — not a Ground Floor object
+list). The 25 blocks are shared **templates**, not live per-save
+state. Arithmetic: a second name adds **9112** bytes
+(267452→276564). Duplicating 25 blocks would need +227800.
 
-| Where | AAA @2560 | AAB @5436 |
-|---|---|---|
-| time @0x074A / +2876 | 6989 (116.48 s) | 7010 (116.83 s) |
-| X,Y | (7,2) | (7,2) |
-| inv[9] | leftover `FFFF 4E56 0000 48E7` (68k `LINK`) | `00 33 00 00 00 07 FF FF` Walther ammo ×7 |
-| knife catalog | `FFFF` | `0003` |
+The extra 9112 at **267192** is **not** a live Ground Floor copy.
+Body[256:] matches template 24 at **99.91%** (L0 body 78.24%);
+8 non-automap bytes also differ, so it is not *only* a header
+artifact. Header[132:132+128] is a 32×32 LSB **explored GF bitmap**
+(156 tiles, includes (5,2) and (6,2)). The one-name file has the
+same 260-byte header at 267192 (EOF) and **no** extra 9112 body.
+Two-name inserts the 9112 and keeps a 260-byte header clone at
+276304 (2 automap bytes differ vs the one-name tail).
 
-Ammo pickup **appends** an 8-byte record at the first free inventory
-slot. Quantity is **7**, not 8 — matches Descriptions’ Pink (×7),
-not Red (×8), unless one round was spent. Clock delta is only 21
-ticks (0.35 s); treat the 2876 stride as a candidate slot, not a
-proven two-body layout.
+Player-island (rel 1866–2875) AAA vs AAB is **16 bytes**:
+clock, `u16@0x0750` 2395→2154, `u16@0x0752` 310→422, inventory
+append, knife catalog, plus two flag bytes **`0x0840` 0→1** and
+**`0x0864` 0→8**. The mid-game one-name save has those same two
+bytes set (1 and 8) and extra bits at 2111/2144/2147 — a sparse
+flag map, not a 32×32 automap copy. The only bitmap start that
+maps the `0x0864` bit onto an alcove `Sector.Item` is **2143**:
+MSB-first → Item **44** (Pink mag); LSB-first → Item **43**.
+`0x0840` does not sit in that same map.
 
-West save alcove Type==1 Items: (5,1)=53, (6,1)=43, (7,1)=57,
-(5,2)=44, (7,3)=45. Type-35 `f2` in the L0 template contains 53,
-43, 57, 45 but **never 44** (missing in both saves). (5,2) Item=44
-is the alcove object that is not a type-35 template entry.
+Catalog `0003` is the knife’s own instance id (free-list hole after
+1,2,5,8), not an index into inv[3] / L0 rec[3]. The mid-game knife
+is also catalog 3.
+
+Template packed-list counts do not correlate with Item / Type==1 /
+corpse / Descriptions `Ni` (Pearson r ≈ 0.05 / −0.02 / 0.15 / 0.14).
+f0=0x23 (35) is a type tag, not Silver Bowl (49 of them on GF).
+L13 has no FFFF terminator (walker hits 1107); the bytes are
+structured, not random.
 
 ### Bomb Code (closed)
 
@@ -532,6 +688,19 @@ Static game content, not per-playthrough state. No further work.
 | Byte 6 of `.256` is a colour count | 128 has b6=59 vs ~15 clut entries; 195 has b6=2 vs 13–15 colours. |
 | The L0 packed list shrinks when a floor item is taken | AAA/AAB file and the mid-game save both have the same 85 L0 records. Pickup appends inventory only. |
 | `save_AAA` / `save_AAB` are two standalone save files | PID 2.0 wrote both names into one `Saved Games` file (276564). |
+| The 25 blocks at 39392 are live per-level state (last save wins) | Block 0 is byte-identical to a *different session’s* mid-game save. Blocks 0–23 never move. Only L24 mutates (scratch). A second name adds 9112 bytes, not 227800. |
+| A 2876-byte player stride is a complete, proven player record | Two-name saves place a second clock 2876 bytes after `0x074A`, but bytes 0–1865 of that span are leftover / unused. Only the island from ~1866 is live. Do not treat 2876 as a parsed struct size. |
+| PID does not persist world state | Templates never change. Pickups and corpse loot set player-island flag bits (`0x0840` / `0x0864` and neighbours). Live state is on the player island, not in the 25 map blocks. |
+| WallList corners (indices 2–5) are barriers | Only edges 0 and 1 isolate regions. Corners never cut a flood. `CutoffCorner` (160) is corner-only. |
+| Some other `(i,j)` pair is the true north/west assignment | Slots 2–5 have zero type 32/33. Using them as edges opens secret closets. `(1,0)` fails Ground Floor (178/214). |
+| Walls are stored on the south/east (or mixed) faces | S/E, N/E, S/W on (0,1) all increase sealed vs N/W and fail Ground Floor and/or Type 5. |
+| Seed a level’s flood from its own Type 3 sectors | Those tiles are departures. Arrival `(x,y)` lives in the *source* level’s `LevelChangeList`. |
+| Type 33 (`Wall_FancyCorners`) is a collider | 33 is a drawn face. Treating it as solid shatters 7–15 (L9 → 324 components). Under `{32}` those floors are one component. No level mixes 32 and 33. |
+| `SwitchableWallCorner` (type 1) is the L9 / L10 mechanic | Zero type-1 walls on L9 or L10. All 4507 instances sit on L13 (generator input). Treating type-1 as passable gains 0 tiles on L9 / L10. |
+| Texture 127 is a holographic / walk-through marker | 127 is the dominant type-33 face texture on 7–15 (581 on L9, 499 on L10). Treating every 127 wall as passable also opens L7. |
+| Crystals open walls | Descriptions and the Guide list crystals as talk / freeze / burn / lightning / earthquake / stone. L10 is reachable from Ground Floor’s SE ladder with no crystal. |
+| L9 / L10 are sealed content | Walkthroughs treat both as ordinary maps. The “sealed” reading was type 33 as a collider. Under `{32}` they are 415/415 and 574/574. |
+| The stored Labyrinth is 202 tiles with boxed corners | That count treated 33 as solid. Stored L13 is 525/525; the walkable maze is generated at load. |
 
 ---
 
@@ -552,16 +721,20 @@ transcriptions of their sources.
 
 ---
 
-## Still unexplained (engine blockers first)
+## Open questions (engine impact, ranked)
 
-1. **`.256` full decompressor** — discriminator says RLE (controls = `00–02` and `80+`; literals in the per-resource table). Per-row reset, u16be row-length prefixes, 128-entry offset tables near 240–280, column-major 128×128, and skip-N-at-row all fail to emit 33144 and consume a 195–202 resource. 198 plus1+highbit per-row/column hits 16384 leftover **85** packed bytes (still RLE-shaped). Raw-from-258 is still the best *view*, not the encoding.
-2. **Floor / ceiling selection** — not in `texture_list`, not identified in `dpin`. Resources 195–202 exist.
-3. **`dpin` semantics** — 596-byte prefix + 2876×80. Contains inventory-shaped 8-byte rows and other row kinds. Not the `Sector.Item` table. 2876 also appears as a player-copy stride in the two-name save.
-4. **`Sector.Item` payload** — unique per level (instance id). The L0 packed list is a **template** (85 records, identical in the mid-game save and the AAA/AAB file; pickup does not shrink it). Type-35 `f2` matches many map Items but not all (44 never present). Live taken-state is unidentified. The 26th 9112-byte region’s header looks like an explored-sector bitmap, not a second L0.
-5. **`unknown1` (0x86–0x8D)** — not the tested checksums. `-hacks.txt` patches `CODE 1` BEQ→BRA (`67`→`60`) at 0x02E0 (v1.0) / 0x02CE (v1.1) to skip a “modification check”; the check’s input is unidentified.
-6. **Monster / door / level-change runtime** — structs are parsed; spawn and texture pairing not verified.
-7. **Level-change type 4** — used (But Wait → Ground Floor); enum 0–3 does not cover it.
+1. **`.256` pixel decoding** — blocks all texturing. Discriminator says RLE (controls = `00–02` and `80+`; literals in the per-resource table). Self-describing literals `03–10` combined with prev/next `80+` and `00/01/02`=emit-2/3/4 or u16-count never hit 33144 (closest 198: 34789). `0x11`/`0x12` in 195 sit between palette bytes (neighbors 0x0F–0x12), last-third clustered, runs of 1–2 — extra palette range, not row markers. Per-row reset, u16be row-length prefixes, 128-entry offset tables near 240–280, column-major 128×128, and skip-N-at-row all fail. Raw-from-258 is still the best *view*, not the encoding. Floor / ceiling selection is not in `texture_list` (resources 195–202 exist).
+2. **What `dpin` actually is** — blocks item placement. 596-byte prefix + 2876×80. Contains inventory-shaped 8-byte rows and other row kinds. Not the `Sector.Item` table. 2876 also appears as a player-copy offset in the two-name save, which is not the same as a parsed meaning.
+3. **Save flag bits ~2111–2148** — blocks save / load. Sparse player-island map. One alcove pickup sets `0x0840` bit0 + `0x0864` bit3. A second floor pickup sets no new bit. Corpse loot sets three different bits that do not encode Item 114 at the alcove’s (S, order). No single even-base Item/sector/record map survives all three diffs.
+4. **The L13 maze generator** — blocks one level. Stored Labyrinth is 525 connected tiles of type-33 faces plus type-1 on every corner slot. The walkable maze is generated at load. The generator itself is not in the Maps bytes.
+5. **`unknown1` (0x86–0x8D) and player `u16@0x0750` / `u16@0x0752`** — cosmetic. `unknown1` is two i32be; high words are 0; not any tested checksum. `-hacks.txt` patches `CODE 1` BEQ→BRA to skip an unidentified “modification check.” `0x0750` / `0x0752` move without combat (A0→A1). No LCG is consistent across the four-save experiment. Not HP, not clock, not coordinates.
+
+Lower impact (structs are parsed; runtime pairing is not):
+
+6. **Monster / door / level-change runtime** — spawn and texture pairing not verified.
+7. **Level-change type 4** — stored in the ksy as `undocumented_4`; used (But Wait → Ground Floor).
 8. **Carlos `TypeAddl=200`** — documented draw hack; no `scri 328`.
+9. **`Sector.Item` payload beyond instance-id** — unique per level. The L0 packed list is a template. The flag map above is the live side.
 
 ---
 

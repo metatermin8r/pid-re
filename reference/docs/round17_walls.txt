@@ -1,0 +1,55 @@
+wrote C:\Users\Colton S Covert\Documents\GitHub\Pathways-Into-Darkness-Unity\reference\levels\L00_walls.png
+wrote C:\Users\Colton S Covert\Documents\GitHub\Pathways-Into-Darkness-Unity\reference\levels\L00_reachable.png
+start (southmost non-Void) = (16, 30) type=1
+non-Void=214 reachable=214 sealed=0
+Void sectors with leftover Wall_X/Y: 407
+
+Type 9 Save reachability:
+  (6,2) type=9 Item=0 reachable=True
+  (26,2) type=9 Item=52 reachable=True
+  (5,10) type=9 Item=90 reachable=True
+  (27,10) type=9 Item=91 reachable=True
+Type 3 ChangeLevel reachability:
+  (4,1) type=3 Item=42 reachable=True
+  (28,3) type=3 Item=41 reachable=True
+  (4,11) type=3 Item=73 reachable=True
+  (28,11) type=3 Item=86 reachable=True
+
+reachable bbox x=4..28 y=1..30
+reachable per row: [0, 20, 19, 20, 3, 21, 25, 21, 7, 15, 17, 13, 1, 1, 1, 1, 3, 3, 3, 3, 1, 3, 3, 3, 1, 1, 1, 1, 1, 1, 1, 0]
+reachable per col: [0, 0, 0, 0, 7, 10, 9, 5, 7, 10, 7, 4, 6, 6, 4, 17, 30, 17, 4, 6, 6, 4, 7, 10, 7, 5, 9, 10, 7, 0, 0, 0]
+wide reachable rows (>=8): [1, 2, 3, 5, 6, 7, 9, 10, 11]
+tall reachable cols (>=8): [5, 6, 9, 15, 16, 17, 23, 26, 27]
+
+Ground Floor unreachable non-Void:
+  (none)
+
+========== ALL 25 LEVELS ==========
+reach_S = flood from southmost non-Void only (GF player-start rule).
+reach_E = union flood from every Type 3 + Type 9 (+ southmost).
+ Lv name                                   nv   rS   sS   rE   sE starts
+  0 Ground Floor                          214  214    0  214    0 9 (16, 30)
+  1 Never Stop Firing                     478  478    0  478    0 3 (2, 30)
+  2 Lock&Load                             500  500    0  500    0 5 (1, 30)
+  3 They May Be Slow…                     456   22  434  451    5 8 (2, 30)
+  4 …But They’re Hungry                   504  241  263  503    1 8 (1, 30)
+  5 Evil Undead Phantasms Must Die!       563  560    3  563    0 6 (2, 30)
+  6 Ascension                             195  195    0  195    0 3 (7, 22)
+  7 Wrong Way!                            515    1  514  283  232 10 (4, 30)
+  8 Welcome, Tasty Primate                459    1  458   44  415 10 (12, 30)
+  9 We Can See In The Dark… Can You?      415    1  414   13  402 5 (11, 30)
+ 10 Feel the Power                        574    1  573    5  569 5 (6, 30)
+ 11 A Plague of Demons                    537    1  536   10  527 5 (8, 30)
+ 12 Beware of Low-Flying Nightmares       521    1  520   54  467 5 (2, 30)
+ 13 The Labyrinth                         525    1  524    4  521 4 (1, 30)
+ 14 Happy Happy, Carnage Carnage          446    1  445  207  239 7 (3, 30)
+ 15 Need a Light?                         505    1  504  412   93 3 (1, 30)
+ 16 Lasciate Ogne Speranza, Voi Ch’Intrate  472  472    0  472    0 9 (4, 30)
+ 17 Watch Your Step                       496  496    0  496    0 4 (7, 30)
+ 18 I’d Rather Be Surfing                 521  521    0  521    0 5 (3, 30)
+ 19 Warning: Earthquake Zone              172  172    0  172    0 5 (12, 19)
+ 20 Don’t Get Poisoned!                   437  146  291  428    9 13 (1, 30)
+ 21 Please Excuse Our Dust                529  239  290  529    0 14 (12, 30)
+ 22 But Wait!— That’s Not All!            496  255  241  496    0 16 (8, 30)
+ 23 Where Only Fools Dare Tread           519  435   84  519    0 22 (1, 30)
+ 24 Ok, Who Else Wants Some?              181    6  175   57  124 3 (1, 30)

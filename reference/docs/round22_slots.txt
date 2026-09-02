@@ -1,0 +1,332 @@
+Round 22 — brute-force WallList slot assignment
+slot i = NORTH (-Y) edge; slot j = WEST (-X) edge; other four = corners.
+Flood: arrivals from source LevelChangeList + Type 9, then door adj4 fixed-point.
+Solid A = {32,33}; Solid B = {32,33,64,96,128}.
+
+========== wall-type census by slot (all 25 x 1024) ==========
+  slot 0: n160=    0  n32+33=12205  {0: 9142, 1: 207, 32: 5518, 33: 6687, 64: 1001, 96: 995, 128: 2050}
+  slot 1: n160=    0  n32+33=12177  {0: 9025, 1: 204, 32: 5422, 33: 6755, 64: 1072, 96: 1080, 128: 2042}
+  slot 2: n160= 1829  n32+33=    0  {0: 22747, 1: 1024, 160: 1829}
+  slot 3: n160= 1807  n32+33=    0  {0: 22769, 1: 1024, 160: 1807}
+  slot 4: n160= 1831  n32+33=    0  {0: 22745, 1: 1024, 160: 1831}
+  slot 5: n160= 1856  n32+33=    0  {0: 22720, 1: 1024, 160: 1856}
+  If CutoffCorner(160) is corner-only, slots with n160==0 are the only plausible edges.
+
+========== (b) 30 ordered pairs, solid A {32,33} ==========
+   N,W     nv  reach  sealed  vs(0,1)
+  (2,3)  11230  11082     148   -3193
+  (2,4)  11230  11082     148   -3193
+  (2,5)  11230  11082     148   -3193
+  (3,2)  11230  11082     148   -3193
+  (3,4)  11230  11082     148   -3193
+  (3,5)  11230  11082     148   -3193
+  (4,2)  11230  11082     148   -3193
+  (4,3)  11230  11082     148   -3193
+  (4,5)  11230  11082     148   -3193
+  (5,2)  11230  11082     148   -3193
+  (5,3)  11230  11082     148   -3193
+  (5,4)  11230  11082     148   -3193
+  (0,2)  11230   8643    2587    -754
+  (0,3)  11230   8643    2587    -754
+  (0,4)  11230   8643    2587    -754
+  (0,5)  11230   8643    2587    -754
+  (2,1)  11230   8494    2736    -605
+  (3,1)  11230   8494    2736    -605
+  (4,1)  11230   8494    2736    -605
+  (5,1)  11230   8494    2736    -605
+  (0,1)  11230   7889    3341      +0  <-- current
+  (2,0)  11230   7245    3985    +644
+  (3,0)  11230   7245    3985    +644
+  (4,0)  11230   7245    3985    +644
+  (5,0)  11230   7245    3985    +644
+  (1,2)  11230   7184    4046    +705
+  (1,3)  11230   7184    4046    +705
+  (1,4)  11230   7184    4046    +705
+  (1,5)  11230   7184    4046    +705
+  (1,0)  11230   5527    5703   +2362
+
+========== (b2) same 30 pairs, solid B {32,33,64,96,128} ==========
+   N,W     nv  reach  sealed  vs A-same  vs B(0,1)
+  (2,3)  11230  11082     148  A=  148 dA=+0  dB01=-3193
+  (2,4)  11230  11082     148  A=  148 dA=+0  dB01=-3193
+  (2,5)  11230  11082     148  A=  148 dA=+0  dB01=-3193
+  (3,2)  11230  11082     148  A=  148 dA=+0  dB01=-3193
+  (3,4)  11230  11082     148  A=  148 dA=+0  dB01=-3193
+  (3,5)  11230  11082     148  A=  148 dA=+0  dB01=-3193
+  (4,2)  11230  11082     148  A=  148 dA=+0  dB01=-3193
+  (4,3)  11230  11082     148  A=  148 dA=+0  dB01=-3193
+  (4,5)  11230  11082     148  A=  148 dA=+0  dB01=-3193
+  (5,2)  11230  11082     148  A=  148 dA=+0  dB01=-3193
+  (5,3)  11230  11082     148  A=  148 dA=+0  dB01=-3193
+  (5,4)  11230  11082     148  A=  148 dA=+0  dB01=-3193
+  (0,2)  11230   8643    2587  A= 2587 dA=+0  dB01=-754
+  (0,3)  11230   8643    2587  A= 2587 dA=+0  dB01=-754
+  (0,4)  11230   8643    2587  A= 2587 dA=+0  dB01=-754
+  (0,5)  11230   8643    2587  A= 2587 dA=+0  dB01=-754
+  (2,1)  11230   8494    2736  A= 2736 dA=+0  dB01=-605
+  (3,1)  11230   8494    2736  A= 2736 dA=+0  dB01=-605
+  (4,1)  11230   8494    2736  A= 2736 dA=+0  dB01=-605
+  (5,1)  11230   8494    2736  A= 2736 dA=+0  dB01=-605
+  (0,1)  11230   7889    3341  A= 3341 dA=+0  dB01=+0
+  (2,0)  11230   3916    7314  A= 3985 dA=+3329  dB01=+3973
+  (3,0)  11230   3916    7314  A= 3985 dA=+3329  dB01=+3973
+  (4,0)  11230   3916    7314  A= 3985 dA=+3329  dB01=+3973
+  (5,0)  11230   3916    7314  A= 3985 dA=+3329  dB01=+3973
+  (1,2)  11230   3612    7618  A= 4046 dA=+3572  dB01=+4277
+  (1,3)  11230   3612    7618  A= 4046 dA=+3572  dB01=+4277
+  (1,4)  11230   3612    7618  A= 4046 dA=+3572  dB01=+4277
+  (1,5)  11230   3612    7618  A= 4046 dA=+3572  dB01=+4277
+  (1,0)  11230   1769    9461  A= 5703 dA=+3758  dB01=+6120
+
+========== (c) top 5 assignments by sealed (solid A) ==========
+
+--- #1  (N=2, W=3)  sealed=148  reach=11082/11230 ---
+ Lv name                                   nv reach sealed  prev
+  0 Ground Floor                          214   214      0     0
+  1 Never Stop Firing                     478   478      0     0
+  2 Lock&Load                             500   500      0     0
+  3 They May Be Slow…                     456   456      0     7
+  4 …But They’re Hungry                   504   504      0     1
+  5 Evil Undead Phantasms Must Die!       563   563      0     0
+  6 Ascension                             195   195      0     0
+  7 Wrong Way!                            515   515      0   233
+  8 Welcome, Tasty Primate                459   459      0   416
+  9 We Can See In The Dark… Can You?      415   415      0   403
+ 10 Feel the Power                        574   574      0   570
+ 11 A Plague of Demons                    537   537      0   512
+ 12 Beware of Low-Flying Nightmares       521   521      0   433
+ 13 The Labyrinth                         525   525      0   323
+ 14 Happy Happy, Carnage Carnage          446   446      0   201
+ 15 Need a Light?                         505   505      0    94
+ 16 Lasciate Ogne Speranza, Voi Ch’Intrate  472   472      0     0
+ 17 Watch Your Step                       496   496      0     0
+ 18 I’d Rather Be Surfing                 521   521      0     0
+ 19 Warning: Earthquake Zone              172   172      0     0
+ 20 Don’t Get Poisoned!                   437   437      0     0
+ 21 Please Excuse Our Dust                529   529      0     0
+ 22 But Wait!— That’s Not All!            496   496      0     0
+ 23 Where Only Fools Dare Tread           519   519      0     0
+ 24 Ok, Who Else Wants Some?              181    33    148   148
+
+--- #2  (N=2, W=4)  sealed=148  reach=11082/11230 ---
+ Lv name                                   nv reach sealed  prev
+  0 Ground Floor                          214   214      0     0
+  1 Never Stop Firing                     478   478      0     0
+  2 Lock&Load                             500   500      0     0
+  3 They May Be Slow…                     456   456      0     7
+  4 …But They’re Hungry                   504   504      0     1
+  5 Evil Undead Phantasms Must Die!       563   563      0     0
+  6 Ascension                             195   195      0     0
+  7 Wrong Way!                            515   515      0   233
+  8 Welcome, Tasty Primate                459   459      0   416
+  9 We Can See In The Dark… Can You?      415   415      0   403
+ 10 Feel the Power                        574   574      0   570
+ 11 A Plague of Demons                    537   537      0   512
+ 12 Beware of Low-Flying Nightmares       521   521      0   433
+ 13 The Labyrinth                         525   525      0   323
+ 14 Happy Happy, Carnage Carnage          446   446      0   201
+ 15 Need a Light?                         505   505      0    94
+ 16 Lasciate Ogne Speranza, Voi Ch’Intrate  472   472      0     0
+ 17 Watch Your Step                       496   496      0     0
+ 18 I’d Rather Be Surfing                 521   521      0     0
+ 19 Warning: Earthquake Zone              172   172      0     0
+ 20 Don’t Get Poisoned!                   437   437      0     0
+ 21 Please Excuse Our Dust                529   529      0     0
+ 22 But Wait!— That’s Not All!            496   496      0     0
+ 23 Where Only Fools Dare Tread           519   519      0     0
+ 24 Ok, Who Else Wants Some?              181    33    148   148
+
+--- #3  (N=2, W=5)  sealed=148  reach=11082/11230 ---
+ Lv name                                   nv reach sealed  prev
+  0 Ground Floor                          214   214      0     0
+  1 Never Stop Firing                     478   478      0     0
+  2 Lock&Load                             500   500      0     0
+  3 They May Be Slow…                     456   456      0     7
+  4 …But They’re Hungry                   504   504      0     1
+  5 Evil Undead Phantasms Must Die!       563   563      0     0
+  6 Ascension                             195   195      0     0
+  7 Wrong Way!                            515   515      0   233
+  8 Welcome, Tasty Primate                459   459      0   416
+  9 We Can See In The Dark… Can You?      415   415      0   403
+ 10 Feel the Power                        574   574      0   570
+ 11 A Plague of Demons                    537   537      0   512
+ 12 Beware of Low-Flying Nightmares       521   521      0   433
+ 13 The Labyrinth                         525   525      0   323
+ 14 Happy Happy, Carnage Carnage          446   446      0   201
+ 15 Need a Light?                         505   505      0    94
+ 16 Lasciate Ogne Speranza, Voi Ch’Intrate  472   472      0     0
+ 17 Watch Your Step                       496   496      0     0
+ 18 I’d Rather Be Surfing                 521   521      0     0
+ 19 Warning: Earthquake Zone              172   172      0     0
+ 20 Don’t Get Poisoned!                   437   437      0     0
+ 21 Please Excuse Our Dust                529   529      0     0
+ 22 But Wait!— That’s Not All!            496   496      0     0
+ 23 Where Only Fools Dare Tread           519   519      0     0
+ 24 Ok, Who Else Wants Some?              181    33    148   148
+
+--- #4  (N=3, W=2)  sealed=148  reach=11082/11230 ---
+ Lv name                                   nv reach sealed  prev
+  0 Ground Floor                          214   214      0     0
+  1 Never Stop Firing                     478   478      0     0
+  2 Lock&Load                             500   500      0     0
+  3 They May Be Slow…                     456   456      0     7
+  4 …But They’re Hungry                   504   504      0     1
+  5 Evil Undead Phantasms Must Die!       563   563      0     0
+  6 Ascension                             195   195      0     0
+  7 Wrong Way!                            515   515      0   233
+  8 Welcome, Tasty Primate                459   459      0   416
+  9 We Can See In The Dark… Can You?      415   415      0   403
+ 10 Feel the Power                        574   574      0   570
+ 11 A Plague of Demons                    537   537      0   512
+ 12 Beware of Low-Flying Nightmares       521   521      0   433
+ 13 The Labyrinth                         525   525      0   323
+ 14 Happy Happy, Carnage Carnage          446   446      0   201
+ 15 Need a Light?                         505   505      0    94
+ 16 Lasciate Ogne Speranza, Voi Ch’Intrate  472   472      0     0
+ 17 Watch Your Step                       496   496      0     0
+ 18 I’d Rather Be Surfing                 521   521      0     0
+ 19 Warning: Earthquake Zone              172   172      0     0
+ 20 Don’t Get Poisoned!                   437   437      0     0
+ 21 Please Excuse Our Dust                529   529      0     0
+ 22 But Wait!— That’s Not All!            496   496      0     0
+ 23 Where Only Fools Dare Tread           519   519      0     0
+ 24 Ok, Who Else Wants Some?              181    33    148   148
+
+--- #5  (N=3, W=4)  sealed=148  reach=11082/11230 ---
+ Lv name                                   nv reach sealed  prev
+  0 Ground Floor                          214   214      0     0
+  1 Never Stop Firing                     478   478      0     0
+  2 Lock&Load                             500   500      0     0
+  3 They May Be Slow…                     456   456      0     7
+  4 …But They’re Hungry                   504   504      0     1
+  5 Evil Undead Phantasms Must Die!       563   563      0     0
+  6 Ascension                             195   195      0     0
+  7 Wrong Way!                            515   515      0   233
+  8 Welcome, Tasty Primate                459   459      0   416
+  9 We Can See In The Dark… Can You?      415   415      0   403
+ 10 Feel the Power                        574   574      0   570
+ 11 A Plague of Demons                    537   537      0   512
+ 12 Beware of Low-Flying Nightmares       521   521      0   433
+ 13 The Labyrinth                         525   525      0   323
+ 14 Happy Happy, Carnage Carnage          446   446      0   201
+ 15 Need a Light?                         505   505      0    94
+ 16 Lasciate Ogne Speranza, Voi Ch’Intrate  472   472      0     0
+ 17 Watch Your Step                       496   496      0     0
+ 18 I’d Rather Be Surfing                 521   521      0     0
+ 19 Warning: Earthquake Zone              172   172      0     0
+ 20 Don’t Get Poisoned!                   437   437      0     0
+ 21 Please Excuse Our Dust                529   529      0     0
+ 22 But Wait!— That’s Not All!            496   496      0     0
+ 23 Where Only Fools Dare Tread           519   519      0     0
+ 24 Ok, Who Else Wants Some?              181    33    148   148
+
+========== (f) (0,1) vs (1,0) — Petrich/Semmler name swap ==========
+  (0,1) Petrich current: sealed=3341
+  (1,0) swapped N/W:     sealed=5703
+  differ: True  delta=+2362
+  North/west assignment MATTERS. Naming conflict is material.
+  per-level sealed (0,1) vs (1,0):
+    L00 Ground Floor: (0,1)=0  (1,0)=36
+    L01 Never Stop Firing: (0,1)=0  (1,0)=459
+    L02 Lock&Load: (0,1)=0  (1,0)=77
+    L03 They May Be Slow…: (0,1)=7  (1,0)=256
+    L04 …But They’re Hungry: (0,1)=1  (1,0)=350
+    L05 Evil Undead Phantasms Must Die!: (0,1)=0  (1,0)=86
+    L06 Ascension: (0,1)=0  (1,0)=2
+    L07 Wrong Way!: (0,1)=233  (1,0)=400
+    L08 Welcome, Tasty Primate: (0,1)=416  (1,0)=436
+    L09 We Can See In The Dark… Can You?: (0,1)=403  (1,0)=408
+    L10 Feel the Power: (0,1)=570  (1,0)=492
+    L11 A Plague of Demons: (0,1)=512  (1,0)=474
+    L12 Beware of Low-Flying Nightmares: (0,1)=433  (1,0)=488
+    L13 The Labyrinth: (0,1)=323  (1,0)=524
+    L14 Happy Happy, Carnage Carnage: (0,1)=201  (1,0)=418
+    L15 Need a Light?: (0,1)=94  (1,0)=455
+    L16 Lasciate Ogne Speranza, Voi Ch’Intrate: (0,1)=0  (1,0)=109
+    L17 Watch Your Step: (0,1)=0  (1,0)=78
+    L18 I’d Rather Be Surfing: (0,1)=0  (1,0)=6
+    L20 Don’t Get Poisoned!: (0,1)=0  (1,0)=1
+
+========== (e) validation gates ==========
+
+--- assignment (N=2, W=3) sealed=148 ---
+  GF 214/214:              PASS  (214/214)
+  GF T (bar north, stem S): PASS  stem_x=(15, 17) bar_x=(4, 28) narrow=True wide=True
+  L13 centre (16,18) reach: PASS  maze=525  (16,17) void=True
+  L13 corner ladders:      (1, 1)=R, (30, 1)=R, (1, 30)=R, (30, 30)=R
+  L3/L4 Type5 stay sealed: FAIL  opened=[(3, (15, 6)), (3, (5, 28)), (3, (8, 28)), (4, (23, 29))]
+  L9 sealed=0/415  L10 sealed=0/574  opened=True
+
+--- assignment (N=2, W=4) sealed=148 ---
+  GF 214/214:              PASS  (214/214)
+  GF T (bar north, stem S): PASS  stem_x=(15, 17) bar_x=(4, 28) narrow=True wide=True
+  L13 centre (16,18) reach: PASS  maze=525  (16,17) void=True
+  L13 corner ladders:      (1, 1)=R, (30, 1)=R, (1, 30)=R, (30, 30)=R
+  L3/L4 Type5 stay sealed: FAIL  opened=[(3, (15, 6)), (3, (5, 28)), (3, (8, 28)), (4, (23, 29))]
+  L9 sealed=0/415  L10 sealed=0/574  opened=True
+
+--- assignment (N=2, W=5) sealed=148 ---
+  GF 214/214:              PASS  (214/214)
+  GF T (bar north, stem S): PASS  stem_x=(15, 17) bar_x=(4, 28) narrow=True wide=True
+  L13 centre (16,18) reach: PASS  maze=525  (16,17) void=True
+  L13 corner ladders:      (1, 1)=R, (30, 1)=R, (1, 30)=R, (30, 30)=R
+  L3/L4 Type5 stay sealed: FAIL  opened=[(3, (15, 6)), (3, (5, 28)), (3, (8, 28)), (4, (23, 29))]
+  L9 sealed=0/415  L10 sealed=0/574  opened=True
+
+--- assignment (N=3, W=2) sealed=148 ---
+  GF 214/214:              PASS  (214/214)
+  GF T (bar north, stem S): PASS  stem_x=(15, 17) bar_x=(4, 28) narrow=True wide=True
+  L13 centre (16,18) reach: PASS  maze=525  (16,17) void=True
+  L13 corner ladders:      (1, 1)=R, (30, 1)=R, (1, 30)=R, (30, 30)=R
+  L3/L4 Type5 stay sealed: FAIL  opened=[(3, (15, 6)), (3, (5, 28)), (3, (8, 28)), (4, (23, 29))]
+  L9 sealed=0/415  L10 sealed=0/574  opened=True
+
+--- assignment (N=3, W=4) sealed=148 ---
+  GF 214/214:              PASS  (214/214)
+  GF T (bar north, stem S): PASS  stem_x=(15, 17) bar_x=(4, 28) narrow=True wide=True
+  L13 centre (16,18) reach: PASS  maze=525  (16,17) void=True
+  L13 corner ladders:      (1, 1)=R, (30, 1)=R, (1, 30)=R, (30, 30)=R
+  L3/L4 Type5 stay sealed: FAIL  opened=[(3, (15, 6)), (3, (5, 28)), (3, (8, 28)), (4, (23, 29))]
+  L9 sealed=0/415  L10 sealed=0/574  opened=True
+
+--- assignment (N=0, W=1) sealed=3341 ---
+  GF 214/214:              PASS  (214/214)
+  GF T (bar north, stem S): PASS  stem_x=(15, 17) bar_x=(4, 28) narrow=True wide=True
+  L13 centre (16,18) reach: PASS  maze=202  (16,17) void=True
+  L13 corner ladders:      (1, 1)=sealed, (30, 1)=sealed, (1, 30)=sealed, (30, 30)=sealed
+  L3/L4 Type5 stay sealed: PASS  opened=[]
+  L9 sealed=403/415  L10 sealed=570/574  opened=False
+
+--- assignment (N=1, W=0) sealed=5703 ---
+  GF 214/214:              FAIL  (178/214)
+  GF T (bar north, stem S): FAIL  stem_x=(15, 17) bar_x=(4, 28) narrow=True wide=True
+  L13 centre (16,18) reach: PASS  maze=1  (16,17) void=True
+  L13 corner ladders:      (1, 1)=sealed, (30, 1)=sealed, (1, 30)=sealed, (30, 30)=sealed
+  L3/L4 Type5 stay sealed: FAIL  opened=[(4, (23, 29))]
+  L9 sealed=408/415  L10 sealed=492/574  opened=False
+
+========== any assignment opens L9/L10 with GF intact? ==========
+  (N=2,W=3) sealed=148 GF=214 T=True L9s=0 L10s=0 L13c=True secrets=False
+  (N=2,W=4) sealed=148 GF=214 T=True L9s=0 L10s=0 L13c=True secrets=False
+  (N=2,W=5) sealed=148 GF=214 T=True L9s=0 L10s=0 L13c=True secrets=False
+  (N=3,W=2) sealed=148 GF=214 T=True L9s=0 L10s=0 L13c=True secrets=False
+  (N=3,W=4) sealed=148 GF=214 T=True L9s=0 L10s=0 L13c=True secrets=False
+  (N=3,W=5) sealed=148 GF=214 T=True L9s=0 L10s=0 L13c=True secrets=False
+  (N=4,W=2) sealed=148 GF=214 T=True L9s=0 L10s=0 L13c=True secrets=False
+  (N=4,W=3) sealed=148 GF=214 T=True L9s=0 L10s=0 L13c=True secrets=False
+  (N=4,W=5) sealed=148 GF=214 T=True L9s=0 L10s=0 L13c=True secrets=False
+  (N=5,W=2) sealed=148 GF=214 T=True L9s=0 L10s=0 L13c=True secrets=False
+  (N=5,W=3) sealed=148 GF=214 T=True L9s=0 L10s=0 L13c=True secrets=False
+  (N=5,W=4) sealed=148 GF=214 T=True L9s=0 L10s=0 L13c=True secrets=False
+
+========== winning assignment ==========
+  Fewest sealed among gate-passers: (N=0, W=1) sealed=3341
+  Current assumption (0,1) is the winner.
+  wrote L00_slots.png
+  wrote L09_slots.png
+  wrote L10_slots.png
+  wrote L00_slots_10.png  (N=1,W=0 swap)
+
+Ground Floor under winner: 214/214
+L9 under winner: 12/415 sealed=403
+L10 under winner: 4/574 sealed=570

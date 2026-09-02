@@ -1,338 +1,461 @@
-# Work journal
+# How the Pathways Into Darkness format was solved
 
-Dated log of attempts, including failures.
+Phase 0 of this project was data archaeology: take the shipped Macintosh
+files, write a parser that matches the bytes, and draw a level that a
+player would recognise. That exit criterion is met. This is the record
+of how we got there, in the order the facts arrived. The machine-readable
+spec is `docs/FORMAT.md` and `formats/pid_level.ksy`.
 
----
-
-## 2026-09-01
-
-Set up the Phase 0 working environment on Windows.
-
-- Repo layout from `PROJECT.md`.
-- `.venv` + `requirements.txt`: `rsrcfork` 1.8.0, Pillow, numpy,
-  kaitaistruct, `machfs` (MIT) / `macresources`.
-- Windows `unar`/`lsar` in `tools/bin/` (from
-  `https://cdn.theunarchiver.com/downloads/unarWindows.zip`).
-- Tools: `unpack_archives.py`, `extract_hfs.py`, `list_resources.py`,
-  `rsrc.py`, `write_checksums.py`, `mac_containers.py`.
-
-Original archives were already on `Desktop/PIDOriginalData/`. Copied into
-gitignored `data/archives/` (not TheUnarchiver.dmg).
-
-`unar` unpacked every archive. Resource forks survived as AppleDouble
-`.rsrc` files (not `._*` sidecars, not NTFS streams).
-
-HFS extract: raw `.dsk` mounts directly; `.image` / `.dc42` mount after
-skipping the published 84-byte DiskCopy 4.2 header. Japanese disk 1
-worked once we stopped printing Unicode to the console.
-
-Playable trees now on disk:
-
-- Demo: loose Maps (50502 bytes) + app/Shapes/Sounds resource forks.
-- v2.0: `Pathways_1995.dsk` → Maps (420850) + app (`vers` 1 = v2.0).
-
-`rsrcfork` via `tools/rsrc.py` listed 85 resource files. Full-game
-`STR#` 2018/2021 match the published level-name examples. Demo lacks
-those two IDs.
-
-Not done: Japanese/v1.1 installer payload expansion. Fan `PIDMapReader`
-sources sit in `data/hfs/Pathways_Extras/PID_Docs Folder/` — not copied
-into git.
+All parsers here were written from the byte layout. Loren Petrich, Ben
+Semmler, Chuck Gray, Alan Earhart and Alain Roy named the fields; their
+code is not in this repository.
 
 ---
 
-## 2026-09-01 (later)
+## What we started with
 
-Raw `--text` on `STR#` was wrong: it decoded the whole blob as Mac Roman
-and left Pascal length bytes in the stream. Added `tools/mac_text.py`
-(Inside Macintosh `STR#` / `STR ` / `MENU` / `vers`) and
-`tools/dump_all.py`. Hex dumps now use a Mac Roman gutter.
+Pathways Into Darkness (Bungie, 1993) never released source. Classic Mac
+files have a data fork and a resource fork; both matter. The application
+resource fork holds `STR#` string lists, `scri` corpse scripts, one
+`dpin` blob, and the usual Mac chrome. Level geometry lives in a sibling
+file named `Maps` that has **no** resource map — it is a raw data fork.
 
-Full dump in `reference/full_dump/`: 85 resource files, type catalog,
-every v2.0 `STR#` list decoded. Harvest on installers/disk images was
-noise and was discarded; only Maps harvests kept.
-
-String-anchored the Maps data fork. Level names sit at `i * 0x41C2`.
-v2.0 file is exactly 25 × 0x41C2; demo is exactly 3 × 0x41C2. Names
-diverge from `STR#` 2018 in a few spellings. Interior of each record
-still unknown.
-
----
-
-## 2026-09-01 (dpin / scri)
-
-`tools/stride_finder.py`, `tools/blockmap.py`, `tools/scri_compare.py`.
-
-dpin self-similarity is dominated by a 16-byte period; 409×564 is a
-factorization only (blockmap diagonals). 80-byte rows after a 596-byte
-zero gap line up vertically and `2876` in the header matches
-`(size-596)/80`. Not parsed beyond that.
-
-scri 128–155: first u16be == length; shared `04 04 06 0d` then a
-4-byte ASCII group. Level names are not in the blobs. 14-byte stubs
-are a different layout, not a stripped header.
+The working copy is v2.0 from `Pathways_1995.dsk`. Demo, v1.1 installer
+floppies, and the Japanese disks were harvested for comparison. Fan
+notes from the Pathways extras CD (Petrich’s `PIDMapReader.h`, Semmler’s
+Torch docs, Gray’s Dead Scripts, Earhart’s Descriptions / height list,
+Roy’s ItemCheatFile) were read as hypotheses and then checked against
+bytes. Aleph One / Marathon formats were not used; they are not
+compatible.
 
 ---
 
-## 2026-09-01 (inventory + dpin/scri pass 2)
+## Harvest (2026-09-01)
 
-`tools/inventory_hfs.py` — 145 files under `data/hfs/`. Game art/audio
-are sibling files, not the app fork. `tools/dpin_pass2.py`,
-`tools/scri_stats.py`. Slot profiles similar but not equal. u16@2 and
-u16@4 both correlate with scri length (r≈0.94 / 0.97); ratio is not
-constant. Groups fhpb / l|nn / k|he are contiguous by ID.
+Windows, `unar`, and a small HFS reader (`tools/extract_hfs.py`) pulled
+the disk images apart. Resource forks survived as raw `.rsrc` maps or
+AppleDouble sidecars. `tools/rsrc.py` lists both.
 
----
+Playable trees on disk:
 
-## 2026-09-01 (CD zip inventory)
+- Demo: loose Maps (50502 bytes) + app / Shapes / Sounds.
+- v2.0: Maps (420850 bytes) + app (`vers` 1 = v2.0).
 
-`pathwaysintodarkness.zip` from Desktop/PIDOriginalData is a preservation
-archive of HFS disk images + PDFs/fan text, not a loose CD filesystem.
-No `._*` sidecars in the zip. HFS extract to `data/cd/hfs/` is the same
-`Pathways_1995` tree already studied: Maps data fork, Shapes `.256`,
-Sounds `snd `, dpin 230676 / 12 / 2876. No second asset layout.
-`reference/cd/INVENTORY.txt`.
+`STR#` 2018 in the full app is the published 28-name list. The demo
+lacks 2018 and 2021. Demo Maps is three records; v2.0 is twenty-five.
 
 ---
 
-## 2026-09-01 (read the extras docs; stop binary analysis)
+## The 16834-byte stride
 
-Cancelled Maps/Shapes/dpin/scri recon. Printed Petrich `PIDMapReader.h`
-(Maps structs), Semmler Torch 0.9.1 (REALbasic map editor, **no TMPL**),
-Gray Dead Scripts (`scri` = corpse talk, XOR after 4-byte length),
-Petrich `.256` ID list, fan save/item notes. Sector diagram PNG at
-`reference/docs/sector_types_sqr.png` (736×752). Maps first 2048 hex
-in `reference/docs/maps_first_2048.hex`: one Pascal name at 0, then
-the 128-byte name slot (leftover `o Darkness…`). 25 record names at
-`i * 0x41C2`. STR# extras still absent from Maps.
+Level names sit in the Maps data fork at `i * 0x41C2`. 0x41C2 is 16834.
+v2.0 is exactly 25 × 16834; the demo is exactly 3 × 16834. That is the
+record size. It was not invented from Petrich — the names land on that
+period and the file sizes divide evenly.
 
----
-
-## 2026-09-01 (parser)
-
-Height10 is at 0x84 and matches all 25 named metre values. The earlier
-`0x41d9` reading was a misaligned hex line, not a field swap.
-
-`formats/pid_level.ksy` + `tools/pid_level.py`. 0 wall/type violations
-in 25600 sectors. Lock&Load 2 corpses / Need a Light 5. One Corpse
-TypeAddl=200 (Carlos). Sheet compare 100% on all 25 at origin 16,
-scale 4, pitch 144 (`tools/render_sectors.py`).
-
-scri: XOR from offset 2 with 00 01 02…. clut 256 is Bungie copyright
-text, not a 256-color table. Real cluts are 128–135 (15 colors).
+Each record opens with a Pascal name in a 128-byte slot. Unused tail
+bytes are leftover text (record 0 still has `o Darkness…`). `STR#` 2018
+and the Maps names disagree on a few spellings (`Feel The Power` vs
+`Feel the Power`; a missing ellipsis here and there). Interior of the
+record was still unknown.
 
 ---
 
-## 2026-09-01 (corpse scope + dpin item groups)
+## Reading other people’s notes, then checking them
 
-C1: Corpse `TypeAddl` is global. 29 sectors, values `{0..27}` plus
-`200`, no repeats. Semmler (`scri` 128+N) holds; Petrich “contiguous
-from 0” is global IDs, not per-level.
+Petrich’s `PID_Level` is a 450-byte header plus 1024 sectors of 16
+bytes. Semmler’s Torch docs name the sector types (Void, Normal, Door,
+ChangeLevel, DoorTrigger, SecretDoor, Corpse, Pillar, OtherTrigger,
+Save) and say a corpse’s additional info is a global index into `scri`.
+Gray published the Dead Scripts dump and an XOR description that was
+off by two bytes.
 
-C2: Counts match Descriptions (incl. Lock&Load 2, Need a Light 5,
-Happy Happy 5, Fools 2, Labyrinth 0, Lasciate 0). Named DeadScripts
-headings join to the same corpses. Headings skip 129 and 135; both
-are real scripts (Cold Guy, Joachim). Carlos is `TypeAddl=200`.
+The first 2048 hex of Maps showed one Pascal name at offset 0, then the
+rest of the 128-byte slot. Height in metres × 10 sits at 0x84 and
+matches Earhart’s list on all 25 records (level 24 is −32768). An
+earlier hex reading that put a different field at 0x84 was a misaligned
+line, not a field swap.
 
-D1: `Sector.Item` range `0..399` does not falsify a dpin index, but
-group 42 and corpse groups are not Descriptions loot. Inventory-shaped
-dpin rows exist at unused high indices. Hypothesis fails the group-42
-and per-level tests. `tools/round6_corpse_dpin.py`,
-`tools/round6_d1_refine.py`, `tools/round6_d1_john.py`.
-
----
-
-## 2026-09-01 (Phase 0 close / shapes open)
-
-T1: `Item != -1` is unique **within each level** (0 duplicates / 25).
-Go for instance-id. Not contiguous `0..N` except The Labyrinth.
-Descriptions `Ni` matches neither all-Item nor Type==1 counts.
-Range 0..399 is shared across sector types. Five unused values are
-unused on every level.
-
-T2: `unknown1` matches the stated sample values. No tested checksum
-hits 25/25. `-hacks.txt` modification check is `CODE 1` `67`→`60`.
-
-T3: `.256` offset-8 as raw u32 directory fails. `value>>8` gives 3
-sections, not per-sprite frames. Byte 6 looks like a count
-(floor/ceil=2, walls=22, items=59).
-
-T4: `clut` 256 recorded as copyright text. Palettes 128–135 dumped.
-`texture_list` variation 0–3; slot 7 never used; no slot → 195–202.
-
-T5: `tools/level_viewer.py` → `reference/levels/`. FORMAT.md
-finalised with Disproven + Credits. Maps format is solved; shapes
-are not.
+`formats/pid_level.ksy` and `tools/pid_level.py` were written from that
+layout. Zero wall-type or sector-type violations in 25 × 1024 sectors.
+Petrich’s `sector_types_sqr` sheet matches 100% at origin 16, 4 pixels
+per sector, pitch 144.
 
 ---
 
-## 2026-09-01 (save + shapes offset 7)
+## What a sector actually is
 
-Superdude BinHex decodes to DiskDoubler SEA `Yoyoby.sea` (APPL/DSEA,
-data 63414, rsrc 8822). BinHex CRC fails; `unar` cannot expand DD
-(`ABCD0054`). Not a raw PID save. `reference/saves/superdude.bin`.
+Sixteen bytes: six `(type, texture)` wall slots, an `i16be` Item, an
+`u8` type, an `u8` type_addl.
 
-`.256` table at offset 7 as raw u32be gives 3 in-range offsets
-(1256, 3144, 4088) then breaks. No 256-entry clut in 0..0x200.
-Entropy 4–6.5 bits/byte (not packed). Floor/ceil `u32@0=33144`
-= 2×128×128 + 376 (inferred). Cocoa port is App Store only; no
-public DMG found.
+The six wall slots are **not** six barriers. Slots 0 and 1 are the
+north (−Y) and west (−X) edges. Slots 2–5 are decorative corners.
+South and east faces belong to the neighbouring sector. Only `Wall`
+(32) and `Wall_FancyCorners` (33) on those two edges isolate regions.
+Short walls (64 / 96 / 128) sit on the same edges and do not change
+reachability on any of the 25 levels. `CutoffCorner` (160) lives only
+on corners.
 
----
+Sector index is row-major, `i = y*32 + x`, x right, y down. Ground
+Floor under that rule is a T with the stem south, matching the
+published map. Transpose (`i = x*32 + y`) lays the T on its side and
+is wrong.
 
-## 2026-09-01 (round 9 — .256 decode)
-
-T3(c): PackBits from after the header/clut does **not** consume the
-file and emit 33144. Lengths: packbits@32 = 67257; highbit_run =
-31985; 0x90 RLE ≈ 31985. Forcing PackBits to stop at 33144 leaves
-~16 KB unread. M1 i16 line codec: 0 lines.
-
-T1(b): mac-filtered 8-byte clut union fills **140/256**. **1842
-conflicts**. Shared-palette model fails. 128 covers 20–33+ later
-bands, not 0–N. Byte 6 ≠ colour count.
-
-T2: 46/50 four-offset tables OK vs `u32@0`. 195–202:
-`[280, 344, 376, 32768]`. `376 == 2×188`, `32768 == 2×16384`.
-Fails: 161, 162, 167, 189.
-
-Visual: compact gray records at +29 (`index, 03, gray, 81`) plus
-raw pixels from packed **offset 258** → mottled gray 128×128
-(`reference/shapes/195_a.png`). Matches Petrich.
-
-T4: AOPID 1.4 from
-`simplici7y.s3.amazonaws.com/.../AOPID_v1.4.zip`. `Shapes.shpA`
-9.3 MB, 32 M2 collections. Coll 0 has 59 bitmaps (same count as
-`.256` 128). Coll 12 names Blue/Orange Nightmare, Headless, …
-Coll 17–21 are wall-type. Sprites are column-packed (0 raw
-exports). `reference/aleph_shapes/`.
-
-T5: Basilisk II is not on this machine; no controlled save.
-Ground Floor save runes: (6,2), (26,2), (5,10), (27,10). John Doe
-at (14,6) Item=114. Pathways Into Cheating DITL 129 fields:
-Vitality, Maximum Vitality, Left-Handed, All Items, Add/Delete.
-STR# 128 is the error list. MENU 135 is the item catalog (id
-suffixes). Report: `reference/docs/round9_cheating.txt`.
+`Sector.Item` is a per-level instance id, unique within each record,
+range 0..399 globally, shared across sector types. It is not a catalog
+index, not a loot-group index, and not a save-block key.
 
 ---
 
-## 2026-09-01 (round 10 — .256 discriminator)
+## Dead ends that looked promising
 
-Palette-union conflicts do not falsify anything. Dropped the
-master-palette goal. Each `.256` uses its own table.
+Several early readings failed cleanly and stayed failed.
 
-T1(b) 195 `@258..end`: in 3–16 = 25242/31370 = **0.8047**.
-OOR/KB = 195.35. Gaps median 2 (102/200 are 2) → RLE controls.
+**`dpin` as a directory.** The first four bytes look like `0x000c0b3c`
+as a u32, which exceeds the resource. They are `u16be 12, 2876`.
+409 × 564 divides the file and scores almost nothing on a stride scan;
+the blockmap is diagonal. The vertical reading is 596 bytes of prefix
+then 2876 rows of 80. Inventory-shaped 8-byte records exist in there.
+They are not selected by `Sector.Item`. What `dpin` *is* remains open.
 
-T1(e) 198 `@258..end`: in 3–16 = 10440/18287 = **0.5709**.
-OOR/KB = 429.10. Ratio 198/195 = **2.197**. More OOR/KB in the
-most-compressed resource. Caveat: 198 has 2548×`0x11` + 1184×`0x12`
-(likely extra pixel slots; kind=4 record mentions index 18).
-Fair control signal is `0x80+`/KB: 195=85.2, 196=31.0, 198=119.2.
+**`scri 128+N` as level N.** No level-name bytes appear in any `scri`.
+Gray and Semmler both call these corpse-dialogue scripts. The working
+map is `scri_id = 128 + Sector.TypeAddl` on a Type 6 sector. TypeAddl
+values are globally unique: `{0..27}` plus one `200` (Carlos). Dead
+Scripts headings skip 129 and 135; both resources exist and decrypt to
+real dialogue (Lock&Load’s Cold Guy, Ascension’s Joachim).
 
-T2: per-section restart. `*_until` always hits target; leftover
-is the tell. PackBits leftover 16238. highbit s3 short 1030.
-Two 16384 PackBits runs leave ~16 KB — same over-expansion as
-round 9. PackBits on the 376-byte header destroys the clut.
+**`clut` 256 as the game palette.** It is the 1993 Bungie copyright
+notice stored under type `'clut'`. The real palettes are `clut`
+128–135, eight 15-colour Mac tables.
 
-T3: `195_raw_a.png` / `195_raw_b.png`. B has 14986 real bytes,
-padded 1398. No sudden OOR cliff → not “first raw, second
-compressed”. 198 B_avail=1903.
+**The 25 save blocks as live world state.** A two-name `Saved Games`
+file is 276564 bytes. Blocks 0–24 at 39392 are **templates**. They do
+not shrink when you pick something up. A second save name adds 9112
+bytes, not 25 × 9112. PID *does* persist pickups — as sparse flag bits
+on the player island, not by rewriting the map copy.
 
-T4: packed `[23:211]` identical on 195–202 (shared clut). First
-varying byte is **257**. u16 128 and 16384 sit at 244/249 on all
-eight. Last 376 packed bytes vary everywhere. Decoded 376 via
-PackBits is garbage, not two 188-byte image headers.
-
-T5: rsrc 192 PackBits 13/22 frames; AOPID L1 246–358, inconclusive.
-
-T6: 161=2-entry `[864,1024]`; 162=3-entry `[608,736,768]`;
-167/189 table likely starts at offset 11. b6 still a frame count.
-
-Encoding identified as RLE-class, not closed. Tools:
-`tools/round10_256.py`, `round10_followup.py`, `round10_disc_rle.py`.
+**A proven 2876-byte player struct.** Two clocks sit 2876 bytes apart
+in the two-name file. Bytes 0–1865 of that span are leftover. Only the
+island from ~1866 is live. 2876 is an offset that appears, not a parsed
+record.
 
 ---
 
-## 2026-09-01 (Saved Games — one real file)
+## Corpse talk
 
-`data/saves/Saved Games` 267452, creator `påth`. Supersedes the
-DiskDoubler blob. **Not two near-identical slots.** One Pascal name,
-one (6,2)+facing, one time 5204, HP 60/60 at 1876. Autocorrelation
-max 0.284 @ 18224. Second `00 3c 00 3c` at 24884 is not a second
-player (no name, no XY, +23008 is zeros).
+Gray’s XOR starts at the wrong offset. Skip the first two bytes (they
+are an unencrypted `u16be` length equal to the resource size), then
+XOR the rest with `00 01 02 …` wrapping at 256. After that transform,
+scri 128 contains the plaintext `Who are you?  Am I dead?`.
 
-T2(c): no before/after pair. Cannot test Sector.Item 114.
-File has 238× `i16be==114`. L0 8-aligned: none. Bit 114 of L0 = 0.
-Inventory already has Walther + Mein Kampf (John Doe loot) — this
-looks like the AFTER state only.
-
-T3: ItemCheat time@1786 and inv@2560 and HP low-bytes **correct**.
-X/Y/level offsets **wrong**. True X/Y = u16be 6,2 @2328/2330.
-Level 0 @2316. Hex “×4 map unit” not used.
-
-T4: 8-byte `(id,state,qty,cat)` matches dpin. ~21 slots from 2560.
-
-T5: (6,2) is a save rune, level_number 0. 25×9112 table @39392 all
-populated.
-
-Reports: `reference/docs/round11_saves.txt` … `round11_saves4.txt`.
+Stubs 156 and 157 are 14 bytes and do not share a prefix with the
+bodies. The published “Mumble, mumble…” line is not in 156.
 
 ---
 
-## 2026-09-01 (round 12 — level blocks + RLE follow-byte)
+## Shapes: enough to know we cannot paint them yet
 
-T1(e)(f): 8-byte-from-0, index=Item is **false**.
-L0/L6/L13 f0_live = 74 / 79 / 115 vs expected 116 / 109 / 294.
-rec[114] = `(51,0,8,FFFF)`. No field equals 114 in L0.
-Bytes 0–255 identical on all 25 levels.
+v2.0 `Shapes.rsrc` holds 50 `.256` resources. Most have a 7-byte
+header and a four-word offset table at byte 7 into a *decompressed*
+buffer whose size is `u32@0`. Floor and ceiling resources 195–202 all
+store 33144 and share one offset pattern that looks like two 128×128
+8-bit images plus headers.
 
-T1(g): 9112÷8=1139; 9112-256=8856÷8=1107. 12 does not divide
-9112. 16-byte view is the `fffe` frame, not cleaner.
+Each resource carries **its own** colour table. Index spaces overlap
+because resources reuse slots. There is no master 256-colour union.
 
-T2: 4287 bytes zero-across-25; 246 constant `ff fe`; 4579 vary.
-No bitmap. “Coord pairs” are misread (type,0,id,1) records.
-Middle of the block is 16-byte objects with `2007`/`ffff` (dpin-like).
+The pixel encoding is still unknown. PackBits, high-bit RLE, 0x90 RLE,
+per-row resets, and several discriminator-aware schemes miss 33144 or
+leave kilobytes unread. A raw dump from packed offset 258 is a
+recognisable mottled gray and is the current viewer stand-in, not the
+codec. This is the item that blocks textured rendering.
 
-T3: Bomb Code 321 bytes, exported == 1995 tree, 0 diffs. Mac Roman
-text. Arming code **2870334**. `Don\xd5t` = Don’t.
-
-T4(d): after 00/01/02 the next byte is a **pixel** (3–16):
-1774/1793, 752/763, 336/338. Opcodes with a pixel operand.
-T4(e): no scheme hits 33144 and consumes to EOF. Closest full-stream
-shorts are still ~1900–2600. @257 vs @258 does not close the gap.
-
-Tools: `round12_level_rle.py`, `round12_followup.py`.
-User will capture a two-name save (talk, no loot).
+`texture_list` in the map header (eight i16be) encodes a `.256` id in
+the low 12 bits plus 128 and a variation 0–3 in the high nibble. Slot
+0 is always walls (192 / 193 / 194). No slot maps to floor/ceiling
+resources 195–202. How a level picks its floor and ceiling is unknown.
 
 ---
 
-## 2026-09-01 (round 13 — AAA/AAB pickup + RLE gap)
+## Saves, briefly
 
-Source is one file `reference/saves/Saved Games AAA-AAB` (276564),
-not `save_AAA` + `save_AAB`. Names at 0 and 128.
+One real `Saved Games` file is 267452 bytes with a single Pascal name.
+Two named games live in one file (276564). ItemCheat’s v1.1 offsets
+for X / Y / level do not apply; v2.0 stores sector coordinates as
+plain integers at 2328 / 2330 and the level at 2316. Inventory is
+8-byte records `(id, state, qty, catalog)` starting at 2560, the same
+shape as the inventory-like rows in `dpin`. Catalog numbers are a
+lazy free-list, not an index into another table.
 
-T2(a): L0 live **85 in both views**. The packed list did **not**
-shrink to 84. It is byte-identical to the earlier mid-game L0 list
-(85 type-35-heavy records). Pickup does not remove a record.
-L1–L24 counts unchanged in role (only one world copy). A 26th
-9112-byte region exists; it is not a second L0.
+The 32×32 explored-bitmap for Ground Floor sits in a 260-byte header
+near the end of the file (156 tiles in the captured save, including
+the save rune at (6,2)).
 
-T2(b)(c): no removed record. No field equals a disappearing 0x33/8
-pair that is unique to the pickup. Type-35 `f2` never contains
-alcove Item **44**.
+---
 
-T2(d): no in-place L0 field change vs the old save either.
+## Drawing Ground Floor, then walking it
 
-T4: ammo **appends** `00 33 00 00 00 07 ff ff` at inventory slot 9
-(2560+2876). Knife catalog `FFFF`→`0003`. Qty 7 = Descriptions Pink.
+`tools/level_viewer.py` and later `round17_walls.py` /
+`round18_walls.py` draw a 32×32 grid: Void black, Normal tan, thick
+lines on edges 0/1, corners as marks. Ground Floor is the published T.
+That is Phase 0’s exit picture.
 
-T5: row-length prefixes fail (first u16 is 0x900B-class, not a
-length). No increasing 128-entry table in the first 512. Column-major
-reset is the same 128×128 decoder as per-row; 198 leftover 85 bytes
-still look like RLE (`01 08 80 09…`). Skip-N-at-boundary does not
-hit 33144.
+A flood from the southmost non-Void tile reaches **214 / 214** Ground
+Floor sectors. All four saves and all four ladders are on that
+component. The side wings open through doors. The fan map that omits
+those wings is incomplete, not evidence of sealed content.
 
-T6: Bomb Code already identical; recorded as static content.
+The same southmost-start rule on later levels is wrong. Levels 7–15
+are entered by ladder and have no southern door. A union flood from
+every Type 3 and Type 9 still left large sealed regions on those
+floors. Short walls were not the cause (variant A = only 32/33 block;
+variant B = also 64/96/128; both match, Ground Floor stays 214/214).
 
-Reports: `reference/docs/round13_pickup_rle.txt`,
-`round13_save_diff.txt`, `round13_refine.txt`, `round13_bitmap.txt`.
+---
+
+## Doors start closed
+
+PID does not open a door by walking into it. A Type 4 `DoorTrigger`
+sector does, and `TypeAddl` selects the action: 129 open neighbour,
+131 silver, 132 gold, 141 flag, 130 Alien Pipes, 6/7 chain, 128 close.
+Every `OpenNgbr*` trigger on the 25 levels is 4-adjacent to exactly
+one Type 2 door. Opening that door (ignore 32/33 when stepping onto or
+off it) and re-flooding to a fixed point grows L11, L12 and L14. It
+does not move L7, L8 or L15: those Type 2 tiles sit in already-open
+corridors. L9, L10 and L13 have zero Type 2 and zero Type 4.
+
+Silver and gold keys are real progression gates (Welcome, Tasty
+Primate; Beware of Low-Flying Nightmares). From the start set they do
+not unlock extra *tiles* — the keyed doors we can reach are the
+no-op corridor case, and the ones that would matter sit on the sealed
+side.
+
+---
+
+## Arrival coordinates live in the other level
+
+`PID_LevelChange` is `{ i16 Type; i16 Level; i16 x; i16 y }`. Petrich
+annotates x,y as “the coordinates of the sector to go to.” Semmler:
+“The coordinates are where the player is dropped in the level.” A
+level’s own Type 3 sectors are **departures**. Arrival tiles for
+level N are every live `LevelChangeList` entry, in *any* of the 25
+records, whose destination Level is N.
+
+Unused slots are `Type=-1, Level=0, x=0, y=0` (368 of them). A few
+Type=-1 slots hold leftover coordinates and are skipped. Live entries
+are Type 0–3 with a dest level 0–24 and x,y on the 32-grid (118).
+Type 4 is undocumented and appears as a But Wait → Ground Floor
+pointer.
+
+Seeding from own Type 3s is why The Labyrinth’s four corners looked
+boxed under the old rule: they are exits, not entries. The real drops
+are (16,17) (void in the stored template — L12 / L14 / L15) and
+(16,18) (walkable, from L16). Descriptions says the Labyrinth reforms
+every visit. The stored geometry is a template, not the walkable
+floor. Under the real movement rule (type 32 blocks; type 33 is
+draw-only) that template is one 525-tile component — the earlier
+“202, corners boxed” count treated 33 as solid and is dropped.
+
+The transition graph agrees with Descriptions on the famous
+connections: Lock&Load’s two ladders, They May Be Slow’s west/east
+teleporters, the Labyrinth’s four corners, Happy Happy’s west/east
+ladders and its north/south traps. Happy Happy’s traps both
+SecretDownward-drop at L20 (2,2), a void-isolated 3×3 with Items
+210–218 and no exit. That “sealed” region is working as designed.
+
+Level 24 (Ok, Who Else Wants Some?) is not a floor plan. Petrich’s
+sector-type sheet draws a 1993 / snail credit graphic in that cell.
+Arrival is (14,19) from L23, a 33-tile hub among 34 void-separated
+islands. Treat it as special.
+
+One-way transitions are teleporters or traps. Bidirectional pairs are
+ladders.
+
+---
+
+## L9 and L10 were never sealed
+
+Under the wrong collider (type 33 blocks) two crystal-theme levels
+looked almost entirely boxed: L9 12 / 415, L10 4 / 574. Both have
+empty DoorLists, no Type 2, no Type 4, no Type 5, no Type 8. Arrival
+tiles looked like one-tile closets.
+
+`SwitchableWallCorner` (type 1) is not the answer. It appears 4507
+times in the whole file, **all on L13**. Petrich (“everywhere in The
+Labyrinth”) and Semmler (“used on The Labyrinth to change the
+direction of walls”) are right about the clustering and wrong as an
+L9/L10 theory. L9 and L10 have zero type-1 walls.
+
+Every frontier edge of those closets is type 33, texture **127**.
+Texture 127 is the dominant type-33 face on 7–15 (581 on L9, 499 on
+L10). It is not a holographic marker. Treating every 127 wall as
+passable also opens L7, so that shortcut is wrong.
+
+The known walk-through walls in this game are Type 5 `SecretDoor`
+sectors. Descriptions marks them as “False Wall” on They May Be Slow,
+…But They’re Hungry, Evil Undead Phantasms, and Happy Happy. The
+Guide’s line for the Blue Crystal on L3 is “Walk through the wall.”
+L9 and L10 have no Type 5.
+
+The actual fix is the movement rule: **type 32 blocks; type 33 is a
+drawn face.** No level mixes the two. Levels 7–15 are the crystal
+wall theme (`.256` 194) and store only 33. Under `{32}` L9 is
+415 / 415 and L10 is 574 / 574. The “sealed content” reading is
+disproven.
+
+---
+
+## Crystals do not open those walls
+
+The item table has Yellow (Talk, 0x40), Blue (Freeze, 0x41), Orange
+(Burn, 0x42), Mottled / Purple (0x44), Green (0x45), Black (0x46).
+Descriptions places them here:
+
+| Crystal | Level | Before L9 / L10? |
+|---|---|---|
+| Yellow | L1 Never Stop Firing | Yes, if you take the upper path first |
+| Blue | L3 They May Be Slow | Yes |
+| Orange | L7 Wrong Way! | Yes, on the recommended route |
+| Violet | L13 The Labyrinth | After |
+| Green | L17 Watch Your Step | After |
+| Black | L23 Where Only Fools Dare Tread | After |
+
+L10 is on Ground Floor’s south-east ladder. A player can walk there
+with no crystal at all.
+
+The harvested `docs_web` tree does not contain files named
+`BasicSurvivalGuide_1_1.txt` or `Walkthrough.txt`. The same text
+lives in Pathways Guide v1.1 and in `ItemCheatFile_3_10.txt`:
+
+- Feel the Power — “Problem(s): None / Solution(s): None.” SW ladder
+  up to Ground Floor, NW down to A Plague of Demons.
+- We Can See in the Dark — “Problem(s): Frenzy rats / Solution(s):
+  turn off flashlight.” SW up to Welcome, Tasty Primate; NE down to
+  Happy Happy.
+
+Neither walkthrough mentions a sealed wall, a crystal discharge, or a
+hidden passage on those floors. They treat both as ordinary
+traversable maps.
+
+Decrypted `scri` agrees. L9’s corpse (scri 138, Light Phobic) is
+about winged rats and a flashlight: “Get that light away from me!”
+L10’s corpse (scri 139, Walter) is about gold ingots and invisible
+demons on the level below. The only “walked through the opposite
+wall” line is scri 131, on L3 next to the Blue Crystal’s Type 5
+secret door — a different mechanic, already identified.
+
+Nothing needed to open those walls. Type 33 was never a collider.
+Crystals are talk / freeze / burn / lightning / quake / stone. L10
+is on Ground Floor’s south-east ladder; a player can walk there with
+no crystal at all.
+
+---
+
+## Phase 0 result table
+
+Movement `{32}`. Reachable = arrivals from other levels’ `LevelChangeList`
+plus Type 9, then door-trigger fixed-point. Components counted on
+non-Void tiles. Extra components are Type 5 closets (L3/L4), designed
+traps / void islands, or the L24 credit graphic — not shattered type-33
+walls. Ground Floor 214/214 is Earhart’s T (stem south, bar x=4–28).
+
+| Lv | Name | Non-void | Reach | Comp | Item | Corpse | Trigger |
+|---|---|---|---|---|---|---|---|
+| 0 | Ground Floor | 214 | 214 | 1 | 116 | 1 | 3 |
+| 1 | Never Stop Firing | 478 | 478 | 1 | 175 | 0 | 7 |
+| 2 | Lock&Load | 500 | 500 | 1 | 228 | 2 | 19 |
+| 3 | They May Be Slow… | 456 | 449 | 8 | 215 | 2 | 0 |
+| 4 | …But They’re Hungry | 504 | 503 | 4 | 240 | 1 | 2 |
+| 5 | Evil Undead Phantasms Must Die! | 563 | 563 | 2 | 159 | 1 | 0 |
+| 6 | Ascension | 195 | 195 | 1 | 109 | 1 | 17 |
+| 7 | Wrong Way! | 515 | 515 | 1 | 313 | 1 | 29 |
+| 8 | Welcome, Tasty Primate | 459 | 459 | 1 | 316 | 1 | 2 |
+| 9 | We Can See In The Dark… Can You? | 415 | 415 | 1 | 289 | 1 | 0 |
+| 10 | Feel the Power | 574 | 574 | 1 | 350 | 1 | 0 |
+| 11 | A Plague of Demons | 537 | 537 | 1 | 330 | 1 | 10 |
+| 12 | Beware of Low-Flying Nightmares | 521 | 521 | 1 | 314 | 1 | 16 |
+| 13 | The Labyrinth | 525 | 525 | 1 | 294 | 0 | 0 |
+| 14 | Happy Happy, Carnage Carnage | 446 | 446 | 1 | 275 | 5 | 8 |
+| 15 | Need a Light? | 505 | 505 | 1 | 300 | 5 | 17 |
+| 16 | Lasciate Ogne Speranza, Voi Ch’Intrate | 472 | 472 | 1 | 296 | 0 | 4 |
+| 17 | Watch Your Step | 496 | 496 | 1 | 247 | 1 | 52 |
+| 18 | I’d Rather Be Surfing | 521 | 521 | 1 | 240 | 1 | 8 |
+| 19 | Warning: Earthquake Zone | 172 | 172 | 1 | 138 | 1 | 31 |
+| 20 | Don’t Get Poisoned! | 437 | 437 | 5 | 187 | 0 | 0 |
+| 21 | Please Excuse Our Dust | 529 | 529 | 4 | 207 | 0 | 0 |
+| 22 | But Wait!— That’s Not All! | 496 | 496 | 2 | 255 | 0 | 16 |
+| 23 | Where Only Fools Dare Tread | 519 | 519 | 5 | 258 | 2 | 0 |
+| 24 | Ok, Who Else Wants Some? | 181 | 33 | 34 | 15 | 0 | 0 |
+
+## What Phase 0 ships
+
+- `docs/FORMAT.md` — standalone spec: Maps layout and enums, the
+  two-edge / four-corner sector model, arrival semantics, `scri`
+  encryption, corpse mapping, save island, `.256` partials, per-
+  resource colour tables, Disproven, Open questions, credits.
+- `formats/pid_level.ksy` — compiles with kaitai-struct-compiler 0.11
+  to Python (`tools/generated/pid_maps.py`) and C#
+  (`tools/generated/PidMaps.cs`, namespace `Pid.Formats`). The
+  generated Python matches `tools/pid_level.py` on all 25 v2.0
+  records.
+- `tools/export_level.py` — Unity import JSON: 32×32 sectors (type,
+  item, type_addl), per-wall `blocks_movement` from `{32}`, doors,
+  source/dest level changes, monsters, resolved `.256` ids, arrivals
+  into each level, `transition_graph.json` (118 edges),
+  `corpses.json` (scri 128+TypeAddl + decrypted dialogue).
+- `reference/levels/L00.png` … `L24.png` — final `{32}` renders.
+  Ground Floor 214/214 matches Earhart’s T.
+- `reference/sounds/snd_*.wav` — all 86 `'snd '` resources.
+
+Phase 0 is closed. Phase 1 can import a level. Textured walls wait on
+the `.256` decoder. The Labyrinth waits on its load-time generator.
+
+---
+
+## Dated log (compressed)
+
+The experiments that produced the paragraphs above, in the order they
+were run. Reports live under `reference/docs/`.
+
+- **2026-09-01** — Toolchain, harvest, `STR#` decode, Maps stride,
+  dpin / scri first pass, Petrich / Semmler / Gray read, first
+  parser, sheet compare, clut 256 identified as copyright, corpse
+  TypeAddl global, Item ≠ dpin group.
+- **2026-09-01 (later)** — `.256` offset table at byte 7, per-resource
+  palettes, PackBits and friends fail, raw-from-258 viewer.
+- **2026-09-01 / 02** — Saves: templates vs player island, 8-byte
+  inventory, flag bits, 0750/0752 unidentified, 2876 is not a struct.
+- **2026-09-02 r17** — Row-major confirmed. Ground Floor 214/214.
+- **2026-09-02 r18** — Corners are not walls. Short walls do not seal.
+- **2026-09-02 r19** — DoorTrigger adj4 fixed-point. L11/L12/L14 grow.
+  L9/L10/L13 have no doors.
+- **2026-09-02 r20** — Arrivals from source `LevelChangeList`. L13
+  4→202. L20 trap identified. L24 marked special.
+- **2026-09-02 r21** — Type-1 is Labyrinth-only. L9/L10 frontier is
+  ordinary type-33 / tex-127. Crystals and walkthroughs do not open
+  those walls. Phase 0 deliverables written.
+- **2026-09-02 r22** — Brute-forced all 30 WallList edge pairs.
+  Slots 0 and 1 are the only slots that ever hold type 32/33.
+  Slots 2–5 are corners (CutoffCorner only). `(0,1)` is the only
+  assignment that passes GF 214/214, the T shape, L13 centre, and
+  L3/L4 secret-closet gates. `(1,0)` breaks Ground Floor. Opening
+  L9/L10 by using corner slots as edges also opens hidden Type 5
+  closets — those pairs are “no walls,” not a correct layout.
+  The L9/L10 mechanic is elsewhere.
+- **2026-09-02 r23** — Four direction conventions on (0,1) and on the
+  mixed slot pairs. Only N/W (0,1) passes every gate. L9 is the
+  densest 32/33 level (0.890) and is ringed; L10 is mid-pack. Sealed
+  masses hold the corpses and almost all loot, are geometrically one
+  blob, and are *not* walkable under stored walls. Item ids are not
+  contiguous. Connectivity unexplained under every wall reading.
+- **2026-09-02 r24** — Type 32 vs 33 is a perfect band split (0–6/16–24
+  all 32; 7–15 all 33, no shorts). 33-as-solid shatters 7–15.
+  Winner: 32 blocks, 33 is drawn only. L9/L10 become 1 component and
+  fully reachable. L13 stored maze also becomes 1×525 (no 32s).
+  Sector types untouched (Petrich sheet still 100%).
+- **2026-09-02 closeout** — Dropped the L13=202 gate (artifact of 33
+  as collider). 32/33 recorded as a hard per-level partition
+  (authoring-tool signature; 7–15 = crystal theme). Final `{32}`
+  renders, Unity JSON + 118-edge graph + corpses.json, 86 `'snd '`
+  WAVs. Phase 0 result table below.

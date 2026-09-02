@@ -1,0 +1,394 @@
+========== L24 CROSS-FILE (the only changing block) ==========
+L24 @258080 one-vs-r14: 55 bytes
+  [743:743] (1B) one=01 r14=08
+    ctx1 00 00 00 00 00 00 00 00 01 00 39 00 09 00 72 ff ff
+    ctx2 00 00 00 00 00 00 00 00 08 00 1a 00 05 00 31 00 00
+  [745:745] (1B) one=39 r14=1a
+    ctx1 00 00 00 00 00 00 01 00 39 00 09 00 72 ff ff 00 72
+    ctx2 00 00 00 00 00 00 08 00 1a 00 05 00 31 00 00 00 36
+  [747:747] (1B) one=09 r14=05
+    ctx1 00 00 00 00 01 00 39 00 09 00 72 ff ff 00 72 00 23
+    ctx2 00 00 00 00 08 00 1a 00 05 00 31 00 00 00 36 00 03
+  [749:751] (3B) one=72 ff ff r14=31 00 00
+    ctx1 00 00 01 00 39 00 09 00 72 ff ff 00 72 00 23 00 72 00 23
+    ctx2 00 00 08 00 1a 00 05 00 31 00 00 00 36 00 03 00 37 00 04
+  [753:753] (1B) one=72 r14=36
+    ctx1 39 00 09 00 72 ff ff 00 72 00 23 00 72 00 23 00 72
+    ctx2 1a 00 05 00 31 00 00 00 36 00 03 00 37 00 04 00 38
+  [755:755] (1B) one=23 r14=03
+    ctx1 09 00 72 ff ff 00 72 00 23 00 72 00 23 00 72 00 23
+    ctx2 05 00 31 00 00 00 36 00 03 00 37 00 04 00 38 00 06
+  [757:757] (1B) one=72 r14=37
+    ctx1 72 ff ff 00 72 00 23 00 72 00 23 00 72 00 23 00 72
+    ctx2 31 00 00 00 36 00 03 00 37 00 04 00 38 00 06 00 39
+  [759:759] (1B) one=23 r14=04
+    ctx1 ff 00 72 00 23 00 72 00 23 00 72 00 23 00 72 00 23
+    ctx2 00 00 36 00 03 00 37 00 04 00 38 00 06 00 39 00 09
+  [761:761] (1B) one=72 r14=38
+    ctx1 72 00 23 00 72 00 23 00 72 00 23 00 72 00 23 00 72
+    ctx2 36 00 03 00 37 00 04 00 38 00 06 00 39 00 09 00 57
+  [763:763] (1B) one=23 r14=06
+    ctx1 23 00 72 00 23 00 72 00 23 00 72 00 23 00 72 00 23
+    ctx2 03 00 37 00 04 00 38 00 06 00 39 00 09 00 57 00 0a
+  [765:765] (1B) one=72 r14=39
+    ctx1 72 00 23 00 72 00 23 00 72 00 23 00 72 00 23 00 72
+    ctx2 37 00 04 00 38 00 06 00 39 00 09 00 57 00 0a 00 72
+  [767:767] (1B) one=23 r14=09
+    ctx1 23 00 72 00 23 00 72 00 23 00 72 00 23 00 72 00 23
+    ctx2 04 00 38 00 06 00 39 00 09 00 57 00 0a 00 72 00 23
+  [769:769] (1B) one=72 r14=57
+    ctx1 72 00 23 00 72 00 23 00 72 00 23 00 72 00 23 00 89
+    ctx2 38 00 06 00 39 00 09 00 57 00 0a 00 72 00 23 00 89
+  [771:771] (1B) one=23 r14=0a
+    ctx1 23 00 72 00 23 00 72 00 23 00 72 00 23 00 89 ff ff
+    ctx2 06 00 39 00 09 00 57 00 0a 00 72 00 23 00 89 ff ff
+  [864:865] (2B) one=ff ff r14=00 2e
+    ctx1 00 74 00 25 00 00 00 00 ff ff 00 00 00 02 ff ff 00 33
+    ctx2 00 74 00 25 00 00 00 00 00 2e 00 00 00 02 ff ff 00 33
+  [880:881] (2B) one=ff ff r14=00 33
+    ctx1 00 33 00 00 00 05 ff ff ff ff 00 00 00 05 ff ff ff ff
+    ctx2 00 33 00 00 00 05 ff ff 00 33 00 00 00 05 ff ff 00 33
+  [888:889] (2B) one=ff ff r14=00 33
+    ctx1 ff ff 00 00 00 05 ff ff ff ff 00 00 00 08 ff ff ff ff
+    ctx2 00 33 00 00 00 05 ff ff 00 33 00 00 00 08 ff ff 00 33
+  [896:897] (2B) one=ff ff r14=00 33
+    ctx1 ff ff 00 00 00 08 ff ff ff ff 00 00 00 08 ff ff ff ff
+    ctx2 00 33 00 00 00 08 ff ff 00 33 00 00 00 08 ff ff 00 33
+  [904:905] (2B) one=ff ff r14=00 33
+    ctx1 ff ff 00 00 00 08 ff ff ff ff 00 00 00 08 ff ff ff ff
+    ctx2 00 33 00 00 00 08 ff ff 00 33 00 00 00 08 ff ff 00 16
+  [912:913] (2B) one=ff ff r14=00 16
+    ctx1 ff ff 00 00 00 08 ff ff ff ff 00 00 00 00 ff ff 00 34
+    ctx2 00 33 00 00 00 08 ff ff 00 16 00 00 00 00 ff ff 00 34
+  [944:945] (2B) one=ff ff r14=00 33
+    ctx1 00 33 00 00 00 07 ff ff ff ff 00 00 00 08 ff ff 00 34
+    ctx2 00 33 00 00 00 07 ff ff 00 33 00 00 00 08 ff ff 00 34
+  [1144:1145] (2B) one=ff ff r14=00 33
+    ctx1 ff ff 00 00 00 01 ff ff ff ff 00 00 00 08 ff ff ff ff
+    ctx2 ff ff 00 00 00 01 ff ff 00 33 00 00 00 08 ff ff ff ff
+  [1675:1675] (1B) one=fe r14=ff
+    ctx1 d7 c0 30 20 07 00 00 ff fe 00 00 44 a4 00 00 28 bf
+    ctx2 d7 c0 30 20 07 00 00 ff ff 00 00 44 a4 00 00 28 bf
+  [2042:2043] (2B) one=ff fe r14=00 1f
+    ctx1 19 e8 c0 2d 20 00 00 00 ff fe 00 00 43 5b 00 00 07 dd
+    ctx2 19 e8 c0 2d 20 00 00 00 00 1f 00 00 43 5b 00 00 07 dd
+  [2095:2095] (1B) one=9f r14=77
+    ctx1 07 00 00 ff ff 00 00 19 9f 00 00 08 fc c1 1c 20 07
+    ctx2 07 00 00 ff ff 00 00 19 77 00 00 08 7e c1 1d 20 07
+  [2099:2099] (1B) one=fc r14=7e
+    ctx1 ff 00 00 19 9f 00 00 08 fc c1 1c 20 07 00 00 00 00
+    ctx2 ff 00 00 19 77 00 00 08 7e c1 1d 20 07 00 00 00 00
+  [2101:2101] (1B) one=1c r14=1d
+    ctx1 00 19 9f 00 00 08 fc c1 1c 20 07 00 00 00 00 00 00
+    ctx2 00 19 77 00 00 08 7e c1 1d 20 07 00 00 00 00 00 00
+  [2122:2123] (2B) one=ff fe r14=00 31
+    ctx1 1a 02 c0 30 20 00 00 00 ff fe 00 00 3a 6d 00 00 19 e1
+    ctx2 1a 02 c0 30 20 00 00 00 00 31 00 00 3a 6d 00 00 19 e1
+  [2138:2139] (2B) one=ff fe r14=00 36
+    ctx1 19 e1 c0 30 20 00 00 00 ff fe 00 00 3a 53 00 00 19 f1
+    ctx2 19 e1 c0 30 20 00 00 00 00 36 00 00 3a 53 00 00 19 f1
+  [2154:2155] (2B) one=ff fe r14=00 37
+    ctx1 19 f1 c0 15 20 00 00 00 ff fe 00 00 1e 92 00 00 06 58
+    ctx2 19 f1 c0 15 20 00 00 00 00 37 00 00 1e 92 00 00 06 58
+  [2650:2651] (2B) one=ff fe r14=00 38
+    ctx1 19 e5 c0 30 20 00 00 00 ff fe 00 00 5a 20 00 00 1a ad
+    ctx2 19 e5 c0 30 20 00 00 00 00 38 00 00 5a 20 00 00 1a ad
+  [2750:2751] (2B) one=4d 13 r14=1c e8
+    ctx1 20 07 00 00 ff ff 00 00 4d 13 00 00 36 52 c0 2e 20 07
+    ctx2 20 07 00 00 ff ff 00 00 1c e8 00 00 0a 9e c1 1e 00 07
+  [2754:2758] (5B) one=36 52 c0 2e 20 r14=0a 9e c1 1e 00
+    ctx1 ff ff 00 00 4d 13 00 00 36 52 c0 2e 20 07 00 00 ff fe 00 00 3e
+    ctx2 ff ff 00 00 1c e8 00 00 0a 9e c1 1e 00 07 00 00 ff fe 00 00 3e
+  [3082:3083] (2B) one=ff fe r14=00 57
+    ctx1 19 ed c0 30 20 00 00 00 ff fe 00 00 45 6d 00 00 5b 7a
+    ctx2 19 ed c0 30 20 00 00 00 00 57 00 00 45 6d 00 00 5b 7a
+
+L24 r14-vs-old-AAA-AAB: 12 bytes
+  [2094:2095] (2B) r14=19 77 old=1b d4
+  [2098:2099] (2B) r14=08 7e old=09 3c
+  [2101:2101] (1B) r14=1d old=1c
+  [2750:2751] (2B) r14=1c e8 old=4d 13
+  [2754:2758] (5B) r14=0a 9e c1 1e 00 old=36 52 c0 2e 20
+
+L24 diff regions: header0-255=0 packed256-936=28 rest=27
+  => L24 is a scratch/live hybrid, NOT Ground Floor live state.
+
+========== PLAYER ISLAND (rel 1866..2875) ==========
+Prefix 0..1865 of each 2876 slot is leftover 68k / name overlay,
+not duplicated player state. Real island starts at clock 0x074A.
+AAA vs AAB island diffs: 16 bytes at [1868, 1869, 1872, 1873, 1875, 2112, 2148, 2632, 2633, 2634, 2635, 2637, 2638, 2639, 2678, 2679]
+  [1868:1869] (2B) AAA=1a 98 AAB=1b 33
+    ctxA 00 00 1a 98 00 00 09 5b 01 36 00 33
+    ctxB 00 00 1b 33 00 00 08 6a 01 a6 00 33
+  [1872:1873] (2B) AAA=09 5b AAB=08 6a
+    ctxA 00 00 1a 98 00 00 09 5b 01 36 00 33 00 3c 00 01
+    ctxB 00 00 1b 33 00 00 08 6a 01 a6 00 33 00 3c 00 01
+  [1875:1875] (1B) AAA=36 AAB=a6
+    ctxA 00 1a 98 00 00 09 5b 01 36 00 33 00 3c 00 01 00 03
+    ctxB 00 1b 33 00 00 08 6a 01 a6 00 33 00 3c 00 01 00 03
+  [2112:2112] (1B) AAA=00 AAB=01
+    ctxA 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+    ctxB 00 00 00 00 00 00 00 00 01 00 00 00 00 00 00 00 00
+  [2148:2148] (1B) AAA=00 AAB=08
+    ctxA 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+    ctxB 00 00 00 00 00 00 00 00 08 00 00 00 00 00 00 00 00
+  [2632:2635] (4B) AAA=ff ff 4e 56 AAB=00 33 00 00
+    ctxA 00 02 00 01 0b 40 00 05 ff ff 4e 56 00 00 48 e7 ff ff 28 6e
+    ctxB 00 02 00 01 0b 40 00 05 00 33 00 00 00 07 ff ff ff ff 28 6e
+  [2637:2639] (3B) AAA=00 48 e7 AAB=07 ff ff
+    ctxA 40 00 05 ff ff 4e 56 00 00 48 e7 ff ff 28 6e 00 10 3c 2e
+    ctxB 40 00 05 00 33 00 00 00 07 ff ff ff ff 28 6e 00 10 3c 2e
+  [2678:2679] (2B) AAA=ff ff AAB=00 03
+    ctxA ff ff 00 2d 00 01 00 00 ff ff ff ff 70 08 b0 53 66 10
+    ctxB ff ff 00 2d 00 01 00 00 00 03 ff ff 70 08 b0 53 66 10
+
+Decoded island fields (AAA / AAB / one-name):
+  clock u32 @1866: AAA=00 00 1a 98 AAB=00 00 1b 33 one=00 00 1a f7
+  u16 @0x0750 mystery @1872: AAA=09 5b AAB=08 6a one=0a 6d
+  u16 @0x0752 mystery @1874: AAA=01 36 AAB=01 a6 one=01 2e
+  HP @1876: AAA=00 33 AAB=00 33 one=00 3c
+  HPmax @1878: AAA=00 3c AAB=00 3c one=00 3c
+  u16 @0x0758 @1880: AAA=00 01 AAB=00 01 one=00 00
+  u16 @0x075A @1882: AAA=00 03 AAB=00 03 one=00 03
+  u16 @0x075C @1884: AAA=00 00 AAB=00 00 one=00 00
+  u16 @0x075E @1886: AAA=00 28 AAB=00 28 one=00 00
+  u16 @0x0760 @1888: AAA=00 03 AAB=00 03 one=00 03
+  BYTE @2112 flag/count @2112: AAA=00 AAB=01 one=01
+  BYTE @2148 flag/bits @2148: AAA=00 AAB=08 one=08
+  level @2316: AAA=00 00 AAB=00 00 one=00 00
+  X @2328: AAA=00 06 AAB=00 06 one=00 06
+  Y @2330: AAA=00 02 AAB=00 02 one=00 02
+  facing @2332: AAA=00 0c AAB=00 0c one=00 01
+  inv[0] @2560: AAA=00 00 00 00 00 00 00 00 AAB=00 00 00 00 00 00 00 00 one=00 00 00 00 00 00 00 00
+
+  @0x0750 u16 AAA=2395 AAB=2154 one=2669 delta=-241
+  @0x0752 u16 AAA=310 AAB=422 one=302 delta=112
+  clock ticks AAA=6808 AAB=6963 one=6903
+  2112: AAA=0 AAB=1 one=1
+  2148: AAA=0 AAB=8 one=8 bits AAB=0b1000
+
+2148=0x08 interpretations:
+  if this BYTE is a counter: 8 (unrelated to Item 44)
+  if bitmap starts at 2143 (byte 5 = items 40-47), LSB bit3 = Item 43 (Red alcove, NOT pink 44)
+  if bitmap starts at 2143, LSB bit4 would be Item 44 — observed bit is 3, not 4
+  if bitmap starts at 2148 as byte 0: LSB bit3 = Item 3; MSB bit3 = Item 4
+  ONLY byte 2148 in that zero run flipped, value 0x08 = LSB bit 3
+  MSB Item44 maps to 2148 bit3 if bitmap starts at 2143
+  LSB Item43 maps to 2148 bit3 if bitmap starts at 2143
+
+2112 0->1: consistent with a taken-item COUNTER (one pickup).
+  one-name @2112=1 (mid-game, many pickups — if this were a
+  global taken count it would be >>1; so either per-session, per-level,
+  or not a count).
+
+All nonzero u16be in island 1866-2558 (before inventory):
+  @1868 (0x074C) AAA= 6808 AAB= 6963 one= 6903 DIFF
+  @1872 (0x0750) AAA= 2395 AAB= 2154 one= 2669 DIFF
+  @1874 (0x0752) AAA=  310 AAB=  422 one=  302 DIFF
+  @1876 (0x0754) AAA=   51 AAB=   51 one=   60
+  @1878 (0x0756) AAA=   60 AAB=   60 one=   60
+  @1880 (0x0758) AAA=    1 AAB=    1 one=    0
+  @1882 (0x075A) AAA=    3 AAB=    3 one=    3
+  @1886 (0x075E) AAA=   40 AAB=   40 one=    0
+  @1888 (0x0760) AAA=    3 AAB=    3 one=    3
+  @1894 (0x0766) AAA=    0 AAB=    0 one=    1
+  @1898 (0x076A) AAA=    0 AAB=    0 one=   48
+  @1906 (0x0772) AAA=    3 AAB=    3 one=    3
+  @1968 (0x07B0) AAA=    9 AAB=    9 one=    0
+  @1972 (0x07B4) AAA=   40 AAB=   40 one=   48
+  @1976 (0x07B8) AAA=    3 AAB=    3 one=    3
+  @1980 (0x07BC) AAA=    0 AAB=    0 one=    2
+  @1996 (0x07CC) AAA=    2 AAB=    2 one=    0
+  @2000 (0x07D0) AAA=    0 AAB=    0 one=    2
+  @2020 (0x07E4) AAA=    1 AAB=    1 one=    1
+  @2086 (0x0826) AAA=    1 AAB=    1 one=    1
+  @2088 (0x0828) AAA=    1 AAB=    1 one=    1
+  @2110 (0x083E) AAA=    0 AAB=    0 one=  128
+  @2112 (0x0840) AAA=    0 AAB=  256 one=  256 DIFF
+  @2144 (0x0860) AAA=    0 AAB=    0 one=16384
+  @2146 (0x0862) AAA=    0 AAB=    0 one=   64
+  @2148 (0x0864) AAA=    0 AAB= 2048 one= 2048 DIFF
+  @2182 (0x0886) AAA=65535 AAB=65535 one=65535
+  @2186 (0x088A) AAA=65535 AAB=65535 one=65535
+  @2188 (0x088C) AAA=    8 AAB=    8 one=    4
+  @2194 (0x0892) AAA=    2 AAB=    2 one=    1
+  @2200 (0x0898) AAA=65535 AAB=65535 one=65535
+  @2202 (0x089A) AAA=65535 AAB=65535 one=65535
+  @2318 (0x090E) AAA= 1279 AAB= 1279 one= 1024
+  @2320 (0x0910) AAA=    2 AAB=    2 one=    2
+  @2324 (0x0914) AAA=  156 AAB=  156 one=  304
+  @2326 (0x0916) AAA=  100 AAB=  100 one=   99
+  @2328 (0x0918) AAA=    6 AAB=    6 one=    6
+  @2330 (0x091A) AAA=    2 AAB=    2 one=    2
+  @2332 (0x091C) AAA=   12 AAB=   12 one=    1
+  @2334 (0x091E) AAA=33023 AAB=33023 one=33023
+  @2336 (0x0920) AAA=    0 AAB=    0 one=    2
+  @2338 (0x0922) AAA=   10 AAB=   10 one=    9
+  @2340 (0x0924) AAA=  187 AAB=  187 one=  190
+  @2348 (0x092C) AAA=   12 AAB=   12 one=   21
+  @2350 (0x092E) AAA=33023 AAB=33023 one=33023
+  @2352 (0x0930) AAA=    0 AAB=    0 one=    1
+  @2354 (0x0932) AAA=   10 AAB=   10 one=    6
+  @2356 (0x0934) AAA=  187 AAB=  187 one=  231
+  @2364 (0x093C) AAA=   12 AAB=   12 one=   21
+  @2366 (0x093E) AAA=33023 AAB=33023 one=33023
+  @2368 (0x0940) AAA=    0 AAB=    0 one=    1
+  @2370 (0x0942) AAA=   10 AAB=   10 one=    6
+  @2372 (0x0944) AAA=  187 AAB=  187 one=  231
+  @2380 (0x094C) AAA=    4 AAB=    4 one=   21
+  @2382 (0x094E) AAA=33023 AAB=33023 one=33023
+  @2384 (0x0950) AAA=    3 AAB=    3 one=    1
+  @2386 (0x0952) AAA=    9 AAB=    9 one=    6
+  @2388 (0x0954) AAA=  182 AAB=  182 one=  231
+  @2396 (0x095C) AAA=    0 AAB=    0 one=    6
+  @2398 (0x095E) AAA=    0 AAB=    0 one=33023
+  @2400 (0x0960) AAA=    0 AAB=    0 one=    2
+  @2402 (0x0962) AAA=    0 AAB=    0 one=    9
+  @2404 (0x0964) AAA=    0 AAB=    0 one=  152
+  @2412 (0x096C) AAA=    0 AAB=    0 one=    6
+  @2414 (0x096E) AAA=    0 AAB=    0 one=33023
+  @2416 (0x0970) AAA=    0 AAB=    0 one=    2
+  @2418 (0x0972) AAA=    0 AAB=    0 one=    9
+  @2420 (0x0974) AAA=    0 AAB=    0 one=  152
+  @2510 (0x09CE) AAA=   65 AAB=   65 one=    0
+  @2512 (0x09D0) AAA=    1 AAB=    1 one=    0
+  @2514 (0x09D2) AAA=    1 AAB=    1 one=    0
+  @2520 (0x09D8) AAA=   94 AAB=   94 one=    0
+  @2522 (0x09DA) AAA=  236 AAB=  236 one=    0
+
+T3(d) 128-byte automap in player island:
+  live header automap pop=156 hex=f8 ff 1f 00 f8 ff 1f 00 f0 ff 1f 00 f0 ff 07 00 f0 ff 1f 00 00 f8 1f 00 00 f8 1f 00 00 f8 1f 00...
+  AAA exact copies=[] near-pop windows=[(2256, 87), (2258, 89), (2260, 91), (2262, 96), (2264, 96), (2266, 96), (2268, 96), (2270, 96)]
+  AAB exact copies=[] near-pop windows=[(2256, 87), (2258, 89), (2260, 91), (2262, 96), (2264, 96), (2266, 96), (2268, 96), (2270, 96)]
+  one exact copies=[] near-pop windows=[(2256, 85), (2258, 86), (2260, 88), (2262, 94), (2264, 94), (2266, 94), (2268, 94), (2270, 96)]
+
+Inventory AAA vs AAB (from 2560, 8-byte recs until garbage):
+  [00] AAA=(0, 0, 0, 0) AAB=(0, 0, 0, 0) Map
+  [01] AAA=(0, 0, 0, 0) AAB=(0, 0, 0, 0) Map
+  [02] AAA=(0, 0, 0, 0) AAB=(0, 0, 0, 0) Map
+  [03] AAA=(0, 0, 0, 0) AAB=(0, 0, 0, 0) Map
+  [04] AAA=(0, 0, 0, 0) AAB=(0, 0, 0, 0) Map
+  [05] AAA=(0, 0, 0, 0) AAB=(0, 0, 0, 0) Map
+  [06] AAA=(0, 0, 0, 1) AAB=(0, 0, 0, 1) Map
+  [07] AAA=(1, 1, 0, 2) AAB=(1, 1, 0, 2) Digital Watch
+  [08] AAA=(2, 1, 2880, 5) AAB=(2, 1, 2880, 5) Flashlight
+  [09] AAA=(65535, 20054, 0, 18663) AAB=(51, 0, 7, 65535) Walther P4 Ammo (8 rounds) DIFF
+  [10] AAA=(65535, 10350, 16, 15406) AAB=(65535, 10350, 16, 15406) 
+  [11] AAA=(6, 0, 6, 8) AAB=(6, 0, 6, 8) Canvas Sack
+  [12] AAA=(47, 0, 7, 65535) AAB=(47, 0, 7, 65535) Colt .45
+  [13] AAA=(57, 0, 0, 65535) AAB=(57, 0, 0, 65535) 
+  [14] AAA=(45, 1, 0, 65535) AAB=(45, 1, 0, 3) Survival Knife DIFF
+  [15] AAA=(65535, 28680, 45139, 26128) AAB=(65535, 28680, 45139, 26128) 
+  [16] AAA=(65535, 58742, 19048, 324) AAB=(65535, 58742, 19048, 324) 
+  [17] AAA=(65535, 12668, 3600, 324) AAB=(65535, 12668, 3600, 324) 
+  [18] AAA=(65535, 65535, 26420, 8301) AAB=(65535, 65535, 26420, 8301) 
+  [19] AAA=(65535, 16872, 828, 18630) AAB=(65535, 16872, 828, 18630) 
+
+Knife catalog 0003 as table index:
+  inv slot[3] AAA=(0, 0, 0, 0) AAB=(0, 0, 0, 0) (empty)
+  L0 packed rec[3]=(35, 0, 5, 1)
+  L24 packed rec[3]=(60, 0, 60, 3)
+  extra9112 rec[3]=(60, 0, 60, 3)
+  AAA catalogs=[0, 0, 0, 0, 0, 0, 1, 2, 5, 18663, 15406, 8, 65535, 65535, 65535, 26128]
+  AAB catalogs=[0, 0, 0, 0, 0, 0, 1, 2, 5, 65535, 15406, 8, 65535, 65535, 3, 26128]
+  Catalog looks like an instance-id free-list (1,2,5,8,...).
+  Knife FFFF->0003 = assigned instance id 3. Slot 3 empty, so not an inv index.
+
+One-name inventory (mid-game):
+  [00] (0, 0, 0, 0) Map
+  [01] (0, 0, 0, 0) Map
+  [02] (0, 0, 0, 0) Map
+  [03] (0, 0, 0, 0) Map
+  [04] (0, 0, 0, 0) Map
+  [05] (0, 0, 0, 0) Map
+  [06] (0, 0, 0, 1) Map
+  [07] (1, 1, 0, 6) Digital Watch
+  [08] (2, 1, 2880, 5) Flashlight
+  [09] (51, 0, 8, 4) Walther P4 Ammo (8 rounds)
+  [10] (46, 1, 9, 10) Walther P4
+  [11] (6, 2, 65535, 8) Canvas Sack
+  [12] (47, 0, 7, 2) Colt .45
+  [13] (57, 0, 0, 65535) 
+  [14] (45, 0, 0, 3) Survival Knife
+  [15] (51, 0, 3, 65535) Walther P4 Ammo (8 rounds)
+  [16] (51, 0, 8, 11) Walther P4 Ammo (8 rounds)
+  [17] (51, 0, 8, 12) Walther P4 Ammo (8 rounds)
+  [18] (22, 0, 0, 13) 
+  [19] (51, 0, 8, 14) Walther P4 Ammo (8 rounds)
+
+========== T4 extra ==========
+One-name file ENDS at 267452 = 267192+260. It has the 260-byte
+header/tail but NOT the extra 9112 body. Two-name inserts 9112
+at 267192 and keeps a 260-byte header clone at EOF.
+extra9112 vs T24: 47 total, automap[132:260]=39, other=8
+Other-than-automap diffs (so it is NOT only a buffer artifact):
+  [743:743] T24=08 live=07
+  [765:765] T24=39 live=57
+  [767:767] T24=09 live=0a
+  [769:769] T24=57 live=72
+  [771:771] T24=0a live=23
+  [936:937] T24=00 33 live=ff ff
+  [2171:2171] T24=ff live=fe
+
+========== T5 cartesian RLE ==========
+T5(a) Cartesian (195/196/198 vs 33144):
+  195 prev7f+emit_plus+plus1: 49890
+  195 prev7f+emit_plus+skip: 51869
+  195 prev7f+emit_plus+lit11: 52397
+  195 prev7f+emit_plus+lit_all: 52397
+  195 prev7f+emit_plus+op_next: 52539
+  195 prev7f+u16count+plus1: 350673
+  195 prev7f+u16count+skip: 375260
+  195 prev7f+u16count+lit11: 375789
+  195 prev7f+u16count+lit_all: 375789
+  195 prev7f+u16count+op_next: 375919
+  195 prev80+emit_plus+plus1: 47693
+  195 prev80+emit_plus+skip: 49493
+  195 prev80+emit_plus+lit11: 50021
+  195 prev80+emit_plus+lit_all: 50021
+  195 prev80+emit_plus+op_next: 50169
+  195 prev80+u16count+plus1: 350199
+  195 prev80+u16count+skip: 374775
+  195 prev80+u16count+lit11: 375304
+  195 prev80+u16count+lit_all: 375304
+  195 prev80+u16count+op_next: 375424
+  195 next7f+emit_plus+plus1: 47558
+  195 next7f+emit_plus+skip: 49224
+  195 next7f+emit_plus+lit11: 49722
+  195 next7f+emit_plus+lit_all: 49722
+  195 next7f+emit_plus+op_next: 49866
+  195 next7f+u16count+plus1: 350183
+  195 next7f+u16count+skip: 374707
+  195 next7f+u16count+lit11: 375233
+  195 next7f+u16count+lit_all: 375233
+  195 next7f+u16count+op_next: 375089
+  195 next80+emit_plus+plus1: 45348
+  195 next80+emit_plus+skip: 46848
+  195 next80+emit_plus+lit11: 47346
+  195 next80+emit_plus+lit_all: 47346
+  195 next80+emit_plus+op_next: 47497
+  195 next80+u16count+plus1: 349710
+  195 next80+u16count+skip: 374222
+  195 next80+u16count+lit11: 374748
+  195 next80+u16count+lit_all: 374748
+  195 next80+u16count+op_next: 374595
+closest 12:
+  198 next80+emit_plus+op_next: 34789 err=1645
+  198 next7f+emit_plus+op_next: 35998 err=2854
+  198 prev80+emit_plus+op_next: 36764 err=3620
+  198 prev7f+emit_plus+lit_all: 28814 err=4330
+  198 prev7f+emit_plus+op_next: 37970 err=4826
+  198 prev7f+emit_plus+lit11: 27806 err=5338
+  198 prev80+emit_plus+lit_all: 27475 err=5669
+  198 prev80+emit_plus+lit11: 26693 err=6451
+  198 next7f+emit_plus+lit_all: 26634 err=6510
+  198 next7f+emit_plus+lit11: 26116 err=7028
+  198 prev7f+emit_plus+skip: 25625 err=7519
+  198 next80+emit_plus+lit_all: 25295 err=7849
+NO exact 33144 hit. Not rendering.
+
+T5(b) 0x11/0x12 neighbors as (prev, next) pairs:
+  0x11 n=223 unique_pairs=81 top=[((16, 16), 30), ((17, 16), 13), ((16, 17), 12), ((18, 16), 12), ((16, 0), 10), ((18, 18), 10), ((16, 15), 7), ((15, 16), 7), ((16, 18), 6), ((14, 17), 5)]
+    run_len hist=[(1, 169), (2, 27)]
+  0x12 n=337 unique_pairs=121 top=[((16, 16), 20), ((18, 11), 14), ((16, 17), 13), ((11, 18), 12), ((18, 17), 10), ((16, 18), 10), ((17, 18), 9), ((16, 15), 8), ((18, 16), 7), ((17, 16), 7)]
+    run_len hist=[(1, 199), (2, 69)]

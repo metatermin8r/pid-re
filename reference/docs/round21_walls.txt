@@ -1,0 +1,205 @@
+Round 21 — SwitchableWallCorner + L9/L10 frontier
+Start set: arrivals from other levels' LevelChangeList + Type 9.
+Doors: round-19 adj4 fixed-point with keys.
+
+========== TASK 1a  type-1 walls on L9 / L10 ==========
+
+--- L09 We Can See In The Dark… Can You?  type-1 count=0 ---
+  NONE
+
+--- L10 Feel the Power  type-1 count=0 ---
+  NONE
+
+========== TASK 1b  type-1 on the arrival/sealed frontier ==========
+
+L09: frontier edges=24  type-1 on frontier=0
+  treating type-1 as passable: reach 12 -> 12 (gain 0)
+
+L10: frontier edges=8  type-1 on frontier=0
+  treating type-1 as passable: reach 4 -> 4 (gain 0)
+
+========== TASK 1c  type-1 census all 25 levels ==========
+ Lv name                                    e0    e1    c2    c3    c4    c5    tot
+  0 Ground Floor                             0     0     0     0     0     0      0
+  1 Never Stop Firing                        0     0     0     0     0     0      0
+  2 Lock&Load                                0     0     0     0     0     0      0
+  3 They May Be Slow…                        0     0     0     0     0     0      0
+  4 …But They’re Hungry                      0     0     0     0     0     0      0
+  5 Evil Undead Phantasms Must Die!          0     0     0     0     0     0      0
+  6 Ascension                                0     0     0     0     0     0      0
+  7 Wrong Way!                               0     0     0     0     0     0      0
+  8 Welcome, Tasty Primate                   0     0     0     0     0     0      0
+  9 We Can See In The Dark… Can You?         0     0     0     0     0     0      0
+ 10 Feel the Power                           0     0     0     0     0     0      0
+ 11 A Plague of Demons                       0     0     0     0     0     0      0
+ 12 Beware of Low-Flying Nightmares          0     0     0     0     0     0      0
+ 13 The Labyrinth                          207   204  1024  1024  1024  1024   4507
+ 14 Happy Happy, Carnage Carnage             0     0     0     0     0     0      0
+ 15 Need a Light?                            0     0     0     0     0     0      0
+ 16 Lasciate Ogne Speranza, Voi Ch’Intrate     0     0     0     0     0     0      0
+ 17 Watch Your Step                          0     0     0     0     0     0      0
+ 18 I’d Rather Be Surfing                    0     0     0     0     0     0      0
+ 19 Warning: Earthquake Zone                 0     0     0     0     0     0      0
+ 20 Don’t Get Poisoned!                      0     0     0     0     0     0      0
+ 21 Please Excuse Our Dust                   0     0     0     0     0     0      0
+ 22 But Wait!— That’s Not All!               0     0     0     0     0     0      0
+ 23 Where Only Fools Dare Tread              0     0     0     0     0     0      0
+ 24 Ok, Who Else Wants Some?                 0     0     0     0     0     0      0
+    TOTAL                                  207   204  1024  1024  1024  1024   4507
+
+L9+L10+L13 type-1 total=4507  (L9=0 L10=0 L13=4507)  other 22 levels=0
+
+========== TASK 2a  frontier edges L9 / L10 ==========
+
+--- L09 We Can See In The Dark… Can You?  reachable=12 frontier=24 ---
+  REACH( 4,26) t=3/change_level Item=  12  |  SEAL( 4,25) t=7/pillar Item=   2  wall[0]@4,26 type=33 wall_fancy_corners tex=127
+  REACH( 4,26) t=3/change_level Item=  12  |  SEAL( 4,27) t=7/pillar Item=   8  wall[0]@4,27 type=33 wall_fancy_corners tex=127
+  REACH( 5,25) t=7/pillar Item=  26  |  SEAL( 6,25) t=7/pillar Item=   7  wall[1]@6,25 type=33 wall_fancy_corners tex=127
+  REACH( 5,25) t=7/pillar Item=  26  |  SEAL( 4,25) t=7/pillar Item=   2  wall[1]@5,25 type=33 wall_fancy_corners tex=127
+  REACH( 5,27) t=7/pillar Item=   9  |  SEAL( 6,27) t=7/pillar Item=   3  wall[1]@6,27 type=33 wall_fancy_corners tex=127
+  REACH( 5,27) t=7/pillar Item=   9  |  SEAL( 4,27) t=7/pillar Item=   8  wall[1]@5,27 type=33 wall_fancy_corners tex=127
+  REACH( 6,26) t=1/normal Item= 263  |  SEAL( 6,25) t=7/pillar Item=   7  wall[0]@6,26 type=33 wall_fancy_corners tex=127
+  REACH( 6,26) t=1/normal Item= 263  |  SEAL( 7,26) t=1/normal Item= 264  wall[1]@7,26 type=33 wall_fancy_corners tex=127
+  REACH( 6,26) t=1/normal Item= 263  |  SEAL( 6,27) t=7/pillar Item=   3  wall[0]@6,27 type=33 wall_fancy_corners tex=127
+  REACH(16, 3) t=9/save Item= 335  |  SEAL(16, 2) t=1/normal Item=  68  wall[0]@16,3 type=33 wall_fancy_corners tex=127
+  REACH(16, 3) t=9/save Item= 335  |  SEAL(17, 3) t=1/normal Item=  -1  wall[1]@17,3 type=33 wall_fancy_corners tex=127
+  REACH(16, 3) t=9/save Item= 335  |  SEAL(16, 4) t=1/normal Item=  -1  wall[0]@16,4 type=33 wall_fancy_corners tex=127
+  REACH(24,28) t=9/save Item= 282  |  SEAL(25,28) t=1/normal Item=  61  wall[1]@25,28 type=33 wall_fancy_corners tex=127
+  REACH(24,28) t=9/save Item= 282  |  SEAL(24,29) t=1/normal Item= 336  wall[0]@24,29 type=33 wall_fancy_corners tex=127
+  REACH(24,28) t=9/save Item= 282  |  SEAL(23,28) t=1/normal Item=  -1  wall[1]@24,28 type=33 wall_fancy_corners tex=127
+  REACH(28, 9) t=7/pillar Item=   0  |  SEAL(28, 8) t=7/pillar Item=  49  wall[0]@28,9 type=33 wall_fancy_corners tex=127
+  REACH(28, 9) t=7/pillar Item=   0  |  SEAL(28,10) t=7/pillar Item=   6  wall[0]@28,10 type=33 wall_fancy_corners tex=127
+  REACH(29, 8) t=1/normal Item=  -1  |  SEAL(29, 7) t=1/normal Item=  -1  wall[0]@29,8 type=33 wall_fancy_corners tex=127
+  REACH(29, 8) t=1/normal Item=  -1  |  SEAL(30, 8) t=7/pillar Item=   4  wall[1]@30,8 type=33 wall_fancy_corners tex=127
+  REACH(29, 8) t=1/normal Item=  -1  |  SEAL(28, 8) t=7/pillar Item=  49  wall[1]@29,8 type=33 wall_fancy_corners tex=127
+  REACH(29,10) t=3/change_level Item=  13  |  SEAL(30,10) t=7/pillar Item=   1  wall[1]@30,10 type=33 wall_fancy_corners tex=127
+  REACH(29,10) t=3/change_level Item=  13  |  SEAL(28,10) t=7/pillar Item=   6  wall[1]@29,10 type=33 wall_fancy_corners tex=127
+  REACH(30, 9) t=7/pillar Item=  48  |  SEAL(30, 8) t=7/pillar Item=   4  wall[0]@30,9 type=33 wall_fancy_corners tex=127
+  REACH(30, 9) t=7/pillar Item=  48  |  SEAL(30,10) t=7/pillar Item=   1  wall[0]@30,10 type=33 wall_fancy_corners tex=127
+
+--- L10 Feel the Power  reachable=4 frontier=8 ---
+  REACH( 1, 6) t=3/change_level Item=   0  |  SEAL( 1, 5) t=1/normal Item= 367  wall[0]@1,6 type=33 wall_fancy_corners tex=127
+  REACH( 1, 6) t=3/change_level Item=   0  |  SEAL( 2, 6) t=1/normal Item= 365  wall[1]@2,6 type=33 wall_fancy_corners tex=127
+  REACH( 1,28) t=3/change_level Item=   1  |  SEAL( 1,27) t=1/normal Item= 279  wall[0]@1,28 type=33 wall_fancy_corners tex=127
+  REACH( 1,28) t=3/change_level Item=   1  |  SEAL( 2,28) t=1/normal Item=  -1  wall[1]@2,28 type=33 wall_fancy_corners tex=127
+  REACH( 8, 6) t=9/save Item= 362  |  SEAL( 8, 7) t=1/normal Item=  62  wall[0]@8,7 type=33 wall_fancy_corners tex=127
+  REACH( 8, 6) t=9/save Item= 362  |  SEAL( 7, 6) t=1/normal Item= 363  wall[1]@8,6 type=33 wall_fancy_corners tex=127
+  REACH(20,22) t=9/save Item= 345  |  SEAL(21,22) t=1/normal Item= 231  wall[1]@21,22 type=33 wall_fancy_corners tex=127
+  REACH(20,22) t=9/save Item= 345  |  SEAL(20,23) t=1/normal Item= 344  wall[0]@20,23 type=33 wall_fancy_corners tex=127
+
+========== TASK 2b  frontier texture vs ordinary walls ==========
+
+--- L09 We Can See In The Dark… Can You? ---
+  frontier (type, tex) counts:
+    type=33 tex=127  n=24
+  all edge 32/33 (type, tex) counts:
+    type=33 tex=  0  n=346
+    type=33 tex=  1  n=16
+    type=33 tex=  2  n=203
+    type=33 tex=  3  n=203
+    type=33 tex=  4  n=295
+    type=33 tex=127  n=581  <-- used on frontier
+  No frontier (type,tex) pair is unique to the frontier.
+
+--- L10 Feel the Power ---
+  frontier (type, tex) counts:
+    type=33 tex=127  n=8
+  all edge 32/33 (type, tex) counts:
+    type=33 tex=  0  n=639
+    type=33 tex=  2  n=138
+    type=33 tex=  3  n=138
+    type=33 tex=127  n=499  <-- used on frontier
+  No frontier (type,tex) pair is unique to the frontier.
+
+========== TASK 2c  boxed arrival Items + neighbours ==========
+
+--- L09 We Can See In The Dark… Can You?  arrivals=[(4, 26), (29, 10)] ---
+ arrival   ( 4,26) type=3 change_level     Item=  12 addl=  0 REACH  walls=[0:wall_fancy_corners/tex127, 1:wall_fancy_corners/tex0]
+  n4   ( 4,25) type=7 pillar           Item=   2 addl=  0 SEAL  walls=[0:wall_fancy_corners/tex3, 1:wall_fancy_corners/tex2]
+  n4   ( 5,26) type=1 normal           Item= 262 addl=  0 REACH  walls=[]
+  n4   ( 4,27) type=7 pillar           Item=   8 addl=  0 SEAL  walls=[0:wall_fancy_corners/tex127, 1:wall_fancy_corners/tex3]
+  n4   ( 3,26) type=0 void             Item=  -1 addl=  0 VOID  walls=[0:wall_fancy_corners/tex0, 1:wall_fancy_corners/tex2]
+  n8   ( 3,25) type=0 void             Item=  -1 addl=  0 VOID  walls=[0:wall_fancy_corners/tex0, 1:wall_fancy_corners/tex3]
+  n8   ( 5,25) type=7 pillar           Item=  26 addl=  0 REACH  walls=[0:wall_fancy_corners/tex0, 1:wall_fancy_corners/tex127]
+  n8   ( 3,27) type=0 void             Item=  -1 addl=  0 VOID  walls=[0:wall_fancy_corners/tex0, 1:wall_fancy_corners/tex0]
+  n8   ( 5,27) type=7 pillar           Item=   9 addl=  0 REACH  walls=[1:wall_fancy_corners/tex127]
+ arrival   (29,10) type=3 change_level     Item=  13 addl=  2 REACH  walls=[1:wall_fancy_corners/tex127]
+  n4   (29, 9) type=1 normal           Item= 126 addl=  0 REACH  walls=[]
+  n4   (30,10) type=7 pillar           Item=   1 addl=  0 SEAL  walls=[0:wall_fancy_corners/tex127, 1:wall_fancy_corners/tex127]
+  n4   (29,11) type=0 void             Item=  -1 addl=  0 VOID  walls=[0:wall_fancy_corners/tex0, 1:wall_fancy_corners/tex0]
+  n4   (28,10) type=7 pillar           Item=   6 addl=  0 SEAL  walls=[0:wall_fancy_corners/tex127, 1:wall_fancy_corners/tex3]
+  n8   (28, 9) type=7 pillar           Item=   0 addl=  0 REACH  walls=[0:wall_fancy_corners/tex127, 1:wall_fancy_corners/tex0]
+  n8   (30, 9) type=7 pillar           Item=  48 addl=  0 REACH  walls=[0:wall_fancy_corners/tex127]
+  n8   (28,11) type=0 void             Item=  -1 addl=  0 VOID  walls=[0:wall_fancy_corners/tex2, 1:wall_fancy_corners/tex0]
+  n8   (30,11) type=0 void             Item=  -1 addl=  0 VOID  walls=[0:wall_fancy_corners/tex3, 1:wall_fancy_corners/tex0]
+
+--- L10 Feel the Power  arrivals=[(1, 28), (1, 6)] ---
+ arrival   ( 1,28) type=3 change_level     Item=   1 addl=  0 REACH  walls=[0:wall_fancy_corners/tex127, 1:wall_fancy_corners/tex3]
+  n4   ( 1,27) type=1 normal           Item= 279 addl=  0 SEAL  walls=[0:wall_fancy_corners/tex127, 1:wall_fancy_corners/tex0]
+  n4   ( 2,28) type=1 normal           Item=  -1 addl=  0 SEAL  walls=[1:wall_fancy_corners/tex127]
+  n4   ( 1,29) type=0 void             Item=  -1 addl=  0 VOID  walls=[0:wall_fancy_corners/tex2, 1:wall_fancy_corners/tex0]
+  n4   ( 0,28) type=0 void             Item=  -1 addl=  0 VOID  walls=[0:wall_fancy_corners/tex0]
+  n8   ( 0,27) type=0 void             Item=  -1 addl=  0 VOID  walls=[0:wall_fancy_corners/tex0]
+  n8   ( 2,27) type=1 normal           Item= 280 addl=  0 SEAL  walls=[]
+  n8   ( 0,29) type=0 void             Item=  -1 addl=  0 VOID  walls=[0:wall_fancy_corners/tex0]
+  n8   ( 2,29) type=0 void             Item=  -1 addl=  0 VOID  walls=[0:wall_fancy_corners/tex0, 1:wall_fancy_corners/tex0]
+ arrival   ( 1, 6) type=3 change_level     Item=   0 addl=  1 REACH  walls=[0:wall_fancy_corners/tex127, 1:wall_fancy_corners/tex3]
+  n4   ( 1, 5) type=1 normal           Item= 367 addl=  0 SEAL  walls=[0:wall_fancy_corners/tex3, 1:wall_fancy_corners/tex2]
+  n4   ( 2, 6) type=1 normal           Item= 365 addl=  0 SEAL  walls=[1:wall_fancy_corners/tex127]
+  n4   ( 1, 7) type=0 void             Item=  -1 addl=  0 VOID  walls=[0:wall_fancy_corners/tex2, 1:wall_fancy_corners/tex0]
+  n4   ( 0, 6) type=0 void             Item=  -1 addl=  0 VOID  walls=[0:wall_fancy_corners/tex0]
+  n8   ( 0, 5) type=0 void             Item=  -1 addl=  0 VOID  walls=[0:wall_fancy_corners/tex0]
+  n8   ( 2, 5) type=1 normal           Item= 366 addl=  0 SEAL  walls=[0:wall_fancy_corners/tex0, 1:wall_fancy_corners/tex127]
+  n8   ( 0, 7) type=0 void             Item=  -1 addl=  0 VOID  walls=[0:wall_fancy_corners/tex0]
+  n8   ( 2, 7) type=0 void             Item=  -1 addl=  0 VOID  walls=[0:wall_fancy_corners/tex0, 1:wall_fancy_corners/tex0]
+
+========== extra  Type 5 SecretDoor / Type 8 OtherTrigger ==========
+
+L03 They May Be Slow…  Type5=3 Type8=0
+  Type5 (15, 6) Item=  -1 addl=3 SEAL
+  Type5 ( 5,28) Item=  -1 addl=1 SEAL
+  Type5 ( 8,28) Item=  -1 addl=3 SEAL
+
+L04 …But They’re Hungry  Type5=1 Type8=0
+  Type5 (23,29) Item=  -1 addl=2 SEAL
+
+L05 Evil Undead Phantasms Must Die!  Type5=1 Type8=0
+  Type5 (21,23) Item=  -1 addl=2 REACH
+
+L09 We Can See In The Dark… Can You?  Type5=0 Type8=0
+
+L10 Feel the Power  Type5=0 Type8=0
+
+L14 Happy Happy, Carnage Carnage  Type5=1 Type8=0
+  Type5 ( 3,28) Item= 284 addl=3 SEAL
+
+========== L3 walk-through comparison (Blue Crystal room) ==========
+L03 Type 5 count=3
+  (15, 6) type=5 secret_door      Item=  -1 addl=  3 SEAL  walls=[0:wall/tex10, 1:wall/tex11]
+     (15, 5) type=1 normal           Item=  64 addl=  0 REACH  walls=[]
+     (16, 6) type=0 void             Item=  -1 addl=  0 VOID  walls=[0:wall/tex11, 1:wall/tex0]
+     (15, 7) type=1 normal           Item= 294 addl=  0 SEAL  walls=[0:wall/tex0, 1:wall_short_high/tex2, 4:cutoff_corner/tex4, 5:cutoff_corner/tex4]
+     (14, 6) type=0 void             Item=  -1 addl=  0 VOID  walls=[0:wall_short_low/tex1, 1:wall/tex0]
+  ( 5,28) type=5 secret_door      Item=  -1 addl=  1 SEAL  walls=[0:wall/tex0, 1:wall/tex0]
+     ( 5,27) type=1 normal           Item=  -1 addl=  0 SEAL  walls=[0:wall/tex0, 1:wall/tex0]
+     ( 6,28) type=0 void             Item=  -1 addl=  0 VOID  walls=[0:wall/tex0, 1:wall/tex0]
+     ( 5,29) type=1 normal           Item=  -1 addl=  0 REACH  walls=[0:wall/tex11]
+     ( 4,28) type=0 void             Item=  -1 addl=  0 VOID  walls=[0:wall/tex0, 1:wall/tex0]
+  ( 8,28) type=5 secret_door      Item=  -1 addl=  3 SEAL  walls=[0:wall/tex11, 1:wall/tex0]
+     ( 8,27) type=1 normal           Item=  53 addl=  0 REACH  walls=[]
+     ( 9,28) type=0 void             Item=  -1 addl=  0 VOID  walls=[0:wall_short_high/tex2, 1:wall/tex10]
+     ( 8,29) type=1 normal           Item=  -1 addl=  0 REACH  walls=[0:wall/tex0, 1:wall_short_high/tex2]
+     ( 7,28) type=0 void             Item=  -1 addl=  0 VOID  walls=[0:wall_short_low/tex6, 1:wall/tex0]
+
+========== treating Type 5 sectors as walk-through ==========
+  L03: Type5 walk-through reach 449 -> 454 (gain 5)  Type5=3
+  L09: Type5 walk-through reach 12 -> 12 (gain 0)  Type5=0
+  L10: Type5 walk-through reach 4 -> 4 (gain 0)  Type5=0
+
+========== extra  tex=127 passable / Type3+9 walk-out ==========
+  L00 nv=214 base=214  tex127=214 (d+0)  T3+9walk=214 (d+0)  both=214
+  L03 nv=456 base=449  tex127=449 (d+0)  T3+9walk=449 (d+0)  both=449
+  L07 nv=515 base=282  tex127=515 (d+233)  T3+9walk=286 (d+4)  both=515
+  L09 nv=415 base=12  tex127=415 (d+403)  T3+9walk=24 (d+12)  both=415
+  L10 nv=574 base=4  tex127=574 (d+570)  T3+9walk=69 (d+65)  both=574
+  L13 nv=525 base=202  tex127=525 (d+323)  T3+9walk=223 (d+21)  both=525

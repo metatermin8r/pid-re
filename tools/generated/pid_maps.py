@@ -18,10 +18,12 @@ class PidMaps(KaitaiStruct):
         y_positive = 3
 
     class LevelChangeType(IntEnum):
+        unused = -1
         upward = 0
         downward = 1
         secret_downward = 2
         secret_upward = 3
+        undocumented_4 = 4
 
     class MonsterType(IntEnum):
         none = -1

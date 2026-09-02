@@ -101,6 +101,41 @@ def extract_macbinary_resource_fork(data: bytes) -> bytes | None:
     return payload
 
 
+def iter_resources(data: bytes) -> list[tuple[bytes, int, bytes]]:
+    """Walk a raw Resource Manager map. Returns (type, id, payload) triples."""
+    if not looks_like_resource_map(data):
+        raise ValueError("not a Resource Manager map")
+    data_off = _u32(data, 0)
+    map_off = _u32(data, 4)
+    type_list = map_off + _u16(data, map_off + 24)
+    ntypes = _u16(data, type_list) + 1
+    out: list[tuple[bytes, int, bytes]] = []
+    for i in range(ntypes):
+        ent = type_list + 2 + i * 8
+        typ = data[ent : ent + 4]
+        nres = _u16(data, ent + 4) + 1
+        ref_off = type_list + _u16(data, ent + 6)
+        for j in range(nres):
+            ref = ref_off + j * 12
+            rid = struct.unpack_from(">h", data, ref)[0]
+            doff = (data[ref + 5] << 16) | (data[ref + 6] << 8) | data[ref + 7]
+            abs_off = data_off + doff
+            length = _u32(data, abs_off)
+            out.append((typ, rid, data[abs_off + 4 : abs_off + 4 + length]))
+    return out
+
+
+def resources_of_type(path: Path, type_code: bytes) -> dict[int, bytes]:
+    payload = load_resource_payload(path)
+    if payload is None:
+        raise FileNotFoundError(f"no resource map in {path}")
+    found: dict[int, bytes] = {}
+    for typ, rid, blob in iter_resources(payload.data):
+        if typ == type_code:
+            found[rid] = blob
+    return found
+
+
 def load_resource_payload(path: Path) -> ResourcePayload | None:
     """Return Resource Manager bytes if this file contains them."""
     try:

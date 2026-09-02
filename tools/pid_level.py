@@ -45,10 +45,12 @@ SECTOR_TYPE_NAME = {
 }
 
 LEVEL_CHANGE_TYPE_NAME = {
+    -1: "unused",
     0: "upward",
     1: "downward",
     2: "secret_downward",
     3: "secret_upward",
+    4: "undocumented_4",
 }
 
 DOOR_DIRECTION_NAME = {

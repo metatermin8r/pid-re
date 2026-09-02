@@ -1,0 +1,3633 @@
+Full sealed-sector lists (best variant = A and B, identical).
+adjSecretDoor = 4-adjacent to a Type 5 sector.
+adjSwitchable = this sector or a 4-neighbor has wall type 1 on any slot.
+
+=== L07 Wrong Way!  sealed=232 ===
+  ( 2, 1) type=1 normal           Item=  -1 addl=0
+  ( 3, 1) type=1 normal           Item=  -1 addl=0
+  ( 4, 1) type=1 normal           Item= 129 addl=0
+  ( 5, 1) type=1 normal           Item=  -1 addl=0
+  (10, 1) type=1 normal           Item= 132 addl=0
+  (11, 1) type=7 pillar           Item=  65 addl=0
+  (22, 1) type=1 normal           Item=  -1 addl=0
+  (23, 1) type=1 normal           Item= 133 addl=0
+  (24, 1) type=1 normal           Item= 113 addl=0
+  (25, 1) type=1 normal           Item= 112 addl=0
+  (28, 1) type=1 normal           Item=  -1 addl=0
+  ( 1, 2) type=1 normal           Item=  -1 addl=0
+  ( 2, 2) type=1 normal           Item=  99 addl=0
+  (10, 2) type=1 normal           Item=  -1 addl=0
+  (22, 2) type=1 normal           Item=  -1 addl=0
+  (29, 2) type=1 normal           Item=  -1 addl=0
+  (30, 2) type=1 normal           Item= 341 addl=0
+  ( 1, 3) type=1 normal           Item= 136 addl=0
+  ( 4, 3) type=1 normal           Item= 137 addl=0
+  (24, 3) type=1 normal           Item=  -1 addl=0
+  ( 1, 4) type=1 normal           Item= 152 addl=0
+  ( 2, 4) type=1 normal           Item= 153 addl=0
+  ( 3, 4) type=1 normal           Item= 154 addl=0
+  (29, 4) type=1 normal           Item= 159 addl=0
+  (30, 4) type=1 normal           Item= 160 addl=0
+  ( 2, 5) type=1 normal           Item=  -1 addl=0
+  ( 6, 5) type=1 normal           Item=  88 addl=0
+  ( 8, 5) type=1 normal           Item=  89 addl=0
+  (13, 5) type=1 normal           Item= 161 addl=0
+  (15, 5) type=1 normal           Item= 162 addl=0
+  (20, 5) type=1 normal           Item=  -1 addl=0
+  (22, 5) type=1 normal           Item=  81 addl=0
+  (26, 5) type=1 normal           Item=  -1 addl=0
+  (27, 5) type=1 normal           Item= 165 addl=0
+  (28, 5) type=1 normal           Item= 166 addl=0
+  (30, 5) type=1 normal           Item= 111 addl=0
+  ( 1, 6) type=1 normal           Item= 167 addl=0
+  ( 2, 6) type=1 normal           Item=  -1 addl=0
+  (30, 6) type=1 normal           Item=  -1 addl=0
+  ( 1, 7) type=1 normal           Item=  -1 addl=0
+  ( 6, 7) type=1 normal           Item= 173 addl=0
+  ( 8, 7) type=1 normal           Item= 307 addl=0
+  (13, 7) type=1 normal           Item= 345 addl=0
+  (15, 7) type=1 normal           Item= 175 addl=0
+  (20, 7) type=1 normal           Item= 343 addl=0
+  (22, 7) type=1 normal           Item= 177 addl=0
+  (25, 7) type=1 normal           Item=  -1 addl=0
+  (26, 7) type=1 normal           Item=  -1 addl=0
+  (27, 7) type=1 normal           Item= 178 addl=0
+  (28, 7) type=1 normal           Item= 179 addl=0
+  (29, 7) type=1 normal           Item= 180 addl=0
+  (30, 7) type=1 normal           Item=  -1 addl=0
+  ( 1, 8) type=1 normal           Item= 181 addl=0
+  (27, 8) type=1 normal           Item= 183 addl=0
+  ( 2, 9) type=1 normal           Item= 100 addl=0
+  (27, 9) type=1 normal           Item= 190 addl=0
+  (28, 9) type=1 normal           Item= 213 addl=0
+  (30, 9) type=7 pillar           Item=  71 addl=0
+  ( 1,10) type=1 normal           Item= 192 addl=0
+  ( 2,10) type=1 normal           Item= 193 addl=0
+  (26,10) type=1 normal           Item=  -1 addl=0
+  (28,10) type=1 normal           Item= 197 addl=0
+  (29,10) type=1 normal           Item=  -1 addl=0
+  (30,10) type=1 normal           Item=  -1 addl=0
+  ( 1,11) type=1 normal           Item=  -1 addl=0
+  (26,11) type=1 normal           Item= 110 addl=0
+  (27,11) type=1 normal           Item=  -1 addl=0
+  (28,11) type=1 normal           Item= 200 addl=0
+  (30,11) type=1 normal           Item=  -1 addl=0
+  ( 1,12) type=1 normal           Item=  -1 addl=0
+  ( 2,12) type=1 normal           Item= 201 addl=0
+  ( 3,12) type=1 normal           Item=  -1 addl=0
+  ( 6,12) type=1 normal           Item= 344 addl=0
+  ( 8,12) type=1 normal           Item= 203 addl=0
+  (20,12) type=1 normal           Item=  -1 addl=0
+  (22,12) type=1 normal           Item=  90 addl=0
+  (30,12) type=1 normal           Item= 209 addl=0
+  ( 2,13) type=1 normal           Item= 210 addl=0
+  (27,13) type=7 pillar           Item=  70 addl=0
+  (30,13) type=1 normal           Item= 215 addl=0
+  ( 2,14) type=1 normal           Item=  -1 addl=0
+  ( 4,14) type=1 normal           Item=  -1 addl=0
+  ( 6,14) type=1 normal           Item=  -1 addl=0
+  ( 8,14) type=1 normal           Item=  -1 addl=0
+  (20,14) type=1 normal           Item= 221 addl=0
+  (22,14) type=1 normal           Item=  91 addl=0
+  (25,14) type=1 normal           Item= 224 addl=0
+  (26,14) type=1 normal           Item=  -1 addl=0
+  (27,14) type=1 normal           Item=  -1 addl=0
+  (28,14) type=1 normal           Item=  -1 addl=0
+  (29,14) type=1 normal           Item=  -1 addl=0
+  (30,14) type=1 normal           Item= 225 addl=0
+  ( 1,15) type=1 normal           Item= 226 addl=0
+  ( 2,15) type=1 normal           Item= 101 addl=0
+  ( 4,15) type=1 normal           Item=  -1 addl=0
+  (26,15) type=1 normal           Item= 232 addl=0
+  (28,15) type=1 normal           Item=  -1 addl=0
+  (29,15) type=1 normal           Item= 233 addl=0
+  ( 1,16) type=1 normal           Item=  -1 addl=0
+  (26,16) type=1 normal           Item= 238 addl=0
+  (29,16) type=1 normal           Item= 239 addl=0
+  (30,16) type=1 normal           Item=  -1 addl=0
+  (30,17) type=1 normal           Item= 247 addl=0
+  (24,18) type=1 normal           Item= 248 addl=0
+  (26,18) type=7 pillar           Item=  77 addl=0
+  (28,18) type=7 pillar           Item=  75 addl=0
+  (30,18) type=1 normal           Item=  -1 addl=0
+  ( 6,19) type=1 normal           Item= 317 addl=0
+  ( 8,19) type=1 normal           Item=  84 addl=0
+  (11,19) type=7 pillar           Item=  47 addl=0
+  (17,19) type=7 pillar           Item=  49 addl=0
+  (20,19) type=1 normal           Item= 296 addl=0
+  (21,19) type=1 normal           Item= 250 addl=0
+  (22,19) type=1 normal           Item=  93 addl=0
+  (24,19) type=1 normal           Item=  -1 addl=0
+  (25,19) type=1 normal           Item=  -1 addl=0
+  (26,19) type=1 normal           Item=  -1 addl=0
+  (27,19) type=1 normal           Item=  -1 addl=0
+  (28,19) type=1 normal           Item= 109 addl=0
+  (30,19) type=1 normal           Item=  -1 addl=0
+  (20,20) type=1 normal           Item=  -1 addl=0
+  (21,20) type=1 normal           Item= 255 addl=0
+  (22,20) type=4 door_trigger     Item=  -1 addl=131
+  (23,20) type=2 door             Item=  -1 addl=9
+  (24,20) type=4 door_trigger     Item=  -1 addl=131
+  (26,20) type=1 normal           Item= 256 addl=0
+  (28,20) type=1 normal           Item=  -1 addl=0
+  (29,20) type=1 normal           Item=  -1 addl=0
+  (30,20) type=1 normal           Item=  -1 addl=0
+  ( 6,21) type=1 normal           Item=  83 addl=0
+  ( 8,21) type=1 normal           Item= 259 addl=0
+  (11,21) type=7 pillar           Item=  48 addl=0
+  (17,21) type=7 pillar           Item=  43 addl=0
+  (20,21) type=1 normal           Item=  -1 addl=0
+  (21,21) type=4 door_trigger     Item=  24 addl=131
+  (22,21) type=1 normal           Item=  92 addl=0
+  (24,21) type=1 normal           Item= 261 addl=0
+  (26,21) type=1 normal           Item= 262 addl=0
+  (27,21) type=1 normal           Item= 263 addl=0
+  (28,21) type=1 normal           Item= 264 addl=0
+  ( 2,22) type=7 pillar           Item=  73 addl=0
+  ( 4,22) type=1 normal           Item=  -1 addl=0
+  (21,22) type=2 door             Item=  -1 addl=8
+  (24,22) type=1 normal           Item=  -1 addl=0
+  (26,22) type=1 normal           Item= 108 addl=0
+  (28,22) type=1 normal           Item=  -1 addl=0
+  (29,22) type=7 pillar           Item=  69 addl=0
+  ( 4,23) type=1 normal           Item=  -1 addl=0
+  (17,23) type=1 normal           Item= 274 addl=0
+  (18,23) type=1 normal           Item=  -1 addl=0
+  (19,23) type=1 normal           Item=  -1 addl=0
+  (20,23) type=1 normal           Item=  -1 addl=0
+  (21,23) type=4 door_trigger     Item=  -1 addl=131
+  (22,23) type=1 normal           Item=  -1 addl=0
+  (23,23) type=1 normal           Item= 275 addl=0
+  (24,23) type=1 normal           Item=  -1 addl=0
+  (26,23) type=1 normal           Item= 276 addl=0
+  (27,23) type=1 normal           Item= 277 addl=0
+  (28,23) type=1 normal           Item= 278 addl=0
+  (21,24) type=1 normal           Item=  -1 addl=0
+  (23,24) type=1 normal           Item=  -1 addl=0
+  (26,24) type=1 normal           Item= 281 addl=0
+  ( 4,25) type=1 normal           Item= 282 addl=0
+  ( 7,25) type=1 normal           Item=  -1 addl=0
+  (10,25) type=7 pillar           Item=  97 addl=0
+  (12,25) type=1 normal           Item=  -1 addl=0
+  (16,25) type=1 normal           Item= 285 addl=0
+  (17,25) type=7 pillar           Item=  76 addl=0
+  (21,25) type=1 normal           Item= 286 addl=0
+  (23,25) type=1 normal           Item= 287 addl=0
+  (24,25) type=1 normal           Item= 288 addl=0
+  (25,25) type=1 normal           Item= 289 addl=0
+  (26,25) type=1 normal           Item=  -1 addl=0
+  (27,25) type=1 normal           Item= 290 addl=0
+  (28,25) type=1 normal           Item= 291 addl=0
+  ( 7,26) type=1 normal           Item= 104 addl=0
+  ( 9,26) type=7 pillar           Item=  68 addl=0
+  (16,26) type=1 normal           Item= 298 addl=0
+  (21,26) type=1 normal           Item=  -1 addl=0
+  (22,26) type=1 normal           Item= 107 addl=0
+  (23,26) type=1 normal           Item= 299 addl=0
+  (25,26) type=1 normal           Item= 300 addl=0
+  (27,26) type=1 normal           Item= 301 addl=0
+  ( 1,27) type=1 normal           Item= 102 addl=0
+  ( 7,27) type=1 normal           Item= 306 addl=0
+  (16,27) type=1 normal           Item= 128 addl=0
+  (17,27) type=1 normal           Item=  -1 addl=0
+  (18,27) type=1 normal           Item=  -1 addl=0
+  (22,27) type=1 normal           Item= 309 addl=0
+  (25,27) type=1 normal           Item= 310 addl=0
+  (26,27) type=1 normal           Item= 311 addl=0
+  (27,27) type=1 normal           Item= 312 addl=0
+  (28,27) type=1 normal           Item= 313 addl=0
+  (29,27) type=1 normal           Item=  -1 addl=0
+  (30,27) type=1 normal           Item= 314 addl=0
+  ( 9,28) type=1 normal           Item= 315 addl=0
+  (16,28) type=1 normal           Item= 319 addl=0
+  (18,28) type=1 normal           Item=  -1 addl=0
+  (19,28) type=1 normal           Item=  -1 addl=0
+  (20,28) type=1 normal           Item=  -1 addl=0
+  (21,28) type=1 normal           Item= 320 addl=0
+  (22,28) type=1 normal           Item= 321 addl=0
+  (27,28) type=1 normal           Item=  -1 addl=0
+  (30,28) type=1 normal           Item= 322 addl=0
+  ( 1,29) type=7 pillar           Item=  66 addl=0
+  ( 9,29) type=1 normal           Item= 325 addl=0
+  (15,29) type=1 normal           Item=  -1 addl=0
+  (16,29) type=1 normal           Item= 327 addl=0
+  (18,29) type=1 normal           Item= 328 addl=0
+  (20,29) type=7 pillar           Item=  74 addl=0
+  (22,29) type=1 normal           Item= 329 addl=0
+  (23,29) type=1 normal           Item= 330 addl=0
+  (24,29) type=1 normal           Item= 331 addl=0
+  (25,29) type=1 normal           Item= 332 addl=0
+  (27,29) type=1 normal           Item=  -1 addl=0
+  (29,29) type=1 normal           Item=  -1 addl=0
+  (30,29) type=1 normal           Item= 333 addl=0
+  ( 6,30) type=1 normal           Item= 334 addl=0
+  ( 7,30) type=1 normal           Item= 335 addl=0
+  ( 8,30) type=1 normal           Item=  -1 addl=0
+  ( 9,30) type=1 normal           Item= 336 addl=0
+  (11,30) type=1 normal           Item=  11 addl=0
+  (12,30) type=1 normal           Item=  -1 addl=0
+  (13,30) type=1 normal           Item=  -1 addl=0
+  (16,30) type=1 normal           Item= 106 addl=0
+  (17,30) type=1 normal           Item=  -1 addl=0
+  (18,30) type=1 normal           Item=  -1 addl=0
+  (23,30) type=7 pillar           Item=  78 addl=0
+  (25,30) type=1 normal           Item=  -1 addl=0
+  (26,30) type=1 normal           Item= 337 addl=0
+  (27,30) type=1 normal           Item= 338 addl=0
+  (30,30) type=1 normal           Item= 339 addl=0
+
+=== L08 Welcome, Tasty Primate  sealed=415 ===
+  ( 2, 1) type=1 normal           Item=  -1 addl=0
+  ( 5, 1) type=1 normal           Item=  -1 addl=0
+  ( 6, 1) type=1 normal           Item=  -1 addl=0
+  ( 7, 1) type=1 normal           Item=  95 addl=0
+  ( 9, 1) type=1 normal           Item= 115 addl=0
+  (10, 1) type=1 normal           Item=  -1 addl=0
+  (11, 1) type=1 normal           Item= 116 addl=0
+  (12, 1) type=1 normal           Item= 117 addl=0
+  (13, 1) type=1 normal           Item=  -1 addl=0
+  (14, 1) type=1 normal           Item=  -1 addl=0
+  (15, 1) type=1 normal           Item= 118 addl=0
+  (16, 1) type=1 normal           Item= 119 addl=0
+  (17, 1) type=1 normal           Item=  -1 addl=0
+  (19, 1) type=1 normal           Item=  -1 addl=0
+  (20, 1) type=1 normal           Item= 120 addl=0
+  (21, 1) type=1 normal           Item= 121 addl=0
+  (25, 1) type=7 pillar           Item= 335 addl=0
+  (26, 1) type=7 pillar           Item=  44 addl=0
+  (27, 1) type=7 pillar           Item=   9 addl=0
+  (28, 1) type=7 pillar           Item=   8 addl=0
+  ( 1, 2) type=1 normal           Item= 122 addl=0
+  ( 2, 2) type=1 normal           Item= 123 addl=0
+  ( 3, 2) type=1 normal           Item=  -1 addl=0
+  ( 4, 2) type=1 normal           Item=  -1 addl=0
+  ( 5, 2) type=1 normal           Item=  -1 addl=0
+  ( 9, 2) type=1 normal           Item= 124 addl=0
+  (10, 2) type=1 normal           Item=  -1 addl=0
+  (11, 2) type=1 normal           Item=  -1 addl=0
+  (12, 2) type=1 normal           Item=  -1 addl=0
+  (13, 2) type=1 normal           Item= 125 addl=0
+  (14, 2) type=1 normal           Item= 126 addl=0
+  (15, 2) type=1 normal           Item=  -1 addl=0
+  (16, 2) type=1 normal           Item= 127 addl=0
+  (17, 2) type=1 normal           Item= 128 addl=0
+  (21, 2) type=1 normal           Item=  -1 addl=0
+  (22, 2) type=1 normal           Item=  -1 addl=0
+  (23, 2) type=1 normal           Item= 100 addl=0
+  (25, 2) type=1 normal           Item= 338 addl=0
+  (26, 2) type=1 normal           Item= 129 addl=0
+  (27, 2) type=1 normal           Item= 130 addl=0
+  (28, 2) type=1 normal           Item= 131 addl=0
+  (29, 2) type=1 normal           Item= 132 addl=0
+  (30, 2) type=1 normal           Item=  -1 addl=0
+  ( 2, 3) type=1 normal           Item= 133 addl=0
+  ( 5, 3) type=1 normal           Item= 134 addl=0
+  ( 6, 3) type=1 normal           Item= 135 addl=0
+  ( 7, 3) type=1 normal           Item= 360 addl=0
+  (10, 3) type=1 normal           Item= 137 addl=0
+  (16, 3) type=1 normal           Item=  -1 addl=0
+  (17, 3) type=1 normal           Item=  -1 addl=0
+  (19, 3) type=1 normal           Item= 138 addl=0
+  (20, 3) type=1 normal           Item= 139 addl=0
+  (21, 3) type=1 normal           Item=  -1 addl=0
+  (25, 3) type=7 pillar           Item=  10 addl=0
+  (26, 3) type=7 pillar           Item=  43 addl=0
+  (27, 3) type=7 pillar           Item=  11 addl=0
+  (28, 3) type=7 pillar           Item=  56 addl=0
+  (30, 3) type=1 normal           Item= 140 addl=0
+  ( 2, 4) type=1 normal           Item= 141 addl=0
+  ( 3, 4) type=1 normal           Item= 142 addl=0
+  ( 4, 4) type=1 normal           Item=  94 addl=0
+  ( 5, 4) type=1 normal           Item=  -1 addl=0
+  ( 9, 4) type=1 normal           Item=  -1 addl=0
+  (10, 4) type=1 normal           Item=  -1 addl=0
+  (11, 4) type=1 normal           Item=  -1 addl=0
+  (12, 4) type=1 normal           Item= 143 addl=0
+  (13, 4) type=1 normal           Item=  97 addl=0
+  (14, 4) type=1 normal           Item=  -1 addl=0
+  (16, 4) type=1 normal           Item= 144 addl=0
+  (17, 4) type=1 normal           Item= 145 addl=0
+  (21, 4) type=1 normal           Item= 146 addl=0
+  (22, 4) type=1 normal           Item=  -1 addl=0
+  (23, 4) type=1 normal           Item= 358 addl=0
+  (30, 4) type=1 normal           Item=  -1 addl=0
+  ( 5, 5) type=1 normal           Item=  -1 addl=0
+  ( 6, 5) type=1 normal           Item=  -1 addl=0
+  ( 7, 5) type=1 normal           Item= 148 addl=0
+  ( 9, 5) type=1 normal           Item= 149 addl=0
+  (10, 5) type=1 normal           Item= 150 addl=0
+  (11, 5) type=1 normal           Item=  -1 addl=0
+  (12, 5) type=1 normal           Item= 151 addl=0
+  (13, 5) type=1 normal           Item= 152 addl=0
+  (14, 5) type=1 normal           Item=  96 addl=0
+  (16, 5) type=1 normal           Item=  -1 addl=0
+  (17, 5) type=1 normal           Item=  -1 addl=0
+  (18, 5) type=1 normal           Item= 153 addl=0
+  (19, 5) type=1 normal           Item=  -1 addl=0
+  (20, 5) type=1 normal           Item= 154 addl=0
+  (21, 5) type=1 normal           Item= 155 addl=0
+  (27, 5) type=1 normal           Item= 156 addl=0
+  (28, 5) type=1 normal           Item=  -1 addl=0
+  (29, 5) type=1 normal           Item=  -1 addl=0
+  (30, 5) type=1 normal           Item= 337 addl=0
+  ( 3, 6) type=1 normal           Item=  93 addl=0
+  ( 4, 6) type=1 normal           Item=  -1 addl=0
+  ( 5, 6) type=1 normal           Item=  -1 addl=0
+  ( 9, 6) type=1 normal           Item= 157 addl=0
+  (10, 6) type=1 normal           Item=  -1 addl=0
+  (13, 6) type=1 normal           Item= 158 addl=0
+  (16, 6) type=1 normal           Item=  -1 addl=0
+  (17, 6) type=1 normal           Item= 159 addl=0
+  (21, 6) type=1 normal           Item= 160 addl=0
+  (22, 6) type=1 normal           Item=  -1 addl=0
+  (23, 6) type=1 normal           Item= 101 addl=0
+  (26, 6) type=7 pillar           Item=  14 addl=0
+  (27, 6) type=1 normal           Item= 161 addl=0
+  (28, 6) type=1 normal           Item=  -1 addl=0
+  (29, 6) type=1 normal           Item= 336 addl=0
+  (30, 6) type=1 normal           Item=  -1 addl=0
+  ( 5, 7) type=1 normal           Item= 163 addl=0
+  ( 6, 7) type=1 normal           Item= 164 addl=0
+  ( 7, 7) type=1 normal           Item= 165 addl=0
+  ( 8, 7) type=1 normal           Item= 166 addl=0
+  ( 9, 7) type=1 normal           Item= 167 addl=0
+  (10, 7) type=1 normal           Item= 168 addl=0
+  (12, 7) type=7 pillar           Item=  61 addl=0
+  (13, 7) type=1 normal           Item=  -1 addl=0
+  (14, 7) type=7 pillar           Item= 323 addl=0
+  (16, 7) type=1 normal           Item= 169 addl=0
+  (17, 7) type=1 normal           Item= 170 addl=0
+  (19, 7) type=1 normal           Item= 102 addl=0
+  (20, 7) type=1 normal           Item= 171 addl=0
+  (21, 7) type=1 normal           Item= 172 addl=0
+  (26, 7) type=7 pillar           Item=  42 addl=0
+  (27, 7) type=1 normal           Item= 173 addl=0
+  (28, 7) type=1 normal           Item=  -1 addl=0
+  (29, 7) type=1 normal           Item=  -1 addl=0
+  (30, 7) type=1 normal           Item= 174 addl=0
+  ( 3, 8) type=1 normal           Item= 175 addl=0
+  ( 4, 8) type=1 normal           Item= 176 addl=0
+  ( 5, 8) type=1 normal           Item=  -1 addl=0
+  ( 9, 8) type=1 normal           Item= 177 addl=0
+  (10, 8) type=1 normal           Item=  -1 addl=0
+  (12, 8) type=7 pillar           Item=  62 addl=0
+  (13, 8) type=1 normal           Item= 178 addl=0
+  (14, 8) type=7 pillar           Item=  63 addl=0
+  (16, 8) type=1 normal           Item= 179 addl=0
+  (17, 8) type=1 normal           Item=  99 addl=0
+  (21, 8) type=1 normal           Item= 180 addl=0
+  (22, 8) type=1 normal           Item= 181 addl=0
+  (23, 8) type=1 normal           Item= 182 addl=0
+  (26, 8) type=7 pillar           Item= 325 addl=0
+  (27, 8) type=1 normal           Item= 183 addl=0
+  ( 5, 9) type=1 normal           Item= 184 addl=0
+  ( 6, 9) type=1 normal           Item=  -1 addl=0
+  ( 7, 9) type=1 normal           Item=  92 addl=0
+  ( 9, 9) type=1 normal           Item= 185 addl=0
+  (10, 9) type=1 normal           Item= 186 addl=0
+  (12, 9) type=7 pillar           Item=  65 addl=0
+  (13, 9) type=1 normal           Item=  98 addl=0
+  (14, 9) type=7 pillar           Item=  64 addl=0
+  (16, 9) type=1 normal           Item=  -1 addl=0
+  (17, 9) type=1 normal           Item=  -1 addl=0
+  (19, 9) type=1 normal           Item= 357 addl=0
+  (20, 9) type=1 normal           Item=  -1 addl=0
+  (21, 9) type=1 normal           Item= 188 addl=0
+  (26, 9) type=7 pillar           Item= 324 addl=0
+  (27, 9) type=1 normal           Item= 189 addl=0
+  ( 3,10) type=1 normal           Item=  91 addl=0
+  ( 4,10) type=1 normal           Item= 190 addl=0
+  ( 5,10) type=1 normal           Item=  -1 addl=0
+  (21,10) type=1 normal           Item= 191 addl=0
+  (22,10) type=1 normal           Item= 192 addl=0
+  (23,10) type=1 normal           Item= 103 addl=0
+  (26,10) type=7 pillar           Item=  12 addl=0
+  (27,10) type=1 normal           Item=  -1 addl=0
+  (28,10) type=1 normal           Item=  -1 addl=0
+  ( 5,11) type=1 normal           Item=  -1 addl=0
+  ( 6,11) type=1 normal           Item=  -1 addl=0
+  ( 7,11) type=1 normal           Item= 193 addl=0
+  (10,11) type=1 normal           Item=  -1 addl=0
+  (16,11) type=1 normal           Item= 194 addl=0
+  (19,11) type=1 normal           Item=  -1 addl=0
+  (20,11) type=1 normal           Item=  -1 addl=0
+  (21,11) type=1 normal           Item=  -1 addl=0
+  (28,11) type=1 normal           Item=  -1 addl=0
+  ( 3,12) type=1 normal           Item= 195 addl=0
+  ( 4,12) type=1 normal           Item=  -1 addl=0
+  ( 5,12) type=1 normal           Item= 196 addl=0
+  ( 9,12) type=1 normal           Item= 197 addl=0
+  (10,12) type=1 normal           Item= 198 addl=0
+  (11,12) type=1 normal           Item=  -1 addl=0
+  (12,12) type=1 normal           Item=  -1 addl=0
+  (13,12) type=1 normal           Item=  -1 addl=0
+  (14,12) type=1 normal           Item=  -1 addl=0
+  (15,12) type=1 normal           Item= 199 addl=0
+  (16,12) type=1 normal           Item= 200 addl=0
+  (17,12) type=1 normal           Item= 201 addl=0
+  (21,12) type=1 normal           Item=  -1 addl=0
+  (22,12) type=1 normal           Item= 202 addl=0
+  (23,12) type=1 normal           Item= 203 addl=0
+  (26,12) type=1 normal           Item= 204 addl=0
+  (27,12) type=1 normal           Item=  -1 addl=0
+  (28,12) type=1 normal           Item=  -1 addl=0
+  ( 5,13) type=1 normal           Item= 205 addl=0
+  ( 6,13) type=1 normal           Item=  -1 addl=0
+  ( 7,13) type=1 normal           Item=  90 addl=0
+  (10,13) type=1 normal           Item= 206 addl=0
+  (16,13) type=1 normal           Item= 207 addl=0
+  (19,13) type=1 normal           Item= 104 addl=0
+  (20,13) type=1 normal           Item=  -1 addl=0
+  (21,13) type=1 normal           Item= 208 addl=0
+  (28,13) type=1 normal           Item= 209 addl=0
+  (29,13) type=1 normal           Item= 210 addl=0
+  (30,13) type=1 normal           Item= 359 addl=0
+  ( 5,14) type=1 normal           Item= 212 addl=0
+  (10,14) type=1 normal           Item= 213 addl=0
+  (12,14) type=7 pillar           Item=   0 addl=0
+  (14,14) type=7 pillar           Item=   3 addl=0
+  (16,14) type=1 normal           Item=  -1 addl=0
+  (21,14) type=1 normal           Item= 215 addl=0
+  (22,14) type=1 normal           Item= 216 addl=0
+  (23,14) type=1 normal           Item=  -1 addl=0
+  (26,14) type=1 normal           Item= 340 addl=0
+  (27,14) type=1 normal           Item= 342 addl=0
+  (28,14) type=1 normal           Item= 217 addl=0
+  ( 5,15) type=1 normal           Item= 218 addl=0
+  ( 6,15) type=1 normal           Item= 219 addl=0
+  ( 7,15) type=1 normal           Item=  -1 addl=0
+  ( 8,15) type=1 normal           Item=  -1 addl=0
+  ( 9,15) type=1 normal           Item=  -1 addl=0
+  (10,15) type=1 normal           Item=  -1 addl=0
+  (16,15) type=1 normal           Item= 220 addl=0
+  (17,15) type=1 normal           Item= 221 addl=0
+  (18,15) type=1 normal           Item= 222 addl=0
+  (19,15) type=1 normal           Item= 223 addl=0
+  (20,15) type=1 normal           Item= 224 addl=0
+  (21,15) type=1 normal           Item= 225 addl=0
+  (28,15) type=1 normal           Item=  -1 addl=0
+  (29,15) type=1 normal           Item=  -1 addl=0
+  (30,15) type=1 normal           Item=  -1 addl=0
+  (10,16) type=1 normal           Item= 226 addl=0
+  (12,16) type=7 pillar           Item=   4 addl=0
+  (14,16) type=7 pillar           Item=   6 addl=0
+  (16,16) type=1 normal           Item=  -1 addl=0
+  (24,16) type=1 normal           Item= 227 addl=0
+  (25,16) type=1 normal           Item=  -1 addl=0
+  (26,16) type=1 normal           Item=  -1 addl=0
+  (27,16) type=1 normal           Item= 228 addl=0
+  (28,16) type=1 normal           Item= 229 addl=0
+  ( 2,17) type=7 pillar           Item=  69 addl=0
+  ( 4,17) type=7 pillar           Item=  74 addl=0
+  (10,17) type=1 normal           Item=  -1 addl=0
+  (16,17) type=1 normal           Item= 231 addl=0
+  (19,17) type=7 pillar           Item=  18 addl=0
+  (20,17) type=7 pillar           Item=  19 addl=0
+  (21,17) type=1 normal           Item= 327 addl=0
+  (22,17) type=7 pillar           Item= 328 addl=0
+  (24,17) type=1 normal           Item= 232 addl=0
+  (28,17) type=1 normal           Item= 233 addl=0
+  (29,17) type=1 normal           Item= 234 addl=0
+  (30,17) type=1 normal           Item=  -1 addl=0
+  ( 9,18) type=1 normal           Item=  -1 addl=0
+  (10,18) type=1 normal           Item=  -1 addl=0
+  (11,18) type=1 normal           Item=  -1 addl=0
+  (15,18) type=1 normal           Item= 237 addl=0
+  (16,18) type=1 normal           Item=  -1 addl=0
+  (17,18) type=1 normal           Item=  -1 addl=0
+  (19,18) type=1 normal           Item= 343 addl=0
+  (20,18) type=1 normal           Item=  -1 addl=0
+  (21,18) type=1 normal           Item= 239 addl=0
+  (22,18) type=1 normal           Item= 240 addl=0
+  (23,18) type=1 normal           Item=  -1 addl=0
+  (24,18) type=1 normal           Item=  -1 addl=0
+  (26,18) type=1 normal           Item= 339 addl=0
+  (27,18) type=1 normal           Item=  -1 addl=0
+  (28,18) type=1 normal           Item= 242 addl=0
+  (10,19) type=1 normal           Item=  -1 addl=0
+  (16,19) type=1 normal           Item= 245 addl=0
+  (19,19) type=7 pillar           Item= 333 addl=0
+  (20,19) type=1 normal           Item= 332 addl=0
+  (21,19) type=7 pillar           Item=  17 addl=0
+  (22,19) type=7 pillar           Item= 330 addl=0
+  (23,19) type=7 pillar           Item=  16 addl=0
+  (24,19) type=7 pillar           Item=  15 addl=0
+  (28,19) type=1 normal           Item= 246 addl=0
+  (12,20) type=1 normal           Item= 347 addl=0
+  (14,20) type=7 pillar           Item=  67 addl=0
+  (27,20) type=7 pillar           Item=  20 addl=0
+  (28,20) type=1 normal           Item=  -1 addl=0
+  (29,20) type=7 pillar           Item= 311 addl=0
+  ( 2,21) type=7 pillar           Item=  73 addl=0
+  ( 4,21) type=7 pillar           Item= 317 addl=0
+  ( 7,21) type=1 normal           Item= 248 addl=0
+  ( 8,21) type=1 normal           Item= 249 addl=0
+  (14,21) type=7 pillar           Item=  32 addl=0
+  (22,21) type=1 normal           Item= 366 addl=0
+  (24,21) type=1 normal           Item=  -1 addl=0
+  (27,21) type=7 pillar           Item=  21 addl=0
+  (28,21) type=1 normal           Item=  -1 addl=0
+  (29,21) type=7 pillar           Item=  23 addl=0
+  ( 7,22) type=1 normal           Item= 254 addl=0
+  (17,22) type=7 pillar           Item=  36 addl=0
+  (18,22) type=7 pillar           Item=  26 addl=0
+  (19,22) type=7 pillar           Item=  47 addl=0
+  (20,22) type=7 pillar           Item=  27 addl=0
+  (22,22) type=1 normal           Item= 367 addl=0
+  (24,22) type=1 normal           Item=  -1 addl=0
+  (27,22) type=7 pillar           Item=  40 addl=0
+  (28,22) type=1 normal           Item= 258 addl=0
+  (29,22) type=7 pillar           Item=  22 addl=0
+  ( 3,23) type=1 normal           Item=  -1 addl=0
+  ( 5,23) type=1 normal           Item= 111 addl=0
+  ( 6,23) type=1 normal           Item=  -1 addl=0
+  ( 7,23) type=1 normal           Item= 259 addl=0
+  ( 9,23) type=1 normal           Item= 260 addl=0
+  (11,23) type=1 normal           Item= 262 addl=0
+  (13,23) type=1 normal           Item=  -1 addl=0
+  (15,23) type=1 normal           Item=  -1 addl=0
+  (16,23) type=1 normal           Item=  -1 addl=0
+  (17,23) type=1 normal           Item= 263 addl=0
+  (18,23) type=1 normal           Item= 244 addl=0
+  (19,23) type=1 normal           Item= 363 addl=0
+  (20,23) type=1 normal           Item= 264 addl=0
+  (21,23) type=1 normal           Item= 265 addl=0
+  (22,23) type=1 normal           Item= 266 addl=0
+  (23,23) type=1 normal           Item= 267 addl=0
+  (24,23) type=1 normal           Item=  -1 addl=0
+  (25,23) type=1 normal           Item=  -1 addl=0
+  (27,23) type=7 pillar           Item= 345 addl=0
+  (28,23) type=1 normal           Item= 268 addl=0
+  (29,23) type=7 pillar           Item=  41 addl=0
+  ( 3,24) type=1 normal           Item= 269 addl=0
+  ( 4,24) type=1 normal           Item= 110 addl=0
+  ( 5,24) type=1 normal           Item=  -1 addl=0
+  ( 6,24) type=1 normal           Item=  -1 addl=0
+  ( 7,24) type=1 normal           Item=  -1 addl=0
+  (12,24) type=1 normal           Item= 271 addl=0
+  (13,24) type=1 normal           Item= 272 addl=0
+  (15,24) type=1 normal           Item= 273 addl=0
+  (17,24) type=7 pillar           Item=  24 addl=0
+  (18,24) type=7 pillar           Item=  25 addl=0
+  (19,24) type=7 pillar           Item=  48 addl=0
+  (20,24) type=7 pillar           Item=  37 addl=0
+  (23,24) type=1 normal           Item= 274 addl=0
+  (25,24) type=1 normal           Item= 365 addl=0
+  (28,24) type=1 normal           Item= 275 addl=0
+  ( 5,25) type=7 pillar           Item=  79 addl=0
+  ( 6,25) type=7 pillar           Item= 316 addl=0
+  ( 7,25) type=7 pillar           Item=  80 addl=0
+  (11,25) type=1 normal           Item= 277 addl=0
+  (15,25) type=1 normal           Item=  -1 addl=0
+  (23,25) type=1 normal           Item= 361 addl=0
+  (25,25) type=1 normal           Item= 364 addl=0
+  (28,25) type=1 normal           Item= 280 addl=0
+  (29,25) type=1 normal           Item= 281 addl=0
+  ( 9,26) type=1 normal           Item=  -1 addl=0
+  (13,26) type=1 normal           Item= 282 addl=0
+  (15,26) type=1 normal           Item= 283 addl=0
+  (17,26) type=1 normal           Item= 107 addl=0
+  (19,26) type=6 corpse           Item= 362 addl=9
+  (21,26) type=1 normal           Item= 349 addl=0
+  (29,26) type=1 normal           Item= 285 addl=0
+  ( 6,27) type=1 normal           Item=  -1 addl=0
+  ( 7,27) type=1 normal           Item= 346 addl=0
+  ( 8,27) type=1 normal           Item= 286 addl=0
+  ( 9,27) type=1 normal           Item= 287 addl=0
+  (10,27) type=1 normal           Item= 288 addl=0
+  (13,27) type=1 normal           Item=  -1 addl=0
+  (15,27) type=1 normal           Item=  -1 addl=0
+  (17,27) type=1 normal           Item= 289 addl=0
+  (19,27) type=1 normal           Item= 348 addl=0
+  (21,27) type=1 normal           Item=  -1 addl=0
+  (24,27) type=7 pillar           Item=  28 addl=0
+  (25,27) type=7 pillar           Item=  29 addl=0
+  (26,27) type=7 pillar           Item= 312 addl=0
+  (27,27) type=7 pillar           Item=  39 addl=0
+  (29,27) type=1 normal           Item=  -1 addl=0
+  ( 6,28) type=1 normal           Item=  -1 addl=0
+  ( 7,28) type=1 normal           Item=  -1 addl=0
+  ( 8,28) type=1 normal           Item= 291 addl=0
+  ( 9,28) type=1 normal           Item= 292 addl=0
+  (10,28) type=1 normal           Item=  -1 addl=0
+  (11,28) type=1 normal           Item= 294 addl=0
+  (12,28) type=1 normal           Item=  -1 addl=0
+  (13,28) type=1 normal           Item= 295 addl=0
+  (14,28) type=1 normal           Item= 296 addl=0
+  (15,28) type=1 normal           Item= 297 addl=0
+  (16,28) type=1 normal           Item=  -1 addl=0
+  (17,28) type=1 normal           Item= 298 addl=0
+  (18,28) type=1 normal           Item= 299 addl=0
+  (19,28) type=1 normal           Item=  -1 addl=0
+  (20,28) type=1 normal           Item=  -1 addl=0
+  (21,28) type=1 normal           Item= 300 addl=0
+  (22,28) type=1 normal           Item=  -1 addl=0
+  (23,28) type=1 normal           Item= 301 addl=0
+  (24,28) type=1 normal           Item= 302 addl=0
+  (25,28) type=1 normal           Item=  -1 addl=0
+  (26,28) type=1 normal           Item= 313 addl=0
+  (27,28) type=1 normal           Item=  -1 addl=0
+  (28,28) type=1 normal           Item=  -1 addl=0
+  (29,28) type=1 normal           Item=  -1 addl=0
+  ( 6,29) type=7 pillar           Item=  35 addl=0
+  ( 7,29) type=7 pillar           Item= 315 addl=0
+  ( 8,29) type=7 pillar           Item=  34 addl=0
+  ( 9,29) type=7 pillar           Item=  45 addl=0
+  (10,29) type=7 pillar           Item=  33 addl=0
+  (12,29) type=1 normal           Item=  -1 addl=0
+  (14,29) type=1 normal           Item= 108 addl=0
+  (16,29) type=1 normal           Item= 303 addl=0
+  (18,29) type=1 normal           Item= 304 addl=0
+  (20,29) type=1 normal           Item=  -1 addl=0
+  (22,29) type=1 normal           Item= 105 addl=0
+  (24,29) type=7 pillar           Item=  38 addl=0
+  (25,29) type=7 pillar           Item=  31 addl=0
+  (26,29) type=7 pillar           Item= 314 addl=0
+  (27,29) type=7 pillar           Item=  50 addl=0
+  (29,29) type=1 normal           Item= 305 addl=0
+  (30,29) type=1 normal           Item=  -1 addl=0
+  (14,30) type=1 normal           Item= 307 addl=0
+  (16,30) type=1 normal           Item= 308 addl=0
+  (18,30) type=1 normal           Item= 309 addl=0
+  (20,30) type=1 normal           Item= 106 addl=0
+  (22,30) type=1 normal           Item=  -1 addl=0
+  (29,30) type=1 normal           Item=  -1 addl=0
+
+=== L09 We Can See In The Dark… Can You?  sealed=402 ===
+  ( 8, 1) type=1 normal           Item=  62 addl=0
+  ( 9, 1) type=1 normal           Item=  63 addl=0
+  (12, 1) type=1 normal           Item=  64 addl=0
+  (13, 1) type=1 normal           Item=  65 addl=0
+  (14, 1) type=1 normal           Item= 309 addl=0
+  ( 4, 2) type=1 normal           Item= 331 addl=0
+  ( 5, 2) type=1 normal           Item=  -1 addl=0
+  ( 9, 2) type=1 normal           Item=  -1 addl=0
+  (10, 2) type=1 normal           Item=  -1 addl=0
+  (11, 2) type=1 normal           Item=  66 addl=0
+  (12, 2) type=1 normal           Item=  67 addl=0
+  (16, 2) type=1 normal           Item=  68 addl=0
+  (17, 2) type=1 normal           Item= 325 addl=0
+  (22, 2) type=1 normal           Item= 298 addl=0
+  ( 4, 3) type=1 normal           Item=  -1 addl=0
+  ( 5, 3) type=1 normal           Item= 310 addl=0
+  ( 6, 3) type=1 normal           Item=  -1 addl=0
+  ( 7, 3) type=1 normal           Item=  72 addl=0
+  ( 9, 3) type=1 normal           Item=  -1 addl=0
+  (12, 3) type=1 normal           Item=  73 addl=0
+  (13, 3) type=1 normal           Item=  74 addl=0
+  (14, 3) type=1 normal           Item=  75 addl=0
+  (17, 3) type=1 normal           Item=  -1 addl=0
+  (20, 3) type=1 normal           Item=  -1 addl=0
+  (21, 3) type=1 normal           Item=  76 addl=0
+  (22, 3) type=1 normal           Item=  77 addl=0
+  (24, 3) type=1 normal           Item=  78 addl=0
+  (25, 3) type=1 normal           Item=  -1 addl=0
+  (26, 3) type=1 normal           Item=  -1 addl=0
+  (27, 3) type=1 normal           Item=  -1 addl=0
+  (28, 3) type=1 normal           Item=  -1 addl=0
+  ( 7, 4) type=1 normal           Item=  -1 addl=0
+  ( 8, 4) type=1 normal           Item=  79 addl=0
+  ( 9, 4) type=1 normal           Item=  80 addl=0
+  (10, 4) type=1 normal           Item=  81 addl=0
+  (12, 4) type=7 pillar           Item=  37 addl=0
+  (14, 4) type=1 normal           Item=  -1 addl=0
+  (15, 4) type=1 normal           Item=  82 addl=0
+  (16, 4) type=1 normal           Item=  -1 addl=0
+  (20, 4) type=1 normal           Item=  83 addl=0
+  (22, 4) type=1 normal           Item=  84 addl=0
+  (23, 4) type=1 normal           Item=  85 addl=0
+  (24, 4) type=1 normal           Item=  86 addl=0
+  (28, 4) type=1 normal           Item=  87 addl=0
+  (10, 5) type=1 normal           Item=  88 addl=0
+  (14, 5) type=1 normal           Item=  89 addl=0
+  (18, 5) type=1 normal           Item= 299 addl=0
+  (19, 5) type=1 normal           Item=  -1 addl=0
+  (20, 5) type=1 normal           Item=  90 addl=0
+  (22, 5) type=1 normal           Item=  91 addl=0
+  (24, 5) type=1 normal           Item=  -1 addl=0
+  (26, 5) type=1 normal           Item= 302 addl=0
+  (27, 5) type=1 normal           Item=  92 addl=0
+  (28, 5) type=1 normal           Item=  -1 addl=0
+  (29, 5) type=1 normal           Item=  -1 addl=0
+  ( 4, 6) type=1 normal           Item=  93 addl=0
+  ( 5, 6) type=1 normal           Item= 313 addl=0
+  ( 7, 6) type=1 normal           Item= 312 addl=0
+  ( 8, 6) type=1 normal           Item=  -1 addl=0
+  (10, 6) type=1 normal           Item=  -1 addl=0
+  (11, 6) type=1 normal           Item=  96 addl=0
+  (12, 6) type=1 normal           Item=  97 addl=0
+  (14, 6) type=1 normal           Item=  98 addl=0
+  (15, 6) type=1 normal           Item=  99 addl=0
+  (16, 6) type=1 normal           Item=  -1 addl=0
+  (22, 6) type=1 normal           Item= 100 addl=0
+  (24, 6) type=1 normal           Item= 101 addl=0
+  (27, 6) type=1 normal           Item= 301 addl=0
+  (29, 6) type=1 normal           Item=  -1 addl=0
+  ( 4, 7) type=1 normal           Item= 103 addl=0
+  ( 8, 7) type=1 normal           Item=  -1 addl=0
+  (10, 7) type=1 normal           Item= 104 addl=0
+  (12, 7) type=1 normal           Item= 105 addl=0
+  (16, 7) type=1 normal           Item= 106 addl=0
+  (19, 7) type=1 normal           Item= 107 addl=0
+  (22, 7) type=1 normal           Item= 108 addl=0
+  (24, 7) type=1 normal           Item=  -1 addl=0
+  (25, 7) type=1 normal           Item= 300 addl=0
+  (29, 7) type=1 normal           Item=  -1 addl=0
+  ( 2, 8) type=1 normal           Item= 109 addl=0
+  ( 3, 8) type=1 normal           Item= 110 addl=0
+  ( 4, 8) type=1 normal           Item= 111 addl=0
+  ( 5, 8) type=1 normal           Item= 112 addl=0
+  ( 7, 8) type=1 normal           Item= 113 addl=0
+  ( 8, 8) type=1 normal           Item= 114 addl=0
+  ( 9, 8) type=1 normal           Item= 115 addl=0
+  (10, 8) type=1 normal           Item= 116 addl=0
+  (12, 8) type=1 normal           Item= 311 addl=0
+  (14, 8) type=1 normal           Item= 307 addl=0
+  (15, 8) type=1 normal           Item=  -1 addl=0
+  (16, 8) type=1 normal           Item=  -1 addl=0
+  (18, 8) type=1 normal           Item= 303 addl=0
+  (19, 8) type=1 normal           Item= 120 addl=0
+  (20, 8) type=1 normal           Item= 121 addl=0
+  (22, 8) type=1 normal           Item=  -1 addl=0
+  (28, 8) type=7 pillar           Item=  49 addl=0
+  (30, 8) type=7 pillar           Item=   4 addl=0
+  ( 2, 9) type=1 normal           Item= 314 addl=0
+  ( 5, 9) type=1 normal           Item= 122 addl=0
+  ( 7, 9) type=1 normal           Item=  -1 addl=0
+  (10, 9) type=1 normal           Item=  -1 addl=0
+  (16, 9) type=1 normal           Item=  -1 addl=0
+  (20, 9) type=1 normal           Item= 123 addl=0
+  (21, 9) type=1 normal           Item= 124 addl=0
+  (22, 9) type=1 normal           Item= 125 addl=0
+  (23, 9) type=1 normal           Item=  -1 addl=0
+  (24, 9) type=1 normal           Item=  -1 addl=0
+  (26, 9) type=1 normal           Item= 297 addl=0
+  ( 4,10) type=1 normal           Item= 127 addl=0
+  ( 5,10) type=1 normal           Item=  -1 addl=0
+  ( 6,10) type=1 normal           Item= 128 addl=0
+  ( 7,10) type=1 normal           Item= 129 addl=0
+  ( 8,10) type=1 normal           Item= 130 addl=0
+  (10,10) type=1 normal           Item= 131 addl=0
+  (11,10) type=1 normal           Item= 132 addl=0
+  (12,10) type=7 pillar           Item=  32 addl=0
+  (15,10) type=1 normal           Item= 306 addl=0
+  (16,10) type=1 normal           Item= 134 addl=0
+  (17,10) type=1 normal           Item= 135 addl=0
+  (18,10) type=1 normal           Item= 136 addl=0
+  (20,10) type=1 normal           Item= 137 addl=0
+  (22,10) type=7 pillar           Item=  38 addl=0
+  (24,10) type=1 normal           Item= 138 addl=0
+  (25,10) type=1 normal           Item= 139 addl=0
+  (26,10) type=1 normal           Item= 140 addl=0
+  (28,10) type=7 pillar           Item=   6 addl=0
+  (30,10) type=7 pillar           Item=   1 addl=0
+  ( 4,11) type=1 normal           Item=  -1 addl=0
+  (11,11) type=1 normal           Item= 141 addl=0
+  (16,11) type=1 normal           Item= 142 addl=0
+  (18,11) type=1 normal           Item=  -1 addl=0
+  (20,11) type=1 normal           Item= 143 addl=0
+  (24,11) type=1 normal           Item= 144 addl=0
+  ( 1,12) type=1 normal           Item= 145 addl=0
+  ( 2,12) type=1 normal           Item= 146 addl=0
+  ( 3,12) type=1 normal           Item=  -1 addl=0
+  ( 4,12) type=1 normal           Item= 147 addl=0
+  ( 5,12) type=1 normal           Item= 148 addl=0
+  ( 7,12) type=1 normal           Item= 149 addl=0
+  ( 8,12) type=1 normal           Item=  -1 addl=0
+  ( 9,12) type=1 normal           Item= 316 addl=0
+  (11,12) type=1 normal           Item= 150 addl=0
+  (12,12) type=1 normal           Item= 151 addl=0
+  (13,12) type=1 normal           Item= 152 addl=0
+  (14,12) type=1 normal           Item=  -1 addl=0
+  (15,12) type=1 normal           Item=  -1 addl=0
+  (16,12) type=1 normal           Item=  -1 addl=0
+  (18,12) type=1 normal           Item=  -1 addl=0
+  (19,12) type=1 normal           Item= 153 addl=0
+  (20,12) type=1 normal           Item= 154 addl=0
+  (21,12) type=1 normal           Item=  -1 addl=0
+  (24,12) type=1 normal           Item=  -1 addl=0
+  (27,12) type=1 normal           Item=  -1 addl=0
+  (28,12) type=1 normal           Item= 155 addl=0
+  (29,12) type=1 normal           Item= 156 addl=0
+  ( 1,13) type=1 normal           Item= 157 addl=0
+  ( 5,13) type=1 normal           Item= 158 addl=0
+  ( 7,13) type=1 normal           Item= 159 addl=0
+  (11,13) type=1 normal           Item= 160 addl=0
+  (13,13) type=1 normal           Item=  -1 addl=0
+  (18,13) type=1 normal           Item= 161 addl=0
+  (21,13) type=1 normal           Item= 162 addl=0
+  (23,13) type=1 normal           Item= 296 addl=0
+  (24,13) type=1 normal           Item=  -1 addl=0
+  (25,13) type=1 normal           Item= 163 addl=0
+  (27,13) type=1 normal           Item= 164 addl=0
+  (29,13) type=1 normal           Item= 165 addl=0
+  (30,13) type=1 normal           Item= 295 addl=0
+  ( 1,14) type=1 normal           Item= 166 addl=0
+  ( 2,14) type=1 normal           Item= 315 addl=0
+  ( 4,14) type=1 normal           Item=  -1 addl=0
+  ( 5,14) type=1 normal           Item=  -1 addl=0
+  ( 6,14) type=1 normal           Item=  -1 addl=0
+  ( 7,14) type=1 normal           Item= 167 addl=0
+  ( 8,14) type=1 normal           Item=  -1 addl=0
+  ( 9,14) type=1 normal           Item= 168 addl=0
+  (11,14) type=1 normal           Item= 169 addl=0
+  (16,14) type=1 normal           Item=  50 addl=0
+  (17,14) type=1 normal           Item=  -1 addl=0
+  (18,14) type=1 normal           Item=  -1 addl=0
+  (20,14) type=1 normal           Item= 304 addl=0
+  (21,14) type=1 normal           Item= 170 addl=0
+  (25,14) type=1 normal           Item= 171 addl=0
+  (27,14) type=1 normal           Item= 172 addl=0
+  (29,14) type=1 normal           Item= 173 addl=0
+  ( 4,15) type=1 normal           Item= 174 addl=0
+  ( 9,15) type=1 normal           Item= 175 addl=0
+  (11,15) type=1 normal           Item= 176 addl=0
+  (12,15) type=1 normal           Item=  -1 addl=0
+  (17,15) type=7 pillar           Item=  15 addl=0
+  (21,15) type=1 normal           Item= 177 addl=0
+  (24,15) type=7 pillar           Item=  41 addl=0
+  (25,15) type=1 normal           Item=  42 addl=0
+  (26,15) type=1 normal           Item=  -1 addl=0
+  (27,15) type=1 normal           Item= 178 addl=0
+  (29,15) type=1 normal           Item= 179 addl=0
+  ( 3,16) type=1 normal           Item=  -1 addl=0
+  ( 4,16) type=1 normal           Item= 180 addl=0
+  ( 5,16) type=1 normal           Item= 181 addl=0
+  ( 6,16) type=1 normal           Item=  -1 addl=0
+  ( 7,16) type=1 normal           Item= 182 addl=0
+  (12,16) type=1 normal           Item=  -1 addl=0
+  (14,16) type=1 normal           Item= 326 addl=0
+  (15,16) type=1 normal           Item= 184 addl=0
+  (19,16) type=1 normal           Item= 185 addl=0
+  (21,16) type=1 normal           Item=  -1 addl=0
+  (22,16) type=1 normal           Item=  -1 addl=0
+  (29,16) type=1 normal           Item= 186 addl=0
+  ( 3,17) type=1 normal           Item= 187 addl=0
+  ( 6,17) type=1 normal           Item= 188 addl=0
+  ( 9,17) type=6 corpse           Item= 327 addl=10
+  (10,17) type=1 normal           Item= 333 addl=0
+  (12,17) type=1 normal           Item= 321 addl=0
+  (14,17) type=1 normal           Item= 189 addl=0
+  (15,17) type=1 normal           Item=  -1 addl=0
+  (16,17) type=1 normal           Item=  -1 addl=0
+  (17,17) type=1 normal           Item=  -1 addl=0
+  (18,17) type=1 normal           Item=  -1 addl=0
+  (19,17) type=1 normal           Item=  -1 addl=0
+  (20,17) type=1 normal           Item= 190 addl=0
+  (21,17) type=1 normal           Item= 191 addl=0
+  (25,17) type=1 normal           Item=  -1 addl=0
+  (26,17) type=1 normal           Item=  -1 addl=0
+  (27,17) type=1 normal           Item= 192 addl=0
+  (28,17) type=1 normal           Item=  -1 addl=0
+  (29,17) type=1 normal           Item=  35 addl=0
+  (30,17) type=7 pillar           Item=  34 addl=0
+  ( 3,18) type=1 normal           Item= 317 addl=0
+  ( 5,18) type=1 normal           Item=  -1 addl=0
+  ( 6,18) type=1 normal           Item= 194 addl=0
+  ( 7,18) type=1 normal           Item= 195 addl=0
+  ( 9,18) type=1 normal           Item= 196 addl=0
+  (10,18) type=1 normal           Item=  -1 addl=0
+  (15,18) type=1 normal           Item= 197 addl=0
+  (19,18) type=1 normal           Item= 198 addl=0
+  (24,18) type=1 normal           Item= 217 addl=0
+  (25,18) type=1 normal           Item= 199 addl=0
+  (28,18) type=1 normal           Item=  -1 addl=0
+  ( 5,19) type=1 normal           Item=  -1 addl=0
+  (10,19) type=1 normal           Item= 200 addl=0
+  (13,19) type=1 normal           Item= 201 addl=0
+  (14,19) type=1 normal           Item=  -1 addl=0
+  (15,19) type=1 normal           Item=  -1 addl=0
+  (16,19) type=1 normal           Item= 202 addl=0
+  (19,19) type=1 normal           Item= 203 addl=0
+  (21,19) type=1 normal           Item= 329 addl=0
+  (22,19) type=1 normal           Item= 205 addl=0
+  (27,19) type=1 normal           Item= 206 addl=0
+  (28,19) type=1 normal           Item= 207 addl=0
+  (29,19) type=1 normal           Item=  -1 addl=0
+  ( 4,20) type=1 normal           Item= 208 addl=0
+  ( 5,20) type=1 normal           Item= 209 addl=0
+  ( 6,20) type=7 pillar           Item=  30 addl=0
+  ( 8,20) type=1 normal           Item= 210 addl=0
+  ( 9,20) type=1 normal           Item= 211 addl=0
+  (10,20) type=1 normal           Item=  -1 addl=0
+  (11,20) type=1 normal           Item= 212 addl=0
+  (14,20) type=1 normal           Item= 213 addl=0
+  (16,20) type=1 normal           Item= 323 addl=0
+  (18,20) type=1 normal           Item= 305 addl=0
+  (19,20) type=1 normal           Item= 216 addl=0
+  (21,20) type=1 normal           Item= 294 addl=0
+  (22,20) type=1 normal           Item=  -1 addl=0
+  (24,20) type=1 normal           Item=  -1 addl=0
+  (25,20) type=1 normal           Item= 218 addl=0
+  (29,20) type=1 normal           Item= 219 addl=0
+  ( 1,21) type=1 normal           Item=  -1 addl=0
+  ( 2,21) type=1 normal           Item= 220 addl=0
+  ( 3,21) type=1 normal           Item=  -1 addl=0
+  ( 4,21) type=1 normal           Item= 221 addl=0
+  ( 8,21) type=1 normal           Item=  -1 addl=0
+  (11,21) type=1 normal           Item=  -1 addl=0
+  (14,21) type=1 normal           Item= 222 addl=0
+  (19,21) type=1 normal           Item=  -1 addl=0
+  (22,21) type=1 normal           Item=  -1 addl=0
+  (25,21) type=1 normal           Item= 223 addl=0
+  (26,21) type=1 normal           Item= 224 addl=0
+  (27,21) type=1 normal           Item= 225 addl=0
+  (29,21) type=1 normal           Item= 226 addl=0
+  ( 1,22) type=1 normal           Item= 227 addl=0
+  ( 4,22) type=1 normal           Item= 228 addl=0
+  ( 6,22) type=1 normal           Item= 229 addl=0
+  ( 7,22) type=1 normal           Item= 230 addl=0
+  ( 8,22) type=1 normal           Item= 231 addl=0
+  ( 9,22) type=1 normal           Item= 232 addl=0
+  (11,22) type=1 normal           Item= 233 addl=0
+  (13,22) type=1 normal           Item= 234 addl=0
+  (14,22) type=1 normal           Item= 235 addl=0
+  (15,22) type=1 normal           Item= 236 addl=0
+  (16,22) type=1 normal           Item= 322 addl=0
+  (18,22) type=1 normal           Item= 238 addl=0
+  (19,22) type=1 normal           Item= 239 addl=0
+  (20,22) type=1 normal           Item= 240 addl=0
+  (22,22) type=1 normal           Item=  -1 addl=0
+  (23,22) type=1 normal           Item= 241 addl=0
+  (24,22) type=1 normal           Item= 242 addl=0
+  (25,22) type=1 normal           Item= 243 addl=0
+  (27,22) type=1 normal           Item= 244 addl=0
+  (29,22) type=1 normal           Item= 245 addl=0
+  ( 1,23) type=1 normal           Item=  -1 addl=0
+  ( 3,23) type=1 normal           Item= 246 addl=0
+  ( 4,23) type=1 normal           Item=  -1 addl=0
+  ( 5,23) type=1 normal           Item= 247 addl=0
+  ( 6,23) type=1 normal           Item= 248 addl=0
+  ( 9,23) type=1 normal           Item= 249 addl=0
+  (13,23) type=1 normal           Item=  -1 addl=0
+  (18,23) type=1 normal           Item= 250 addl=0
+  (20,23) type=1 normal           Item= 251 addl=0
+  (21,23) type=1 normal           Item= 252 addl=0
+  (22,23) type=1 normal           Item= 253 addl=0
+  (24,23) type=1 normal           Item=  -1 addl=0
+  (27,23) type=1 normal           Item=  -1 addl=0
+  (28,23) type=1 normal           Item=  -1 addl=0
+  (29,23) type=1 normal           Item=  -1 addl=0
+  ( 1,24) type=1 normal           Item= 254 addl=0
+  ( 8,24) type=1 normal           Item=  -1 addl=0
+  ( 9,24) type=1 normal           Item=  -1 addl=0
+  (10,24) type=1 normal           Item=  -1 addl=0
+  (11,24) type=1 normal           Item=  -1 addl=0
+  (12,24) type=1 normal           Item=  40 addl=0
+  (13,24) type=1 normal           Item=  -1 addl=0
+  (14,24) type=1 normal           Item= 255 addl=0
+  (16,24) type=1 normal           Item=  -1 addl=0
+  (18,24) type=1 normal           Item=  -1 addl=0
+  (20,24) type=1 normal           Item=  -1 addl=0
+  (26,24) type=1 normal           Item= 256 addl=0
+  (27,24) type=1 normal           Item= 257 addl=0
+  ( 1,25) type=1 normal           Item=  -1 addl=0
+  ( 2,25) type=1 normal           Item= 318 addl=0
+  ( 4,25) type=7 pillar           Item=   2 addl=0
+  ( 6,25) type=7 pillar           Item=   7 addl=0
+  ( 8,25) type=1 normal           Item=  -1 addl=0
+  (12,25) type=7 pillar           Item=  39 addl=0
+  (16,25) type=1 normal           Item= 258 addl=0
+  (17,25) type=1 normal           Item= 259 addl=0
+  (18,25) type=1 normal           Item=  -1 addl=0
+  (23,25) type=1 normal           Item=  56 addl=0
+  (27,25) type=1 normal           Item=  -1 addl=0
+  (28,25) type=1 normal           Item= 260 addl=0
+  (29,25) type=1 normal           Item=  -1 addl=0
+  ( 1,26) type=1 normal           Item= 261 addl=0
+  ( 2,26) type=1 normal           Item= 319 addl=0
+  ( 7,26) type=1 normal           Item= 264 addl=0
+  ( 8,26) type=1 normal           Item= 265 addl=0
+  ( 9,26) type=1 normal           Item= 266 addl=0
+  (10,26) type=1 normal           Item= 334 addl=0
+  (14,26) type=7 pillar           Item=  27 addl=0
+  (18,26) type=1 normal           Item=  -1 addl=0
+  (20,26) type=1 normal           Item= 268 addl=0
+  (22,26) type=1 normal           Item= 269 addl=0
+  (23,26) type=1 normal           Item=  -1 addl=0
+  (24,26) type=1 normal           Item=  -1 addl=0
+  (26,26) type=7 pillar           Item=  17 addl=0
+  (27,26) type=1 normal           Item= 270 addl=0
+  (29,26) type=1 normal           Item= 271 addl=0
+  ( 4,27) type=7 pillar           Item=   8 addl=0
+  ( 6,27) type=7 pillar           Item=   3 addl=0
+  ( 9,27) type=1 normal           Item=  -1 addl=0
+  (12,27) type=1 normal           Item=  52 addl=0
+  (14,27) type=1 normal           Item=  28 addl=0
+  (15,27) type=1 normal           Item= 272 addl=0
+  (16,27) type=1 normal           Item=  -1 addl=0
+  (18,27) type=1 normal           Item= 273 addl=0
+  (19,27) type=1 normal           Item= 274 addl=0
+  (20,27) type=1 normal           Item=  -1 addl=0
+  (22,27) type=1 normal           Item=  -1 addl=0
+  (29,27) type=1 normal           Item=  -1 addl=0
+  ( 8,28) type=1 normal           Item= 275 addl=0
+  ( 9,28) type=1 normal           Item=  -1 addl=0
+  (10,28) type=1 normal           Item= 276 addl=0
+  (12,28) type=1 normal           Item=  -1 addl=0
+  (13,28) type=1 normal           Item=  -1 addl=0
+  (14,28) type=1 normal           Item=  -1 addl=0
+  (16,28) type=1 normal           Item= 277 addl=0
+  (17,28) type=1 normal           Item= 278 addl=0
+  (18,28) type=1 normal           Item= 279 addl=0
+  (20,28) type=1 normal           Item= 280 addl=0
+  (21,28) type=1 normal           Item=  -1 addl=0
+  (22,28) type=1 normal           Item= 281 addl=0
+  (23,28) type=1 normal           Item=  -1 addl=0
+  (25,28) type=1 normal           Item=  61 addl=0
+  (27,28) type=1 normal           Item=  58 addl=0
+  (28,28) type=1 normal           Item= 283 addl=0
+  (29,28) type=1 normal           Item= 284 addl=0
+  ( 7,29) type=1 normal           Item=  51 addl=0
+  ( 8,29) type=1 normal           Item=  -1 addl=0
+  (10,29) type=1 normal           Item=  -1 addl=0
+  (11,29) type=1 normal           Item= 285 addl=0
+  (12,29) type=1 normal           Item= 286 addl=0
+  (16,29) type=1 normal           Item=  -1 addl=0
+  (20,29) type=1 normal           Item= 287 addl=0
+  (24,29) type=1 normal           Item= 336 addl=0
+  (25,29) type=1 normal           Item= 328 addl=0
+  (28,29) type=1 normal           Item= 288 addl=0
+  (14,30) type=1 normal           Item=  55 addl=0
+  (15,30) type=1 normal           Item= 290 addl=0
+  (16,30) type=1 normal           Item= 291 addl=0
+  (17,30) type=1 normal           Item=  53 addl=0
+  (19,30) type=1 normal           Item=  -1 addl=0
+  (20,30) type=1 normal           Item= 292 addl=0
+  (21,30) type=1 normal           Item= 293 addl=0
+  (22,30) type=1 normal           Item=  -1 addl=0
+
+=== L10 Feel the Power  sealed=569 ===
+  ( 4, 1) type=1 normal           Item= 356 addl=0
+  ( 5, 1) type=1 normal           Item=  -1 addl=0
+  ( 8, 1) type=1 normal           Item=  -1 addl=0
+  ( 9, 1) type=1 normal           Item=   7 addl=0
+  (15, 1) type=1 normal           Item=  -1 addl=0
+  (16, 1) type=1 normal           Item=  -1 addl=0
+  (17, 1) type=1 normal           Item=  -1 addl=0
+  (18, 1) type=1 normal           Item=   8 addl=0
+  (19, 1) type=1 normal           Item=   9 addl=0
+  (20, 1) type=1 normal           Item=  -1 addl=0
+  (21, 1) type=1 normal           Item=  -1 addl=0
+  (22, 1) type=1 normal           Item=  -1 addl=0
+  (23, 1) type=1 normal           Item=  10 addl=0
+  (24, 1) type=1 normal           Item=  11 addl=0
+  (26, 1) type=1 normal           Item= 350 addl=0
+  (27, 1) type=1 normal           Item= 382 addl=0
+  ( 4, 2) type=1 normal           Item= 358 addl=0
+  ( 5, 2) type=1 normal           Item= 357 addl=0
+  ( 8, 2) type=1 normal           Item=  -1 addl=0
+  ( 9, 2) type=1 normal           Item=  -1 addl=0
+  (15, 2) type=1 normal           Item=  14 addl=0
+  (16, 2) type=1 normal           Item= 371 addl=0
+  (17, 2) type=1 normal           Item=  16 addl=0
+  (18, 2) type=1 normal           Item=  -1 addl=0
+  (19, 2) type=1 normal           Item=  17 addl=0
+  (20, 2) type=1 normal           Item=  18 addl=0
+  (21, 2) type=1 normal           Item=  19 addl=0
+  (22, 2) type=1 normal           Item=  -1 addl=0
+  (23, 2) type=1 normal           Item=  -1 addl=0
+  (24, 2) type=1 normal           Item=  -1 addl=0
+  (26, 2) type=1 normal           Item= 352 addl=0
+  (27, 2) type=1 normal           Item=  21 addl=0
+  ( 4, 3) type=1 normal           Item=  -1 addl=0
+  ( 5, 3) type=1 normal           Item=  -1 addl=0
+  ( 6, 3) type=1 normal           Item=  22 addl=0
+  ( 7, 3) type=1 normal           Item=  23 addl=0
+  ( 8, 3) type=1 normal           Item=  24 addl=0
+  ( 9, 3) type=1 normal           Item=  25 addl=0
+  (10, 3) type=1 normal           Item=  26 addl=0
+  (11, 3) type=1 normal           Item=  27 addl=0
+  (15, 3) type=1 normal           Item=  -1 addl=0
+  (16, 3) type=1 normal           Item=  -1 addl=0
+  (23, 3) type=1 normal           Item=  28 addl=0
+  (24, 3) type=1 normal           Item=  29 addl=0
+  (26, 3) type=1 normal           Item=  30 addl=0
+  (27, 3) type=1 normal           Item=  31 addl=0
+  ( 4, 4) type=1 normal           Item=  32 addl=0
+  ( 5, 4) type=1 normal           Item=  -1 addl=0
+  ( 6, 4) type=1 normal           Item=  -1 addl=0
+  ( 7, 4) type=1 normal           Item=  33 addl=0
+  ( 8, 4) type=1 normal           Item=  -1 addl=0
+  ( 9, 4) type=1 normal           Item=  -1 addl=0
+  (10, 4) type=1 normal           Item=  -1 addl=0
+  (11, 4) type=1 normal           Item=  -1 addl=0
+  (15, 4) type=1 normal           Item=  34 addl=0
+  (16, 4) type=1 normal           Item=  35 addl=0
+  (18, 4) type=1 normal           Item= 354 addl=0
+  (19, 4) type=1 normal           Item= 353 addl=0
+  (23, 4) type=1 normal           Item=  38 addl=0
+  (24, 4) type=1 normal           Item=  39 addl=0
+  (26, 4) type=1 normal           Item=  40 addl=0
+  (27, 4) type=1 normal           Item=  -1 addl=0
+  ( 1, 5) type=1 normal           Item= 367 addl=0
+  ( 2, 5) type=1 normal           Item= 366 addl=0
+  ( 3, 5) type=1 normal           Item=  43 addl=0
+  ( 4, 5) type=1 normal           Item=  44 addl=0
+  ( 5, 5) type=1 normal           Item=  45 addl=0
+  (10, 5) type=1 normal           Item=  -1 addl=0
+  (11, 5) type=1 normal           Item=  -1 addl=0
+  (12, 5) type=1 normal           Item=  46 addl=0
+  (13, 5) type=1 normal           Item=  -1 addl=0
+  (14, 5) type=1 normal           Item=  47 addl=0
+  (15, 5) type=1 normal           Item=  48 addl=0
+  (16, 5) type=1 normal           Item=  49 addl=0
+  (18, 5) type=1 normal           Item=  50 addl=0
+  (19, 5) type=1 normal           Item= 355 addl=0
+  (23, 5) type=1 normal           Item=  -1 addl=0
+  (24, 5) type=1 normal           Item=  -1 addl=0
+  (26, 5) type=1 normal           Item=  -1 addl=0
+  (27, 5) type=1 normal           Item=  -1 addl=0
+  ( 2, 6) type=1 normal           Item= 365 addl=0
+  ( 3, 6) type=1 normal           Item=  -1 addl=0
+  ( 4, 6) type=1 normal           Item=  52 addl=0
+  ( 5, 6) type=1 normal           Item=  -1 addl=0
+  ( 7, 6) type=1 normal           Item= 363 addl=0
+  (10, 6) type=1 normal           Item=  54 addl=0
+  (11, 6) type=1 normal           Item=  -1 addl=0
+  (12, 6) type=1 normal           Item=  -1 addl=0
+  (13, 6) type=1 normal           Item=  -1 addl=0
+  (14, 6) type=1 normal           Item=  -1 addl=0
+  (15, 6) type=1 normal           Item=  -1 addl=0
+  (16, 6) type=1 normal           Item=  55 addl=0
+  (18, 6) type=1 normal           Item=  -1 addl=0
+  (19, 6) type=1 normal           Item=  -1 addl=0
+  (23, 6) type=1 normal           Item=  56 addl=0
+  (24, 6) type=1 normal           Item=  57 addl=0
+  (26, 6) type=1 normal           Item=  -1 addl=0
+  (27, 6) type=1 normal           Item=  58 addl=0
+  (28, 6) type=1 normal           Item=  59 addl=0
+  (29, 6) type=1 normal           Item=  60 addl=0
+  (30, 6) type=1 normal           Item= 304 addl=0
+  ( 4, 7) type=1 normal           Item=  61 addl=0
+  ( 5, 7) type=1 normal           Item=  -1 addl=0
+  ( 7, 7) type=1 normal           Item= 364 addl=0
+  ( 8, 7) type=1 normal           Item=  62 addl=0
+  (10, 7) type=1 normal           Item=  63 addl=0
+  (11, 7) type=1 normal           Item=  64 addl=0
+  (15, 7) type=1 normal           Item=  65 addl=0
+  (16, 7) type=1 normal           Item=  66 addl=0
+  (18, 7) type=1 normal           Item=  67 addl=0
+  (19, 7) type=1 normal           Item=  -1 addl=0
+  (20, 7) type=1 normal           Item=  -1 addl=0
+  (21, 7) type=1 normal           Item=  68 addl=0
+  (22, 7) type=1 normal           Item=  69 addl=0
+  (23, 7) type=1 normal           Item=  70 addl=0
+  (24, 7) type=1 normal           Item=  71 addl=0
+  (26, 7) type=1 normal           Item=  -1 addl=0
+  (27, 7) type=1 normal           Item=  72 addl=0
+  (28, 7) type=1 normal           Item=  73 addl=0
+  (29, 7) type=1 normal           Item=  74 addl=0
+  (30, 7) type=1 normal           Item=  -1 addl=0
+  ( 1, 8) type=1 normal           Item= 381 addl=0
+  ( 2, 8) type=1 normal           Item= 368 addl=0
+  ( 4, 8) type=1 normal           Item=  77 addl=0
+  ( 5, 8) type=1 normal           Item=  -1 addl=0
+  ( 7, 8) type=1 normal           Item=  78 addl=0
+  ( 8, 8) type=1 normal           Item=  -1 addl=0
+  (10, 8) type=1 normal           Item=  -1 addl=0
+  (11, 8) type=1 normal           Item=  -1 addl=0
+  (15, 8) type=1 normal           Item=  79 addl=0
+  (16, 8) type=1 normal           Item=  80 addl=0
+  (18, 8) type=1 normal           Item=  81 addl=0
+  (19, 8) type=1 normal           Item=  82 addl=0
+  (20, 8) type=1 normal           Item=  83 addl=0
+  (21, 8) type=1 normal           Item=  84 addl=0
+  (22, 8) type=1 normal           Item=  -1 addl=0
+  (23, 8) type=1 normal           Item=  -1 addl=0
+  (24, 8) type=1 normal           Item=  85 addl=0
+  (26, 8) type=1 normal           Item=  86 addl=0
+  (27, 8) type=1 normal           Item=  87 addl=0
+  ( 1, 9) type=1 normal           Item= 370 addl=0
+  ( 2, 9) type=1 normal           Item=  -1 addl=0
+  ( 7, 9) type=1 normal           Item=  -1 addl=0
+  ( 8, 9) type=1 normal           Item=  -1 addl=0
+  (15, 9) type=1 normal           Item=  88 addl=0
+  (16, 9) type=1 normal           Item=  -1 addl=0
+  (20, 9) type=1 normal           Item=  -1 addl=0
+  (21, 9) type=1 normal           Item=  -1 addl=0
+  (26, 9) type=1 normal           Item=  -1 addl=0
+  (27, 9) type=1 normal           Item=  89 addl=0
+  ( 1,10) type=1 normal           Item=  90 addl=0
+  ( 2,10) type=1 normal           Item=  91 addl=0
+  ( 3,10) type=1 normal           Item=  -1 addl=0
+  ( 4,10) type=1 normal           Item=  -1 addl=0
+  ( 5,10) type=1 normal           Item=  -1 addl=0
+  ( 7,10) type=1 normal           Item=  92 addl=0
+  ( 8,10) type=1 normal           Item=  -1 addl=0
+  ( 9,10) type=1 normal           Item=  93 addl=0
+  (10,10) type=1 normal           Item=  -1 addl=0
+  (11,10) type=1 normal           Item=  94 addl=0
+  (12,10) type=1 normal           Item=  -1 addl=0
+  (13,10) type=1 normal           Item=  -1 addl=0
+  (14,10) type=1 normal           Item=  -1 addl=0
+  (15,10) type=1 normal           Item=  95 addl=0
+  (16,10) type=1 normal           Item=  -1 addl=0
+  (17,10) type=1 normal           Item=  96 addl=0
+  (18,10) type=1 normal           Item=  -1 addl=0
+  (20,10) type=1 normal           Item=  -1 addl=0
+  (21,10) type=1 normal           Item=  97 addl=0
+  (23,10) type=1 normal           Item=  -1 addl=0
+  (24,10) type=1 normal           Item=  -1 addl=0
+  (25,10) type=1 normal           Item=  98 addl=0
+  (26,10) type=1 normal           Item=  -1 addl=0
+  (27,10) type=1 normal           Item=  99 addl=0
+  (28,10) type=1 normal           Item=  -1 addl=0
+  (29,10) type=1 normal           Item=  -1 addl=0
+  (30,10) type=1 normal           Item= 100 addl=0
+  ( 1,11) type=1 normal           Item=  -1 addl=0
+  ( 2,11) type=1 normal           Item= 101 addl=0
+  ( 3,11) type=1 normal           Item= 102 addl=0
+  ( 4,11) type=1 normal           Item=  -1 addl=0
+  ( 5,11) type=1 normal           Item=  -1 addl=0
+  ( 7,11) type=1 normal           Item=  -1 addl=0
+  ( 8,11) type=1 normal           Item= 103 addl=0
+  ( 9,11) type=1 normal           Item= 104 addl=0
+  (10,11) type=1 normal           Item= 105 addl=0
+  (11,11) type=1 normal           Item= 106 addl=0
+  (12,11) type=1 normal           Item= 107 addl=0
+  (13,11) type=1 normal           Item= 108 addl=0
+  (14,11) type=1 normal           Item= 109 addl=0
+  (15,11) type=1 normal           Item=  -1 addl=0
+  (16,11) type=1 normal           Item=  -1 addl=0
+  (17,11) type=1 normal           Item=  -1 addl=0
+  (18,11) type=1 normal           Item=  -1 addl=0
+  (20,11) type=1 normal           Item= 110 addl=0
+  (21,11) type=1 normal           Item=  -1 addl=0
+  (23,11) type=1 normal           Item= 111 addl=0
+  (24,11) type=1 normal           Item=  -1 addl=0
+  (25,11) type=1 normal           Item=  -1 addl=0
+  (26,11) type=1 normal           Item=  -1 addl=0
+  (27,11) type=1 normal           Item=  -1 addl=0
+  (28,11) type=1 normal           Item=  -1 addl=0
+  (29,11) type=1 normal           Item= 112 addl=0
+  (30,11) type=1 normal           Item=  -1 addl=0
+  ( 4,12) type=1 normal           Item= 113 addl=0
+  ( 5,12) type=1 normal           Item=  -1 addl=0
+  (20,12) type=1 normal           Item= 114 addl=0
+  (21,12) type=1 normal           Item= 115 addl=0
+  (29,12) type=1 normal           Item= 116 addl=0
+  (30,12) type=1 normal           Item= 117 addl=0
+  ( 1,13) type=1 normal           Item= 335 addl=0
+  ( 2,13) type=1 normal           Item= 336 addl=0
+  ( 4,13) type=1 normal           Item= 119 addl=0
+  ( 5,13) type=1 normal           Item=  -1 addl=0
+  ( 6,13) type=1 normal           Item=  -1 addl=0
+  ( 7,13) type=1 normal           Item=  -1 addl=0
+  ( 8,13) type=1 normal           Item= 120 addl=0
+  ( 9,13) type=1 normal           Item= 121 addl=0
+  (10,13) type=1 normal           Item= 122 addl=0
+  (11,13) type=1 normal           Item=  -1 addl=0
+  (12,13) type=1 normal           Item= 123 addl=0
+  (13,13) type=1 normal           Item= 141 addl=0
+  (14,13) type=1 normal           Item= 125 addl=0
+  (15,13) type=1 normal           Item= 126 addl=0
+  (16,13) type=1 normal           Item=  -1 addl=0
+  (17,13) type=1 normal           Item=  -1 addl=0
+  (18,13) type=1 normal           Item= 127 addl=0
+  (19,13) type=1 normal           Item=  -1 addl=0
+  (20,13) type=1 normal           Item= 360 addl=0
+  (21,13) type=1 normal           Item= 359 addl=0
+  (22,13) type=1 normal           Item=  -1 addl=0
+  (23,13) type=1 normal           Item=  -1 addl=0
+  (24,13) type=1 normal           Item= 128 addl=0
+  (25,13) type=1 normal           Item= 129 addl=0
+  (26,13) type=1 normal           Item=  -1 addl=0
+  (29,13) type=1 normal           Item= 130 addl=0
+  (30,13) type=1 normal           Item= 374 addl=0
+  ( 1,14) type=1 normal           Item= 132 addl=0
+  ( 2,14) type=1 normal           Item= 337 addl=0
+  ( 4,14) type=1 normal           Item= 134 addl=0
+  ( 5,14) type=1 normal           Item= 135 addl=0
+  ( 6,14) type=1 normal           Item= 136 addl=0
+  ( 7,14) type=1 normal           Item= 137 addl=0
+  ( 8,14) type=1 normal           Item= 138 addl=0
+  ( 9,14) type=1 normal           Item=  -1 addl=0
+  (10,14) type=1 normal           Item=  -1 addl=0
+  (11,14) type=1 normal           Item=  -1 addl=0
+  (12,14) type=1 normal           Item= 372 addl=0
+  (13,14) type=1 normal           Item= 140 addl=0
+  (14,14) type=6 corpse           Item= 379 addl=11
+  (15,14) type=1 normal           Item= 380 addl=0
+  (16,14) type=1 normal           Item= 142 addl=0
+  (17,14) type=1 normal           Item=  -1 addl=0
+  (18,14) type=1 normal           Item=  -1 addl=0
+  (19,14) type=1 normal           Item= 143 addl=0
+  (20,14) type=1 normal           Item= 361 addl=0
+  (21,14) type=1 normal           Item=  -1 addl=0
+  (22,14) type=1 normal           Item= 145 addl=0
+  (23,14) type=1 normal           Item= 146 addl=0
+  (24,14) type=1 normal           Item= 147 addl=0
+  (25,14) type=1 normal           Item=  -1 addl=0
+  (26,14) type=1 normal           Item= 148 addl=0
+  (29,14) type=1 normal           Item= 149 addl=0
+  (30,14) type=1 normal           Item= 150 addl=0
+  ( 1,15) type=1 normal           Item=  -1 addl=0
+  ( 2,15) type=1 normal           Item= 151 addl=0
+  (11,15) type=1 normal           Item=  -1 addl=0
+  (12,15) type=1 normal           Item= 152 addl=0
+  (20,15) type=1 normal           Item=  -1 addl=0
+  (21,15) type=1 normal           Item= 153 addl=0
+  (25,15) type=1 normal           Item=  -1 addl=0
+  (26,15) type=1 normal           Item=  -1 addl=0
+  (29,15) type=1 normal           Item= 154 addl=0
+  (30,15) type=1 normal           Item= 155 addl=0
+  ( 1,16) type=1 normal           Item=  -1 addl=0
+  ( 2,16) type=1 normal           Item= 156 addl=0
+  ( 3,16) type=1 normal           Item=  -1 addl=0
+  ( 4,16) type=1 normal           Item= 157 addl=0
+  ( 5,16) type=1 normal           Item= 158 addl=0
+  ( 6,16) type=1 normal           Item=  -1 addl=0
+  ( 7,16) type=1 normal           Item=  -1 addl=0
+  ( 8,16) type=1 normal           Item= 159 addl=0
+  ( 9,16) type=1 normal           Item= 160 addl=0
+  (11,16) type=1 normal           Item=  -1 addl=0
+  (12,16) type=1 normal           Item=  -1 addl=0
+  (14,16) type=1 normal           Item=  -1 addl=0
+  (15,16) type=1 normal           Item= 161 addl=0
+  (16,16) type=1 normal           Item=  -1 addl=0
+  (17,16) type=1 normal           Item= 343 addl=0
+  (18,16) type=1 normal           Item= 341 addl=0
+  (20,16) type=1 normal           Item=  -1 addl=0
+  (21,16) type=1 normal           Item=  -1 addl=0
+  (25,16) type=1 normal           Item=  -1 addl=0
+  (26,16) type=1 normal           Item=  -1 addl=0
+  (27,16) type=1 normal           Item=  -1 addl=0
+  (28,16) type=1 normal           Item= 162 addl=0
+  (29,16) type=1 normal           Item= 163 addl=0
+  (30,16) type=1 normal           Item= 164 addl=0
+  ( 1,17) type=1 normal           Item= 165 addl=0
+  ( 2,17) type=1 normal           Item= 166 addl=0
+  ( 3,17) type=1 normal           Item= 167 addl=0
+  ( 4,17) type=1 normal           Item= 168 addl=0
+  ( 5,17) type=1 normal           Item=  -1 addl=0
+  ( 6,17) type=1 normal           Item= 169 addl=0
+  ( 7,17) type=1 normal           Item=  -1 addl=0
+  ( 8,17) type=1 normal           Item= 170 addl=0
+  ( 9,17) type=1 normal           Item= 171 addl=0
+  (11,17) type=1 normal           Item=  -1 addl=0
+  (12,17) type=1 normal           Item=  -1 addl=0
+  (14,17) type=1 normal           Item= 172 addl=0
+  (15,17) type=1 normal           Item= 173 addl=0
+  (16,17) type=1 normal           Item= 174 addl=0
+  (17,17) type=1 normal           Item= 175 addl=0
+  (18,17) type=1 normal           Item= 342 addl=0
+  (20,17) type=1 normal           Item=  -1 addl=0
+  (21,17) type=1 normal           Item= 176 addl=0
+  (25,17) type=1 normal           Item= 177 addl=0
+  (26,17) type=1 normal           Item= 178 addl=0
+  (27,17) type=1 normal           Item=  -1 addl=0
+  (28,17) type=1 normal           Item=  -1 addl=0
+  (29,17) type=1 normal           Item= 179 addl=0
+  (30,17) type=1 normal           Item= 180 addl=0
+  ( 1,18) type=1 normal           Item= 181 addl=0
+  ( 2,18) type=1 normal           Item= 182 addl=0
+  ( 6,18) type=1 normal           Item= 183 addl=0
+  ( 7,18) type=1 normal           Item= 184 addl=0
+  (11,18) type=1 normal           Item=  -1 addl=0
+  (12,18) type=1 normal           Item=  -1 addl=0
+  (14,18) type=1 normal           Item= 185 addl=0
+  (15,18) type=1 normal           Item= 186 addl=0
+  (20,18) type=1 normal           Item=  -1 addl=0
+  (21,18) type=1 normal           Item= 187 addl=0
+  ( 1,19) type=1 normal           Item= 188 addl=0
+  ( 2,19) type=1 normal           Item= 189 addl=0
+  ( 6,19) type=1 normal           Item= 190 addl=0
+  ( 7,19) type=1 normal           Item=  -1 addl=0
+  (11,19) type=1 normal           Item=  -1 addl=0
+  (12,19) type=1 normal           Item= 191 addl=0
+  (14,19) type=1 normal           Item= 192 addl=0
+  (15,19) type=1 normal           Item= 193 addl=0
+  (17,19) type=1 normal           Item= 194 addl=0
+  (18,19) type=1 normal           Item=  -1 addl=0
+  (19,19) type=1 normal           Item=  -1 addl=0
+  (20,19) type=1 normal           Item=  -1 addl=0
+  (21,19) type=1 normal           Item=  -1 addl=0
+  (22,19) type=1 normal           Item= 195 addl=0
+  (23,19) type=1 normal           Item=  -1 addl=0
+  (24,19) type=1 normal           Item=  -1 addl=0
+  (25,19) type=1 normal           Item= 196 addl=0
+  (26,19) type=1 normal           Item= 197 addl=0
+  (27,19) type=1 normal           Item= 198 addl=0
+  (28,19) type=1 normal           Item= 199 addl=0
+  (29,19) type=1 normal           Item= 349 addl=0
+  (30,19) type=1 normal           Item= 348 addl=0
+  ( 1,20) type=1 normal           Item= 200 addl=0
+  ( 2,20) type=1 normal           Item= 201 addl=0
+  ( 4,20) type=1 normal           Item= 339 addl=0
+  ( 5,20) type=1 normal           Item= 203 addl=0
+  ( 6,20) type=1 normal           Item= 204 addl=0
+  ( 7,20) type=1 normal           Item=  -1 addl=0
+  ( 8,20) type=1 normal           Item=  -1 addl=0
+  ( 9,20) type=1 normal           Item=  -1 addl=0
+  (10,20) type=1 normal           Item=  -1 addl=0
+  (11,20) type=1 normal           Item= 205 addl=0
+  (12,20) type=1 normal           Item= 206 addl=0
+  (14,20) type=1 normal           Item= 207 addl=0
+  (15,20) type=1 normal           Item=  -1 addl=0
+  (17,20) type=1 normal           Item= 208 addl=0
+  (18,20) type=1 normal           Item= 373 addl=0
+  (19,20) type=1 normal           Item= 209 addl=0
+  (20,20) type=1 normal           Item=  -1 addl=0
+  (21,20) type=1 normal           Item=  -1 addl=0
+  (22,20) type=1 normal           Item= 210 addl=0
+  (23,20) type=1 normal           Item=  -1 addl=0
+  (24,20) type=1 normal           Item=  -1 addl=0
+  (25,20) type=1 normal           Item= 211 addl=0
+  (26,20) type=1 normal           Item= 212 addl=0
+  (27,20) type=1 normal           Item= 213 addl=0
+  (28,20) type=1 normal           Item= 214 addl=0
+  (29,20) type=1 normal           Item=  -1 addl=0
+  (30,20) type=1 normal           Item= 347 addl=0
+  ( 1,21) type=1 normal           Item=  -1 addl=0
+  ( 2,21) type=1 normal           Item=  -1 addl=0
+  ( 4,21) type=1 normal           Item= 338 addl=0
+  ( 5,21) type=1 normal           Item= 340 addl=0
+  ( 6,21) type=1 normal           Item=  -1 addl=0
+  ( 7,21) type=1 normal           Item=  -1 addl=0
+  ( 8,21) type=1 normal           Item= 216 addl=0
+  ( 9,21) type=1 normal           Item= 217 addl=0
+  (10,21) type=1 normal           Item= 218 addl=0
+  (11,21) type=1 normal           Item= 219 addl=0
+  (12,21) type=1 normal           Item= 220 addl=0
+  (14,21) type=1 normal           Item= 221 addl=0
+  (15,21) type=1 normal           Item=  -1 addl=0
+  (17,21) type=1 normal           Item= 222 addl=0
+  (18,21) type=1 normal           Item= 223 addl=0
+  (26,21) type=1 normal           Item= 224 addl=0
+  (27,21) type=1 normal           Item= 225 addl=0
+  ( 1,22) type=1 normal           Item= 226 addl=0
+  ( 2,22) type=1 normal           Item= 227 addl=0
+  (14,22) type=1 normal           Item=  -1 addl=0
+  (15,22) type=1 normal           Item= 228 addl=0
+  (17,22) type=1 normal           Item= 229 addl=0
+  (18,22) type=1 normal           Item=  -1 addl=0
+  (21,22) type=1 normal           Item= 231 addl=0
+  (22,22) type=1 normal           Item= 232 addl=0
+  (23,22) type=1 normal           Item= 233 addl=0
+  (24,22) type=1 normal           Item= 234 addl=0
+  (26,22) type=1 normal           Item=  -1 addl=0
+  (27,22) type=1 normal           Item=  -1 addl=0
+  ( 1,23) type=1 normal           Item=  -1 addl=0
+  ( 2,23) type=1 normal           Item= 235 addl=0
+  ( 3,23) type=1 normal           Item= 236 addl=0
+  ( 4,23) type=1 normal           Item=   3 addl=0
+  ( 6,23) type=1 normal           Item=  -1 addl=0
+  ( 7,23) type=1 normal           Item=  -1 addl=0
+  ( 8,23) type=1 normal           Item= 239 addl=0
+  ( 9,23) type=1 normal           Item= 240 addl=0
+  (10,23) type=1 normal           Item= 241 addl=0
+  (11,23) type=1 normal           Item=  -1 addl=0
+  (12,23) type=1 normal           Item=  -1 addl=0
+  (13,23) type=1 normal           Item= 242 addl=0
+  (14,23) type=1 normal           Item=  -1 addl=0
+  (15,23) type=1 normal           Item= 243 addl=0
+  (17,23) type=1 normal           Item= 244 addl=0
+  (18,23) type=1 normal           Item=  -1 addl=0
+  (20,23) type=1 normal           Item= 344 addl=0
+  (21,23) type=1 normal           Item= 346 addl=0
+  (22,23) type=1 normal           Item= 247 addl=0
+  (23,23) type=1 normal           Item=  -1 addl=0
+  (24,23) type=1 normal           Item=  -1 addl=0
+  (26,23) type=1 normal           Item=  -1 addl=0
+  (27,23) type=1 normal           Item=  -1 addl=0
+  ( 1,24) type=1 normal           Item= 248 addl=0
+  ( 2,24) type=1 normal           Item=  -1 addl=0
+  ( 3,24) type=1 normal           Item=   2 addl=0
+  ( 4,24) type=1 normal           Item=   4 addl=0
+  ( 6,24) type=1 normal           Item=  -1 addl=0
+  ( 7,24) type=1 normal           Item=  -1 addl=0
+  ( 8,24) type=1 normal           Item= 249 addl=0
+  ( 9,24) type=1 normal           Item=  -1 addl=0
+  (10,24) type=1 normal           Item= 250 addl=0
+  (11,24) type=1 normal           Item= 251 addl=0
+  (12,24) type=1 normal           Item=  -1 addl=0
+  (13,24) type=1 normal           Item=  -1 addl=0
+  (14,24) type=1 normal           Item=  -1 addl=0
+  (15,24) type=1 normal           Item=  -1 addl=0
+  (17,24) type=1 normal           Item= 252 addl=0
+  (18,24) type=1 normal           Item= 253 addl=0
+  (23,24) type=1 normal           Item=  -1 addl=0
+  (24,24) type=1 normal           Item= 254 addl=0
+  (26,24) type=1 normal           Item= 255 addl=0
+  (27,24) type=1 normal           Item= 256 addl=0
+  ( 1,25) type=1 normal           Item= 257 addl=0
+  ( 2,25) type=1 normal           Item= 258 addl=0
+  ( 6,25) type=1 normal           Item= 375 addl=0
+  ( 7,25) type=1 normal           Item=  -1 addl=0
+  (14,25) type=1 normal           Item= 259 addl=0
+  (15,25) type=1 normal           Item= 260 addl=0
+  (17,25) type=1 normal           Item= 261 addl=0
+  (18,25) type=1 normal           Item= 262 addl=0
+  (19,25) type=1 normal           Item= 263 addl=0
+  (20,25) type=1 normal           Item=  -1 addl=0
+  (23,25) type=1 normal           Item=  -1 addl=0
+  (24,25) type=1 normal           Item= 264 addl=0
+  (26,25) type=1 normal           Item=  -1 addl=0
+  (27,25) type=1 normal           Item= 265 addl=0
+  (28,25) type=1 normal           Item=  -1 addl=0
+  (29,25) type=1 normal           Item=  -1 addl=0
+  (30,25) type=1 normal           Item= 266 addl=0
+  ( 1,26) type=1 normal           Item= 267 addl=0
+  ( 2,26) type=1 normal           Item= 268 addl=0
+  ( 6,26) type=1 normal           Item= 237 addl=0
+  ( 7,26) type=1 normal           Item= 269 addl=0
+  (11,26) type=1 normal           Item= 286 addl=0
+  (12,26) type=1 normal           Item= 271 addl=0
+  (14,26) type=1 normal           Item=  -1 addl=0
+  (15,26) type=1 normal           Item= 272 addl=0
+  (17,26) type=1 normal           Item= 273 addl=0
+  (18,26) type=1 normal           Item=  -1 addl=0
+  (19,26) type=1 normal           Item= 274 addl=0
+  (20,26) type=1 normal           Item= 275 addl=0
+  (23,26) type=1 normal           Item= 276 addl=0
+  (24,26) type=1 normal           Item=  -1 addl=0
+  (26,26) type=1 normal           Item=  -1 addl=0
+  (27,26) type=1 normal           Item=  -1 addl=0
+  (28,26) type=1 normal           Item=  -1 addl=0
+  (29,26) type=1 normal           Item= 277 addl=0
+  (30,26) type=1 normal           Item= 278 addl=0
+  ( 1,27) type=1 normal           Item= 279 addl=0
+  ( 2,27) type=1 normal           Item= 280 addl=0
+  ( 3,27) type=1 normal           Item= 281 addl=0
+  ( 4,27) type=1 normal           Item= 282 addl=0
+  ( 5,27) type=1 normal           Item= 283 addl=0
+  ( 6,27) type=1 normal           Item= 284 addl=0
+  ( 7,27) type=1 normal           Item=  -1 addl=0
+  (11,27) type=1 normal           Item= 334 addl=0
+  (12,27) type=1 normal           Item= 333 addl=0
+  (14,27) type=1 normal           Item= 287 addl=0
+  (15,27) type=1 normal           Item= 288 addl=0
+  (19,27) type=1 normal           Item=  -1 addl=0
+  (20,27) type=1 normal           Item= 289 addl=0
+  (23,27) type=1 normal           Item= 290 addl=0
+  (24,27) type=1 normal           Item= 291 addl=0
+  (29,27) type=1 normal           Item= 292 addl=0
+  (30,27) type=1 normal           Item= 293 addl=0
+  ( 2,28) type=1 normal           Item=  -1 addl=0
+  ( 3,28) type=1 normal           Item=  -1 addl=0
+  ( 4,28) type=1 normal           Item=  -1 addl=0
+  ( 5,28) type=1 normal           Item=  -1 addl=0
+  ( 6,28) type=1 normal           Item= 294 addl=0
+  ( 7,28) type=1 normal           Item=  -1 addl=0
+  (11,28) type=1 normal           Item= 295 addl=0
+  (12,28) type=1 normal           Item= 296 addl=0
+  (14,28) type=1 normal           Item=  -1 addl=0
+  (15,28) type=1 normal           Item=  -1 addl=0
+  (19,28) type=1 normal           Item= 297 addl=0
+  (20,28) type=1 normal           Item= 298 addl=0
+  (23,28) type=1 normal           Item=  -1 addl=0
+  (24,28) type=1 normal           Item=  -1 addl=0
+  (29,28) type=1 normal           Item= 299 addl=0
+  (30,28) type=1 normal           Item= 300 addl=0
+  ( 6,29) type=1 normal           Item=  -1 addl=0
+  ( 7,29) type=1 normal           Item= 301 addl=0
+  ( 8,29) type=1 normal           Item= 302 addl=0
+  ( 9,29) type=1 normal           Item= 303 addl=0
+  (10,29) type=1 normal           Item=   5 addl=0
+  (11,29) type=1 normal           Item=  -1 addl=0
+  (12,29) type=1 normal           Item= 305 addl=0
+  (14,29) type=1 normal           Item=  -1 addl=0
+  (15,29) type=1 normal           Item=  -1 addl=0
+  (16,29) type=1 normal           Item=  -1 addl=0
+  (17,29) type=1 normal           Item= 306 addl=0
+  (18,29) type=1 normal           Item=  -1 addl=0
+  (19,29) type=1 normal           Item= 307 addl=0
+  (20,29) type=1 normal           Item= 308 addl=0
+  (21,29) type=1 normal           Item= 309 addl=0
+  (22,29) type=1 normal           Item=  -1 addl=0
+  (23,29) type=1 normal           Item= 310 addl=0
+  (24,29) type=1 normal           Item=  -1 addl=0
+  (25,29) type=1 normal           Item= 311 addl=0
+  (26,29) type=1 normal           Item=  -1 addl=0
+  (27,29) type=1 normal           Item= 312 addl=0
+  (28,29) type=1 normal           Item= 313 addl=0
+  (29,29) type=1 normal           Item= 314 addl=0
+  (30,29) type=1 normal           Item=  -1 addl=0
+  ( 7,30) type=1 normal           Item=  -1 addl=0
+  ( 8,30) type=1 normal           Item= 317 addl=0
+  ( 9,30) type=1 normal           Item= 318 addl=0
+  (10,30) type=1 normal           Item= 319 addl=0
+  (11,30) type=1 normal           Item=  -1 addl=0
+  (12,30) type=1 normal           Item= 320 addl=0
+  (14,30) type=1 normal           Item=  -1 addl=0
+  (15,30) type=1 normal           Item= 321 addl=0
+  (16,30) type=1 normal           Item=  -1 addl=0
+  (17,30) type=1 normal           Item= 322 addl=0
+  (18,30) type=1 normal           Item= 323 addl=0
+  (19,30) type=1 normal           Item= 324 addl=0
+  (20,30) type=1 normal           Item= 325 addl=0
+  (21,30) type=1 normal           Item= 326 addl=0
+  (22,30) type=1 normal           Item= 327 addl=0
+  (23,30) type=1 normal           Item= 328 addl=0
+  (24,30) type=1 normal           Item=  -1 addl=0
+  (25,30) type=1 normal           Item=  -1 addl=0
+  (26,30) type=1 normal           Item= 329 addl=0
+  (27,30) type=1 normal           Item=  -1 addl=0
+  (28,30) type=1 normal           Item= 330 addl=0
+  (29,30) type=1 normal           Item= 331 addl=0
+  (30,30) type=1 normal           Item= 332 addl=0
+
+=== L11 A Plague of Demons  sealed=527 ===
+  ( 4, 1) type=1 normal           Item=   3 addl=0
+  ( 5, 1) type=1 normal           Item=   4 addl=0
+  ( 6, 1) type=1 normal           Item= 367 addl=0
+  ( 7, 1) type=1 normal           Item=  -1 addl=0
+  ( 8, 1) type=1 normal           Item=   5 addl=0
+  ( 9, 1) type=1 normal           Item=   6 addl=0
+  (10, 1) type=1 normal           Item=  -1 addl=0
+  (11, 1) type=1 normal           Item= 368 addl=0
+  (12, 1) type=1 normal           Item= 369 addl=0
+  (13, 1) type=1 normal           Item=   8 addl=0
+  (14, 1) type=1 normal           Item=   9 addl=0
+  (15, 1) type=1 normal           Item=  10 addl=0
+  (16, 1) type=1 normal           Item=  -1 addl=0
+  (17, 1) type=1 normal           Item=  11 addl=0
+  (18, 1) type=1 normal           Item=  12 addl=0
+  (19, 1) type=1 normal           Item=  -1 addl=0
+  (20, 1) type=1 normal           Item=  13 addl=0
+  (21, 1) type=1 normal           Item=  14 addl=0
+  (22, 1) type=1 normal           Item=  15 addl=0
+  (23, 1) type=1 normal           Item=  -1 addl=0
+  (24, 1) type=1 normal           Item=  -1 addl=0
+  (25, 1) type=1 normal           Item=  -1 addl=0
+  (26, 1) type=1 normal           Item=  -1 addl=0
+  (28, 1) type=1 normal           Item= 361 addl=0
+  (30, 1) type=1 normal           Item=  17 addl=0
+  ( 1, 2) type=1 normal           Item=  18 addl=0
+  ( 2, 2) type=1 normal           Item=  19 addl=0
+  ( 3, 2) type=1 normal           Item=  -1 addl=0
+  ( 4, 2) type=1 normal           Item=  21 addl=0
+  ( 6, 2) type=1 normal           Item=  22 addl=0
+  (11, 2) type=1 normal           Item=  -1 addl=0
+  (26, 2) type=4 door_trigger     Item= 370 addl=129
+  (27, 2) type=2 door             Item=  -1 addl=4
+  ( 1, 3) type=1 normal           Item=  24 addl=0
+  ( 6, 3) type=1 normal           Item=  25 addl=0
+  ( 8, 3) type=1 normal           Item=  -1 addl=0
+  ( 9, 3) type=1 normal           Item= 364 addl=0
+  (11, 3) type=1 normal           Item=  27 addl=0
+  (13, 3) type=1 normal           Item=  28 addl=0
+  (14, 3) type=1 normal           Item=  29 addl=0
+  (15, 3) type=1 normal           Item=  -1 addl=0
+  (16, 3) type=1 normal           Item=  -1 addl=0
+  (17, 3) type=1 normal           Item=  -1 addl=0
+  (18, 3) type=1 normal           Item=  -1 addl=0
+  (19, 3) type=1 normal           Item=  30 addl=0
+  (20, 3) type=1 normal           Item=  31 addl=0
+  (21, 3) type=1 normal           Item=  -1 addl=0
+  (22, 3) type=1 normal           Item=  -1 addl=0
+  (23, 3) type=1 normal           Item=  -1 addl=0
+  (25, 3) type=1 normal           Item=  -1 addl=0
+  (26, 3) type=1 normal           Item=  32 addl=0
+  (28, 3) type=1 normal           Item= 363 addl=0
+  (30, 3) type=1 normal           Item= 362 addl=0
+  ( 1, 4) type=1 normal           Item=  35 addl=0
+  ( 3, 4) type=1 normal           Item=  36 addl=0
+  ( 4, 4) type=1 normal           Item=  37 addl=0
+  ( 5, 4) type=1 normal           Item=  38 addl=0
+  ( 6, 4) type=1 normal           Item= 366 addl=0
+  ( 8, 4) type=1 normal           Item=  39 addl=0
+  (11, 4) type=1 normal           Item=  40 addl=0
+  (13, 4) type=1 normal           Item=  -1 addl=0
+  (14, 4) type=1 normal           Item=  -1 addl=0
+  (15, 4) type=1 normal           Item=  42 addl=0
+  (16, 4) type=1 normal           Item=  43 addl=0
+  (17, 4) type=1 normal           Item= 319 addl=0
+  (18, 4) type=1 normal           Item=  -1 addl=0
+  (19, 4) type=1 normal           Item=  -1 addl=0
+  (20, 4) type=1 normal           Item=  -1 addl=0
+  (21, 4) type=1 normal           Item=  -1 addl=0
+  (22, 4) type=1 normal           Item=  -1 addl=0
+  (23, 4) type=1 normal           Item= 323 addl=0
+  (26, 4) type=1 normal           Item=  45 addl=0
+  ( 1, 5) type=1 normal           Item=  46 addl=0
+  ( 2, 5) type=1 normal           Item=  -1 addl=0
+  ( 3, 5) type=1 normal           Item= 365 addl=0
+  ( 6, 5) type=1 normal           Item=  -1 addl=0
+  ( 7, 5) type=1 normal           Item=  -1 addl=0
+  ( 8, 5) type=1 normal           Item=  48 addl=0
+  ( 9, 5) type=1 normal           Item=  49 addl=0
+  (10, 5) type=1 normal           Item=  -1 addl=0
+  (11, 5) type=1 normal           Item=  50 addl=0
+  (13, 5) type=1 normal           Item=  -1 addl=0
+  (14, 5) type=1 normal           Item=  51 addl=0
+  (20, 5) type=1 normal           Item=  52 addl=0
+  (21, 5) type=1 normal           Item=  53 addl=0
+  (25, 5) type=1 normal           Item=  -1 addl=0
+  (26, 5) type=1 normal           Item=  -1 addl=0
+  (28, 5) type=1 normal           Item=  -1 addl=0
+  (29, 5) type=4 door_trigger     Item=  -1 addl=129
+  (30, 5) type=1 normal           Item=  -1 addl=0
+  ( 1, 6) type=1 normal           Item=  -1 addl=0
+  ( 3, 6) type=1 normal           Item=  -1 addl=0
+  ( 8, 6) type=1 normal           Item=  54 addl=0
+  (13, 6) type=1 normal           Item=  -1 addl=0
+  (14, 6) type=1 normal           Item=  55 addl=0
+  (16, 6) type=1 normal           Item=  56 addl=0
+  (17, 6) type=1 normal           Item= 126 addl=0
+  (20, 6) type=1 normal           Item=  57 addl=0
+  (21, 6) type=1 normal           Item=  58 addl=0
+  (28, 6) type=1 normal           Item=  -1 addl=0
+  (29, 6) type=1 normal           Item=  59 addl=0
+  (30, 6) type=1 normal           Item=  -1 addl=0
+  ( 1, 7) type=1 normal           Item=  60 addl=0
+  ( 2, 7) type=1 normal           Item=  -1 addl=0
+  ( 3, 7) type=1 normal           Item=  61 addl=0
+  ( 5, 7) type=1 normal           Item=  62 addl=0
+  ( 6, 7) type=1 normal           Item=  63 addl=0
+  ( 8, 7) type=1 normal           Item=  64 addl=0
+  (10, 7) type=1 normal           Item=  -1 addl=0
+  (11, 7) type=1 normal           Item= 374 addl=0
+  (13, 7) type=1 normal           Item=  67 addl=0
+  (14, 7) type=1 normal           Item= 325 addl=0
+  (16, 7) type=6 corpse           Item= 106 addl=18
+  (17, 7) type=1 normal           Item=  -1 addl=0
+  (20, 7) type=1 normal           Item=  69 addl=0
+  (21, 7) type=1 normal           Item=  70 addl=0
+  (22, 7) type=1 normal           Item=  -1 addl=0
+  (23, 7) type=1 normal           Item=  -1 addl=0
+  (24, 7) type=1 normal           Item=  71 addl=0
+  (25, 7) type=1 normal           Item=  72 addl=0
+  (28, 7) type=1 normal           Item=  73 addl=0
+  (29, 7) type=1 normal           Item=  74 addl=0
+  (30, 7) type=1 normal           Item=  75 addl=0
+  ( 1, 8) type=1 normal           Item=  76 addl=0
+  ( 5, 8) type=1 normal           Item= 332 addl=0
+  ( 6, 8) type=1 normal           Item=  77 addl=0
+  (10, 8) type=1 normal           Item= 335 addl=0
+  (11, 8) type=1 normal           Item=  -1 addl=0
+  (16, 8) type=1 normal           Item=  79 addl=0
+  (17, 8) type=1 normal           Item=  80 addl=0
+  (18, 8) type=1 normal           Item=  -1 addl=0
+  (19, 8) type=1 normal           Item=  -1 addl=0
+  (20, 8) type=1 normal           Item=  -1 addl=0
+  (21, 8) type=1 normal           Item=  -1 addl=0
+  (22, 8) type=1 normal           Item=  -1 addl=0
+  (23, 8) type=1 normal           Item=  -1 addl=0
+  (24, 8) type=1 normal           Item=  -1 addl=0
+  (25, 8) type=1 normal           Item=  -1 addl=0
+  (28, 8) type=1 normal           Item=  82 addl=0
+  (29, 8) type=1 normal           Item=  83 addl=0
+  (30, 8) type=1 normal           Item=  84 addl=0
+  ( 3, 9) type=1 normal           Item=  85 addl=0
+  ( 4, 9) type=1 normal           Item=  -1 addl=0
+  ( 5, 9) type=1 normal           Item=  86 addl=0
+  ( 6, 9) type=1 normal           Item=  87 addl=0
+  ( 7, 9) type=1 normal           Item=  88 addl=0
+  ( 8, 9) type=1 normal           Item=  -1 addl=0
+  ( 9, 9) type=1 normal           Item=  -1 addl=0
+  (10, 9) type=1 normal           Item=  90 addl=0
+  (11, 9) type=1 normal           Item=  -1 addl=0
+  (14, 9) type=1 normal           Item=  92 addl=0
+  (16, 9) type=1 normal           Item=  -1 addl=0
+  (17, 9) type=1 normal           Item=  93 addl=0
+  (18, 9) type=1 normal           Item= 318 addl=0
+  (19, 9) type=1 normal           Item=  94 addl=0
+  (20, 9) type=1 normal           Item=  95 addl=0
+  (21, 9) type=1 normal           Item=  96 addl=0
+  (24, 9) type=1 normal           Item=  -1 addl=0
+  (25, 9) type=1 normal           Item= 316 addl=0
+  (28, 9) type=1 normal           Item=  -1 addl=0
+  (29, 9) type=1 normal           Item=  99 addl=0
+  (30, 9) type=1 normal           Item= 100 addl=0
+  ( 3,10) type=1 normal           Item=  -1 addl=0
+  ( 4,10) type=1 normal           Item= 101 addl=0
+  ( 5,10) type=1 normal           Item= 102 addl=0
+  ( 6,10) type=1 normal           Item=  -1 addl=0
+  ( 7,10) type=1 normal           Item= 103 addl=0
+  ( 8,10) type=1 normal           Item=  -1 addl=0
+  ( 9,10) type=1 normal           Item= 105 addl=0
+  (10,10) type=1 normal           Item=  89 addl=0
+  (11,10) type=1 normal           Item= 107 addl=0
+  (13,10) type=1 normal           Item= 328 addl=0
+  (14,10) type=1 normal           Item= 109 addl=0
+  (20,10) type=1 normal           Item=  81 addl=0
+  (21,10) type=1 normal           Item=  -1 addl=0
+  (24,10) type=1 normal           Item=  97 addl=0
+  (25,10) type=1 normal           Item= 111 addl=0
+  (29,10) type=1 normal           Item= 112 addl=0
+  ( 1,11) type=1 normal           Item= 113 addl=0
+  ( 2,11) type=1 normal           Item=  -1 addl=0
+  ( 3,11) type=1 normal           Item=  -1 addl=0
+  ( 4,11) type=1 normal           Item= 114 addl=0
+  (13,11) type=1 normal           Item= 115 addl=0
+  (14,11) type=1 normal           Item= 116 addl=0
+  (20,11) type=1 normal           Item= 117 addl=0
+  (21,11) type=1 normal           Item= 118 addl=0
+  (27,11) type=1 normal           Item=  -1 addl=0
+  (29,11) type=1 normal           Item=  -1 addl=0
+  ( 1,12) type=1 normal           Item= 331 addl=0
+  ( 2,12) type=1 normal           Item= 119 addl=0
+  ( 3,12) type=1 normal           Item= 120 addl=0
+  ( 4,12) type=1 normal           Item=  -1 addl=0
+  ( 7,12) type=1 normal           Item= 121 addl=0
+  ( 8,12) type=1 normal           Item= 122 addl=0
+  ( 9,12) type=1 normal           Item=  -1 addl=0
+  (10,12) type=1 normal           Item=  -1 addl=0
+  (11,12) type=1 normal           Item= 123 addl=0
+  (12,12) type=1 normal           Item= 327 addl=0
+  (13,12) type=1 normal           Item= 124 addl=0
+  (14,12) type=1 normal           Item=  -1 addl=0
+  (16,12) type=1 normal           Item=  -1 addl=0
+  (17,12) type=1 normal           Item= 125 addl=0
+  (18,12) type=1 normal           Item=  -1 addl=0
+  (19,12) type=1 normal           Item= 127 addl=0
+  (20,12) type=1 normal           Item= 128 addl=0
+  (21,12) type=1 normal           Item= 129 addl=0
+  (22,12) type=1 normal           Item= 130 addl=0
+  (23,12) type=1 normal           Item=  -1 addl=0
+  (25,12) type=1 normal           Item=  -1 addl=0
+  (27,12) type=1 normal           Item=  -1 addl=0
+  (29,12) type=1 normal           Item=  -1 addl=0
+  ( 3,13) type=1 normal           Item= 131 addl=0
+  ( 4,13) type=1 normal           Item= 132 addl=0
+  ( 7,13) type=1 normal           Item= 133 addl=0
+  ( 8,13) type=1 normal           Item=  -1 addl=0
+  ( 9,13) type=1 normal           Item= 134 addl=0
+  (10,13) type=1 normal           Item= 135 addl=0
+  (11,13) type=1 normal           Item= 136 addl=0
+  (12,13) type=1 normal           Item=  -1 addl=0
+  (13,13) type=1 normal           Item= 137 addl=0
+  (14,13) type=1 normal           Item= 138 addl=0
+  (17,13) type=1 normal           Item= 139 addl=0
+  (18,13) type=1 normal           Item= 140 addl=0
+  (19,13) type=1 normal           Item= 141 addl=0
+  (20,13) type=1 normal           Item= 142 addl=0
+  (21,13) type=1 normal           Item= 143 addl=0
+  (22,13) type=1 normal           Item=  -1 addl=0
+  (23,13) type=1 normal           Item= 317 addl=0
+  (25,13) type=1 normal           Item= 145 addl=0
+  (26,13) type=1 normal           Item= 146 addl=0
+  (27,13) type=1 normal           Item= 147 addl=0
+  (28,13) type=1 normal           Item= 148 addl=0
+  (29,13) type=1 normal           Item=  -1 addl=0
+  (30,13) type=1 normal           Item= 149 addl=0
+  ( 3,14) type=1 normal           Item=  -1 addl=0
+  ( 4,14) type=1 normal           Item=  -1 addl=0
+  ( 7,14) type=1 normal           Item=  -1 addl=0
+  ( 8,14) type=1 normal           Item=  -1 addl=0
+  (13,14) type=1 normal           Item=  -1 addl=0
+  (14,14) type=1 normal           Item=  -1 addl=0
+  (18,14) type=1 normal           Item= 150 addl=0
+  (19,14) type=1 normal           Item=  -1 addl=0
+  (22,14) type=1 normal           Item=  -1 addl=0
+  (23,14) type=1 normal           Item= 151 addl=0
+  (30,14) type=1 normal           Item= 152 addl=0
+  ( 3,15) type=1 normal           Item=  -1 addl=0
+  ( 4,15) type=1 normal           Item=  -1 addl=0
+  ( 5,15) type=1 normal           Item= 153 addl=0
+  ( 6,15) type=1 normal           Item= 154 addl=0
+  ( 7,15) type=1 normal           Item=  -1 addl=0
+  ( 8,15) type=1 normal           Item= 155 addl=0
+  (10,15) type=1 normal           Item=  -1 addl=0
+  (11,15) type=1 normal           Item=  -1 addl=0
+  (13,15) type=1 normal           Item= 326 addl=0
+  (14,15) type=1 normal           Item=  -1 addl=0
+  (15,15) type=1 normal           Item= 156 addl=0
+  (16,15) type=1 normal           Item=  -1 addl=0
+  (18,15) type=1 normal           Item=  -1 addl=0
+  (19,15) type=1 normal           Item=  -1 addl=0
+  (22,15) type=1 normal           Item= 157 addl=0
+  (23,15) type=1 normal           Item= 158 addl=0
+  (24,15) type=1 normal           Item= 159 addl=0
+  (25,15) type=1 normal           Item=  41 addl=0
+  (27,15) type=1 normal           Item= 160 addl=0
+  (28,15) type=1 normal           Item=  65 addl=0
+  (30,15) type=1 normal           Item=  -1 addl=0
+  ( 3,16) type=1 normal           Item= 161 addl=0
+  ( 4,16) type=1 normal           Item= 330 addl=0
+  ( 5,16) type=1 normal           Item= 163 addl=0
+  ( 6,16) type=1 normal           Item=  -1 addl=0
+  ( 7,16) type=1 normal           Item=  -1 addl=0
+  ( 8,16) type=1 normal           Item= 164 addl=0
+  (10,16) type=1 normal           Item= 341 addl=0
+  (11,16) type=1 normal           Item= 166 addl=0
+  (13,16) type=1 normal           Item= 167 addl=0
+  (14,16) type=1 normal           Item= 168 addl=0
+  (15,16) type=1 normal           Item= 169 addl=0
+  (16,16) type=1 normal           Item= 170 addl=0
+  (18,16) type=1 normal           Item= 171 addl=0
+  (19,16) type=1 normal           Item=  -1 addl=0
+  (22,16) type=1 normal           Item=  -1 addl=0
+  (23,16) type=1 normal           Item= 172 addl=0
+  (24,16) type=1 normal           Item= 173 addl=0
+  (25,16) type=1 normal           Item= 174 addl=0
+  (27,16) type=1 normal           Item= 175 addl=0
+  (28,16) type=1 normal           Item=  -1 addl=0
+  (30,16) type=1 normal           Item= 176 addl=0
+  ( 3,17) type=1 normal           Item=  -1 addl=0
+  ( 4,17) type=1 normal           Item= 177 addl=0
+  (10,17) type=1 normal           Item= 178 addl=0
+  (11,17) type=1 normal           Item= 179 addl=0
+  (15,17) type=1 normal           Item=  -1 addl=0
+  (16,17) type=1 normal           Item=  -1 addl=0
+  (22,17) type=1 normal           Item=  -1 addl=0
+  (23,17) type=1 normal           Item=  -1 addl=0
+  (28,17) type=1 normal           Item= 180 addl=0
+  (29,17) type=2 door             Item=  -1 addl=2
+  (30,17) type=4 door_trigger     Item=  -1 addl=129
+  ( 3,18) type=1 normal           Item=  -1 addl=0
+  ( 4,18) type=1 normal           Item=  -1 addl=0
+  ( 6,18) type=1 normal           Item=  -1 addl=0
+  ( 7,18) type=1 normal           Item= 340 addl=0
+  ( 8,18) type=1 normal           Item= 182 addl=0
+  ( 9,18) type=1 normal           Item= 183 addl=0
+  (10,18) type=1 normal           Item=  -1 addl=0
+  (11,18) type=1 normal           Item= 184 addl=0
+  (12,18) type=1 normal           Item=  -1 addl=0
+  (13,18) type=1 normal           Item=  -1 addl=0
+  (15,18) type=1 normal           Item= 185 addl=0
+  (16,18) type=1 normal           Item= 324 addl=0
+  (17,18) type=1 normal           Item=  -1 addl=0
+  (18,18) type=1 normal           Item= 187 addl=0
+  (19,18) type=1 normal           Item= 188 addl=0
+  (20,18) type=1 normal           Item=  -1 addl=0
+  (21,18) type=1 normal           Item= 189 addl=0
+  (22,18) type=1 normal           Item=  -1 addl=0
+  (23,18) type=1 normal           Item= 190 addl=0
+  (25,18) type=1 normal           Item=  -1 addl=0
+  (26,18) type=1 normal           Item=  -1 addl=0
+  (28,18) type=1 normal           Item=  -1 addl=0
+  (30,18) type=1 normal           Item=  -1 addl=0
+  ( 1,19) type=1 normal           Item= 336 addl=0
+  ( 2,19) type=1 normal           Item= 192 addl=0
+  ( 3,19) type=1 normal           Item= 193 addl=0
+  ( 4,19) type=1 normal           Item= 194 addl=0
+  ( 6,19) type=1 normal           Item= 195 addl=0
+  ( 7,19) type=1 normal           Item= 339 addl=0
+  ( 8,19) type=1 normal           Item=  -1 addl=0
+  ( 9,19) type=1 normal           Item=  -1 addl=0
+  (10,19) type=1 normal           Item= 196 addl=0
+  (11,19) type=1 normal           Item=  -1 addl=0
+  (12,19) type=1 normal           Item=  -1 addl=0
+  (13,19) type=1 normal           Item= 342 addl=0
+  (15,19) type=1 normal           Item= 322 addl=0
+  (16,19) type=1 normal           Item=  -1 addl=0
+  (17,19) type=1 normal           Item= 198 addl=0
+  (18,19) type=1 normal           Item= 199 addl=0
+  (19,19) type=1 normal           Item= 200 addl=0
+  (20,19) type=1 normal           Item=  -1 addl=0
+  (21,19) type=1 normal           Item= 201 addl=0
+  (22,19) type=1 normal           Item= 202 addl=0
+  (23,19) type=1 normal           Item= 203 addl=0
+  (25,19) type=1 normal           Item= 356 addl=0
+  (26,19) type=1 normal           Item= 205 addl=0
+  (28,19) type=1 normal           Item= 206 addl=0
+  (30,19) type=1 normal           Item= 207 addl=0
+  ( 1,20) type=1 normal           Item= 360 addl=0
+  ( 2,20) type=1 normal           Item=  -1 addl=0
+  ( 3,20) type=1 normal           Item= 209 addl=0
+  ( 4,20) type=1 normal           Item= 210 addl=0
+  (10,20) type=1 normal           Item=  -1 addl=0
+  (11,20) type=1 normal           Item=  -1 addl=0
+  (18,20) type=1 normal           Item= 211 addl=0
+  (19,20) type=1 normal           Item=  -1 addl=0
+  (26,20) type=1 normal           Item=  -1 addl=0
+  (30,20) type=1 normal           Item= 212 addl=0
+  ( 3,21) type=1 normal           Item= 213 addl=0
+  ( 4,21) type=1 normal           Item= 214 addl=0
+  (10,21) type=1 normal           Item= 215 addl=0
+  (11,21) type=1 normal           Item= 216 addl=0
+  (15,21) type=1 normal           Item= 217 addl=0
+  (16,21) type=1 normal           Item=  -1 addl=0
+  (18,21) type=1 normal           Item= 321 addl=0
+  (19,21) type=1 normal           Item= 320 addl=0
+  (22,21) type=1 normal           Item= 219 addl=0
+  (23,21) type=1 normal           Item= 220 addl=0
+  (24,21) type=1 normal           Item=  -1 addl=0
+  (26,21) type=1 normal           Item=  -1 addl=0
+  (28,21) type=1 normal           Item= 221 addl=0
+  (30,21) type=1 normal           Item= 222 addl=0
+  ( 3,22) type=1 normal           Item= 223 addl=0
+  ( 4,22) type=1 normal           Item= 224 addl=0
+  ( 5,22) type=1 normal           Item=  -1 addl=0
+  ( 6,22) type=1 normal           Item= 225 addl=0
+  ( 7,22) type=1 normal           Item= 226 addl=0
+  ( 8,22) type=1 normal           Item=  -1 addl=0
+  ( 9,22) type=1 normal           Item= 227 addl=0
+  (10,22) type=1 normal           Item=  -1 addl=0
+  (11,22) type=1 normal           Item= 228 addl=0
+  (12,22) type=1 normal           Item= 229 addl=0
+  (13,22) type=1 normal           Item=  -1 addl=0
+  (15,22) type=1 normal           Item= 230 addl=0
+  (16,22) type=1 normal           Item= 231 addl=0
+  (24,22) type=1 normal           Item= 232 addl=0
+  (25,22) type=1 normal           Item= 233 addl=0
+  (26,22) type=1 normal           Item= 234 addl=0
+  (28,22) type=1 normal           Item= 235 addl=0
+  (29,22) type=1 normal           Item=  -1 addl=0
+  (30,22) type=1 normal           Item=  -1 addl=0
+  ( 3,23) type=1 normal           Item=  -1 addl=0
+  ( 4,23) type=1 normal           Item=  -1 addl=0
+  ( 5,23) type=1 normal           Item=  -1 addl=0
+  ( 6,23) type=1 normal           Item=  -1 addl=0
+  ( 7,23) type=1 normal           Item= 236 addl=0
+  ( 8,23) type=1 normal           Item= 237 addl=0
+  ( 9,23) type=1 normal           Item=  -1 addl=0
+  (10,23) type=1 normal           Item=  -1 addl=0
+  (11,23) type=1 normal           Item=  -1 addl=0
+  (12,23) type=1 normal           Item= 338 addl=0
+  (13,23) type=1 normal           Item= 238 addl=0
+  (15,23) type=1 normal           Item=  -1 addl=0
+  (16,23) type=1 normal           Item=  -1 addl=0
+  (18,23) type=1 normal           Item=  -1 addl=0
+  (19,23) type=1 normal           Item= 239 addl=0
+  (20,23) type=1 normal           Item= 350 addl=0
+  (21,23) type=1 normal           Item= 347 addl=0
+  (22,23) type=1 normal           Item= 272 addl=0
+  (24,23) type=1 normal           Item= 354 addl=0
+  (28,23) type=1 normal           Item=  -1 addl=0
+  ( 5,24) type=1 normal           Item=  -1 addl=0
+  ( 6,24) type=1 normal           Item=  -1 addl=0
+  (10,24) type=1 normal           Item= 244 addl=0
+  (11,24) type=1 normal           Item= 245 addl=0
+  (15,24) type=1 normal           Item= 246 addl=0
+  (16,24) type=4 door_trigger     Item=  -1 addl=129
+  (17,24) type=2 door             Item=  -1 addl=0
+  (18,24) type=4 door_trigger     Item=  -1 addl=129
+  (19,24) type=1 normal           Item= 247 addl=0
+  (20,24) type=1 normal           Item= 248 addl=0
+  (21,24) type=1 normal           Item= 348 addl=0
+  (22,24) type=4 door_trigger     Item= 345 addl=129
+  (23,24) type=2 door             Item=  -1 addl=5
+  (24,24) type=4 door_trigger     Item=  -1 addl=129
+  (25,24) type=1 normal           Item= 250 addl=0
+  (26,24) type=1 normal           Item=  -1 addl=0
+  (27,24) type=1 normal           Item= 251 addl=0
+  (28,24) type=1 normal           Item=  -1 addl=0
+  (29,24) type=1 normal           Item= 252 addl=0
+  (30,24) type=1 normal           Item=  -1 addl=0
+  ( 1,25) type=1 normal           Item= 373 addl=0
+  ( 2,25) type=1 normal           Item= 254 addl=0
+  ( 5,25) type=1 normal           Item= 255 addl=0
+  ( 6,25) type=1 normal           Item= 256 addl=0
+  (10,25) type=1 normal           Item=  -1 addl=0
+  (11,25) type=1 normal           Item= 257 addl=0
+  (15,25) type=1 normal           Item=  -1 addl=0
+  (16,25) type=1 normal           Item=  -1 addl=0
+  (18,25) type=1 normal           Item= 258 addl=0
+  (19,25) type=1 normal           Item= 259 addl=0
+  (20,25) type=1 normal           Item= 351 addl=0
+  (21,25) type=1 normal           Item= 349 addl=0
+  (22,25) type=1 normal           Item= 346 addl=0
+  (24,25) type=1 normal           Item= 355 addl=0
+  (27,25) type=1 normal           Item= 264 addl=0
+  (29,25) type=1 normal           Item= 265 addl=0
+  (30,25) type=1 normal           Item= 358 addl=0
+  ( 1,26) type=1 normal           Item=  -1 addl=0
+  ( 2,26) type=1 normal           Item= 268 addl=0
+  ( 5,26) type=1 normal           Item=  -1 addl=0
+  ( 6,26) type=1 normal           Item=  -1 addl=0
+  ( 8,26) type=1 normal           Item= 269 addl=0
+  ( 9,26) type=1 normal           Item=  -1 addl=0
+  (10,26) type=1 normal           Item=  -1 addl=0
+  (11,26) type=1 normal           Item=  -1 addl=0
+  (12,26) type=1 normal           Item= 270 addl=0
+  (13,26) type=1 normal           Item= 271 addl=0
+  (14,26) type=1 normal           Item=  -1 addl=0
+  (15,26) type=1 normal           Item= 273 addl=0
+  (16,26) type=1 normal           Item=  -1 addl=0
+  (24,26) type=1 normal           Item= 274 addl=0
+  (27,26) type=1 normal           Item= 275 addl=0
+  ( 1,27) type=1 normal           Item= 276 addl=0
+  ( 2,27) type=1 normal           Item=  -1 addl=0
+  ( 5,27) type=1 normal           Item= 277 addl=0
+  ( 6,27) type=1 normal           Item= 278 addl=0
+  ( 8,27) type=1 normal           Item= 279 addl=0
+  ( 9,27) type=1 normal           Item=  -1 addl=0
+  (10,27) type=1 normal           Item=  -1 addl=0
+  (11,27) type=1 normal           Item=  -1 addl=0
+  (12,27) type=1 normal           Item= 280 addl=0
+  (13,27) type=1 normal           Item=  -1 addl=0
+  (14,27) type=1 normal           Item= 281 addl=0
+  (15,27) type=1 normal           Item= 282 addl=0
+  (16,27) type=1 normal           Item=  -1 addl=0
+  (18,27) type=1 normal           Item= 283 addl=0
+  (19,27) type=1 normal           Item= 284 addl=0
+  (20,27) type=1 normal           Item=  -1 addl=0
+  (21,27) type=1 normal           Item= 352 addl=0
+  (23,27) type=1 normal           Item= 285 addl=0
+  (24,27) type=1 normal           Item= 286 addl=0
+  (25,27) type=1 normal           Item= 287 addl=0
+  (27,27) type=1 normal           Item=  -1 addl=0
+  (28,27) type=1 normal           Item= 288 addl=0
+  (29,27) type=1 normal           Item= 359 addl=0
+  ( 1,28) type=1 normal           Item= 289 addl=0
+  ( 2,28) type=1 normal           Item=  -1 addl=0
+  ( 3,28) type=1 normal           Item=  -1 addl=0
+  ( 4,28) type=1 normal           Item= 337 addl=0
+  ( 5,28) type=1 normal           Item= 290 addl=0
+  ( 6,28) type=1 normal           Item= 291 addl=0
+  ( 8,28) type=1 normal           Item= 292 addl=0
+  ( 9,28) type=1 normal           Item= 293 addl=0
+  (13,28) type=1 normal           Item=  -1 addl=0
+  (14,28) type=1 normal           Item= 294 addl=0
+  (18,28) type=1 normal           Item= 371 addl=0
+  (19,28) type=1 normal           Item= 295 addl=0
+  (20,28) type=1 normal           Item= 296 addl=0
+  (21,28) type=1 normal           Item= 297 addl=0
+  (22,28) type=2 door             Item=  -1 addl=3
+  (23,28) type=4 door_trigger     Item=  -1 addl=131
+  (24,28) type=1 normal           Item=  -1 addl=0
+  (25,28) type=1 normal           Item=  -1 addl=0
+  (27,28) type=1 normal           Item= 298 addl=0
+  ( 1,29) type=1 normal           Item= 299 addl=0
+  ( 2,29) type=1 normal           Item= 300 addl=0
+  ( 3,29) type=1 normal           Item= 301 addl=0
+  ( 4,29) type=1 normal           Item= 302 addl=0
+  ( 5,29) type=1 normal           Item=  -1 addl=0
+  ( 6,29) type=1 normal           Item=  -1 addl=0
+  ( 8,29) type=1 normal           Item=  -1 addl=0
+  ( 9,29) type=1 normal           Item= 343 addl=0
+  (13,29) type=1 normal           Item= 344 addl=0
+  (14,29) type=1 normal           Item= 305 addl=0
+  (18,29) type=1 normal           Item= 306 addl=0
+  (19,29) type=1 normal           Item=  -1 addl=0
+  (20,29) type=1 normal           Item= 307 addl=0
+  (21,29) type=1 normal           Item= 353 addl=0
+  (23,29) type=1 normal           Item=  -1 addl=0
+  (24,29) type=1 normal           Item= 309 addl=0
+  (25,29) type=1 normal           Item= 310 addl=0
+  (27,29) type=1 normal           Item= 311 addl=0
+  (28,29) type=1 normal           Item= 312 addl=0
+  ( 9,30) type=1 normal           Item= 313 addl=0
+  (13,30) type=1 normal           Item=  -1 addl=0
+  (14,30) type=1 normal           Item= 314 addl=0
+  (27,30) type=1 normal           Item= 315 addl=0
+  (28,30) type=1 normal           Item= 357 addl=0
+
+=== L12 Beware of Low-Flying Nightmares  sealed=467 ===
+  ( 4, 1) type=1 normal           Item=  33 addl=0
+  ( 6, 1) type=1 normal           Item=  34 addl=0
+  ( 8, 1) type=1 normal           Item= 346 addl=0
+  (14, 1) type=1 normal           Item= 372 addl=0
+  (16, 1) type=1 normal           Item=  -1 addl=0
+  (27, 1) type=1 normal           Item=  -1 addl=0
+  (29, 1) type=1 normal           Item= 364 addl=0
+  ( 2, 2) type=1 normal           Item=  39 addl=0
+  ( 3, 2) type=1 normal           Item=  40 addl=0
+  ( 4, 2) type=1 normal           Item=  -1 addl=0
+  ( 5, 2) type=1 normal           Item=  41 addl=0
+  ( 6, 2) type=1 normal           Item=  42 addl=0
+  ( 7, 2) type=1 normal           Item= 220 addl=0
+  ( 8, 2) type=1 normal           Item= 210 addl=0
+  (10, 2) type=1 normal           Item=  44 addl=0
+  (11, 2) type=1 normal           Item=  -1 addl=0
+  (12, 2) type=1 normal           Item=  45 addl=0
+  (13, 2) type=1 normal           Item=  46 addl=0
+  (14, 2) type=1 normal           Item=  47 addl=0
+  (15, 2) type=1 normal           Item=  -1 addl=0
+  (16, 2) type=1 normal           Item=  -1 addl=0
+  (18, 2) type=1 normal           Item=  -1 addl=0
+  (19, 2) type=1 normal           Item=  48 addl=0
+  (20, 2) type=1 normal           Item= 350 addl=0
+  (24, 2) type=1 normal           Item=  -1 addl=0
+  (25, 2) type=1 normal           Item=  51 addl=0
+  (26, 2) type=1 normal           Item=  -1 addl=0
+  (27, 2) type=1 normal           Item=  52 addl=0
+  (28, 2) type=1 normal           Item=  -1 addl=0
+  (29, 2) type=1 normal           Item= 363 addl=0
+  (30, 2) type=1 normal           Item= 362 addl=0
+  ( 2, 3) type=1 normal           Item=  -1 addl=0
+  ( 4, 3) type=1 normal           Item=  -1 addl=0
+  ( 6, 3) type=1 normal           Item=  -1 addl=0
+  ( 8, 3) type=4 door_trigger     Item= 209 addl=129
+  ( 9, 3) type=2 door             Item=  -1 addl=7
+  (10, 3) type=4 door_trigger     Item=  55 addl=129
+  (12, 3) type=1 normal           Item= 347 addl=0
+  (14, 3) type=1 normal           Item=  -1 addl=0
+  (16, 3) type=1 normal           Item=  -1 addl=0
+  (18, 3) type=1 normal           Item=  56 addl=0
+  (20, 3) type=1 normal           Item=  -1 addl=0
+  (25, 3) type=1 normal           Item=  57 addl=0
+  (27, 3) type=1 normal           Item=  -1 addl=0
+  (29, 3) type=1 normal           Item=  58 addl=0
+  ( 1, 4) type=1 normal           Item=  -1 addl=0
+  ( 2, 4) type=1 normal           Item=  59 addl=0
+  ( 3, 4) type=1 normal           Item=  -1 addl=0
+  ( 4, 4) type=1 normal           Item= 242 addl=0
+  ( 5, 4) type=1 normal           Item=  60 addl=0
+  ( 6, 4) type=1 normal           Item=  61 addl=0
+  ( 7, 4) type=1 normal           Item=  62 addl=0
+  ( 8, 4) type=1 normal           Item=  54 addl=0
+  (10, 4) type=1 normal           Item=  -1 addl=0
+  (11, 4) type=1 normal           Item=  64 addl=0
+  (12, 4) type=1 normal           Item=  65 addl=0
+  (13, 4) type=1 normal           Item=  -1 addl=0
+  (14, 4) type=1 normal           Item=  -1 addl=0
+  (15, 4) type=1 normal           Item=  66 addl=0
+  (16, 4) type=1 normal           Item=  -1 addl=0
+  (17, 4) type=1 normal           Item=  67 addl=0
+  (18, 4) type=1 normal           Item=  68 addl=0
+  (19, 4) type=1 normal           Item=  69 addl=0
+  (20, 4) type=1 normal           Item=  70 addl=0
+  (21, 4) type=1 normal           Item=  71 addl=0
+  (23, 4) type=1 normal           Item= 367 addl=0
+  (24, 4) type=1 normal           Item=  72 addl=0
+  (25, 4) type=1 normal           Item=  -1 addl=0
+  (26, 4) type=1 normal           Item=  73 addl=0
+  (27, 4) type=1 normal           Item=  74 addl=0
+  (28, 4) type=1 normal           Item=  -1 addl=0
+  (29, 4) type=1 normal           Item=  -1 addl=0
+  ( 1, 5) type=1 normal           Item=  75 addl=0
+  ( 3, 5) type=1 normal           Item=  -1 addl=0
+  ( 5, 5) type=1 normal           Item=  -1 addl=0
+  ( 7, 5) type=1 normal           Item=  -1 addl=0
+  (11, 5) type=1 normal           Item=  76 addl=0
+  (13, 5) type=1 normal           Item=  77 addl=0
+  (15, 5) type=1 normal           Item=  78 addl=0
+  (16, 5) type=1 normal           Item=  -1 addl=0
+  (17, 5) type=1 normal           Item=  -1 addl=0
+  (19, 5) type=1 normal           Item=  79 addl=0
+  (21, 5) type=1 normal           Item=  -1 addl=0
+  (23, 5) type=1 normal           Item=  -1 addl=0
+  (25, 5) type=1 normal           Item=  80 addl=0
+  (26, 5) type=1 normal           Item=  -1 addl=0
+  (27, 5) type=1 normal           Item=  81 addl=0
+  (29, 5) type=1 normal           Item=  82 addl=0
+  ( 1, 6) type=1 normal           Item= 332 addl=0
+  ( 2, 6) type=1 normal           Item=  -1 addl=0
+  ( 3, 6) type=1 normal           Item=  -1 addl=0
+  ( 4, 6) type=1 normal           Item=  -1 addl=0
+  ( 5, 6) type=1 normal           Item=  83 addl=0
+  ( 6, 6) type=1 normal           Item=  -1 addl=0
+  ( 7, 6) type=1 normal           Item=  -1 addl=0
+  ( 8, 6) type=1 normal           Item=  85 addl=0
+  ( 9, 6) type=1 normal           Item=  86 addl=0
+  (11, 6) type=1 normal           Item=  87 addl=0
+  (12, 6) type=1 normal           Item=  -1 addl=0
+  (13, 6) type=1 normal           Item=  -1 addl=0
+  (14, 6) type=1 normal           Item=  -1 addl=0
+  (15, 6) type=1 normal           Item=  -1 addl=0
+  (16, 6) type=1 normal           Item=  88 addl=0
+  (17, 6) type=1 normal           Item=  89 addl=0
+  (18, 6) type=1 normal           Item=  -1 addl=0
+  (19, 6) type=1 normal           Item=  90 addl=0
+  (20, 6) type=1 normal           Item=  -1 addl=0
+  (21, 6) type=1 normal           Item=  91 addl=0
+  (23, 6) type=1 normal           Item=  92 addl=0
+  (24, 6) type=1 normal           Item=  -1 addl=0
+  (25, 6) type=1 normal           Item=  -1 addl=0
+  (26, 6) type=1 normal           Item=  -1 addl=0
+  (27, 6) type=1 normal           Item=  93 addl=0
+  (28, 6) type=1 normal           Item=  -1 addl=0
+  (29, 6) type=1 normal           Item=  94 addl=0
+  (30, 6) type=1 normal           Item=  95 addl=0
+  ( 2, 7) type=1 normal           Item=  96 addl=0
+  ( 4, 7) type=1 normal           Item=  -1 addl=0
+  ( 5, 7) type=1 normal           Item=  -1 addl=0
+  ( 6, 7) type=1 normal           Item=  -1 addl=0
+  ( 8, 7) type=1 normal           Item=  -1 addl=0
+  (12, 7) type=1 normal           Item=  97 addl=0
+  (14, 7) type=1 normal           Item=  98 addl=0
+  (16, 7) type=1 normal           Item=  -1 addl=0
+  (18, 7) type=1 normal           Item=  -1 addl=0
+  (20, 7) type=1 normal           Item=  -1 addl=0
+  (25, 7) type=1 normal           Item= 100 addl=0
+  (27, 7) type=1 normal           Item= 101 addl=0
+  (29, 7) type=1 normal           Item= 102 addl=0
+  ( 1, 8) type=1 normal           Item=  -1 addl=0
+  ( 2, 8) type=1 normal           Item=  -1 addl=0
+  ( 3, 8) type=1 normal           Item= 103 addl=0
+  ( 4, 8) type=1 normal           Item=  -1 addl=0
+  ( 5, 8) type=1 normal           Item=  -1 addl=0
+  ( 6, 8) type=1 normal           Item=  -1 addl=0
+  ( 7, 8) type=1 normal           Item=  -1 addl=0
+  ( 8, 8) type=1 normal           Item= 104 addl=0
+  ( 9, 8) type=1 normal           Item= 105 addl=0
+  (11, 8) type=1 normal           Item= 106 addl=0
+  (12, 8) type=1 normal           Item=  -1 addl=0
+  (13, 8) type=1 normal           Item=  -1 addl=0
+  (14, 8) type=1 normal           Item= 348 addl=0
+  (15, 8) type=1 normal           Item= 108 addl=0
+  (16, 8) type=1 normal           Item=  -1 addl=0
+  (17, 8) type=1 normal           Item=  -1 addl=0
+  (18, 8) type=1 normal           Item=  -1 addl=0
+  (19, 8) type=1 normal           Item=  -1 addl=0
+  (20, 8) type=1 normal           Item=  -1 addl=0
+  (21, 8) type=4 door_trigger     Item=  -1 addl=129
+  (22, 8) type=1 normal           Item=  -1 addl=0
+  (24, 8) type=1 normal           Item= 112 addl=0
+  (25, 8) type=1 normal           Item=  -1 addl=0
+  (26, 8) type=1 normal           Item= 113 addl=0
+  (27, 8) type=1 normal           Item=  -1 addl=0
+  (28, 8) type=1 normal           Item= 114 addl=0
+  (29, 8) type=4 door_trigger     Item=  -1 addl=129
+  (30, 8) type=1 normal           Item=  -1 addl=0
+  ( 1, 9) type=1 normal           Item=  -1 addl=0
+  ( 3, 9) type=1 normal           Item= 115 addl=0
+  ( 5, 9) type=1 normal           Item=  -1 addl=0
+  ( 7, 9) type=1 normal           Item= 116 addl=0
+  (11, 9) type=1 normal           Item= 117 addl=0
+  (12, 9) type=1 normal           Item=  -1 addl=0
+  (13, 9) type=1 normal           Item= 300 addl=0
+  (15, 9) type=1 normal           Item= 118 addl=0
+  (21, 9) type=2 door             Item=  -1 addl=6
+  (29, 9) type=2 door             Item=  -1 addl=4
+  ( 1,10) type=1 normal           Item=  -1 addl=0
+  ( 2,10) type=1 normal           Item=  -1 addl=0
+  ( 3,10) type=1 normal           Item= 121 addl=0
+  ( 4,10) type=4 door_trigger     Item= 122 addl=129
+  ( 5,10) type=1 normal           Item=  -1 addl=0
+  ( 6,10) type=1 normal           Item=  -1 addl=0
+  ( 7,10) type=1 normal           Item= 123 addl=0
+  ( 8,10) type=1 normal           Item=  -1 addl=0
+  (10,10) type=1 normal           Item= 124 addl=0
+  (11,10) type=1 normal           Item= 125 addl=0
+  (12,10) type=1 normal           Item= 126 addl=0
+  (13,10) type=1 normal           Item= 127 addl=0
+  (14,10) type=1 normal           Item= 128 addl=0
+  (15,10) type=1 normal           Item= 129 addl=0
+  (20,10) type=1 normal           Item= 245 addl=0
+  (21,10) type=4 door_trigger     Item= 246 addl=129
+  (22,10) type=1 normal           Item= 247 addl=0
+  (23,10) type=1 normal           Item= 134 addl=0
+  (24,10) type=1 normal           Item= 135 addl=0
+  (25,10) type=1 normal           Item= 136 addl=0
+  (27,10) type=1 normal           Item=  -1 addl=0
+  (30,10) type=1 normal           Item= 139 addl=0
+  ( 4,11) type=2 door             Item=  -1 addl=8
+  (11,11) type=1 normal           Item= 143 addl=0
+  (13,11) type=1 normal           Item= 144 addl=0
+  (21,11) type=1 normal           Item=  -1 addl=0
+  (23,11) type=1 normal           Item= 248 addl=0
+  (25,11) type=1 normal           Item=  -1 addl=0
+  ( 1,12) type=1 normal           Item=  -1 addl=0
+  ( 2,12) type=1 normal           Item= 304 addl=0
+  ( 3,12) type=1 normal           Item= 148 addl=0
+  ( 4,12) type=4 door_trigger     Item=  -1 addl=129
+  ( 5,12) type=1 normal           Item= 150 addl=0
+  (21,12) type=1 normal           Item= 249 addl=0
+  (22,12) type=1 normal           Item=  -1 addl=0
+  (23,12) type=1 normal           Item= 153 addl=0
+  (24,12) type=1 normal           Item= 154 addl=0
+  (25,12) type=1 normal           Item= 155 addl=0
+  (26,12) type=1 normal           Item= 352 addl=0
+  ( 1,13) type=1 normal           Item=  -1 addl=0
+  ( 3,13) type=1 normal           Item= 160 addl=0
+  ( 5,13) type=1 normal           Item= 161 addl=0
+  (12,13) type=7 pillar           Item=  10 addl=0
+  (15,13) type=7 pillar           Item=   1 addl=0
+  (17,13) type=7 pillar           Item=  17 addl=0
+  (18,13) type=7 pillar           Item=   3 addl=0
+  (22,13) type=1 normal           Item=  -1 addl=0
+  (24,13) type=1 normal           Item= 164 addl=0
+  (26,13) type=1 normal           Item= 165 addl=0
+  (28,13) type=1 normal           Item=  -1 addl=0
+  (30,13) type=1 normal           Item= 361 addl=0
+  ( 1,14) type=1 normal           Item= 166 addl=0
+  ( 2,14) type=1 normal           Item= 167 addl=0
+  ( 3,14) type=1 normal           Item= 168 addl=0
+  ( 4,14) type=1 normal           Item= 169 addl=0
+  ( 5,14) type=1 normal           Item=  -1 addl=0
+  ( 6,14) type=1 normal           Item=  -1 addl=0
+  ( 7,14) type=1 normal           Item=  -1 addl=0
+  ( 8,14) type=1 normal           Item=  -1 addl=0
+  (12,14) type=7 pillar           Item=  18 addl=0
+  (21,14) type=1 normal           Item= 177 addl=0
+  (22,14) type=1 normal           Item= 250 addl=0
+  (23,14) type=1 normal           Item=  -1 addl=0
+  (24,14) type=1 normal           Item= 179 addl=0
+  (25,14) type=1 normal           Item= 255 addl=0
+  (26,14) type=1 normal           Item=  -1 addl=0
+  (28,14) type=1 normal           Item= 180 addl=0
+  (29,14) type=1 normal           Item= 181 addl=0
+  (30,14) type=1 normal           Item= 182 addl=0
+  ( 2,15) type=1 normal           Item= 183 addl=0
+  ( 4,15) type=1 normal           Item= 184 addl=0
+  ( 6,15) type=1 normal           Item=  -1 addl=0
+  ( 7,15) type=1 normal           Item=  -1 addl=0
+  ( 8,15) type=1 normal           Item=  -1 addl=0
+  (21,15) type=1 normal           Item= 188 addl=0
+  (23,15) type=1 normal           Item= 189 addl=0
+  (24,15) type=1 normal           Item=  -1 addl=0
+  (25,15) type=1 normal           Item= 190 addl=0
+  (28,15) type=1 normal           Item=  -1 addl=0
+  (30,15) type=1 normal           Item= 191 addl=0
+  ( 2,16) type=1 normal           Item=  -1 addl=0
+  ( 3,16) type=1 normal           Item= 299 addl=0
+  ( 4,16) type=1 normal           Item= 193 addl=0
+  ( 5,16) type=1 normal           Item= 194 addl=0
+  ( 6,16) type=1 normal           Item= 195 addl=0
+  ( 7,16) type=1 normal           Item=  -1 addl=0
+  ( 8,16) type=1 normal           Item=  -1 addl=0
+  (12,16) type=7 pillar           Item=  11 addl=0
+  (18,16) type=7 pillar           Item=   5 addl=0
+  (21,16) type=1 normal           Item= 200 addl=0
+  (22,16) type=1 normal           Item=  -1 addl=0
+  (23,16) type=1 normal           Item= 201 addl=0
+  (24,16) type=1 normal           Item= 202 addl=0
+  (25,16) type=1 normal           Item= 203 addl=0
+  (26,16) type=1 normal           Item= 204 addl=0
+  (28,16) type=1 normal           Item= 205 addl=0
+  (29,16) type=1 normal           Item= 206 addl=0
+  (30,16) type=1 normal           Item= 207 addl=0
+  ( 3,17) type=1 normal           Item=  -1 addl=0
+  ( 5,17) type=1 normal           Item=  -1 addl=0
+  ( 7,17) type=1 normal           Item=  -1 addl=0
+  (22,17) type=1 normal           Item= 353 addl=0
+  (24,17) type=1 normal           Item=  -1 addl=0
+  (26,17) type=1 normal           Item= 214 addl=0
+  (28,17) type=1 normal           Item=  -1 addl=0
+  (30,17) type=1 normal           Item= 215 addl=0
+  ( 1,18) type=1 normal           Item= 216 addl=0
+  ( 2,18) type=1 normal           Item=  -1 addl=0
+  ( 3,18) type=1 normal           Item= 217 addl=0
+  ( 4,18) type=1 normal           Item=  -1 addl=0
+  ( 5,18) type=1 normal           Item= 218 addl=0
+  ( 6,18) type=1 normal           Item= 219 addl=0
+  ( 7,18) type=1 normal           Item=  -1 addl=0
+  (18,18) type=7 pillar           Item=  20 addl=0
+  (22,18) type=1 normal           Item= 223 addl=0
+  (23,18) type=1 normal           Item= 224 addl=0
+  (24,18) type=1 normal           Item=  -1 addl=0
+  (25,18) type=1 normal           Item= 225 addl=0
+  (26,18) type=1 normal           Item=  -1 addl=0
+  (27,18) type=1 normal           Item= 226 addl=0
+  (28,18) type=1 normal           Item= 354 addl=0
+  (29,18) type=1 normal           Item= 228 addl=0
+  (30,18) type=1 normal           Item=  -1 addl=0
+  ( 1,19) type=1 normal           Item= 229 addl=0
+  ( 3,19) type=1 normal           Item= 230 addl=0
+  ( 5,19) type=1 normal           Item= 231 addl=0
+  (12,19) type=7 pillar           Item=   7 addl=0
+  (13,19) type=7 pillar           Item=  19 addl=0
+  (15,19) type=7 pillar           Item=  12 addl=0
+  (18,19) type=7 pillar           Item=   6 addl=0
+  (23,19) type=1 normal           Item= 232 addl=0
+  (25,19) type=1 normal           Item=  -1 addl=0
+  (27,19) type=1 normal           Item=  -1 addl=0
+  (29,19) type=1 normal           Item=  -1 addl=0
+  ( 1,20) type=1 normal           Item= 233 addl=0
+  ( 2,20) type=1 normal           Item=  -1 addl=0
+  ( 3,20) type=1 normal           Item= 234 addl=0
+  ( 4,20) type=1 normal           Item=  -1 addl=0
+  ( 5,20) type=1 normal           Item=  -1 addl=0
+  ( 6,20) type=1 normal           Item=  -1 addl=0
+  (17,20) type=2 door             Item=  -1 addl=0
+  (23,20) type=1 normal           Item=  -1 addl=0
+  (24,20) type=1 normal           Item=  -1 addl=0
+  (25,20) type=1 normal           Item=  -1 addl=0
+  (26,20) type=1 normal           Item= 236 addl=0
+  (27,20) type=1 normal           Item= 237 addl=0
+  (28,20) type=1 normal           Item= 238 addl=0
+  (29,20) type=1 normal           Item= 239 addl=0
+  ( 2,21) type=1 normal           Item= 240 addl=0
+  ( 4,21) type=1 normal           Item= 241 addl=0
+  ( 8,21) type=1 normal           Item=  -1 addl=0
+  ( 9,21) type=1 normal           Item= 243 addl=0
+  (10,21) type=1 normal           Item= 244 addl=0
+  (11,21) type=1 normal           Item=  -1 addl=0
+  (12,21) type=1 normal           Item=  -1 addl=0
+  (16,21) type=7 pillar           Item= 152 addl=0
+  (17,21) type=4 door_trigger     Item= 149 addl=129
+  (18,21) type=7 pillar           Item= 163 addl=0
+  (26,21) type=1 normal           Item=  -1 addl=0
+  (28,21) type=1 normal           Item=  -1 addl=0
+  ( 2,22) type=1 normal           Item= 262 addl=0
+  ( 3,22) type=4 door_trigger     Item= 252 addl=129
+  ( 4,22) type=1 normal           Item= 261 addl=0
+  ( 5,22) type=1 normal           Item= 254 addl=0
+  ( 8,22) type=1 normal           Item=  -1 addl=0
+  (10,22) type=1 normal           Item=  -1 addl=0
+  (12,22) type=1 normal           Item=  -1 addl=0
+  (17,22) type=1 normal           Item=  -1 addl=0
+  (24,22) type=1 normal           Item= 258 addl=0
+  (26,22) type=1 normal           Item= 259 addl=0
+  (27,22) type=4 door_trigger     Item=  -1 addl=129
+  (28,22) type=1 normal           Item=  -1 addl=0
+  (29,22) type=1 normal           Item= 260 addl=0
+  ( 3,23) type=2 door             Item=  -1 addl=2
+  ( 7,23) type=1 normal           Item= 263 addl=0
+  ( 8,23) type=1 normal           Item=  -1 addl=0
+  ( 9,23) type=1 normal           Item= 264 addl=0
+  (10,23) type=1 normal           Item=  -1 addl=0
+  (11,23) type=1 normal           Item= 265 addl=0
+  (12,23) type=1 normal           Item=  -1 addl=0
+  (13,23) type=1 normal           Item=  -1 addl=0
+  (21,23) type=1 normal           Item=  27 addl=0
+  (22,23) type=1 normal           Item=  -1 addl=0
+  (24,23) type=1 normal           Item= 266 addl=0
+  (27,23) type=2 door             Item=  -1 addl=3
+  ( 2,24) type=1 normal           Item= 267 addl=0
+  ( 3,24) type=4 door_trigger     Item= 268 addl=129
+  ( 4,24) type=1 normal           Item= 269 addl=0
+  ( 5,24) type=1 normal           Item=  -1 addl=0
+  ( 7,24) type=1 normal           Item=  -1 addl=0
+  ( 9,24) type=1 normal           Item= 270 addl=0
+  (10,24) type=1 normal           Item=  -1 addl=0
+  (11,24) type=1 normal           Item= 271 addl=0
+  (13,24) type=1 normal           Item=  -1 addl=0
+  (16,24) type=1 normal           Item= 272 addl=0
+  (18,24) type=7 pillar           Item=  43 addl=0
+  (20,24) type=1 normal           Item=  28 addl=0
+  (21,24) type=1 normal           Item= 275 addl=0
+  (22,24) type=1 normal           Item= 276 addl=0
+  (24,24) type=1 normal           Item= 277 addl=0
+  (25,24) type=1 normal           Item=  -1 addl=0
+  (26,24) type=1 normal           Item= 278 addl=0
+  (27,24) type=1 normal           Item= 279 addl=0
+  (28,24) type=1 normal           Item=  -1 addl=0
+  (29,24) type=1 normal           Item=  -1 addl=0
+  (30,24) type=1 normal           Item= 280 addl=0
+  ( 2,25) type=1 normal           Item= 256 addl=0
+  ( 4,25) type=1 normal           Item= 281 addl=0
+  ( 7,25) type=1 normal           Item= 282 addl=0
+  ( 8,25) type=1 normal           Item= 283 addl=0
+  ( 9,25) type=1 normal           Item= 284 addl=0
+  (10,25) type=1 normal           Item= 285 addl=0
+  (11,25) type=1 normal           Item=  -1 addl=0
+  (12,25) type=1 normal           Item= 286 addl=0
+  (13,25) type=1 normal           Item=  -1 addl=0
+  (20,25) type=1 normal           Item= 289 addl=0
+  (21,25) type=1 normal           Item=  32 addl=0
+  (22,25) type=6 corpse           Item= 368 addl=12
+  (23,25) type=2 door             Item=  -1 addl=1
+  (24,25) type=4 door_trigger     Item= 291 addl=132
+  (26,25) type=1 normal           Item=  -1 addl=0
+  (28,25) type=1 normal           Item= 292 addl=0
+  (30,25) type=1 normal           Item= 293 addl=0
+  ( 1,26) type=1 normal           Item= 294 addl=0
+  ( 2,26) type=1 normal           Item= 295 addl=0
+  ( 3,26) type=1 normal           Item= 296 addl=0
+  ( 4,26) type=1 normal           Item=  -1 addl=0
+  ( 5,26) type=1 normal           Item=  -1 addl=0
+  ( 6,26) type=1 normal           Item=  -1 addl=0
+  ( 7,26) type=1 normal           Item=  -1 addl=0
+  ( 9,26) type=1 normal           Item= 297 addl=0
+  (11,26) type=1 normal           Item= 298 addl=0
+  (13,26) type=1 normal           Item=  -1 addl=0
+  (20,26) type=1 normal           Item=  24 addl=0
+  (21,26) type=1 normal           Item=  84 addl=0
+  (22,26) type=1 normal           Item=  30 addl=0
+  (24,26) type=1 normal           Item=  -1 addl=0
+  (25,26) type=1 normal           Item= 302 addl=0
+  (26,26) type=1 normal           Item= 303 addl=0
+  (27,26) type=1 normal           Item=  -1 addl=0
+  (28,26) type=1 normal           Item=  -1 addl=0
+  (29,26) type=1 normal           Item=  -1 addl=0
+  (30,26) type=1 normal           Item=  -1 addl=0
+  ( 1,27) type=1 normal           Item= 305 addl=0
+  ( 3,27) type=1 normal           Item= 288 addl=0
+  ( 5,27) type=1 normal           Item= 306 addl=0
+  ( 7,27) type=1 normal           Item= 307 addl=0
+  ( 8,27) type=1 normal           Item= 308 addl=0
+  ( 9,27) type=1 normal           Item=  -1 addl=0
+  (10,27) type=1 normal           Item= 309 addl=0
+  (11,27) type=1 normal           Item=  -1 addl=0
+  (12,27) type=1 normal           Item=  -1 addl=0
+  (13,27) type=1 normal           Item= 310 addl=0
+  (14,27) type=1 normal           Item=  -1 addl=0
+  (20,27) type=1 normal           Item=  22 addl=0
+  (21,27) type=1 normal           Item=  29 addl=0
+  (24,27) type=1 normal           Item=  -1 addl=0
+  (25,27) type=1 normal           Item= 314 addl=0
+  (27,27) type=1 normal           Item= 315 addl=0
+  (28,27) type=1 normal           Item=  -1 addl=0
+  (29,27) type=1 normal           Item=  -1 addl=0
+  ( 1,28) type=1 normal           Item= 171 addl=0
+  ( 2,28) type=1 normal           Item= 316 addl=0
+  ( 3,28) type=1 normal           Item= 317 addl=0
+  ( 4,28) type=1 normal           Item= 318 addl=0
+  ( 5,28) type=1 normal           Item=  -1 addl=0
+  ( 6,28) type=1 normal           Item= 319 addl=0
+  ( 7,28) type=1 normal           Item=  -1 addl=0
+  (10,28) type=1 normal           Item=  -1 addl=0
+  (12,28) type=1 normal           Item=  -1 addl=0
+  (14,28) type=4 door_trigger     Item= 321 addl=129
+  (15,28) type=2 door             Item=  -1 addl=5
+  (25,28) type=1 normal           Item=  -1 addl=0
+  (26,28) type=1 normal           Item=  -1 addl=0
+  (27,28) type=1 normal           Item=  -1 addl=0
+  (28,28) type=1 normal           Item= 326 addl=0
+  (29,28) type=1 normal           Item=  -1 addl=0
+  (30,28) type=1 normal           Item= 355 addl=0
+  ( 2,29) type=1 normal           Item= 327 addl=0
+  ( 4,29) type=1 normal           Item=  -1 addl=0
+  ( 6,29) type=1 normal           Item=  -1 addl=0
+  (10,29) type=1 normal           Item= 329 addl=0
+  (11,29) type=1 normal           Item= 330 addl=0
+  (12,29) type=1 normal           Item=  -1 addl=0
+  (13,29) type=1 normal           Item=  -1 addl=0
+  (14,29) type=1 normal           Item=  -1 addl=0
+  (16,29) type=7 pillar           Item= 111 addl=0
+  (18,29) type=7 pillar           Item= 110 addl=0
+  (22,29) type=1 normal           Item= 360 addl=0
+  (23,29) type=1 normal           Item=  -1 addl=0
+  (24,29) type=1 normal           Item= 335 addl=0
+  (25,29) type=1 normal           Item= 336 addl=0
+  (27,29) type=1 normal           Item= 357 addl=0
+  (29,29) type=1 normal           Item= 356 addl=0
+  ( 3,30) type=1 normal           Item= 339 addl=0
+  ( 4,30) type=1 normal           Item= 340 addl=0
+  ( 5,30) type=1 normal           Item= 341 addl=0
+  ( 6,30) type=1 normal           Item=  -1 addl=0
+  (23,30) type=1 normal           Item= 359 addl=0
+  (25,30) type=1 normal           Item= 358 addl=0
+
+=== L13 The Labyrinth  sealed=521 ===
+  ( 2, 1) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  ( 3, 1) type=1 normal           Item=   5 addl=0 adjSwitchable
+  ( 4, 1) type=1 normal           Item=   6 addl=0 adjSwitchable
+  ( 5, 1) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  ( 6, 1) type=1 normal           Item=   7 addl=0 adjSwitchable
+  ( 7, 1) type=1 normal           Item=   8 addl=0 adjSwitchable
+  ( 8, 1) type=1 normal           Item=   9 addl=0 adjSwitchable
+  ( 9, 1) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (10, 1) type=1 normal           Item=  10 addl=0 adjSwitchable
+  (11, 1) type=1 normal           Item=  11 addl=0 adjSwitchable
+  (12, 1) type=1 normal           Item=  12 addl=0 adjSwitchable
+  (13, 1) type=1 normal           Item=  13 addl=0 adjSwitchable
+  (14, 1) type=1 normal           Item=  14 addl=0 adjSwitchable
+  (15, 1) type=1 normal           Item=  15 addl=0 adjSwitchable
+  (16, 1) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (17, 1) type=1 normal           Item=  16 addl=0 adjSwitchable
+  (18, 1) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (19, 1) type=1 normal           Item=  17 addl=0 adjSwitchable
+  (20, 1) type=1 normal           Item=  18 addl=0 adjSwitchable
+  (22, 1) type=1 normal           Item=  19 addl=0 adjSwitchable
+  (23, 1) type=1 normal           Item=  20 addl=0 adjSwitchable
+  (24, 1) type=1 normal           Item=  21 addl=0 adjSwitchable
+  (25, 1) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (26, 1) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (27, 1) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (28, 1) type=1 normal           Item=  22 addl=0 adjSwitchable
+  (29, 1) type=1 normal           Item=  23 addl=0 adjSwitchable
+  ( 1, 2) type=1 normal           Item=  24 addl=0 adjSwitchable
+  (14, 2) type=1 normal           Item=  25 addl=0 adjSwitchable
+  (17, 2) type=1 normal           Item=  26 addl=0 adjSwitchable
+  (20, 2) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (22, 2) type=1 normal           Item=  27 addl=0 adjSwitchable
+  (28, 2) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (30, 2) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  ( 1, 3) type=1 normal           Item=  28 addl=0 adjSwitchable
+  ( 3, 3) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  ( 4, 3) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  ( 5, 3) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  ( 6, 3) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  ( 7, 3) type=1 normal           Item=  29 addl=0 adjSwitchable
+  ( 8, 3) type=1 normal           Item=  30 addl=0 adjSwitchable
+  ( 9, 3) type=1 normal           Item=  31 addl=0 adjSwitchable
+  (10, 3) type=1 normal           Item=  32 addl=0 adjSwitchable
+  (11, 3) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (12, 3) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (14, 3) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (16, 3) type=1 normal           Item=  33 addl=0 adjSwitchable
+  (17, 3) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (19, 3) type=1 normal           Item=  34 addl=0 adjSwitchable
+  (20, 3) type=1 normal           Item=  35 addl=0 adjSwitchable
+  (22, 3) type=1 normal           Item=  36 addl=0 adjSwitchable
+  (24, 3) type=1 normal           Item=  37 addl=0 adjSwitchable
+  (25, 3) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (26, 3) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (27, 3) type=1 normal           Item=  38 addl=0 adjSwitchable
+  (28, 3) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (30, 3) type=1 normal           Item=  39 addl=0 adjSwitchable
+  ( 1, 4) type=1 normal           Item=  40 addl=0 adjSwitchable
+  ( 6, 4) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  ( 8, 4) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (14, 4) type=1 normal           Item=  41 addl=0 adjSwitchable
+  (16, 4) type=1 normal           Item=  42 addl=0 adjSwitchable
+  (20, 4) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (22, 4) type=1 normal           Item=  43 addl=0 adjSwitchable
+  (28, 4) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (30, 4) type=1 normal           Item=  44 addl=0 adjSwitchable
+  ( 1, 5) type=1 normal           Item=  45 addl=0 adjSwitchable
+  ( 3, 5) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  ( 4, 5) type=1 normal           Item=  46 addl=0 adjSwitchable
+  ( 5, 5) type=1 normal           Item=  47 addl=0 adjSwitchable
+  ( 6, 5) type=1 normal           Item=  48 addl=0 adjSwitchable
+  ( 8, 5) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (10, 5) type=1 normal           Item=  49 addl=0 adjSwitchable
+  (11, 5) type=1 normal           Item=  50 addl=0 adjSwitchable
+  (12, 5) type=1 normal           Item=  51 addl=0 adjSwitchable
+  (14, 5) type=1 normal           Item=  52 addl=0 adjSwitchable
+  (16, 5) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (17, 5) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (18, 5) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (19, 5) type=1 normal           Item=  53 addl=0 adjSwitchable
+  (20, 5) type=1 normal           Item=  54 addl=0 adjSwitchable
+  (22, 5) type=1 normal           Item=  55 addl=0 adjSwitchable
+  (23, 5) type=1 normal           Item=  56 addl=0 adjSwitchable
+  (24, 5) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (25, 5) type=1 normal           Item=  57 addl=0 adjSwitchable
+  (26, 5) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (27, 5) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (28, 5) type=1 normal           Item=  58 addl=0 adjSwitchable
+  (30, 5) type=1 normal           Item=  59 addl=0 adjSwitchable
+  ( 1, 6) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  ( 3, 6) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  ( 5, 6) type=1 normal           Item=  60 addl=0 adjSwitchable
+  ( 6, 6) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (10, 6) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (12, 6) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (14, 6) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (16, 6) type=1 normal           Item=  61 addl=0 adjSwitchable
+  (28, 6) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (30, 6) type=1 normal           Item=  62 addl=0 adjSwitchable
+  ( 1, 7) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  ( 3, 7) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  ( 5, 7) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  ( 8, 7) type=1 normal           Item=  63 addl=0 adjSwitchable
+  ( 9, 7) type=1 normal           Item=  64 addl=0 adjSwitchable
+  (10, 7) type=1 normal           Item=  65 addl=0 adjSwitchable
+  (12, 7) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (14, 7) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (16, 7) type=1 normal           Item=  66 addl=0 adjSwitchable
+  (17, 7) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (18, 7) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (19, 7) type=1 normal           Item=  67 addl=0 adjSwitchable
+  (20, 7) type=1 normal           Item=  68 addl=0 adjSwitchable
+  (21, 7) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (23, 7) type=1 normal           Item=  69 addl=0 adjSwitchable
+  (24, 7) type=1 normal           Item=  70 addl=0 adjSwitchable
+  (25, 7) type=1 normal           Item=  71 addl=0 adjSwitchable
+  (26, 7) type=1 normal           Item=  72 addl=0 adjSwitchable
+  (27, 7) type=1 normal           Item=  73 addl=0 adjSwitchable
+  (28, 7) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (30, 7) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  ( 1, 8) type=1 normal           Item=  74 addl=0 adjSwitchable
+  ( 3, 8) type=1 normal           Item=  75 addl=0 adjSwitchable
+  ( 4, 8) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  ( 5, 8) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  ( 6, 8) type=1 normal           Item=  76 addl=0 adjSwitchable
+  ( 7, 8) type=1 normal           Item=  77 addl=0 adjSwitchable
+  ( 8, 8) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (10, 8) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (12, 8) type=1 normal           Item=  78 addl=0 adjSwitchable
+  (14, 8) type=1 normal           Item=  79 addl=0 adjSwitchable
+  (16, 8) type=1 normal           Item=  80 addl=0 adjSwitchable
+  (21, 8) type=1 normal           Item=  81 addl=0 adjSwitchable
+  (23, 8) type=1 normal           Item=  82 addl=0 adjSwitchable
+  (30, 8) type=1 normal           Item=  83 addl=0 adjSwitchable
+  ( 1, 9) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  ( 3, 9) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  ( 4, 9) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  ( 8, 9) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (12, 9) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (14, 9) type=1 normal           Item=  84 addl=0 adjSwitchable
+  (15, 9) type=1 normal           Item=  85 addl=0 adjSwitchable
+  (16, 9) type=1 normal           Item=  86 addl=0 adjSwitchable
+  (18, 9) type=1 normal           Item=  87 addl=0 adjSwitchable
+  (19, 9) type=1 normal           Item=  88 addl=0 adjSwitchable
+  (20, 9) type=1 normal           Item=  89 addl=0 adjSwitchable
+  (21, 9) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (23, 9) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (24, 9) type=1 normal           Item=  90 addl=0 adjSwitchable
+  (25, 9) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (26, 9) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (27, 9) type=1 normal           Item=  91 addl=0 adjSwitchable
+  (28, 9) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (30, 9) type=1 normal           Item=  92 addl=0 adjSwitchable
+  ( 1,10) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  ( 4,10) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  ( 6,10) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  ( 7,10) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  ( 8,10) type=1 normal           Item=  93 addl=0 adjSwitchable
+  ( 9,10) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (10,10) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (12,10) type=1 normal           Item=  94 addl=0 adjSwitchable
+  (16,10) type=1 normal           Item=  95 addl=0 adjSwitchable
+  (18,10) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (20,10) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (21,10) type=1 normal           Item=  96 addl=0 adjSwitchable
+  (22,10) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (23,10) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (25,10) type=1 normal           Item=  97 addl=0 adjSwitchable
+  (27,10) type=1 normal           Item=  98 addl=0 adjSwitchable
+  (28,10) type=1 normal           Item=  99 addl=0 adjSwitchable
+  (30,10) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  ( 1,11) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  ( 2,11) type=1 normal           Item= 100 addl=0 adjSwitchable
+  ( 3,11) type=1 normal           Item= 101 addl=0 adjSwitchable
+  ( 4,11) type=1 normal           Item= 102 addl=0 adjSwitchable
+  ( 6,11) type=1 normal           Item= 103 addl=0 adjSwitchable
+  ( 8,11) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  ( 9,11) type=1 normal           Item= 104 addl=0 adjSwitchable
+  (10,11) type=1 normal           Item= 105 addl=0 adjSwitchable
+  (11,11) type=1 normal           Item= 106 addl=0 adjSwitchable
+  (12,11) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (13,11) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (14,11) type=1 normal           Item= 107 addl=0 adjSwitchable
+  (15,11) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (16,11) type=1 normal           Item= 108 addl=0 adjSwitchable
+  (18,11) type=1 normal           Item= 109 addl=0 adjSwitchable
+  (20,11) type=1 normal           Item= 110 addl=0 adjSwitchable
+  (23,11) type=1 normal           Item= 111 addl=0 adjSwitchable
+  (25,11) type=1 normal           Item= 112 addl=0 adjSwitchable
+  (27,11) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (28,11) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (29,11) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (30,11) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  ( 4,12) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  ( 6,12) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  ( 8,12) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (13,12) type=1 normal           Item= 113 addl=0 adjSwitchable
+  (15,12) type=1 normal           Item= 114 addl=0 adjSwitchable
+  (16,12) type=1 normal           Item= 115 addl=0 adjSwitchable
+  (17,12) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (18,12) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (20,12) type=1 normal           Item= 116 addl=0 adjSwitchable
+  (23,12) type=1 normal           Item= 117 addl=0 adjSwitchable
+  (27,12) type=1 normal           Item= 118 addl=0 adjSwitchable
+  (30,12) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  ( 1,13) type=1 normal           Item= 119 addl=0 adjSwitchable
+  ( 2,13) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  ( 3,13) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  ( 4,13) type=1 normal           Item= 120 addl=0 adjSwitchable
+  ( 6,13) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  ( 8,13) type=1 normal           Item= 121 addl=0 adjSwitchable
+  ( 9,13) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (10,13) type=1 normal           Item= 122 addl=0 adjSwitchable
+  (11,13) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (15,13) type=1 normal           Item= 123 addl=0 adjSwitchable
+  (20,13) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (21,13) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (22,13) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (23,13) type=1 normal           Item= 124 addl=0 adjSwitchable
+  (24,13) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (25,13) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (26,13) type=1 normal           Item= 125 addl=0 adjSwitchable
+  (27,13) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (29,13) type=1 normal           Item= 126 addl=0 adjSwitchable
+  (30,13) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  ( 1,14) type=1 normal           Item= 127 addl=0 adjSwitchable
+  ( 6,14) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  ( 8,14) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (11,14) type=1 normal           Item= 128 addl=0 adjSwitchable
+  (12,14) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (13,14) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (14,14) type=1 normal           Item= 129 addl=0 adjSwitchable
+  (15,14) type=1 normal           Item= 130 addl=0 adjSwitchable
+  (16,14) type=1 normal           Item= 131 addl=0 adjSwitchable
+  (17,14) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (18,14) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (20,14) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (21,14) type=1 normal           Item= 132 addl=0 adjSwitchable
+  (23,14) type=1 normal           Item= 133 addl=0 adjSwitchable
+  (24,14) type=1 normal           Item= 134 addl=0 adjSwitchable
+  (26,14) type=1 normal           Item= 135 addl=0 adjSwitchable
+  (27,14) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (28,14) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (29,14) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (30,14) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  ( 1,15) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  ( 3,15) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  ( 4,15) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  ( 5,15) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  ( 6,15) type=1 normal           Item= 136 addl=0 adjSwitchable
+  ( 8,15) type=1 normal           Item= 137 addl=0 adjSwitchable
+  (11,15) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (18,15) type=1 normal           Item= 138 addl=0 adjSwitchable
+  (21,15) type=1 normal           Item= 139 addl=0 adjSwitchable
+  (23,15) type=1 normal           Item= 140 addl=0 adjSwitchable
+  (26,15) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (27,15) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (29,15) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (30,15) type=1 normal           Item= 141 addl=0 adjSwitchable
+  ( 1,16) type=1 normal           Item= 142 addl=0 adjSwitchable
+  ( 3,16) type=1 normal           Item= 143 addl=0 adjSwitchable
+  ( 6,16) type=1 normal           Item= 144 addl=0 adjSwitchable
+  ( 8,16) type=1 normal           Item= 145 addl=0 adjSwitchable
+  ( 9,16) type=1 normal           Item= 146 addl=0 adjSwitchable
+  (10,16) type=1 normal           Item= 147 addl=0 adjSwitchable
+  (11,16) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (12,16) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (13,16) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (14,16) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (15,16) type=1 normal           Item= 148 addl=0 adjSwitchable
+  (16,16) type=1 normal           Item=   4 addl=0 adjSwitchable
+  (18,16) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (19,16) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (20,16) type=1 normal           Item= 149 addl=0 adjSwitchable
+  (21,16) type=1 normal           Item= 150 addl=0 adjSwitchable
+  (22,16) type=1 normal           Item= 151 addl=0 adjSwitchable
+  (23,16) type=1 normal           Item= 152 addl=0 adjSwitchable
+  (24,16) type=1 normal           Item= 153 addl=0 adjSwitchable
+  (26,16) type=1 normal           Item= 154 addl=0 adjSwitchable
+  (27,16) type=1 normal           Item= 155 addl=0 adjSwitchable
+  (29,16) type=1 normal           Item= 156 addl=0 adjSwitchable
+  (30,16) type=1 normal           Item= 157 addl=0 adjSwitchable
+  ( 1,17) type=1 normal           Item= 158 addl=0 adjSwitchable
+  ( 3,17) type=1 normal           Item= 159 addl=0 adjSwitchable
+  ( 6,17) type=1 normal           Item= 160 addl=0 adjSwitchable
+  (13,17) type=1 normal           Item= 161 addl=0 adjSwitchable
+  (21,17) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (24,17) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (29,17) type=1 normal           Item= 162 addl=0 adjSwitchable
+  (30,17) type=1 normal           Item= 163 addl=0 adjSwitchable
+  ( 1,18) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  ( 3,18) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  ( 4,18) type=1 normal           Item= 164 addl=0 adjSwitchable
+  ( 5,18) type=1 normal           Item= 165 addl=0 adjSwitchable
+  ( 6,18) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  ( 7,18) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  ( 8,18) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  ( 9,18) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (10,18) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (11,18) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (13,18) type=1 normal           Item= 166 addl=0 adjSwitchable
+  (14,18) type=1 normal           Item= 167 addl=0 adjSwitchable
+  (15,18) type=1 normal           Item= 168 addl=0 adjSwitchable
+  (16,18) type=1 normal           Item= 169 addl=0 adjSwitchable
+  (17,18) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (18,18) type=1 normal           Item= 170 addl=0 adjSwitchable
+  (19,18) type=1 normal           Item= 171 addl=0 adjSwitchable
+  (20,18) type=1 normal           Item= 172 addl=0 adjSwitchable
+  (21,18) type=1 normal           Item= 173 addl=0 adjSwitchable
+  (22,18) type=1 normal           Item= 174 addl=0 adjSwitchable
+  (23,18) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (24,18) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (25,18) type=1 normal           Item= 175 addl=0 adjSwitchable
+  (26,18) type=1 normal           Item= 176 addl=0 adjSwitchable
+  (27,18) type=1 normal           Item= 177 addl=0 adjSwitchable
+  (29,18) type=1 normal           Item= 178 addl=0 adjSwitchable
+  (30,18) type=1 normal           Item= 179 addl=0 adjSwitchable
+  ( 1,19) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  ( 3,19) type=1 normal           Item= 180 addl=0 adjSwitchable
+  ( 9,19) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (11,19) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (12,19) type=1 normal           Item= 181 addl=0 adjSwitchable
+  (13,19) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (14,19) type=1 normal           Item= 182 addl=0 adjSwitchable
+  (15,19) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (19,19) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (21,19) type=1 normal           Item= 183 addl=0 adjSwitchable
+  (27,19) type=1 normal           Item= 184 addl=0 adjSwitchable
+  (29,19) type=1 normal           Item= 185 addl=0 adjSwitchable
+  (30,19) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  ( 1,20) type=1 normal           Item= 186 addl=0 adjSwitchable
+  ( 3,20) type=1 normal           Item= 187 addl=0 adjSwitchable
+  ( 4,20) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  ( 5,20) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  ( 6,20) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  ( 7,20) type=1 normal           Item= 188 addl=0 adjSwitchable
+  ( 8,20) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  ( 9,20) type=1 normal           Item= 189 addl=0 adjSwitchable
+  (15,20) type=1 normal           Item= 190 addl=0 adjSwitchable
+  (17,20) type=1 normal           Item= 191 addl=0 adjSwitchable
+  (18,20) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (19,20) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (21,20) type=1 normal           Item= 192 addl=0 adjSwitchable
+  (22,20) type=1 normal           Item= 193 addl=0 adjSwitchable
+  (23,20) type=1 normal           Item= 194 addl=0 adjSwitchable
+  (24,20) type=1 normal           Item= 195 addl=0 adjSwitchable
+  (25,20) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (26,20) type=1 normal           Item= 196 addl=0 adjSwitchable
+  (27,20) type=1 normal           Item= 197 addl=0 adjSwitchable
+  (29,20) type=1 normal           Item= 198 addl=0 adjSwitchable
+  (30,20) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  ( 1,21) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  ( 9,21) type=1 normal           Item= 199 addl=0 adjSwitchable
+  (10,21) type=1 normal           Item= 200 addl=0 adjSwitchable
+  (11,21) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (12,21) type=1 normal           Item= 201 addl=0 adjSwitchable
+  (13,21) type=1 normal           Item= 202 addl=0 adjSwitchable
+  (15,21) type=1 normal           Item= 203 addl=0 adjSwitchable
+  (17,21) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (23,21) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (30,21) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  ( 1,22) type=1 normal           Item= 204 addl=0 adjSwitchable
+  ( 2,22) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  ( 3,22) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  ( 4,22) type=1 normal           Item= 205 addl=0 adjSwitchable
+  ( 5,22) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  ( 6,22) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  ( 8,22) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  ( 9,22) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (13,22) type=1 normal           Item= 206 addl=0 adjSwitchable
+  (15,22) type=1 normal           Item= 207 addl=0 adjSwitchable
+  (17,22) type=1 normal           Item= 208 addl=0 adjSwitchable
+  (18,22) type=1 normal           Item= 209 addl=0 adjSwitchable
+  (19,22) type=1 normal           Item= 210 addl=0 adjSwitchable
+  (20,22) type=1 normal           Item= 211 addl=0 adjSwitchable
+  (22,22) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (23,22) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (25,22) type=1 normal           Item= 212 addl=0 adjSwitchable
+  (26,22) type=1 normal           Item= 213 addl=0 adjSwitchable
+  (27,22) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (28,22) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (30,22) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  ( 1,23) type=1 normal           Item= 214 addl=0 adjSwitchable
+  ( 4,23) type=1 normal           Item= 215 addl=0 adjSwitchable
+  ( 6,23) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  ( 8,23) type=1 normal           Item= 216 addl=0 adjSwitchable
+  ( 9,23) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (10,23) type=1 normal           Item= 217 addl=0 adjSwitchable
+  (11,23) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (13,23) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (15,23) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (20,23) type=1 normal           Item= 218 addl=0 adjSwitchable
+  (22,23) type=1 normal           Item= 219 addl=0 adjSwitchable
+  (23,23) type=1 normal           Item= 220 addl=0 adjSwitchable
+  (24,23) type=1 normal           Item= 221 addl=0 adjSwitchable
+  (25,23) type=1 normal           Item= 222 addl=0 adjSwitchable
+  (26,23) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (28,23) type=1 normal           Item= 223 addl=0 adjSwitchable
+  (30,23) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  ( 1,24) type=1 normal           Item= 224 addl=0 adjSwitchable
+  ( 4,24) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  ( 6,24) type=1 normal           Item= 225 addl=0 adjSwitchable
+  (11,24) type=1 normal           Item= 226 addl=0 adjSwitchable
+  (13,24) type=1 normal           Item= 227 addl=0 adjSwitchable
+  (14,24) type=1 normal           Item= 228 addl=0 adjSwitchable
+  (15,24) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (16,24) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (17,24) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (18,24) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (20,24) type=1 normal           Item= 229 addl=0 adjSwitchable
+  (22,24) type=1 normal           Item= 230 addl=0 adjSwitchable
+  (23,24) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (24,24) type=1 normal           Item= 231 addl=0 adjSwitchable
+  (26,24) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (28,24) type=1 normal           Item= 232 addl=0 adjSwitchable
+  (29,24) type=1 normal           Item= 233 addl=0 adjSwitchable
+  (30,24) type=1 normal           Item= 234 addl=0 adjSwitchable
+  ( 1,25) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  ( 2,25) type=1 normal           Item= 235 addl=0 adjSwitchable
+  ( 3,25) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  ( 4,25) type=1 normal           Item= 236 addl=0 adjSwitchable
+  ( 6,25) type=1 normal           Item= 237 addl=0 adjSwitchable
+  ( 8,25) type=1 normal           Item= 238 addl=0 adjSwitchable
+  ( 9,25) type=1 normal           Item= 239 addl=0 adjSwitchable
+  (10,25) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (11,25) type=1 normal           Item= 240 addl=0 adjSwitchable
+  (13,25) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (14,25) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (15,25) type=1 normal           Item= 241 addl=0 adjSwitchable
+  (16,25) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (18,25) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (20,25) type=1 normal           Item= 242 addl=0 adjSwitchable
+  (26,25) type=1 normal           Item= 243 addl=0 adjSwitchable
+  (30,25) type=1 normal           Item= 244 addl=0 adjSwitchable
+  ( 2,26) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  ( 6,26) type=1 normal           Item= 245 addl=0 adjSwitchable
+  ( 8,26) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (18,26) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (20,26) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (22,26) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (23,26) type=1 normal           Item= 246 addl=0 adjSwitchable
+  (24,26) type=1 normal           Item= 247 addl=0 adjSwitchable
+  (25,26) type=1 normal           Item= 248 addl=0 adjSwitchable
+  (26,26) type=1 normal           Item= 249 addl=0 adjSwitchable
+  (28,26) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (30,26) type=1 normal           Item= 250 addl=0 adjSwitchable
+  ( 1,27) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  ( 2,27) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  ( 3,27) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  ( 4,27) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  ( 5,27) type=1 normal           Item= 251 addl=0 adjSwitchable
+  ( 6,27) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  ( 8,27) type=1 normal           Item= 252 addl=0 adjSwitchable
+  (10,27) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (11,27) type=1 normal           Item= 253 addl=0 adjSwitchable
+  (13,27) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (14,27) type=1 normal           Item= 254 addl=0 adjSwitchable
+  (15,27) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (16,27) type=1 normal           Item= 255 addl=0 adjSwitchable
+  (18,27) type=1 normal           Item= 256 addl=0 adjSwitchable
+  (20,27) type=1 normal           Item= 257 addl=0 adjSwitchable
+  (22,27) type=1 normal           Item= 258 addl=0 adjSwitchable
+  (23,27) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (28,27) type=1 normal           Item= 259 addl=0 adjSwitchable
+  (29,27) type=1 normal           Item= 260 addl=0 adjSwitchable
+  (30,27) type=1 normal           Item= 261 addl=0 adjSwitchable
+  ( 1,28) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  ( 2,28) type=1 normal           Item= 262 addl=0 adjSwitchable
+  ( 6,28) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  ( 8,28) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  ( 9,28) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (10,28) type=1 normal           Item= 263 addl=0 adjSwitchable
+  (11,28) type=1 normal           Item= 264 addl=0 adjSwitchable
+  (13,28) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (16,28) type=1 normal           Item= 265 addl=0 adjSwitchable
+  (18,28) type=1 normal           Item= 266 addl=0 adjSwitchable
+  (20,28) type=1 normal           Item= 267 addl=0 adjSwitchable
+  (23,28) type=1 normal           Item= 268 addl=0 adjSwitchable
+  (25,28) type=1 normal           Item= 269 addl=0 adjSwitchable
+  (26,28) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (28,28) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  ( 1,29) type=1 normal           Item= 270 addl=0 adjSwitchable
+  ( 4,29) type=1 normal           Item= 271 addl=0 adjSwitchable
+  ( 5,29) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  ( 6,29) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (13,29) type=1 normal           Item= 272 addl=0 adjSwitchable
+  (15,29) type=1 normal           Item= 273 addl=0 adjSwitchable
+  (16,29) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (18,29) type=1 normal           Item= 274 addl=0 adjSwitchable
+  (20,29) type=1 normal           Item= 275 addl=0 adjSwitchable
+  (21,29) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (22,29) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (23,29) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (25,29) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (28,29) type=1 normal           Item= 276 addl=0 adjSwitchable
+  (30,29) type=1 normal           Item= 277 addl=0 adjSwitchable
+  ( 2,30) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  ( 3,30) type=1 normal           Item= 278 addl=0 adjSwitchable
+  ( 4,30) type=1 normal           Item= 279 addl=0 adjSwitchable
+  ( 5,30) type=1 normal           Item= 280 addl=0 adjSwitchable
+  ( 6,30) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  ( 7,30) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  ( 8,30) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  ( 9,30) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (10,30) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (11,30) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (12,30) type=1 normal           Item= 281 addl=0 adjSwitchable
+  (13,30) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (15,30) type=1 normal           Item= 282 addl=0 adjSwitchable
+  (16,30) type=1 normal           Item= 283 addl=0 adjSwitchable
+  (17,30) type=1 normal           Item= 284 addl=0 adjSwitchable
+  (18,30) type=1 normal           Item= 285 addl=0 adjSwitchable
+  (20,30) type=1 normal           Item= 286 addl=0 adjSwitchable
+  (21,30) type=1 normal           Item= 287 addl=0 adjSwitchable
+  (22,30) type=1 normal           Item= 288 addl=0 adjSwitchable
+  (23,30) type=1 normal           Item=  -1 addl=0 adjSwitchable
+  (25,30) type=1 normal           Item= 289 addl=0 adjSwitchable
+  (26,30) type=1 normal           Item= 290 addl=0 adjSwitchable
+  (27,30) type=1 normal           Item= 291 addl=0 adjSwitchable
+  (28,30) type=1 normal           Item= 292 addl=0 adjSwitchable
+  (29,30) type=1 normal           Item= 293 addl=0 adjSwitchable
+
+=== L14 Happy Happy, Carnage Carnage  sealed=239 ===
+  ( 2, 1) type=1 normal           Item=  -1 addl=0
+  ( 4, 1) type=1 normal           Item=  -1 addl=0
+  ( 8, 1) type=1 normal           Item=  -1 addl=0
+  (10, 1) type=1 normal           Item=  -1 addl=0
+  (12, 1) type=1 normal           Item= 252 addl=0
+  (13, 1) type=1 normal           Item=  -1 addl=0
+  (14, 1) type=1 normal           Item=  -1 addl=0
+  (15, 1) type=1 normal           Item= 251 addl=0
+  (16, 1) type=6 corpse           Item= 274 addl=16
+  (17, 1) type=1 normal           Item= 250 addl=0
+  (18, 1) type=1 normal           Item=  21 addl=0
+  (20, 1) type=1 normal           Item=  22 addl=0
+  (22, 1) type=1 normal           Item=  24 addl=0
+  (26, 1) type=1 normal           Item=  25 addl=0
+  (28, 1) type=1 normal           Item=  -1 addl=0
+  (30, 1) type=1 normal           Item= 262 addl=0
+  (11, 2) type=2 door             Item=  -1 addl=2
+  (12, 2) type=1 normal           Item=  33 addl=0
+  (13, 2) type=1 normal           Item=  34 addl=0
+  (14, 2) type=6 corpse           Item= 267 addl=15
+  (15, 2) type=1 normal           Item= 253 addl=1
+  (16, 2) type=1 normal           Item=  35 addl=0
+  (17, 2) type=1 normal           Item= 254 addl=0
+  (18, 2) type=1 normal           Item=  -1 addl=0
+  (19, 2) type=2 door             Item=  -1 addl=3
+  (30, 2) type=1 normal           Item= 336 addl=0
+  ( 2, 3) type=1 normal           Item=  -1 addl=0
+  ( 4, 3) type=1 normal           Item= 231 addl=0
+  ( 8, 3) type=1 normal           Item= 230 addl=0
+  (10, 3) type=1 normal           Item=  -1 addl=0
+  (12, 3) type=6 corpse           Item= 279 addl=14
+  (13, 3) type=1 normal           Item=  46 addl=0
+  (14, 3) type=1 normal           Item=  -1 addl=0
+  (15, 3) type=4 door_trigger     Item= 272 addl=12
+  (16, 3) type=1 normal           Item=  -1 addl=0
+  (17, 3) type=1 normal           Item=  47 addl=0
+  (18, 3) type=6 corpse           Item= 261 addl=17
+  (20, 3) type=1 normal           Item=  -1 addl=0
+  (22, 3) type=1 normal           Item= 234 addl=0
+  (26, 3) type=1 normal           Item=  -1 addl=0
+  (28, 3) type=1 normal           Item= 236 addl=0
+  (30, 3) type=1 normal           Item=  -1 addl=0
+  ( 3, 4) type=1 normal           Item=  50 addl=0
+  (13, 4) type=2 door             Item=  -1 addl=0
+  (15, 4) type=2 door             Item=  -1 addl=1
+  (17, 4) type=2 door             Item=  -1 addl=4
+  (30, 4) type=1 normal           Item= 335 addl=0
+  (12, 5) type=1 normal           Item=  69 addl=0
+  (13, 5) type=1 normal           Item= 139 addl=0
+  (14, 5) type=1 normal           Item=  -1 addl=0
+  (15, 5) type=1 normal           Item= 163 addl=0
+  (16, 5) type=1 normal           Item=  -1 addl=0
+  (17, 5) type=1 normal           Item= 113 addl=0
+  (18, 5) type=1 normal           Item=  76 addl=0
+  (30, 5) type=1 normal           Item=  -1 addl=0
+  (13, 6) type=1 normal           Item= 161 addl=0
+  (14, 6) type=1 normal           Item= 221 addl=0
+  (15, 6) type=1 normal           Item= 229 addl=0
+  (16, 6) type=1 normal           Item= 212 addl=0
+  (17, 6) type=1 normal           Item= 186 addl=0
+  (30, 6) type=1 normal           Item= 334 addl=0
+  ( 2, 7) type=1 normal           Item=  68 addl=0
+  ( 4, 7) type=1 normal           Item=  -1 addl=0
+  ( 8, 7) type=1 normal           Item=  -1 addl=0
+  (10, 7) type=1 normal           Item=  71 addl=0
+  (13, 7) type=1 normal           Item= 214 addl=0
+  (14, 7) type=1 normal           Item=  73 addl=0
+  (15, 7) type=1 normal           Item= 228 addl=0
+  (16, 7) type=1 normal           Item= 222 addl=0
+  (17, 7) type=1 normal           Item=  74 addl=0
+  (20, 7) type=1 normal           Item=  75 addl=0
+  (22, 7) type=1 normal           Item=  -1 addl=0
+  (26, 7) type=1 normal           Item=  -1 addl=0
+  (28, 7) type=1 normal           Item=  -1 addl=0
+  (30, 7) type=1 normal           Item=  -1 addl=0
+  (12, 8) type=1 normal           Item= 226 addl=0
+  (13, 8) type=1 normal           Item= 218 addl=0
+  (14, 8) type=1 normal           Item= 219 addl=0
+  (15, 8) type=4 door_trigger     Item= 273 addl=13
+  (16, 8) type=1 normal           Item= 220 addl=0
+  (17, 8) type=1 normal           Item= 216 addl=0
+  (18, 8) type=1 normal           Item= 225 addl=0
+  (30, 8) type=1 normal           Item=  -1 addl=0
+  ( 8, 9) type=1 normal           Item=  -1 addl=0
+  (10, 9) type=1 normal           Item=  89 addl=0
+  (20, 9) type=1 normal           Item=  -1 addl=0
+  (22, 9) type=1 normal           Item= 235 addl=0
+  (26, 9) type=1 normal           Item=  -1 addl=0
+  (28, 9) type=1 normal           Item=  91 addl=0
+  (30, 9) type=1 normal           Item= 333 addl=0
+  ( 2,10) type=1 normal           Item= 233 addl=0
+  ( 4,10) type=1 normal           Item= 232 addl=0
+  (13,10) type=7 pillar           Item=   0 addl=0
+  (14,10) type=7 pillar           Item=   1 addl=0
+  (15,10) type=7 pillar           Item=   5 addl=0
+  (16,10) type=7 pillar           Item=   2 addl=0
+  (17,10) type=7 pillar           Item=   7 addl=0
+  (30,10) type=1 normal           Item=  -1 addl=0
+  (14,11) type=1 normal           Item=  95 addl=0
+  (15,11) type=1 normal           Item=  96 addl=0
+  (16,11) type=1 normal           Item=  -1 addl=0
+  (30,11) type=1 normal           Item=  -1 addl=0
+  ( 2,12) type=1 normal           Item=  99 addl=0
+  ( 4,12) type=1 normal           Item= 100 addl=0
+  (14,12) type=7 pillar           Item=   3 addl=0
+  (15,12) type=1 normal           Item=  -1 addl=0
+  (16,12) type=7 pillar           Item=   6 addl=0
+  (30,12) type=1 normal           Item= 332 addl=0
+  ( 8,13) type=1 normal           Item= 104 addl=0
+  (10,13) type=1 normal           Item=  -1 addl=0
+  (14,13) type=7 pillar           Item=   8 addl=0
+  (15,13) type=1 normal           Item=  -1 addl=0
+  (16,13) type=7 pillar           Item=   4 addl=0
+  (20,13) type=1 normal           Item= 107 addl=0
+  (22,13) type=1 normal           Item= 109 addl=0
+  (26,13) type=1 normal           Item= 239 addl=0
+  (28,13) type=1 normal           Item= 112 addl=0
+  (30,13) type=1 normal           Item= 331 addl=0
+  (14,14) type=7 pillar           Item=  11 addl=0
+  (15,14) type=1 normal           Item= 118 addl=0
+  (16,14) type=1 normal           Item=  10 addl=0
+  (30,14) type=1 normal           Item=  -1 addl=0
+  ( 2,15) type=1 normal           Item= 297 addl=0
+  ( 4,15) type=1 normal           Item=  -1 addl=0
+  ( 8,15) type=1 normal           Item=  -1 addl=0
+  (10,15) type=1 normal           Item= 280 addl=0
+  (14,15) type=7 pillar           Item=   9 addl=0
+  (15,15) type=1 normal           Item=  -1 addl=0
+  (16,15) type=7 pillar           Item=  12 addl=0
+  (20,15) type=1 normal           Item= 285 addl=0
+  (22,15) type=1 normal           Item= 283 addl=0
+  (30,15) type=1 normal           Item= 330 addl=0
+  ( 3,16) type=1 normal           Item= 127 addl=0
+  (26,16) type=1 normal           Item= 238 addl=0
+  (28,16) type=1 normal           Item= 237 addl=0
+  (30,16) type=1 normal           Item=  -1 addl=0
+  ( 3,17) type=1 normal           Item= 298 addl=0
+  (14,17) type=1 normal           Item= 132 addl=0
+  (16,17) type=1 normal           Item= 134 addl=0
+  (30,17) type=1 normal           Item= 329 addl=0
+  ( 3,18) type=1 normal           Item=  -1 addl=0
+  (26,18) type=1 normal           Item=  -1 addl=0
+  (28,18) type=1 normal           Item=  -1 addl=0
+  (30,18) type=1 normal           Item=  -1 addl=0
+  ( 2,19) type=1 normal           Item= 295 addl=0
+  ( 3,19) type=1 normal           Item=  -1 addl=0
+  ( 4,19) type=1 normal           Item= 296 addl=0
+  ( 8,19) type=1 normal           Item= 141 addl=0
+  (10,19) type=1 normal           Item= 249 addl=0
+  (20,19) type=1 normal           Item= 248 addl=0
+  (22,19) type=1 normal           Item= 147 addl=0
+  (30,19) type=1 normal           Item=  -1 addl=0
+  ( 2,20) type=1 normal           Item= 149 addl=0
+  ( 3,20) type=1 normal           Item=  -1 addl=0
+  ( 4,20) type=1 normal           Item= 150 addl=0
+  ( 5,20) type=1 normal           Item= 151 addl=0
+  (30,20) type=1 normal           Item= 328 addl=0
+  ( 2,21) type=1 normal           Item=  -1 addl=0
+  ( 3,21) type=1 normal           Item= 164 addl=0
+  ( 4,21) type=1 normal           Item=  -1 addl=0
+  ( 8,21) type=1 normal           Item= 165 addl=0
+  (10,21) type=1 normal           Item= 167 addl=0
+  (14,21) type=1 normal           Item= 168 addl=0
+  (16,21) type=1 normal           Item=  -1 addl=0
+  (20,21) type=1 normal           Item= 287 addl=0
+  (22,21) type=1 normal           Item= 172 addl=0
+  (26,21) type=1 normal           Item=  -1 addl=0
+  (28,21) type=1 normal           Item= 173 addl=0
+  (30,21) type=1 normal           Item=  -1 addl=0
+  ( 3,22) type=1 normal           Item= 294 addl=0
+  (30,22) type=1 normal           Item= 325 addl=0
+  (30,23) type=1 normal           Item=  -1 addl=0
+  (30,24) type=1 normal           Item= 324 addl=0
+  ( 2,25) type=1 normal           Item= 182 addl=0
+  ( 4,25) type=1 normal           Item=  -1 addl=0
+  ( 8,25) type=1 normal           Item= 183 addl=0
+  (10,25) type=1 normal           Item=  -1 addl=0
+  (14,25) type=1 normal           Item= 184 addl=0
+  (16,25) type=1 normal           Item=  -1 addl=0
+  (20,25) type=1 normal           Item=  -1 addl=0
+  (22,25) type=1 normal           Item=  -1 addl=0
+  (26,25) type=1 normal           Item=  -1 addl=0
+  (28,25) type=1 normal           Item= 247 addl=0
+  (30,25) type=1 normal           Item= 323 addl=0
+  (30,26) type=1 normal           Item= 322 addl=0
+  ( 2,27) type=1 normal           Item= 242 addl=0
+  ( 4,27) type=1 normal           Item=  -1 addl=0
+  ( 8,27) type=1 normal           Item= 292 addl=0
+  (10,27) type=1 normal           Item= 291 addl=0
+  (14,27) type=1 normal           Item= 244 addl=0
+  (16,27) type=1 normal           Item= 243 addl=0
+  (20,27) type=1 normal           Item= 289 addl=0
+  (22,27) type=1 normal           Item= 210 addl=0
+  (26,27) type=1 normal           Item=  -1 addl=0
+  (28,27) type=1 normal           Item=  -1 addl=0
+  (30,27) type=1 normal           Item=  -1 addl=0
+  ( 3,28) type=5 secret_door      Item= 284 addl=3
+  (30,28) type=1 normal           Item=  -1 addl=0
+  ( 3,29) type=1 normal           Item=  -1 addl=0 adjSecretDoor
+  ( 5,29) type=1 normal           Item= 300 addl=0
+  ( 6,29) type=1 normal           Item=  -1 addl=0
+  ( 7,29) type=1 normal           Item= 301 addl=0
+  ( 9,29) type=1 normal           Item=  -1 addl=0
+  (10,29) type=1 normal           Item= 304 addl=0
+  (11,29) type=1 normal           Item= 305 addl=0
+  (13,29) type=1 normal           Item=  -1 addl=0
+  (14,29) type=1 normal           Item= 307 addl=0
+  (15,29) type=1 normal           Item= 308 addl=0
+  (17,29) type=1 normal           Item=  -1 addl=0
+  (18,29) type=1 normal           Item= 310 addl=0
+  (19,29) type=1 normal           Item=  -1 addl=0
+  (21,29) type=1 normal           Item= 313 addl=0
+  (22,29) type=1 normal           Item= 314 addl=0
+  (23,29) type=1 normal           Item=  -1 addl=0
+  (25,29) type=1 normal           Item=  -1 addl=0
+  (26,29) type=1 normal           Item= 317 addl=0
+  (27,29) type=1 normal           Item= 318 addl=0
+  (29,29) type=1 normal           Item=  -1 addl=0
+  (30,29) type=1 normal           Item= 321 addl=0
+  ( 4,30) type=1 normal           Item= 299 addl=0
+  ( 5,30) type=1 normal           Item=  -1 addl=0
+  ( 7,30) type=1 normal           Item= 302 addl=0
+  ( 8,30) type=1 normal           Item=  -1 addl=0
+  ( 9,30) type=1 normal           Item= 303 addl=0
+  (11,30) type=1 normal           Item=  -1 addl=0
+  (12,30) type=1 normal           Item= 306 addl=0
+  (13,30) type=1 normal           Item=  -1 addl=0
+  (15,30) type=1 normal           Item=  -1 addl=0
+  (16,30) type=1 normal           Item= 309 addl=0
+  (17,30) type=1 normal           Item=  -1 addl=0
+  (19,30) type=1 normal           Item= 311 addl=0
+  (20,30) type=1 normal           Item= 312 addl=0
+  (21,30) type=1 normal           Item=  -1 addl=0
+  (23,30) type=1 normal           Item=  -1 addl=0
+  (24,30) type=1 normal           Item= 315 addl=0
+  (25,30) type=1 normal           Item= 316 addl=0
+  (27,30) type=1 normal           Item= 319 addl=0
+  (28,30) type=1 normal           Item= 320 addl=0
+  (29,30) type=1 normal           Item=  -1 addl=0
+
+=== L15 Need a Light?  sealed=93 ===
+  ( 3, 1) type=1 normal           Item=  -1 addl=0
+  (15, 1) type=1 normal           Item=  -1 addl=0
+  (17, 1) type=1 normal           Item=  28 addl=0
+  (29, 1) type=1 normal           Item=  -1 addl=0
+  (13, 4) type=1 normal           Item= 313 addl=0
+  (15, 4) type=1 normal           Item=  67 addl=0
+  (17, 4) type=1 normal           Item= 299 addl=0
+  (19, 4) type=1 normal           Item= 298 addl=0
+  (13, 6) type=1 normal           Item= 293 addl=0
+  (19, 6) type=1 normal           Item= 292 addl=0
+  (10, 8) type=1 normal           Item=  88 addl=0
+  (22, 8) type=1 normal           Item=  98 addl=0
+  ( 6,11) type=1 normal           Item= 117 addl=0
+  ( 8,11) type=1 normal           Item=  -1 addl=0
+  (23,11) type=1 normal           Item= 121 addl=0
+  (24,11) type=1 normal           Item= 122 addl=0
+  (26,11) type=1 normal           Item=  -1 addl=0
+  ( 8,12) type=1 normal           Item=  -1 addl=0
+  (14,12) type=7 pillar           Item=   0 addl=0
+  (18,12) type=7 pillar           Item=  12 addl=0
+  (24,12) type=1 normal           Item= 128 addl=0
+  ( 6,13) type=1 normal           Item=  -1 addl=0
+  (26,13) type=1 normal           Item=  -1 addl=0
+  (24,14) type=1 normal           Item= 151 addl=0
+  ( 6,15) type=1 normal           Item= 154 addl=0
+  (26,15) type=1 normal           Item= 178 addl=0
+  ( 8,16) type=1 normal           Item=  -1 addl=0
+  (14,16) type=7 pillar           Item=  13 addl=0
+  (18,16) type=7 pillar           Item=   3 addl=0
+  ( 6,17) type=1 normal           Item=  -1 addl=0
+  ( 8,17) type=1 normal           Item=  -1 addl=0
+  (23,17) type=1 normal           Item= 175 addl=0
+  (24,17) type=1 normal           Item= 176 addl=0
+  (26,17) type=1 normal           Item= 177 addl=0
+  ( 3,20) type=1 normal           Item=  -1 addl=0
+  ( 5,20) type=1 normal           Item= 200 addl=0
+  (10,20) type=1 normal           Item= 201 addl=0
+  (22,20) type=6 corpse           Item= 356 addl=19
+  ( 1,22) type=7 pillar           Item= 243 addl=0
+  ( 2,22) type=1 normal           Item= 348 addl=0
+  ( 8,22) type=1 normal           Item= 364 addl=0
+  ( 9,22) type=7 pillar           Item= 245 addl=0
+  (13,22) type=1 normal           Item= 218 addl=0
+  (14,22) type=1 normal           Item=  -1 addl=0
+  (18,22) type=1 normal           Item= 222 addl=0
+  (19,22) type=1 normal           Item= 223 addl=0
+  ( 1,23) type=7 pillar           Item= 233 addl=0
+  ( 2,23) type=6 corpse           Item= 372 addl=23
+  ( 8,23) type=1 normal           Item= 359 addl=0
+  ( 9,23) type=7 pillar           Item= 347 addl=0
+  ( 1,24) type=7 pillar           Item= 345 addl=0
+  ( 2,24) type=1 normal           Item= 346 addl=0
+  ( 4,24) type=1 normal           Item= 234 addl=0
+  ( 5,24) type=6 corpse           Item= 362 addl=22
+  ( 6,24) type=1 normal           Item= 236 addl=0
+  (13,24) type=1 normal           Item=  -1 addl=0
+  (15,24) type=1 normal           Item=  -1 addl=0
+  (17,24) type=1 normal           Item=  -1 addl=0
+  (19,24) type=1 normal           Item= 240 addl=0
+  ( 1,25) type=7 pillar           Item= 232 addl=0
+  ( 2,25) type=1 normal           Item= 351 addl=0
+  ( 3,25) type=1 normal           Item=  -1 addl=0
+  ( 4,25) type=1 normal           Item= 352 addl=0
+  ( 6,25) type=1 normal           Item= 244 addl=0
+  ( 8,25) type=6 corpse           Item= 360 addl=20
+  (10,25) type=1 normal           Item= 324 addl=0
+  ( 6,26) type=1 normal           Item= 353 addl=0
+  ( 1,27) type=1 normal           Item= 355 addl=0
+  ( 2,27) type=1 normal           Item=  -1 addl=0
+  ( 3,27) type=1 normal           Item= 354 addl=0
+  ( 4,27) type=1 normal           Item= 267 addl=0
+  ( 5,27) type=1 normal           Item=  -1 addl=0
+  ( 6,27) type=1 normal           Item=  -1 addl=0
+  ( 8,27) type=4 door_trigger     Item= 268 addl=134
+  (10,27) type=1 normal           Item=  -1 addl=0
+  (29,27) type=1 normal           Item=  -1 addl=0
+  ( 1,28) type=1 normal           Item= 278 addl=0
+  ( 8,28) type=1 normal           Item= 286 addl=0
+  ( 1,29) type=1 normal           Item=  -1 addl=0
+  ( 2,29) type=1 normal           Item= 289 addl=0
+  ( 3,29) type=1 normal           Item= 159 addl=0
+  ( 4,29) type=1 normal           Item=  -1 addl=0
+  ( 5,29) type=1 normal           Item= 290 addl=0
+  ( 6,29) type=1 normal           Item= 282 addl=0
+  ( 7,29) type=6 corpse           Item= 349 addl=21
+  ( 8,29) type=1 normal           Item=  -1 addl=0
+  ( 2,30) type=7 pillar           Item= 285 addl=0
+  ( 3,30) type=7 pillar           Item= 136 addl=0
+  ( 4,30) type=7 pillar           Item= 235 addl=0
+  ( 5,30) type=7 pillar           Item= 284 addl=0
+  ( 6,30) type=7 pillar           Item= 253 addl=0
+  ( 7,30) type=7 pillar           Item= 257 addl=0
+  ( 8,30) type=7 pillar           Item= 226 addl=0
+
+=== L24 Ok, Who Else Wants Some?  sealed=124 ===
+  ( 8, 1) type=1 normal           Item=  -1 addl=0
+  (12, 1) type=1 normal           Item=  -1 addl=0
+  (13, 1) type=1 normal           Item=  -1 addl=0
+  (17, 1) type=1 normal           Item=  -1 addl=0
+  (18, 1) type=1 normal           Item=  -1 addl=0
+  (22, 1) type=1 normal           Item=  -1 addl=0
+  (23, 1) type=1 normal           Item=  -1 addl=0
+  (28, 1) type=1 normal           Item=  -1 addl=0
+  ( 7, 2) type=1 normal           Item=  -1 addl=0
+  ( 8, 2) type=1 normal           Item=  -1 addl=0
+  (11, 2) type=1 normal           Item=  -1 addl=0
+  (14, 2) type=1 normal           Item=  -1 addl=0
+  (16, 2) type=1 normal           Item=  -1 addl=0
+  (19, 2) type=1 normal           Item=  -1 addl=0
+  (21, 2) type=1 normal           Item=  -1 addl=0
+  (24, 2) type=1 normal           Item=  -1 addl=0
+  (28, 2) type=1 normal           Item=  -1 addl=0
+  ( 8, 3) type=1 normal           Item=  -1 addl=0
+  (11, 3) type=1 normal           Item=  -1 addl=0
+  (14, 3) type=1 normal           Item=  -1 addl=0
+  (16, 3) type=1 normal           Item=  -1 addl=0
+  (19, 3) type=1 normal           Item=  -1 addl=0
+  (24, 3) type=1 normal           Item=  -1 addl=0
+  (27, 3) type=1 normal           Item=  -1 addl=0
+  (28, 3) type=1 normal           Item=  -1 addl=0
+  (29, 3) type=1 normal           Item=  -1 addl=0
+  ( 8, 4) type=1 normal           Item=  -1 addl=0
+  (12, 4) type=1 normal           Item=  -1 addl=0
+  (13, 4) type=1 normal           Item=  -1 addl=0
+  (14, 4) type=1 normal           Item=  -1 addl=0
+  (17, 4) type=1 normal           Item=  -1 addl=0
+  (18, 4) type=1 normal           Item=  -1 addl=0
+  (19, 4) type=1 normal           Item=  -1 addl=0
+  (22, 4) type=1 normal           Item=  -1 addl=0
+  (23, 4) type=1 normal           Item=  -1 addl=0
+  (27, 4) type=1 normal           Item=  -1 addl=0
+  (28, 4) type=1 normal           Item=  -1 addl=0
+  (29, 4) type=1 normal           Item=  -1 addl=0
+  ( 8, 5) type=1 normal           Item=  -1 addl=0
+  (14, 5) type=1 normal           Item=  -1 addl=0
+  (19, 5) type=1 normal           Item=  -1 addl=0
+  (24, 5) type=1 normal           Item=  -1 addl=0
+  (26, 5) type=1 normal           Item=  -1 addl=0
+  (27, 5) type=1 normal           Item=  -1 addl=0
+  (28, 5) type=1 normal           Item=  -1 addl=0
+  (29, 5) type=1 normal           Item=  -1 addl=0
+  (30, 5) type=1 normal           Item=  -1 addl=0
+  ( 7, 6) type=1 normal           Item=  -1 addl=0
+  ( 8, 6) type=1 normal           Item=  -1 addl=0
+  ( 9, 6) type=1 normal           Item=  -1 addl=0
+  (12, 6) type=1 normal           Item=  -1 addl=0
+  (13, 6) type=1 normal           Item=  -1 addl=0
+  (17, 6) type=1 normal           Item=  -1 addl=0
+  (18, 6) type=1 normal           Item=  -1 addl=0
+  (21, 6) type=1 normal           Item=  -1 addl=0
+  (24, 6) type=1 normal           Item=  -1 addl=0
+  (26, 6) type=1 normal           Item=  -1 addl=0
+  (27, 6) type=1 normal           Item=  -1 addl=0
+  (28, 6) type=1 normal           Item=  -1 addl=0
+  (29, 6) type=1 normal           Item=  -1 addl=0
+  (30, 6) type=1 normal           Item=  -1 addl=0
+  (22, 7) type=1 normal           Item=  -1 addl=0
+  (23, 7) type=1 normal           Item=  -1 addl=0
+  (25,24) type=1 normal           Item=  -1 addl=0
+  (28,24) type=1 normal           Item=  -1 addl=0
+  (29,24) type=1 normal           Item=  -1 addl=0
+  (29,25) type=1 normal           Item=  -1 addl=0
+  ( 1,26) type=1 normal           Item=  -1 addl=0
+  ( 3,26) type=1 normal           Item=  -1 addl=0
+  ( 4,26) type=1 normal           Item=  -1 addl=0
+  ( 7,26) type=1 normal           Item=  -1 addl=0
+  ( 8,26) type=1 normal           Item=  -1 addl=0
+  ( 9,26) type=1 normal           Item=  -1 addl=0
+  (13,26) type=1 normal           Item=  -1 addl=0
+  (14,26) type=1 normal           Item=  -1 addl=0
+  (15,26) type=1 normal           Item=  -1 addl=0
+  (20,26) type=1 normal           Item=  -1 addl=0
+  (21,26) type=1 normal           Item=  -1 addl=0
+  (22,26) type=1 normal           Item=  -1 addl=0
+  (24,26) type=1 normal           Item=  -1 addl=0
+  (25,26) type=1 normal           Item=  -1 addl=0
+  (29,26) type=1 normal           Item=  -1 addl=0
+  ( 6,27) type=1 normal           Item=  -1 addl=0
+  (13,27) type=1 normal           Item=  -1 addl=0
+  (16,27) type=1 normal           Item=  -1 addl=0
+  (19,27) type=1 normal           Item=  -1 addl=0
+  (22,27) type=1 normal           Item=  -1 addl=0
+  (25,27) type=1 normal           Item=  -1 addl=0
+  (29,27) type=1 normal           Item=  -1 addl=0
+  ( 7,28) type=1 normal           Item=  -1 addl=0
+  ( 8,28) type=1 normal           Item=  -1 addl=0
+  ( 9,28) type=1 normal           Item=  -1 addl=0
+  (13,28) type=1 normal           Item=  -1 addl=0
+  (16,28) type=1 normal           Item=  -1 addl=0
+  (19,28) type=1 normal           Item=  -1 addl=0
+  (22,28) type=1 normal           Item=  -1 addl=0
+  (25,28) type=1 normal           Item=  -1 addl=0
+  (29,28) type=1 normal           Item=  -1 addl=0
+  (10,29) type=1 normal           Item=  -1 addl=0
+  (13,29) type=1 normal           Item=  -1 addl=0
+  (16,29) type=1 normal           Item=  -1 addl=0
+  (19,29) type=1 normal           Item=  -1 addl=0
+  (21,29) type=1 normal           Item=  -1 addl=0
+  (22,29) type=1 normal           Item=  -1 addl=0
+  (25,29) type=1 normal           Item=  -1 addl=0
+  (29,29) type=1 normal           Item=  -1 addl=0
+  ( 6,30) type=1 normal           Item=  -1 addl=0
+  ( 7,30) type=1 normal           Item=  -1 addl=0
+  ( 8,30) type=1 normal           Item=  -1 addl=0
+  ( 9,30) type=1 normal           Item=  -1 addl=0
+  (12,30) type=1 normal           Item=  -1 addl=0
+  (13,30) type=1 normal           Item=  -1 addl=0
+  (14,30) type=1 normal           Item=  -1 addl=0
+  (16,30) type=1 normal           Item=  -1 addl=0
+  (17,30) type=1 normal           Item=  -1 addl=0
+  (19,30) type=1 normal           Item=  -1 addl=0
+  (20,30) type=1 normal           Item=  -1 addl=0
+  (22,30) type=1 normal           Item=  -1 addl=0
+  (24,30) type=1 normal           Item=  -1 addl=0
+  (25,30) type=1 normal           Item=  -1 addl=0
+  (26,30) type=1 normal           Item=  -1 addl=0
+  (28,30) type=1 normal           Item=  -1 addl=0
+  (29,30) type=1 normal           Item=  -1 addl=0
+  (30,30) type=1 normal           Item=  -1 addl=0
+
+=== L03 They May Be Slow…  sealed=5 (small leftover) ===
+  (15, 6) type=5 secret_door      Item=  -1 addl=3
+  (15, 7) type=1 normal           Item= 294 addl=0
+  ( 5,27) type=1 normal           Item=  -1 addl=0
+  ( 5,28) type=5 secret_door      Item=  -1 addl=1
+  ( 8,28) type=5 secret_door      Item=  -1 addl=3
+
+=== L04 …But They’re Hungry  sealed=1 (small leftover) ===
+  (23,29) type=5 secret_door      Item=  -1 addl=2
+
+=== L20 Don’t Get Poisoned!  sealed=9 (small leftover) ===
+  ( 1, 1) type=1 normal           Item= 218 addl=0
+  ( 2, 1) type=1 normal           Item= 213 addl=0
+  ( 3, 1) type=1 normal           Item= 216 addl=0
+  ( 1, 2) type=1 normal           Item=  -1 addl=0
+  ( 2, 2) type=1 normal           Item= 217 addl=0
+  ( 3, 2) type=1 normal           Item= 210 addl=0
+  ( 1, 3) type=1 normal           Item= 214 addl=0
+  ( 2, 3) type=1 normal           Item= 215 addl=0
+  ( 3, 3) type=1 normal           Item= 212 addl=0

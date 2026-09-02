@@ -1,0 +1,2126 @@
+[
+  {
+    "from_level": 0,
+    "from_name": "Ground Floor",
+    "list_index": 0,
+    "change_type": 0,
+    "change_type_name": "upward",
+    "to_level": 1,
+    "to_name": "Never Stop Firing",
+    "to_x": 16,
+    "to_y": 30,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": 2,
+      "type_addl": 0
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 0,
+    "from_name": "Ground Floor",
+    "list_index": 1,
+    "change_type": 0,
+    "change_type_name": "upward",
+    "to_level": 2,
+    "to_name": "Lock&Load",
+    "to_x": 1,
+    "to_y": 30,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": 19,
+      "type_addl": 0
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 0,
+    "from_name": "Ground Floor",
+    "list_index": 2,
+    "change_type": 1,
+    "change_type_name": "downward",
+    "to_level": 7,
+    "to_name": "Wrong Way!",
+    "to_x": 14,
+    "to_y": 13,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": 63,
+      "type_addl": 0
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 0,
+    "from_name": "Ground Floor",
+    "list_index": 3,
+    "change_type": 1,
+    "change_type_name": "downward",
+    "to_level": 10,
+    "to_name": "Feel the Power",
+    "to_x": 1,
+    "to_y": 28,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": 1,
+      "type_addl": 0
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 1,
+    "from_name": "Never Stop Firing",
+    "list_index": 0,
+    "change_type": 1,
+    "change_type_name": "downward",
+    "to_level": 0,
+    "to_name": "Ground Floor",
+    "to_x": 28,
+    "to_y": 3,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": 41,
+      "type_addl": 0
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 2,
+    "from_name": "Lock&Load",
+    "list_index": 0,
+    "change_type": 1,
+    "change_type_name": "downward",
+    "to_level": 0,
+    "to_name": "Ground Floor",
+    "to_x": 4,
+    "to_y": 1,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": 42,
+      "type_addl": 1
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 2,
+    "from_name": "Lock&Load",
+    "list_index": 1,
+    "change_type": 0,
+    "change_type_name": "upward",
+    "to_level": 3,
+    "to_name": "They May Be Slow…",
+    "to_x": 15,
+    "to_y": 30,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": 2,
+      "type_addl": 0
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 3,
+    "from_name": "They May Be Slow…",
+    "list_index": 0,
+    "change_type": 1,
+    "change_type_name": "downward",
+    "to_level": 2,
+    "to_name": "Lock&Load",
+    "to_x": 30,
+    "to_y": 1,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": 156,
+      "type_addl": 1
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 3,
+    "from_name": "They May Be Slow…",
+    "list_index": 1,
+    "change_type": 0,
+    "change_type_name": "upward",
+    "to_level": 4,
+    "to_name": "…But They’re Hungry",
+    "to_x": 2,
+    "to_y": 30,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": 25,
+      "type_addl": 0
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 3,
+    "from_name": "They May Be Slow…",
+    "list_index": 2,
+    "change_type": 0,
+    "change_type_name": "upward",
+    "to_level": 4,
+    "to_name": "…But They’re Hungry",
+    "to_x": 29,
+    "to_y": 30,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": 26,
+      "type_addl": 1
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 3,
+    "from_name": "They May Be Slow…",
+    "list_index": 3,
+    "change_type": 3,
+    "change_type_name": "secret_upward",
+    "to_level": 4,
+    "to_name": "…But They’re Hungry",
+    "to_x": 15,
+    "to_y": 29,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": -1,
+      "type_addl": 4
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 3,
+    "from_name": "They May Be Slow…",
+    "list_index": 4,
+    "change_type": 3,
+    "change_type_name": "secret_upward",
+    "to_level": 5,
+    "to_name": "Evil Undead Phantasms Must Die!",
+    "to_x": 19,
+    "to_y": 23,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": -1,
+      "type_addl": 3
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 4,
+    "from_name": "…But They’re Hungry",
+    "list_index": 0,
+    "change_type": 1,
+    "change_type_name": "downward",
+    "to_level": 3,
+    "to_name": "They May Be Slow…",
+    "to_x": 1,
+    "to_y": 1,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": 1,
+      "type_addl": 1
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 4,
+    "from_name": "…But They’re Hungry",
+    "list_index": 1,
+    "change_type": 1,
+    "change_type_name": "downward",
+    "to_level": 3,
+    "to_name": "They May Be Slow…",
+    "to_x": 30,
+    "to_y": 1,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": 0,
+      "type_addl": 2
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 4,
+    "from_name": "…But They’re Hungry",
+    "list_index": 2,
+    "change_type": 0,
+    "change_type_name": "upward",
+    "to_level": 5,
+    "to_name": "Evil Undead Phantasms Must Die!",
+    "to_x": 5,
+    "to_y": 24,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": 62,
+      "type_addl": 0
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 4,
+    "from_name": "…But They’re Hungry",
+    "list_index": 3,
+    "change_type": 0,
+    "change_type_name": "upward",
+    "to_level": 5,
+    "to_name": "Evil Undead Phantasms Must Die!",
+    "to_x": 24,
+    "to_y": 5,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": 0,
+      "type_addl": 1
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 4,
+    "from_name": "…But They’re Hungry",
+    "list_index": 4,
+    "change_type": 2,
+    "change_type_name": "secret_downward",
+    "to_level": 3,
+    "to_name": "They May Be Slow…",
+    "to_x": 2,
+    "to_y": 25,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": -1,
+      "type_addl": 3
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 5,
+    "from_name": "Evil Undead Phantasms Must Die!",
+    "list_index": 0,
+    "change_type": 1,
+    "change_type_name": "downward",
+    "to_level": 4,
+    "to_name": "…But They’re Hungry",
+    "to_x": 5,
+    "to_y": 25,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": 27,
+      "type_addl": 2
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 5,
+    "from_name": "Evil Undead Phantasms Must Die!",
+    "list_index": 1,
+    "change_type": 1,
+    "change_type_name": "downward",
+    "to_level": 4,
+    "to_name": "…But They’re Hungry",
+    "to_x": 24,
+    "to_y": 5,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": 28,
+      "type_addl": 3
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 5,
+    "from_name": "Evil Undead Phantasms Must Die!",
+    "list_index": 2,
+    "change_type": 0,
+    "change_type_name": "upward",
+    "to_level": 6,
+    "to_name": "Ascension",
+    "to_x": 8,
+    "to_y": 22,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": 32,
+      "type_addl": 0
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 5,
+    "from_name": "Evil Undead Phantasms Must Die!",
+    "list_index": 3,
+    "change_type": 2,
+    "change_type_name": "secret_downward",
+    "to_level": 2,
+    "to_name": "Lock&Load",
+    "to_x": 27,
+    "to_y": 2,
+    "to_sector": {
+      "type": 1,
+      "type_name": "normal",
+      "item": -1,
+      "type_addl": 0
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 6,
+    "from_name": "Ascension",
+    "list_index": 0,
+    "change_type": 1,
+    "change_type_name": "downward",
+    "to_level": 5,
+    "to_name": "Evil Undead Phantasms Must Die!",
+    "to_x": 20,
+    "to_y": 21,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": 47,
+      "type_addl": 2
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 7,
+    "from_name": "Wrong Way!",
+    "list_index": 0,
+    "change_type": 0,
+    "change_type_name": "upward",
+    "to_level": 0,
+    "to_name": "Ground Floor",
+    "to_x": 4,
+    "to_y": 11,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": 73,
+      "type_addl": 2
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 7,
+    "from_name": "Wrong Way!",
+    "list_index": 1,
+    "change_type": 1,
+    "change_type_name": "downward",
+    "to_level": 8,
+    "to_name": "Welcome, Tasty Primate",
+    "to_x": 9,
+    "to_y": 11,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": 82,
+      "type_addl": 0
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 7,
+    "from_name": "Wrong Way!",
+    "list_index": 2,
+    "change_type": 1,
+    "change_type_name": "downward",
+    "to_level": 8,
+    "to_name": "Welcome, Tasty Primate",
+    "to_x": 9,
+    "to_y": 19,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": 83,
+      "type_addl": 1
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 7,
+    "from_name": "Wrong Way!",
+    "list_index": 3,
+    "change_type": 1,
+    "change_type_name": "downward",
+    "to_level": 8,
+    "to_name": "Welcome, Tasty Primate",
+    "to_x": 17,
+    "to_y": 19,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": 84,
+      "type_addl": 2
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 7,
+    "from_name": "Wrong Way!",
+    "list_index": 4,
+    "change_type": 1,
+    "change_type_name": "downward",
+    "to_level": 8,
+    "to_name": "Welcome, Tasty Primate",
+    "to_x": 17,
+    "to_y": 11,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": 85,
+      "type_addl": 3
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 7,
+    "from_name": "Wrong Way!",
+    "list_index": 5,
+    "change_type": 1,
+    "change_type_name": "downward",
+    "to_level": 8,
+    "to_name": "Welcome, Tasty Primate",
+    "to_x": 1,
+    "to_y": 1,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": 86,
+      "type_addl": 4
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 7,
+    "from_name": "Wrong Way!",
+    "list_index": 6,
+    "change_type": 1,
+    "change_type_name": "downward",
+    "to_level": 8,
+    "to_name": "Welcome, Tasty Primate",
+    "to_x": 30,
+    "to_y": 30,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": 87,
+      "type_addl": 5
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 8,
+    "from_name": "Welcome, Tasty Primate",
+    "list_index": 0,
+    "change_type": 0,
+    "change_type_name": "upward",
+    "to_level": 7,
+    "to_name": "Wrong Way!",
+    "to_x": 10,
+    "to_y": 9,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": 0,
+      "type_addl": 1
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 8,
+    "from_name": "Welcome, Tasty Primate",
+    "list_index": 1,
+    "change_type": 0,
+    "change_type_name": "upward",
+    "to_level": 7,
+    "to_name": "Wrong Way!",
+    "to_x": 10,
+    "to_y": 17,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": 10,
+      "type_addl": 2
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 8,
+    "from_name": "Welcome, Tasty Primate",
+    "list_index": 2,
+    "change_type": 0,
+    "change_type_name": "upward",
+    "to_level": 7,
+    "to_name": "Wrong Way!",
+    "to_x": 18,
+    "to_y": 17,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": 17,
+      "type_addl": 3
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 8,
+    "from_name": "Welcome, Tasty Primate",
+    "list_index": 3,
+    "change_type": 0,
+    "change_type_name": "upward",
+    "to_level": 7,
+    "to_name": "Wrong Way!",
+    "to_x": 18,
+    "to_y": 9,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": 25,
+      "type_addl": 4
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 8,
+    "from_name": "Welcome, Tasty Primate",
+    "list_index": 4,
+    "change_type": 0,
+    "change_type_name": "upward",
+    "to_level": 7,
+    "to_name": "Wrong Way!",
+    "to_x": 1,
+    "to_y": 1,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": 33,
+      "type_addl": 5
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 8,
+    "from_name": "Welcome, Tasty Primate",
+    "list_index": 5,
+    "change_type": 0,
+    "change_type_name": "upward",
+    "to_level": 7,
+    "to_name": "Wrong Way!",
+    "to_x": 29,
+    "to_y": 30,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": 34,
+      "type_addl": 6
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 8,
+    "from_name": "Welcome, Tasty Primate",
+    "list_index": 6,
+    "change_type": 1,
+    "change_type_name": "downward",
+    "to_level": 9,
+    "to_name": "We Can See In The Dark… Can You?",
+    "to_x": 4,
+    "to_y": 26,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": 12,
+      "type_addl": 0
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 9,
+    "from_name": "We Can See In The Dark… Can You?",
+    "list_index": 0,
+    "change_type": 0,
+    "change_type_name": "upward",
+    "to_level": 8,
+    "to_name": "Welcome, Tasty Primate",
+    "to_x": 3,
+    "to_y": 17,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": 88,
+      "type_addl": 6
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 9,
+    "from_name": "We Can See In The Dark… Can You?",
+    "list_index": 1,
+    "change_type": 1,
+    "change_type_name": "downward",
+    "to_level": 14,
+    "to_name": "Happy Happy, Carnage Carnage",
+    "to_x": 13,
+    "to_y": 11,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": 14,
+      "type_addl": 0
+    },
+    "referenced_by_source_type3": false
+  },
+  {
+    "from_level": 9,
+    "from_name": "We Can See In The Dark… Can You?",
+    "list_index": 2,
+    "change_type": 1,
+    "change_type_name": "downward",
+    "to_level": 14,
+    "to_name": "Happy Happy, Carnage Carnage",
+    "to_x": 13,
+    "to_y": 11,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": 14,
+      "type_addl": 0
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 10,
+    "from_name": "Feel the Power",
+    "list_index": 0,
+    "change_type": 0,
+    "change_type_name": "upward",
+    "to_level": 0,
+    "to_name": "Ground Floor",
+    "to_x": 28,
+    "to_y": 11,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": 86,
+      "type_addl": 3
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 10,
+    "from_name": "Feel the Power",
+    "list_index": 1,
+    "change_type": 1,
+    "change_type_name": "downward",
+    "to_level": 11,
+    "to_name": "A Plague of Demons",
+    "to_x": 16,
+    "to_y": 13,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": 1,
+      "type_addl": 0
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 11,
+    "from_name": "A Plague of Demons",
+    "list_index": 0,
+    "change_type": 0,
+    "change_type_name": "upward",
+    "to_level": 10,
+    "to_name": "Feel the Power",
+    "to_x": 1,
+    "to_y": 6,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": 0,
+      "type_addl": 1
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 11,
+    "from_name": "A Plague of Demons",
+    "list_index": 1,
+    "change_type": 1,
+    "change_type_name": "downward",
+    "to_level": 12,
+    "to_name": "Beware of Low-Flying Nightmares",
+    "to_x": 15,
+    "to_y": 16,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": 0,
+      "type_addl": 0
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 12,
+    "from_name": "Beware of Low-Flying Nightmares",
+    "list_index": 0,
+    "change_type": 0,
+    "change_type_name": "upward",
+    "to_level": 11,
+    "to_name": "A Plague of Demons",
+    "to_x": 1,
+    "to_y": 9,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": 0,
+      "type_addl": 1
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 12,
+    "from_name": "Beware of Low-Flying Nightmares",
+    "list_index": 1,
+    "change_type": 1,
+    "change_type_name": "downward",
+    "to_level": 13,
+    "to_name": "The Labyrinth",
+    "to_x": 16,
+    "to_y": 17,
+    "to_sector": {
+      "type": 0,
+      "type_name": "void",
+      "item": -1,
+      "type_addl": 0
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 13,
+    "from_name": "The Labyrinth",
+    "list_index": 0,
+    "change_type": 1,
+    "change_type_name": "downward",
+    "to_level": 14,
+    "to_name": "Happy Happy, Carnage Carnage",
+    "to_x": 17,
+    "to_y": 11,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": 13,
+      "type_addl": 1
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 13,
+    "from_name": "The Labyrinth",
+    "list_index": 1,
+    "change_type": 0,
+    "change_type_name": "upward",
+    "to_level": 12,
+    "to_name": "Beware of Low-Flying Nightmares",
+    "to_x": 30,
+    "to_y": 1,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": 21,
+      "type_addl": 1
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 13,
+    "from_name": "The Labyrinth",
+    "list_index": 2,
+    "change_type": 1,
+    "change_type_name": "downward",
+    "to_level": 15,
+    "to_name": "Need a Light?",
+    "to_x": 16,
+    "to_y": 14,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": 4,
+      "type_addl": 0
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 13,
+    "from_name": "The Labyrinth",
+    "list_index": 3,
+    "change_type": 1,
+    "change_type_name": "downward",
+    "to_level": 16,
+    "to_name": "Lasciate Ogne Speranza, Voi Ch’Intrate",
+    "to_x": 15,
+    "to_y": 1,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": 0,
+      "type_addl": 0
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 14,
+    "from_name": "Happy Happy, Carnage Carnage",
+    "list_index": 0,
+    "change_type": 0,
+    "change_type_name": "upward",
+    "to_level": 9,
+    "to_name": "We Can See In The Dark… Can You?",
+    "to_x": 29,
+    "to_y": 10,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": 13,
+      "type_addl": 2
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 14,
+    "from_name": "Happy Happy, Carnage Carnage",
+    "list_index": 1,
+    "change_type": 0,
+    "change_type_name": "upward",
+    "to_level": 13,
+    "to_name": "The Labyrinth",
+    "to_x": 16,
+    "to_y": 17,
+    "to_sector": {
+      "type": 0,
+      "type_name": "void",
+      "item": -1,
+      "type_addl": 0
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 14,
+    "from_name": "Happy Happy, Carnage Carnage",
+    "list_index": 2,
+    "change_type": 2,
+    "change_type_name": "secret_downward",
+    "to_level": 20,
+    "to_name": "Don’t Get Poisoned!",
+    "to_x": 2,
+    "to_y": 2,
+    "to_sector": {
+      "type": 1,
+      "type_name": "normal",
+      "item": 217,
+      "type_addl": 0
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 14,
+    "from_name": "Happy Happy, Carnage Carnage",
+    "list_index": 3,
+    "change_type": 2,
+    "change_type_name": "secret_downward",
+    "to_level": 20,
+    "to_name": "Don’t Get Poisoned!",
+    "to_x": 2,
+    "to_y": 2,
+    "to_sector": {
+      "type": 1,
+      "type_name": "normal",
+      "item": 217,
+      "type_addl": 0
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 14,
+    "from_name": "Happy Happy, Carnage Carnage",
+    "list_index": 4,
+    "change_type": 2,
+    "change_type_name": "secret_downward",
+    "to_level": 11,
+    "to_name": "A Plague of Demons",
+    "to_x": 16,
+    "to_y": 9,
+    "to_sector": {
+      "type": 1,
+      "type_name": "normal",
+      "item": -1,
+      "type_addl": 0
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 15,
+    "from_name": "Need a Light?",
+    "list_index": 0,
+    "change_type": 0,
+    "change_type_name": "upward",
+    "to_level": 13,
+    "to_name": "The Labyrinth",
+    "to_x": 16,
+    "to_y": 17,
+    "to_sector": {
+      "type": 0,
+      "type_name": "void",
+      "item": -1,
+      "type_addl": 0
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 16,
+    "from_name": "Lasciate Ogne Speranza, Voi Ch’Intrate",
+    "list_index": 0,
+    "change_type": 0,
+    "change_type_name": "upward",
+    "to_level": 13,
+    "to_name": "The Labyrinth",
+    "to_x": 16,
+    "to_y": 18,
+    "to_sector": {
+      "type": 1,
+      "type_name": "normal",
+      "item": 169,
+      "type_addl": 0
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 16,
+    "from_name": "Lasciate Ogne Speranza, Voi Ch’Intrate",
+    "list_index": 1,
+    "change_type": 1,
+    "change_type_name": "downward",
+    "to_level": 17,
+    "to_name": "Watch Your Step",
+    "to_x": 2,
+    "to_y": 20,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": 1,
+      "type_addl": 0
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 16,
+    "from_name": "Lasciate Ogne Speranza, Voi Ch’Intrate",
+    "list_index": 2,
+    "change_type": 1,
+    "change_type_name": "downward",
+    "to_level": 17,
+    "to_name": "Watch Your Step",
+    "to_x": 30,
+    "to_y": 24,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": 0,
+      "type_addl": 1
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 16,
+    "from_name": "Lasciate Ogne Speranza, Voi Ch’Intrate",
+    "list_index": 3,
+    "change_type": 1,
+    "change_type_name": "downward",
+    "to_level": 18,
+    "to_name": "I’d Rather Be Surfing",
+    "to_x": 8,
+    "to_y": 18,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": 26,
+      "type_addl": 0
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 17,
+    "from_name": "Watch Your Step",
+    "list_index": 0,
+    "change_type": 0,
+    "change_type_name": "upward",
+    "to_level": 16,
+    "to_name": "Lasciate Ogne Speranza, Voi Ch’Intrate",
+    "to_x": 10,
+    "to_y": 23,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": 325,
+      "type_addl": 1
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 17,
+    "from_name": "Watch Your Step",
+    "list_index": 1,
+    "change_type": 0,
+    "change_type_name": "upward",
+    "to_level": 16,
+    "to_name": "Lasciate Ogne Speranza, Voi Ch’Intrate",
+    "to_x": 21,
+    "to_y": 25,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": 328,
+      "type_addl": 2
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 18,
+    "from_name": "I’d Rather Be Surfing",
+    "list_index": 0,
+    "change_type": 0,
+    "change_type_name": "upward",
+    "to_level": 16,
+    "to_name": "Lasciate Ogne Speranza, Voi Ch’Intrate",
+    "to_x": 29,
+    "to_y": 4,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": 117,
+      "type_addl": 3
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 18,
+    "from_name": "I’d Rather Be Surfing",
+    "list_index": 1,
+    "change_type": 1,
+    "change_type_name": "downward",
+    "to_level": 19,
+    "to_name": "Warning: Earthquake Zone",
+    "to_x": 13,
+    "to_y": 3,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": 104,
+      "type_addl": 1
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 19,
+    "from_name": "Warning: Earthquake Zone",
+    "list_index": 0,
+    "change_type": 3,
+    "change_type_name": "secret_upward",
+    "to_level": 20,
+    "to_name": "Don’t Get Poisoned!",
+    "to_x": 6,
+    "to_y": 6,
+    "to_sector": {
+      "type": 9,
+      "type_name": "save",
+      "item": 36,
+      "type_addl": 0
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 19,
+    "from_name": "Warning: Earthquake Zone",
+    "list_index": 1,
+    "change_type": 0,
+    "change_type_name": "upward",
+    "to_level": 18,
+    "to_name": "I’d Rather Be Surfing",
+    "to_x": 25,
+    "to_y": 7,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": 110,
+      "type_addl": 1
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 20,
+    "from_name": "Don’t Get Poisoned!",
+    "list_index": 0,
+    "change_type": 2,
+    "change_type_name": "secret_downward",
+    "to_level": 20,
+    "to_name": "Don’t Get Poisoned!",
+    "to_x": 7,
+    "to_y": 21,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": -1,
+      "type_addl": 1
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 20,
+    "from_name": "Don’t Get Poisoned!",
+    "list_index": 1,
+    "change_type": 3,
+    "change_type_name": "secret_upward",
+    "to_level": 20,
+    "to_name": "Don’t Get Poisoned!",
+    "to_x": 4,
+    "to_y": 7,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": -1,
+      "type_addl": 0
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 20,
+    "from_name": "Don’t Get Poisoned!",
+    "list_index": 2,
+    "change_type": 3,
+    "change_type_name": "secret_upward",
+    "to_level": 20,
+    "to_name": "Don’t Get Poisoned!",
+    "to_x": 8,
+    "to_y": 7,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": -1,
+      "type_addl": 3
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 20,
+    "from_name": "Don’t Get Poisoned!",
+    "list_index": 3,
+    "change_type": 2,
+    "change_type_name": "secret_downward",
+    "to_level": 20,
+    "to_name": "Don’t Get Poisoned!",
+    "to_x": 7,
+    "to_y": 23,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": -1,
+      "type_addl": 2
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 20,
+    "from_name": "Don’t Get Poisoned!",
+    "list_index": 4,
+    "change_type": 3,
+    "change_type_name": "secret_upward",
+    "to_level": 20,
+    "to_name": "Don’t Get Poisoned!",
+    "to_x": 27,
+    "to_y": 25,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": -1,
+      "type_addl": 5
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 20,
+    "from_name": "Don’t Get Poisoned!",
+    "list_index": 5,
+    "change_type": 3,
+    "change_type_name": "secret_upward",
+    "to_level": 20,
+    "to_name": "Don’t Get Poisoned!",
+    "to_x": 6,
+    "to_y": 9,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": -1,
+      "type_addl": 4
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 20,
+    "from_name": "Don’t Get Poisoned!",
+    "list_index": 6,
+    "change_type": 2,
+    "change_type_name": "secret_downward",
+    "to_level": 20,
+    "to_name": "Don’t Get Poisoned!",
+    "to_x": 9,
+    "to_y": 11,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": -1,
+      "type_addl": 7
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 20,
+    "from_name": "Don’t Get Poisoned!",
+    "list_index": 7,
+    "change_type": 2,
+    "change_type_name": "secret_downward",
+    "to_level": 20,
+    "to_name": "Don’t Get Poisoned!",
+    "to_x": 25,
+    "to_y": 27,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": -1,
+      "type_addl": 6
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 20,
+    "from_name": "Don’t Get Poisoned!",
+    "list_index": 8,
+    "change_type": 3,
+    "change_type_name": "secret_upward",
+    "to_level": 21,
+    "to_name": "Please Excuse Our Dust",
+    "to_x": 28,
+    "to_y": 29,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": -1,
+      "type_addl": 13
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 20,
+    "from_name": "Don’t Get Poisoned!",
+    "list_index": 9,
+    "change_type": 2,
+    "change_type_name": "secret_downward",
+    "to_level": 20,
+    "to_name": "Don’t Get Poisoned!",
+    "to_x": 29,
+    "to_y": 14,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": -1,
+      "type_addl": 10
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 20,
+    "from_name": "Don’t Get Poisoned!",
+    "list_index": 10,
+    "change_type": 2,
+    "change_type_name": "secret_downward",
+    "to_level": 20,
+    "to_name": "Don’t Get Poisoned!",
+    "to_x": 29,
+    "to_y": 27,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": -1,
+      "type_addl": 9
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 21,
+    "from_name": "Please Excuse Our Dust",
+    "list_index": 0,
+    "change_type": 2,
+    "change_type_name": "secret_downward",
+    "to_level": 21,
+    "to_name": "Please Excuse Our Dust",
+    "to_x": 22,
+    "to_y": 11,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": -1,
+      "type_addl": 1
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 21,
+    "from_name": "Please Excuse Our Dust",
+    "list_index": 1,
+    "change_type": 2,
+    "change_type_name": "secret_downward",
+    "to_level": 21,
+    "to_name": "Please Excuse Our Dust",
+    "to_x": 25,
+    "to_y": 7,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": -1,
+      "type_addl": 0
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 21,
+    "from_name": "Please Excuse Our Dust",
+    "list_index": 2,
+    "change_type": 2,
+    "change_type_name": "secret_downward",
+    "to_level": 21,
+    "to_name": "Please Excuse Our Dust",
+    "to_x": 12,
+    "to_y": 2,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": -1,
+      "type_addl": 3
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 21,
+    "from_name": "Please Excuse Our Dust",
+    "list_index": 3,
+    "change_type": 2,
+    "change_type_name": "secret_downward",
+    "to_level": 21,
+    "to_name": "Please Excuse Our Dust",
+    "to_x": 29,
+    "to_y": 7,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": -1,
+      "type_addl": 2
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 21,
+    "from_name": "Please Excuse Our Dust",
+    "list_index": 4,
+    "change_type": 3,
+    "change_type_name": "secret_upward",
+    "to_level": 21,
+    "to_name": "Please Excuse Our Dust",
+    "to_x": 3,
+    "to_y": 25,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": -1,
+      "type_addl": 5
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 21,
+    "from_name": "Please Excuse Our Dust",
+    "list_index": 5,
+    "change_type": 3,
+    "change_type_name": "secret_upward",
+    "to_level": 21,
+    "to_name": "Please Excuse Our Dust",
+    "to_x": 27,
+    "to_y": 9,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": -1,
+      "type_addl": 4
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 21,
+    "from_name": "Please Excuse Our Dust",
+    "list_index": 6,
+    "change_type": 2,
+    "change_type_name": "secret_downward",
+    "to_level": 21,
+    "to_name": "Please Excuse Our Dust",
+    "to_x": 15,
+    "to_y": 18,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": -1,
+      "type_addl": 7
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 21,
+    "from_name": "Please Excuse Our Dust",
+    "list_index": 7,
+    "change_type": 3,
+    "change_type_name": "secret_upward",
+    "to_level": 21,
+    "to_name": "Please Excuse Our Dust",
+    "to_x": 1,
+    "to_y": 27,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": -1,
+      "type_addl": 6
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 21,
+    "from_name": "Please Excuse Our Dust",
+    "list_index": 8,
+    "change_type": 2,
+    "change_type_name": "secret_downward",
+    "to_level": 21,
+    "to_name": "Please Excuse Our Dust",
+    "to_x": 19,
+    "to_y": 30,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": -1,
+      "type_addl": 9
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 21,
+    "from_name": "Please Excuse Our Dust",
+    "list_index": 9,
+    "change_type": 3,
+    "change_type_name": "secret_upward",
+    "to_level": 21,
+    "to_name": "Please Excuse Our Dust",
+    "to_x": 5,
+    "to_y": 27,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": -1,
+      "type_addl": 8
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 21,
+    "from_name": "Please Excuse Our Dust",
+    "list_index": 12,
+    "change_type": 3,
+    "change_type_name": "secret_upward",
+    "to_level": 22,
+    "to_name": "But Wait!— That’s Not All!",
+    "to_x": 7,
+    "to_y": 10,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": -1,
+      "type_addl": 0
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 21,
+    "from_name": "Please Excuse Our Dust",
+    "list_index": 13,
+    "change_type": 3,
+    "change_type_name": "secret_upward",
+    "to_level": 20,
+    "to_name": "Don’t Get Poisoned!",
+    "to_x": 18,
+    "to_y": 29,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": -1,
+      "type_addl": 8
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 22,
+    "from_name": "But Wait!— That’s Not All!",
+    "list_index": 0,
+    "change_type": 3,
+    "change_type_name": "secret_upward",
+    "to_level": 21,
+    "to_name": "Please Excuse Our Dust",
+    "to_x": 2,
+    "to_y": 10,
+    "to_sector": {
+      "type": 1,
+      "type_name": "normal",
+      "item": -1,
+      "type_addl": 0
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 22,
+    "from_name": "But Wait!— That’s Not All!",
+    "list_index": 1,
+    "change_type": 3,
+    "change_type_name": "secret_upward",
+    "to_level": 22,
+    "to_name": "But Wait!— That’s Not All!",
+    "to_x": 3,
+    "to_y": 2,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": -1,
+      "type_addl": 4
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 22,
+    "from_name": "But Wait!— That’s Not All!",
+    "list_index": 2,
+    "change_type": 3,
+    "change_type_name": "secret_upward",
+    "to_level": 22,
+    "to_name": "But Wait!— That’s Not All!",
+    "to_x": 3,
+    "to_y": 9,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": -1,
+      "type_addl": 3
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 22,
+    "from_name": "But Wait!— That’s Not All!",
+    "list_index": 3,
+    "change_type": 3,
+    "change_type_name": "secret_upward",
+    "to_level": 22,
+    "to_name": "But Wait!— That’s Not All!",
+    "to_x": 28,
+    "to_y": 23,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": -1,
+      "type_addl": 2
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 22,
+    "from_name": "But Wait!— That’s Not All!",
+    "list_index": 4,
+    "change_type": 3,
+    "change_type_name": "secret_upward",
+    "to_level": 22,
+    "to_name": "But Wait!— That’s Not All!",
+    "to_x": 28,
+    "to_y": 30,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": -1,
+      "type_addl": 1
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 22,
+    "from_name": "But Wait!— That’s Not All!",
+    "list_index": 5,
+    "change_type": 2,
+    "change_type_name": "secret_downward",
+    "to_level": 22,
+    "to_name": "But Wait!— That’s Not All!",
+    "to_x": 2,
+    "to_y": 12,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": -1,
+      "type_addl": 7
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 22,
+    "from_name": "But Wait!— That’s Not All!",
+    "list_index": 6,
+    "change_type": 2,
+    "change_type_name": "secret_downward",
+    "to_level": 22,
+    "to_name": "But Wait!— That’s Not All!",
+    "to_x": 24,
+    "to_y": 6,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": -1,
+      "type_addl": 8
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 22,
+    "from_name": "But Wait!— That’s Not All!",
+    "list_index": 9,
+    "change_type": 2,
+    "change_type_name": "secret_downward",
+    "to_level": 22,
+    "to_name": "But Wait!— That’s Not All!",
+    "to_x": 2,
+    "to_y": 23,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": -1,
+      "type_addl": 10
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 22,
+    "from_name": "But Wait!— That’s Not All!",
+    "list_index": 11,
+    "change_type": 2,
+    "change_type_name": "secret_downward",
+    "to_level": 22,
+    "to_name": "But Wait!— That’s Not All!",
+    "to_x": 29,
+    "to_y": 2,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": -1,
+      "type_addl": 12
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 22,
+    "from_name": "But Wait!— That’s Not All!",
+    "list_index": 13,
+    "change_type": 3,
+    "change_type_name": "secret_upward",
+    "to_level": 23,
+    "to_name": "Where Only Fools Dare Tread",
+    "to_x": 23,
+    "to_y": 27,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": -1,
+      "type_addl": 17
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 23,
+    "from_name": "Where Only Fools Dare Tread",
+    "list_index": 0,
+    "change_type": 3,
+    "change_type_name": "secret_upward",
+    "to_level": 23,
+    "to_name": "Where Only Fools Dare Tread",
+    "to_x": 1,
+    "to_y": 3,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": -1,
+      "type_addl": 1
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 23,
+    "from_name": "Where Only Fools Dare Tread",
+    "list_index": 1,
+    "change_type": 2,
+    "change_type_name": "secret_downward",
+    "to_level": 23,
+    "to_name": "Where Only Fools Dare Tread",
+    "to_x": 3,
+    "to_y": 7,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": -1,
+      "type_addl": 4
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 23,
+    "from_name": "Where Only Fools Dare Tread",
+    "list_index": 2,
+    "change_type": 3,
+    "change_type_name": "secret_upward",
+    "to_level": 23,
+    "to_name": "Where Only Fools Dare Tread",
+    "to_x": 3,
+    "to_y": 1,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": -1,
+      "type_addl": 0
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 23,
+    "from_name": "Where Only Fools Dare Tread",
+    "list_index": 3,
+    "change_type": 2,
+    "change_type_name": "secret_downward",
+    "to_level": 23,
+    "to_name": "Where Only Fools Dare Tread",
+    "to_x": 9,
+    "to_y": 7,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": -1,
+      "type_addl": 8
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 23,
+    "from_name": "Where Only Fools Dare Tread",
+    "list_index": 4,
+    "change_type": 3,
+    "change_type_name": "secret_upward",
+    "to_level": 23,
+    "to_name": "Where Only Fools Dare Tread",
+    "to_x": 3,
+    "to_y": 5,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": -1,
+      "type_addl": 2
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 23,
+    "from_name": "Where Only Fools Dare Tread",
+    "list_index": 5,
+    "change_type": 2,
+    "change_type_name": "secret_downward",
+    "to_level": 23,
+    "to_name": "Where Only Fools Dare Tread",
+    "to_x": 7,
+    "to_y": 9,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": -1,
+      "type_addl": 9
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 23,
+    "from_name": "Where Only Fools Dare Tread",
+    "list_index": 6,
+    "change_type": 3,
+    "change_type_name": "secret_upward",
+    "to_level": 23,
+    "to_name": "Where Only Fools Dare Tread",
+    "to_x": 9,
+    "to_y": 11,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": -1,
+      "type_addl": 10
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 23,
+    "from_name": "Where Only Fools Dare Tread",
+    "list_index": 7,
+    "change_type": 2,
+    "change_type_name": "secret_downward",
+    "to_level": 23,
+    "to_name": "Where Only Fools Dare Tread",
+    "to_x": 7,
+    "to_y": 3,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": -1,
+      "type_addl": 12
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 23,
+    "from_name": "Where Only Fools Dare Tread",
+    "list_index": 8,
+    "change_type": 3,
+    "change_type_name": "secret_upward",
+    "to_level": 23,
+    "to_name": "Where Only Fools Dare Tread",
+    "to_x": 1,
+    "to_y": 9,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": -1,
+      "type_addl": 5
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 23,
+    "from_name": "Where Only Fools Dare Tread",
+    "list_index": 9,
+    "change_type": 2,
+    "change_type_name": "secret_downward",
+    "to_level": 23,
+    "to_name": "Where Only Fools Dare Tread",
+    "to_x": 3,
+    "to_y": 11,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": -1,
+      "type_addl": 6
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 23,
+    "from_name": "Where Only Fools Dare Tread",
+    "list_index": 10,
+    "change_type": 3,
+    "change_type_name": "secret_upward",
+    "to_level": 23,
+    "to_name": "Where Only Fools Dare Tread",
+    "to_x": 11,
+    "to_y": 9,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": -1,
+      "type_addl": 11
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 23,
+    "from_name": "Where Only Fools Dare Tread",
+    "list_index": 11,
+    "change_type": 2,
+    "change_type_name": "secret_downward",
+    "to_level": 23,
+    "to_name": "Where Only Fools Dare Tread",
+    "to_x": 3,
+    "to_y": 1,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": -1,
+      "type_addl": 0
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 23,
+    "from_name": "Where Only Fools Dare Tread",
+    "list_index": 12,
+    "change_type": 2,
+    "change_type_name": "secret_downward",
+    "to_level": 24,
+    "to_name": "Ok, Who Else Wants Some?",
+    "to_x": 14,
+    "to_y": 19,
+    "to_sector": {
+      "type": 1,
+      "type_name": "normal",
+      "item": -1,
+      "type_addl": 0
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 23,
+    "from_name": "Where Only Fools Dare Tread",
+    "list_index": 13,
+    "change_type": 3,
+    "change_type_name": "secret_upward",
+    "to_level": 23,
+    "to_name": "Where Only Fools Dare Tread",
+    "to_x": 5,
+    "to_y": 9,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": -1,
+      "type_addl": 7
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 23,
+    "from_name": "Where Only Fools Dare Tread",
+    "list_index": 14,
+    "change_type": 2,
+    "change_type_name": "secret_downward",
+    "to_level": 23,
+    "to_name": "Where Only Fools Dare Tread",
+    "to_x": 9,
+    "to_y": 7,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": -1,
+      "type_addl": 8
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 23,
+    "from_name": "Where Only Fools Dare Tread",
+    "list_index": 15,
+    "change_type": 3,
+    "change_type_name": "secret_upward",
+    "to_level": 23,
+    "to_name": "Where Only Fools Dare Tread",
+    "to_x": 5,
+    "to_y": 3,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": -1,
+      "type_addl": 3
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 23,
+    "from_name": "Where Only Fools Dare Tread",
+    "list_index": 16,
+    "change_type": 2,
+    "change_type_name": "secret_downward",
+    "to_level": 23,
+    "to_name": "Where Only Fools Dare Tread",
+    "to_x": 11,
+    "to_y": 9,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": -1,
+      "type_addl": 11
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 23,
+    "from_name": "Where Only Fools Dare Tread",
+    "list_index": 17,
+    "change_type": 3,
+    "change_type_name": "secret_upward",
+    "to_level": 22,
+    "to_name": "But Wait!— That’s Not All!",
+    "to_x": 26,
+    "to_y": 18,
+    "to_sector": {
+      "type": 3,
+      "type_name": "change_level",
+      "item": -1,
+      "type_addl": 13
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 24,
+    "from_name": "Ok, Who Else Wants Some?",
+    "list_index": 0,
+    "change_type": 3,
+    "change_type_name": "secret_upward",
+    "to_level": 24,
+    "to_name": "Ok, Who Else Wants Some?",
+    "to_x": 14,
+    "to_y": 19,
+    "to_sector": {
+      "type": 1,
+      "type_name": "normal",
+      "item": -1,
+      "type_addl": 0
+    },
+    "referenced_by_source_type3": true
+  },
+  {
+    "from_level": 24,
+    "from_name": "Ok, Who Else Wants Some?",
+    "list_index": 1,
+    "change_type": 3,
+    "change_type_name": "secret_upward",
+    "to_level": 18,
+    "to_name": "I’d Rather Be Surfing",
+    "to_x": 2,
+    "to_y": 2,
+    "to_sector": {
+      "type": 1,
+      "type_name": "normal",
+      "item": -1,
+      "type_addl": 0
+    },
+    "referenced_by_source_type3": true
+  }
+]

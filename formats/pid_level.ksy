@@ -1,10 +1,13 @@
-# Pathways Into Darkness ù one Maps file record and the file that
+# Pathways Into Darkness ? one Maps file record and the file that
 # contains them. Layout confirmed against the v2.0 Maps data fork
 # (25 * 16834 = 420850). Field knowledge from Petrich/Semmler
 # documentation, rewritten here; do not treat this file as a copy of
 # their header.
 #
 # Endian: big (68k). Text: Mac Roman Pascal strings.
+# Generate:
+#   kaitai-struct-compiler formats/pid_level.ksy -t python --outdir tools/generated
+#   kaitai-struct-compiler formats/pid_level.ksy -t csharp --dotnet-namespace Pid.Formats --outdir tools/generated
 meta:
   id: pid_maps
   title: Pathways Into Darkness Maps file
@@ -116,10 +119,12 @@ enums:
     3: y_positive
 
   level_change_type:
+    -1: unused
     0: upward
     1: downward
     2: secret_downward
     3: secret_upward
+    4: undocumented_4
 
   monster_type:
     -1: none
