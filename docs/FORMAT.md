@@ -422,135 +422,124 @@ Eight tables, matching eight `texture_list` slots. Variations observed
 on maps are only 0–3, so `variation N → clut 128+N` is **not** 1:1 with
 all eight tables. PNGs: `reference/palettes/clut_128.png` … `clut_135.png`.
 
-### `.256` shapes
+### `.256` — art resources (PARTIAL)
 
-50 resources in v2.0 `Shapes.rsrc`. IDs: 128–137, 139–142, 148–167,
-187–202.
+50 resources in `Shapes.rsrc`, IDs 128–137, 139–142, 148–167, 187–202.
+Compression is **unsolved**. Structure below is verified against bytes.
 
-Header (7 bytes) then four `u32be` offsets at byte 7. Those offsets
-are into the **decompressed** buffer (`u32@0`), not the packed file.
-Confirmed on 46/50.
+#### Header — 23 bytes
 
-| Bytes | Observed |
-|---|---|
-| 0–3 | u32be size (inferred decompressed). 195–202 all store **33144**. |
-| 4–5 | `u16be`. `0x99` on most; also `ff`/`c5`/`81`/`88`/`8c`/`9b`/`d0`. Not a codec id. |
-| 6 | frame / image count, **not** a colour count (128→59 vs 15-ish clut entries). Floor/ceiling = 2. |
+| Offset | Size | Field |
+|---|---|---|
+| 0x00 | 4 | `u32be` decompressed size |
+| 0x04 | 1 | Format tag. Selects colour-table stride (below) |
+| 0x05 | 1 | Always `0x00`, all 50 |
+| 0x06 | 1 | Tile count, 1–59 |
+| 0x07 | 16 | Four `u32be`: `v1 v2 v3 v4` |
 
-Section sizes differ by role. Floor/ceiling 195–202 share one pattern:
-`offs = [280, 344, 376, 32768]`, sizes `[280, 64, 32, 32392, 376]`.
-`offs[3] == 32768 == 2×16384`. `u32@0 - offs[3] == 376 == 2×188`.
-`byte6 == 2`. Two 128×128 8bpp images plus two 188-byte headers.
+Offset 0x07 is **odd-aligned and correct** — bytes 4, 5, 6 are three
+separate `u8` fields, which is why a `u16be` read at 4 always looks
+like `X<<8`. The offset-8 alignment was tested and disproven (46/50
+internally consistent at 7 versus 0/50 at 8).
 
-Each resource carries **its own** colour table. Index spaces overlap
-because resources reuse slots differently — that is expected, not a
-conflict. Do not build a master 256-colour union. Petrich’s “128 sets
-overall color table” is approximate.
+`v1`, `v2`, `v3` are offsets into the **decompressed** buffer.
+`v4` is a **length**, not an offset: `v4 == decompressed_size - v3`
+on 48/50. So a `.256` has four sections — `[0,v1) [v1,v2) [v2,v3)
+[v3,size)` — the last being `v4` bytes and holding the pixel raster.
 
-- Compact 5-byte records from offset 29: `u16be index, u8 kind=3, u8 gray, u8 0x81`.
-  On 195 **and** 198 this is indices 3–16 = `FF, EE, …, 22` (true gray).
-  198 also has kind=4 records mentioning index 18.
-- 8-byte Mac clut runs later on some resources (high byte == low byte
-  per channel). Use that resource’s table for that resource’s pixels.
-- Resource 128 covers 20–33, 36–40, 52–56, 68–81, … (not 0–N).
+Invariants across all 50: `v1 % 8 == 0`, `(v2-v1) % 16 == 0`,
+`(v3-v2) % 16 == 0`. `v2-v1 == 32 * tile_count` on 48/50 (the two
+misses have a corrupt `v1`).
 
-#### Packed layout on 195–202 (round 10)
+#### Format tag (0x04)
 
-Bytes **200–256 are identical** across all eight floor/ceiling
-resources. The first byte that varies is **257**. Shared fields just
-before pixels: `u16be` 128 at file offsets 229, 233, 237, 244, 251,
-253; `u16be` 16384 at 249; `u16be` 256 at 235. Packed `[23:211]`
-(188 bytes) is the shared compact gray + start of the 8-byte clut —
-format constants, **not** a per-image compression flag.
+| Tag | Count | Table stride |
+|---|---|---|
+| 0x99 | 29 | 5 |
+| 0xFF | 12 | 8 |
+| 0x9B | 2 | 7 |
+| 0xC5 | 2 | 8 |
+| 0xD0 | 1 | 8 |
+| 0x81 | 2 | mixed (167→8, 189→5) |
+| 0x88 | 1 | 5 |
+| 0x8C | 1 | 5 |
 
-The last 376 packed bytes differ in every position across 195–202
-(pixel / RLE payload).
+The four resources with malformed directories — 161 (0x88), 162
+(0x8C), 167 and 189 (0x81) — are **exactly** the four tags below
+0x99. Four of four, no exceptions either way. This is a format
+difference, not corruption.
 
-#### Discriminator (rsrc 195 own table = indices 3–16)
+For tag 0x81 (167, 189), reading **three** `u32be` at offset 0x0B
+instead of four at 0x07 makes both fully sane: ascending, and
+`v4 == size - v3`. Tag 0x81 has a three-value directory. 161 and 162
+are singletons and remain unexplained — 161's `v3` is junk, 162
+stores `size - v3` in the low 16 bits of `v4`.
 
-Packed slice `258..end` (31370 bytes):
+#### Colour tables
 
-| | 195 (31628) | 196 (32727) | 198 (18545) |
-|---|---|---|---|
-| in 3–16 | 25242/31370 = **0.8047** | 28880/32469 = 0.8895 | 10440/18287 = **0.5709** |
-| OOR / KB | **195.35** | 110.54 | **429.10** |
-| 0x80+ / KB | 85.2 | 31.0 | 119.2 |
-| 0x00–0x02 / KB | 92.3 | 31.1 | 95.3 |
+Each `.256` carries its **own** palette. There is no global palette
+and index values conflict between resources.
 
-198/195 OOR-density ratio = **2.197** (more OOR/KB in the most
-compressed resource). 198 also has 2548 × `0x11` and 1184 × `0x12`;
-those are outside 3–16 but 198’s own records mention index 18, so
-they may be extra pixel slots. Subtracting them, remaining OOR/KB
-is ~225 vs 195’s 195. The **0x80+** density still tracks packed size.
+A raw, uncompressed table begins at packed offset 29 on all 50,
+first index always 3, ascending by 1. Stride 5 is `u16be` index plus
+three `u8` channels; stride 8 is Mac ColorSpec (`u16be` index plus
+three `u16be` channels); stride 7 is unresolved.
 
-195 OOR gaps (first 200): median **2**, 102/200 gaps are 2, 155/200
-≤ 8. Clustered, not uniform blocks, not random. Hex at `0x110+`:
-`00 08 88 0a … 00 09 81 08` — RLE controls interleaved with 3–16
-literals. Histogram of `00`/`01`/`02` is geometric (1793 / 763 / 338).
+**Tables are interleaved with pixel data, not merely prefixed.**
+195 and 196 have a second 8-byte run at packed 115; 192 has at least
+twelve. The end of the first run is not a raw/compressed boundary.
+This is the likeliest reason every decoder attempt eventually
+swallows table bytes as opcodes.
 
-Raw 16384 from 258 is recognisable mottled gray with salt-and-pepper
-(`reference/shapes/195_raw_a.png`). Second chunk from 16642 has 14986
-bytes available (overrun 1398); in-palette 0.7664 with no sudden
-OOR spike — not “first image raw, second compressed”. 198 cannot
-hold a second raw 16384 (only 1903 bytes left).
+#### Raster geometry
 
-#### Tried decompressors (none closed)
+For 195–202: `v4` = 32768 = **128 × 256**, tile count 2, i.e. two
+128×128 tiles stacked. Width 128 maximises vertical pixel
+correlation (196: 0.1587 at width 128, versus 0.066 at 64 and 0.061
+at 181), while horizontal correlation stays flat at ~0.129 at every
+width — as expected, since horizontal neighbours remain adjacent
+however the stream is folded.
 
-`packbits_until` / `highbit_until` always emit exactly `target` if
-input remains; “EXACT” is not a natural boundary. Leftover packed
-bytes are the tell.
+**Wall textures are 128×128 and `tile_count` counts tiles.**
 
-From packed `@23`, restarting at each decompressed section:
-
-| scheme | s0–s2 | s3 (32392) | leftover |
-|---|---|---|---|
-| packbits | exact | exact, cons 14954, end 15390 | **16238** |
-| highbit_run | exact | **31362 / 32392** (short 1030) | 0 |
-| rle90 | exact | 31586 / 32392 | 0 |
-| unsigned_literal | exact | 29845 / 32392 | 0 |
-
-Two independent 16384 runs after a 376-byte PackBits header `@23`:
-PackBits A+B exact, end 15278, leftover **16350**. Whole-stream
-PackBits `@23` ≈ 67263 ≈ 2×33144 — leftover is the rest of an
-over-expanding stream, not a second valid image. PackBits on the
-first 376 bytes destroys the compact clut (`0x81` treated as a
-repeat opcode).
-
-highbit `@258` two 16384: A exact cons 16392 (barely compressed
-because leading 3–16 bytes are eaten as copy-counts), B
-14707/16384. Same ~1170-class short as the whole-stream miss.
-
-Discriminator-aware RLE (3–16 = literal, `00–02` = copy, `80+` =
-repeat) overshoots 195 (40605) and undershoots 198 (20981).
-Per-row PackBits/highbit (restart every 128 pixels) produces both
-128×128 frames on 195 but leaves 12 KB unread and shears the stone.
-
-#### Four resources that fail the 4-word table
-
-Byte 6 is still a small frame count (same character as the other 46).
-
-| ID | packed | u32@0 | b6 | u4 | table | Petrich |
-|---|---|---|---|---|---|---|
-| 161 | 14200 | 28992 | 5 | `0x8800` | 2-entry OK `[864, 1024]`; 3rd word garbage | corpses |
-| 162 | 5090 | 14172 | 4 | `0x8c00` | **3-entry OK** `[608, 736, 768]` | rat things |
-| 167 | 9231 | 21184 | 16 | `0x8100` | first u32@7 = 65432 junk; `u32@11` = `[664, 808, 20376, …]` | vine scenery |
-| 189 | 12738 | 23272 | 6 | `0x8100` | first u32@7 = 38040 junk; `u32@11` = `[344, 440, 22832]` | ? |
-
-167 and 189 likely use a **3-entry** table starting at offset 11
-(one `u32` later than the usual offset 7). Fourth word on several
-of these is `33554433` (`0x02000001`).
-
-#### Walls (192) vs AOPID
-
-rsrc 192: packed 167155, u32@0 185992, b6=22,
-`offs=[1944, 2648, 3016, 182976]`, own table 62 slots. PackBits
-16384-runs from 23: 13/22 exact then EOF. AOPID luma-histogram L1
-vs collections 17–21 is 246–358 (weak / inconclusive; remapped).
+Width 128 is measured on 195–202 only. 192's vertical correlation at
+128×256 is 0.032, an order of magnitude worse; it is a different kind
+of resource, likely a multi-tile sheet.
 
 Floor/ceiling encoding is **not** in `texture_list` (no slot → 195–202).
+Raw dumps: `reference/docs/256/`. Viewer: `tools/level_viewer.py`
+writes `reference/levels/`.
 
-Viewer: `tools/level_viewer.py` writes `reference/levels/`.
-Numbers: `reference/docs/round10_256.txt`.
+#### Compression — UNSOLVED
+
+Ruled out, do not revisit:
+
+- **PackBits** — 0/50 exact, 0/50 within 1%, 49/50 truncated, and it
+  fails identically from the table end, from offset 23, and from
+  `v1`. The model is wrong, not the start point.
+- **Literal-default RLE**, all five variants (run length `b-0x80`,
+  `b-0x80+1`, `256-b`, repeat-previous, and threshold at 0xC0) —
+  0/50 exact.
+
+The decisive constraints any future model must satisfy:
+
+1. **196 expands 0.4%** — 32,628 payload bytes produce 32,768 output.
+   No scheme with a per-literal opcode byte can do this.
+2. **198 expands 78%** — 18,446 bytes produce the same 32,768.
+   So compression ratio varies enormously within one family of
+   identically-shaped resources.
+3. **The high bit is not an escape flag.** Under a `>= 0x80 means
+   run` model, all 128 high values appear as opcodes with a geometric
+   decay from 0x80 — the signature of ordinary pixel values being
+   misread, not of a small escape set.
+
+Together these argue the encoding is **coarser than per-byte**, most
+plausibly per-row: 128 bytes per row, 256 rows, with verbatim rows
+costing ~128 bytes (giving 196's near-1.0 ratio) and flat rows
+collapsing hard (giving 198's 1.78). A per-row flag or length table
+would live in sections 1–3, whose purpose is still unknown. Section
+sizes for 195–202 are 280 / 64 / 32; 280 against 256 rows is
+suggestive. **Hypothesis, untested.**
 
 ---
 
@@ -684,8 +673,14 @@ Static game content, not per-playthrough state. No further work.
 | Descriptions `Ni` (“29i”, “40i”) is the count of `Item != -1` or of Type==1 items | No level matches (Ground Floor 116 / 66 vs 29i). |
 | `unknown1` is u16-sum, XOR-fold, byte-sum, CRC-16 CCITT, or CRC-16 IBM of the sector array, whole record (ex-field), name, or header | 0/25 matches on every combination tested. |
 | `.256` offset 8 is a raw `u32be` chunk directory | First word exceeds the resource. The four-entry table starts at offset **7**. |
+| `.256` bytes 4–5 are a `u16be` | They are three separate `u8` fields at 4, 5, 6. A `u16be` at 4 always looks like `X<<8`. 46/50 internally consistent at offset 7 versus 0/50 at 8. |
+| `.256` `v1`/`v2`/`v3` partition the packed stream | `v4 < packed` on 0/50 and `packed - v3 == v4` on 0/50. 195–202 share one header while packed sizes run 18545–32727. |
+| `.256` `v4` is a fourth decompressed offset | On 48/50 `v4 == decompressed_size - v3`. It is the length of `[v3, size)`. |
 | `.256` resources share one 256-entry palette | Each resource has its own table; overlapping indices are normal reuse, not a decode error. Do not union into a master palette. Petrich “128 sets overall color table” is approximate. |
-| Byte 6 of `.256` is a colour count | 128 has b6=59 vs ~15 clut entries; 195 has b6=2 vs 13–15 colours. |
+| Byte 6 of `.256` is a colour count | 128 has b6=59 vs ~15 clut entries; 195 has b6=2 vs 13–15 colours. It is a tile count. |
+| The first `.256` colour-table run ends the raw prefix | Tables continue after that run (195/196: second 8-byte run at packed 115; 192: ≥12 runs). The first-run end is not a raw/compressed boundary. |
+| `.256` pixels are PackBits | 0/50 exact, 0/50 within 1%, 49/50 truncated. Fails the same from the table end, from offset 23, and from `v1`. |
+| `.256` pixels are literal-default RLE (`>= 0x80` = run) | All five variants 0/50 exact. All 128 high values appear as “opcodes” with a geometric decay from 0x80 — pixels being misread, not an escape set. |
 | The L0 packed list shrinks when a floor item is taken | AAA/AAB file and the mid-game save both have the same 85 L0 records. Pickup appends inventory only. |
 | `save_AAA` / `save_AAB` are two standalone save files | PID 2.0 wrote both names into one `Saved Games` file (276564). |
 | The 25 blocks at 39392 are live per-level state (last save wins) | Block 0 is byte-identical to a *different session’s* mid-game save. Blocks 0–23 never move. Only L24 mutates (scratch). A second name adds 9112 bytes, not 227800. |
@@ -723,7 +718,7 @@ transcriptions of their sources.
 
 ## Open questions (engine impact, ranked)
 
-1. **`.256` pixel decoding** — blocks all texturing. Discriminator says RLE (controls = `00–02` and `80+`; literals in the per-resource table). Self-describing literals `03–10` combined with prev/next `80+` and `00/01/02`=emit-2/3/4 or u16-count never hit 33144 (closest 198: 34789). `0x11`/`0x12` in 195 sit between palette bytes (neighbors 0x0F–0x12), last-third clustered, runs of 1–2 — extra palette range, not row markers. Per-row reset, u16be row-length prefixes, 128-entry offset tables near 240–280, column-major 128×128, and skip-N-at-row all fail. Raw-from-258 is still the best *view*, not the encoding. Floor / ceiling selection is not in `texture_list` (resources 195–202 exist).
+1. **`.256` pixel decoding** — blocks all texturing. Header, format tag, per-resource colour tables, and 195–202 raster size (128×256 = two 128×128 tiles) are known. Compression is unsolved. PackBits and literal-default RLE (`>= 0x80` = run, five length variants) are disproven. 196 expands 0.4% (32628 → 32768) so literals cannot carry a per-byte opcode; 198 expands 78% to the same size. Untested hypothesis: per-row encoding, with a flag/length table in decompressed sections 1–3 (195–202: 280 / 64 / 32). Floor / ceiling selection is not in `texture_list` (resources 195–202 exist).
 2. **What `dpin` actually is** — blocks item placement. 596-byte prefix + 2876×80. Contains inventory-shaped 8-byte rows and other row kinds. Not the `Sector.Item` table. 2876 also appears as a player-copy offset in the two-name save, which is not the same as a parsed meaning.
 3. **Save flag bits ~2111–2148** — blocks save / load. Sparse player-island map. One alcove pickup sets `0x0840` bit0 + `0x0864` bit3. A second floor pickup sets no new bit. Corpse loot sets three different bits that do not encode Item 114 at the alcove’s (S, order). No single even-base Item/sector/record map survives all three diffs.
 4. **The L13 maze generator** — blocks one level. Stored Labyrinth is 525 connected tiles of type-33 faces plus type-1 on every corner slot. The walkable maze is generated at load. The generator itself is not in the Maps bytes.
