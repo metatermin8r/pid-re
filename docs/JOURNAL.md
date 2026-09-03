@@ -392,8 +392,9 @@ walls. Ground Floor 214/214 is Earhart’s T (stem south, bar x=4–28).
 
 - `docs/FORMAT.md` — standalone spec: Maps layout and enums, the
   two-edge / four-corner sector model, arrival semantics, `scri`
-  encryption, corpse mapping, save island, `.256` partials, per-
-  resource colour tables, Disproven, Open questions, credits.
+  encryption, corpse mapping, save island, `.256` decompression
+  and per-tile layout, per-resource colour tables, Disproven,
+  Open questions, credits.
 - `formats/pid_level.ksy` — compiles with kaitai-struct-compiler 0.11
   to Python (`tools/generated/pid_maps.py`) and C#
   (`tools/generated/PidMaps.cs`, namespace `Pid.Formats`). The
@@ -408,8 +409,60 @@ walls. Ground Floor 214/214 is Earhart’s T (stem south, bar x=4–28).
   Ground Floor 214/214 matches Earhart’s T.
 - `reference/sounds/snd_*.wav` — all 86 `'snd '` resources.
 
-Phase 0 is closed. Phase 1 can import a level. Textured walls wait on
-the `.256` decoder. The Labyrinth waits on its load-time generator.
+Phase 0 is closed. Phase 1 can import a level. The `.256` decoder is
+no longer the block on textured walls (see below). The Labyrinth
+still waits on its load-time generator.
+
+---
+
+## `.256` was a stream of opcodes (2026-09-03)
+
+The “Shapes: enough to know we cannot paint them yet” section above
+is the state at Phase 0 close. Four more rounds of statistical
+modelling of the packed bytes all failed: PackBits (0/50 exact,
+49/50 truncated, identical failure from three start offsets); five
+literal-default RLE variants keyed on the high bit (0/50 exact);
+“a byte already present in the colour table is a literal” (189
+distinct out-of-range values, 0–255); and “sections 1–3 are stored
+uncompressed” (compressed-looking bytes begin before v1). Nearest-
+neighbour Hamming distance was actively misleading on this format:
+it ranked sparse blocks as nearest to everything and produced a
+false match against a resource nobody had visited. That trap is
+general, not specific to `.256`.
+
+The answer did not come from the packed bytes. The type literal
+`2E 32 35 36` sits in CODE 5. Following it to `GetResource`,
+resolving the jump-table entry, and reading the 88-byte routine at
+CODE 8 offset 2206 gave a two-opcode loop: `b < 0x80` is a run of
+length `b+3`, else a literal of length `b-0x7F`. It emits exactly
+the declared size on 50/50. The lesson is explicit: the packed
+bytes were a stream of opcodes, so every model that treated a
+fixed prefix as a header was fitting structure to data that had
+none. The 23-byte packed header, the format tag at packed offset
+4, colour-table strides 5/7/8, “raw tables at packed offset 29”,
+the RAWEND boundary, and the four “malformed directories”
+(161/162/167/189) were one artifact — the first literal run of
+that stream.
+
+Decompressed space then fell out: an 18-byte header, s0 colour
+tables (ColorSpec stride 8, first index 3), s1 32-byte records
+counted by `tile_count`, s2 16-byte geometry records counted by
+`(v3-v2)/16`, s3 pixels. Index 2 is transparent. `s1.u16[0]` is a
+class tag: 1–5 walls (`offset, HEIGHT, WIDTH`, row-major), 6
+everything else (`offset, WIDTH, HEIGHT`, row-major). Geometry is
+not in s1. Padding is `align4(w×h)` between tiles, 50/50.
+
+Rendered content identified art that published fan sprite rips do
+not contain — 128 (HUD and inventory), 187 and 191 (title
+landscape and chrome logo), 190 (automap glyphs and compass).
+That is consistent with those rips having been captured from
+gameplay rather than extracted from the file.
+
+What remains is selection, not pixels: which of 192’s descending
+tiles the engine draws for a given wall; how floors and ceilings
+(195–202) are chosen, since no `texture_list` slot names them;
+and whether s1 `i16[4]` / `i16[5]` / `i16[6]` are world-space
+size and a draw origin.
 
 ---
 
@@ -459,3 +512,10 @@ were run. Reports live under `reference/docs/`.
   (authoring-tool signature; 7–15 = crystal theme). Final `{32}`
   renders, Unity JSON + 118-edge graph + corpses.json, 86 `'snd '`
   WAVs. Phase 0 result table below.
+- **2026-09-03** — `.256` decoder read from CODE 8 @2206, not
+  inferred. Four statistical models of the packed stream had
+  failed; Hamming nearest-neighbour had ranked sparse blocks as
+  nearest to everything. Decompressed layout 50/50; index 2
+  transparent; s2 field order class-dependent; s3 partition with
+  align-4 between tiles 50/50. 128 / 187 / 190 / 191 are file-only
+  art, absent from published gameplay rips.

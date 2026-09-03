@@ -9,6 +9,11 @@ fan documentation written between 1994 and 2000.
 
 **No game data is distributed here.** Get your own.
 
+Commit what someone needs to **build** the tool (code, the format spec,
+analysis). Do not commit what the tool **produces** from a user-supplied
+copy of the game (extracted art, audio, level JSON/renders, decrypted
+dialogue dumps, save files, unpacked `.rsrc` / `.256`).
+
 ---
 
 ## What's solved
@@ -52,10 +57,10 @@ tools/
   level_viewer.py  render levels as annotated PNGs
   ...              dumpers, diffing scripts, analysis utilities
 reference/
-  levels/          rendered maps for all 25 levels
-  export/          JSON exports + transition graph + corpse index
-  sounds/          extracted audio
-  docs/            raw analysis output
+  README.md        which tool regenerates each local output directory
+  INDEX.md         analysis index
+  docs/            written analysis (round notes, inventories)
+                 extracted art / audio / JSON / renders stay local
 ```
 
 ---

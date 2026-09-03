@@ -1,10 +1,82 @@
-# Original game data — never commit
+# Commit what someone needs to BUILD the tool.
+# Do not commit what the tool PRODUCES from a user-supplied game copy.
+
+# ---------------------------------------------------------------------------
+# Original game files and anything unpacked from them
+# ---------------------------------------------------------------------------
 /data/*
 !/data/.gitkeep
-/reference/dpin_128.bin
-/reference/scri/
 
-# Local Python env
+# AppleDouble resource-fork sidecars (unar / NTFS)
+._*
+
+# Game containers, forks, disk images, Mac archives (secondary net)
+*.rsrc
+*.256
+*.sit
+*.sea
+*.hqx
+*.cpt
+*.binhex
+*.dsk
+*.dc42
+*.toast
+*.iso
+*.image
+
+# ---------------------------------------------------------------------------
+# Generated output under reference/ (directory rules)
+# ---------------------------------------------------------------------------
+/reference/docs/256/
+/reference/sounds/
+/reference/export/
+/reference/levels/
+/reference/docs/code/
+/reference/docs/scri_dec/
+/reference/saves/
+/reference/shapes/
+/reference/aleph_shapes/
+/reference/palettes/
+/reference/scri/
+/reference/docs/sectors/*
+!/reference/docs/sectors/agreement.tsv
+
+# Generated dumps at reference root
+/reference/dpin_128.bin
+/reference/dpin_blockmap_*.png
+/reference/palette.png
+/reference/stride_scores.png
+
+# Filename secondary nets if an output path changes
+**/CODE_*.bin
+**/snd_*.wav
+**/tile_*.png
+*_sheet.png
+*_decoded.png
+**/corpses.json
+**/transition_graph.json
+
+# ---------------------------------------------------------------------------
+# Defense in depth: never catch committable trees.
+# Last matching pattern wins, so /tools/bin is re-ignored below.
+# ---------------------------------------------------------------------------
+!/tools/
+!/tools/**
+!/docs/
+!/docs/**
+!/formats/
+!/formats/**
+!README.md
+!**/README.md
+!/LICENSE
+!/reference/INDEX.md
+
+/tools/bin/*
+!/tools/bin/.gitkeep
+
+# ---------------------------------------------------------------------------
+# Python artefacts
+# ---------------------------------------------------------------------------
 .venv/
 venv/
 __pycache__/
@@ -12,11 +84,9 @@ __pycache__/
 *.egg-info/
 .pytest_cache/
 
-# Downloaded third-party binaries (unar, etc.)
-/tools/bin/*
-!/tools/bin/.gitkeep
-
+# ---------------------------------------------------------------------------
 # Editor / OS junk
+# ---------------------------------------------------------------------------
 .idea/
 .vscode/
 *.swp
