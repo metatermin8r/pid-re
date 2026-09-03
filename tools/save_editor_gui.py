@@ -64,6 +64,11 @@ WARN_UNVERIFIED = (
     "No checksum is computed; whether saves carry one is unknown."
 )
 
+WARN_CONFIRMED = (
+    "Only current HP and max HP are confirmed to take effect in the game. "
+    "Level, X, Y, and facing writes are UNVERIFIED — the game may ignore them."
+)
+
 
 def item_name(item_id: int) -> str:
     if item_id == 0xFFFF:
@@ -94,7 +99,7 @@ class SaveEditorApp:
         self._filling = False
 
         root.title("PID Save Editor")
-        root.minsize(880, 620)
+        root.minsize(960, 780)
         root.columnconfigure(0, weight=1)
         root.rowconfigure(0, weight=1)
 
@@ -107,7 +112,9 @@ class SaveEditorApp:
         main.grid(row=0, column=0, sticky="nsew")
         main.columnconfigure(0, weight=1)
         main.columnconfigure(1, weight=1)
-        main.rowconfigure(2, weight=1)
+        main.rowconfigure(3, weight=2)
+        main.rowconfigure(4, weight=1)
+        main.rowconfigure(5, weight=0)
 
         top = ttk.Frame(main)
         top.grid(row=0, column=0, columnspan=2, sticky="ew", **pad)
@@ -117,27 +124,57 @@ class SaveEditorApp:
         ttk.Label(top, textvariable=self.path_var).grid(row=0, column=1, sticky="w", padx=8)
         ttk.Button(top, text="Export As…", command=self.export_file).grid(row=0, column=2)
 
-        meta = ttk.LabelFrame(main, text="Save slot", padding=8)
-        meta.grid(row=1, column=0, columnspan=2, sticky="ew", **pad)
-        meta.columnconfigure(1, weight=1)
-        ttk.Label(meta, text="Live game").grid(row=0, column=0, sticky="w")
+        warn = ttk.Label(
+            main,
+            text=WARN_CONFIRMED,
+            wraplength=920,
+            foreground="#8a0000",
+            font=("Segoe UI", 9, "bold"),
+        )
+        warn.grid(row=1, column=0, columnspan=2, sticky="ew", **pad)
+
+        meta = ttk.LabelFrame(main, text="Live player slots in this file", padding=8)
+        meta.grid(row=2, column=0, columnspan=2, sticky="ew", **pad)
+        meta.columnconfigure(0, weight=1)
+        slot_cols = ("base", "name", "level", "xy", "sector", "hp", "clock")
+        self.slot_tree = ttk.Treeview(
+            meta, columns=slot_cols, show="headings", height=4, selectmode="browse"
+        )
+        slot_head = {
+            "base": ("Base offset", 110),
+            "name": ("Name", 140),
+            "level": ("Level", 220),
+            "xy": ("(x,y)", 70),
+            "sector": ("Sector", 120),
+            "hp": ("HP", 80),
+            "clock": ("Clock", 140),
+        }
+        for key, (title, width) in slot_head.items():
+            self.slot_tree.heading(key, text=title)
+            self.slot_tree.column(key, width=width, stretch=(key in ("name", "level")), anchor="w")
+        slot_scroll = ttk.Scrollbar(meta, orient="vertical", command=self.slot_tree.yview)
+        self.slot_tree.configure(yscrollcommand=slot_scroll.set)
+        self.slot_tree.grid(row=0, column=0, sticky="ew")
+        slot_scroll.grid(row=0, column=1, sticky="ns")
+        self.slot_tree.bind("<<TreeviewSelect>>", lambda _e: self._on_slot_tree())
+        ttk.Label(meta, text="Editing slot").grid(row=1, column=0, sticky="w", pady=(6, 0))
         self.slot_var = tk.StringVar()
         self.slot_combo = ttk.Combobox(
             meta, textvariable=self.slot_var, state="disabled", width=70
         )
-        self.slot_combo.grid(row=0, column=1, sticky="ew", padx=6)
+        self.slot_combo.grid(row=2, column=0, sticky="ew", padx=0, pady=(2, 0))
         self.slot_combo.bind("<<ComboboxSelected>>", lambda _e: self._on_slot())
         self.gates_var = tk.StringVar(value="")
         ttk.Label(meta, textvariable=self.gates_var).grid(
-            row=1, column=0, columnspan=2, sticky="w", pady=(6, 0)
+            row=3, column=0, columnspan=2, sticky="w", pady=(6, 0)
         )
         self.unknown_var = tk.StringVar(value="")
         ttk.Label(meta, textvariable=self.unknown_var, foreground="#555").grid(
-            row=2, column=0, columnspan=2, sticky="w"
+            row=4, column=0, columnspan=2, sticky="w"
         )
 
         player = ttk.LabelFrame(main, text="Player", padding=8)
-        player.grid(row=2, column=0, sticky="nsew", **pad)
+        player.grid(row=3, column=0, sticky="nsew", **pad)
         for i in range(2):
             player.columnconfigure(i, weight=1)
 
@@ -184,7 +221,7 @@ class SaveEditorApp:
             row=12, column=0, columnspan=2, sticky="w", pady=(4, 4)
         )
         ttk.Button(
-            player, text="Jump to first arrival on this level", command=self.use_arrival
+            player, text="Jump to first standable arrival on this level", command=self.use_arrival
         ).grid(row=13, column=0, columnspan=2, sticky="w")
 
         inv = ttk.LabelFrame(
@@ -192,7 +229,7 @@ class SaveEditorApp:
             text="Inventory (quantity of existing records only)",
             padding=8,
         )
-        inv.grid(row=2, column=1, sticky="nsew", **pad)
+        inv.grid(row=3, column=1, sticky="nsew", **pad)
         inv.columnconfigure(0, weight=1)
         inv.rowconfigure(0, weight=1)
 
@@ -228,14 +265,24 @@ class SaveEditorApp:
             foreground="#555",
         ).pack(side="left", padx=8)
 
+        log_frame = ttk.LabelFrame(main, text="Tool output (full stdout / stderr)", padding=6)
+        log_frame.grid(row=4, column=0, columnspan=2, sticky="nsew", **pad)
+        log_frame.columnconfigure(0, weight=1)
+        log_frame.rowconfigure(0, weight=1)
+        self.log = tk.Text(log_frame, height=10, wrap="word", state="disabled")
+        log_scroll = ttk.Scrollbar(log_frame, orient="vertical", command=self.log.yview)
+        self.log.configure(yscrollcommand=log_scroll.set)
+        self.log.grid(row=0, column=0, sticky="nsew")
+        log_scroll.grid(row=0, column=1, sticky="ns")
+
         bottom = ttk.Frame(main)
-        bottom.grid(row=3, column=0, columnspan=2, sticky="ew", **pad)
+        bottom.grid(row=5, column=0, columnspan=2, sticky="ew", **pad)
         bottom.columnconfigure(0, weight=1)
         self.status_var = tk.StringVar()
-        ttk.Label(bottom, textvariable=self.status_var, wraplength=840).grid(
+        ttk.Label(bottom, textvariable=self.status_var, wraplength=920).grid(
             row=0, column=0, sticky="w"
         )
-        ttk.Label(bottom, text=WARN_UNVERIFIED, wraplength=840, foreground="#555").grid(
+        ttk.Label(bottom, text=WARN_UNVERIFIED, wraplength=920, foreground="#555").grid(
             row=1, column=0, sticky="w", pady=(4, 0)
         )
 
@@ -258,6 +305,36 @@ class SaveEditorApp:
 
     def _set_status(self, text: str) -> None:
         self.status_var.set(text)
+
+    def _append_log(self, text: str) -> None:
+        if not text:
+            return
+        if not text.endswith("\n"):
+            text = text + "\n"
+        self.log.configure(state="normal")
+        self.log.insert("end", text)
+        self.log.see("end")
+        self.log.configure(state="disabled")
+
+    def _capture_io(self, fn):
+        stdout = io.StringIO()
+        stderr = io.StringIO()
+        result = None
+        err: BaseException | None = None
+        try:
+            with contextlib.redirect_stdout(stdout), contextlib.redirect_stderr(stderr):
+                result = fn()
+        except BaseException as exc:
+            err = exc
+        captured = stdout.getvalue()
+        err_text = stderr.getvalue()
+        if captured:
+            self._append_log(captured)
+        if err_text:
+            self._append_log(err_text)
+        if err is not None:
+            raise err
+        return result
 
     def _current(self) -> dict | None:
         if not self.live:
@@ -322,8 +399,42 @@ class SaveEditorApp:
             values=[f"{i}  {self.levels.names[i]}" for i in range(se.N_LEVELS)],
             state="readonly",
         )
+        self._fill_slot_tree()
         self._fill_from_current()
+        self._append_log(
+            f"loaded {path} bytes={len(data)} live_slots={len(self.live)}\n"
+            + "\n".join(labels)
+        )
         self._set_status(f"Loaded {path.name}. Choose a slot, edit, then Export As…")
+
+    def _fill_slot_tree(self) -> None:
+        for iid in self.slot_tree.get_children():
+            self.slot_tree.delete(iid)
+        if self.data is None:
+            return
+        for i, d in enumerate(self.live):
+            name = self._name_for_base(d["base"])
+            lv = d["level"]
+            lname = d.get("level_name") or self.levels.names[lv]
+            st, sn = self.levels.sector(lv, d["x"], d["y"])
+            clock = d["clock"] or 0
+            self.slot_tree.insert(
+                "",
+                "end",
+                iid=str(i),
+                values=(
+                    f"{d['base']} (0x{d['base']:X})",
+                    name,
+                    f"L{lv} {lname}",
+                    f"({d['x']},{d['y']})",
+                    f"{st} {sn}",
+                    f"{d['hp']}/{d['max_hp']}",
+                    f"{clock} ticks ({clock / 60.0:.2f}s)",
+                ),
+            )
+        if self.live:
+            self.slot_tree.selection_set("0")
+            self.slot_tree.see("0")
 
     def _name_for_base(self, base: int) -> str:
         if base % se.PLAYER_STRIDE == 0:
@@ -337,7 +448,26 @@ class SaveEditorApp:
     def _on_slot(self) -> None:
         if self._filling:
             return
+        idx = self.slot_combo.current()
+        if 0 <= idx < len(self.live):
+            self._filling = True
+            try:
+                self.slot_tree.selection_set(str(idx))
+                self.slot_tree.see(str(idx))
+            finally:
+                self._filling = False
         self._fill_from_current()
+
+    def _on_slot_tree(self) -> None:
+        if self._filling:
+            return
+        sel = self.slot_tree.selection()
+        if not sel:
+            return
+        idx = int(sel[0])
+        if idx != self.slot_combo.current():
+            self.slot_combo.current(idx)
+            self._fill_from_current()
 
     def _fill_from_current(self) -> None:
         decoded = self._current()
@@ -421,18 +551,24 @@ class SaveEditorApp:
         if not (0 <= level <= 24):
             messagebox.showerror("Arrival", f"level {level} not in 0..24")
             return
-        arrivals = self.levels.arrivals[level]
-        if not arrivals:
-            messagebox.showerror("Arrival", f"L{level} has an empty arrivals list")
+        try:
+            chosen = self._capture_io(
+                lambda: se.select_standable_arrival(self.levels, level, None)
+            )
+        except SystemExit as exc:
+            msg = str(exc.code) if isinstance(exc.code, str) else str(exc)
+            if msg.startswith("error: "):
+                msg = msg[7:]
+            self._append_log(f"REFUSED {msg}")
+            messagebox.showerror("Arrival refused", msg)
             return
-        first = arrivals[0]
-        self._set(self.x, int(first["x"]))
-        self._set(self.y, int(first["y"]))
+        self._set(self.x, int(chosen["x"]))
+        self._set(self.y, int(chosen["y"]))
         self._refresh_sector()
         self._set_status(
-            f"Arrival L{level} ({first['x']},{first['y']}) "
-            f"from_level={first.get('from_level')} "
-            f"{first.get('from_name')!r} {first.get('change_type_name')}"
+            f"Arrival L{level} ({chosen['x']},{chosen['y']}) "
+            f"from_level={chosen.get('from_level')} "
+            f"{chosen.get('from_name')!r} {chosen.get('change_type_name')}"
         )
 
     def _on_inv_select(self) -> None:
@@ -519,6 +655,7 @@ class SaveEditorApp:
         try:
             kwargs = self._collect_edits()
         except se.EditRefused as exc:
+            self._append_log(f"REFUSED {exc}")
             messagebox.showerror("Invalid value", str(exc))
             return
 
@@ -529,17 +666,19 @@ class SaveEditorApp:
             initialfile=suggested.name,
         )
         if not picked:
+            self._append_log("REFUSED export cancelled (no output path)")
             return
         out_path = Path(picked)
         try:
             se.refuse_in_place(self.path, out_path)
         except SystemExit as exc:
-            messagebox.showerror("Export refused", str(exc).removeprefix("error: "))
+            msg = str(exc).removeprefix("error: ")
+            self._append_log(f"REFUSED {msg}")
+            messagebox.showerror("Export refused", msg)
             return
 
-        log = io.StringIO()
         try:
-            with contextlib.redirect_stdout(log):
+            def _do_write():
                 buf, changes, expect, warnings = se.apply_player_edits(
                     self.data, decoded, self.levels, **kwargs
                 )
@@ -555,20 +694,25 @@ class SaveEditorApp:
                     allow_overheal=bool(self.overheal.get()),
                     expect=expect or None,
                 )
+                return changes
+
+            changes = self._capture_io(_do_write)
         except se.EditRefused as exc:
+            self._append_log(f"REFUSED {exc}")
             messagebox.showerror("Export refused", str(exc))
             return
         except SystemExit as exc:
-            messagebox.showerror("Export refused", str(exc).removeprefix("error: "))
+            msg = str(exc).removeprefix("error: ")
+            self._append_log(f"REFUSED {msg}")
+            messagebox.showerror("Export refused", msg)
+            return
+        except Exception as exc:
+            self._append_log(f"REFUSED exception {type(exc).__name__}: {exc}")
+            messagebox.showerror("Export failed", str(exc))
             return
 
-        detail = log.getvalue().strip()
-        messagebox.showinfo(
-            "Exported",
-            f"Wrote {out_path}\n{len(changes)} byte(s) changed.\n\n"
-            f"{WARN_UNVERIFIED}\n\n{detail}",
-        )
-        self._set_status(f"Wrote {out_path}  changes={len(changes)}")
+        self._append_log(f"WROTE {out_path}")
+        self._set_status(f"WROTE {out_path}  changes={len(changes)}")
 
 
 def run_gui(savefile: Path | None = None, export_dir: Path | None = None) -> int:

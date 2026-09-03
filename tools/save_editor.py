@@ -10,6 +10,8 @@ Usage:
   python tools/save_editor.py inspect <savefile>
   python tools/save_editor.py warp <savefile> --level N --x X --y Y -o <out>
   python tools/save_editor.py warp <savefile> --level N --arrival -o <out>
+  python tools/save_editor.py warp <savefile> --x X --y Y -o <out>
+  python tools/save_editor.py warp <savefile> --level N --arrival-from M -o <out>
   python tools/save_editor.py set <savefile> [--hp N] [--maxhp N] [--clock SEC] [--facing N] -o <out>
   python tools/save_editor.py item <savefile> --list [--base B]
   python tools/save_editor.py item <savefile> --slot N --qty Q -o <out>
@@ -127,6 +129,72 @@ class LevelIndex:
 
     def sector(self, level: int, x: int, y: int) -> tuple[int, str]:
         return self.types[level][y][x], self.type_names[level][y][x]
+
+
+def is_standable(sector_type: int) -> bool:
+    return sector_type not in (0, 7)
+
+
+def format_arrivals(levels: LevelIndex, level: int) -> list[str]:
+    lines: list[str] = []
+    for a in levels.arrivals[level]:
+        x, y = int(a["x"]), int(a["y"])
+        st, sn = levels.sector(level, x, y)
+        lines.append(
+            f"  arrival L{level} ({x},{y}) from_level={a.get('from_level')} "
+            f"from_name={a.get('from_name')!r} change_type={a.get('change_type_name')} "
+            f"list_index={a.get('list_index')} type={st} {sn} "
+            f"standable={'yes' if is_standable(st) else 'no'}"
+        )
+    return lines
+
+
+def select_standable_arrival(
+    levels: LevelIndex, level: int, from_level: int | None = None
+) -> dict:
+    """First standable arrival; ties broken by lowest list_index.
+
+    Does not special-case any level. Raises SystemExit if none qualify.
+    """
+    if not (0 <= level <= 24):
+        raise SystemExit(f"error: --level {level} not in 0..24")
+    pool = list(levels.arrivals[level])
+    if from_level is not None:
+        pool = [a for a in pool if int(a.get("from_level", -1)) == from_level]
+    if not pool:
+        listing = "\n".join(format_arrivals(levels, level)) or "  (none)"
+        extra = f" from_level={from_level}" if from_level is not None else ""
+        raise SystemExit(
+            f"error: L{level} has no arrival{extra}\n{listing}"
+        )
+    standable: list[tuple[int, int, dict, int, str]] = []
+    skipped = 0
+    for i, a in enumerate(pool):
+        x, y = int(a["x"]), int(a["y"])
+        st, sn = levels.sector(level, x, y)
+        if is_standable(st):
+            idx = a.get("list_index")
+            key = int(idx) if idx is not None else 10**9
+            standable.append((key, i, a, st, sn))
+        else:
+            skipped += 1
+    if not standable:
+        listing = "\n".join(format_arrivals(levels, level)) or "  (none)"
+        extra = f" from_level={from_level}" if from_level is not None else ""
+        raise SystemExit(
+            f"error: L{level} has no standable arrival{extra}\n{listing}"
+        )
+    standable.sort(key=lambda t: (t[0], t[1]))
+    _key, _i, chosen, st, sn = standable[0]
+    x, y = int(chosen["x"]), int(chosen["y"])
+    print(
+        f"arrival_used L{level} ({x},{y}) type={st} {sn} "
+        f"from_level={chosen.get('from_level')} from_name={chosen.get('from_name')!r} "
+        f"change_type={chosen.get('change_type_name')} "
+        f"list_index={chosen.get('list_index')} "
+        f"skipped_unstandable={skipped} other_standable={len(standable) - 1}"
+    )
+    return chosen
 
 
 def in_template_region(offset: int) -> bool:
@@ -410,6 +478,7 @@ def commit_output(
     *,
     allow_overheal: bool = False,
     expect: dict | None = None,
+    dry_run: bool = False,
 ) -> int:
     out_bytes = bytes(buf)
     out_scan = scan_bases(out_bytes, levels)
@@ -445,9 +514,14 @@ def commit_output(
                     )
     if not out_scan["all6"] and not allow_overheal:
         raise SystemExit("error: output has zero all-6 bases; not writing")
+    if dry_run:
+        print(f"DRY-RUN would write {out_path} bytes={len(out_bytes)} changes={len(changes)}")
+        print("DRY-RUN no write")
+        return 0
     out_path.parent.mkdir(parents=True, exist_ok=True)
     out_path.write_bytes(out_bytes)
     print(f"wrote {out_path} bytes={len(out_bytes)} changes={len(changes)}")
+    print(f"WROTE {out_path}")
     print(
         "WARNING: output is unverified until loaded in Infinite Mac. "
         "No checksum was computed or updated; whether saves carry one is unknown."
@@ -689,62 +763,88 @@ def cmd_inspect(path: Path, levels: LevelIndex) -> int:
                 f"hp={decoded['hp']} max_hp={decoded['max_hp']} clock={decoded['clock']} "
                 f"raw L={raw_l} X={raw_x} Y={raw_y} HP={raw_hp} MX={raw_mx} CLK={raw_ck}"
             )
+        print("REFUSED no all-6 player base")
         return 1
     for decoded in scan["all6"]:
         print_decoded(enrich(decoded, levels), data)
+    print("OK inspect")
     return 0
 
 
 def resolve_warp_target(
     args: argparse.Namespace, levels: LevelIndex
-) -> tuple[int, int, int]:
-    level = args.level
-    if not (0 <= level <= 24):
-        raise SystemExit(f"error: --level {level} not in 0..24")
-    if args.arrival:
-        arrivals = levels.arrivals[level]
-        if not arrivals:
-            raise SystemExit(f"error: L{level} has an empty arrivals list")
-        first = arrivals[0]
-        x, y = int(first["x"]), int(first["y"])
-        print(
-            f"arrival_used L{level} ({x},{y}) from_level={first.get('from_level')} "
-            f"from_name={first.get('from_name')!r} change_type={first.get('change_type_name')}"
-        )
-        return level, x, y
+) -> tuple[int | None, int, int, bool]:
+    arrival_mode = bool(args.arrival) or args.arrival_from is not None
+    if arrival_mode:
+        if args.level is None:
+            raise SystemExit("error: --arrival/--arrival-from requires --level")
+        chosen = select_standable_arrival(levels, args.level, args.arrival_from)
+        return args.level, int(chosen["x"]), int(chosen["y"]), True
     if args.x is None or args.y is None:
         raise SystemExit("error: warp needs --x and --y, or --arrival")
     if not (0 <= args.x <= 31 and 0 <= args.y <= 31):
         raise SystemExit(f"error: --x/--y out of 0..31 ({args.x},{args.y})")
-    return level, args.x, args.y
+    if args.level is None:
+        return None, args.x, args.y, False
+    if not (0 <= args.level <= 24):
+        raise SystemExit(f"error: --level {args.level} not in 0..24")
+    return args.level, args.x, args.y, True
+
+
+def require_write_output(path: Path, args: argparse.Namespace) -> Path:
+    dry = bool(getattr(args, "dry_run", False))
+    if args.output is None:
+        if dry:
+            return Path("<dry-run>")
+        raise SystemExit("error: -o <out> is required unless --dry-run")
+    out_path = Path(args.output)
+    if not dry:
+        refuse_in_place(path, out_path)
+    return out_path
 
 
 def cmd_warp(path: Path, levels: LevelIndex, args: argparse.Namespace) -> int:
     data = path.read_bytes()
-    out_path = Path(args.output)
-    refuse_in_place(path, out_path)
+    out_path = require_write_output(path, args)
+    dry = bool(args.dry_run)
 
-    level, x, y = resolve_warp_target(args, levels)
-    st, sn = levels.sector(level, x, y)
-    if st in (0, 7):
-        raise SystemExit(
-            f"error: refuse warp to L{level} ({x},{y}) type={st} {sn} "
-            f"(not standable: Void or Pillar)"
-        )
-
+    level, x, y, write_level = resolve_warp_target(args, levels)
     scan = scan_bases(data, levels)
     targets = select_targets(scan, args.base)
+
+    if write_level:
+        assert level is not None
+        st, sn = levels.sector(level, x, y)
+        if not is_standable(st):
+            raise SystemExit(
+                f"error: refuse warp to L{level} ({x},{y}) type={st} {sn} "
+                f"(not standable: Void or Pillar)"
+            )
+    else:
+        for decoded in targets:
+            cur_lv = decoded["level"]
+            st, sn = levels.sector(cur_lv, x, y)
+            if not is_standable(st):
+                raise SystemExit(
+                    f"error: refuse warp to L{cur_lv} ({x},{y}) type={st} {sn} "
+                    f"(not standable: Void or Pillar)"
+                )
 
     buf = bytearray(data)
     changes: list[tuple[int, int, int, str]] = []
     for decoded in targets:
         base = decoded["base"]
-        write_u16_field(data, buf, base + OFF_LEVEL, level, "level", changes)
+        if write_level:
+            assert level is not None
+            write_u16_field(data, buf, base + OFF_LEVEL, level, "level", changes)
         write_u16_field(data, buf, base + OFF_X, x, "x", changes)
         write_u16_field(data, buf, base + OFF_Y, y, "y", changes)
 
+    expect: dict = {"x": x, "y": y}
+    if write_level:
+        expect["level"] = level
     return commit_output(
-        out_path, data, buf, targets, levels, changes, expect={"level": level, "x": x, "y": y}
+        out_path, data, buf, targets, levels, changes, expect=expect, dry_run=dry
     )
 
 
@@ -752,8 +852,7 @@ def cmd_set(path: Path, levels: LevelIndex, args: argparse.Namespace) -> int:
     if args.hp is None and args.maxhp is None and args.clock is None and args.facing is None:
         raise SystemExit("error: set requires at least one of --hp --maxhp --clock --facing")
     data = path.read_bytes()
-    out_path = Path(args.output)
-    refuse_in_place(path, out_path)
+    out_path = require_write_output(path, args)
 
     scan = scan_bases(data, levels)
     targets = select_targets(scan, args.base)
@@ -853,6 +952,7 @@ def cmd_set(path: Path, levels: LevelIndex, args: argparse.Namespace) -> int:
         changes,
         allow_overheal=bool(args.allow_overheal),
         expect=expect or None,
+        dry_run=bool(args.dry_run),
     )
 
 
@@ -874,14 +974,12 @@ def cmd_item(path: Path, levels: LevelIndex, args: argparse.Namespace) -> int:
             targets = live
         for decoded in targets:
             print_decoded(enrich(decoded, levels), data)
+        print("OK item-list")
         return 0
 
     if args.slot is None or args.qty is None:
         raise SystemExit("error: item write needs --slot N and --qty Q (or --list)")
-    if args.output is None:
-        raise SystemExit("error: item write needs -o <out>")
-    out_path = Path(args.output)
-    refuse_in_place(path, out_path)
+    out_path = require_write_output(path, args)
     require_u16("--qty", args.qty)
     if args.slot < 0:
         raise SystemExit(f"error: --slot {args.slot} is negative; refused")
@@ -925,7 +1023,9 @@ def cmd_item(path: Path, levels: LevelIndex, args: argparse.Namespace) -> int:
         if after[2] != args.qty:
             raise SystemExit("error: qty write did not stick; not writing")
 
-    return commit_output(out_path, data, buf, targets, levels, changes)
+    return commit_output(
+        out_path, data, buf, targets, levels, changes, dry_run=bool(args.dry_run)
+    )
 
 
 def cmd_verify(path: Path, levels: LevelIndex) -> int:
@@ -969,7 +1069,11 @@ def cmd_verify(path: Path, levels: LevelIndex) -> int:
     else:
         for decoded in scan["all6"]:
             emit(decoded["base"], "  hit")
-    return 0 if scan["all6"] else 1
+    if scan["all6"]:
+        print("OK verify")
+        return 0
+    print("REFUSED no all-6 player base")
+    return 1
 
 
 def cmd_diff(path_a: Path, path_b: Path, levels: LevelIndex) -> int:
@@ -995,6 +1099,7 @@ def cmd_diff(path_a: Path, path_b: Path, levels: LevelIndex) -> int:
             print(f"{i:08d} 0x{i:08X} {old_s} {new_s} size_tail_{label}")
             diffs += 1
     print(f"diff_count={diffs} min_len={n} a_len={len(a)} b_len={len(b)}")
+    print("OK diff")
     return 0
 
 
@@ -1013,12 +1118,20 @@ def build_parser() -> argparse.ArgumentParser:
 
     warp = sub.add_parser("warp", help="write a new save with relocated player")
     warp.add_argument("savefile", type=Path)
-    warp.add_argument("--level", type=int, required=True)
+    warp.add_argument("--level", type=int, default=None)
     warp.add_argument("--x", type=int, default=None)
     warp.add_argument("--y", type=int, default=None)
     warp.add_argument("--arrival", action="store_true")
+    warp.add_argument(
+        "--arrival-from",
+        type=int,
+        default=None,
+        dest="arrival_from",
+        help="pick the arrival whose from_level is N (still standable-gated)",
+    )
     warp.add_argument("--base", type=int, default=None, help="player-region base if several pass")
-    warp.add_argument("-o", "--output", type=Path, required=True)
+    warp.add_argument("-o", "--output", type=Path, default=None)
+    warp.add_argument("--dry-run", action="store_true", help="print changes and do not write")
 
     s = sub.add_parser("set", help="write hp / maxhp / clock / facing on one player base")
     s.add_argument("savefile", type=Path)
@@ -1032,7 +1145,8 @@ def build_parser() -> argparse.ArgumentParser:
         help="allow current HP > max HP (game behaviour UNTESTED)",
     )
     s.add_argument("--base", type=int, default=None)
-    s.add_argument("-o", "--output", type=Path, required=True)
+    s.add_argument("-o", "--output", type=Path, default=None)
+    s.add_argument("--dry-run", action="store_true", help="print changes and do not write")
 
     item = sub.add_parser("item", help="list or change quantity of an existing inventory record")
     item.add_argument("savefile", type=Path)
@@ -1041,6 +1155,7 @@ def build_parser() -> argparse.ArgumentParser:
     item.add_argument("--qty", type=int, default=None)
     item.add_argument("--base", type=int, default=None)
     item.add_argument("-o", "--output", type=Path, default=None)
+    item.add_argument("--dry-run", action="store_true", help="print changes and do not write")
 
     ver = sub.add_parser("verify", help="re-run the six-gate scan; print pass/fail per base")
     ver.add_argument("savefile", type=Path)
@@ -1058,26 +1173,40 @@ def main(argv: list[str] | None = None) -> int:
     if hasattr(sys.stdout, "reconfigure"):
         sys.stdout.reconfigure(errors="replace")
         sys.stderr.reconfigure(errors="replace")
-    args = build_parser().parse_args(argv)
-    levels = LevelIndex(args.export_dir)
-    if args.cmd == "inspect":
-        return cmd_inspect(args.savefile, levels)
-    if args.cmd == "warp":
-        return cmd_warp(args.savefile, levels, args)
-    if args.cmd == "set":
-        return cmd_set(args.savefile, levels, args)
-    if args.cmd == "item":
-        return cmd_item(args.savefile, levels, args)
-    if args.cmd == "verify":
-        return cmd_verify(args.savefile, levels)
-    if args.cmd == "diff":
-        return cmd_diff(args.a, args.b, levels)
-    if args.cmd == "gui":
-        sys.path.insert(0, str(Path(__file__).resolve().parent))
-        from save_editor_gui import run_gui
+    try:
+        args = build_parser().parse_args(argv)
+        levels = LevelIndex(args.export_dir)
+        if args.cmd == "inspect":
+            return cmd_inspect(args.savefile, levels)
+        if args.cmd == "warp":
+            return cmd_warp(args.savefile, levels, args)
+        if args.cmd == "set":
+            return cmd_set(args.savefile, levels, args)
+        if args.cmd == "item":
+            return cmd_item(args.savefile, levels, args)
+        if args.cmd == "verify":
+            return cmd_verify(args.savefile, levels)
+        if args.cmd == "diff":
+            return cmd_diff(args.a, args.b, levels)
+        if args.cmd == "gui":
+            sys.path.insert(0, str(Path(__file__).resolve().parent))
+            from save_editor_gui import run_gui
 
-        return run_gui(args.savefile, args.export_dir)
-    raise SystemExit(f"unknown command {args.cmd}")
+            return run_gui(args.savefile, args.export_dir)
+        raise SystemExit(f"unknown command {args.cmd}")
+    except SystemExit as exc:
+        code = exc.code
+        if isinstance(code, str):
+            text = code[7:] if code.startswith("error: ") else code
+            if not text.startswith("REFUSED"):
+                print(f"REFUSED {text}")
+            else:
+                print(text)
+            return 1
+        raise
+    except Exception as exc:
+        print(f"REFUSED exception {type(exc).__name__}: {exc}")
+        raise
 
 
 if __name__ == "__main__":
