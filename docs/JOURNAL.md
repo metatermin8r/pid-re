@@ -466,6 +466,76 @@ size and a draw origin.
 
 ---
 
+## The same method, one more time (2026-09-03, later)
+
+The `.256` decoder was the first time this project stopped
+modelling bytes and read the instruction stream. That same
+sequence — type literal, jump table, linear disassembly — then
+answered the descriptor, the object table, and the 9,112-byte
+save block.
+
+The `.256` type literal `2E 32 35 36` sits in CODE 5. Following
+it to `GetResource` and through the jump table landed on CODE 8
+@2206. Four rounds of statistical modelling of the packed stream
+had failed (PackBits; five high-bit RLE variants; “a colour-table
+byte is a literal”; “sections 1–3 are stored uncompressed”).
+Hamming nearest-neighbour ranked sparse blocks as nearest to
+everything. The disassembly answered the codec in two rounds:
+the 88-byte loop, then the decompressed header.
+
+The jump table had to be resolved first. CODE 0 holds 355 entries
+of 8 bytes from offset 16, base `A5+0x20`. The table’s segment
+field is +4 versus every segment header; trusting the headers
+mis-targets every JSR. The binary also contains 68020
+instructions (`EXTB.L`, `MULU.L`, scaled index extensions). A
+68000 decoder silently wrecks those sites.
+
+From the same cache the loader fills, CODE 5 @1618 unpacks a
+16-bit wall word: bits 0–6 s1 index, 7–12 selector, 13–15 tag.
+A `PID_Sector` `{u8 wall_type, u8 texture}` pair is that word,
+not two independent bytes. Tag 0 is never drawn. Pillars never
+enter @1618. They enter @12052 when `(type & 0x0F) != 0`, call
+@17190, and reach the sibling unpacker @1454. `Sector.item` is
+the index: `rec = [-$1A86(A5)] + $03D8 + item*16`.
+
+`-$1A86(A5)` is a 9,112-byte buffer (`NewPtr $2398` at CODE 4
+@1466, JT 152). CODE 2 @10066 / @10174 `FSRead` / `FSWrite` it
+at `index * $2398`. The 25 blocks at save-file offset 39,392
+are per-level live world state. The object table is 500 × 16
+bytes at +0x03D8: X/Y as 10-bit fixed point with a `$200`
+centre, a packed descriptor, flags, and a next-index link
+(`$FFFE` free, `$FFFF` end). JT 157/159/158/164 insert, update,
+free, and wipe.
+
+`dpin` 128 is the save-file initialiser. CODE 2 @9262
+`GetResource`s it, `HLock`s, writes 28,760 + 2,876 @ position 8
++ 227,800 from offset 2,876, and `ReleaseResource`s. The handle
+is never stored. Semmler’s item-template guess, and this
+project’s long “purpose unknown”, are closed.
+
+The lesson is the same as `.256` and is now load-bearing:
+several long-standing open items were data questions only in
+appearance. They were code questions. Static analysis of Maps,
+saves, and `dpin` could not have closed them, because the
+answers are displacements, trap numbers, and bit fields in the
+68020 stream. Four modelling rounds on `.256` produced
+confidence and nothing else. Reading CODE 8 @2206 produced the
+decoder.
+
+What the captured saves do *not* yet show: parsed as that
+in-memory layout, every local v2.0 file has 0 × `$FFFE` at
+object +0x0E and a 100% `Sector.item` position miss. The
+instructions are not in doubt. A save made after leaving a
+level has not been captured.
+
+Still open: the `$217F` anomaly (4,101 pairs on levels 7–15, s1
+index 127 against resource 194’s 14 records); the player’s live
+position (the integer X/Y/level/facing fields do not take
+effect); the 60- and 8-byte record tables inside the 9,112-byte
+block; the L13 maze generator.
+
+---
+
 ## Dated log (compressed)
 
 The experiments that produced the paragraphs above, in the order they
@@ -519,3 +589,10 @@ were run. Reports live under `reference/docs/`.
   transparent; s2 field order class-dependent; s3 partition with
   align-4 between tiles 50/50. 128 / 187 / 190 / 191 are file-only
   art, absent from published gameplay rips.
+- **2026-09-03 (later)** — Same method past `.256`: jump table
+  (355 × 8, segment field +4), 68020 decode required. Descriptor
+  bit fields; pillars via @1454 not @1618; `Sector.item` is an
+  object-table index; `-$1A86(A5)` is the 9,112-byte world-state
+  block, FSRead/FSWrite by level; `dpin` 128 initialises the save
+  file. Several “data” open items were code questions. Captured
+  saves do not yet show a JT-164-shaped object table.

@@ -8,8 +8,15 @@ validation gates against the v2.0 level JSON.
 
 Usage:
   python tools/save_editor.py inspect <savefile>
-  python tools/save_editor.py warp <savefile> --level N --x X --y Y -o <out>
+  python tools/save_editor.py world <savefile> --level N [--fixed] [--centred]
+  python tools/save_editor.py objects <savefile> --level N [--fixed] [--centred]
+  python tools/save_editor.py catalog <savefile>
+  python tools/save_editor.py blockmap <savefile>
+  python tools/save_editor.py set-block <savefile> --index N -o <out>
+      # writes 0x06C2 block-index authority (UNTESTED). NOT +0x090C.
+  python tools/save_editor.py objects <savefile> --block N --level M [--fixed]
   python tools/save_editor.py warp <savefile> --level N --arrival -o <out>
+      # +0x090C / +0x0918 / +0x091A are INERT (confirmed in game).
   python tools/save_editor.py warp <savefile> --x X --y Y -o <out>
   python tools/save_editor.py warp <savefile> --level N --arrival-from M -o <out>
   python tools/save_editor.py set <savefile> [--hp N] [--maxhp N] [--clock SEC] [--facing N] -o <out>
@@ -23,6 +30,7 @@ Usage:
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import struct
 import sys
@@ -49,11 +57,61 @@ CLOCK_MAX = 60 * 60 * 60 * 24  # 5_184_000 ticks = 24 h at 60 Hz
 GRID = 32
 N_LEVELS = 25
 
-# Established: 25 static 9112-byte templates at this file offset.
-TEMPLATE_BASE = 39392
-TEMPLATE_STRIDE = 9112
-TEMPLATE_BYTES = 25 * TEMPLATE_STRIDE  # 227800
-TEMPLATE_END = TEMPLATE_BASE + TEMPLATE_BYTES  # 267192
+# Per-level world-state blocks. CODE 2 @10328:
+#   file_pos = table_word * $2398 + $774C   ($774C = 30540)
+# dpin 128 writes 25 * 9112 bytes from dpin+2876 at this file position.
+# Indices 25+ are per-named-save LIVE copies (one extra 9112 per name).
+# The old 39392 window was 8852 bytes late (8852 = 16*553+4) and is how
+# the object table appeared 4 bytes off. Do not use 39392.
+WORLD_BASE = 30540
+WORLD_STRIDE = 9112
+WORLD_COUNT = 25
+WORLD_BYTES = WORLD_COUNT * WORLD_STRIDE  # 227800
+WORLD_END = WORLD_BASE + WORLD_BYTES  # 258340
+# Aliases: older call sites used "template" for this region.
+TEMPLATE_BASE = WORLD_BASE
+TEMPLATE_STRIDE = WORLD_STRIDE
+TEMPLATE_BYTES = WORLD_BYTES
+TEMPLATE_END = WORLD_END
+
+# -$1ADC handle is a 1780-byte copy of save[0:1780].
+# +0x0000: 10 x 128-byte Pascal names; +0x0500: 10 x 25 u16be block indices.
+BLOCKMAP_OFF = 0x0500
+BLOCKMAP_SLOTS = 10
+BLOCKMAP_COLS = 25
+BLOCKMAP_ROW = 50
+# Every CODE 2 caller of @10066/@10174 pushes slot 9 as $000A(A6).
+# I/O therefore always reads word[0] of slot 9 = file +0x06C2.
+IO_SLOT = 9
+IO_COL = 0
+IO_FILE_OFF = BLOCKMAP_OFF + IO_SLOT * BLOCKMAP_ROW + IO_COL * 2  # 0x06C2
+
+OBJ_TABLE_OFF = 0x03D8
+OBJ_COUNT = 500
+OBJ_STRIDE = 16
+LINK_FREE = 0xFFFE
+LINK_END = 0xFFFF
+FIXED_SHIFT = 10
+FIXED_UNIT = 1 << FIXED_SHIFT  # 1024
+FIXED_CENTER = 0x200
+
+# World-block subtables (sentinel initialiser, JT 164, and every LEA).
+WORLD_T0_COUNT_OFF = 0x0000
+WORLD_T0_OFF = 0x0002
+WORLD_T0_MAX = 60
+WORLD_T0_REC = 8
+WORLD_T1_COUNT_OFF = 0x01E2
+WORLD_T1_OFF = 0x01E4
+WORLD_T1_MAX = 30
+WORLD_T1_REC = 4
+WORLD_T2_OFF = 0x025C
+WORLD_T2_MAX = 40
+WORLD_T2_REC = 8
+WORLD_T3_OFF = 0x039C
+WORLD_T3_MAX = 15
+WORLD_T3_REC = 4
+WORLD_TRAILER_OFF = 0x2318
+WORLD_TRAILER_LEN = 128
 
 # Named-save title slots (Pascal strings). Observed, not a full struct claim.
 NAME_SLOT = 128
@@ -66,9 +124,9 @@ KNOWN_FIELDS = (
     (OFF_U752, 2, "unknown_0x0752"),
     (OFF_HP, 2, "hp"),
     (OFF_MAXHP, 2, "max_hp"),
-    (OFF_LEVEL, 2, "level"),
-    (OFF_X, 2, "x"),
-    (OFF_Y, 2, "y"),
+    (OFF_LEVEL, 2, "level_INERT"),
+    (OFF_X, 2, "x_INERT"),
+    (OFF_Y, 2, "y_INERT"),
     (OFF_FACING, 2, "facing"),
     (OFF_INV, 0, "inventory"),  # open-ended; tagged separately
 )
@@ -80,6 +138,10 @@ def u16(data: bytes, off: int) -> int:
 
 def u32(data: bytes, off: int) -> int:
     return struct.unpack_from(">I", data, off)[0]
+
+
+def i32(data: bytes, off: int) -> int:
+    return struct.unpack_from(">i", data, off)[0]
 
 
 def put_u16(buf: bytearray, off: int, value: int) -> None:
@@ -113,22 +175,48 @@ class LevelIndex:
         self.names: list[str] = []
         self.types: list[list[int]] = []
         self.type_names: list[list[str]] = []
+        self.items: list[list[int]] = []
         self.arrivals: list[list[dict]] = []
+        self.texture_resources: list[set[int]] = []
         for n in range(N_LEVELS):
             path = export_dir / f"L{n:02d}.json"
             doc = json.loads(path.read_text(encoding="utf-8"))
             types = [[-1] * GRID for _ in range(GRID)]
             tnames = [[""] * GRID for _ in range(GRID)]
+            items = [[-1] * GRID for _ in range(GRID)]
             for s in doc["sectors"]:
                 types[s["y"]][s["x"]] = s["type"]
                 tnames[s["y"]][s["x"]] = s["type_name"]
+                items[s["y"]][s["x"]] = int(s["item"])
             self.names.append(doc["name"])
             self.types.append(types)
             self.type_names.append(tnames)
+            self.items.append(items)
             self.arrivals.append(list(doc.get("arrivals") or []))
+            tex: set[int] = set()
+            for t in doc.get("texture_list") or []:
+                sid = t.get("shape_id")
+                if sid is not None:
+                    tex.add(int(sid))
+            self.texture_resources.append(tex)
 
     def sector(self, level: int, x: int, y: int) -> tuple[int, str]:
         return self.types[level][y][x], self.type_names[level][y][x]
+
+    def item_at(self, level: int, x: int, y: int) -> int:
+        return self.items[level][y][x]
+
+    def sectors_with_item(self, level: int) -> list[tuple[int, int, int, int, str]]:
+        """(x, y, item, type, type_name) for every sector whose item != -1."""
+        out: list[tuple[int, int, int, int, str]] = []
+        for y in range(GRID):
+            for x in range(GRID):
+                item = self.items[level][y][x]
+                if item != -1:
+                    out.append(
+                        (x, y, item, self.types[level][y][x], self.type_names[level][y][x])
+                    )
+        return out
 
 
 def is_standable(sector_type: int) -> bool:
@@ -197,8 +285,27 @@ def select_standable_arrival(
     return chosen
 
 
+def max_block_index(file_len: int) -> int:
+    if file_len < WORLD_BASE + WORLD_STRIDE:
+        return -1
+    return (file_len - WORLD_BASE) // WORLD_STRIDE - 1
+
+
+def world_span_end(file_len: int) -> int:
+    n = max_block_index(file_len) + 1
+    if n <= 0:
+        return WORLD_BASE
+    return WORLD_BASE + n * WORLD_STRIDE
+
+
+def in_world_region(offset: int) -> bool:
+    # Home blocks [30540, 258340) plus any extra live 9112-byte copies.
+    return offset >= WORLD_BASE
+
+
 def in_template_region(offset: int) -> bool:
-    return TEMPLATE_BASE <= offset < TEMPLATE_END
+    """Alias: the 9,112-byte region is live world state, not templates."""
+    return in_world_region(offset)
 
 
 def gate_flags(data: bytes, base: int, levels: LevelIndex) -> tuple[list[bool], dict]:
@@ -354,9 +461,15 @@ def sidecar_report(path: Path) -> list[str]:
 
 def field_name_at(file_off: int, bases: list[int]) -> str:
     labels: list[str] = []
-    if in_template_region(file_off):
-        block = (file_off - TEMPLATE_BASE) // TEMPLATE_STRIDE
-        labels.append(f"template_block_{block}")
+    if BLOCKMAP_OFF <= file_off < BLOCKMAP_OFF + BLOCKMAP_SLOTS * BLOCKMAP_ROW:
+        rel = file_off - BLOCKMAP_OFF
+        slot = rel // BLOCKMAP_ROW
+        col = (rel % BLOCKMAP_ROW) // 2
+        tag = "block_index_authority_UNTESTED" if file_off == IO_FILE_OFF else "blockmap"
+        labels.append(f"{tag}[{slot}][{col}]")
+    if in_world_region(file_off):
+        block = (file_off - WORLD_BASE) // WORLD_STRIDE
+        labels.append(f"world_block_{block}")
     for base in bases:
         rel = file_off - base
         if rel < 0:
@@ -377,30 +490,30 @@ def field_name_at(file_off: int, bases: list[int]) -> str:
 
 
 def select_targets(scan: dict, base_arg: int | None) -> list[dict]:
-    live = [d for d in scan["all6"] if not in_template_region(d["base"])]
-    ghost = [d for d in scan["all6"] if in_template_region(d["base"])]
-    print(f"all6_count={len(scan['all6'])} pre_template={len(live)} in_template={len(ghost)}")
+    live = [d for d in scan["all6"] if not in_world_region(d["base"])]
+    ghost = [d for d in scan["all6"] if in_world_region(d["base"])]
+    print(f"all6_count={len(scan['all6'])} pre_world={len(live)} in_world={len(ghost)}")
     for d in scan["all6"]:
         print(
-            f"  hit B={d['base']} (0x{d['base']:X}) in_template={in_template_region(d['base'])} "
+            f"  hit B={d['base']} (0x{d['base']:X}) in_world={in_world_region(d['base'])} "
             f"L{d['level']} ({d['x']},{d['y']})"
         )
     if base_arg is not None:
         chosen = [d for d in scan["all6"] if d["base"] == base_arg]
         if not chosen:
             raise SystemExit(f"error: --base {base_arg} did not pass all 6 gates")
-        if in_template_region(base_arg):
+        if in_world_region(base_arg):
             raise SystemExit(
-                f"error: --base {base_arg} is inside the static template region "
-                f"[{TEMPLATE_BASE},{TEMPLATE_END}); refuse to write templates"
+                f"error: --base {base_arg} is inside the per-level world-state region "
+                f">={WORLD_BASE}; refuse to write a world block as a player base"
             )
         return chosen
     if len(live) == 0:
-        raise SystemExit("error: no pre-template base passed all 6 gates")
+        raise SystemExit("error: no pre-world-region base passed all 6 gates")
     if len(live) > 1:
         listing = " ".join(f"B={d['base']}" for d in live)
         raise SystemExit(
-            f"error: {len(live)} pre-template bases passed the gate ({listing}); "
+            f"error: {len(live)} pre-world-region bases passed the gate ({listing}); "
             f"pass --base B to choose one. Named saves in one file are different games."
         )
     return live
@@ -550,10 +663,10 @@ def apply_player_edits(
 ) -> tuple[bytearray, list[tuple[int, int, int, str]], dict, list[str]]:
     """Apply field edits to one live player base. Raises EditRefused."""
     base = decoded["base"]
-    if in_template_region(base):
+    if in_world_region(base):
         raise EditRefused(
-            f"B={base} is inside the static template region "
-            f"[{TEMPLATE_BASE},{TEMPLATE_END}); refuse to write templates"
+            f"B={base} is inside the per-level world-state region "
+            f">={WORLD_BASE}; refuse to write a world block as a player base"
         )
 
     def check_u16(name: str, value: int) -> int:
@@ -650,14 +763,20 @@ def apply_player_edits(
             f"b+0x091D={new_b1} (0x{new_b1:02X})"
         )
         expect["facing"] = facing
+    if level is not None or x is not None or y is not None:
+        print(
+            "INERT +0x090C/+0x0918/+0x091A confirmed in game: writing these "
+            "fields does nothing. Block-index authority is u16be at 0x06C2 "
+            "(set-block, UNTESTED)."
+        )
     if level is not None:
-        write_u16_field(data, buf, base + OFF_LEVEL, new_level, "level", changes)
+        write_u16_field(data, buf, base + OFF_LEVEL, new_level, "level_INERT", changes)
         expect["level"] = new_level
     if x is not None:
-        write_u16_field(data, buf, base + OFF_X, new_x, "x", changes)
+        write_u16_field(data, buf, base + OFF_X, new_x, "x_INERT", changes)
         expect["x"] = new_x
     if y is not None:
-        write_u16_field(data, buf, base + OFF_Y, new_y, "y", changes)
+        write_u16_field(data, buf, base + OFF_Y, new_y, "y_INERT", changes)
         expect["y"] = new_y
 
     if item_qtys:
@@ -701,16 +820,20 @@ def print_decoded(decoded: dict, data: bytes, prefix: str = "") -> None:
     base = decoded["base"]
     clock = decoded["clock"]
     clock_s = clock / 60.0 if clock is not None else float("nan")
-    in_tmpl = in_template_region(base)
+    in_world = in_world_region(base)
+    io_word = None
+    if len(data) > IO_FILE_OFF + 1:
+        io_word = u16(data, IO_FILE_OFF)
     print(
-        f"{prefix}B={base} (0x{base:X}) in_template_region={in_tmpl} "
-        f"level={decoded['level']} name={decoded.get('level_name', '')!r} "
-        f"x={decoded['x']} y={decoded['y']} "
+        f"{prefix}B={base} (0x{base:X}) in_world_region={in_world} "
+        f"level_INERT(+0x090C)={decoded['level']} name={decoded.get('level_name', '')!r} "
+        f"x_INERT(+0x0918)={decoded['x']} y_INERT(+0x091A)={decoded['y']} "
         f"sector_type={decoded['type']} sector_type_name={decoded['type_name']} "
         f"hp={decoded['hp']} max_hp={decoded['max_hp']} "
         f"clock_ticks={clock} clock_s={clock_s:.4f} "
         f"facing={decoded['facing']} u16@0x0750={decoded['u750']} "
-        f"u16@0x0752={decoded['u752']}"
+        f"u16@0x0752={decoded['u752']} "
+        f"block_index_authority_UNTESTED(+0x06C2)={io_word}"
     )
     recs = read_inventory(data, base)
     print(f"{prefix}inventory_from B+0x0A00 until id=FFFF n={len(recs)}")
@@ -729,6 +852,991 @@ def enrich(decoded: dict, levels: LevelIndex) -> dict:
     else:
         out["level_name"] = None
     return out
+
+
+def world_block_offset(index: int) -> int:
+    if index < 0:
+        raise SystemExit(f"error: block index {index} is negative")
+    return WORLD_BASE + index * WORLD_STRIDE
+
+
+def require_world_block(data: bytes, index: int) -> tuple[int, bytes]:
+    off = world_block_offset(index)
+    end = off + WORLD_STRIDE
+    if end > len(data):
+        raise SystemExit(
+            f"error: file is {len(data)} bytes; world block index={index} "
+            f"needs [{off},{end}); max_index={max_block_index(len(data))}"
+        )
+    return off, data[off:end]
+
+
+def read_blockmap(data: bytes) -> list[list[int]]:
+    if len(data) < BLOCKMAP_OFF + BLOCKMAP_SLOTS * BLOCKMAP_ROW:
+        raise SystemExit(
+            f"error: file is {len(data)} bytes; blockmap needs "
+            f"[{BLOCKMAP_OFF},{BLOCKMAP_OFF + BLOCKMAP_SLOTS * BLOCKMAP_ROW})"
+        )
+    rows: list[list[int]] = []
+    for slot in range(BLOCKMAP_SLOTS):
+        rec = data[BLOCKMAP_OFF + slot * BLOCKMAP_ROW : BLOCKMAP_OFF + (slot + 1) * BLOCKMAP_ROW]
+        rows.append(list(struct.unpack(">25H", rec)))
+    return rows
+
+
+def blockmap_file_off(slot: int, col: int) -> int:
+    return BLOCKMAP_OFF + slot * BLOCKMAP_ROW + col * 2
+
+
+def unpack_descriptor(word: int) -> dict:
+    s1_index = word & 0x7F
+    selector = (word >> 7) & 0x3F
+    tag = (word >> 13) & 7
+    cache_slot = selector if tag == 6 else selector + 64
+    return {
+        "word": word,
+        "s1_index": s1_index,
+        "selector": selector,
+        "tag": tag,
+        "cache_slot": cache_slot,
+        "resource": cache_slot + 128,
+    }
+
+
+def format_descriptor(desc: dict) -> str:
+    return (
+        f"desc=0x{desc['word']:04X} tag={desc['tag']} "
+        f"selector={desc['selector']} s1={desc['s1_index']} "
+        f"cache_slot={desc['cache_slot']} resource={desc['resource']}"
+    )
+
+
+def format_flags(flags: int) -> str:
+    bits = []
+    if flags & 0x8000:
+        bits.append("$8000")
+    if flags & 0x4000:
+        bits.append("$4000")
+    if flags & 0x2000:
+        bits.append("$2000")
+    bit_s = ",".join(bits) if bits else "none"
+    return f"flags=0x{flags:04X} nibble4_7={(flags >> 4) & 15} tested_bits={bit_s}"
+
+
+def sector_of(raw: int) -> int:
+    """Reader: ASR.L #10. CODE 4 @3590, CODE 7 @6976."""
+    return raw >> FIXED_SHIFT
+
+
+def centred_sector_of(raw: int) -> int:
+    """Writer-side cell centre only. LSL.L #10 then ADD.L #$200. Not the reader."""
+    return (raw - FIXED_CENTER) >> FIXED_SHIFT
+
+
+def fixed_decode(raw: int) -> dict:
+    """10-bit fixed point. Sector is ASR.L #10 (raw >> 10)."""
+    return {
+        "raw": raw,
+        "div": raw / float(FIXED_UNIT),
+        "asr": sector_of(raw),
+        "sector": sector_of(raw),
+        "centred": centred_sector_of(raw),
+        "centered": (raw - FIXED_CENTER) / float(FIXED_UNIT),
+    }
+
+
+def format_fixed(name: str, raw: int, *, fixed: bool, centred: bool = False) -> str:
+    d = fixed_decode(raw)
+    parts = [f"{name}_raw={d['raw']} (0x{d['raw'] & 0xFFFFFFFF:08X})"]
+    if fixed:
+        parts.append(f"{name}/1024={d['div']:.6f}")
+        parts.append(f"{name}_sector=raw>>10={d['sector']}")
+        if centred:
+            parts.append(f"{name}_centred=(raw-$200)>>10={d['centred']}")
+    elif centred:
+        parts.append(f"{name}_sector=raw>>10={d['sector']}")
+        parts.append(f"{name}_centred=(raw-$200)>>10={d['centred']}")
+    return " ".join(parts)
+
+
+def parse_records(block: bytes, off: int, count: int, rec_size: int) -> list[bytes]:
+    out: list[bytes] = []
+    for i in range(count):
+        start = off + i * rec_size
+        out.append(block[start : start + rec_size])
+    return out
+
+
+def rec_u16s(rec: bytes) -> list[int]:
+    return list(struct.unpack(">" + "H" * (len(rec) // 2), rec))
+
+
+def parse_object_entry(rec: bytes, index: int) -> dict:
+    x = i32(rec, 0)
+    y = i32(rec, 4)
+    desc = unpack_descriptor(u16(rec, 8))
+    flags = u16(rec, 10)
+    unk_c = u16(rec, 12)
+    link = u16(rec, 14)
+    return {
+        "index": index,
+        "x": x,
+        "y": y,
+        "desc": desc,
+        "flags": flags,
+        "unknown_0c": unk_c,
+        "link": link,
+        "free": link == LINK_FREE,
+        "hex": rec.hex(),
+    }
+
+
+def parse_world_block(data: bytes, index: int, *, dungeon: int | None = None) -> dict:
+    file_off, block = require_world_block(data, index)
+    anomalies: list[str] = []
+    if len(block) != WORLD_STRIDE:
+        anomalies.append(f"block_len={len(block)} expected={WORLD_STRIDE}")
+
+    count0 = u16(block, WORLD_T0_COUNT_OFF)
+    count1 = u16(block, WORLD_T1_COUNT_OFF)
+    if count0 > WORLD_T0_MAX:
+        anomalies.append(f"t0_count={count0} exceeds max {WORLD_T0_MAX}")
+    if count1 > WORLD_T1_MAX:
+        anomalies.append(f"t1_count={count1} exceeds max {WORLD_T1_MAX}")
+
+    objects = [
+        parse_object_entry(block[OBJ_TABLE_OFF + i * OBJ_STRIDE : OBJ_TABLE_OFF + (i + 1) * OBJ_STRIDE], i)
+        for i in range(OBJ_COUNT)
+    ]
+    live = [o for o in objects if not o["free"]]
+    free_n = OBJ_COUNT - len(live)
+    bad_links = [
+        o["index"]
+        for o in objects
+        if o["link"] not in (LINK_FREE, LINK_END) and o["link"] >= OBJ_COUNT
+    ]
+    if bad_links:
+        anomalies.append(f"link_out_of_range n={len(bad_links)} first={bad_links[:8]}")
+
+    trailer = block[WORLD_TRAILER_OFF : WORLD_TRAILER_OFF + WORLD_TRAILER_LEN]
+    if len(trailer) != WORLD_TRAILER_LEN:
+        anomalies.append(f"trailer_len={len(trailer)}")
+    zeros = sum(1 for b in trailer if b == 0)
+    if zeros != WORLD_TRAILER_LEN:
+        anomalies.append(
+            f"trailer_zeros={zeros}/{WORLD_TRAILER_LEN} (JT 164 CLR.B writes 128 zeros)"
+        )
+
+    empty_plus2 = sum(
+        1 for o in objects if o["hex"] == "0000fffe000000000000000000000000"
+    )
+    all_zero = sum(1 for o in objects if o["hex"] == "00" * 16)
+    if free_n == 0:
+        anomalies.append(
+            "link_$FFFE_count=0 (JT 164 marks free slots at +0x0E; "
+            "this block does not)"
+        )
+
+    return {
+        "level": dungeon if dungeon is not None else index,
+        "index": index,
+        "file_off": file_off,
+        "block": block,
+        "count0": count0,
+        "recs0": parse_records(block, WORLD_T0_OFF, WORLD_T0_MAX, WORLD_T0_REC),
+        "count1": count1,
+        "recs1": parse_records(block, WORLD_T1_OFF, WORLD_T1_MAX, WORLD_T1_REC),
+        "recs2": parse_records(block, WORLD_T2_OFF, WORLD_T2_MAX, WORLD_T2_REC),
+        "recs3": parse_records(block, WORLD_T3_OFF, WORLD_T3_MAX, WORLD_T3_REC),
+        "objects": objects,
+        "live": live,
+        "free_n": free_n,
+        "empty_plus2": empty_plus2,
+        "all_zero": all_zero,
+        "trailer": trailer,
+        "anomalies": anomalies,
+    }
+
+
+def print_record_row(tag: str, index: int, rec: bytes) -> None:
+    words = " ".join(f"{w:04X}" for w in rec_u16s(rec))
+    print(f"  {tag}[{index:02d}] hex={rec.hex()} u16be=[{words}]")
+
+
+def print_object_row(
+    obj: dict, *, fixed: bool, prefix: str = "  ", centred: bool = False
+) -> None:
+    link = obj["link"]
+    if link == LINK_END:
+        link_s = "0xFFFF(end)"
+    elif link == LINK_FREE:
+        link_s = "0xFFFE(free)"
+    else:
+        link_s = f"{link}"
+    print(
+        f"{prefix}obj[{obj['index']:03d}] "
+        f"{format_fixed('x', obj['x'], fixed=fixed, centred=centred)} "
+        f"{format_fixed('y', obj['y'], fixed=fixed, centred=centred)} "
+        f"{format_descriptor(obj['desc'])} "
+        f"{format_flags(obj['flags'])} "
+        f"u16@+0x0C=0x{obj['unknown_0c']:04X} "
+        f"link={link_s}"
+    )
+
+
+def walk_chain(objects: list[dict], start: int) -> list[dict]:
+    """Walk $000E from start. hop 0 is the head. Stops at $FFFF/$FFFE, OOR, cycle."""
+    out: list[dict] = []
+    seen: set[int] = set()
+    idx = start
+    hop = 0
+    while True:
+        if idx in (LINK_FREE, LINK_END):
+            break
+        if idx < 0 or idx >= OBJ_COUNT:
+            out.append(
+                {
+                    "hop": hop,
+                    "index": idx,
+                    "obj": None,
+                    "sx": None,
+                    "sy": None,
+                    "stop": "out_of_range",
+                }
+            )
+            break
+        if idx in seen:
+            obj = objects[idx]
+            out.append(
+                {
+                    "hop": hop,
+                    "index": idx,
+                    "obj": obj,
+                    "sx": sector_of(obj["x"]),
+                    "sy": sector_of(obj["y"]),
+                    "stop": "cycle",
+                }
+            )
+            break
+        seen.add(idx)
+        obj = objects[idx]
+        out.append(
+            {
+                "hop": hop,
+                "index": idx,
+                "obj": obj,
+                "sx": sector_of(obj["x"]),
+                "sy": sector_of(obj["y"]),
+                "stop": None,
+            }
+        )
+        nxt = obj["link"]
+        if nxt in (LINK_FREE, LINK_END):
+            break
+        idx = nxt
+        hop += 1
+        if hop > OBJ_COUNT:
+            break
+    return out
+
+
+def format_chain_nodes(chain: list[dict]) -> str:
+    parts: list[str] = []
+    for node in chain:
+        obj = node["obj"]
+        if obj is None:
+            parts.append(f"({node['index']},?,?,oor)")
+            continue
+        desc = obj["desc"]["word"]
+        parts.append(
+            f"({node['index']},{node['sx']},{node['sy']},0x{desc:04X})"
+        )
+        if node["stop"] == "cycle":
+            parts.append("CYCLE")
+    return "[" + ", ".join(parts) + "]"
+
+
+def print_world_block(world: dict, *, fixed: bool, centred: bool = False) -> None:
+    lv = world["level"]
+    print(
+        f"world L{lv} index={world.get('index', lv)} "
+        f"file_off={world['file_off']} (0x{world['file_off']:X}) "
+        f"size={WORLD_STRIDE}"
+    )
+    if world["anomalies"]:
+        print("world_anomalies " + " | ".join(world["anomalies"]))
+        print("world_head_32 " + world["block"][:32].hex())
+        print("world_obj0_32 " + world["block"][OBJ_TABLE_OFF : OBJ_TABLE_OFF + 32].hex())
+        print(
+            "world_patterns empty_0000FFFE_at_+0="
+            f"{world['empty_plus2']} all_zero={world['all_zero']} "
+            f"link_FFFE={world['free_n']}"
+        )
+    print(
+        f"t0 +0x0000 count={world['count0']} max={WORLD_T0_MAX} "
+        f"rec=8 used={min(world['count0'], WORLD_T0_MAX)}"
+    )
+    for i in range(min(world["count0"], WORLD_T0_MAX)):
+        print_record_row("t0", i, world["recs0"][i])
+    print(
+        f"t1 +0x01E2 count={world['count1']} max={WORLD_T1_MAX} "
+        f"rec=4 used={min(world['count1'], WORLD_T1_MAX)}"
+    )
+    for i in range(min(world["count1"], WORLD_T1_MAX)):
+        print_record_row("t1", i, world["recs1"][i])
+    print(f"t2 +0x025C count_field=NONE max={WORLD_T2_MAX} rec=8")
+    for i, rec in enumerate(world["recs2"]):
+        print_record_row("t2", i, rec)
+    print(f"t3 +0x039C count_field=NONE max={WORLD_T3_MAX} rec=4")
+    for i, rec in enumerate(world["recs3"]):
+        print_record_row("t3", i, rec)
+    print(
+        f"objects +0x03D8 entries={OBJ_COUNT} live={len(world['live'])} "
+        f"free={world['free_n']} (free <=> link==0xFFFE)"
+    )
+    for obj in world["live"]:
+        print_object_row(obj, fixed=fixed, centred=centred)
+    trailer = world["trailer"]
+    print(
+        f"trailer +0x2318 len={len(trailer)} "
+        f"zeros={sum(1 for b in trailer if b == 0)} "
+        f"ones={sum(1 for b in trailer if b == 1)} "
+        f"hex={trailer.hex()}"
+    )
+    print(
+        f"OK world L{lv} live={len(world['live'])} free={world['free_n']} "
+        f"anomalies={len(world['anomalies'])}"
+    )
+
+
+def xref_objects(
+    world: dict,
+    levels: LevelIndex,
+    *,
+    fixed: bool,
+    verbose: bool = True,
+    centred: bool = False,
+    print_unresolved: bool = True,
+) -> dict:
+    lv = world["level"]
+    objects = world["objects"]
+    refs = levels.sectors_with_item(lv)
+    free_hits = 0
+    pos_miss = 0
+    range_miss = 0
+    ok = 0
+    hop1 = hop2 = hop3p = 0
+    unresolved: list[dict] = []
+    left_then_back = 0
+    if verbose:
+        print(
+            f"objects_xref L{lv} map_item_sectors={len(refs)} "
+            f"table_live={len(world['live'])} table_free={world['free_n']} "
+            f"sector=raw>>10"
+        )
+    for x, y, item, st, sn in refs:
+        flag = None
+        obj = None
+        chain: list[dict] = []
+        if item < 0 or item >= OBJ_COUNT:
+            flag = "item_out_of_range"
+            range_miss += 1
+            unresolved.append(
+                {
+                    "level": lv,
+                    "x": x,
+                    "y": y,
+                    "type": st,
+                    "type_name": sn,
+                    "item": item,
+                    "chain": [],
+                    "why": "out_of_range",
+                }
+            )
+        else:
+            obj = objects[item]
+            chain = walk_chain(objects, item)
+            sx = sector_of(obj["x"])
+            sy = sector_of(obj["y"])
+            if obj["free"]:
+                flag = "item_points_at_free_slot"
+                free_hits += 1
+                unresolved.append(
+                    {
+                        "level": lv,
+                        "x": x,
+                        "y": y,
+                        "type": st,
+                        "type_name": sn,
+                        "item": item,
+                        "chain": chain,
+                        "why": "free_slot",
+                    }
+                )
+            elif sx == x and sy == y:
+                ok += 1
+                in_sector = True
+                left = False
+                returned = False
+                for node in chain[1:]:
+                    if node["obj"] is None:
+                        continue
+                    here = node["sx"] == x and node["sy"] == y
+                    if here:
+                        if left:
+                            returned = True
+                        in_sector = True
+                    else:
+                        if in_sector:
+                            left = True
+                        in_sector = False
+                if returned:
+                    left_then_back += 1
+            else:
+                flag = "position_not_in_referencing_sector"
+                pos_miss += 1
+                match_hop = None
+                left = False
+                returned = False
+                in_sector = False
+                for node in chain:
+                    if node["obj"] is None:
+                        continue
+                    here = node["sx"] == x and node["sy"] == y
+                    if here:
+                        if match_hop is None:
+                            match_hop = node["hop"]
+                        elif left:
+                            returned = True
+                        in_sector = True
+                    else:
+                        if in_sector:
+                            left = True
+                        in_sector = False
+                if returned:
+                    left_then_back += 1
+                if match_hop is None:
+                    unresolved.append(
+                        {
+                            "level": lv,
+                            "x": x,
+                            "y": y,
+                            "type": st,
+                            "type_name": sn,
+                            "item": item,
+                            "chain": chain,
+                            "why": "chain_miss",
+                        }
+                    )
+                elif returned:
+                    # In, out, in again: not counted as a chain-walk hit.
+                    unresolved.append(
+                        {
+                            "level": lv,
+                            "x": x,
+                            "y": y,
+                            "type": st,
+                            "type_name": sn,
+                            "item": item,
+                            "chain": chain,
+                            "why": f"leave_then_back_first_hop={match_hop}",
+                        }
+                    )
+                elif match_hop == 1:
+                    hop1 += 1
+                elif match_hop == 2:
+                    hop2 += 1
+                else:
+                    hop3p += 1
+        if verbose:
+            print(
+                f"  sector ({x},{y}) type={st} {sn} item={item}"
+                + (f" FLAG={flag}" if flag else " MATCH")
+            )
+            if obj is not None:
+                print_object_row(obj, fixed=fixed, prefix="    ", centred=centred)
+                if flag == "position_not_in_referencing_sector":
+                    print(
+                        f"    implied_sector=({sector_of(obj['x'])},{sector_of(obj['y'])}) "
+                        f"map_sector=({x},{y}) "
+                        f"centred=({centred_sector_of(obj['x'])},{centred_sector_of(obj['y'])})"
+                    )
+                    print(f"    chain {format_chain_nodes(chain)}")
+    chain_resolved = hop1 + hop2 + hop3p
+    still = len(unresolved)
+    if verbose:
+        print(
+            f"xref_counts L{lv} map_refs={len(refs)} direct={ok} "
+            f"miss={len(refs) - ok} "
+            f"chain_hop1={hop1} chain_hop2={hop2} chain_hop3plus={hop3p} "
+            f"chain_resolved={chain_resolved} unresolved={still} "
+            f"free_slot={free_hits} out_of_range={range_miss} "
+            f"left_then_back={left_then_back}"
+        )
+        print(f"OK objects L{lv} direct={ok} unresolved={still}")
+        if print_unresolved:
+            for u in unresolved:
+                print(
+                    f"UNRESOLVED L{u['level']} sector=({u['x']},{u['y']}) "
+                    f"type={u['type']} {u['type_name']} item={u['item']} "
+                    f"why={u['why']} chain={format_chain_nodes(u['chain'])}"
+                )
+    return {
+        "map_refs": len(refs),
+        "match": ok,
+        "direct": ok,
+        "miss": len(refs) - ok,
+        "free_slot": free_hits,
+        "position_miss": pos_miss,
+        "out_of_range": range_miss,
+        "hop1": hop1,
+        "hop2": hop2,
+        "hop3p": hop3p,
+        "chain_resolved": chain_resolved,
+        "unresolved": still,
+        "unresolved_rows": unresolved,
+        "left_then_back": left_then_back,
+        "mismatch_total": still,
+        "live": len(world["live"]),
+        "free": world["free_n"],
+        "anomalies": list(world["anomalies"]),
+    }
+
+
+def xref_all_levels(
+    data: bytes,
+    levels: LevelIndex,
+    *,
+    label: str,
+    print_unresolved: bool = True,
+    verbose_rows: bool = False,
+) -> dict:
+    totals = {
+        "map_refs": 0,
+        "direct": 0,
+        "miss": 0,
+        "hop1": 0,
+        "hop2": 0,
+        "hop3p": 0,
+        "chain_resolved": 0,
+        "unresolved": 0,
+        "left_then_back": 0,
+        "live": 0,
+        "free": 0,
+        "unresolved_rows": [],
+        "per_level": [],
+    }
+    print(f"xref_all file={label} sector=raw>>10")
+    for lv in range(N_LEVELS):
+        world = parse_world_block(data, lv, dungeon=lv)
+        xref = xref_objects(
+            world,
+            levels,
+            fixed=False,
+            verbose=verbose_rows,
+            print_unresolved=False,
+        )
+        totals["map_refs"] += xref["map_refs"]
+        totals["direct"] += xref["direct"]
+        totals["miss"] += xref["miss"]
+        totals["hop1"] += xref["hop1"]
+        totals["hop2"] += xref["hop2"]
+        totals["hop3p"] += xref["hop3p"]
+        totals["chain_resolved"] += xref["chain_resolved"]
+        totals["unresolved"] += xref["unresolved"]
+        totals["left_then_back"] += xref["left_then_back"]
+        totals["live"] += xref["live"]
+        totals["free"] += xref["free"]
+        totals["unresolved_rows"].extend(xref["unresolved_rows"])
+        totals["per_level"].append(xref)
+        print(
+            f"A2 L{lv:02d} {levels.names[lv]!r} map_refs={xref['map_refs']} "
+            f"direct={xref['direct']} miss={xref['miss']}"
+        )
+        print(
+            f"A3 L{lv:02d} hop1={xref['hop1']} hop2={xref['hop2']} "
+            f"hop3plus={xref['hop3p']} unresolved={xref['unresolved']} "
+            f"left_then_back={xref['left_then_back']} "
+            f"live={xref['live']} free={xref['free']}"
+        )
+        if print_unresolved:
+            for u in xref["unresolved_rows"]:
+                print(
+                    f"A4 UNRESOLVED L{u['level']} sector=({u['x']},{u['y']}) "
+                    f"type={u['type']} {u['type_name']} item={u['item']} "
+                    f"why={u['why']} chain={format_chain_nodes(u['chain'])}"
+                )
+    print(
+        f"A_FILE {label} map_refs={totals['map_refs']} direct={totals['direct']} "
+        f"chain_hop1={totals['hop1']} chain_hop2={totals['hop2']} "
+        f"chain_hop3plus={totals['hop3p']} chain_resolved={totals['chain_resolved']} "
+        f"unresolved={totals['unresolved']} left_then_back={totals['left_then_back']}"
+    )
+    return totals
+
+
+def cmd_catalog(path: Path, levels: LevelIndex) -> int:
+    data = path.read_bytes()
+    print(f"file={path}")
+    print(f"size={len(data)}")
+    print("B1 descriptor histogram live objects, 25 home blocks")
+    desc_rows: dict[int, dict] = {}
+    flag_hist: dict[int, int] = {}
+    flag_bit_types: dict[int, dict[str, int]] = {}
+    type_flag_bits: dict[str, dict[int, int]] = {}
+    unk_c_nonzero: list[str] = []
+    obj_res_by_level: list[set[int]] = [set() for _ in range(N_LEVELS)]
+    for lv in range(N_LEVELS):
+        world = parse_world_block(data, lv, dungeon=lv)
+        objects = world["objects"]
+        refs = levels.sectors_with_item(lv)
+        item_to_types: dict[int, set[str]] = {}
+        for x, y, item, st, sn in refs:
+            chain = walk_chain(objects, item)
+            for node in chain:
+                if node["obj"] is None:
+                    continue
+                item_to_types.setdefault(node["index"], set()).add(f"{st}:{sn}")
+        for obj in world["live"]:
+            word = obj["desc"]["word"]
+            row = desc_rows.setdefault(
+                word,
+                {
+                    "count": 0,
+                    "desc": obj["desc"],
+                    "types": set(),
+                    "levels": set(),
+                },
+            )
+            row["count"] += 1
+            row["levels"].add(lv)
+            row["types"].update(item_to_types.get(obj["index"], set()))
+            obj_res_by_level[lv].add(obj["desc"]["resource"])
+            flags = obj["flags"]
+            flag_hist[flags] = flag_hist.get(flags, 0) + 1
+            types = item_to_types.get(obj["index"], set())
+            for bit in range(16):
+                mask = 1 << bit
+                if flags & mask:
+                    bucket = flag_bit_types.setdefault(mask, {})
+                    if types:
+                        for t in types:
+                            bucket[t] = bucket.get(t, 0) + 1
+                    else:
+                        bucket["(unreferenced)"] = bucket.get("(unreferenced)", 0) + 1
+                    for t in types or {"(unreferenced)"}:
+                        tb = type_flag_bits.setdefault(t, {})
+                        tb[mask] = tb.get(mask, 0) + 1
+            if obj["unknown_0c"] != 0:
+                unk_c_nonzero.append(
+                    f"L{lv} obj[{obj['index']:03d}] +0x0C=0x{obj['unknown_0c']:04X} "
+                    f"desc=0x{word:04X}"
+                )
+    for word in sorted(desc_rows):
+        row = desc_rows[word]
+        d = row["desc"]
+        types = ",".join(sorted(row["types"])) if row["types"] else "(none)"
+        print(
+            f"B1 desc=0x{word:04X} count={row['count']} tag={d['tag']} "
+            f"selector={d['selector']} cache_slot={d['cache_slot']} "
+            f"resource={d['resource']} s1={d['s1_index']} "
+            f"levels={sorted(row['levels'])} sector_types={types}"
+        )
+    print(f"B1 distinct_descriptors={len(desc_rows)} live_total={sum(r['count'] for r in desc_rows.values())}")
+
+    bands = (("0-6", range(0, 7)), ("7-15", range(7, 16)), ("16-24", range(16, 25)))
+    for band_name, band in bands:
+        print(f"B2 band={band_name}")
+        for lv in band:
+            obj_res = obj_res_by_level[lv]
+            tex = levels.texture_resources[lv]
+            inn = sorted(obj_res & tex)
+            out = sorted(obj_res - tex)
+            print(
+                f"B2 L{lv:02d} {levels.names[lv]!r} "
+                f"obj_resources={sorted(obj_res)} "
+                f"texture_list={sorted(tex)} "
+                f"in_texture_list={inn} not_in_texture_list={out}"
+            )
+        band_obj = set().union(*(obj_res_by_level[lv] for lv in band))
+        band_tex = set().union(*(levels.texture_resources[lv] for lv in band))
+        print(
+            f"B2 band={band_name} union_obj={sorted(band_obj)} "
+            f"union_tex={sorted(band_tex)} "
+            f"in={sorted(band_obj & band_tex)} "
+            f"not_in={sorted(band_obj - band_tex)}"
+        )
+
+    print("B3 flags histogram live objects")
+    for flags in sorted(flag_hist):
+        bits = [f"${1 << b:04X}" for b in range(16) if flags & (1 << b)]
+        print(
+            f"B3 flags=0x{flags:04X} count={flag_hist[flags]} "
+            f"bits={','.join(bits) if bits else 'none'}"
+        )
+    print("B3 flag-bit vs referencing sector types")
+    for mask in sorted(flag_bit_types):
+        pairs = flag_bit_types[mask]
+        body = " ".join(f"{t}={n}" for t, n in sorted(pairs.items(), key=lambda kv: (-kv[1], kv[0])))
+        print(f"B3 bit=0x{mask:04X} {body}")
+    print("B3 sector-type vs flag bits")
+    for t in sorted(type_flag_bits):
+        bits = type_flag_bits[t]
+        body = " ".join(f"0x{m:04X}={n}" for m, n in sorted(bits.items()))
+        print(f"B3 type={t} {body}")
+
+    print("B4 +0x0C on this file")
+    print(f"B4 this_file nonzero_count={len(unk_c_nonzero)}")
+    for line in unk_c_nonzero:
+        print(f"B4 {line}")
+
+    print("B4 +0x0C all local unique saves, all 25 home blocks, live objects")
+    files = discover_save_files()
+    grand_nonzero = 0
+    grand_live = 0
+    for fpath in files:
+        fdata = fpath.read_bytes()
+        file_nz = 0
+        file_live = 0
+        for lv in range(N_LEVELS):
+            world = parse_world_block(fdata, lv, dungeon=lv)
+            for obj in world["live"]:
+                file_live += 1
+                if obj["unknown_0c"] != 0:
+                    file_nz += 1
+                    print(
+                        f"B4 NONZERO file={fpath.name} L{lv} "
+                        f"obj[{obj['index']:03d}] +0x0C=0x{obj['unknown_0c']:04X} "
+                        f"desc=0x{obj['desc']['word']:04X} "
+                        f"x_raw={obj['x']} y_raw={obj['y']}"
+                    )
+        grand_nonzero += file_nz
+        grand_live += file_live
+        print(
+            f"B4 file={fpath.name} live={file_live} "
+            f"unknown_0c_nonzero={file_nz}"
+        )
+    print(
+        f"B4 ALL_SAVES live={grand_live} unknown_0c_nonzero={grand_nonzero} "
+        f"ever_nonzero={'YES' if grand_nonzero else 'NO'}"
+    )
+    print("OK catalog")
+    return 0
+
+
+def resolve_world_args(args: argparse.Namespace) -> tuple[int, int | None]:
+    """Return (file_block_index, dungeon_level_or_None)."""
+    block = getattr(args, "block", None)
+    level = getattr(args, "level", None)
+    if block is None and level is None:
+        raise SystemExit("error: need --level N and/or --block N")
+    if level is not None and not (0 <= level <= 24):
+        raise SystemExit(f"error: --level {level} not in 0..24")
+    if block is not None and block < 0:
+        raise SystemExit(f"error: --block {block} is negative")
+    if block is not None:
+        return block, level
+    assert level is not None
+    return level, level
+
+
+def cmd_world(path: Path, args: argparse.Namespace) -> int:
+    data = path.read_bytes()
+    print(f"file={path}")
+    print(f"size={len(data)}")
+    print(f"world_base={WORLD_BASE} max_index={max_block_index(len(data))}")
+    index, dungeon = resolve_world_args(args)
+    world = parse_world_block(data, index, dungeon=dungeon)
+    print_world_block(
+        world,
+        fixed=bool(getattr(args, "fixed", False)),
+        centred=bool(getattr(args, "centred", False)),
+    )
+    return 0
+
+
+def cmd_objects(path: Path, levels: LevelIndex, args: argparse.Namespace) -> int:
+    data = path.read_bytes()
+    print(f"file={path}")
+    print(f"size={len(data)}")
+    print(f"world_base={WORLD_BASE} max_index={max_block_index(len(data))}")
+    if getattr(args, "all_levels", False):
+        xref_all_levels(
+            data,
+            levels,
+            label=str(path),
+            print_unresolved=True,
+            verbose_rows=bool(getattr(args, "verbose", False)),
+        )
+        return 0
+    index, dungeon = resolve_world_args(args)
+    if dungeon is None:
+        raise SystemExit("error: objects xref needs --level N (dungeon 0..24)")
+    world = parse_world_block(data, index, dungeon=dungeon)
+    if world["anomalies"]:
+        print("world_anomalies " + " | ".join(world["anomalies"]))
+        print("world_head_32 " + world["block"][:32].hex())
+    xref_objects(
+        world,
+        levels,
+        fixed=bool(getattr(args, "fixed", False)),
+        centred=bool(getattr(args, "centred", False)),
+    )
+    return 0
+
+
+def cmd_blockmap(path: Path) -> int:
+    data = path.read_bytes()
+    print(f"file={path}")
+    print(f"size={len(data)}")
+    nmax = max_block_index(len(data))
+    print(
+        f"world_base={WORLD_BASE} stride={WORLD_STRIDE} "
+        f"home_count={WORLD_COUNT} max_index={nmax} "
+        f"io_slot={IO_SLOT} io_col={IO_COL} io_file_off={IO_FILE_OFF} "
+        f"(0x{IO_FILE_OFF:X})"
+    )
+    rows = read_blockmap(data)
+    for slot, words in enumerate(rows):
+        nlen = data[slot * 128] if slot * 128 < len(data) else 0
+        raw = data[slot * 128 + 1 : slot * 128 + 1 + min(nlen, 127)]
+        try:
+            name = raw.decode("mac_roman")
+        except Exception:
+            name = raw.decode("latin-1", errors="replace")
+        print(f"slot {slot} nlen={nlen} name={name!r} u16be={words}")
+    io_word = rows[IO_SLOT][IO_COL]
+    io_pos = WORLD_BASE + io_word * WORLD_STRIDE
+    print(
+        f"io_word=table[{IO_SLOT}][{IO_COL}]={io_word} "
+        f"file_pos={io_pos} (0x{io_pos:X}) "
+        f"fits={io_pos + WORLD_STRIDE <= len(data)}"
+    )
+    print("OK blockmap")
+    return 0
+
+
+def cmd_set_block(path: Path, levels: LevelIndex, args: argparse.Namespace) -> int:
+    slot = args.slot if args.slot is not None else IO_SLOT
+    col = args.col if args.col is not None else IO_COL
+    if not (0 <= slot < BLOCKMAP_SLOTS):
+        raise SystemExit(f"error: --slot {slot} not in 0..{BLOCKMAP_SLOTS - 1}")
+    if not (0 <= col < BLOCKMAP_COLS):
+        raise SystemExit(f"error: --col {col} not in 0..{BLOCKMAP_COLS - 1}")
+    require_u16("--index", args.index)
+    data = path.read_bytes()
+    nmax = max_block_index(len(data))
+    if args.index > nmax:
+        raise SystemExit(
+            f"error: --index {args.index} has no 9112-byte block in this file "
+            f"(max_index={nmax}, need [{WORLD_BASE + args.index * WORLD_STRIDE},"
+            f"{WORLD_BASE + (args.index + 1) * WORLD_STRIDE}))"
+        )
+    out_path = require_write_output(path, args)
+    scan = scan_bases(data, levels)
+    targets = select_targets(scan, getattr(args, "base", None))
+    off = blockmap_file_off(slot, col)
+    buf = bytearray(data)
+    changes: list[tuple[int, int, int, str]] = []
+    print(
+        f"set-block slot={slot} col={col} file_off={off} (0x{off:X}) "
+        f"old={u16(data, off)} new={args.index} "
+        f"file_pos_new={WORLD_BASE + args.index * WORLD_STRIDE} "
+        f"THIS is the block-index authority (0x06C2 when slot=9 col=0). "
+        f"+0x090C / +0x0918 / +0x091A are INERT (confirmed in game). "
+        f"0x06C2 is UNTESTED in game."
+    )
+    write_u16_field(
+        data, buf, off, args.index, f"blockmap[{slot}][{col}]", changes
+    )
+    if not changes:
+        raise SystemExit("error: no fields changed")
+    return commit_output(
+        out_path, data, buf, targets, levels, changes, dry_run=bool(args.dry_run)
+    )
+
+
+def discover_save_files() -> list[Path]:
+    """Every local file large enough to hold the 25 world blocks."""
+    roots = [ROOT / "reference" / "saves", ROOT / "data" / "saves"]
+    skip_suffix = {".zip", ".png", ".hqx", ".sea", ".rsrc", ".txt"}
+    skip_names = {"bombcode.bin", "bombcode_1995.bin"}
+    found: list[Path] = []
+    seen_path: set[str] = set()
+    seen_hash: set[bytes] = set()
+    for root in roots:
+        if not root.is_dir():
+            continue
+        for path in sorted(root.rglob("*")):
+            if not path.is_file():
+                continue
+            if path.suffix.lower() in skip_suffix:
+                continue
+            if path.name.lower() in skip_names:
+                continue
+            if path.stat().st_size < WORLD_END:
+                continue
+            key = str(path.resolve()).lower()
+            if key in seen_path:
+                continue
+            seen_path.add(key)
+            full = hashlib.sha256(path.read_bytes()).digest()
+            if full in seen_hash:
+                print(f"selftest skip_duplicate {path}")
+                continue
+            seen_hash.add(full)
+            found.append(path)
+    return found
+
+
+def dpin_home_slice(dpin: bytes, level: int) -> bytes:
+    off = 2876 + level * WORLD_STRIDE
+    return dpin[off : off + WORLD_STRIDE]
+
+
+def selftest_saves(levels: LevelIndex) -> int:
+    files = discover_save_files()
+    print(f"selftest files={len(files)} world_base={WORLD_BASE}")
+    dpin_path = ROOT / "reference" / "dpin_128.bin"
+    dpin = dpin_path.read_bytes() if dpin_path.is_file() else b""
+    print(f"dpin path={dpin_path} size={len(dpin)}")
+    grand_live = 0
+    grand_free = 0
+    grand_direct = 0
+    grand_chain = 0
+    grand_unresolved = 0
+    grand_refs = 0
+    for path in files:
+        data = path.read_bytes()
+        print(f"file={path} size={len(data)} max_index={max_block_index(len(data))}")
+        if len(dpin) >= 2876 + WORLD_BYTES:
+            same = 0
+            for lv in range(N_LEVELS):
+                if data[WORLD_BASE + lv * WORLD_STRIDE : WORLD_BASE + (lv + 1) * WORLD_STRIDE] == dpin_home_slice(dpin, lv):
+                    same += 1
+            print(f"  dpin_home_match={same}/{N_LEVELS}")
+        rows = read_blockmap(data)
+        print(
+            f"  io_word=table[{IO_SLOT}][{IO_COL}]={rows[IO_SLOT][IO_COL]} "
+            f"slot0[0]={rows[0][0]}"
+        )
+        totals = xref_all_levels(
+            data, levels, label=str(path), print_unresolved=True, verbose_rows=False
+        )
+        grand_live += totals["live"]
+        grand_free += totals["free"]
+        grand_direct += totals["direct"]
+        grand_chain += totals["chain_resolved"]
+        grand_unresolved += totals["unresolved"]
+        grand_refs += totals["map_refs"]
+    print(
+        f"selftest_totals files={len(files)} live_entries={grand_live} "
+        f"free_slots={grand_free} map_refs={grand_refs} "
+        f"direct={grand_direct} chain_resolved={grand_chain} "
+        f"unresolved={grand_unresolved}"
+    )
+    print("OK selftest")
+    return 0
 
 
 def cmd_inspect(path: Path, levels: LevelIndex) -> int:
@@ -808,6 +1916,11 @@ def cmd_warp(path: Path, levels: LevelIndex, args: argparse.Namespace) -> int:
     out_path = require_write_output(path, args)
     dry = bool(args.dry_run)
 
+    print(
+        "warp writes INERT fields +0x090C / +0x0918 / +0x091A "
+        "(confirmed in game: no effect). Use set-block for 0x06C2 "
+        "block-index authority (UNTESTED)."
+    )
     level, x, y, write_level = resolve_warp_target(args, levels)
     scan = scan_bases(data, levels)
     targets = select_targets(scan, args.base)
@@ -836,9 +1949,9 @@ def cmd_warp(path: Path, levels: LevelIndex, args: argparse.Namespace) -> int:
         base = decoded["base"]
         if write_level:
             assert level is not None
-            write_u16_field(data, buf, base + OFF_LEVEL, level, "level", changes)
-        write_u16_field(data, buf, base + OFF_X, x, "x", changes)
-        write_u16_field(data, buf, base + OFF_Y, y, "y", changes)
+            write_u16_field(data, buf, base + OFF_LEVEL, level, "level_INERT", changes)
+        write_u16_field(data, buf, base + OFF_X, x, "x_INERT", changes)
+        write_u16_field(data, buf, base + OFF_Y, y, "y_INERT", changes)
 
     expect: dict = {"x": x, "y": y}
     if write_level:
@@ -964,11 +2077,11 @@ def cmd_item(path: Path, levels: LevelIndex, args: argparse.Namespace) -> int:
         if args.base is not None:
             targets = select_targets(scan, args.base)
         else:
-            live = [d for d in scan["all6"] if not in_template_region(d["base"])]
+            live = [d for d in scan["all6"] if not in_world_region(d["base"])]
             if not live:
-                raise SystemExit("error: no pre-template base passed all 6 gates")
+                raise SystemExit("error: no pre-world-region base passed all 6 gates")
             print(
-                f"all6_count={len(scan['all6'])} pre_template={len(live)} "
+                f"all6_count={len(scan['all6'])} pre_world={len(live)} "
                 f"(listing all live bases; pass --base to restrict)"
             )
             targets = live
@@ -1116,7 +2229,102 @@ def build_parser() -> argparse.ArgumentParser:
     inspect = sub.add_parser("inspect", help="scan and print every all-6 player base")
     inspect.add_argument("savefile", type=Path)
 
-    warp = sub.add_parser("warp", help="write a new save with relocated player")
+    world = sub.add_parser(
+        "world",
+        help="parse the 9,112-byte per-level world-state block",
+    )
+    world.add_argument("savefile", type=Path)
+    world.add_argument("--level", type=int, default=None, help="dungeon 0..24 (home block)")
+    world.add_argument(
+        "--block",
+        type=int,
+        default=None,
+        help="raw I/O block index (file_pos = 30540 + index*9112)",
+    )
+    world.add_argument(
+        "--fixed",
+        action="store_true",
+        help="print positions as raw, /1024, and sector=raw>>10",
+    )
+    world.add_argument(
+        "--centred",
+        action="store_true",
+        help="also print writer-only (raw-$200)>>10 alongside the reader sector",
+    )
+
+    objects = sub.add_parser(
+        "objects",
+        help="cross-reference the object table against L{N}.json Sector.item",
+    )
+    objects.add_argument("savefile", type=Path)
+    objects.add_argument("--level", type=int, default=None, help="dungeon 0..24 for xref")
+    objects.add_argument(
+        "--block",
+        type=int,
+        default=None,
+        help="raw I/O block index; default is the home block for --level",
+    )
+    objects.add_argument(
+        "--all",
+        dest="all_levels",
+        action="store_true",
+        help="run xref on home blocks 0..24 and print A2/A3/A4 counts",
+    )
+    objects.add_argument(
+        "--verbose",
+        action="store_true",
+        help="with --all, print every map-ref row",
+    )
+    objects.add_argument(
+        "--fixed",
+        action="store_true",
+        help="print positions as raw, /1024, and sector=raw>>10",
+    )
+    objects.add_argument(
+        "--centred",
+        action="store_true",
+        help="also print writer-only (raw-$200)>>10 alongside the reader sector",
+    )
+
+    catalog = sub.add_parser(
+        "catalog",
+        help="descriptor/flags/+0x0C histograms and texture_list cross-check",
+    )
+    catalog.add_argument("savefile", type=Path)
+
+    blockmap = sub.add_parser(
+        "blockmap",
+        help="print the 10x25 u16be table at +0x0500 (block-index authority)",
+    )
+    blockmap.add_argument("savefile", type=Path)
+
+    set_block = sub.add_parser(
+        "set-block",
+        help=(
+            "write the block-index authority (default file 0x06C2 = slot 9 col 0). "
+            "UNTESTED in game. NOT +0x090C (INERT)."
+        ),
+    )
+    set_block.add_argument("savefile", type=Path)
+    set_block.add_argument("--index", type=int, required=True, help="block index to store")
+    set_block.add_argument("--slot", type=int, default=None, help="row 0..9 (default 9)")
+    set_block.add_argument("--col", type=int, default=None, help="column 0..24 (default 0)")
+    set_block.add_argument("--base", type=int, default=None)
+    set_block.add_argument("-o", "--output", type=Path, default=None)
+    set_block.add_argument("--dry-run", action="store_true")
+
+    selftest = sub.add_parser(
+        "selftest",
+        help="count live/free object-table entries and D2 mismatches on every local save",
+    )
+
+    warp = sub.add_parser(
+        "warp",
+        help=(
+            "write INERT +0x090C/+0x0918/+0x091A (confirmed no effect in game). "
+            "For the live block index use set-block (0x06C2, UNTESTED)."
+        ),
+    )
     warp.add_argument("savefile", type=Path)
     warp.add_argument("--level", type=int, default=None)
     warp.add_argument("--x", type=int, default=None)
@@ -1178,6 +2386,18 @@ def main(argv: list[str] | None = None) -> int:
         levels = LevelIndex(args.export_dir)
         if args.cmd == "inspect":
             return cmd_inspect(args.savefile, levels)
+        if args.cmd == "world":
+            return cmd_world(args.savefile, args)
+        if args.cmd == "objects":
+            return cmd_objects(args.savefile, levels, args)
+        if args.cmd == "catalog":
+            return cmd_catalog(args.savefile, levels)
+        if args.cmd == "blockmap":
+            return cmd_blockmap(args.savefile)
+        if args.cmd == "set-block":
+            return cmd_set_block(args.savefile, levels, args)
+        if args.cmd == "selftest":
+            return selftest_saves(levels)
         if args.cmd == "warp":
             return cmd_warp(args.savefile, levels, args)
         if args.cmd == "set":

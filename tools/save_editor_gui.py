@@ -65,8 +65,11 @@ WARN_UNVERIFIED = (
 )
 
 WARN_CONFIRMED = (
-    "Only current HP and max HP are confirmed to take effect in the game. "
-    "Level, X, Y, and facing writes are UNVERIFIED — the game may ignore them."
+    "Current HP and max HP are confirmed to take effect in the game. "
+    "+0x090C Level, +0x0918 X, +0x091A Y, and +0x091C facing are INERT "
+    "(confirmed in game: writing them does nothing). "
+    "0x06C2 is the block-index authority (file_pos = word*9112+30540); "
+    "UNTESTED in game. Use set-block, not warp/set, to change it."
 )
 
 
@@ -143,7 +146,7 @@ class SaveEditorApp:
         slot_head = {
             "base": ("Base offset", 110),
             "name": ("Name", 140),
-            "level": ("Level", 220),
+            "level": ("Level +0x090C INERT", 220),
             "xy": ("(x,y)", 70),
             "sector": ("Sector", 120),
             "hp": ("HP", 80),
@@ -200,9 +203,12 @@ class SaveEditorApp:
         )
 
         ttk.Separator(player).grid(row=7, column=0, columnspan=2, sticky="ew", pady=6)
-        ttk.Label(player, text="Position").grid(row=8, column=0, columnspan=2, sticky="w")
+        ttk.Label(
+            player,
+            text="Position (+0x090C / +0x0918 / +0x091A INERT — confirmed in game)",
+        ).grid(row=8, column=0, columnspan=2, sticky="w")
 
-        ttk.Label(player, text="Level").grid(row=9, column=0, sticky="w", pady=2)
+        ttk.Label(player, text="Level +0x090C INERT").grid(row=9, column=0, sticky="w", pady=2)
         self.level_var = tk.StringVar()
         self.level_combo = ttk.Combobox(
             player, textvariable=self.level_var, state="disabled", width=36
@@ -211,8 +217,8 @@ class SaveEditorApp:
         self.level_combo.bind("<<ComboboxSelected>>", lambda _e: self._refresh_sector())
         self.level_combo.bind("<KeyRelease>", lambda _e: self._refresh_sector())
 
-        self.x = self._entry(player, "X (0–31)", 10)
-        self.y = self._entry(player, "Y (0–31)", 11)
+        self.x = self._entry(player, "X +0x0918 INERT (0–31)", 10)
+        self.y = self._entry(player, "Y +0x091A INERT (0–31)", 11)
         self.x.bind("<KeyRelease>", lambda _e: self._refresh_sector())
         self.y.bind("<KeyRelease>", lambda _e: self._refresh_sector())
 
@@ -268,12 +274,54 @@ class SaveEditorApp:
         log_frame = ttk.LabelFrame(main, text="Tool output (full stdout / stderr)", padding=6)
         log_frame.grid(row=4, column=0, columnspan=2, sticky="nsew", **pad)
         log_frame.columnconfigure(0, weight=1)
-        log_frame.rowconfigure(0, weight=1)
+        log_frame.rowconfigure(1, weight=1)
+
+        world_bar = ttk.Frame(log_frame)
+        world_bar.grid(row=0, column=0, columnspan=2, sticky="ew", pady=(0, 4))
+        ttk.Label(world_bar, text="World home block 0–24").pack(side="left")
+        self.world_level_var = tk.StringVar(value="0")
+        self.world_level = ttk.Spinbox(
+            world_bar,
+            from_=0,
+            to=24,
+            textvariable=self.world_level_var,
+            width=4,
+            state="disabled",
+        )
+        self.world_level.pack(side="left", padx=6)
+        self.fixed_var = tk.BooleanVar(value=True)
+        ttk.Checkbutton(
+            world_bar,
+            text="--fixed (raw, /1024, sector=raw>>10)",
+            variable=self.fixed_var,
+        ).pack(side="left", padx=6)
+        self.centred_var = tk.BooleanVar(value=False)
+        ttk.Checkbutton(
+            world_bar,
+            text="--centred (raw-$200)>>10 compare only",
+            variable=self.centred_var,
+        ).pack(side="left", padx=6)
+        self.io_word_var = tk.StringVar(value="0x06C2 = — (block-index authority, UNTESTED)")
+        ttk.Label(world_bar, textvariable=self.io_word_var, foreground="#8a0000").pack(
+            side="left", padx=8
+        )
+        ttk.Button(world_bar, text="World dump", command=self.dump_world).pack(
+            side="left", padx=4
+        )
+        ttk.Button(
+            world_bar, text="Objects xref", command=self.dump_objects
+        ).pack(side="left", padx=4)
+        ttk.Label(
+            world_bar,
+            text="Prints the 9,112-byte block and Sector.item cross-check.",
+            foreground="#555",
+        ).pack(side="left", padx=8)
+
         self.log = tk.Text(log_frame, height=10, wrap="word", state="disabled")
         log_scroll = ttk.Scrollbar(log_frame, orient="vertical", command=self.log.yview)
         self.log.configure(yscrollcommand=log_scroll.set)
-        self.log.grid(row=0, column=0, sticky="nsew")
-        log_scroll.grid(row=0, column=1, sticky="ns")
+        self.log.grid(row=1, column=0, sticky="nsew")
+        log_scroll.grid(row=1, column=1, sticky="ns")
 
         bottom = ttk.Frame(main)
         bottom.grid(row=5, column=0, columnspan=2, sticky="ew", **pad)
@@ -371,11 +419,11 @@ class SaveEditorApp:
         finally:
             self.root.config(cursor="")
 
-        live = [d for d in scan["all6"] if not se.in_template_region(d["base"])]
+        live = [d for d in scan["all6"] if not se.in_world_region(d["base"])]
         if not live:
             messagebox.showerror(
                 "Not a usable 2.0 save",
-                "No pre-template player record passed all six gates.\n"
+                "No player record outside the world-state region passed all six gates.\n"
                 "This editor only accepts Pathways Into Darkness 2.0 Saved Games "
                 "(not version 1.1 or demo saves).",
             )
@@ -383,6 +431,11 @@ class SaveEditorApp:
 
         self.path = path
         self.data = data
+        if len(data) > se.IO_FILE_OFF + 1:
+            io_word = se.u16(data, se.IO_FILE_OFF)
+            self.io_word_var.set(
+                f"0x06C2 = {io_word} (block-index authority, UNTESTED)"
+            )
         self.live = [se.enrich(d, self.levels) for d in live]
         self.names = se.list_save_names(data)
         self.path_var.set(f"{path}  ({len(data)} bytes, {len(self.live)} live slot(s))")
@@ -505,6 +558,8 @@ class SaveEditorApp:
             self.level_var.set(f"{lv}  {self.levels.names[lv]}")
             self._set(self.x, decoded["x"])
             self._set(self.y, decoded["y"])
+            self.world_level.configure(state="normal")
+            self.world_level_var.set(str(decoded["level"]))
             self._refresh_sector()
             self._fill_inventory(decoded)
         finally:
@@ -644,6 +699,71 @@ class SaveEditorApp:
         if len(kwargs) == 1:
             raise se.EditRefused("no fields changed")
         return kwargs
+
+    def _world_level(self) -> int:
+        raw = self.world_level_var.get().strip()
+        level = parse_int("world level", raw)
+        if not (0 <= level <= 24):
+            raise se.EditRefused(f"world level={level} not in 0..24")
+        return level
+
+    def dump_world(self) -> None:
+        if self.path is None or self.data is None:
+            messagebox.showinfo("World", "Open a save file first.")
+            return
+        try:
+            level = self._world_level()
+        except se.EditRefused as exc:
+            messagebox.showerror("World", str(exc))
+            return
+
+        class Args:
+            pass
+
+        args = Args()
+        args.level = level
+        args.block = None
+        args.fixed = bool(self.fixed_var.get())
+        args.centred = bool(self.centred_var.get())
+        try:
+            self._capture_io(lambda: se.cmd_world(self.path, args))
+            self._set_status(f"World dump L{level} written to the pane below.")
+        except SystemExit as exc:
+            msg = str(exc.code) if isinstance(exc.code, str) else str(exc)
+            if msg.startswith("error: "):
+                msg = msg[7:]
+            self._append_log(f"REFUSED {msg}")
+            messagebox.showerror("World refused", msg)
+
+    def dump_objects(self) -> None:
+        if self.path is None or self.data is None:
+            messagebox.showinfo("Objects", "Open a save file first.")
+            return
+        try:
+            level = self._world_level()
+        except se.EditRefused as exc:
+            messagebox.showerror("Objects", str(exc))
+            return
+
+        class Args:
+            pass
+
+        args = Args()
+        args.level = level
+        args.block = None
+        args.all_levels = False
+        args.verbose = False
+        args.fixed = bool(self.fixed_var.get())
+        args.centred = bool(self.centred_var.get())
+        try:
+            self._capture_io(lambda: se.cmd_objects(self.path, self.levels, args))
+            self._set_status(f"Objects xref L{level} written to the pane below.")
+        except SystemExit as exc:
+            msg = str(exc.code) if isinstance(exc.code, str) else str(exc)
+            if msg.startswith("error: "):
+                msg = msg[7:]
+            self._append_log(f"REFUSED {msg}")
+            messagebox.showerror("Objects refused", msg)
 
     def export_file(self) -> None:
         if self.path is None or self.data is None:

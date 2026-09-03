@@ -117,6 +117,7 @@ pid-re/
   docs/
     FORMAT.md      # the running format specification
     JOURNAL.md     # dated log of attempts, including failures
+  PID_PROJECT_CONTEXT.md  # current save format / disproven / open items
   checksums.txt
   .gitignore
 ```
@@ -197,3 +198,87 @@ Therefore:
 6. Build the level directory hypothesis from whatever table those strings sit in.
 
 Do not proceed past step 6 until steps 1–5 have produced committed artifacts.
+
+---
+
+## 8. Reading the 68k / 68020 binary
+
+The v2.0 application contains 68020 instructions: `EXTB.L` (`49 C0`),
+`MULU.L` (`4C 01 08 00`), scaled index extensions. Decode as 68020.
+
+Jump table: CODE 0, 355 entries of 8 bytes from offset 16, base
+`A5+0x20`, `{u16 routine offset, u16 3F3C, u16 segment, u16 A9F0}`.
+`entry = (displacement - 0x20 - 2) / 8`. The table’s segment field is
+**+4 versus every segment header**. Trust the table. File offset =
+`4 + routine offset`.
+
+---
+
+## 9. Save format
+
+Full field tables live in `docs/FORMAT.md`. Established from the
+68020 stream:
+
+- Player records begin at file offset 0 with **stride 2,876**. Names
+  are 128-byte Pascal strings at `k*128`. File size is
+  `267452 + (n_names - 1) * 9112`.
+- Inside a player record: `+0x074A` clock, `+0x0754`/`+0x0756` HP,
+  `+0x090C` level, `+0x0918`/`+0x091A` X/Y, `+0x091C` facing,
+  `+0x0A00` inventory. **HP edits take effect. Level, X, Y, and
+  facing do not.**
+- The 25 × 9,112-byte blocks at file offset **39,392** are
+  **per-level live world state**. CODE 4 @1466 (`NewPtr $2398` →
+  `-$1A86(A5)`); CODE 2 @10066 / @10174 `FSRead` / `FSWrite` at
+  `index * $2398`.
+- Object table at block `+0x03D8`: 500 × 16 bytes. X/Y are 10-bit
+  fixed point with a `$200` centre. `+0x08` is a packed descriptor.
+  `+0x0E` is the free-list link (`$FFFE` / `$FFFF`). JT 157/159/158/164
+  insert / update / free / wipe.
+- `Sector.item` indexes that table. Object positions are not in Maps.
+- `dpin` 128 initialises a new save (CODE 2 @9262: FSWrite 28760 +
+  2876 @ pos 8 + 227800 from offset 2876) and is released. Not a
+  runtime table.
+
+`tools/save_editor.py` inspects player records and now also dumps
+`world` / `objects` for a level block. On every captured v2.0 save
+the object table, parsed as the CODE layout, has 0 × `$FFFE` at
++0x0E and a 100% item↔position miss. Report that; do not weaken the
+CODE.
+
+---
+
+## 10. Disproven (this round)
+
+See `docs/FORMAT.md` **Disproven** for the full table. Newly closed:
+
+- The 25 blocks at 39,392 are **not** static templates.
+- `dpin` 128’s purpose is **not** unknown; it is not Semmler’s item
+  template table.
+- `Sector.Item` is **not** a dpin loot-group index and **not** a
+  flag-map key. It is an object-table index.
+- The 2,876-byte player stride is **not** suspect. 2,876 and 9,112
+  are unrelated.
+- Pillars are **not** solid map geometry.
+- Wall type and texture are **not** two independent bytes.
+
+Do not import Marathon / Aleph One layouts. Do not decode this
+binary as 68000.
+
+---
+
+## 11. Open items (engine impact)
+
+1. `$217F` anomaly (4,101 pairs, levels 7–15, s1 index 127 vs 14
+   records on resource 194). Not solved.
+2. Player’s live position encoding (integer X/Y/level/facing do not
+   take effect).
+3. Contents of the 60- / 30- / 40- / 15-record tables inside the
+   9,112-byte block.
+4. L13 maze generator.
+5. Player-island flag bits; `unknown1`; floor/ceiling selection;
+   unverified s1 words.
+6. Captured-save vs in-memory world block (corpus has not shown a
+   post-exit `FSWrite`).
+
+Closed: `.256` decoding; `dpin` purpose; `Sector.item`; the 9,112
+block’s role.
