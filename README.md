@@ -7,7 +7,7 @@ The game's source code was never released. This repository is the result of
 reverse-engineering its data files from the shipped binaries, building on
 fan documentation written between 1994 and 2000.
 
-**No game data is distributed here.** Get your own.
+Pathways Into Darkness is © Bungie Software. **This repository contains no game code or assets.** Get your own.
 
 ---
 
@@ -28,9 +28,6 @@ before this repository existed:
 Their conclusions were used as leads and independently verified against the
 bytes. Where this documentation and theirs disagree, `docs/FORMAT.md` says so
 and shows the evidence. All code here is written from the observed data.
-
-Pathways Into Darkness is © Bungie Software. This repository contains no game
-code or assets.
 
 ---
 
