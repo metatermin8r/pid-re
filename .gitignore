@@ -47,6 +47,9 @@
 /reference/palette.png
 /reference/stride_scores.png
 
+# Local analysis scratch: constructed saves, DATAINIT dumps, reports
+/out/
+
 # Filename secondary nets if an output path changes
 **/CODE_*.bin
 **/snd_*.wav

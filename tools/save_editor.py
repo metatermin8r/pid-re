@@ -2,9 +2,10 @@
 """Inspect and edit Pathways Into Darkness 2.0 Saved Games files.
 
 Player-region base B is found by scanning, not assumed. Relative field
-offsets are the ItemCheat / pid-re set (clock, HP, level, X, Y, facing,
-inventory). They are accepted only when a candidate B passes all six
-validation gates against the v2.0 level JSON.
+offsets are the live island (dungeon, fixed-point X/Y, HP) plus the
+inert integer mirrors (level, X, Y, facing) and inventory. They are
+accepted only when a candidate B passes all six validation gates
+against the v2.0 level JSON.
 
 Usage:
   python tools/save_editor.py inspect <savefile>
@@ -13,15 +14,28 @@ Usage:
   python tools/save_editor.py catalog <savefile>
   python tools/save_editor.py blockmap <savefile>
   python tools/save_editor.py set-block <savefile> --index N -o <out>
-      # writes 0x06C2 block-index authority (UNTESTED). NOT +0x090C.
+      # writes table[9][0] at 0x06C2 (sink FROM -$1AD8). NOT +0x090C.
+  python tools/save_editor.py set-dungeon <savefile> --level N -o <out>
+      # writes player+0x54 at file B+0x0748 (load-path dungeon). NEVER in place.
+  python tools/save_editor.py set-position <savefile> --x N --y N -o <out>
+      # live X/Y at +0x074A / +0x074E (10-bit fixed). NOT the clock.
+  python tools/save_editor.py set-position <savefile> --x N --y N --yaw 128 --hp 999 --maxhp 999 -o <out>
+      # also write live facing at +0x0752 (512-unit circle) and HP.
+  python tools/save_editor.py set-position <savefile> --arrival LEVEL -o <out>
+      # dungeon + arrival cell-centre. NEVER in place.
   python tools/save_editor.py objects <savefile> --block N --level M [--fixed]
   python tools/save_editor.py warp <savefile> --level N --arrival -o <out>
       # +0x090C / +0x0918 / +0x091A are INERT (confirmed in game).
   python tools/save_editor.py warp <savefile> --x X --y Y -o <out>
   python tools/save_editor.py warp <savefile> --level N --arrival-from M -o <out>
-  python tools/save_editor.py set <savefile> [--hp N] [--maxhp N] [--clock SEC] [--facing N] -o <out>
+  python tools/save_editor.py set <savefile> [--hp N] [--maxhp N] [--facing N] -o <out>
   python tools/save_editor.py item <savefile> --list [--base B]
-  python tools/save_editor.py item <savefile> --slot N --qty Q -o <out>
+  python tools/save_editor.py item <savefile> --slot N --value Q -o <out>
+  python tools/save_editor.py give <savefile> --id N [--into SLOT] [--count N] -o <out>
+  python tools/save_editor.py equip <savefile> --slot N -o <out>
+  python tools/save_editor.py export-item-catalog
+  python tools/save_editor.py export-objects
+      # pristine object tables from dpin 128 into reference/export/objects_LNN.json
   python tools/save_editor.py verify <savefile>
   python tools/save_editor.py diff <a> <b>
   python tools/save_editor.py gui [savefile]
@@ -41,19 +55,31 @@ ROOT = Path(__file__).resolve().parents[1]
 EXPORT_DIR = ROOT / "reference" / "export"
 
 # Relative offsets inside a player region. Not file offsets until B is found.
-OFF_CLOCK = 0x074A
-OFF_U750 = 0x0750
-OFF_U752 = 0x0752
+OFF_DUNGEON = 0x0748  # player+0x54 in the I/O blob (k*2876 + 0x0748)
+OFF_X_FP = 0x074A  # live X, u32be 10-bit fixed. NOT a clock (disproven).
+OFF_Y_FP = 0x074E  # live Y, u32be 10-bit fixed
+OFF_U752 = 0x0752  # live facing / yaw; 512-unit binary angle (0..511)
 OFF_HP = 0x0754
 OFF_MAXHP = 0x0756
 OFF_LEVEL = 0x090C
 OFF_X = 0x0918
 OFF_Y = 0x091A
 OFF_FACING = 0x091C
-OFF_INV = 0x0A00
+# Player I/O blob starts at B+0x06F4 (A5 -$1A8A). mem+d = B+0x06F4+d.
+# +0x0A00 is player+$30C — 48 bytes BEFORE the inventory array.
+# The live tree is at player+$33C = B+0x0A30. There is no separate
+# packed serialisation; the save is a raw dump of the A5 blob.
+OFF_PLAYER = 0x06F4
+OFF_POINTS = 0x06FE  # player+$0A, u16be
+OFF_TREASURE = 0x0700  # player+$0C, u32be
+OFF_READY_CRYSTAL = 0x0886  # player+$192
+OFF_READY_WEAPON = 0x088C  # player+$198
+OFF_SHOT_COUNTER = 0x088E  # player+$19A
+OFF_INV_HEAD = 0x0A2E  # player+$33A, start slot (0 on captured saves)
+OFF_INV = 0x0A30  # player+$33C, 256 x 8
+INV_MAX = 256
 SCAN_NEED = 0x0A08
 
-CLOCK_MAX = 60 * 60 * 60 * 24  # 5_184_000 ticks = 24 h at 60 Hz
 GRID = 32
 N_LEVELS = 25
 
@@ -119,8 +145,9 @@ NAME_SLOTS = 8
 PLAYER_STRIDE = 2876  # confirmed: record k is at k*2876
 
 KNOWN_FIELDS = (
-    (OFF_CLOCK, 4, "clock"),
-    (OFF_U750, 2, "unknown_0x0750"),
+    (OFF_DUNGEON, 2, "dungeon_load_path"),
+    (OFF_X_FP, 4, "x_live"),
+    (OFF_Y_FP, 4, "y_live"),
     (OFF_U752, 2, "unknown_0x0752"),
     (OFF_HP, 2, "hp"),
     (OFF_MAXHP, 2, "max_hp"),
@@ -128,7 +155,13 @@ KNOWN_FIELDS = (
     (OFF_X, 2, "x_INERT"),
     (OFF_Y, 2, "y_INERT"),
     (OFF_FACING, 2, "facing"),
-    (OFF_INV, 0, "inventory"),  # open-ended; tagged separately
+    (OFF_POINTS, 2, "points"),
+    (OFF_TREASURE, 4, "treasure"),
+    (OFF_READY_CRYSTAL, 2, "ready_crystal"),
+    (OFF_READY_WEAPON, 2, "ready_weapon"),
+    (OFF_SHOT_COUNTER, 2, "shot_counter"),
+    (OFF_INV_HEAD, 2, "inv_head"),
+    (OFF_INV, 0, "inventory"),  # 256 x 8 starting at player+$33C
 )
 
 
@@ -320,8 +353,11 @@ def gate_flags(data: bytes, base: int, levels: LevelIndex) -> tuple[list[bool], 
         "type_name": None,
         "hp": None,
         "max_hp": None,
-        "clock": None,
-        "u750": None,
+        "x_fp": None,
+        "y_fp": None,
+        "x_live": None,
+        "y_live": None,
+        "dungeon": None,
         "u752": None,
         "facing": None,
     }
@@ -334,15 +370,21 @@ def gate_flags(data: bytes, base: int, levels: LevelIndex) -> tuple[list[bool], 
     y = u16(data, base + OFF_Y)
     hp = u16(data, base + OFF_HP)
     max_hp = u16(data, base + OFF_MAXHP)
-    clock = u32(data, base + OFF_CLOCK)
+    x_fp = u32(data, base + OFF_X_FP)
+    y_fp = u32(data, base + OFF_Y_FP)
+    x_live = sector_of(x_fp)
+    y_live = sector_of(y_fp)
     decoded.update(
         level=level,
         x=x,
         y=y,
         hp=hp,
         max_hp=max_hp,
-        clock=clock,
-        u750=u16(data, base + OFF_U750),
+        x_fp=x_fp,
+        y_fp=y_fp,
+        x_live=x_live,
+        y_live=y_live,
+        dungeon=u16(data, base + OFF_DUNGEON),
         u752=u16(data, base + OFF_U752),
         facing=u16(data, base + OFF_FACING),
     )
@@ -355,7 +397,7 @@ def gate_flags(data: bytes, base: int, levels: LevelIndex) -> tuple[list[bool], 
         decoded["type_name"] = sn
         flags[3] = st not in (0, 7)
     flags[4] = 0 < hp <= max_hp < 10000
-    flags[5] = clock < CLOCK_MAX
+    flags[5] = 0 <= x_live <= 31 and 0 <= y_live <= 31
     return flags, decoded
 
 
@@ -395,18 +437,582 @@ def scan_bases(data: bytes, levels: LevelIndex) -> dict:
     return out
 
 
-def read_inventory(data: bytes, base: int, limit: int = 64) -> list[tuple[int, int, int, int]]:
+def read_inventory(
+    data: bytes, base: int, limit: int = INV_MAX
+) -> list[tuple[int, int, int, int]]:
+    """Records at B+0x0A30 until id=$FFFF. Does not include the terminator."""
     recs: list[tuple[int, int, int, int]] = []
     off = base + OFF_INV
     for _ in range(limit):
         if off + 8 > len(data):
             break
         rec = struct.unpack_from(">4H", data, off)
-        recs.append(rec)
         if rec[0] == 0xFFFF:
             break
+        recs.append(rec)
         off += 8
     return recs
+
+
+def read_inventory_slot(data: bytes, base: int, slot: int) -> tuple[int, int, int, int]:
+    if slot < 0 or slot >= INV_MAX:
+        raise EditRefused(f"slot {slot} not in 0..{INV_MAX - 1}")
+    off = base + OFF_INV + slot * 8
+    if off + 8 > len(data):
+        raise EditRefused(f"slot {slot} is past the end of the file")
+    return struct.unpack_from(">4H", data, off)
+
+
+def inventory_file_off(base: int, slot: int, word: int = 0) -> int:
+    return base + OFF_INV + slot * 8 + word * 2
+
+
+# ---------------------------------------------------------------------------
+# Item catalog (A5 -$14D6) and inventory tree
+# ---------------------------------------------------------------------------
+
+CODE_DIR = ROOT / "reference" / "docs" / "code"
+APP_RSRC = ROOT / "data" / "hfs" / "Pathways_1995" / "Pathways Into Darkness.rsrc"
+ITEM_CATALOG_JSON = EXPORT_DIR / "item_catalog.json"
+CATALOG_A5 = 0x14D6
+CATALOG_N = 71
+DATAINIT_HDR = 0x1B2  # CODE 11 +434; compressed payload at +454
+CLASS_POTION = 2
+CLASS_WEAPON = 3
+CLASS_CRYSTAL = 4
+CEDAR_BOX_ID = 8
+YELLOW_CRYSTAL_ID = 64
+W7_ANY = 0xFFFF
+W7_AK_MAGS = 0xFFFA  # ids 53-55
+W7_40MM = 0xFFFB  # ids 58-60
+
+_ITEM_CATALOG: dict | None = None
+
+
+class _PackStream:
+    def __init__(self, data: bytes) -> None:
+        self.data = data
+        self.i = 0
+
+    def u8(self) -> int:
+        if self.i >= len(self.data):
+            raise EOFError(f"DATAINIT src overrun at {self.i}")
+        b = self.data[self.i]
+        self.i += 1
+        return b
+
+
+def _datainit_get_rl(s: _PackStream) -> tuple[int, int | None]:
+    d0 = s.u8()
+    if d0 < 0x80:
+        return d0, None
+    if (d0 & 0x40) == 0:
+        return ((d0 & 0x3F) << 8) | s.u8(), None
+    if (d0 & 0x20) == 0:
+        return ((d0 & 0x1F) << 16) | (s.u8() << 8) | s.u8(), None
+    if (d0 & 0x10) == 0:
+        v = (s.u8() << 24) | (s.u8() << 16) | (s.u8() << 8) | s.u8()
+        return v, None
+    first, _ = _datainit_get_rl(s)
+    second, _ = _datainit_get_rl(s)
+    return first, second
+
+
+def datainit_uncompress(src: bytes, dest_size: int) -> bytes:
+    """Think C _DATAINIT decompressor (CODE 11 @4 / JT 305)."""
+    s = _PackStream(src)
+    dest = bytearray(dest_size)
+    a1 = 0
+    while True:
+        d3 = 1
+        b = s.u8()
+        d1 = b & 0x0F
+        d2 = b & 0xF0
+        extra_d3 = None
+        if d1 == 0:
+            d1, extra_d3 = _datainit_get_rl(s)
+            if extra_d3 is not None:
+                d3 = extra_d3
+            if d1 == 0:
+                break
+        else:
+            d1 = d1 * 2
+        if d2 == 0:
+            d2, extra_d3 = _datainit_get_rl(s)
+            if extra_d3 is not None:
+                d3 = extra_d3
+        else:
+            d2 >>= 3
+        while True:
+            a1 += d2
+            if a1 + d1 > dest_size:
+                raise ValueError(f"DATAINIT dest overrun a1={a1} d1={d1} size={dest_size}")
+            for _ in range(d1):
+                dest[a1] = s.u8()
+                a1 += 1
+            d3 -= 1
+            if d3 == 0:
+                break
+    return bytes(dest)
+
+
+def _load_str_list(rsrc_id: int) -> list[str]:
+    if not APP_RSRC.is_file():
+        return []
+    from mac_containers import resources_of_type
+    from mac_text import parse_str_list
+
+    payload = resources_of_type(APP_RSRC, b"STR#").get(rsrc_id)
+    if not payload:
+        return []
+    return parse_str_list(payload) or []
+
+
+def load_item_catalog(*, write_json: bool = True) -> dict:
+    """71x16 catalog at A5 -$14D6, plus the 15-word Cedar admit list at -$1066."""
+    global _ITEM_CATALOG
+    if _ITEM_CATALOG is not None:
+        return _ITEM_CATALOG
+
+    code11 = (CODE_DIR / "CODE_11.bin").read_bytes()
+    hdr = DATAINIT_HDR
+    dest_size = struct.unpack(">I", code11[hdr : hdr + 4])[0]
+    off_data = struct.unpack(">I", code11[hdr + 8 : hdr + 12])[0]
+    off_rel = struct.unpack(">I", code11[hdr + 12 : hdr + 16])[0]
+    packed_off = hdr + off_data
+    src = code11[packed_off : hdr + off_rel]
+    world = datainit_uncompress(src, dest_size)
+    cat_off = dest_size - CATALOG_A5
+    raw = world[cat_off : cat_off + CATALOG_N * 16]
+    if len(raw) != CATALOG_N * 16:
+        raise SystemExit(f"error: catalog slice len={len(raw)} expected {CATALOG_N * 16}")
+    cedar_off = dest_size - 0x1066
+    cedar_ids = list(struct.unpack(">15H", world[cedar_off : cedar_off + 30]))
+
+    names = _load_str_list(2000)
+    examine = _load_str_list(1001)
+    entries = []
+    for i in range(CATALOG_N):
+        words = list(struct.unpack_from(">8H", raw, i * 16))
+        w3 = words[3]
+        entries.append(
+            {
+                "id": i,
+                "name": names[i] if i < len(names) else "",
+                "examine": examine[i] if i < len(examine) else "",
+                "words": words,
+                "w0": words[0],
+                "w1": words[1],
+                "w2": words[2],
+                "w3": w3,
+                "w4": words[4],
+                "w5": words[5],
+                "w6": words[6],
+                "w7": words[7],
+                "sprite_s1": words[0] & 0x7F,
+                "weight_units": w3,
+                "weight_kg": round(w3 / 28.0, 4),
+            }
+        )
+    ammo_ids: set[int] = set()
+    for e in entries:
+        w7 = e["w7"]
+        if e["w6"] > 0:
+            if w7 < CATALOG_N:
+                ammo_ids.add(w7)
+            elif w7 == W7_AK_MAGS:
+                ammo_ids.update((53, 54, 55))
+            elif w7 == W7_40MM:
+                ammo_ids.update((58, 59, 60))
+    doc = {
+        "source": (
+            f"CODE 11 header +{hdr} (0x{hdr:X}), compressed payload +{packed_off} "
+            f"(CODE 11 +454), dest_size={dest_size}, catalog at dest-{CATALOG_A5:#x}"
+        ),
+        "cedar_admit_ids": cedar_ids,
+        "ammo_ids": sorted(ammo_ids),
+        "entries": entries,
+    }
+    if write_json:
+        ITEM_CATALOG_JSON.parent.mkdir(parents=True, exist_ok=True)
+        ITEM_CATALOG_JSON.write_text(json.dumps(doc, indent=2) + "\n", encoding="utf-8")
+        print(f"wrote {ITEM_CATALOG_JSON} entries={len(entries)}")
+    _ITEM_CATALOG = doc
+    return doc
+
+
+def catalog_entry(item_id: int) -> dict | None:
+    cat = load_item_catalog()
+    if 0 <= item_id < len(cat["entries"]):
+        return cat["entries"][item_id]
+    return None
+
+
+def item_name(item_id: int) -> str:
+    if item_id == 0xFFFF:
+        return "(end)"
+    e = catalog_entry(item_id)
+    if e and e["name"]:
+        return e["name"]
+    return f"id:{item_id}"
+
+
+def w7_admits(w7: int, item_id: int) -> bool:
+    if w7 == W7_ANY:
+        return True
+    if w7 == W7_40MM:
+        return 58 <= item_id <= 60
+    if w7 == W7_AK_MAGS:
+        return 53 <= item_id <= 55
+    return w7 == item_id
+
+
+def interpret_word2(item_id: int, value: int) -> str:
+    e = catalog_entry(item_id)
+    if e is None:
+        return f"value={value}"
+    if e["w6"] > 0:
+        if value == 0xFFFF:
+            return "child_slot=FFFF (empty)"
+        return f"child_slot={value}"
+    if e["w1"] == CLASS_CRYSTAL:
+        return f"charge={value}"
+    cat = load_item_catalog()
+    if item_id in cat["ammo_ids"]:
+        return f"rounds={value}"
+    return f"value={value} (overloaded)"
+
+
+def children_of(recs: list[tuple[int, int, int, int]], parent_slot: int) -> list[int]:
+    if parent_slot < 0 or parent_slot >= len(recs):
+        return []
+    first = recs[parent_slot][2]
+    out: list[int] = []
+    seen: set[int] = set()
+    cur = first
+    while cur != 0xFFFF:
+        if cur in seen:
+            break
+        if cur < 0 or cur >= len(recs):
+            break
+        seen.add(cur)
+        out.append(cur)
+        cur = recs[cur][3]
+    return out
+
+
+def sibling_chain(recs: list[tuple[int, int, int, int]], start: int) -> list[int]:
+    out: list[int] = []
+    seen: set[int] = set()
+    cur = start
+    while cur != 0xFFFF:
+        if cur in seen or cur < 0 or cur >= len(recs):
+            break
+        seen.add(cur)
+        out.append(cur)
+        cur = recs[cur][3]
+    return out
+
+
+def container_fill(recs: list[tuple[int, int, int, int]], parent_slot: int) -> int:
+    total = 0
+    for slot in children_of(recs, parent_slot):
+        e = catalog_entry(recs[slot][0])
+        if e:
+            total += e["w4"]
+    return total
+
+
+def first_free_slot(data: bytes, base: int) -> int:
+    for slot in range(INV_MAX):
+        rec = read_inventory_slot(data, base, slot)
+        if rec[0] == 0xFFFF:
+            return slot
+    return -1
+
+
+def write_inv_record(
+    data: bytes,
+    buf: bytearray,
+    base: int,
+    slot: int,
+    rec: tuple[int, int, int, int],
+    changes: list[tuple[int, int, int, str]],
+) -> None:
+    off = inventory_file_off(base, slot)
+    names = ("id", "state", "value", "next_sibling")
+    for i, (field, value) in enumerate(zip(names, rec)):
+        write_u16_field(data, buf, off + i * 2, value, f"inv[{slot}].{field}", changes)
+
+
+def print_inventory_tree(data: bytes, base: int, prefix: str = "") -> None:
+    recs = read_inventory(data, base)
+    head = u16(data, base + OFF_INV_HEAD)
+    cat = load_item_catalog()
+    print(
+        f"{prefix}inventory B+0x0A30 (player+$33C) n={len(recs)} "
+        f"head(+0x0A2E/+$33A)={head} "
+        f"terminator_slot={len(recs)}"
+    )
+    if recs:
+        term_off = inventory_file_off(base, len(recs))
+        term = struct.unpack_from(">4H", data, term_off)
+        print(
+            f"{prefix}  terminator file_off=0x{term_off:X} "
+            f"words=({' '.join(f'{w:04X}' for w in term)}) "
+            f"(first word FFFF; other six bytes are leftover, not a record)"
+        )
+    child_of: set[int] = set()
+    for i, rec in enumerate(recs):
+        e = catalog_entry(rec[0])
+        if e and e["w6"] > 0:
+            child_of.update(children_of(recs, i))
+    roots = sibling_chain(recs, head if head != 0xFFFF and head < len(recs) else 0)
+
+    def emit(slot: int, indent: int, seen: set[int]) -> None:
+        if slot < 0 or slot >= len(recs):
+            print(f"{prefix}  {'  ' * indent}slot={slot} OUT_OF_RANGE")
+            return
+        if slot in seen:
+            print(f"{prefix}  {'  ' * indent}slot={slot} CYCLE")
+            return
+        seen.add(slot)
+        rec = recs[slot]
+        e = catalog_entry(rec[0])
+        w3 = e["w3"] if e else 0
+        kg = w3 / 28.0
+        role = interpret_word2(rec[0], rec[2])
+        print(
+            f"{prefix}  {'  ' * indent}slot={slot} {item_name(rec[0])} "
+            f"id={rec[0]} state={rec[1]} {role} "
+            f"next_sibling={rec[3] if rec[3] != 0xFFFF else 'FFFF'} "
+            f"w3={w3} kg={kg:.2f} "
+            f"raw={data[inventory_file_off(base, slot):inventory_file_off(base, slot) + 8].hex()}"
+        )
+        if e and e["w6"] > 0:
+            for child in children_of(recs, slot):
+                emit(child, indent + 1, seen)
+
+    seen: set[int] = set()
+    for slot in roots:
+        emit(slot, 0, seen)
+    orphans = [i for i in range(len(recs)) if i not in seen]
+    if orphans:
+        print(f"{prefix}  orphans_not_reachable_from_head={orphans}")
+        for slot in orphans:
+            emit(slot, 0, seen)
+
+    sum_w3 = sum((catalog_entry(r[0]) or {"w3": 0})["w3"] for r in recs)
+    print(
+        f"{prefix}  total_weight sum(w3)={sum_w3} / 28 = {sum_w3 / 28.0:.2f} kg "
+        f"(JT 217 FODIV #$1C). UI string is STR# 2016."
+    )
+    print(
+        f"{prefix}  points(+0x06FE/+$0A)={u16(data, base + OFF_POINTS)} "
+        f"treasure(+0x0700/+$0C)={u32(data, base + OFF_TREASURE)} "
+        f"ready_crystal(+0x0886/+$192)={u16(data, base + OFF_READY_CRYSTAL)} "
+        f"ready_weapon(+0x088C/+$198)={u16(data, base + OFF_READY_WEAPON)} "
+        f"shot_counter(+0x088E/+$19A)={u16(data, base + OFF_SHOT_COUNTER)}"
+    )
+    _ = cat
+
+
+def apply_wipe_inventory(
+    data: bytes,
+    buf: bytearray,
+    base: int,
+    changes: list[tuple[int, int, int, str]],
+) -> None:
+    empty = (0xFFFF, 0, 0, 0xFFFF)
+    for slot in range(INV_MAX):
+        write_inv_record(data, buf, base, slot, empty, changes)
+    write_u16_field(data, buf, base + OFF_INV_HEAD, 0xFFFF, "inv_head", changes)
+
+
+def apply_give(
+    data: bytes,
+    decoded: dict,
+    item_id: int,
+    *,
+    into: int | None = None,
+    count: int | None = None,
+    state: int = 0,
+) -> tuple[bytearray, list[tuple[int, int, int, str]], dict, list[str]]:
+    """Append one inventory record. --into links it as a child."""
+    base = decoded["base"]
+    if in_world_region(base):
+        raise EditRefused(f"B={base} is inside the world-state region; refused")
+    e = catalog_entry(item_id)
+    if e is None:
+        raise EditRefused(f"id={item_id} is not in the 71-entry catalog")
+    if item_id < 0 or item_id > 0xFFFE:
+        raise EditRefused(f"id={item_id} does not fit")
+
+    buf = bytearray(data)
+    # Work against the buffer so sequential gives in one process see prior writes.
+    work = bytes(buf)
+    recs = read_inventory(work, base)
+    slot = first_free_slot(work, base)
+    if slot < 0:
+        raise EditRefused(f"inventory is full ({INV_MAX} slots)")
+
+    if e["w6"] > 0:
+        value = 0xFFFF
+    elif count is not None:
+        value = count
+    else:
+        value = 0
+    if count is not None:
+        if count < 0 or count > 0xFFFF:
+            raise EditRefused(f"--count {count} does not fit u16be")
+        if e["w6"] == 0:
+            value = count
+
+    new_rec = (item_id, state, value, 0xFFFF)
+
+    changes: list[tuple[int, int, int, str]] = []
+    if into is not None:
+        if into < 0 or into >= len(recs):
+            raise EditRefused(f"--into {into} is not an occupied slot (n={len(recs)})")
+        parent = recs[into]
+        pe = catalog_entry(parent[0])
+        if pe is None or pe["w6"] == 0:
+            raise EditRefused(
+                f"--into {into} ({item_name(parent[0])}) catalog w6=0; not a container"
+            )
+        if not w7_admits(pe["w7"], item_id):
+            raise EditRefused(
+                f"--into {into} w7={pe['w7']:04X} does not admit id={item_id} "
+                f"({item_name(item_id)})"
+            )
+        if parent[0] == CEDAR_BOX_ID:
+            admit = load_item_catalog()["cedar_admit_ids"]
+            if parent[2] != 0xFFFF:
+                raise EditRefused(
+                    f"Cedar Box slot {into} is not empty (word2={parent[2]}); "
+                    f"CODE 6 @616 refuses a second child"
+                )
+            if item_id not in admit:
+                raise EditRefused(
+                    f"id={item_id} ({item_name(item_id)}) is not in the Cedar "
+                    f"admit list at A5 -$1066 ({admit})"
+                )
+        fill = container_fill(recs, into)
+        new_fill = fill + e["w4"]
+        if pe["w6"] < new_fill:
+            raise EditRefused(
+                f"container fill {fill} + candidate w4={e['w4']} = {new_fill} "
+                f"exceeds parent w6={pe['w6']} (CODE 6 @616 BLT)"
+            )
+        kids = children_of(recs, into)
+        if not kids:
+            parent_rec = (parent[0], parent[1], slot, parent[3])
+            write_inv_record(data, buf, base, into, parent_rec, changes)
+        else:
+            last = kids[-1]
+            last_rec = recs[last]
+            write_inv_record(
+                data, buf, base, last, (last_rec[0], last_rec[1], last_rec[2], slot), changes
+            )
+        write_inv_record(data, buf, base, slot, new_rec, changes)
+    else:
+        head = u16(work, base + OFF_INV_HEAD)
+        if head == 0xFFFF or not recs:
+            write_u16_field(data, buf, base + OFF_INV_HEAD, slot, "inv_head", changes)
+        else:
+            chain = sibling_chain(recs, head if head < len(recs) else 0)
+            if not chain:
+                write_u16_field(data, buf, base + OFF_INV_HEAD, slot, "inv_head", changes)
+            else:
+                last = chain[-1]
+                last_rec = recs[last]
+                write_inv_record(
+                    data,
+                    buf,
+                    base,
+                    last,
+                    (last_rec[0], last_rec[1], last_rec[2], slot),
+                    changes,
+                )
+        write_inv_record(data, buf, base, slot, new_rec, changes)
+
+    if slot + 1 < INV_MAX:
+        nxt = read_inventory_slot(bytes(buf), base, slot + 1)
+        if nxt[0] != 0xFFFF:
+            write_u16_field(
+                data, buf, inventory_file_off(base, slot + 1), 0xFFFF, f"inv[{slot + 1}].id", changes
+            )
+
+    print(
+        f"give slot={slot} id={item_id} {item_name(item_id)} "
+        f"state={state} value={value} into={into} "
+        f"w3={e['w3']} kg={e['w3'] / 28.0:.2f} w4={e['w4']} w6={e['w6']}"
+    )
+    return buf, changes, {}, []
+
+
+def apply_equip(
+    data: bytes,
+    decoded: dict,
+    slot: int,
+) -> tuple[bytearray, list[tuple[int, int, int, str]], dict, list[str]]:
+    base = decoded["base"]
+    if in_world_region(base):
+        raise EditRefused(f"B={base} is inside the world-state region; refused")
+    recs = read_inventory(data, base)
+    if slot < 0 or slot >= len(recs):
+        raise EditRefused(f"--slot {slot} is not an occupied slot (n={len(recs)})")
+    rec = recs[slot]
+    e = catalog_entry(rec[0])
+    if e is None:
+        raise EditRefused(f"slot {slot} id={rec[0]} has no catalog entry")
+    buf = bytearray(data)
+    changes: list[tuple[int, int, int, str]] = []
+    if e["w1"] == CLASS_CRYSTAL:
+        write_u16_field(data, buf, base + OFF_READY_CRYSTAL, slot, "ready_crystal", changes)
+        print(f"equip crystal slot={slot} id={rec[0]} {item_name(rec[0])} -> player+$192")
+    elif e["w1"] == CLASS_WEAPON:
+        write_u16_field(data, buf, base + OFF_READY_WEAPON, slot, "ready_weapon", changes)
+        print(f"equip weapon slot={slot} id={rec[0]} {item_name(rec[0])} -> player+$198")
+    else:
+        raise EditRefused(
+            f"slot {slot} {item_name(rec[0])} class w1={e['w1']}; "
+            f"equip needs class 3 (weapon) or 4 (crystal)"
+        )
+    if rec[1] != 1:
+        write_u16_field(
+            data, buf, inventory_file_off(base, slot, 1), 1, f"inv[{slot}].state", changes
+        )
+    return buf, changes, {}, []
+
+
+def apply_set_inventory(
+    data: bytes,
+    decoded: dict,
+    records: list[tuple[int, int, int, int]],
+    *,
+    head: int = 0,
+) -> tuple[bytearray, list[tuple[int, int, int, str]], dict, list[str]]:
+    """Replace the tree. `records[i]` becomes slot i. Refuses a full tree."""
+    base = decoded["base"]
+    if in_world_region(base):
+        raise EditRefused(f"B={base} is inside the world-state region; refused")
+    if len(records) > INV_MAX:
+        raise EditRefused(f"inventory would have {len(records)} records; max {INV_MAX}")
+    buf = bytearray(data)
+    changes: list[tuple[int, int, int, str]] = []
+    old_n = len(read_inventory(data, base))
+    limit = max(old_n, len(records)) + 1
+    if limit > INV_MAX:
+        limit = INV_MAX
+    empty = (0xFFFF, 0, 0, 0xFFFF)
+    for slot in range(limit):
+        rec = records[slot] if slot < len(records) else empty
+        write_inv_record(data, buf, base, slot, rec, changes)
+    write_u16_field(
+        data, buf, base + OFF_INV_HEAD, 0xFFFF if not records else head, "inv_head", changes
+    )
+    return buf, changes, {}, []
 
 
 def pascal_name(data: bytes, off: int) -> str | None:
@@ -474,10 +1080,10 @@ def field_name_at(file_off: int, bases: list[int]) -> str:
         rel = file_off - base
         if rel < 0:
             continue
-        if OFF_INV <= rel < OFF_INV + 512:
+        if OFF_INV <= rel < OFF_INV + INV_MAX * 8:
             slot = (rel - OFF_INV) // 8
             within = (rel - OFF_INV) % 8
-            field = ("id", "state", "qty", "catalog")[within // 2]
+            field = ("id", "state", "value", "next_sibling")[within // 2]
             labels.append(f"B{base}+inv[{slot}].{field}")
             continue
         for off, size, name in KNOWN_FIELDS:
@@ -653,12 +1259,14 @@ def apply_player_edits(
     *,
     hp: int | None = None,
     max_hp: int | None = None,
-    clock_seconds: int | None = None,
     facing: int | None = None,
+    yaw: int | None = None,
     level: int | None = None,
     x: int | None = None,
     y: int | None = None,
     item_qtys: dict[int, int] | None = None,
+    points: int | None = None,
+    treasure: int | None = None,
     allow_overheal: bool = False,
 ) -> tuple[bytearray, list[tuple[int, int, int, str]], dict, list[str]]:
     """Apply field edits to one live player base. Raises EditRefused."""
@@ -688,21 +1296,10 @@ def apply_player_edits(
             f"Game behaviour with cur > max is UNTESTED."
         )
 
-    clock_ticks = None
-    if clock_seconds is not None:
-        if clock_seconds < 0:
-            raise EditRefused(f"clock seconds={clock_seconds} is negative")
-        clock_ticks = clock_seconds * 60
-        if clock_ticks > 0xFFFFFFFF:
-            raise EditRefused(f"clock seconds={clock_seconds} does not fit u32be ticks")
-        if clock_ticks >= CLOCK_MAX:
-            raise EditRefused(
-                f"clock {clock_seconds}s stores {clock_ticks} ticks; "
-                f"G6 requires ticks < {CLOCK_MAX}"
-            )
-
     if facing is not None:
         check_u16("facing", facing)
+    if yaw is not None:
+        check_u16("yaw", yaw)
 
     new_level = decoded["level"] if level is None else level
     new_x = decoded["x"] if x is None else x
@@ -734,13 +1331,19 @@ def apply_player_edits(
     if max_hp is not None:
         write_u16_field(data, buf, base + OFF_MAXHP, new_max, "max_hp", changes)
         expect["max_hp"] = new_max
-    if clock_ticks is not None:
-        write_u32_field(data, buf, base + OFF_CLOCK, clock_ticks, "clock", changes)
-        expect["clock"] = clock_ticks
+    if yaw is not None:
+        print(
+            "yaw writes live facing at +0x0752 (player+0x5E). "
+            "512-unit binary angle; CODE 4 @4 wraps to 0..511. "
+            "+0x091C is a different field."
+        )
+        write_u16_field(data, buf, base + OFF_U752, yaw, "yaw_live", changes)
+        expect["u752"] = yaw
     if facing is not None:
         print(
-            "facing_width=UNKNOWN corpus_+0x091C_always_0=YES "
-            "observed_values_live_in_+0x091D"
+            "facing_width=UNKNOWN corpus_+0x091C_not_always_0 "
+            "(nine live records hold 0,1,2,12). "
+            "This writes the INERT +0x091C word, not +0x0752."
         )
         old_b0 = data[base + OFF_FACING]
         old_b1 = data[base + OFF_FACING + 1]
@@ -752,7 +1355,7 @@ def apply_player_edits(
         if facing > 255:
             warnings.append(
                 f"--facing {facing} sets +0x091C nonzero; "
-                f"every corpus record has +0x091C=0. Width UNTESTED."
+                f"nine live records hold 0,1,2,12 at +0x091C. Width UNTESTED."
             )
         write_u16_field(data, buf, base + OFF_FACING, facing, "facing", changes)
         new_b0 = buf[base + OFF_FACING]
@@ -779,37 +1382,38 @@ def apply_player_edits(
         write_u16_field(data, buf, base + OFF_Y, new_y, "y_INERT", changes)
         expect["y"] = new_y
 
+    if points is not None:
+        check_u16("points", points)
+        write_u16_field(data, buf, base + OFF_POINTS, points, "points", changes)
+    if treasure is not None:
+        if treasure < 0 or treasure > 0xFFFFFFFF:
+            raise EditRefused(f"treasure={treasure} does not fit u32be")
+        write_u32_field(data, buf, base + OFF_TREASURE, treasure, "treasure", changes)
+
     if item_qtys:
         recs = read_inventory(data, base)
-        term = next((i for i, rec in enumerate(recs) if rec[0] == 0xFFFF), None)
-        if term is None:
-            raise EditRefused(
-                f"inventory at B={base} has no FFFF terminator within the read limit"
-            )
         for slot, qty in sorted(item_qtys.items()):
-            check_u16(f"inv[{slot}].qty", qty)
-            if slot < 0 or slot > term:
+            check_u16(f"inv[{slot}].value", qty)
+            if slot < 0 or slot >= len(recs):
                 raise EditRefused(
-                    f"slot {slot} is past the FFFF terminator at slot {term}"
+                    f"slot {slot} is not an occupied inventory slot (n={len(recs)})"
                 )
-            if recs[slot][0] == 0xFFFF:
-                raise EditRefused(f"slot {slot} is the FFFF terminator; refused")
-            rec_off = base + OFF_INV + slot * 8
+            rec_off = inventory_file_off(base, slot)
             before = recs[slot]
             print(
-                f"item_before slot={slot} id={before[0]} state={before[1]} "
-                f"qty={before[2]} catalog={before[3]}"
+                f"item_before slot={slot} id={before[0]} {item_name(before[0])} "
+                f"state={before[1]} value={before[2]} next_sibling={before[3]}"
             )
-            write_u16_field(data, buf, rec_off + 4, qty, f"inv[{slot}].qty", changes)
+            write_u16_field(data, buf, rec_off + 4, qty, f"inv[{slot}].value", changes)
             after = struct.unpack_from(">4H", bytes(buf), rec_off)
             print(
-                f"item_after slot={slot} id={after[0]} state={after[1]} "
-                f"qty={after[2]} catalog={after[3]}"
+                f"item_after slot={slot} id={after[0]} {item_name(after[0])} "
+                f"state={after[1]} value={after[2]} next_sibling={after[3]}"
             )
             if after[0] != before[0] or after[1] != before[1] or after[3] != before[3]:
-                raise EditRefused("id/state/catalog changed; not writing")
+                raise EditRefused("id/state/next_sibling changed; not writing")
             if after[2] != qty:
-                raise EditRefused("qty write did not stick; not writing")
+                raise EditRefused("value write did not stick; not writing")
 
     if not changes:
         raise EditRefused("no fields changed")
@@ -818,30 +1422,26 @@ def apply_player_edits(
 
 def print_decoded(decoded: dict, data: bytes, prefix: str = "") -> None:
     base = decoded["base"]
-    clock = decoded["clock"]
-    clock_s = clock / 60.0 if clock is not None else float("nan")
     in_world = in_world_region(base)
     io_word = None
     if len(data) > IO_FILE_OFF + 1:
         io_word = u16(data, IO_FILE_OFF)
+    x_fp = decoded.get("x_fp")
+    y_fp = decoded.get("y_fp")
     print(
         f"{prefix}B={base} (0x{base:X}) in_world_region={in_world} "
         f"level_INERT(+0x090C)={decoded['level']} name={decoded.get('level_name', '')!r} "
         f"x_INERT(+0x0918)={decoded['x']} y_INERT(+0x091A)={decoded['y']} "
         f"sector_type={decoded['type']} sector_type_name={decoded['type_name']} "
         f"hp={decoded['hp']} max_hp={decoded['max_hp']} "
-        f"clock_ticks={clock} clock_s={clock_s:.4f} "
-        f"facing={decoded['facing']} u16@0x0750={decoded['u750']} "
-        f"u16@0x0752={decoded['u752']} "
-        f"block_index_authority_UNTESTED(+0x06C2)={io_word}"
+        f"dungeon_load_path(+0x0748)={decoded.get('dungeon')} "
+        f"x_live(+0x074A)={x_fp} >>10={decoded.get('x_live')} "
+        f"y_live(+0x074E)={y_fp} >>10={decoded.get('y_live')} "
+        f"facing_INERT(+0x091C)={decoded['facing']} "
+        f"yaw_live(+0x0752)={decoded['u752']} "
+        f"block_index_authority_SINK(+0x06C2)={io_word}"
     )
-    recs = read_inventory(data, base)
-    print(f"{prefix}inventory_from B+0x0A00 until id=FFFF n={len(recs)}")
-    for i, rec in enumerate(recs):
-        print(
-            f"{prefix}  inv[{i}] id={rec[0]} state={rec[1]} "
-            f"qty={rec[2]} catalog={rec[3]} raw={data[base+OFF_INV+i*8:base+OFF_INV+i*8+8].hex()}"
-        )
+    print_inventory_tree(data, base, prefix=prefix)
 
 
 def enrich(decoded: dict, levels: LevelIndex) -> dict:
@@ -926,6 +1526,47 @@ def format_flags(flags: int) -> str:
 def sector_of(raw: int) -> int:
     """Reader: ASR.L #10. CODE 4 @3590, CODE 7 @6976."""
     return raw >> FIXED_SHIFT
+
+
+def encode_fixed(sector: int) -> int:
+    """Writer: LSL.L #10 then ADD.L #$200. Cell centre."""
+    return (sector << FIXED_SHIFT) + FIXED_CENTER
+
+
+def wall_resource_for_level(level: int) -> int:
+    if level <= 6:
+        return 192
+    if level <= 15:
+        return 194
+    return 193
+
+
+def first_standable_arrival_json(levels: LevelIndex, level: int) -> dict:
+    """First standable arrival in JSON-export order. Not list_index order."""
+    if not (0 <= level <= 24):
+        raise SystemExit(f"error: --arrival {level} not in 0..24")
+    listing = "\n".join(format_arrivals(levels, level)) or "  (none)"
+    if not levels.arrivals[level]:
+        raise SystemExit(
+            f"error: L{level} {levels.names[level]!r} has no arrivals\n{listing}"
+        )
+    for a in levels.arrivals[level]:
+        x, y = int(a["x"]), int(a["y"])
+        st, sn = levels.sector(level, x, y)
+        if is_standable(st):
+            print(
+                f"arrival_used L{level} {levels.names[level]!r} ({x},{y}) "
+                f"type={st} {sn} from_level={a.get('from_level')} "
+                f"from_name={a.get('from_name')!r} "
+                f"change_type={a.get('change_type_name')} "
+                f"list_index={a.get('list_index')} "
+                f"wall_resource={wall_resource_for_level(level)} "
+                f"(JSON-export first standable)"
+            )
+            return a
+    raise SystemExit(
+        f"error: L{level} {levels.names[level]!r} has no standable arrival\n{listing}"
+    )
 
 
 def centred_sector_of(raw: int) -> int:
@@ -1756,6 +2397,165 @@ def cmd_set_block(path: Path, levels: LevelIndex, args: argparse.Namespace) -> i
     )
 
 
+def cmd_set_dungeon(path: Path, levels: LevelIndex, args: argparse.Namespace) -> int:
+    """Write the load-path dungeon word at player+0x54 = file B+0x0748.
+
+    This is NOT stride-record +0x54 (name-table / prefix). CODE 2 load
+    path pushes player+0x54, which maps to k*2876+0x0748.
+    """
+    require_u16("--level", args.level)
+    data = path.read_bytes()
+    out_path = require_write_output(path, args)
+    scan = scan_bases(data, levels)
+    targets = select_targets(scan, getattr(args, "base", None))
+    buf = bytearray(data)
+    changes: list[tuple[int, int, int, str]] = []
+    print(
+        f"set-dungeon writes u16be at B+0x{OFF_DUNGEON:04X} "
+        f"(player+0x54 / k*2876+0x0748). "
+        f"NOT B+0x0054 (stride prefix / name table). "
+        f"+0x090C is INERT. 0x06C2 is a sink written FROM -$1AD8."
+    )
+    for decoded in targets:
+        base = decoded["base"]
+        off = base + OFF_DUNGEON
+        print(
+            f"  target B={base} (0x{base:X}) file_off={off} (0x{off:X}) "
+            f"old={u16(data, off)} new={args.level} "
+            f"inert_+0x090C={u16(data, base + OFF_LEVEL)}"
+        )
+        write_u16_field(data, buf, off, args.level, "dungeon_load_path", changes)
+    if not changes:
+        raise SystemExit("error: no fields changed")
+    return commit_output(
+        out_path, data, buf, targets, levels, changes, dry_run=bool(args.dry_run)
+    )
+
+
+def cmd_set_position(path: Path, levels: LevelIndex, args: argparse.Namespace) -> int:
+    """Write live X/Y at +0x074A / +0x074E. Optionally dungeon at +0x0748."""
+    arrival_level = getattr(args, "arrival", None)
+    raw = bool(getattr(args, "raw", False))
+    if arrival_level is not None and (args.x is not None or args.y is not None):
+        raise SystemExit("error: --arrival cannot be combined with --x/--y")
+    if arrival_level is None and (args.x is None or args.y is None):
+        raise SystemExit("error: set-position requires --x and --y, or --arrival LEVEL")
+    if raw and arrival_level is not None:
+        raise SystemExit("error: --raw applies to --x/--y only, not --arrival")
+
+    dungeon = getattr(args, "dungeon", None)
+    if arrival_level is not None:
+        chosen = first_standable_arrival_json(levels, arrival_level)
+        sx, sy = int(chosen["x"]), int(chosen["y"])
+        x_raw = encode_fixed(sx)
+        y_raw = encode_fixed(sy)
+        if dungeon is None:
+            dungeon = arrival_level
+        print(
+            f"set-position arrival L{arrival_level} sector=({sx},{sy}) "
+            f"encoded x={x_raw} (0x{x_raw:X}) y={y_raw} (0x{y_raw:X}) "
+            f"(sector<<10)+$200"
+        )
+    elif raw:
+        x_raw = require_u32("--x", args.x)
+        y_raw = require_u32("--y", args.y)
+        print(
+            f"set-position --raw x={x_raw} (0x{x_raw:X}) >>10={sector_of(x_raw)} "
+            f"y={y_raw} (0x{y_raw:X}) >>10={sector_of(y_raw)}"
+        )
+    else:
+        if not (0 <= args.x <= 31 and 0 <= args.y <= 31):
+            raise SystemExit(f"error: --x/--y out of 0..31 ({args.x},{args.y})")
+        x_raw = encode_fixed(args.x)
+        y_raw = encode_fixed(args.y)
+        print(
+            f"set-position sector=({args.x},{args.y}) "
+            f"encoded x={x_raw} (0x{x_raw:X}) y={y_raw} (0x{y_raw:X}) "
+            f"(sector<<10)+$200"
+        )
+
+    if dungeon is not None:
+        require_u16("--dungeon", dungeon)
+    if getattr(args, "yaw", None) is not None:
+        require_u16("--yaw", args.yaw)
+    if getattr(args, "hp", None) is not None:
+        require_u16("--hp", args.hp)
+    if getattr(args, "maxhp", None) is not None:
+        require_u16("--maxhp", args.maxhp)
+
+    data = path.read_bytes()
+    out_path = require_write_output(path, args)
+    scan = scan_bases(data, levels)
+    targets = select_targets(scan, getattr(args, "base", None))
+    buf = bytearray(data)
+    changes: list[tuple[int, int, int, str]] = []
+    print(
+        "set-position writes u32be at B+0x074A (X) and B+0x074E (Y). "
+        "These are the live load-path fields (player+0x56 / +0x5A). "
+        "+0x0918 / +0x091A are INERT. +0x074A is NOT a clock."
+    )
+    for decoded in targets:
+        base = decoded["base"]
+        print(
+            f"  target B={base} (0x{base:X}) "
+            f"old_x={u32(data, base + OFF_X_FP)} old_y={u32(data, base + OFF_Y_FP)} "
+            f"new_x={x_raw} new_y={y_raw} "
+            f"inert=({u16(data, base + OFF_X)},{u16(data, base + OFF_Y)}) "
+            f"inert_L={u16(data, base + OFF_LEVEL)}"
+        )
+        write_u32_field(data, buf, base + OFF_X_FP, x_raw, "x_live", changes)
+        write_u32_field(data, buf, base + OFF_Y_FP, y_raw, "y_live", changes)
+        if dungeon is not None:
+            write_u16_field(
+                data, buf, base + OFF_DUNGEON, dungeon, "dungeon_load_path", changes
+            )
+        yaw = getattr(args, "yaw", None)
+        if yaw is not None:
+            print(
+                "yaw writes live facing at +0x0752 (player+0x5E). "
+                "512-unit binary angle; CODE 4 @4 wraps to 0..511. "
+                "0=west (decreasing X), 128=north (decreasing Y), 256=east, 384=south. "
+                "+0x091C is not this field."
+            )
+            write_u16_field(data, buf, base + OFF_U752, yaw, "yaw_live", changes)
+        new_hp = decoded["hp"] if getattr(args, "hp", None) is None else args.hp
+        new_max = decoded["max_hp"] if getattr(args, "maxhp", None) is None else args.maxhp
+        if getattr(args, "hp", None) is not None or getattr(args, "maxhp", None) is not None:
+            if new_hp > new_max and not getattr(args, "allow_overheal", False):
+                raise SystemExit(
+                    f"error: hp={new_hp} exceeds maxhp={new_max}; "
+                    f"pass --allow-overheal to write anyway (game behaviour UNTESTED)"
+                )
+            print(
+                "hp_copies=1 write_only=+0x0754/+0x0756 "
+                "(Task A: no second copy in all 9 records)"
+            )
+        if getattr(args, "hp", None) is not None:
+            write_u16_field(data, buf, base + OFF_HP, new_hp, "hp", changes)
+        if getattr(args, "maxhp", None) is not None:
+            write_u16_field(data, buf, base + OFF_MAXHP, new_max, "max_hp", changes)
+    if not changes:
+        raise SystemExit("error: no fields changed")
+    expect = {"x_fp": x_raw, "y_fp": y_raw}
+    if getattr(args, "yaw", None) is not None:
+        expect["u752"] = args.yaw
+    if getattr(args, "hp", None) is not None:
+        expect["hp"] = args.hp
+    if getattr(args, "maxhp", None) is not None:
+        expect["max_hp"] = args.maxhp
+    return commit_output(
+        out_path,
+        data,
+        buf,
+        targets,
+        levels,
+        changes,
+        expect=expect,
+        dry_run=bool(args.dry_run),
+        allow_overheal=bool(getattr(args, "allow_overheal", False)),
+    )
+
+
 def discover_save_files() -> list[Path]:
     """Every local file large enough to hold the 25 world blocks."""
     roots = [ROOT / "reference" / "saves", ROOT / "data" / "saves"]
@@ -1792,6 +2592,134 @@ def discover_save_files() -> list[Path]:
 def dpin_home_slice(dpin: bytes, level: int) -> bytes:
     off = 2876 + level * WORLD_STRIDE
     return dpin[off : off + WORLD_STRIDE]
+
+
+def load_dpin() -> bytes:
+    path = ROOT / "reference" / "dpin_128.bin"
+    if not path.is_file():
+        raise SystemExit(f"error: dpin not found at {path}")
+    data = path.read_bytes()
+    need = 2876 + WORLD_BYTES
+    if len(data) < need:
+        raise SystemExit(f"error: dpin size={len(data)} need>={need}")
+    return data
+
+
+def parse_object_table(block: bytes) -> list[dict]:
+    """500 object records from a 9,112-byte world block. Raw numbers only."""
+    need = OBJ_TABLE_OFF + OBJ_COUNT * OBJ_STRIDE
+    if len(block) < need:
+        raise SystemExit(f"error: block len={len(block)} < {need}")
+    out = []
+    for i in range(OBJ_COUNT):
+        rec = block[OBJ_TABLE_OFF + i * OBJ_STRIDE : OBJ_TABLE_OFF + (i + 1) * OBJ_STRIDE]
+        link = u16(rec, 14)
+        out.append(
+            {
+                "index": i,
+                "x_raw": u32(rec, 0),
+                "y_raw": u32(rec, 4),
+                "descriptor": u16(rec, 8),
+                "flags": u16(rec, 10),
+                "unk_c": u16(rec, 12),
+                "link": link,
+                "free": link == LINK_FREE,
+            }
+        )
+    return out
+
+
+def cmd_export_objects(levels: LevelIndex, out_dir: Path) -> int:
+    """Write pristine per-level object tables from dpin 128."""
+    dpin = load_dpin()
+    out_dir.mkdir(parents=True, exist_ok=True)
+    grand_live = 0
+    grand_free = 0
+    grand_refs = 0
+    grand_ok = 0
+    failures: list[str] = []
+    total_bytes = 0
+    print(f"export-objects source=dpin size={len(dpin)} out={out_dir}")
+    print("fields=index,x_raw,y_raw,descriptor,flags,link  live_only=link!=0xFFFE")
+    for lv in range(N_LEVELS):
+        block = dpin_home_slice(dpin, lv)
+        if len(block) != WORLD_STRIDE:
+            raise SystemExit(f"error: L{lv} dpin slice len={len(block)}")
+        table = parse_object_table(block)
+        live = [o for o in table if not o["free"]]
+        free_n = OBJ_COUNT - len(live)
+        descs = sorted({o["descriptor"] for o in live})
+        objects = [
+            {
+                "index": o["index"],
+                "x_raw": o["x_raw"],
+                "y_raw": o["y_raw"],
+                "descriptor": o["descriptor"],
+                "flags": o["flags"],
+                "link": o["link"],
+            }
+            for o in live
+        ]
+        doc = {"level": lv, "source": "dpin", "objects": objects}
+        text = json.dumps(doc, indent=2) + "\n"
+        path = out_dir / f"objects_L{lv:02d}.json"
+        path.write_text(text, encoding="utf-8")
+        total_bytes += len(text.encode("utf-8"))
+        grand_live += len(live)
+        grand_free += free_n
+        print(
+            f"L{lv:02d} {levels.names[lv]!r} live={len(live)} free={free_n} "
+            f"distinct_descriptors={len(descs)} wrote={path} bytes={len(text.encode('utf-8'))}"
+        )
+
+        refs = levels.sectors_with_item(lv)
+        ok = 0
+        for x, y, item, st, sn in refs:
+            grand_refs += 1
+            if item < 0 or item >= OBJ_COUNT:
+                msg = (
+                    f"FAIL L{lv} sector=({x},{y}) type={st} {sn} item={item} "
+                    f"why=item_out_of_range"
+                )
+                failures.append(msg)
+                print(msg)
+                continue
+            obj = table[item]
+            if obj["free"]:
+                msg = (
+                    f"FAIL L{lv} sector=({x},{y}) type={st} {sn} item={item} "
+                    f"why=free_slot link=0x{obj['link']:04X}"
+                )
+                failures.append(msg)
+                print(msg)
+                continue
+            sx = obj["x_raw"] >> FIXED_SHIFT
+            sy = obj["y_raw"] >> FIXED_SHIFT
+            if sx != x or sy != y:
+                msg = (
+                    f"FAIL L{lv} sector=({x},{y}) type={st} {sn} item={item} "
+                    f"why=sector_mismatch obj_sector=({sx},{sy}) "
+                    f"x_raw={obj['x_raw']} y_raw={obj['y_raw']}"
+                )
+                failures.append(msg)
+                print(msg)
+                continue
+            ok += 1
+            grand_ok += 1
+        print(
+            f"  xref map_refs={len(refs)} resolved={ok} failed={len(refs) - ok}"
+        )
+    print(
+        f"export-objects total_live={grand_live} total_free={grand_free} "
+        f"map_refs={grand_refs} resolved={grand_ok} failed={len(failures)} "
+        f"bytes_written={total_bytes}"
+    )
+    print("assets_included=none (coordinates and descriptors only)")
+    if failures:
+        print(f"CROSSCHECK_FAILED n={len(failures)}")
+        return 1
+    print("OK export-objects")
+    return 0
 
 
 def selftest_saves(levels: LevelIndex) -> int:
@@ -1851,7 +2779,7 @@ def cmd_inspect(path: Path, levels: LevelIndex) -> int:
     print(f"candidates={scan['n_candidates']} too_small={scan['too_small']}")
     print(
         "gate_pass G1_level={0} G2_x={1} G3_y={2} G4_standable={3} "
-        "G5_hp={4} G6_clock={5}".format(*scan["gate_pass"])
+        "G5_hp={4} G6_xy_live={5}".format(*scan["gate_pass"])
     )
     print("n_gates_hist=" + " ".join(f"{i}:{n}" for i, n in enumerate(scan["n_gates_hist"])))
     print(f"all6_count={len(scan['all6'])}")
@@ -1864,12 +2792,15 @@ def cmd_inspect(path: Path, levels: LevelIndex) -> int:
             raw_y = data[base + OFF_Y : base + OFF_Y + 2].hex()
             raw_hp = data[base + OFF_HP : base + OFF_HP + 2].hex()
             raw_mx = data[base + OFF_MAXHP : base + OFF_MAXHP + 2].hex()
-            raw_ck = data[base + OFF_CLOCK : base + OFF_CLOCK + 4].hex()
+            raw_xfp = data[base + OFF_X_FP : base + OFF_X_FP + 4].hex()
+            raw_yfp = data[base + OFF_Y_FP : base + OFF_Y_FP + 4].hex()
             print(
                 f"  B={base} (0x{base:X}) score={score}/6 failed_gates={failed} "
                 f"lv={decoded['level']} x={decoded['x']} y={decoded['y']} "
-                f"hp={decoded['hp']} max_hp={decoded['max_hp']} clock={decoded['clock']} "
-                f"raw L={raw_l} X={raw_x} Y={raw_y} HP={raw_hp} MX={raw_mx} CLK={raw_ck}"
+                f"hp={decoded['hp']} max_hp={decoded['max_hp']} "
+                f"x_fp={decoded.get('x_fp')} y_fp={decoded.get('y_fp')} "
+                f"raw L={raw_l} X={raw_x} Y={raw_y} HP={raw_hp} MX={raw_mx} "
+                f"XFP={raw_xfp} YFP={raw_yfp}"
             )
         print("REFUSED no all-6 player base")
         return 1
@@ -1962,8 +2893,8 @@ def cmd_warp(path: Path, levels: LevelIndex, args: argparse.Namespace) -> int:
 
 
 def cmd_set(path: Path, levels: LevelIndex, args: argparse.Namespace) -> int:
-    if args.hp is None and args.maxhp is None and args.clock is None and args.facing is None:
-        raise SystemExit("error: set requires at least one of --hp --maxhp --clock --facing")
+    if args.hp is None and args.maxhp is None and args.facing is None and getattr(args, "yaw", None) is None:
+        raise SystemExit("error: set requires at least one of --hp --maxhp --facing --yaw")
     data = path.read_bytes()
     out_path = require_write_output(path, args)
 
@@ -1974,18 +2905,10 @@ def cmd_set(path: Path, levels: LevelIndex, args: argparse.Namespace) -> int:
         require_u16("--hp", args.hp)
     if args.maxhp is not None:
         require_u16("--maxhp", args.maxhp)
-    clock_ticks = None
-    if args.clock is not None:
-        if args.clock < 0:
-            raise SystemExit(f"error: --clock {args.clock} is negative; refused")
-        clock_ticks = require_u32("--clock ticks (seconds*60)", args.clock * 60)
-        if clock_ticks >= CLOCK_MAX:
-            raise SystemExit(
-                f"error: --clock {args.clock}s stores {clock_ticks} ticks; "
-                f"G6 requires ticks < {CLOCK_MAX}; refused"
-            )
     if args.facing is not None:
         require_u16("--facing", args.facing)
+    if getattr(args, "yaw", None) is not None:
+        require_u16("--yaw", args.yaw)
 
     buf = bytearray(data)
     changes: list[tuple[int, int, int, str]] = []
@@ -2012,23 +2935,22 @@ def cmd_set(path: Path, levels: LevelIndex, args: argparse.Namespace) -> int:
             write_u16_field(data, buf, base + OFF_HP, new_hp, "hp", changes)
         if args.maxhp is not None:
             write_u16_field(data, buf, base + OFF_MAXHP, new_max, "max_hp", changes)
-        if clock_ticks is not None:
-            write_u32_field(data, buf, base + OFF_CLOCK, clock_ticks, "clock", changes)
+        if getattr(args, "yaw", None) is not None:
             print(
-                f"clock_seconds_in={args.clock} clock_ticks_stored={clock_ticks} "
-                f"(x60)"
+                "yaw writes live facing at +0x0752 (player+0x5E). "
+                "512-unit binary angle; CODE 4 @4 wraps to 0..511. "
+                "+0x091C is not this field."
             )
+            write_u16_field(data, buf, base + OFF_U752, args.yaw, "yaw_live", changes)
         if args.facing is not None:
-            # Width of facing is UNKNOWN. Corpus: +0x091C is always 0x00;
-            # observed values 0,1,2,12 live in the byte at +0x091D. Writing
-            # N as u16be at +0x091C reproduces that layout when N < 256.
-            # HYPOTHESIS, not a width claim.
+            # +0x091C is a separate word. Nine live records hold 0,1,2,12.
+            # Writing N as u16be at +0x091C. This is NOT the live yaw.
             old_b0 = data[base + OFF_FACING]
             old_b1 = data[base + OFF_FACING + 1]
             old_u16 = u16(data, base + OFF_FACING)
             print(
-                f"facing_width=UNKNOWN corpus_+0x091C_always_0=YES "
-                f"observed_values_live_in_+0x091D"
+                "facing_width=UNKNOWN corpus_+0x091C_not_always_0 "
+                "nine_live=0,1,2,12. Writes INERT +0x091C, not +0x0752."
             )
             print(
                 f"facing_before u16be={old_u16} "
@@ -2038,7 +2960,7 @@ def cmd_set(path: Path, levels: LevelIndex, args: argparse.Namespace) -> int:
             if args.facing > 255:
                 print(
                     f"WARNING: --facing {args.facing} sets +0x091C nonzero; "
-                    f"every corpus record has +0x091C=0. Width UNTESTED."
+                    f"nine live records hold 0,1,2,12. Width UNTESTED."
                 )
             write_u16_field(data, buf, base + OFF_FACING, args.facing, "facing", changes)
             new_b0 = buf[base + OFF_FACING]
@@ -2054,8 +2976,8 @@ def cmd_set(path: Path, levels: LevelIndex, args: argparse.Namespace) -> int:
         expect["hp"] = args.hp
     if args.maxhp is not None:
         expect["max_hp"] = args.maxhp
-    if clock_ticks is not None:
-        expect["clock"] = clock_ticks
+    if getattr(args, "yaw", None) is not None:
+        expect["u752"] = args.yaw
     return commit_output(
         out_path,
         data,
@@ -2070,10 +2992,11 @@ def cmd_set(path: Path, levels: LevelIndex, args: argparse.Namespace) -> int:
 
 
 def cmd_item(path: Path, levels: LevelIndex, args: argparse.Namespace) -> int:
+    load_item_catalog()
     data = path.read_bytes()
     scan = scan_bases(data, levels)
 
-    if args.list and args.slot is None:
+    if args.list and args.slot is None and not getattr(args, "wipe", False):
         if args.base is not None:
             targets = select_targets(scan, args.base)
         else:
@@ -2090,10 +3013,22 @@ def cmd_item(path: Path, levels: LevelIndex, args: argparse.Namespace) -> int:
         print("OK item-list")
         return 0
 
-    if args.slot is None or args.qty is None:
-        raise SystemExit("error: item write needs --slot N and --qty Q (or --list)")
+    if getattr(args, "wipe", False):
+        out_path = require_write_output(path, args)
+        targets = select_targets(scan, args.base)
+        buf = bytearray(data)
+        changes: list[tuple[int, int, int, str]] = []
+        for decoded in targets:
+            apply_wipe_inventory(data, buf, decoded["base"], changes)
+        return commit_output(
+            out_path, data, buf, targets, levels, changes, dry_run=bool(args.dry_run)
+        )
+
+    value = args.value if args.value is not None else args.qty
+    if args.slot is None or value is None:
+        raise SystemExit("error: item write needs --slot N and --value Q (or --list)")
     out_path = require_write_output(path, args)
-    require_u16("--qty", args.qty)
+    require_u16("--value", value)
     if args.slot < 0:
         raise SystemExit(f"error: --slot {args.slot} is negative; refused")
 
@@ -2103,42 +3038,90 @@ def cmd_item(path: Path, levels: LevelIndex, args: argparse.Namespace) -> int:
     for decoded in targets:
         base = decoded["base"]
         recs = read_inventory(data, base)
-        term = next((i for i, rec in enumerate(recs) if rec[0] == 0xFFFF), None)
-        if term is None:
+        if args.slot >= len(recs):
             raise SystemExit(
-                f"error: inventory at B={base} has no FFFF terminator within the read limit; refused"
+                f"error: --slot {args.slot} is not an occupied slot (n={len(recs)}); refused"
             )
-        if args.slot > term:
-            raise SystemExit(
-                f"error: --slot {args.slot} is past the FFFF terminator at slot {term}; refused"
-            )
-        if recs[args.slot][0] == 0xFFFF:
-            raise SystemExit(
-                f"error: --slot {args.slot} is the FFFF terminator (id=65535); refused"
-            )
-        rec_off = base + OFF_INV + args.slot * 8
+        rec_off = inventory_file_off(base, args.slot)
         before = recs[args.slot]
         print(
-            f"item_before slot={args.slot} id={before[0]} state={before[1]} "
-            f"qty={before[2]} catalog={before[3]} "
+            f"item_before slot={args.slot} id={before[0]} {item_name(before[0])} "
+            f"state={before[1]} value={before[2]} next_sibling={before[3]} "
+            f"{interpret_word2(before[0], before[2])} "
             f"raw={data[rec_off:rec_off + 8].hex()}"
         )
-        qty_off = rec_off + 4
-        write_u16_field(data, buf, qty_off, args.qty, f"inv[{args.slot}].qty", changes)
+        write_u16_field(data, buf, rec_off + 4, value, f"inv[{args.slot}].value", changes)
         after = struct.unpack_from(">4H", bytes(buf), rec_off)
         print(
-            f"item_after slot={args.slot} id={after[0]} state={after[1]} "
-            f"qty={after[2]} catalog={after[3]} "
+            f"item_after slot={args.slot} id={after[0]} {item_name(after[0])} "
+            f"state={after[1]} value={after[2]} next_sibling={after[3]} "
+            f"{interpret_word2(after[0], after[2])} "
             f"raw={bytes(buf[rec_off:rec_off + 8]).hex()}"
         )
         if after[0] != before[0] or after[1] != before[1] or after[3] != before[3]:
-            raise SystemExit("error: id/state/catalog changed; not writing")
-        if after[2] != args.qty:
-            raise SystemExit("error: qty write did not stick; not writing")
+            raise SystemExit("error: id/state/next_sibling changed; not writing")
+        if after[2] != value:
+            raise SystemExit("error: value write did not stick; not writing")
 
     return commit_output(
         out_path, data, buf, targets, levels, changes, dry_run=bool(args.dry_run)
     )
+
+
+def cmd_give(path: Path, levels: LevelIndex, args: argparse.Namespace) -> int:
+    load_item_catalog()
+    data = path.read_bytes()
+    out_path = require_write_output(path, args)
+    scan = scan_bases(data, levels)
+    targets = select_targets(scan, args.base)
+    buf = bytearray(data)
+    changes: list[tuple[int, int, int, str]] = []
+    for decoded in targets:
+        try:
+            piece, ch, _expect, _warn = apply_give(
+                bytes(buf),
+                decoded,
+                args.id,
+                into=args.into,
+                count=args.count,
+            )
+        except EditRefused as exc:
+            raise SystemExit(f"error: {exc}") from exc
+        buf = piece
+        changes.extend(ch)
+        print_inventory_tree(bytes(buf), decoded["base"])
+    return commit_output(
+        out_path, data, buf, targets, levels, changes, dry_run=bool(args.dry_run)
+    )
+
+
+def cmd_equip(path: Path, levels: LevelIndex, args: argparse.Namespace) -> int:
+    load_item_catalog()
+    data = path.read_bytes()
+    out_path = require_write_output(path, args)
+    scan = scan_bases(data, levels)
+    targets = select_targets(scan, args.base)
+    buf = bytearray(data)
+    changes: list[tuple[int, int, int, str]] = []
+    for decoded in targets:
+        try:
+            piece, ch, _expect, _warn = apply_equip(bytes(buf), decoded, args.slot)
+        except EditRefused as exc:
+            raise SystemExit(f"error: {exc}") from exc
+        buf = piece
+        changes.extend(ch)
+        print_inventory_tree(bytes(buf), decoded["base"])
+    return commit_output(
+        out_path, data, buf, targets, levels, changes, dry_run=bool(args.dry_run)
+    )
+
+
+def cmd_export_item_catalog() -> int:
+    global _ITEM_CATALOG
+    _ITEM_CATALOG = None
+    doc = load_item_catalog(write_json=True)
+    print(f"OK export-item-catalog n={len(doc['entries'])} cedar={doc['cedar_admit_ids']}")
+    return 0
 
 
 def cmd_verify(path: Path, levels: LevelIndex) -> int:
@@ -2149,11 +3132,11 @@ def cmd_verify(path: Path, levels: LevelIndex) -> int:
     print(f"candidates={scan['n_candidates']} too_small={scan['too_small']}")
     print(
         "gate_pass G1_level={0} G2_x={1} G3_y={2} G4_standable={3} "
-        "G5_hp={4} G6_clock={5}".format(*scan["gate_pass"])
+        "G5_hp={4} G6_xy_live={5}".format(*scan["gate_pass"])
     )
     print("n_gates_hist=" + " ".join(f"{i}:{n}" for i, n in enumerate(scan["n_gates_hist"])))
     print(f"all6_count={len(scan['all6'])}")
-    names = ("G1_level", "G2_x", "G3_y", "G4_standable", "G5_hp", "G6_clock")
+    names = ("G1_level", "G2_x", "G3_y", "G4_standable", "G5_hp", "G6_xy_live")
 
     def emit(base: int, tag: str) -> None:
         flags, decoded = gate_flags(data, base, levels)
@@ -2163,7 +3146,8 @@ def cmd_verify(path: Path, levels: LevelIndex) -> int:
         print(
             f"{tag} B={base} (0x{base:X}) score={sum(flags)}/6 {parts} "
             f"lv={decoded['level']} x={decoded['x']} y={decoded['y']} "
-            f"hp={decoded['hp']} max_hp={decoded['max_hp']} clock={decoded['clock']}"
+            f"hp={decoded['hp']} max_hp={decoded['max_hp']} "
+            f"x_live={decoded.get('x_live')} y_live={decoded.get('y_live')}"
         )
 
     print("stride_k*2876:")
@@ -2292,6 +3276,18 @@ def build_parser() -> argparse.ArgumentParser:
     )
     catalog.add_argument("savefile", type=Path)
 
+    exp_obj = sub.add_parser(
+        "export-objects",
+        help="write pristine per-level object tables from dpin 128 (not from a save)",
+    )
+    exp_obj.add_argument(
+        "-o",
+        "--output-dir",
+        type=Path,
+        default=EXPORT_DIR,
+        help="directory for objects_L00.json .. objects_L24.json (default: reference/export)",
+    )
+
     blockmap = sub.add_parser(
         "blockmap",
         help="print the 10x25 u16be table at +0x0500 (block-index authority)",
@@ -2341,12 +3337,69 @@ def build_parser() -> argparse.ArgumentParser:
     warp.add_argument("-o", "--output", type=Path, default=None)
     warp.add_argument("--dry-run", action="store_true", help="print changes and do not write")
 
-    s = sub.add_parser("set", help="write hp / maxhp / clock / facing on one player base")
+    dungeon = sub.add_parser(
+        "set-dungeon",
+        help=(
+            "write u16be dungeon at player+0x54 = file B+0x0748 "
+            "(load-path argument). Never in place."
+        ),
+    )
+    dungeon.add_argument("savefile", type=Path)
+    dungeon.add_argument("--level", type=int, required=True, help="dungeon index written as u16be")
+    dungeon.add_argument("--base", type=int, default=None, help="player-region base if several pass")
+    dungeon.add_argument("-o", "--output", type=Path, default=None)
+    dungeon.add_argument("--dry-run", action="store_true", help="print changes and do not write")
+
+    pos = sub.add_parser(
+        "set-position",
+        help=(
+            "write live X/Y u32be at +0x074A / +0x074E (10-bit fixed). "
+            "--arrival LEVEL also writes dungeon at +0x0748. Never in place."
+        ),
+    )
+    pos.add_argument("savefile", type=Path)
+    pos.add_argument("--x", type=int, default=None, help="sector X, or raw u32 with --raw")
+    pos.add_argument("--y", type=int, default=None, help="sector Y, or raw u32 with --raw")
+    pos.add_argument(
+        "--raw",
+        action="store_true",
+        help="treat --x/--y as raw u32be fixed-point values, not sector numbers",
+    )
+    pos.add_argument(
+        "--arrival",
+        type=int,
+        default=None,
+        help="first standable arrival in that level's JSON export (also writes dungeon)",
+    )
+    pos.add_argument(
+        "--dungeon",
+        type=int,
+        default=None,
+        help="also write u16be dungeon at +0x0748 (implied by --arrival)",
+    )
+    pos.add_argument(
+        "--yaw",
+        type=int,
+        default=None,
+        help="live facing u16be at +0x0752; 512-unit circle, 128=north",
+    )
+    pos.add_argument("--hp", type=int, default=None, help="current HP u16be at +0x0754")
+    pos.add_argument("--maxhp", type=int, default=None, help="max HP u16be at +0x0756")
+    pos.add_argument(
+        "--allow-overheal",
+        action="store_true",
+        help="allow current HP > max HP (game behaviour UNTESTED)",
+    )
+    pos.add_argument("--base", type=int, default=None)
+    pos.add_argument("-o", "--output", type=Path, default=None)
+    pos.add_argument("--dry-run", action="store_true", help="print changes and do not write")
+
+    s = sub.add_parser("set", help="write hp / maxhp / facing on one player base")
     s.add_argument("savefile", type=Path)
     s.add_argument("--hp", type=int, default=None)
     s.add_argument("--maxhp", type=int, default=None)
-    s.add_argument("--clock", type=int, default=None, help="game time in seconds (stored as seconds*60)")
-    s.add_argument("--facing", type=int, default=None, help="written as u16be at +0x091C; width UNKNOWN")
+    s.add_argument("--facing", type=int, default=None, help="written as u16be at +0x091C; INERT, not live yaw")
+    s.add_argument("--yaw", type=int, default=None, help="live facing u16be at +0x0752; 512-unit circle")
     s.add_argument(
         "--allow-overheal",
         action="store_true",
@@ -2356,14 +3409,55 @@ def build_parser() -> argparse.ArgumentParser:
     s.add_argument("-o", "--output", type=Path, default=None)
     s.add_argument("--dry-run", action="store_true", help="print changes and do not write")
 
-    item = sub.add_parser("item", help="list or change quantity of an existing inventory record")
+    item = sub.add_parser(
+        "item",
+        help="print the inventory tree, or change word 2 of an existing record",
+    )
     item.add_argument("savefile", type=Path)
     item.add_argument("--list", action="store_true")
     item.add_argument("--slot", type=int, default=None)
-    item.add_argument("--qty", type=int, default=None)
+    item.add_argument(
+        "--value",
+        type=int,
+        default=None,
+        help="overloaded word 2 (rounds / child slot / charge)",
+    )
+    item.add_argument("--qty", type=int, default=None, help="alias for --value")
+    item.add_argument(
+        "--wipe",
+        action="store_true",
+        help="write id=FFFF in all 256 slots and head=FFFF",
+    )
     item.add_argument("--base", type=int, default=None)
     item.add_argument("-o", "--output", type=Path, default=None)
     item.add_argument("--dry-run", action="store_true", help="print changes and do not write")
+
+    give = sub.add_parser(
+        "give",
+        help="append an inventory record; --into links it as a child",
+    )
+    give.add_argument("savefile", type=Path)
+    give.add_argument("--id", type=int, required=True)
+    give.add_argument("--into", type=int, default=None, help="parent slot")
+    give.add_argument("--count", type=int, default=None, help="word 2 (rounds/charge)")
+    give.add_argument("--base", type=int, default=None)
+    give.add_argument("-o", "--output", type=Path, default=None)
+    give.add_argument("--dry-run", action="store_true")
+
+    equip = sub.add_parser(
+        "equip",
+        help="set ready-weapon +$198 or ready-crystal +$192 from a slot",
+    )
+    equip.add_argument("savefile", type=Path)
+    equip.add_argument("--slot", type=int, required=True)
+    equip.add_argument("--base", type=int, default=None)
+    equip.add_argument("-o", "--output", type=Path, default=None)
+    equip.add_argument("--dry-run", action="store_true")
+
+    exp_cat = sub.add_parser(
+        "export-item-catalog",
+        help="decompress CODE 11 and write reference/export/item_catalog.json",
+    )
 
     ver = sub.add_parser("verify", help="re-run the six-gate scan; print pass/fail per base")
     ver.add_argument("savefile", type=Path)
@@ -2392,10 +3486,16 @@ def main(argv: list[str] | None = None) -> int:
             return cmd_objects(args.savefile, levels, args)
         if args.cmd == "catalog":
             return cmd_catalog(args.savefile, levels)
+        if args.cmd == "export-objects":
+            return cmd_export_objects(levels, args.output_dir)
         if args.cmd == "blockmap":
             return cmd_blockmap(args.savefile)
         if args.cmd == "set-block":
             return cmd_set_block(args.savefile, levels, args)
+        if args.cmd == "set-dungeon":
+            return cmd_set_dungeon(args.savefile, levels, args)
+        if args.cmd == "set-position":
+            return cmd_set_position(args.savefile, levels, args)
         if args.cmd == "selftest":
             return selftest_saves(levels)
         if args.cmd == "warp":
@@ -2404,6 +3504,12 @@ def main(argv: list[str] | None = None) -> int:
             return cmd_set(args.savefile, levels, args)
         if args.cmd == "item":
             return cmd_item(args.savefile, levels, args)
+        if args.cmd == "give":
+            return cmd_give(args.savefile, levels, args)
+        if args.cmd == "equip":
+            return cmd_equip(args.savefile, levels, args)
+        if args.cmd == "export-item-catalog":
+            return cmd_export_item_catalog()
         if args.cmd == "verify":
             return cmd_verify(args.savefile, levels)
         if args.cmd == "diff":

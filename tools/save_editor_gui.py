@@ -20,44 +20,13 @@ if str(ROOT) not in sys.path:
 
 import save_editor as se
 
-# ItemCheat / FORMAT.md names. Display only; ids are the source of truth.
-ITEM_NAMES: dict[int, str] = {
-    0x00: "Map",
-    0x01: "Digital Watch",
-    0x02: "Flashlight",
-    0x03: "IR goggles",
-    0x04: "Cuban gas mask",
-    0x06: "Canvas sack",
-    0x08: "Aromatic box",
-    0x09: "Velvet red bag",
-    0x0A: "Lead box",
-    0x0C: "Empty elaborate vial",
-    0x0E: "Red cloak",
-    0x10: "Nuclear device",
-    0x11: "Radio beacon",
-    0x12: "Blue liquid vial",
-    0x13: "Red liquid vial",
-    0x14: "Brown liquid vial",
-    0x15: "Violet liquid vial",
-    0x16: "Mein Kampf",
-    0x17: "Small pamphlet",
-    0x18: "Bird's Egg",
-    0x1C: "Bad Walther P4",
-    0x2C: "Ceremonial Mask",
-    0x2D: "Survival Knife",
-    0x2E: "Walther P4",
-    0x2F: "Colt .45",
-    0x30: "Schmeisser MP-41",
-    0x31: "AK-47",
-    0x32: "M-79 Grenade Launcher",
-    0x33: "Walther P4 Ammo",
-    0x40: "Yellow Crystal",
-    0x41: "Blue Crystal",
-    0x42: "Orange Crystal",
-    0x44: "Mottled Crystal",
-    0x45: "Green Crystal",
-    0x46: "Black Crystal",
-}
+def item_name(item_id: int) -> str:
+    if item_id == 0xFFFF:
+        return "(end)"
+    try:
+        return se.item_name(item_id)
+    except Exception:
+        return f"id:{item_id}"
 
 WARN_UNVERIFIED = (
     "Output is unverified until loaded in Infinite Mac. "
@@ -66,17 +35,11 @@ WARN_UNVERIFIED = (
 
 WARN_CONFIRMED = (
     "Current HP and max HP are confirmed to take effect in the game. "
+    "Live position is +0x074A / +0x074E (10-bit fixed X/Y), not a clock. "
     "+0x090C Level, +0x0918 X, +0x091A Y, and +0x091C facing are INERT "
     "(confirmed in game: writing them does nothing). "
-    "0x06C2 is the block-index authority (file_pos = word*9112+30540); "
-    "UNTESTED in game. Use set-block, not warp/set, to change it."
+    "0x06C2 is a sink written FROM -$1AD8, not a block-index authority."
 )
-
-
-def item_name(item_id: int) -> str:
-    if item_id == 0xFFFF:
-        return "(end)"
-    return ITEM_NAMES.get(item_id, "")
 
 
 def parse_int(label: str, raw: str) -> int:
@@ -107,7 +70,12 @@ class SaveEditorApp:
         root.rowconfigure(0, weight=1)
 
         self._build()
-        self._set_status("Open a Pathways Into Darkness 2.0 Saved Games file.")
+        try:
+            se.load_item_catalog()
+        except Exception as exc:
+            self._set_status(f"Item catalog failed to load: {exc}")
+        else:
+            self._set_status("Open a Pathways Into Darkness 2.0 Saved Games file.")
 
     def _build(self) -> None:
         pad = {"padx": 8, "pady": 4}
@@ -139,7 +107,7 @@ class SaveEditorApp:
         meta = ttk.LabelFrame(main, text="Live player slots in this file", padding=8)
         meta.grid(row=2, column=0, columnspan=2, sticky="ew", **pad)
         meta.columnconfigure(0, weight=1)
-        slot_cols = ("base", "name", "level", "xy", "sector", "hp", "clock")
+        slot_cols = ("base", "name", "level", "xy", "sector", "hp", "xy_live")
         self.slot_tree = ttk.Treeview(
             meta, columns=slot_cols, show="headings", height=4, selectmode="browse"
         )
@@ -150,7 +118,7 @@ class SaveEditorApp:
             "xy": ("(x,y)", 70),
             "sector": ("Sector", 120),
             "hp": ("HP", 80),
-            "clock": ("Clock", 140),
+            "xy_live": ("Live X/Y +0x074A/+0x074E", 180),
         }
         for key, (title, width) in slot_head.items():
             self.slot_tree.heading(key, text=title)
@@ -190,10 +158,9 @@ class SaveEditorApp:
             variable=self.overheal,
         ).grid(row=2, column=0, columnspan=2, sticky="w", pady=(0, 6))
 
-        self.clock = self._entry(player, "Clock (whole seconds)", 3)
-        self.clock_ticks_var = tk.StringVar(value="stored ticks: —")
-        ttk.Label(player, textvariable=self.clock_ticks_var, foreground="#555").grid(
-            row=4, column=0, columnspan=2, sticky="w", pady=(0, 6)
+        self.live_xy_var = tk.StringVar(value="live X/Y +0x074A/+0x074E: —")
+        ttk.Label(player, textvariable=self.live_xy_var, foreground="#555").grid(
+            row=3, column=0, columnspan=2, sticky="w", pady=(0, 6)
         )
 
         self.facing = self._entry(player, "Facing (u16 at +0x091C)", 5)
@@ -232,44 +199,62 @@ class SaveEditorApp:
 
         inv = ttk.LabelFrame(
             main,
-            text="Inventory (quantity of existing records only)",
+            text="Inventory tree (word 2 is overloaded: rounds / child / charge)",
             padding=8,
         )
         inv.grid(row=3, column=1, sticky="nsew", **pad)
         inv.columnconfigure(0, weight=1)
         inv.rowconfigure(0, weight=1)
 
-        cols = ("slot", "name", "id", "state", "qty", "catalog")
-        self.tree = ttk.Treeview(inv, columns=cols, show="headings", height=16, selectmode="browse")
+        cols = ("slot", "name", "id", "state", "value", "next_sibling", "kg")
+        self.tree = ttk.Treeview(
+            inv, columns=cols, show="tree headings", height=16, selectmode="browse"
+        )
         headings = {
-            "slot": ("#", 40),
+            "slot": ("Slot", 44),
             "name": ("Name", 150),
-            "id": ("ID", 50),
-            "state": ("State", 50),
-            "qty": ("Qty", 70),
-            "catalog": ("Catalog", 70),
+            "id": ("ID", 40),
+            "state": ("State", 48),
+            "value": ("Word 2", 140),
+            "next_sibling": ("Sibling", 60),
+            "kg": ("kg", 50),
         }
+        self.tree.heading("#0", text="")
+        self.tree.column("#0", width=20, stretch=False)
         for key, (title, width) in headings.items():
             self.tree.heading(key, text=title)
-            self.tree.column(key, width=width, stretch=(key == "name"), anchor="w")
+            self.tree.column(key, width=width, stretch=(key in ("name", "value")), anchor="w")
         scroll = ttk.Scrollbar(inv, orient="vertical", command=self.tree.yview)
         self.tree.configure(yscrollcommand=scroll.set)
         self.tree.grid(row=0, column=0, sticky="nsew")
         scroll.grid(row=0, column=1, sticky="ns")
         self.tree.bind("<<TreeviewSelect>>", lambda _e: self._on_inv_select())
+        self.weight_var = tk.StringVar(value="")
+        ttk.Label(inv, textvariable=self.weight_var).grid(
+            row=1, column=0, columnspan=2, sticky="w", pady=(4, 0)
+        )
 
         qty_row = ttk.Frame(inv)
-        qty_row.grid(row=1, column=0, columnspan=2, sticky="ew", pady=(8, 0))
-        ttk.Label(qty_row, text="Selected qty").pack(side="left")
+        qty_row.grid(row=2, column=0, columnspan=2, sticky="ew", pady=(8, 0))
+        ttk.Label(qty_row, text="Selected word 2").pack(side="left")
         self.qty_var = tk.StringVar()
         self.qty_entry = ttk.Entry(qty_row, textvariable=self.qty_var, width=10)
         self.qty_entry.pack(side="left", padx=6)
-        ttk.Button(qty_row, text="Set quantity", command=self.apply_qty).pack(side="left")
-        ttk.Label(
-            qty_row,
-            text="Cannot add, remove, or reorder records.",
-            foreground="#555",
-        ).pack(side="left", padx=8)
+        ttk.Button(qty_row, text="Set value", command=self.apply_qty).pack(side="left")
+
+        give_row = ttk.Frame(inv)
+        give_row.grid(row=3, column=0, columnspan=2, sticky="ew", pady=(8, 0))
+        ttk.Label(give_row, text="Give id").pack(side="left")
+        self.give_id = tk.StringVar()
+        ttk.Entry(give_row, textvariable=self.give_id, width=6).pack(side="left", padx=4)
+        ttk.Label(give_row, text="into slot").pack(side="left")
+        self.give_into = tk.StringVar()
+        ttk.Entry(give_row, textvariable=self.give_into, width=6).pack(side="left", padx=4)
+        ttk.Label(give_row, text="count").pack(side="left")
+        self.give_count = tk.StringVar()
+        ttk.Entry(give_row, textvariable=self.give_count, width=6).pack(side="left", padx=4)
+        ttk.Button(give_row, text="Give…", command=self.do_give).pack(side="left", padx=6)
+        ttk.Button(give_row, text="Equip selected…", command=self.do_equip).pack(side="left")
 
         log_frame = ttk.LabelFrame(main, text="Tool output (full stdout / stderr)", padding=6)
         log_frame.grid(row=4, column=0, columnspan=2, sticky="nsew", **pad)
@@ -470,7 +455,6 @@ class SaveEditorApp:
             lv = d["level"]
             lname = d.get("level_name") or self.levels.names[lv]
             st, sn = self.levels.sector(lv, d["x"], d["y"])
-            clock = d["clock"] or 0
             self.slot_tree.insert(
                 "",
                 "end",
@@ -482,7 +466,7 @@ class SaveEditorApp:
                     f"({d['x']},{d['y']})",
                     f"{st} {sn}",
                     f"{d['hp']}/{d['max_hp']}",
-                    f"{clock} ticks ({clock / 60.0:.2f}s)",
+                    f"({d.get('x_live')},{d.get('y_live')}) raw={d.get('x_fp')},{d.get('y_fp')}",
                 ),
             )
         if self.live:
@@ -530,23 +514,22 @@ class SaveEditorApp:
         try:
             self.qty_edits.clear()
             flags, _ = se.gate_flags(self.data, decoded["base"], self.levels)
-            names = ("G1 level", "G2 X", "G3 Y", "G4 standable", "G5 HP", "G6 clock")
+            names = ("G1 level", "G2 X", "G3 Y", "G4 standable", "G5 HP", "G6 live XY")
             self.gates_var.set(
                 "  ".join(
                     f"{n}={'PASS' if ok else 'FAIL'}" for n, ok in zip(names, flags)
                 )
             )
             self.unknown_var.set(
-                f"u16@+0x0750={decoded['u750']}   u16@+0x0752={decoded['u752']}  "
-                f"(unidentified; not edited here)"
+                f"u16@+0x0752={decoded['u752']}  "
+                f"(+0x0750 is the low 16 bits of live Y; not a separate field)"
             )
             self._set(self.hp, decoded["hp"])
             self._set(self.maxhp, decoded["max_hp"])
-            clock = decoded["clock"] or 0
-            self._set(self.clock, clock // 60)
-            self.clock_ticks_var.set(
-                f"stored ticks: {clock}  ({clock / 60.0:.4f} s). "
-                f"Export writes whole seconds × 60; only written if you change this box."
+            self.live_xy_var.set(
+                f"live X/Y +0x074A/+0x074E: raw {decoded.get('x_fp')} / {decoded.get('y_fp')}  "
+                f">>10 = ({decoded.get('x_live')},{decoded.get('y_live')}). "
+                f"Use set-position to write these; this window does not."
             )
             self._set(self.facing, decoded["facing"])
             b091d = self.data[decoded["base"] + se.OFF_FACING + 1]
@@ -567,17 +550,64 @@ class SaveEditorApp:
 
     def _fill_inventory(self, decoded: dict) -> None:
         assert self.data is not None
+        try:
+            se.load_item_catalog()
+        except Exception as exc:
+            self.weight_var.set(f"catalog load failed: {exc}")
         self.inventory = se.read_inventory(self.data, decoded["base"])
         for iid in self.tree.get_children():
             self.tree.delete(iid)
-        for i, rec in enumerate(self.inventory):
-            qty = self.qty_edits.get(i, rec[2])
+        recs = self.inventory
+        head = se.u16(self.data, decoded["base"] + se.OFF_INV_HEAD)
+        child_slots: set[int] = set()
+        for i, rec in enumerate(recs):
+            e = se.catalog_entry(rec[0])
+            if e and e["w6"] > 0:
+                child_slots.update(se.children_of(recs, i))
+        start = head if head != 0xFFFF and head < len(recs) else 0
+        roots = se.sibling_chain(recs, start) if recs else []
+        seen: set[int] = set()
+
+        def insert_node(slot: int, parent: str) -> None:
+            if slot < 0 or slot >= len(recs) or slot in seen:
+                return
+            seen.add(slot)
+            rec = recs[slot]
+            value = self.qty_edits.get(slot, rec[2])
+            e = se.catalog_entry(rec[0])
+            kg = f"{(e['w3'] / 28.0):.2f}" if e else ""
+            sib = "FFFF" if rec[3] == 0xFFFF else str(rec[3])
             self.tree.insert(
-                "",
+                parent,
                 "end",
-                iid=str(i),
-                values=(i, item_name(rec[0]), rec[0], rec[1], qty, rec[3]),
+                iid=str(slot),
+                values=(
+                    slot,
+                    item_name(rec[0]),
+                    rec[0],
+                    rec[1],
+                    se.interpret_word2(rec[0], value),
+                    sib,
+                    kg,
+                ),
             )
+            if e and e["w6"] > 0:
+                for child in se.children_of(recs, slot):
+                    insert_node(child, str(slot))
+
+        for slot in roots:
+            insert_node(slot, "")
+        for i in range(len(recs)):
+            if i not in seen:
+                insert_node(i, "")
+        for iid in self.tree.get_children(""):
+            self.tree.item(iid, open=True)
+            for child in self.tree.get_children(iid):
+                self.tree.item(child, open=True)
+        sum_w3 = sum((se.catalog_entry(r[0]) or {"w3": 0})["w3"] for r in recs)
+        self.weight_var.set(
+            f"n={len(recs)} head={head}  sum(w3)={sum_w3} / 28 = {sum_w3 / 28.0:.2f} kg"
+        )
         self.qty_var.set("")
 
     def _refresh_sector(self) -> None:
@@ -659,9 +689,117 @@ class SaveEditorApp:
         else:
             self.qty_edits[slot] = qty
         values = list(self.tree.item(sel[0], "values"))
-        values[4] = qty
+        values[4] = se.interpret_word2(rec[0], qty)
         self.tree.item(sel[0], values=values)
-        self._set_status(f"Queued inv[{slot}] qty {rec[2]} → {qty} (written on Export As…)")
+        self._set_status(f"Queued inv[{slot}] value {rec[2]} → {qty} (written on Export As…)")
+
+    def _pick_output(self, title: str) -> Path | None:
+        if self.path is None:
+            return None
+        suggested = self.path.parent / (self.path.name + ".edited")
+        picked = filedialog.asksaveasfilename(
+            title=title,
+            initialdir=str(self.path.parent),
+            initialfile=suggested.name,
+        )
+        if not picked:
+            self._append_log("REFUSED export cancelled (no output path)")
+            return None
+        out_path = Path(picked)
+        try:
+            se.refuse_in_place(self.path, out_path)
+        except SystemExit as exc:
+            msg = str(exc).removeprefix("error: ")
+            self._append_log(f"REFUSED {msg}")
+            messagebox.showerror("Export refused", msg)
+            return None
+        return out_path
+
+    def do_give(self) -> None:
+        if self.path is None or self.data is None:
+            messagebox.showinfo("Give", "Open a save file first.")
+            return
+        decoded = self._current()
+        if decoded is None:
+            return
+        try:
+            item_id = parse_int("id", self.give_id.get())
+            into_raw = self.give_into.get().strip()
+            into = parse_int("into", into_raw) if into_raw else None
+            count_raw = self.give_count.get().strip()
+            count = parse_int("count", count_raw) if count_raw else None
+        except se.EditRefused as exc:
+            messagebox.showerror("Give", str(exc))
+            return
+        out_path = self._pick_output("Give: write a new save (will not overwrite the opened file)")
+        if out_path is None:
+            return
+
+        def _do():
+            buf, changes, expect, warnings = se.apply_give(
+                self.data, decoded, item_id, into=into, count=count
+            )
+            for w in warnings:
+                print(f"WARNING: {w}")
+            se.commit_output(
+                out_path, self.data, buf, [decoded], self.levels, changes, expect=expect or None
+            )
+            return changes
+
+        try:
+            changes = self._capture_io(_do)
+        except se.EditRefused as exc:
+            self._append_log(f"REFUSED {exc}")
+            messagebox.showerror("Give refused", str(exc))
+            return
+        except SystemExit as exc:
+            msg = str(exc.code) if isinstance(exc.code, str) else str(exc)
+            msg = msg.removeprefix("error: ")
+            self._append_log(f"REFUSED {msg}")
+            messagebox.showerror("Give refused", msg)
+            return
+        self._append_log(f"WROTE {out_path}")
+        self._set_status(f"WROTE {out_path}  give changes={len(changes)}")
+
+    def do_equip(self) -> None:
+        if self.path is None or self.data is None:
+            messagebox.showinfo("Equip", "Open a save file first.")
+            return
+        decoded = self._current()
+        if decoded is None:
+            return
+        sel = self.tree.selection()
+        if not sel:
+            messagebox.showinfo("Equip", "Select an inventory row first.")
+            return
+        slot = int(sel[0])
+        out_path = self._pick_output("Equip: write a new save (will not overwrite the opened file)")
+        if out_path is None:
+            return
+
+        def _do():
+            buf, changes, expect, warnings = se.apply_equip(self.data, decoded, slot)
+            for w in warnings:
+                print(f"WARNING: {w}")
+            se.commit_output(
+                out_path, self.data, buf, [decoded], self.levels, changes, expect=expect or None
+            )
+            return changes
+
+        try:
+            changes = self._capture_io(_do)
+        except se.EditRefused as exc:
+            self._append_log(f"REFUSED {exc}")
+            messagebox.showerror("Equip refused", str(exc))
+            return
+        except SystemExit as exc:
+            msg = str(exc.code) if isinstance(exc.code, str) else str(exc)
+            msg = msg.removeprefix("error: ")
+            self._append_log(f"REFUSED {msg}")
+            messagebox.showerror("Equip refused", msg)
+            return
+        self._append_log(f"WROTE {out_path}")
+        self._set_status(f"WROTE {out_path}  equip changes={len(changes)}")
 
     def _collect_edits(self) -> dict:
         decoded = self._current()
@@ -675,10 +813,6 @@ class SaveEditorApp:
             kwargs["hp"] = hp
         if maxhp != decoded["max_hp"]:
             kwargs["max_hp"] = maxhp
-
-        clock_s = parse_int("clock", self._val(self.clock))
-        if clock_s != (decoded["clock"] or 0) // 60:
-            kwargs["clock_seconds"] = clock_s
 
         facing = parse_int("facing", self._val(self.facing))
         if facing != decoded["facing"]:

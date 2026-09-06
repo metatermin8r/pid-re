@@ -102,8 +102,9 @@ published map. Transpose (`i = x*32 + y`) lays the T on its side and
 is wrong.
 
 `Sector.Item` is a per-level instance id, unique within each record,
-range 0..399 globally, shared across sector types. It is not a catalog
-index, not a loot-group index, and not a save-block key.
+range 0..399 globally, shared across sector types. It is the head of
+a chain into the 500-entry object table at world-state `+$03D8`
+(CODE 5 @17190). It is not a catalog index and not a dpin row.
 
 ---
 
@@ -114,9 +115,9 @@ Several early readings failed cleanly and stayed failed.
 **`dpin` as a directory.** The first four bytes look like `0x000c0b3c`
 as a u32, which exceeds the resource. They are `u16be 12, 2876`.
 409 × 564 divides the file and scores almost nothing on a stride scan;
-the blockmap is diagonal. The vertical reading is 596 bytes of prefix
-then 2876 rows of 80. Inventory-shaped 8-byte records exist in there.
-They are not selected by `Sector.Item`. What `dpin` *is* remains open.
+the blockmap is diagonal. Treating the payload as 2,876 rows of 80 was
+a failed model. `dpin` is the save-file initialiser: a 2,876-byte
+header plus 25 × 9,112-byte world-state blocks (CODE 2 @9262). Closed.
 
 **`scri 128+N` as level N.** No level-name bytes appear in any `scri`.
 Gray and Semmler both call these corpse-dialogue scripts. The working
@@ -129,16 +130,20 @@ real dialogue (Lock&Load’s Cold Guy, Ascension’s Joachim).
 notice stored under type `'clut'`. The real palettes are `clut`
 128–135, eight 15-colour Mac tables.
 
-**The 25 save blocks as live world state.** A two-name `Saved Games`
-file is 276564 bytes. Blocks 0–24 at 39392 are **templates**. They do
-not shrink when you pick something up. A second save name adds 9112
-bytes, not 25 × 9112. PID *does* persist pickups — as sparse flag bits
-on the player island, not by rewriting the map copy.
+**The 25 save blocks at 39,392 as templates.** That filing is
+void. The blocks **are** live world state. Only the offset was
+wrong: homes start at **30,540**, stride 9,112, indices 0–24. A
+second name adding 9,112 bytes is per-save file growth, not
+evidence that the 25 homes are immutable. Pickup flag bits on the
+player island (`0x0840` / `0x0864`) exist in addition to the
+block `FSWrite`, not instead of it.
 
-**A proven 2876-byte player struct.** Two clocks sit 2876 bytes apart
-in the two-name file. Bytes 0–1865 of that span are leftover. Only the
-island from ~1866 is live. 2876 is an offset that appears, not a parsed
-record.
+**The 2,876-byte player stride as unproven.** Confirmed. Record
+`k` is at `k*2876`. Bytes `[0, 1780)` of the file are a separate
+name and level table read into A5 `-$1ADC`; they overlap record 0
+on disk but are not part of it. The live island begins at
+`k*2876 + 0x06F4`. 2,876 is the player-record stride; 9,112 is
+per-save file growth. They are unrelated.
 
 ---
 
@@ -182,11 +187,11 @@ resources 195–202. How a level picks its floor and ceiling is unknown.
 
 One real `Saved Games` file is 267452 bytes with a single Pascal name.
 Two named games live in one file (276564). ItemCheat’s v1.1 offsets
-for X / Y / level do not apply; v2.0 stores sector coordinates as
-plain integers at 2328 / 2330 and the level at 2316. Inventory is
-8-byte records `(id, state, qty, catalog)` starting at 2560, the same
-shape as the inventory-like rows in `dpin`. Catalog numbers are a
-lazy free-list, not an index into another table.
+for X / Y / level do not apply. Live X / Y are 10-bit fixed point at
+`+0x074A` / `+0x074E`; the integer words at `+0x090C` / `+0x0918` /
+`+0x091A` are inert display mirrors (confirmed in game). Inventory is
+8-byte records `(id, state, qty, catalog)` starting at `+0x0A00`.
+Catalog numbers are a lazy free-list, not an index into another table.
 
 The 32×32 explored-bitmap for Ground Floor sits in a 260-byte header
 near the end of the file (156 tiles in the captured save, including
@@ -499,13 +504,15 @@ enter @1618. They enter @12052 when `(type & 0x0F) != 0`, call
 the index: `rec = [-$1A86(A5)] + $03D8 + item*16`.
 
 `-$1A86(A5)` is a 9,112-byte buffer (`NewPtr $2398` at CODE 4
-@1466, JT 152). CODE 2 @10066 / @10174 `FSRead` / `FSWrite` it
-at `index * $2398`. The 25 blocks at save-file offset 39,392
-are per-level live world state. The object table is 500 × 16
-bytes at +0x03D8: X/Y as 10-bit fixed point with a `$200`
-centre, a packed descriptor, flags, and a next-index link
-(`$FFFE` free, `$FFFF` end). JT 157/159/158/164 insert, update,
-free, and wipe.
+@1466, JT 152). CODE 2 @10066 `SetFPos` to `index*9112 + 30540`
+then `FSRead`; @10174 is the matching `FSWrite`. The 25 home
+blocks start at file offset **30,540**. An earlier window at
+39,392 was 8,852 bytes late — the live-state claim was right,
+the offset was not. The object table is 500 × 16 bytes at
++0x03D8: X/Y as 10-bit fixed point with a `$200` centre, a
+packed descriptor, flags, unused `+0x0C` (zero on 27,904 live
+objects), and a next-index link (`$FFFE` free, `$FFFF` end).
+JT 157/159/158/164 insert, update, free, and wipe.
 
 `dpin` 128 is the save-file initialiser. CODE 2 @9262
 `GetResource`s it, `HLock`s, writes 28,760 + 2,876 @ position 8
@@ -522,17 +529,136 @@ answers are displacements, trap numbers, and bit fields in the
 confidence and nothing else. Reading CODE 8 @2206 produced the
 decoder.
 
-What the captured saves do *not* yet show: parsed as that
-in-memory layout, every local v2.0 file has 0 × `$FFFE` at
-object +0x0E and a 100% `Sector.item` position miss. The
-instructions are not in doubt. A save made after leaving a
-level has not been captured.
+The 100% `Sector.item` position miss was the tool using
+`(raw − $200) >> 10`. With `raw >> 10`, all 5,866 map refs on
+the 25 home blocks resolve directly (zero failures) on all four
+unique saves. Homes 0–24 are byte-identical to `dpin` 128 at
+`2,876 + N*9,112`. That — not a clock — is why the captured
+saves are a pristine corpus.
 
-Still open: the `$217F` anomaly (4,101 pairs on levels 7–15, s1
-index 127 against resource 194’s 14 records); the player’s live
-position (the integer X/Y/level/facing fields do not take
-effect); the 60- and 8-byte record tables inside the 9,112-byte
-block; the L13 maze generator.
+Still open after this pass: the `$217F` anomaly; what CODE 5
+@17190 uses as an object’s vertical extents; the four smaller
+tables inside the 9,112-byte block; the L13 maze generator.
+
+---
+
+## The vertical constants, and the inventory (2026-09-05)
+
+The rest of this arc is the same method applied past the
+object table.
+
+`.256` was solved by disassembly after four statistical models
+failed. The descriptor format (CODE 5 @1618 / @1454) and the
+object table (CODE 5 @17190, world block `+$03D8`) came next.
+World state is the 9,112-byte block at file offset 30,540, not
+a template bank at 39,392. `dpin` 128 is that save file’s
+initial image: 2,876-byte header plus 25 blocks.
+
+`+0x074A` had been decoded correctly from the first save pass
+and labelled wrongly for months. It is live X, 10-bit fixed
+point, not a game clock. The derived “113–119 seconds into
+play” is void. Confirmed in game: editing it teleports,
+including into a wall — the load path applies it without
+validation. CODE 2 @8546 builds X and Y at @8762–8788 with
+`LSL.L #10` then `ADD.L #$200` and copies eight bytes to
+player+0x56 at @8830. `+0x074E` is Y. `+0x0752` is facing on a
+512-unit circle (CODE 4 @1028 returns 0..511; CODE 4 @4 / JT
+331 wraps by `±$200`; 0 = west, 128 = north, 256 = east, 384 =
+south). Writing `+0x0748` together with those two longs warps
+level: a save written for level 7 arrived on a crystal-walled
+floor populated with ghouls (in-game test).
+
+Proven inert in game: `+0x090C` (level), `+0x0918` / `+0x091A`
+(integer X/Y), and file `0x06C2` (CODE 2 @8436 writes it FROM
+`-$1AD8` — a sink). `+0x091C` was written up as confirmed inert
+without ever being tested; it holds 0, 1, 2, 12 across the nine
+records and is UNTESTED.
+
+Vertical geometry was measured from screenshots three times and
+got 1,080 raw units for wall height. One disassembly got the
+constants exactly. CODE 3 @13656 stores −614 and @13664 stores
++409 on the view record at A5 `-$1542`. Wall height is 1,023 —
+one short of a sector; 614 + 410 would be 1,024. The eye sits
+at 614/1023 ≈ 60% of wall height, not half. Vertical FOV is
+fixed at `2*atan(0.6)` = 61.9275° (CODE 5 @9856,
+`view+$1C = trunc(5*H/6)`). Horizontal is `2*atan(0.8)` =
+77.3196° (CODE 5 @9806, 5/8). The tangent ratio is 4/3.
+`height10` at level `+0x084` is the HUD depth readout (CODE 3
+@8762, `DIVS.W #10`, `_DrawString`), not the world’s vertical
+scale. The player has no stored Z.
+
+The 68020 function inventory is at
+`reference/docs/code/inventory/`: 771 functions, 355
+jump-table entries, 46,024 instructions, 13 unknowns, 2,249
+call-graph edges, 232 A5 globals. Trap counts match an
+independent scan on all 17 CODE resources. CODE 11 and CODE 15
+are C runtime (`_doprnt`, `ZEROBUFFER`, `DATAINIT`) and contain
+no game logic.
+
+Two methodological traps are worth keeping. Nearest-neighbour
+Hamming distance ranks sparse blocks as nearest to everything;
+that produced a false `.256` match against a resource nobody
+had visited. And a field can be decoded correctly and labelled
+wrongly for months, as `+0x074A` was.
+
+The recurring lesson is now load-bearing: several long-standing
+open items looked like data questions and were code questions.
+Static analysis of Maps, saves, and `dpin` could not have
+closed them. The answers were displacements, trap numbers, and
+immediates in the 68020 stream.
+
+The behavioural layer — combat, monster AI, most item effects,
+door triggers — is still unread. The catalog, the inventory
+tree, and the fire → magazine path are not. It is searchable:
+225 functions have zero traps and exceed 100 bytes; 89 A5
+globals are written in exactly one place.
+
+---
+
+## Two fields equal is not a name (2026-09-05)
+
+The item catalog at A5 `-$14D6` is 71 × 16 bytes, installed by
+Think C `_DATAINIT` (JT 305, CODE 11 @4) from a packed block in
+CODE 11. JT 217 formats STR# 2016 (`Total Weight: %3.2f kg.`)
+from a sum of catalog w3 divided by 28 (`MOVEQ #$1C`, `_FP68K`
+`$0006`). That is the weight field. w5 is a different
+accumulator: pickup adds it to player `+$0C`, drop subtracts it.
+w4 and w6 are the per-item fill and the container limit in
+CODE 6 @508 / @616.
+
+A previous pass named w4 and w6 “magazine capacity” and “weapon
+capacity” because every weapon/magazine pair held the same
+number. Two fields being equal shows they hold the same *kind*
+of quantity. It does not identify the quantity. The pairing was
+written up as a clean cross-check when nothing had been checked
+against the running game. A Walther magazine holds eight rounds
+(UI, saves, `dpin` t2: max 8, 155/180 authored as 8). Catalog
+w4 for that id is 10. The M-79 is single-shot and its w6 is 5.
+The live round count is the instance record’s +$4, authored per
+world item and copied on pickup. Fire decrements player `+$19A`
+and then the magazine’s +$4; JT 257 sets `+$19A` to 1 on ready.
+
+The error survived because the numbers looked plausible (10
+rounds in a Walther, 5 in a grenade launcher) and no independent
+observation was sought until the game contradicted them. The
+inventory’s fourth word was the same class of mistake: small
+integers in a hole-filled array were named “catalog instance
+ids” when CODE 6 @5838 uses them as next-sibling slots. Equality
+and plausibility are not a code site.
+
+File `+0x0A00` was the same class of leftover: an earlier brief
+called player `+$30C` the live inventory, so the save editor
+parsed 48 bytes of zeros as six Maps and concluded the
+serialised form used different slot numbers. The I/O blob is a
+raw dump. Inventory is at `+$33C` = file `+0x0A30`. The tree
+is coherent there; it is not a second format.
+
+STR# 2013 formats player `+$0A` / `+$0C` as “scored %d of %d
+points and recovered $%d.%d%s in treasure.” That is a recap
+drawn into a GrafPort (CODE 3 @8762 `_TETextBox`), not a live
+HUD. Calling it a score system overstated what the call sites
+show. The Cedar Box’s class-0 Use path is a no-op stub; calling
+it a puzzle container overstated the insert gate.
 
 ---
 
@@ -548,7 +674,10 @@ were run. Reports live under `reference/docs/`.
 - **2026-09-01 (later)** — `.256` offset table at byte 7, per-resource
   palettes, PackBits and friends fail, raw-from-258 viewer.
 - **2026-09-01 / 02** — Saves: templates vs player island, 8-byte
-  inventory, flag bits, 0750/0752 unidentified, 2876 is not a struct.
+  inventory, flag bits. `+0x0750` later identified as the low 16
+  bits of live Y. `+0x0752` still unidentified. 2876 is the I/O
+  blob, not a fully parsed struct. `+0x074A` was labelled a clock
+  from this pass; that label is void.
 - **2026-09-02 r17** — Row-major confirmed. Ground Floor 214/214.
 - **2026-09-02 r18** — Corners are not walls. Short walls do not seal.
 - **2026-09-02 r19** — DoorTrigger adj4 fixed-point. L11/L12/L14 grow.
@@ -594,5 +723,35 @@ were run. Reports live under `reference/docs/`.
   bit fields; pillars via @1454 not @1618; `Sector.item` is an
   object-table index; `-$1A86(A5)` is the 9,112-byte world-state
   block, FSRead/FSWrite by level; `dpin` 128 initialises the save
-  file. Several “data” open items were code questions. Captured
-  saves do not yet show a JT-164-shaped object table.
+  file. Several “data” open items were code questions. The
+  later `raw >> 10` pass resolved all 5,866 `Sector.item` refs.
+- **2026-09-03 (position)** — `+0x074A` had been decoded and
+  mislabelled as a game clock from the first save pass. Three
+  rounds searched `0x0000–0x0749` for a live pose that was
+  already in the table. The in-game test that found it was one
+  edit of `+0x074A`: the player teleported, including into a
+  wall. Companion `+0x074E` is Y. Same 10-bit fixed encoding as
+  the object table (`raw >> 10`; writer adds `$200`). CODE 2
+  @8546 / @8762–8788 / @8830 writes those two longs to
+  player+0x56 = file `k*2876 + 0x074A`. The “113–119 seconds
+  into play” reading is void. The corpus is still pristine
+  because home blocks 0–24 are byte-identical to `dpin` 128.
+- **2026-09-05** — World-state offset corrected to 30,540; object
+  table 5,866/5,866 with `raw >> 10`; `dpin` layout is header plus
+  25 blocks. Vertical constants from CODE 3 @13656 / @13664 and
+  CODE 5 @9856 / @9806; screenshot 1,080 and half-height eye are
+  void. Level warp via `+0x0748` plus live X/Y confirmed in game.
+  `+0x091C` marked untested. Function inventory 771 / 355 JT.
+- **2026-09-05 (catalog)** — Item catalog w3 is weight (printed
+  kg = Σw3/28, JT 217 / STR# 2016). w4/w6 are container fill
+  and limit, not round counts: Walther magazine holds 8 against
+  w4/w6 of 10; M-79 w6 is 5. Inventory word 3 is next-sibling,
+  word 2 is overloaded. Method: two fields equal was treated as
+  confirmation of what those values meant.
+- **2026-09-05 (save inventory)** — File `+0x0A00` is player
+  `+$30C`, not a packed serialisation. The live tree is at
+  `+0x0A30` (`+$33C`); slot numbers survive I/O unchanged.
+  `+0x06FE` is points (`+$0A`), not a flag. STR# 2013 is a
+  status-window recap (`_TETextBox` in CODE 3 @8762), not a live
+  HUD. Cedar Box class 0 is a JT 214 no-op; it does not
+  duplicate its child. Test saves in `out/item-tests/`.
