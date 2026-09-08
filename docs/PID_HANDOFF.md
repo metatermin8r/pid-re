@@ -42,11 +42,21 @@ high-edge: leaf on high Y / south).
 | Game time runs 60× real time | 1 tick = 1/60 s, 1:1 with real time. |
 | A far plane exists in the renderer | No depth cutoff anywhere. Distant geometry is fully emitted and shaded to black by band 15. |
 | The player has a collision radius against the door leaf | The mover contains no radius and no `(1024 − position)` term anywhere. |
-| A5 `-$1BCA` (7114) and `-$1BCC` (7116) are runtime state | Both are DATAINIT-only with **no writer** in any CODE segment. `-$1BCA` is permanently 1 (its branches are live). `-$1BCC` is permanently 0 (its branch, `view+$14` = 5, is unreachable). Hardcode; do not implement. |
+| A5 `-$1BCA` (7114) is runtime state | DATAINIT 1, no writer. Permanently **SET**, so its branches **always run**. A port **must implement** them: creature proximity revert @3242, VBL path CODE 1 @940, JT 164 path CODE 4 @4348. Hardcode 1. |
+| A5 `-$1BCC` (7116) is runtime state | DATAINIT 0, no writer. Permanently **CLEAR**, so its branch (JT 239 returning `view+$14` (20) = 5) is **unreachable**. A port should **omit** it. Hardcode 0. |
+| GPU affine-per-triangle reproduces the engine's affine-per-column texture mapping | Refuted in game: near walls smear. The supporting measurement used symmetric test cases whose errors cancelled at the sampled midpoint. |
 | Eye height and FOV were fitted to screenshots | Both are derived from the code arithmetic. |
 | The two authored viewports are portrait / differ in FOV | Both are 4:3 (272 × 204 and 384 × 288) and both give exactly 0.8 and 0.6. |
 | The player walk step is 24 | 24 is run-backward and run-strafe. Walk forward is 17. |
 | player `+$134` is an unidentified dt modifier | It is the Red Cloak (id 14). Doubles dt on JT 248 door/creature/projectile; does not scale JT 145. |
+| The sector carries only two wall words | Six: two edges, four corners. South/east are the neighbour’s slot 0/1. |
+| Tag 5 is the door slab | It is the corner chamfer (dirs 4–7, @13550). Door thickness is @16202. |
+| Chamfer UV is world-pinned like a tag span | Both @14006 branches emit 0..`$10000` (65536) for every face; the tile is stretched. |
+| The white blocks in Ground Floor walls are a decoder bug | They are index-2 placeholder regions filled by an unconditional overlay blit at @2030. RLE is correct. |
+| `door_rates` +0 is the per-tick rate | The rate is at `+$A` (10), duplicated at `+$C` (12). +0 is UNKNOWN (0,0,2,2,2,1). |
+| The player has a collision radius | He is a point; `$199` (409) / `$266` (614) is a clamp against nibble-0 faces only. |
+| The billboard pitches to face the camera | Yaw-only. |
+| Sprites are uniformly floor-anchored | Bottom = −614 + per-shape lift. |
 
 Full historical table, including earlier harvest dead ends:
 `docs/FORMAT.md` **Disproven**.
@@ -72,24 +82,23 @@ Full historical table, including earlier harvest dead ends:
 | Creature door behaviour | Whether an actively pursuing creature walks through a door at position `<= 512`. Untested; idle creatures proved nothing. |
 | The unreproduced door-500 clip | One session where the player was blocked at position 500 with the freeze intact. Every geometric hypothesis searched and refuted; the traced mover passes at 0, 200, 350, 500 and 512. Most likely the @3242 creature proximity revert, but player `+$216` (534) was 0 in the save. Retry once; do not spend more. |
 | `type_addl` 134 and 135 (L15) | No reader anywhere. |
-| Trigger cases 18, 19, 20, 21 | Four distinct values, identical behaviour (`addq.w #3`, player `+$142` (322)), 16 uses on L17. |
+| Trigger cases 18, 19, 20, 21 | Four distinct values, identical behaviour (`addq.w #3`, player `+$142` (322)), 16 uses on L17. Alias among themselves; four values, one path. |
 | JT 246 Stalker poke | Pokes `$00FF` (255) into creature catalog entry 14 (Stalker) field `+$08` at level apply. |
 | STR# 2001 indices 8, 9, 13 | Blank names, full catalog rows, placed in levels: type 8 on L15 ×1 (HP 12000), type 9 on L19 ×1 (HP 5500), type 13 on L19 ×6 (HP 240). Entry 13’s `+$04` is `$100B` (4107) against Ooze’s `$000B` (11) — a greater-Ooze variant. Entries 8 and 9 unexplained; very high HP and single placements suggest impassable obstacles rather than enemies. Fan sources name Flying Rat, Greed, Flying Reptile, Malice and Deceit, none of which appear in any STR#. |
-| A5 `-$17FA` (6138) | Role beyond the floor/ceiling gradient; and the fifth `$1000` (4096) bank. |
+| A5 `-$17FA` (6138) fifth bank | Role beyond the floor/ceiling gradient; and the fifth `$1000` (4096) bank. |
 | `+$1B8` (440) monster-frequency poke | CODE 2 @8710 writes `#$F` (15) to slot 0 only while d7 iterates 0..2 over a stride-4 table. Indexed compare, unindexed write. Probable original bug; confirm before replicating. |
+| 11,372 trailing packed bytes | Resource 192 leftover after declared count, starts `13 14 15 16`. UNKNOWN. Not missing tile data. |
 | Creature AI | Movement, pathing, aggro, attack selection, respawn. |
-| Remaining systems | The conversation system, the Search dialog, potions, per-item use effects, sound, level 24 and the endgame, text and dialog rendering. |
+| Remaining systems | Conversations, the Search dialog, potions, sound, level 24 and the endgame. |
 
 Lower-impact leftovers that remain in `docs/FORMAT.md` (do not treat
 as closed): player-island flag bits (`0x0840` / `0x0864`);
-`unknown1`; unverified s1 world-size words; level-change type 4;
-Carlos `TypeAddl=200`; `+0x091C` untested; Colt .45 / M-16
-proficiency slots never written by the decoded fire table; the
-encumbered lock.
+`unknown1`; level-change type 4; Carlos `TypeAddl=200`; `+0x091C`
+untested; Colt .45 / M-16 proficiency slots never written by the
+decoded fire table; the encumbered lock.
 
 ---
 
 ## TODO (gaps in the source prompt, not invented)
 
-- Door texture 2 is absent from the published rate table (0/1, 3/4/5, 6).
-- View-record fields not tabulated in FORMAT.md are unnamed.
+- View-record `+$16` (22) gates the @11586 LFSR reset to 1. No writer identified.

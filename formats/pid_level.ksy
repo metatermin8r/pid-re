@@ -1,8 +1,20 @@
-# Pathways Into Darkness ? one Maps file record and the file that
+# Pathways Into Darkness — one Maps file record and the file that
 # contains them. Layout confirmed against the v2.0 Maps data fork
 # (25 * 16834 = 420850). Field knowledge from Petrich/Semmler
 # documentation, rewritten here; do not treat this file as a copy of
 # their header.
+#
+# THIS IS NOT THE FORMAT SPECIFICATION. docs/FORMAT.md is.
+# This file parses the $41C2 (16834)-byte map record only (450-byte
+# header + 32×32 × 16-byte sectors). It does not model:
+#   - tag bits, tag spans, or tag-5 chamfers (it stores all six wall
+#     words as type/texture byte pairs, including slots 2–5, but does
+#     not decode the 16-bit descriptor);
+#   - t3 door runtime (command / position 0..$400 (1024));
+#   - the .256 graphics format;
+#   - the 9,112-byte world / save block;
+#   - anything in the A5 world.
+# Absence from this file is not absence from the engine.
 #
 # Endian: big (68k). Text: Mac Roman Pascal strings.
 # Generate:

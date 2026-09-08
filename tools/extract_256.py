@@ -9,6 +9,10 @@ s2 record: u32be offset, u16be A, u16be B, 8 zero bytes.
 
 Index 2 is transparent. --magenta paints it opaque magenta.
 
+s1.u16[3] != 0 is an overlay: CODE 5 @2030/@42 blits that s2 tile
+onto the base plane at the u32be dest offset at s1+$E (row-major).
+The compressor stores index 2 in that rectangle as a placeholder.
+
 s1.u16[0] is not a palette selector. Colour table is selected by
 texture_list variation (upper 4 bits of the slot word), not by
 tile_index % table_count (disproven). --palette N paints with table
@@ -185,6 +189,49 @@ def decode_plane(raw: bytes, a: int, b: int, mode: str) -> np.ndarray:
     if mode == "B":
         return pix.reshape((b, a)).T
     raise ValueError(mode)
+
+
+def s1_overlay_dest_off(rec: dict) -> int:
+    """u32be at s1+$E. 4423 = 39*113+16 for r192 s1 14-17."""
+    return (rec["u16"][7] << 16) | rec["u16"][8]
+
+
+def apply_s1_overlay(
+    plane: np.ndarray,
+    rec: dict,
+    s2: list[dict],
+    s3: bytes,
+    cls: int,
+) -> np.ndarray:
+    """CODE 5 @2030 + @42. Blit overlay s2 onto the base plane.
+
+    @2030 tst.w $6(a3): skip if s1.u16[3]==0.
+    Dest pointer = base pixels + u32 at s1+$E.
+    @42 copies width/4 longs per row, then adda dest_skip
+    (base_w - overlay_w). No transparency test.
+    """
+    ov_i = rec["u16"][3]
+    if ov_i == 0:
+        return plane
+    if not (0 <= ov_i < len(s2)):
+        return plane
+    ov = s2[ov_i]
+    raw = s3[ov["off"] : ov["off"] + ov["wh"]]
+    if len(raw) != ov["wh"] or ov["wh"] <= 0:
+        return plane
+    mode = "A" if is_sprite_tag(cls) else "baseline"
+    patch = decode_plane(raw, ov["a"], ov["b"], mode)
+    dest_off = s1_overlay_dest_off(rec)
+    h, w = plane.shape
+    ph, pw = patch.shape
+    if w <= 0 or dest_off < 0 or dest_off >= h * w:
+        return plane
+    y, x = divmod(dest_off, w)
+    if x + pw > w or y + ph > h:
+        return plane
+    out = plane.copy()
+    out[y : y + ph, x : x + pw] = patch
+    return out
 
 
 def display_wh(a: int, b: int, mode: str) -> tuple[int, int]:
@@ -517,8 +564,9 @@ def build_resource_entry(rid: int, d: dict) -> tuple[dict, dict]:
                 "s2_index": s2i,
                 "width": w,
                 "height": h,
-                "world_w": rec["i16"][5],
-                "world_h": rec["i16"][4],
+                "world_w": rec["i16"][4],
+                "world_h": rec["i16"][5],
+                "lift": rec["i16"][6],
                 "png": png,
             }
         )
@@ -636,9 +684,9 @@ def collect_level_wall_pairs(export_dir: Path) -> dict[int, dict]:
 
 
 def print_world_size_report(decoded: dict[int, dict]) -> None:
-    """B1/B2: s1 i16[4]/i16[5] vs tile w/h and implied k."""
-    print("==== world size s1 i16[4]=world_h i16[5]=world_w ====")
-    print("  id  s1  cls    tw    th   i16[4]  i16[5]    k_h    k_w")
+    """B1/B2: s1 i16[4]=world_w i16[5]=world_h i16[6]=lift vs tile w/h."""
+    print("==== world size s1 i16[4]=world_w i16[5]=world_h i16[6]=lift ====")
+    print("  id  s1  cls    tw    th   i16[4]  i16[5]  lift    k_h    k_w")
     per_res: dict[int, list[dict]] = {}
     for rid in sorted(decoded):
         d = decoded[rid]
@@ -655,8 +703,9 @@ def print_world_size_report(decoded: dict[int, dict]) -> None:
                 w, h = s2_wh_for_class(s2[s2i], cls)
             else:
                 w, h = 0, 0
-            wh = rec["i16"][4]
-            ww = rec["i16"][5]
+            ww = rec["i16"][4]
+            wh = rec["i16"][5]
+            lift = rec["i16"][6]
             k_h = (wh / h) if h else None
             k_w = (ww / w) if w else None
             row = {
@@ -666,6 +715,7 @@ def print_world_size_report(decoded: dict[int, dict]) -> None:
                 "h": h,
                 "world_h": wh,
                 "world_w": ww,
+                "lift": lift,
                 "k_h": k_h,
                 "k_w": k_w,
             }
@@ -674,7 +724,7 @@ def print_world_size_report(decoded: dict[int, dict]) -> None:
             kws = "  None" if k_w is None else f"{k_w:6.3f}"
             print(
                 f"  {rid:3d}  {rec['i']:2d}  {cls:3d}  {w:4d}  {h:4d}  "
-                f"{wh:6d}  {ww:6d}  {khs}  {kws}"
+                f"{ww:6d}  {wh:6d}  {lift:5d}  {khs}  {kws}"
             )
         per_res[rid] = rows
         ks = []

@@ -190,11 +190,43 @@ vs `L00_transposed.png`.
 
 ### Sector wall model (six WallList slots)
 
-Each sector stores six `(u8 wall_type, u8 texture)` pairs. Those two
-bytes are **one 16-bit shape descriptor**, not two independent fields
-(see **Shape descriptor**). Only the first two pairs are walls. South
-and east faces are the north / west walls of the neighbouring sector.
-This is the stored-edge model, not four independent walls per tile.
+Each 16-byte sector stores **six** 16-bit shape descriptors
+(see **Shape descriptor**). They are not two independent type/texture
+bytes. Offsets and roles:
+
+| Off | Slot | Face |
+|---|---|---|
+| `+0` (0) | 0 | north edge (Y=0) |
+| `+2` (2) | 1 | west edge (X=0) |
+| `+4` (4) | 2 | NE corner diagonal |
+| `+6` (6) | 3 | NW corner diagonal |
+| `+8` (8) | 4 | SE corner diagonal |
+| `+$A` (10) | 5 | SW corner diagonal |
+
+South and east edges are the **neighbouring** cell’s slot 0 and slot 1.
+
+The renderer’s four emit gates (CODE 5 @12188 / @12248 / @12292 /
+@12336) read the **current** cell’s slots 3, 5, 2, 4 with dir 4, 6, 5,
+7. The @12740 path reads neighbour slots 0/1 via a 4-entry table at
+A5 `-$179E` (6046) = `{3, 2, 0, 1}`, indexed by void-neighbour
+direction. JT 155 (CODE 4 @1566) maps dir to word:
+
+| dir | word |
+|---|---|
+| 0 | current `+$2` (2) (W) |
+| 1 | south neighbour `+0` (this S) |
+| 2 | east neighbour `+$2` (2) (this E) |
+| 3 | current `+0` (N) |
+| 4 | slot 3 |
+| 5 | slot 2 |
+| 6 | slot 5 |
+| 7 | slot 4 |
+
+Corner words are emitted **before** the void skip, so void cells
+contribute chamfers though they draw no floor.
+
+Only slots 0 and 1 are movement walls. This is the stored-edge model,
+not four independent walls per tile.
 
 | Index | Petrich name | Role |
 |---|---|---|
@@ -326,7 +358,22 @@ adds toward `$400` (1024) and clamps; command 0 or any other value is
 ignored (@15270–@15280), so 0 is the stable freeze value.
 
 Rates from a stride-16 table at A5 `-$8E0` (2272) indexed by
-`door_list` texture. Open and close rates are equal on every row:
+`door_list.texture`. JT 254 builds **two** descriptors from the row:
+`face_s1` with tag 1, `cap_s1` with tag 4.
+
+**`+0` is not the rate.** It reads 0, 0, 2, 2, 2, 1 on textures
+0 / 1 / 3 / 4 / 5 / 6 and its meaning is UNKNOWN. The per-tick rate
+is at `+$A` (10), duplicated at `+$C` (12) (open and close are equal
+on every row). Texture 2 never appears in any level’s `door_list`.
+
+| tex | +0 UNKNOWN | +2 face s1 | +4 cap s1 | +$A (10) rate | raw 16 |
+|---|---|---|---|---|---|
+| 0 | 0 | 12 | 13 | `$0C` (12) | `00 00 00 0C 00 0D 28 14 28 14 00 0C 00 0C 00 00` |
+| 1 | 0 | 12 | 13 | `$0C` (12) | `00 00 00 0C 00 0D 28 14 28 14 00 0C 00 0C 00 00` |
+| 3 | 2 | 9 | 10 | `$11` (17) | `00 02 00 09 00 0A 28 14 28 14 00 11 00 11 00 00` |
+| 4 | 2 | 12 | 13 | `$11` (17) | `00 02 00 0C 00 0D 28 14 28 14 00 11 00 11 00 00` |
+| 5 | 2 | 6 | 7 | `$11` (17) | `00 02 00 06 00 07 28 14 28 14 00 11 00 11 00 00` |
+| 6 | 1 | 11 | 12 | `$19` (25) | `00 01 00 0B 00 0C 29 90 29 90 00 19 00 19 00 00` |
 
 | texture | units/tick | 1024 / rate | seconds at 60 tick/s |
 |---|---|---|---|
@@ -652,6 +699,20 @@ while size > len(out):
         out += src[p:p+n]; p += n
 ```
 
+| control | meaning | consume | emit |
+|---|---|---|---|
+| `$00..$7F` (0..127) | repeat, `n = b + 3`, of the next byte | 2 | 3..130 |
+| `$80..$FF` (128..255) | literal, `n = b - $7F` (127) | 1+n | 1..128 |
+
+Stop when emitted >= the declared u32be at src+0. There is no skip
+opcode, no transparent run, and no 16-bit length.
+
+ANOMALY: 11,372 bytes of packed data remain after the declared
+count is met on resource 192, starting `13 14 15 16`. Purpose
+UNKNOWN. It is not missing tile data. 13/50 resources leave an
+unread packed tail the same way; that is the engine’s stop
+condition (`CMP.L D2,D4` / `BGT`).
+
 There is no format tag, no 23-byte packed header, and no
 raw/compressed boundary inside the resource. Packed offset 4 is
 the first opcode. The four “malformed directories” (161 / 162 /
@@ -740,10 +801,12 @@ alpha 0. `--magenta` paints it opaque magenta instead.
 
 #### s1 — 32 bytes per record, class tag (NOT geometry)
 
-s1 does **not** hold width, height, or s3 offsets. A brute-force
-of every u16 pair as dimensions and every u16/u32 column as an
-offset returned **0** passing layouts (`sum(w×h)` plus align-4
-equals v4 and the offsets partition `[0, v4)`).
+s1 does **not** hold pixel width, pixel height, or s3 offsets
+(those are s2). A brute-force of every u16 pair as pixel dimensions
+and every u16/u32 column as an s3 offset returned **0** passing
+layouts (`sum(w×h)` plus align-4 equals v4 and the offsets
+partition `[0, v4)`). Object s1 world-space width/height/lift live
+at `+$8`/`+$A`/`+$C` (see **Billboards**).
 
 `u16[0]` is a **class tag**. It selects how s2 is read. It is
 **not** a palette selector: its range does not fit
@@ -760,21 +823,37 @@ HYPOTHESIS: the specific values 1–5 mark scale or level-of-detail.
 with class tags 1, 3, 2, 4, 5 — descending sizes of the same wall.
 Not verified.
 
-Some class-6 records carry signed words that are integer
-multiples of that tile’s dimensions: `i16[4] == k * height` and
-`i16[5] == k * width` on every paired record of 128 (k in 2..6),
-134 (k=8), 141 (k=6), 153, 155–161, 163 (k=4), 165, 187, 188,
-189 (k=13), 190 (k=128), 191. 192–202 have zeros there. `i16[6]`
-is a signed offset in the same unit on some records (`-w/2` on
-128 tile 0). HYPOTHESIS: world-space size and a draw origin.
-Not verified.
+Object s1 (CODE 5 @1454): `+$8` (8) width, `+$A` (10) height,
+`+$C` (12) lift. Billboard bottom = `view+$0C` (12) (−614) + lift.
+Some class-6 records’ `i16[4]` / `i16[5]` are integer multiples of
+that tile’s dimensions (`i16[4] == k * height`, `i16[5] == k *
+width` on 128, 134, 141, 153, 155–161, 163, 165, 187–191). 192–202
+have zeros there except the overlay group (see **Composited tiles**).
+`i16[6]` is the lift (`-w/2` on 128 tile 0).
 
-192 tiles 14–17 carry extra words `4423, 16, 39, 64, 88`. Tile
-14’s index-2 bytes form a solid rectangle 48 wide × 49 tall at
-row-major `(x, y) = (16, 39)`, and `39 * 113 + 16 == 4423`.
-`16, 39, 64, 88` is that rectangle as `(x0, y0, x0+48, y0+49)`.
-HYPOTHESIS: 15–18 are overlays on tile 14. `u16[2]` on 192 tracks
-a tile / parent index (records 15–18 share `u16[2]=14`).
+#### Composited tiles (s1 overlay)
+
+s1 records 14–17 of resource 192 all point at s2[14] (113×113) and
+carry an **overlay**: `u16[3]` names a second shape (s2 15/16/17/18,
+each 49×48 of solid stone) and a u32be at s1 `+$E` (14) gives the
+destination offset, 4423 (`$1147`) = `39*113 + 16`, rect
+(16, 39)–(64, 88), 48×49.
+
+CODE 5 @2030 tests s1 `+$6` (6) and blits via @42: long-copy,
+width/4 longs per row, `dest_skip = 113 - 48 = 65`. **No
+transparency test** — it is an unconditional paste. Before
+compositing those tiles contain 2352 texels of index 2 in that
+rect, emitted as 49 identical `2D 02` repeat runs, one per row.
+
+This is a memory saving: four wall variants stored as one
+12,769-byte base plus four 2,352-byte patches. It is **not** a
+decoder bug — the RLE stream and the opcode table are both correct.
+Export (`tools/export_256_indices.py` `native_plane`) applies the
+blit. Across all 50 resources only these four s1 records have
+`u16[3] != 0`.
+
+`u16[2]` on 192 is the base s2 index (records 14–17 share
+`u16[2]=14`).
 
 163 s1 is a different shape (nonzero `u16[1]=8192` and later
 words). Do not read sprite s1 with the wall overlay layout.
@@ -875,8 +954,8 @@ descriptor selects** (bits 0–6) are established. `$217F` is closed
 (out-of-range s1index; skip). PID does **not** render floors or
 ceilings as geometry (see **Rendering — floors and ceilings**);
 `.256` 195–202 exist as art and are not referenced by
-`texture_list`. Still open: the unverified s1 world-size /
-draw-origin words.
+`texture_list`. s1 `+$8`/`+$A`/`+$C` (width / height / lift) are
+under **Billboards**.
 
 ---
 
@@ -1438,12 +1517,15 @@ Screen Y: same shape using `view+$24` (36) (floor scale) and
 half-screen term. Half-screen is `view+$20` (32) / `view+$22` (34),
 added after the divide.
 
-**ANOMALY, PRESERVE:** the bias is applied on the `d7 < d6` branch
-(@14186 and the four Y divides at @14278 / @14302 / @14326 / @14350)
-but **not** on the `d7 >= d6` branch (@14474 and its three siblings).
-The branches also swap which depth is used first and flip `$18` (24)
-/ `$1C` (28) / `$20` (32) orientation. This asymmetry is intentional
-to reproduce, not a bug to fix.
+**ANOMALY, PRESERVE:** X always adds `$200` (512) on the unclipped
+path (@14186 and @14240). Y adds it only on the `d7 < d6` branch
+(the four Y divides at @14278 / @14302 / @14326 / @14350) and **not**
+on the `d7 >= d6` branch (@14474 and its three siblings). Shift
+magnitude is `512/depth` pixels: 10.04 px at the near clip 51, 0.50 px
+at depth `$400` (1024), 0.17 px at 3000. It is a winding-dependent
+rounding / half-pixel bias, not a larger geometric offset. The
+branches also swap which depth is used first and flip `$18` (24) /
+`$1C` (28) / `$20` (32) orientation.
 
 ### View record fields
 
@@ -1508,14 +1590,42 @@ Vertical extent is the full wall height in every case.
 
 | tag | span along the face |
 |---|---|
-| 1 | 0 to 1024 (full) |
-| 2 | 256 to 1024 |
-| 3 | 0 to 768 |
-| 4 | 256 to 768 (centred half) |
-| 5 | door (see Door geometry) |
+| 1 | 0 to `$400` (1024) (full) |
+| 2 | `$100` (256) to `$400` (1024) |
+| 3 | 0 to `$300` (768) |
+| 4 | `$100` (256) to `$300` (768) (centred half) |
+| 5 | **corner chamfer**, dirs 4–7 only (not a door) |
 
+Tag selects a horizontal span on the cell edge (CODE 5 @13440 /
+@13722). Vertical extent is the full wall height in every case.
 dir 0..3 places the span on one cell boundary: Y=0, Y=`$400` (1024),
 X=0, or X=`$400` (1024).
+
+Tag 5 is the **corner chamfer**, a 45-degree face with endpoints on
+two different cell edges (@13550), cutting the `$100`×`$100`
+(256×256) notch tags 2/3/4 leave open:
+
+| dir | slot | endpoints |
+|---|---|---|
+| 4 | 3 | NW (`$100` (256), 0)– (0, `$100` (256)) |
+| 5 | 2 | NE (`$300` (768), 0)– (`$400` (1024), `$100` (256)) |
+| 6 | 5 | SW (0, `$300` (768))– (`$100` (256), `$400` (1024)) |
+| 7 | 4 | SE (`$300` (768), `$400` (1024))– (`$400` (1024), `$300` (768)) |
+
+Door thickness comes from @16202, not from tag 5.
+
+**UV is not world-pinned.** Both @14006 branches leave `span+$18` (24)
+= 0 and `span+$1C` (28) = `$10000` (65536) for cardinals **and**
+chamfers, i.e. 0..`$400` (1024) raw: the tile is **stretched** to
+whatever face it lands on. Tag spans place geometry only; they are
+never stored as U. Doors are the sole exception — @16202 overwrites
+`$18` (24) / `$1C` (28) from the leaf position.
+
+Census, slots 0+1, all 25 levels: tag 0 = 18578, tag 1 = 24382,
+tag 2 = 2073, tag 3 = 2075, tag 4 = 4092, tags 5–7 = 0. Levels 7–15
+have **zero** tag 2/3/4. Levels 0–6 carry 3244 tag 2/3/4 faces. On
+L0 every nonzero slot 2–5 word is tag 5, selector 64, resource 192,
+s1 4 (128 of them) or s1 9 (12).
 
 CODE 5 @13440 remaps tag 0 to 1 at @13488 for **placement only**,
 after the emit gate has already rejected it. That remap does not
@@ -1590,7 +1700,8 @@ toggle.
 `$0F` (15) is a runtime ColorSpec slot, black on the L0 wall table.
 It is **not** `.256` index 15, which is (21, 35, 21).
 
-Other banks, filled by @4332 with a divide by 15 and a window origin:
+The four `$1000` (4096) banks are 256 × 16 remaps (selectors 0–3).
+Filled by @4332 with a divide by 15 and a window origin:
 
 | A5 | selector | fill | role |
 |---|---|---|---|
@@ -1603,12 +1714,17 @@ Other banks, filled by @4332 with a divide by 15 and a window origin:
 
 Windows are 15 entries, not 16, and origins 0 / 16 / 31 are not
 contiguous: index 15 (`$0F`) is deliberately skipped because it is
-the reserved black slot.
+the reserved black slot. The fifth `$1000` (4096) allocation is
+A5 `-$17FA` (6138) (floor/ceiling scanline table); any extra role
+is OPEN.
 
 JT 178 (@484): copies band 9 of `-$17BA` (6074) and forces palette
 indices `$6A..$79` (106..121) to `$0F` (15) in a 256-byte local used
-by a 2D CopyBits snapshot. Those sixteen indices are the reserved
-fade ramp (see Floors and ceilings). Deliberate, three sites.
+by a 2D CopyBits snapshot. The fade @4742 only emits `$6A..$78`
+(106..120), fifteen entries. `$79` (121) is never emitted — leftover
+unique rgb8 (245, 171, 94). JT 178’s blackout therefore covers one
+index the fade never uses. ANOMALY, preserve; do not shrink the
+range. Deliberate, three sites.
 
 ### Door geometry
 
@@ -1660,13 +1776,72 @@ knots:
 
 | rows | fill |
 |---|---|
-| `[0, d4)` | @4742 (`$EF` (239) `* i / (d4-1)`), packed longs of `$6A..$79` (106..121) indices, 4-way dither |
+| `[0, d4)` | @4742 (`$EF` (239) `* i / (d4-1)`), packed longs of `$6A..$78` (106..120) / `$0F` (15), 4-way dither |
 | `[d4, d5)` | `$0F0F0F0F` (black) |
-| `[d5, n)` | fade back down |
+| `[d5, n)` | fade back down (same @4742, phase from the far edge) |
+
+@4742 (`4E 56 FF FE` … `4E 75`, file 4742–4891, 150 bytes):
+`phase/16` selects the coarse index `d6`; `phase%16` indexes a
+16-word table at A5 `-$17F6` (6134); `row%4` picks a 4-bit nibble
+(`asr` 0/4/8/12). DATAINIT words at `-$17F6`:
+
+| i | word | hex |
+|---|---|---|
+| 0 | 0 | `$0000` |
+| 1 | 32768 | `$8000` |
+| 2 | 32800 | `$8020` |
+| 3 | 40992 | `$A020` |
+| 4 | 41120 | `$A0A0` |
+| 5 | 42144 | `$A4A0` |
+| 6 | 42145 | `$A4A1` |
+| 7 | 42401 | `$A5A1` |
+| 8 | 42405 | `$A5A5` |
+| 9 | 58789 | `$E5A5` |
+| 10 | 58805 | `$E5B5` |
+| 11 | 62901 | `$F5B5` |
+| 12 | 62965 | `$F5F5` |
+| 13 | 65013 | `$FDF5` |
+| 14 | 65015 | `$FDF7` |
+| 15 | 65527 | `$FFF7` |
+
+No CODE writer (one read: `lea.l -$17f6(a5)` at @4750). DATAINIT only.
+
+Each long is four dithered pixels choosing `lo = $6A+d6` vs
+`hi = $6B+d6`, except `d6==14` forces `hi=$0F` (15) so `$79` (121)
+is **never emitted**. Phase 0 (outer edge) is `$6A`/`$6B`; phase
+239 (band edge) is `$78`/`$0F`. The ramp is linear in **row →
+phase**, then quantized to 15 index pairs — not linear in RGB.
+
+Ground Floor global palette **after** the clut 129 plant at index
+106 (`$6A`). 15 planted greys, then leftover unique `$79`:
+
+| idx | rgb8 |
+|---|---|
+| `$6A` (106) | (30, 30, 30) |
+| `$6B` (107) | (28, 28, 28) |
+| `$6C` (108) | (26, 26, 26) |
+| `$6D` (109) | (24, 24, 24) |
+| `$6E` (110) | (22, 22, 22) |
+| `$6F` (111) | (20, 20, 20) |
+| `$70` (112) | (18, 18, 18) |
+| `$71` (113) | (16, 16, 16) |
+| `$72` (114) | (14, 14, 14) |
+| `$73` (115) | (12, 12, 12) |
+| `$74` (116) | (10, 10, 10) |
+| `$75` (117) | (8, 8, 8) |
+| `$76` (118) | (6, 6, 6) |
+| `$77` (119) | (4, 4, 4) |
+| `$78` (120) | (2, 2, 2) |
+| `$79` (121) | (245, 171, 94) UNIQUE leftover; not used by @4742 |
+
+Bright end of each fade is (30, 30, 30), **not** white. Dark end
+dithers (2, 2, 2) against slot `$0F` (15) black. 30/255 = 0.1176.
 
 The dark band across the middle is **wider** without a light, and
 narrowing it is the flashlight’s second effect (the first being
-`view+$14`). Indices `$6A..$79` (106..121) are the reserved fade ramp.
+`view+$14`). The emitted fade is `$6A..$78` (106..120). JT 178
+blackouts `$6A..$79` (106..121), one index past the fade — see
+Distance shading.
 
 ### Clipping and traversal
 
@@ -1697,6 +1872,67 @@ CODE 5 @1454 (s1 unpack of `object+$8`) and `view+$1A` / `+$1C` /
 extents”; that is the second half of the routine only.
 
 `.256` palette index 2 is transparent.
+
+### Billboards
+
+CODE 5 @1454 unpacks object s1: `+$8` (8) width, `+$A` (10) height,
+`+$C` (12) lift. Billboard vertical extents @17522–@17650:
+
+```
+bottom = view+$0C (12) (−614) + s1 lift
+top    = bottom + s1 height
+```
+
+No vertical clip. Yaw-only (the billboard does not pitch to face
+the camera). Sprites are not uniformly floor-anchored: the lift
+word is per-shape.
+
+### Affine texture mapping
+
+The engine’s wall texture mapping is **affine per column**: `u` is
+recomputed for every screen column from the projected span, and
+column `v` is a fixed 16.16 step. That is **not** GPU
+affine-per-triangle (`noperspective`).
+
+A triangle-based interpolator cannot reproduce it. Constant `u`
+**down** each edge says nothing about how `u` varies **across**
+the quad, which is where the perspective divide matters. The
+difference grows as the two edges of a face diverge in depth —
+the near-wall corridor case. Confirmed in game: affine-per-triangle
+smears near walls badly.
+
+Of the two options a GPU offers, **perspective-correct is closer**.
+It is wrong in a direction that is not visually objectionable;
+affine-per-triangle is wrong in a direction that is.
+
+Reproducing the original properly requires per-column `u`: either
+split wall quads into vertical strips at mesh time, or do the
+divide in the fragment shader.
+
+An earlier midpoint test (U 0..`$400` (1024), 45° in camera xz,
+depths 600/3000 or a true 1024-unit wall, viewport 384) reported
+0 texels of error between affine-per-triangle and affine-per-column
+because both cases were **symmetric about the sampled midpoint**,
+so the errors cancelled there. The measurement could not
+discriminate; it did not show the methods agree.
+
+### Dither LFSR
+
+Pixel loops (CODE 5 @7998 and siblings) load a 16-bit Galois LFSR
+from **ctx `+$14` (20)**, `lsr.w #1` / `eori.w #$B400` (46080) per
+pixel, compare against ctx `+$16` (22), and write the state back
+at @8118 `move.w d0, $14(a0)`. Next band when `lfsr <` the 16.16
+shade fraction.
+
+A5 `-$17A0` (6048) is the scene-wide seed. DATAINIT word = 1.
+Wall span drawer @5708 copies it into ctx `+$14` (`-$24(a6)` at
+@5892), then writes the advanced value back (@6382). **Not** reset
+per span or per column: free-running across the scene, so the
+pattern depends on draw order.
+
+@11586 `move.w #$1, -$17a0(a5)` runs in @11164 when
+`view+$16` (22) is 0. Meaning of `view+$16` is NOT FOUND. JT 150
+is a separate LFSR at `-$1A98` (6808), same tap, not used here.
 
 ---
 
@@ -1774,6 +2010,22 @@ JT 150 (CODE 4 @1304) is a 16-bit Galois LFSR, taps `$B400` (46080),
 seed at A5 `-$1A98` (6808), seeded from Mac low-memory Time (`$20C`
 (524)) via JT 149. Different every play. Nothing needs to reproduce
 the sequence.
+
+## Writer-less DATAINIT tables
+
+Three A5 locations are filled only by Think C `_DATAINIT` (JT 305)
+and have **no writer** in any CODE segment. They are not runtime
+state. A port should hardcode the reachable path, not allocate
+them as mutable globals.
+
+| A5 | size | DATAINIT | Writers | Reachable path | Port |
+|---|---|---|---|---|---|
+| `-$1BCA` (7114) | byte | 1 | none | Branches are **LIVE**: creature proximity revert @3242, VBL path CODE 1 @940, JT 164 path CODE 4 @4348 | Hardcode 1; **implement** those branches |
+| `-$1BCC` (7116) | byte | 0 | none | Its branch (`view+$14` (20) = 5 from this flag) is **UNREACHABLE** | Hardcode 0; do not implement that branch. `view+$14` is 7 / 5 / 3 from JT 239 only |
+| `-$17F6` (6134) | 16 words | the @4742 dither pattern (see Floors and ceilings) | none (one read: `lea.l -$17f6(a5)` @4750) | Always the DATAINIT table | Hardcode the 16 words; do not generate them |
+
+`-$17A0` (6048) is DATAINIT 1 but **has** writers (@6382, @11586).
+It does not belong on this list.
 
 ## Bomb Code (closed)
 
@@ -1858,11 +2110,21 @@ Static game content, not per-playthrough state. No further work.
 | Game time runs 60× real time | 1 tick = 1/60 s, 1:1 with real time. |
 | A far plane exists in the renderer | No depth cutoff. Distant geometry is emitted and shaded to black by band 15. |
 | The player has a collision radius against the door leaf | The mover contains no radius and no `(1024 − position)` term. JT 161 is `position > $200` (512) (`bgt`, so 513+) or `command == 2`. |
-| A5 `-$1BCA` (7114) and `-$1BCC` (7116) are runtime state | Both are DATAINIT-only with **no writer** in any CODE segment. `-$1BCA` is permanently 1 (its branches are live). `-$1BCC` is permanently 0 (its branch, `view+$14` = 5, is unreachable). Hardcode; do not implement. |
+| A5 `-$1BCA` (7114) is runtime state | DATAINIT 1, no writer. Permanently **SET**. Branches **always run**: creature proximity revert @3242, VBL path CODE 1 @940, JT 164 path CODE 4 @4348. A port **must implement** them. Hardcode 1. |
+| A5 `-$1BCC` (7116) is runtime state | DATAINIT 0, no writer. Permanently **CLEAR**. Its branch (JT 239 returning `view+$14` (20) = 5) is **unreachable**. A port should **omit** it. Hardcode 0. |
+| GPU affine-per-triangle reproduces the engine’s affine-per-column texture mapping | Refuted in game: near walls smear. The supporting measurement used symmetric test cases whose errors cancelled at the sampled midpoint. A triangle interpolator cannot reproduce per-column `u`. |
 | Eye height and FOV were fitted to screenshots | Both are derived from the code arithmetic (floor −614, ceiling +409; `tan(HFOV/2) = 0.8`, `tan(VFOV/2) = 0.6`). |
 | The two authored viewports are portrait / differ in FOV | Both are 4:3 (272 × 204 and 384 × 288) and both give exactly 0.8 and 0.6. |
 | The player walk step is 24 | 24 is run-backward and run-strafe. Walk forward is 17; run forward is 34. |
 | player `+$134` is an unidentified dt modifier | It is the Red Cloak (catalog id 14). Doubles dt on the JT 248 door/creature/projectile path and selects rest quantum `$3138` (12600) rather than `$6270` (25200). Does not scale JT 145. |
+| The sector carries only two wall words | Six: two edges (+0 N, +2 W) and four corners. South/east are the neighbour’s slot 0/1. Emit gates @12188/@12248/@12292/@12336 read current slots 3,5,2,4. |
+| Tag 5 is the door slab | Tag 5 is the corner chamfer (dirs 4–7, @13550). Door thickness is @16202. |
+| Chamfer UV is world-pinned like a tag span | Both @14006 branches emit `span+$18=0`, `span+$1C=$10000` (65536) for every face; the tile is stretched. Doors are the only `$18`/`$1C` overwrite. |
+| The white blocks in Ground Floor walls are a decoder bug | Index-2 placeholder 49×48 at (16,39), 49× `2D 02` repeats. Unconditional overlay blit at @2030/@42 from s1 `+$6`. RLE opcode table is correct. |
+| `door_rates` +0 is the per-tick rate | +0 is 0,0,2,2,2,1 (UNKNOWN). Rate is at `+$A` (10), duplicated at `+$C` (12): `$0C` (12) / `$11` (17) / `$19` (25). |
+| The player has a collision radius | He is a point. `$199` (409) / `$266` (614) is a clamp against nibble-0 faces only. |
+| The billboard pitches to face the camera | Yaw-only. |
+| Sprites are uniformly floor-anchored | Bottom = `view+$0C` (12) (−614) + per-shape s1 lift; top = bottom + s1 height. |
 
 ---
 
@@ -1935,8 +2197,7 @@ bytes, and **89** A5 globals are written in exactly one place.
 Also unsolved, lower impact (do not treat as closed):
 
 - Player-island flag bits (`0x0840` / `0x0864`); `unknown1`
-  (0x86–0x8D); unverified s1 world-size words; level-change type 4;
-  Carlos `TypeAddl=200`.
+  (0x86–0x8D); level-change type 4; Carlos `TypeAddl=200`.
 - `type_addl` 134 and 135 (L15): no reader anywhere.
 - Trigger cases 18, 19, 20, 21: four distinct values, identical
   behaviour (`addq.w #3`, player `+$142` (322)), 16 uses on L17.
@@ -1952,6 +2213,8 @@ Also unsolved, lower impact (do not treat as closed):
   Reptile, Malice and Deceit, none of which appear in any STR#.
 - A5 `-$17FA` (6138)’s role beyond the floor/ceiling gradient; and
   the fifth `$1000` (4096) bank.
+- 11,372 trailing packed bytes on resource 192 after the declared
+  count (starts `13 14 15 16`). Purpose UNKNOWN. Not missing tile data.
 - The `+$1B8` (440) monster-frequency poke (CODE 2 @8710) writes
   `#$F` (15) to slot 0 only while d7 iterates 0..2 over a stride-4
   table. Indexed compare, unindexed write. Probable original bug;
@@ -1981,9 +2244,9 @@ ceilings as geometry.
 
 ## TODO (gaps in the source prompt, not invented)
 
-- Door-rate table gives textures 0, 1 / 3, 4, 5 / 6. Texture 2 is
-  not listed.
-- View-record fields between the tabulated offsets (`+$16`, `+$2C`,
-  `+$30`, `+$38`, …) are unnamed here.
+- View-record `+$16` (22) gates the @11586 LFSR reset to 1. No writer
+  identified. Other untabulated view fields (`+$2C`, `+$30`, `+$38`,
+  …) are unnamed here.
 - The fifth `$1000` (4096) bank next to A5 `-$17FA` is still open
-  (see PID_HANDOFF).
+  (see PID_HANDOFF). Texture 2 is absent from every level’s
+  `door_list` (see **Doors**).
