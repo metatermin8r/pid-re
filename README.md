@@ -8,10 +8,6 @@ building on fan documentation written between 1994 and 2000.
 Pathways Into Darkness is © Bungie Software. **This repository contains no
 game code or assets.** Get your own.
 
-The spec is [`docs/FORMAT.md`](docs/FORMAT.md). Working state:
-[`docs/PID_HANDOFF.md`](docs/PID_HANDOFF.md). Port mapping:
-[`docs/UNITY_PORT.md`](docs/UNITY_PORT.md).
-
 ---
 
 ## Credits
@@ -95,20 +91,6 @@ unreproduced door-500 clip; `type_addl` 134/135; trigger cases 18–21;
 JT 246; STR# 2001 blanks 8/9/13; A5 `-$17FA` (6138) fifth bank; the
 `+$1B8` (440) poke; the 11,372 trailing packed bytes; conversations,
 the Search dialog, potions, sound, level 24, and the endgame.
-
----
-
-## Unity port
-
-`docs/UNITY_PORT.md`. Today: R8 index textures and per-(level, resource,
-variation) shade LUTs; `PID/Indexed` band shading and hash dither;
-`PidShade`; `PidBackdrop`; tag spans and corner chamfers; `PidDoor`
-(position 0..1024, three-quad slab, texture-driven rates, collide at
-512); billboard lift. Floors and ceilings stay in the collision mesh
-only. Still accommodations: hash dither, `_AffineUV` default off
-(perspective-correct as the closer GPU approximation),
-backdrop `_Edge`, proximity auto-open, door t3 missing from JSON, door
-resource hardcoded to 192.
 
 ---
 
