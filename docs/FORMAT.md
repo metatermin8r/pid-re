@@ -52,31 +52,48 @@ Map-file struct layout.
 Custom types seen: `scri` (30), `dpin` (1). `scri` is corpse
 dialogue. `dpin` 128 is the save-file initialiser (see below).
 
-`STR#` IDs observed: 128, 1000–1004, 2000–2021.
+`STR#` IDs observed: 128, 1000–1004, 2000–2021. Every id present
+in the v2.0 application, with the declared count from the
+resource (u16be at byte 0):
 
 `STR#` is the published Resource Manager format (u16be count, then
 Pascal strings). Decoded as Mac Roman. Full lists:
 `reference/full_dump/strings/hfs__Pathways_1995__Pathways_Into_Darkness.rsrc.strings.md`
+and `out/strings.json`.
 
 | ID | Count | Content (from the strings, not guessed) |
 |---|---|---|
 | 128 | 17 | Startup / missing-file / RAM / Saved Games errors |
 | 1000 | 8 | Inventory action failures (`^1` / `^2` slots) |
-| 1001 | 71 | Item examine / use text (weapons, crystals, bomb, …) |
+| 1001 | 71 | Item examine / use text; same index as catalog id / STR# 2000 |
 | 1002 | 17 | Rest / save / bomb / beacon prompts |
 | 1003 | 26 | Death messages (named monster types) |
 | 1004 | 6 | Endings (escaped pyramid / bomb / beacon) |
-| 2000 | 71 | Item *names* — same count as 1001 |
-| 2001 | 17 | (see dump) |
-| 2002 | 18 | (see dump) |
-| 2003–2017 | various | UI / scoring / shorter lists |
-| 2018 | 28 | Level names (resource-fork copy) |
-| 2019 | 2 | Floor&Ceiling Textures / Plain Floors&Ceilings |
-| 2020 | 5 | Demo file names (Demo Maps, Demo Shapes, …) |
-| 2021 | 3 | Ground Floor, Charon Doesn't Make Change, Come And Take Your Medicine |
+| 2000 | 71 | Item *names*; same index as catalog id / STR# 1001 |
+| 2001 | 17 | Creature names (see **Creature AI**) |
+| 2002 | 18 | Message-ring lines (see **Messages window**) |
+| 2003 | 5 | (see dump) |
+| 2004 | 5 | (see dump) |
+| 2005 | 20 | Message-ring lines (indices 0–19) |
+| 2006 | 8 | Weapon-proficiency names; index 7 is empty |
+| 2007 | 3 | Proficiency ranks: Beginner, Novice, Expert |
+| 2008 | 6 | Inventory suffixes. [0] is ` (empty)`: Pascal length **8**, nine bytes on disk including the length byte — not a nine-character string |
+| 2009 | 7 | Clock day / AM-PM fragments |
+| 2010 | 3 | `REST` / `SEARCH` / `MAP` |
+| 2011 | 2 | `EXAMINE` / `DROP` |
+| 2012 | 4 | Window titles: `Inventory`, `Messages`, `Pathways Into Darkness`, `Untitled Game`. The last is the default save name and the player-panel title. The view title is the level name from STR# 2018, not this list. |
+| 2013 | 6 | Player-panel headings and the Progress sentence |
+| 2014 | 3 | (see dump) |
+| 2015 | 6 | Item-name suffixes posted to the message ring, three on/off pairs: [0] ` ready.` / [1] ` put away.`; [2] ` turned on.` / [3] ` turned off.`; [4] ` worn.` / [5] ` removed.` The pair is chosen the same way as the inventory suffix, so the message and the line cannot disagree. |
+| 2016 | 2 | Weight formats (`Total Weight: %3.2f kg.` / `Weight: %3.2f kg.`) |
+| 2017 | 8 | Endgame scoring formula, not just labels: Carnage Bonus +1 per 250 bodies, Accuracy Bonus +1 per 10% over 40%, Treasure Bonus +1 per $100K, Time Bonus +1 per 10 hours left, plus Mission, Survival and Damage Ratio. A separate score from the Progress panel’s `%d of 41`. |
+| 2018 | 28 | Level names (resource-fork copy). Indices 0–24 match the 25 Maps records. 25–27 are `Entrance To Hell`, `Search Me!`, `Carnage From Above`. UNTESTED whether those three dungeons load. |
+| 2019 | 2 | Floor&Ceiling Textures / Plain Floors&Ceilings. **No reader.** Cut content. |
+| 2020 | 5 | Demo file names (Demo Maps, Demo Shapes, …). **No reader.** Cut content. |
+| 2021 | 3 | Ground Floor, Charon Doesn't Make Change, Come And Take Your Medicine. **No reader.** Cut content. |
 
-`STR#` 2000 and 1001 both have 71 entries. That is a count observation
-only; pairing is not proven.
+`STR#` 2000 and 1001 both have 71 entries and share the item-id
+index with the catalog at A5 `-$14D6`.
 
 `CODE` IDs: 0–16 (one more segment than the demo).
 
@@ -102,7 +119,74 @@ A function inventory of that decode lives at
 UNKNOWN sites, 2,249 call-graph edges, 232 A5 globals. Trap counts
 match an independent even-offset A-line scan on all 17 CODE
 resources. CODE 11 and CODE 15 are C runtime (`_doprnt`,
-`ZEROBUFFER`, `DATAINIT`) and contain no game logic.
+`ZEROBUFFER`, `DATAINIT`) and contain no game logic. The
+DATAINIT expander is specified under **Think C initialised-data
+image**.
+
+### Think C initialised-data image
+
+The item catalog and several other A5 tables are **not**
+resources. They live in a compressed block that the Think C
+runtime expands into the A5 globals once at startup.
+
+Expander: jump table entry **305**, CODE 11 file offset 4. CODE 11
+has a 4-byte segment header; the first instruction is at +4.
+
+A 20-byte header sits at CODE 11 +434 (`$1B2`), found via a
+PC-relative `lea` at file offset 8. Fields:
+
+| Off | Type | Value | Role |
+|---|---|---|---|
+| +0 | u32be | 7592 (`$1DA8`) | expanded size; matches CODE 0’s below-A5 size |
+| +4 | u16be | 1 | must be 1 or the expander returns −1 |
+| +6 | u16be | 0 | unread by the expander |
+| +8 | u32be | 20 | offset from header to the packed stream → file +454 |
+| +12 | u32be | 4467 | offset from header to the relocation stream → file +4901 |
+| +16 | u32be | 0 | unread by the expander |
+
+The packed stream runs file +454 through +4900 inclusive (**4447**
+bytes) and ends exactly where the relocation stream begins.
+Expansion emits **7592** bytes. High-water mark is **7218**; the
+last **374** bytes stay zero from the buffer clear.
+
+**Packing format.** One control byte per iteration. There is
+**no fill or zero opcode**. Runs of zero come from the initial
+buffer clear plus the skip field. This is not the `.256` RLE
+(`tools/decode_256.py`) and not a guessed Mac data-init scheme.
+
+- Low nibble = literal copy count. Zero means read a
+  variable-length value; if that value is zero the stream
+  terminates. Otherwise the count is nibble × 2 (2 to 30).
+- High nibble = destination skip. Zero means read a
+  variable-length value. Otherwise skip = nibble logically
+  shifted right by 3.
+- Then: advance the destination by skip, copy that many literal
+  bytes, and repeat the pair a repeat-count number of times. The
+  repeat count resets to 1 on every control byte.
+
+Variable-length value, by the top bits of the first byte:
+
+| First byte | Meaning |
+|---|---|
+| `$00`–`$7F` | the byte itself |
+| `$80`–`$BF` | 14-bit: low 6 bits of the first byte, then one more byte |
+| `$C0`–`$DF` | 21-bit: low 5 bits of the first byte, then two more bytes |
+| `$E0`–`$EF` | the next four bytes as a u32be; the control nibble is discarded |
+| `$F0`–`$FF` | two recursive values; the first is the count/skip, the second replaces the repeat count |
+
+**Address mapping** (everything downstream depends on this):
+
+```
+image_offset = 7592 + a5_displacement
+```
+
+So A5 `-$14D6` is image +2258, `-$1066` is +3394, `-$A2C` is
++4988, `-$810` is +5528.
+
+The image is **pre-relocation**. A separate stream adds the
+runtime A5 to selected longs. Word-sized tables (the catalog, the
+Cedar admit list) do not need it. Extracted image:
+`out/a5_image.bin`. Expander: `tools/expand_datainit.py`.
 
 ### Shapes
 
@@ -168,12 +252,15 @@ all 25 levels, 4 px/sector, origin 16, pitch 144).
 An earlier hex dump that put `0x41d9` at 0x84 was misaligned. Height10
 at 0x84 is 0 for Ground Floor.
 
-The 3D renderer never reads `height10`. The only consumer is a text
-formatter at CODE 3 @8762 (LINK `A6,#$FE86`). It loads the word from
-the live level record at `-$1A82(A5)+$84`, does `DIVS.W #10`, `SWAP`s
-for the tenths remainder, calls `jsr $a7a(a5)` (absolute value), and
-draws the string (`_DrawString` A-line `$A884`). It is the HUD depth
-readout in metres and tenths, not the world’s vertical scale.
+The 3D renderer never reads `height10`. The only consumer is CODE 3
+@8762 (LINK `A6,#$FE86`): live level record `-$1A82(A5)+$84`,
+`DIVS.W #10`, `SWAP` tenths, JT 331 abs, then **one** STR# 2013
+sentence ([4] above if `tst.w $84` ≥ 0, else [5] below). JT 272
+fetches an indexed STR# (destination, resource id, index) with
+**no** format arguments; JT 343 is the printf. Then `_TETextBox`
+(`A9CE`) as a single wrapped paragraph. Not a
+player-Z field; no isolated writer of `+$84`. Not the world’s
+vertical scale.
 
 `unknown1` is **not** uncleared name-slot garbage: the values change
 with the level.
@@ -394,9 +481,12 @@ only when position `> $200` (512).
 Creature **pathing** uses the same `position > 512` / `command == 2`
 predicate via JT 16 (CODE 1 @2444 / @2688), producing `$08` (8)
 blocked or `$80` (128) open. The creature **walk write** path
-(CODE 7 @6976 → JT 159) has no door test. **OPEN:** whether an
-actively pursuing creature can walk through a door at position
-`<= 512`. Not yet observed in game.
+(CODE 7 @6976 → JT 159) has no door test. Creatures **cannot open**
+a door (no JT 253 / @15020 writer on the creature tick). JT 16 will
+not route through a closed leaf, so a pursuing creature does not
+attempt that cell. A path computed while the leaf was passable is
+stepped blindly — including if the door later closes. See
+**Creature AI**.
 
 **Four operation mechanisms:**
 
@@ -473,7 +563,8 @@ Corpse `type_addl` N → `scri` id `128+N` (observed on every corpse
 except 200).
 
 STR# 2018 entries 0–24 match Maps record order. Entries 25–27
-(Entrance To Hell, Search Me!, Carnage From Above) have no record.
+(Entrance To Hell, Search Me!, Carnage From Above) have no
+record. UNTESTED whether those three dungeons load.
 
 Resource-fork names still differ in spelling (the / The, extra `!`).
 Demo record 0 is `Pathways into Darkness…`, not Ground Floor.
@@ -499,9 +590,10 @@ skitter (see `formats/pid_level.ksy`). Frequency pairing not verified.
 
 ### Shape descriptor (16-bit)
 
-A `PID_Sector` `{u8 wall_type, u8 texture}` pair is **one** big-endian
-word. CODE 5 @1618 (walls) and CODE 5 @1454 (objects / pillars) unpack
-the same bit fields:
+One packed word addresses every piece of `.256` art — walls, objects,
+item icons, and the weapon overlay. A `PID_Sector` `{u8 wall_type,
+u8 texture}` pair is that word. CODE 5 @1618 (walls) and CODE 5
+@1454 (objects / pillars) unpack the same bit fields:
 
 | Bits | Field |
 |---|---|
@@ -509,12 +601,27 @@ the same bit fields:
 | 7–12 | selector into the resource cache at `-$17B6(A5)` |
 | 13–15 | tag, equal to `wall_type >> 5` |
 
+The tag is **three** bits and the selector is **six**. A two-bit
+overlay tag is disproven.
+
 Cache: 128 slots of **8** bytes `{u32 handle, u16 flags}`, allocated
 `$400` at CODE 5 @108. Slot N holds `.256` resource **N+128**. The
 selector is used as-is when tag == 6; otherwise the engine adds 64
 before indexing (`$00(A0,D0.L*8)`). Tag 6 therefore selects slots 0–63
-= resources 128–191 (the sprite resources). **No sector pair word in
-any of the 25 levels has tag 6.** Tag 6 is the object / pillar path.
+= resources 128–191 (the sprite resources) directly. Any other tag
+adds 64, giving resources 192–255. **No sector pair word in
+any of the 25 levels has tag 6.** Tag 6 is the object / pillar /
+weapon-overlay path.
+
+The item catalog’s w0 is the **same** format with the selector
+empty, so it is an s1 index into resource 128. That is why 59
+tiles cover 71 items: they share. The three AK magazines all
+point at one picture. Resource 128 s1 1, 357×20, is the
+PATHWAYS INTO DARKNESS wordmark. No item uses it. It is the
+only tile in that resource wider than 256.
+
+The weapon overlay is `0xC000 | (w2 << 7) | frame`: tag 6, and
+the resource is `128 + w2`. See **Weapon overlay**.
 
 Jump table entry 184 (CODE 5 @1138) loads the cache on demand: loop 1
 releases slots where flags bit 1 is set and bit 0 is clear; loop 2
@@ -786,18 +893,40 @@ table in a resource spans the same index range.
 #### Reserved indices
 
 Colour tables universally begin at index 3, so 0 / 1 / 2 are
-reserved.
+reserved. There are **two** transparent things and neither
+substitutes for the other:
 
-- **Index 2 is transparent.** With index 2 treated as alpha, **0/50**
-  resources have unmapped pixels. Across the earlier 35 resources
-  that showed “unmapped” bytes, every such byte was index 2.
+- **Index 0 is padding.** It is the blank margin the artwork sits
+  in: 485 bytes across all 50, exactly the padding total, never a
+  tile pixel. It must be **discarded, not looked up**. Palette
+  entry 0 is **white**; drawing it paints a white box around
+  everything. The shader’s `_ClipPadding` discard is this rule.
+- **Index 2 is the artwork’s own see-through colour.** It comes
+  out of the shade table’s alpha rather than being decided in
+  code. It is 2 on all 50 resources, but nothing should assume
+  that. The shader’s `_Cutout` clip is this rule. With index 2
+  treated as alpha, **0/50** resources have unmapped pixels.
+  Across the earlier 35 resources that showed “unmapped” bytes,
+  every such byte was index 2.
 - **Index 1 never appears** anywhere in s3.
-- **Index 0 appears only as inter-tile padding**, never as a tile
-  pixel: 485 bytes across all 50, exactly the padding total.
 
 Resources with zero index-2 bytes are the opaque ones: 187–191,
 193, 194, 195–202. Default extract writes RGBA with index 2 as
 alpha 0. `--magenta` paints it opaque magenta instead.
+
+A shade table’s first row is the **top** row of its PNG, and a
+texture’s first row in memory is its **bottom** one. Row 0 is
+the unfogged identity palette and row 15 is solid black, so
+reading them the wrong way round gives a black sprite with
+correct edges.
+
+Everything from the original is top-down and every Unity
+coordinate is bottom-up: window rectangles, texture rows, shade
+table rows.
+
+The art is **data** and the shade table is **colour**. Reading
+the art through a colour curve corrupts the indices; reading
+the table without one makes every mid tone too bright.
 
 #### s1 — 32 bytes per record, class tag (NOT geometry)
 
@@ -830,6 +959,11 @@ that tile’s dimensions (`i16[4] == k * height`, `i16[5] == k *
 width` on 128, 134, 141, 153, 155–161, 163, 165, 187–191). 192–202
 have zeros there except the overlay group (see **Composited tiles**).
 `i16[6]` is the lift (`-w/2` on 128 tile 0).
+
+`u16[1]` carries `$4000` (16384) when the blit walks
+backwards. A mirrored s1 shares its raster with its original.
+The weapon overlay uses this for the typed LEFT command; see
+**Weapon overlay**.
 
 #### Composited tiles (s1 overlay)
 
@@ -925,22 +1059,31 @@ appears in the shipped loader as `ADD.W #$0080`, independently
 of the data-side derivation Loren Petrich published in 2000.
 
 Decorations: 153–167, referenced by `texture_list` slots 1–7.
-Unreferenced by any level: 128–152, 187–191, 195–202.
+Not in any `texture_list`: 128–152, 187–191, 195–202. Resource
+128 is still live art — item icons, the wordmark, and at least
+one Ground Floor object. 148–152 are the first-person weapon
+overlays. 13 resources have no shade table and never did: 187
+to 191 and 195 to 202. None appear in any level’s load set.
+190 has 35 tiles; 191 is title-screen art.
 
 Identified from rendered content:
 
 | ID | What it is |
 |---|---|
-| 128 | Inventory / HUD art: wordmark, books, knife, chest, potion bottles, rug, lamp, M16, AK, shotgun, crystals, sentinel |
+| 128 | Inventory / HUD art: s1 1 is the 357×20 wordmark (no item uses it; only tile in the resource wider than 256); books, knife, chest, potion bottles, rug, lamp, M16, AK, shotgun, crystals, sentinel |
 | 129 | One-eyed floating creature, walk / turn / death frames |
 | 133 | Skeletal mummy with split headdress, walk and attack |
 | 139 | Bulky humanoids, walk, attack, prone death |
-| 151 | First-person weapon barrels |
+| 148 | Walther P4 hands overlay |
+| 149 | MP-41 hands overlay |
+| 150 | AK-47 hands overlay |
+| 151 | M-79 hands overlay |
+| 152 | Survival Knife hands overlay |
 | 163 | Two 8-point compass stars (177×40, 174×41) |
 | 187 | Title landscape, jungle and stepped pyramid |
-| 190 | Automap and compass: 34 8×8 glyphs (corridors, junctions, stairs, direction arrows) plus a 64×100 parchment compass |
+| 190 | Automap and compass: 35 tiles — 8×8 glyphs (corridors, junctions, stairs, direction arrows) plus a 64×100 parchment compass |
 | 191 | “PATHWAYS INTO DARKNESS” chrome logo, 401×101 |
-| 195–202 | Two 128×128 tiles each, floor / ceiling shaped, not referenced by `texture_list`; selection mechanism unknown |
+| 195–202 | Two 128×128 tiles each, floor / ceiling shaped, not referenced by `texture_list`; no shade table; selection mechanism unknown |
 
 190, 128, 187 and 191 are art that published fan sprite rips do
 not contain, consistent with those rips having been captured
@@ -949,13 +1092,16 @@ from gameplay rather than extracted from the file.
 #### Open questions (this type)
 
 Pixel decoding, s2 geometry, class-dependent field order,
-reserved index 2, the s3 partition, and **which s1 tile a wall
-descriptor selects** (bits 0–6) are established. `$217F` is closed
-(out-of-range s1index; skip). PID does **not** render floors or
-ceilings as geometry (see **Rendering — floors and ceilings**);
-`.256` 195–202 exist as art and are not referenced by
-`texture_list`. s1 `+$8`/`+$A`/`+$C` (width / height / lift) are
-under **Billboards**.
+reserved indices (0 = padding, discard; 2 = transparent), the
+s3 partition, and **which s1 tile a wall descriptor selects**
+(bits 0–6) are established. `$217F` is closed (out-of-range
+s1index; skip). PID does **not** render floors or ceilings as
+geometry (see **Rendering — floors and ceilings**); `.256`
+195–202 exist as art, have no shade table, and are not
+referenced by `texture_list`. s1 `+$8`/`+$A`/`+$C` (width /
+height / lift) are under **Billboards**. Weapon-overlay frames
+and `$4000` (16384) mirroring are under **Weapon overlay**.
+Shade tables are per `(resource, variation)`, not per level.
 
 ---
 
@@ -1007,7 +1153,7 @@ at live `+$33C` = file `+0x0A30`. File `+0x0A00` is live
 | +0x082B | u8 | player `+$137` Amethyst Ring worn |
 | +0x0838 / +0x083A / +0x083C | u16be | player `+$144` / `+$146` / `+$148`: Cedar Box clone timer (armed to 3600), remembered item id, remembered word 2. See Cedar Box. |
 | +0x0886 | u16be | player `+$192` ready-crystal slot (`$FFFF` = none). Yellow crystal is id 64. |
-| +0x088C / +0x088E | u16be | player `+$198` ready-weapon slot / `+$19A` shot counter |
+| +0x088C / +0x088E | u16be | player `+$198` ready-weapon inventory slot / `+$19A` rate-of-fire timer (ticks). See Weapon fire |
 | +0x090C | u16be | level 0..24. **INERT** (confirmed in game: writing does nothing) |
 | +0x0918 / +0x091A | u16be | integer X / Y 0..31. **INERT** (confirmed in game: writing does nothing) |
 | +0x091C | u16be | holds 0, 1, 2, 12 across the nine captured records. **UNTESTED** — earlier text called this confirmed inert; it had never been edited. |
@@ -1214,26 +1360,56 @@ game’s object layout comes from `dpin` 128.
 
 ### Item catalog (A5 `-$14D6`)
 
-71 entries of 16 bytes (1,136 bytes) at A5 `-$14D6` through
-`-$1066`. Indexed by item id. Installed once at startup by Think C
-`_DATAINIT` (JT 305, CODE 11 @4) from a packed constant block in
-CODE 11 (header at +`$1B2`, compressed payload at +454, dest size
-7,592). Not a resource. Names are STR# 2000 (71 entries, 0-based);
-examine text is STR# 1001.
+71 entries of 16 bytes (1,136 bytes) at A5 `-$14D6` (image
++2258) through `-$1066` (image +3394). Indexed by item id.
+Installed once at startup from the Think C image (see **Think C
+initialised-data image**). Not a resource. Names are STR# 2000
+(71 entries, 0-based); examine text is STR# 1001.
+
+`-$14D6` − `-$1066` is **1136**, exactly 71 × 16. The catalog and
+the Cedar Box admit list are adjacent with no gap. That
+independently confirms the entry count. The 14 admit words begin
+at `-$1066`; the next word at `-$104A` is 0 (creature catalog).
 
 Eight `u16be` per entry. A site that **uses** the word is required
 to name it. Values looking plausible are not a name.
 
 | Word | Off | What the code does | Name |
 |---|---|---|---|
-| w0 | +0 | JT 211 CODE 6 @578: `(w0 & $7F) \| $C000` builds the sprite descriptor. Bits 7–15 are 0 on all 71 entries. | s1 index in the low 7 bits |
-| w1 | +2 | JT 214 CODE 6 @1534 dispatches use by this class: 2 potions, 3 weapons, 4 crystals, 5 specials, 6–9 worn gear | item class |
+| w0 | +0 | JT 211 CODE 6 @578: `(w0 & $7F) \| $C000` builds the sprite descriptor. Bits 7–15 are 0 on all 71 entries. Same packed format as a wall/object descriptor with the selector empty — an s1 index into resource 128. | s1 index in the low 7 bits |
+| w1 | +2 | JT 214 CODE 6 @1534 dispatches use by this class: 2 potions, 3 weapons, 4 crystals, 5 specials, 6–8 worn gear | item class |
 | w2 | +4 | CODE 6 @448 reads it. On pickup / drop, CODE 6 @8206 adds it to player `+$0A` (pickup multiplier +1 at JT 216 @3686; drop multiplier −1 at JT 215 @3164) | points credited while carried |
-| w3 | +6 | CODE 6 @478 reads it. CODE 6 @5634 adds it into a running sum. JT 217 CODE 6 @3870 converts the sum with `_FP68K` and divides by **28**, then JT 272 formats STR# 2016 (`$7E0`) as `%3.2f kg` | **weight**. Unit is 1/28 kilogram. Printed kg = Σ w3 / 28 |
-| w4 | +8 | CODE 6 @508 returns this word (dead branch: if w1==1, returns w4 + record `+$4`; no catalog row has w1==1). CODE 6 @5690 adds that value over children | per-item contribution to a container’s fill. **Not** a round count |
+| w3 | +6 | CODE 6 @478 reads it. CODE 6 @5634 adds it into a running sum. JT 217 CODE 6 @3870 converts the sum with `_FP68K` and divides by **28**, then JT 343 formats STR# 2016 (`$7E0`) as `%3.2f kg` | **weight**. Unit is 1/28 kilogram. Printed kg = Σ w3 / 28 |
+| w4 | +8 | CODE 6 @508 returns this word (dead branch: if w1==1, returns w4 + record `+$4`; no catalog row has w1==1). CODE 6 @5690 adds that value over children | **bulk** — item size against a container’s fill. Distinct from w3 weight. **Not** a round count |
 | w5 | +$A | CODE 6 @418 reads it. CODE 6 @4354 / @5758 accumulate it (children included when w6>0). @8206 does `MULS.W` by the pickup/drop multiplier and `ADD.L` into player `+$0C` | treasure accumulator credited on pickup/drop. **Not** the kg field. Shown in the live Progress panel (STR# 2013) |
 | w6 | +$C | JT 207 CODE 6 @4: boolean `w6 > 0` (is a container / magazine holder). CODE 6 @616: insert allowed only if `w6 >= current_child_fill + @508(candidate)` | limit on the sum of children’s w4, and the is-container predicate. **Not** a round count |
 | w7 | +$E | CODE 6 @794: equals the accepted child id, or `$FFFF` (any), or `$FFFB` (−5 → ids 58–60), or `$FFFA` (−6 → ids 53–55) | compatibility |
+
+**Class domain.** Observed w1 values are **0 and 2 through 8**.
+There is no class 1 and no class 9. Class 0 is the modal value
+(41 of 71) and means **no use behaviour**: bags, ammunition,
+treasure, junk, and the broken guns. JT 214 sends class 0 (and
+the unused class 1) to the same no-op stub. Distribution:
+
+| w1 | count | use (from JT 214 / names) |
+|---:|---:|---|
+| 0 | 41 | no use behaviour — bags, ammo, treasure, junk, broken guns |
+| 2 | 5 | potions |
+| 3 | 6 | weapons |
+| 4 | 6 | crystals |
+| 5 | 5 | specials: Map, vial, nuclear device, beacon, pipes |
+| 6 | 1 | lights: goggles and flashlight, “turned on” |
+| 7 | 6 | worn: gas mask, red cloak, both rings |
+| 8 | 1 | the Digital Watch alone, “on wrist” |
+
+STR# 2015 is the matching message-ring pair, chosen the same
+way as the inventory suffix, so the line and the message cannot
+disagree: ready / put away, turned on / turned off, worn /
+removed.
+
+Examining an item (JT 99) shows a **modal popup** with the
+item’s picture, its name in bold, and the text from STR# 1001.
+It is not a message line.
 
 **Weight display (JT 217).** Arg slot `$FFFF` is the total: CODE 6
 @4240 walks the inventory tree from player `+$33A` with callback
@@ -1244,8 +1420,12 @@ record `+$4`. `_FP68K` opcodes on the stack (`pea` src, `pea` dest,
 dest), `$1010` (extended → double), `$100E` (double → extended),
 `$0006` (`FODIV`, dest /= src). The divisor is `MOVEQ #$1C`.
 STR# 2016 [0] `Total Weight: %3.2f kg.` / [1] `Weight: %3.2f kg.`
-@5634 does **not** multiply by record `+$4`. Id 9 (Red Velvet Bag)
-sets a walk flag and skips adding its own w3.
+@5634 does **not** multiply by record `+$4`. Item id 9 is named
+Red Velvet Bag (STR# 2000[9]). Its catalog **w3 is 2**, not 0.
+JT 217 skips its own w3 and does not descend, so it and its
+contents weigh nothing. The weightlessness is a behaviour of the
+encumbrance walk, not a zero in the data. Do not “fix” the
+export. Why the walk skips id 9 remains unexplained.
 
 **Container fill (CODE 6 @616).** Current fill is @4284: sum of
 @508 over children. A candidate is admitted if @794(container, id)
@@ -1259,28 +1439,132 @@ $FFFF` the candidate id must appear in the **14-word** table at A5
 (Flashlight, Survival Knife, Walther P4 Pistol, every magazine
 and 40mm cartridge, Silver Medal).
 
-The next word at `-$104A` is **0**. That is the first word of a
-stride-`$5C` table read by JT 240 (CODE 7 @4), not a 15th admit
-entry and not a Map-id pick-list. If the box already has a child
+The next word at `-$104A` is **0**. That is the first word of the
+**creature catalog**: 17 entries × `$5C` (92), indexed by creature
+type (STR# 2001), read by JT 240 (CODE 7 @4). It is not a 15th
+admit entry and not a Map-id pick-list. Field assignments are
+under **Creature AI**. If the box already has a child
 (`+$4 != $FFFF`) the extra gate returns false and the insert
 fails. Catalog w1 for the box is **0**. JT 214’s switch (CODE 6
 @1624–1638) sends class 0 and class 1 to the same stub:
 `moveq #3, d6` then `bra` to the epilogue at @2998. **Use does
 not clone.** Pickup of world items is JT 216 / JT 229, not JT 227.
 
-Weapon / broken-weapon rows have w6 equal to the admitted
-magazine’s (or cartridge’s) w4, so the ratio is 1: one magazine
-or one 40mm round at a time. That is the same *kind* of quantity
-as the bag limits (Cedar 100, Lead 190, Canvas 400, Velvet
-12000). It is not a round count: a Walther magazine holds 8
-(observed; catalog w4 = 10), and the M-79 is single-shot with
-w6 = 5. Canvas / Velvet have w4 = `$FFFF`, so @508 returns 65535
-and they do not fit inside any other container.
+Weapon / broken-weapon rows with w6 > 0 have w6 equal to the
+admitted magazine’s (or cartridge’s) w4, so the ratio is 1: one
+magazine or one 40mm round at a time. That is ids 46–50 and the
+four broken guns (25–28). Survival Knife (id 45, class 3) has
+w6 = 0 and is not a magazine holder. (A prompt that said “all
+six weapons” counted the knife; the JSON does not give it a
+ratio.) That 1:1 is the same *kind* of quantity as the bag
+limits (Cedar 100, Lead 190, Canvas 400, Velvet 12000). It is
+not a round count: a Walther magazine holds 8 (observed;
+catalog w4 = 10), and the M-79 is single-shot with w6 = 5.
+Canvas / Velvet have w4 = `$FFFF`, so @508 returns 65535 and
+they do not fit inside any other container.
+
+The four broken guns (ids 25 Broken M-16, 26 Melted AK-47, 27
+Rusted MP-41, 28 Rusted Walther P4) carry live w6 and w7 matching
+their working counterparts, but **class 0**. They accept
+magazines and never dispatch as weapons.
+
+Ids 53, 54 and 55 (AK-47, AK-47 HE, AK-47 SABOT Magazine) have
+**byte-identical** catalog records:
+`003200000000000F0021000000000000`. They differ only in name,
+examine text, and per-instance round counts.
+
+Three ids have blank names in STR# 2000 and are not the same
+case:
+
+- id 7 and id 44: all-zero catalog words, surviving examine
+  text in STR# 1001 (a LAW blurb and a gold mask). Cut content.
+- id 67: w0 = 7 (a real sprite index), everything else zero,
+  blank entries in both STR# 2000 and 1001. It sits between the
+  Orange and Violet crystals but has class 0, so it would not
+  dispatch as a crystal.
 
 Bags do **not** have `w6 / admitted.w4` always integer (Map w4=18
 into Canvas 400 is not whole). Equality of a weapon’s w6 with
 its magazine’s w4 shows they hold the same kind of quantity and
 nothing more.
+
+**Catalog dump** (id, w0..w7 decimal). Source:
+`out/item_catalog.json`.
+
+```
+ id   w0   w1   w2    w3     w4    w5     w6     w7
+  0    2    5    0     4     18     0      0      0
+  1    4    8    0     2      4     0      0      0
+  2    5    6    0    10     70     0      0      0
+  3    6    7    1    25    450     0      0      0
+  4   24    7    0    15    300     0      0      0
+  5    0    0    0     0      0     0      0      0
+  6    9    0    0     2  65535     0    400  65535
+  7    0    0    0     0      0     0      0      0
+  8   11    0    2     0    100     0    100  65535
+  9   12    0    1     2  65535     0  12000  65535
+ 10   13    0    2    70    190     0    190  65535
+ 11    0    0    0     0      0     0      0      0
+ 12   15    5    0     3     12     0      0      0
+ 13    0    0    0     0      0     0      0      0
+ 14   23    7    1     2     60     0      0      0
+ 15    0    0    0     0      0     0      0      0
+ 16   25    5    1   220     90     0      0      0
+ 17   26    5    1    10     60     0      0      0
+ 18   17    2    0     1     10     0      0      0
+ 19   16    2    0     1     10     0      0      0
+ 20   18    2    0     2     10     0      0      0
+ 21   19    2    0     1     10     0      0      0
+ 22   21    0    0     4      0     0      0      0
+ 23    3    0    0     0      0     0      0      0
+ 24   22    2    2     2      0     0      0      0
+ 25   42    0    0   115      0     0     33     56
+ 26   46    0    0   120      0     0     33  65530
+ 27   43    0    0    97      0     0     36     52
+ 28   45    0    0    46      0     0     10     51
+ 29   28    7    0     5      2   380      0      0
+ 30   27    7    1     5      2   310      0      0
+ 31   40    7    1    20     20  1201      0      0
+ 32   39    0    5    20     40   540      0      0
+ 33   30    5    3    78    488   560      0      0
+ 34   32    0    1    18     12    92      0      0
+ 35   33    0    1    69    260   150      0      0
+ 36   31    0    1    25     12    11      0      0
+ 37   34    0    1   365    100   380      0      0
+ 38   36    0    1     2      4   150      0      0
+ 39    0    0    0     0      0     0      0      0
+ 40   37    0    1     3      4   119      0      0
+ 41   38    0    1     4     32   110      0      0
+ 42    0    0    0     0      0     0      0      0
+ 43    0    0    0     0      0     0      0      0
+ 44    0    0    0     0      0     0      0      0
+ 45    8    3    0    22     40     0      0      0
+ 46   45    3    1    46     50     0     10     51
+ 47   44    3    0    41     50     0     10     57
+ 48   43    3    1   103     70     0     36     52
+ 49   46    3    1   135     80     0     33  65530
+ 50   47    3    1   120     80     0      5  65531
+ 51   48    0    0     7     10     0      0      0
+ 52   49    0    0    19     36     0      0      0
+ 53   50    0    0    15     33     0      0      0
+ 54   50    0    0    15     33     0      0      0
+ 55   50    0    0    15     33     0      0      0
+ 56   50    0    0    19     33     0      0      0
+ 57   48    0    0    12     10     0      0      0
+ 58   51    0    0     2      5     0      0      0
+ 59   51    0    0     2      5     0      0      0
+ 60   51    0    0     4      5     0      0      0
+ 61   52    0    0    10     70     1      0      0
+ 62    3    0    0     0      0     0      0      0
+ 63    3    0    0     0      0     0      0      0
+ 64   53    4    2     0      0     0      0      0
+ 65   54    4    2     0      0     0      0      0
+ 66   55    4    2     0      0     0      0      0
+ 67    7    0    0     0      0     0      0      0
+ 68   56    4    2     0      0     0      0      0
+ 69   58    4    2     0      0     0      0      0
+ 70   57    4    2     0      0     0      0      0
+```
 
 **Round count is not a catalog field.** A fresh Walther magazine’s
 8 lives in the instance record’s +$4. `dpin` 128 t2 has 180 rows
@@ -1288,7 +1572,9 @@ with id 51 across the 25 levels: qty `{1,3,4,5,6,7,8}`, 155 of
 them 8, **maximum 8**. Pickup (JT 216) copies the t2 record.
 
 **STR# 2013 is the live Progress panel, not an end-of-game recap.**
-CODE 3 @8762 draws it into the GrafPort at A5 `-$1596`. JT 109
+CODE 3 @8762 draws it into the GrafPort at A5 `-$1596` — the
+**Player** window, not the inventory. Layout and per-field
+rects: **Interface windows**. JT 109
 (CODE 3 @7708) and JT 110 (@7892) call @8762 per row. JT 105
 (@6988) and JT 108 (@7530) refresh that port; the rest handler
 (JT 231) calls both before opening the rest dialog. The six
@@ -1307,12 +1593,21 @@ all 71 rows is **44**.
 
 The on-screen **REST** control is not a DITL/CNTL item of this
 panel. There is no CNTL resource. STR# 2010 is `[0] REST
-[1] SEARCH [2] MAP`, drawn in a custom window (CODE 3 @9618 /
-JT 141). CODE 3 @10176 calls `_FindControl` (CODE 3 @18778) and
-dispatches part **1** → JT 231, part 2 → JT 232 (Search), part
-3 → JT 88 (Check Map). The Actions menu (MENU 131, id `$83`)
-item **3** “Rest” (Command-R) is the same JT 231, from the
-MenuSelect dispatcher at CODE 2 @1622 / jump table @2094.
+[1] SEARCH [2] MAP` (`00 03 04 52 45 53 54 06 53 45 41 52 43
+48 03 4D 41 50`). CODE 3 @9618 (Messages `_NewCWindow`, **not**
+a jump-table entry) loads them at @9946:
+`48 78 07 DA` (`pea.l $7da.w` = 2010), `70 03` (count 3),
+`48 6D E9 86` (dest `-$167A`), `jsr` @17836, which does
+`2F 3C 53 54 52 23` (`'STR#'`) / `3F 06` / `A9 A0`
+(`_GetResource`). JT 141 is a different routine (CODE 3
+@22422) that pushes 2010 as a **DLOG** id. CODE 3 @10176
+calls `_FindControl` (CODE 3 @18778) and dispatches part **1**
+→ JT 231, part 2 → JT 232 (Search), part 3 → JT 88 (Check
+Map). The Actions menu (MENU 131, id `$83`) item **3** “Rest”
+(Command-R) is the same JT 231, from the MenuSelect dispatcher
+at CODE 2 @1622 / jump table @2094. DITL 2013 is ALRT 2007’s
+first-search tutorial (OK + four static texts), not these
+labels.
 
 DITL 2000 (DLOG `$7D0`) is the in-progress rest dialog: userItem
 1, **Stop** button item 2, static text “You are resting…”. JT 84
@@ -1320,11 +1615,14 @@ loops `_ModalDialog` until item 2.
 
 JT 227 (CODE 6 @5098) writes a newly created record’s id from
 player `+$146` and its word 2 from `+$148`. That is the Cedar
-Box clone, not pickup. Fire (CODE 7 @16404) decrements player
-`+$19A` and, when that hits 0, reads and decrements the magazine
-record’s +$4. JT 257 (CODE 7 @17270) sets `+$19A` to **1** on
-ready — it does not copy the magazine’s +$4. No catalog word for
-id 51 is 8.
+Box clone, not pickup. Fire (CODE 7 @16404) subtracts the JT 8 tick delta from player
+`+$19A` (410) (the RoF timer) and, when that timer is `<= 0` and
+the fire latch is set, decrements the magazine **child’s word 2**
+(`+$4` of that record) at @16730, reached as `+$198` → weapon →
+word 2 child slot. JT 257 (CODE 7 @17270) sets `+$19A` to **1**
+on ready — it does not copy the magazine’s word 2. After a shot,
+`+$19A` is reloaded from the `-$810` table’s `+$12`. No catalog
+word for id 51 is 8.
 
 **Cedar Box — OBSERVED IN GAME.** Item id 8 clones ammunition.
 Test sequence on a constructed save (editor wrote the tree; the
@@ -1402,7 +1700,10 @@ The rank string is STR# 2007[`rank - 1`].
 Each `+$66` record is: `u16be` rank, `u32be` XP. JT 235
 (CODE 6 @8402), called from fire @16980 on a hit, adds the
 hit’s damage into that long and promotes the rank against two
-thresholds at A5 `-$A2C` + 8×(STR# 2006 index):
+thresholds at A5 `-$A2C` + 8×(STR# 2006 index). That table has
+**seven** real entries (indices 0–6). Index 7 reads `$000B0000`
+/ `$000B0007` against the empty STR# 2006[7] and is **not**
+part of the table:
 
 | index | name | t1 (→ Novice) | t2 (→ Expert) |
 |---|---|---|---|
@@ -1415,9 +1716,17 @@ thresholds at A5 `-$A2C` + 8×(STR# 2006 index):
 | 6 | M-79 | 0 | 0 |
 
 `t1 = t2 = 0` means the first JT 235 call with XP ≥ 0 writes
-rank 3 (Expert). Fire looks up the ready weapon’s item id in
+rank 3 (Expert). A new character **starts** Expert in Melee
+Combat, the Colt .45 and the M-16 — slots 0, 1 and 4 at rank 3
+with zero experience. That is initialised data, not a display
+rule: rank 0 hides a row. It is the Green Beret’s loadout, and
+the three weapons he starts expert in are exactly the ones that
+were never finished or never appear.
+
+Fire looks up the ready weapon’s item id in
 a 5-record table at A5 `-$810`, stride `$1E`, loop
-`moveq #$5,d3` / `bgt` (indices 0..4):
+`moveq #$5,d3` / `bgt` (indices 0..4). Full 15-word layout:
+**The weapon table**. Short index map:
 
 | table i | item id | table +2 (STR# 2006 index) |
 |---|---|---|
@@ -1489,6 +1798,10 @@ There is no stored Z anywhere. All geometry derives height from those
 two. Cell centre = `(cell << 10) + $200` (512). Object positions are
 10-bit fixed point.
 
+Everything from the original is top-down and every Unity coordinate
+is bottom-up: window rectangles, texture rows, shade table rows.
+See **Reserved indices**.
+
 ### Projection
 
 Rotation: JT 146 (CODE 4 @116). Eye at `view+$40` (64), angle at
@@ -1550,12 +1863,15 @@ branches also swap which depth is used first and flip `$18` (24) /
 
 ### Field of view
 
-Two authored 3D viewport sizes, from `_SetRect` in CODE 3 @13312:
-**272 × 204** and **384 × 288**. Both are exactly 4:3.
-
-(An earlier session reported this pair transposed as 204×272 /
-288×384 and concluded the small port was a few tenths of a degree
-off. That was wrong.)
+`_SetRect` is Pascal order. A packed long’s **high** word is the
+bottom, not the right. The immediates at CODE 3 @13394 / @13428
+are `$00CC0110` (bottom 204 = `$CC`, right 272 = `$110`) and
+`$01200180` (bottom 288 = `$120`, right 384 = `$180`): window
+content **272×204** and **384×288**. Those are already 4:3. A
+previous note that read them as portrait 204×272 / 288×384 had
+the long transposed. The view being 384×288 is the only reading
+that satisfies the engine’s 4:3 requirement. Measured rectangles:
+**Interface windows**.
 
 ```
 tan(HFOV/2) = (W/2) / trunc(5W/8)
@@ -1726,6 +2042,43 @@ unique rgb8 (245, 171, 94). JT 178’s blackout therefore covers one
 index the fade never uses. ANOMALY, preserve; do not shrink the
 range. Deliberate, three sites.
 
+#### Shade table generator
+
+The generator had two bugs. Both are fixed in
+`build_own_lut_arrays` (`tools/export_256_indices.py`). The
+symptoms were misleading.
+
+`plant_clut` overwrote `unique[106..120]` without advancing its
+index, erasing resource 128’s fifteen-step blue chrome run.
+Those indices resolved to black, which made the wordmark look
+like hollow letters. Not advancing the index is the Mac’s own
+rule at @3214.
+
+`force_nonzero` remapped any later ColorSpec whose RGB matched
+resource 128’s white to 238 238 238. That hit index 3 on
+sprites 130, 132, 133 and others, and wall entries on 193 and
+194. Invisible by eye.
+
+All 216 tables were re-emitted from each resource’s **own**
+ColorSpecs. 210 changed.
+
+Every `(resource, variation)` table is now identical across all
+levels. The table was never level-dependent; the merge made it
+look that way. Palette variation is carried by the variation
+field. The 216 files are about 50 distinct tables.
+
+13 resources have no table and never did: 187 to 191 and 195 to
+202. None appear in any level’s load set.
+
+OPEN: `plant_clut` not advancing its index is the original’s
+rule, so the original probably loses that chrome run too, for
+art drawn through the world palette. A dialog composites
+through the resource’s own colour table and does not. That
+predicts the resource 128 object on Ground Floor renders with
+black where the examine dialog shows blue. The port now draws
+both from the resource’s own table, which may make it more
+correct than the original.
+
 ### Door geometry
 
 Doors are the **only** geometry with thickness. Leaf is a slab with
@@ -1871,7 +2224,8 @@ CODE 5 @1454 (s1 unpack of `object+$8`) and `view+$1A` / `+$1C` /
 `+$20` / `+$22`. Earlier docs labelled @17190 as “object vertical
 extents”; that is the second half of the routine only.
 
-`.256` palette index 2 is transparent.
+`.256` index 0 is padding and is discarded; index 2 is the
+artwork’s transparent colour. See **Reserved indices**.
 
 ### Billboards
 
@@ -1885,7 +2239,51 @@ top    = bottom + s1 height
 
 No vertical clip. Yaw-only (the billboard does not pitch to face
 the camera). Sprites are not uniformly floor-anchored: the lift
-word is per-shape.
+word is per-shape. The lift is **not** used for the weapon
+overlay.
+
+### Weapon overlay
+
+Drawn by CODE 5 @17892. Descriptor `0xC000 | (w2 << 7) | frame`
+(tag 6; resource `128 + w2`): Walther 148, MP-41 149, AK-47 150,
+M-79 151, knife 152.
+
+Frame layout, resources 148 to 152:
+
+| rid | weapon | idle | firing | reload | mirrored s1 |
+|---|---|---|---|---|---|
+| 148 | Walther | 0 / 1 | 2 | 4 / 5 | 1, 3, 5 |
+| 149 | MP-41 | 0 / 1 | 2, 3, 4 | 8 / 9 | 1, 5, 6, 7, 9 |
+| 150 | AK-47 | 0 / 1 | 2, 3, 4 | 8 / 9 | 1, 5, 6, 7, 9 |
+| 151 | M-79 | 0 / 1 | 2 | 4 / 5 | 1, 3, 5 |
+| 152 | knife | 0 / 1 | 2, 3 | 0 / 1 | 1, 4, 5 |
+
+The MP-41 and AK do not play three frames. Their w7 ends the
+animation after one period, so w13 = 3 is a pool of three
+variants and one is picked at random per shot. The knife,
+Walther and M-79 play their columns in order.
+
+The knife’s s1 3 is a second unique pose, not a mirror. Its
+mirrors are 1, 4, 5. The knife has no reload art: w11 is 0, so
+reloading shows the idle frame.
+
+Mirroring is the typed LEFT command, player `+$51` (81), written
+by the key dispatch at CODE 3 @14412 and @14424. The s1 flags
+word carries `$4000` (16384) meaning the blit walks backwards,
+and a mirrored s1 shares its raster with its original.
+
+The overlay is drawn bottom centre of the view and scaled by the
+**view’s own** dimensions, not at tile size:
+
+```
+width  = world_w * 384 >> 10
+height = world_h * 288 >> 10
+left   = (384 - width) / 2
+top    = 288 - height
+```
+
+The tile’s lift is **not** used here. That field is for placing
+billboards in the world.
 
 ### Affine texture mapping
 
@@ -1951,7 +2349,9 @@ Step sizes, world units per application:
 
 Run toggle is A5 `-$1BCE` (7118) (DATAINIT 0; written by CODE 3
 @14402). Running also caps the VBL accumulator at 7 instead of 14 and
-doubles JT 8’s delta before its `>= 2` test.
+doubles JT 8’s delta before its `>= 2` test — the typed TURBO
+flag, a fire-rate cheat as well as a move-speed one. See
+**Weapon fire**.
 
 **Correction:** 24 is **not** the walk step. 24 is run-backward and
 run-strafe.
@@ -2013,10 +2413,10 @@ the sequence.
 
 ## Writer-less DATAINIT tables
 
-Three A5 locations are filled only by Think C `_DATAINIT` (JT 305)
-and have **no writer** in any CODE segment. They are not runtime
-state. A port should hardcode the reachable path, not allocate
-them as mutable globals.
+Three A5 locations are filled only by Think C `_DATAINIT` (JT 305;
+see **Think C initialised-data image**) and have **no writer** in
+any CODE segment. They are not runtime state. A port should
+hardcode the reachable path, not allocate them as mutable globals.
 
 | A5 | size | DATAINIT | Writers | Reachable path | Port |
 |---|---|---|---|---|---|
@@ -2033,6 +2433,788 @@ It does not belong on this list.
 `data/hfs/Pathways_1995/Bomb Code`: **321 bytes, 0 diffs**.
 Mac Roman text. Arming code **2870334**, deadline 1400 Friday.
 Static game content, not per-playthrough state. No further work.
+
+---
+
+## Inventory tree
+
+The panel is not a List Manager LDEF. Flatten is CODE 6 @5590 /
+@5838. Raw dumps and constructed saves: `out/INVENTORY_TREE.md`,
+`out/inv-tests/`.
+
+### State word (inventory record word 1)
+
+| bit | mask | meaning | writer / reader |
+|---|---|---|---|
+| 0 | `$0001` (1) | equipped / on | JT 214 `eor.w #1` at @2430 (ready) and @2378 (unready the previous `+$198` (408)). JT 209 tests it with compare-to-1 / `bne` (suffix when the bit is **SET**), not with the flags from the preceding `and`. JT 212 via `btst #0`. |
+| 1 | `$0002` (2) | **OPEN / EXPANDED** — one flag, not two | JT 213 toggles with `eor.w #$2, $2(record)` at @1338 / @1354. JT 227’s clone writes `state = 0`, so clones ship **CLOSED**. The shipped save has Canvas Bag at `state = 2`, so bags ship **OPEN**. |
+| 2–15 | — | **UNKNOWN** — no isolated reader found | Fourteen unused bits is a lot of room; open question. |
+
+### Disclosure and the panel
+
+Open/closed and expanded/collapsed are **one flag** (word 1 bit 1).
+Bit 1 set = expanded (down triangle); clear = collapsed (right
+`>`). The same bit is what @6874 uses for the Lead Box / Alien
+Gemstone lookup.
+
+JT 219’s callback at CODE 6 @5788 increments the visible-row count
+then calls JT 208; if false it sets the walker’s don’t-descend
+byte. JT 208 = JT 207 (catalog w6 > 0) AND `(state >> 1) & 1`.
+
+The triangle is a real hit-tested rect at CODE 3 @5316 / @5410 →
+@2722 → JT 213, not a whole-row click.
+
+Indentation is **not** stored. JT 223 walks depth (@5974 counts
+depth while descending only into expanded containers). @5958
+computes `(depth + 1) * 18` pixels (`moveq #$12` (18) / `muls.l`)
+added to the name rect’s left.
+
+**Nuance.** The default walker @5838 still descends on JT 207
+**alone**. Only the panel callbacks and the Lead Box hard case
+consult JT 208. A gemstone in a **closed Cedar Box still drains**
+— closed hides contents from the **panel** and from the gemstone
+lookup specifically, not from everything.
+
+### Inventory line (JT 209)
+
+Built by jump table entry 209, CODE 6 +106. One line:
+
+1. Always emit STR# 2000 at the item id. JT 272 takes
+   (destination, STR# id, index) and appends that string with
+   **no** format arguments. JT 343 is the printf.
+2. A byte argument gates everything after the name. When it is
+   zero the line is the bare name.
+3. If the id is 51 to 57 (magazines) **and** inventory word 2 is
+   nonzero, append the code literal ` (x%d)` with the round
+   count. If word 2 is zero, append STR# 2008[0], ` (empty)`.
+4. If inventory state bit 0 is set, append a class suffix from
+   STR# 2008.
+
+STR# 2008[0] is the **empty-magazine** label. It is **not** a
+general default for unequipped items. Ids below 51 and above 57
+branch past that block entirely.
+
+The class-to-suffix map is **not** `(class − 3)`. The engine
+subtracts three and uses the result to select a branch; the
+branch numbers are not the string indices. Classes below 3 and
+above 8 skip the remap and index STR# 2008 with the raw class
+value, which is how classes 0 and 2 reach their entries.
+
+| class | STR# 2008 | text |
+|---:|---|---|
+| 0 | [0] | ` (empty)` |
+| 2 | [2] | ` (in hand)` |
+| 3 | [2] | ` (in hand)` |
+| 4 | [3] | ` (ready)` |
+| 5 | [5] | ` (on wrist)` |
+| 6 | [1] | ` (on)` |
+| 7 | [4] | ` (worn)` |
+| 8 | [5] | ` (on wrist)` |
+
+**Anomaly.** Class 5’s slot in the branch table sets nothing, so
+the index register still holds 5 and specials collide with worn
+class 8 on `(on wrist)`. Class 5 is Map, Ornate Glass Vial,
+Nuclear Device, Radio Beacon, Alien Pipes. Confirmed unreachable
+in play: no class 5 item is ever seen equipped.
+
+The bit-0 test is a compare-against-1 followed by `bne`, not a
+test of the flags the preceding `and` already set. This compiler
+routinely emits compare-to-1 where a flag test would do. An
+earlier reading got the sense backwards: the suffix runs when
+the bit is **SET**.
+
+### Capacity
+
+w6 is a **fill capacity** measured against the sum of the
+children’s w4, not a boolean and not an item count. Two reads:
+JT 207 (`w6 > 0`, is-a-container) and @616 (fill capacity).
+`@616`: `w6 >= Σchild.w4 + candidate.w4`.
+
+A weapon holds exactly one magazine because w6 equals the
+admitted magazine’s w4 — Walther 10 against magazine 10 — so one
+fills it exactly. Same ratio on ids 46–50 and on Broken M-16
+(id 25, w6 = 33 against M-16 Magazine w4 = 33). Survival Knife
+(id 45) has w6 = 0.
+
+@616’s “already has a child” test is **not** the general one-child
+rule. That check is an **extra restriction specific to the Cedar
+Box** (id 8): if `+$4 != $FFFF` (65535) the extra gate returns
+false even when fill would allow it. The general rule is capacity.
+
+w4 is item **bulk**, distinct from w3 weight. Identified. Over-fill
+produces STR# 1000[2].
+
+### Loading is insertion
+
+There is no separate reload routine: a magazine goes into a weapon
+through JT 212 → @616, the same path as putting anything into
+anything. A weapon differs from a box only by catalog w6 / w7.
+
+Unloading via JT 212 / @6354 moves the magazine out as a sibling
+with its remaining rounds intact in word 2.
+
+**Asymmetry.** Firing dry **destroys** the magazine — weapon word 2
+and magazine id both become `$FFFF` (65535), freed in place —
+while manual unload preserves the count.
+
+The fire path reaches the ammunition as `+$198` (408) → weapon →
+word 2 child slot → `sub.w` on that child’s word 2 at @16730.
+
+### Compatibility
+
+Catalog w7 at @794: an exact id match, `$FFFF` (65535) (accepts
+any), `$FFFA` (65530) (ids 53–55, the AK types) or `$FFFB`
+(65531) (ids 58–60, the 40mm types).
+
+A mismatch returns false from @616, JT 212 returns 2, and CODE 3
+@3474 prints STR# 1000[2]: `Sorry, the ^1 won't fit into the ^2.`
+The same message covers both incompatibility and over-fill.
+
+### Weight
+
+JT 217 sums w3 / 28 and descends on JT 207, **not** JT 208 — so
+collapsed contents still weigh. Format STR# 2016, `%3.2f kg`.
+
+**Anomaly.** Item id 9 (named Red Velvet Bag in STR# 2000[9])
+has catalog w3 = 2. JT 217 skips that w3 and does not descend,
+so it and its contents weigh nothing. The weightlessness is the
+walk, not a zero in the data. Why the walk skips id 9 is
+unexplained.
+
+### Tree mutation
+
+Add and unlink are @6354 and @6098. A first child writes the
+parent’s word 2; a sibling writes the previous last child’s
+word 3. A free slot is found by **linear scan** for
+`id == $FFFF` (65535) — 256 slots in the player array, 40 in
+world t2. JT 221 is find-parent, not delete. There is no
+compaction pass. The walker from `+$33A` (826) never sees
+orphans. The only known orphan path remains the Cedar Box
+clone’s sibling overwrite.
+
+---
+
+## Weapon fire
+
+Raw listing and per-field readers: `out/FIRE_PATH.md`. Player
+pointer A5 `-$1A8A` (6794). Table A5 `-$810` (2064), 5 × 30,
+DATAINIT.
+
+### The weapon table
+
+Five records of 30 bytes at A5 `-$810` (2064), image +5528.
+Only the five weapons that work: there is no Colt .45 row and
+no M-16 row, which matches those two being unfinished
+everywhere else. Fifteen `u16be` per record:
+
+| word | off | holds | values (knife, Walther, MP-41, AK-47, M-79) |
+|---|---|---|---|
+| w0 | +0 | item id | 45, 46, 48, 49, 50 |
+| w1 | +2 | proficiency slot, indexing STR# 2006 | 0, 2, 3, 5, 6 |
+| w2 | +4 | hands shape selector; `.256` resource is `128 + w2` | 24, 20, 21, 22, 23 |
+| w3 | +6 | hotkey, as an ASCII character. **Not** in table order: M-79 is 4, AK is 5 | |
+| w4 | +8 | `'snd '` id, fired | |
+| w5 | +$A (10) | `'snd '` id, reloading | |
+| w6 | +$C (12) | `'snd '` id, empty click. `$FFFF` (65535) on the knife and the M-79 | |
+| w7 | +$E (14) | `$0100` (256) picks a **random** muzzle flash. **Not** an automatic-fire flag | |
+| w8 | +$10 (16) | reload time in ticks | 0, 45, 55, 40, 120 |
+| w9 | +$12 (18) | ticks between shots | 40, 28, 8, 6, 20 |
+| w10 | +$14 (20) | idle frame | 0 on all five |
+| w11 | +$16 (22) | reload frame | 0, 4, 8, 8, 4 |
+| w12 | +$18 (24) | offset to the first firing frame, skipping the idle pair | 2 on all five |
+| w13 | +$1A (26) | firing frame count **and** the offset to the mirrored copies, both | 2, 1, 3, 3, 1 |
+| w14 | +$1C (28) | ticks per animation frame | 6, 10, 10, 10, 12 |
+
+w7 as semi versus automatic is **disproven**. Every weapon fires
+while the button is held, through the JT 9 latch. The flag only
+gates the random flash pick and the early end of the flash.
+
+w13 carries two meanings and they are the same number by
+construction, because the mirrored tiles sit immediately after
+the unmirrored ones. The frame count comes from CODE 7 @16610;
+the mirror offset from @17208.
+
+Rate of fire at 60 ticks per second, from w9:
+
+| weapon | ticks | rounds/sec |
+|---|---:|---:|
+| Survival Knife | 40 | 1.5 |
+| Walther P4 | 28 | 2.143 |
+| MP-41 | 8 | 7.5 |
+| AK-47 | 6 | 10 |
+| M-79 | 20 | 3 |
+
+The AK’s w9 = 6 is 600 rounds a minute at 60 Hz, the real
+weapon’s rate.
+
+### Fire path
+
+Routine CODE 7 @16404 to @17100, called from JT 248 at CODE 7
+@9242.
+
+Tick delta comes from JT 8, CODE 1 @392: read the accumulated
+count; if the typed TURBO flag is set, double it; if the result
+is under 2, return 0 and keep accumulating; otherwise clear the
+accumulator and return the **full** count. So the poll runs at
+most 30 times a second but the timer still counts down at the
+full rate. Only the granularity is coarse. TURBO is a fire-rate
+cheat. The same double is on the run path (A5 `-$1BCE` (7118);
+see **Player movement**).
+
+The trigger is JT 9, CODE 1 @434, a read-and-clear latch at
+device `+$22` (34). Held fire: `_GetKeys` action `$80` (128) →
+that latch → `$f(a6)`. VBL CODE 1 @998 writes `device+$22 = 1`
+on that action. `tst.b $f(a6)` is the gate — automatic while
+the latch is set each poll, not one-shot-per-press.
+
+Preconditions for a shot: `+$198` (408) `!= $FFFF` (65535);
+`$f(a6) != 0`; `+$19A` (410) `<= 0` after the tick subtract;
+and either the weapon is id 45 (Survival Knife) or a child
+magazine has word 2 `> 0`.
+
+Order per poll, and the order matters:
+
+1. If the timer is not zero, subtract the delta. If it has
+   reached zero or below: clear a reloading state, then if the
+   weapon has no magazine or the magazine is empty, try to
+   reload. Reloading is attempted whenever the timer expires,
+   **not** when you fire.
+2. Advance the animation: add the delta to `+$1A0` (416); when
+   it is **greater than** w14, not greater or equal, clear it
+   and step `+$19E` (414). End the animation when `+$19E`
+   reaches w13, or immediately when w7 is set.
+3. If the trigger is up, or the timer is above zero, clamp a
+   negative timer to zero and stop.
+4. Count rounds: add w9 to the timer until it goes positive,
+   counting the additions. One poll can owe several rounds.
+5. Ammunition. The knife takes none. An empty weapon plays its
+   click (JT 95 w6) and the round count becomes zero.
+6. Starting a burst **sets** the timer to w9, throwing away
+   what step 4 computed. JT 95 w4; `+$19C` (412) `= 1`. If w7
+   is set, JT 150 picks `+$19E` (414) `=` rng `%` w13.
+7. Fire the rounds. `+$C2` (194)`[i]++` per round, then @18510
+   (type 0/2/4) + @18376 (flag `$40` (64) / `$80` (128)) +
+   @2002 (hitscan; applies @2536 the same tick). On a hit:
+   JT 235(w1, damage), `+$D6` (214)`[i]++`, `+$BE` (190) `+=`
+   damage. A magazine emptied by the volley is destroyed and
+   the weapon’s child cleared (`$FFFF` (65535)).
+
+Experience is added **on a hit**, by the damage amount, at
+JT 235. Rank only ever increases. Thresholds at A5 `-$A2C`
+(2604) are 0 and 0 for melee, the Colt and the M-79, so their
+first hit goes straight to Expert.
+
+Player shots are hitscan, the launcher included.
+
+### Player weapon fields
+
+All `u16be`.
+
+| offset | holds |
+|---|---|
+| `+$198` (408) | readied inventory slot, `$FFFF` (65535) = none. Written only by JT 257 (@17398 / @17446), which also sets `+$19A` (410) `= 1` and clears `+$19C` (412). |
+| `+$19A` (410) | **rate-of-fire timer** in ticks. **Not** a readiness flag. |
+| `+$19C` (412) | 0 idle, 1 firing, 2 reloading |
+| `+$19E` (414) | animation column (JT 256 @17102). Not aim. |
+| `+$1A0` (416) | animation tick accumulator |
+| `+$C2` (194) | shots[5], indexed by **table** index, not proficiency slot |
+| `+$D6` (214) | hits[5], same index |
+| `+$BE` (190) | total damage dealt |
+| `+$144` (324) | Cedar Box timer. Autoload from item 8 sets it to `$E10` (3600), exactly one minute |
+| `+$51` (81) | typed LEFT command; mirrors the overlay |
+
+### Damage
+
+CODE 7 @17570, rank read at @17780. No random roll anywhere.
+
+```
+damage = base + (rank - cells) * base / 5
+cells  = distance >> 10
+```
+
+Algebraically the same as `base * (5 + rank - cells) / 5`.
+Rank is `+$66` (102) `+ 6 *` (STR# 2006 index). Base is a hard
+switch on weapon id then magazine id — **not** the catalog and
+**not** a table field. The knife returns flat 20 before the
+formula, leaving early.
+
+**Rank and range trade off in the same term:** damage falls 20%
+of base per cell, and each rank buys back one cell. Every
+weapon is a close-range weapon; proficiency buys standoff
+distance rather than raw power.
+
+Switch at @17570: no child (`weapon.word2 == $FFFF` (65535))
+returns 0 before the switch (`70 FF` / `B0 6C 00 04` / `57 C3`
+/ `44 03` / `67 04` / `70 00`). Else `subi.w #$2d` (45),
+`bmi` / `cmpi.w #$5` / `bgt` → rank formula with d7 unset.
+Table `@17662`: `00 0E 00 16 00 58 00 1A 00 1E 00 36`.
+`4E FB 00 00` jmp through that table.
+
+| weapon id | magazine id | base | raw |
+|---|---|---:|---|
+| (no child) | — | 0 | return before switch |
+| 45 Survival Knife | (unused) | 20 (`$14`) | `7E 14` then `30 07` / `bra.w` to RTS — **no** rank term |
+| 46 Walther P4 | any | 30 (`$1E`) | `7E 1E` |
+| 47 Colt .45 | — | **unset** | case 2 → `@17748` with d7 never written |
+| 48 MP-41 | any (52 not tested) | 40 (`$28`) | `7E 28` — **40 is correct** |
+| 49 AK-47 | 53 | 65 (`$41`) | `subi.w #$35` / `beq` → `7E 41` |
+| 49 AK-47 | 54 HE | 80 (`$50`) | `subq` / `beq` → `7E 50` |
+| 49 AK-47 | 55 | 65 (`$41`) | fall into `7E 41` |
+| 49 AK-47 | other | **unset** | `bne` → `@17748` |
+| 50 M-79 | 58 HE | 600 (`$258`) | `subi.w #$3A` / `beq` → `3E 3C 02 58` |
+| 50 M-79 | 59 Frag | 200 (`$C8`) | `3E 3C 00 C8` |
+| 50 M-79 | 60 Projectile | 400 (`$190`) | `3E 3C 01 90` |
+| 50 M-79 | other | **unset** | `bra` → `@17748` |
+| id `< 45` or `> 50` | — | **unset** | `bmi` / `bgt` → `@17748` |
+
+Point-blank damage, internal / displayed (formula weapons only;
+knife is flat 20 / 2.0 at every rank):
+
+| | rank 0 | rank 1 | rank 2 | rank 3 |
+|---|---|---|---|---|
+| Walther base 30 | 30 / 3.0 | 36 / 3.6 | 42 / 4.2 | 48 / 4.8 |
+| MP-41 base 40 | 40 / 4.0 | 48 / 4.8 | 56 / 5.6 | 64 / 6.4 |
+| AK mag 53 or 55, 65 | 65 / 6.5 | 78 / 7.8 | 91 / 9.1 | 104 / 10.4 |
+| AK HE mag 54, 80 | 80 / 8.0 | 96 / 9.6 | 112 / 11.2 | 128 / 12.8 |
+
+**Anomaly, preserve.** Past `rank + 5` cells the expression goes
+**negative** and no clamp was found. UNTESTED whether that is
+reachable in play. What JT 237 does with a negative value is
+UNKNOWN — it may heal the target.
+
+### Accuracy
+
+There is **no to-hit roll**. Hitting is purely geometric: JT 198
+with width 0 is the centre column. Magazine 59 widens that
+window by `view+$8` (8) `/ 4` — the only spread in the game, and
+it is a wider column, not a random deviation. JT 150 during fire
+writes `+$19E` (414) (the overlay), not aim.
+
+JT 260 loops `d7 = 0..4` over `+$C2` (194) / `+$D6` (214) using
+the **same** 5-entry table index that fire writes. There is no
+index mismatch.
+
+### Projectiles
+
+Player bullets are **hitscan**. The M-79 is hitscan too: the
+three 40mm ids change only the base damage and the `$40` (64) /
+`$80` (128) resist flag — there is no splash, no radius and no
+falloff beyond the shared per-cell term.
+
+`+$2DA` (730) is the **creature** projectile list, not the
+player’s. Spawn @8964 ← @4654 ← creature @4288 / @1188. Stride
+16, cap 6 at `+$2D8` (728), speed from catalog `+$50` (80) via
+JT 145 (34 or 51 on the types that shoot), lifetime until
+impact. Stepped by @354.
+
+Hit half-extents at @4878: `113` (`$71`) against a creature,
+`256` (`$100`) against the player.
+
+### Melee
+
+The Survival Knife fires through @16404. Flat 20 internal /
+2.0 displayed (`7E 14` at @17674), no rank or range term —
+**if** @17570 reaches case 0. No child (`word2 == $FFFF`)
+returns 0 before the switch. Reach `$355` (853) world
+units, about 0.83 of a cell (`$400` (1024)). Earns XP through
+JT 235 at index 0; t1 = t2 = 0 so the first hit promotes to
+Expert, which for the knife is cosmetic since rank does not
+apply.
+
+### Reload
+
+There is no player reload command. Reloading is attempted
+whenever the rate-of-fire timer expires, not when you fire.
+Autoload is CODE 7 @18678: find an acceptable magazine, destroy
+whatever is in the weapon, move the new one in, set the timer
+to w8 and the state to 2. With nothing to load, the empty
+magazine is destroyed anyway. If the magazine came out of item
+8, the Cedar Box, player `+$144` (324) is set to `$E10` (3600).
+What that timer does when it expires is OPEN.
+
+JT 225, JT 218 and JT 226, used by autoload to pick a magazine
+and unlink it, have not been read. The port substitutes its own
+tree walk.
+
+Firing empty produces JT 95 (w6) and no STR# message. STR#
+1000[6] is ready-time wording and belongs to a different path.
+The knife has no reload art (w11 = 0), so reloading shows the
+idle frame.
+
+### The Colt .45 bug
+
+**Confirmed by player reports**, not merely inferred. Item id 47
+has a proficiency row and thresholds but **no** entry in the
+5-entry A5 `-$810` (2064) table. @18620 has no fallback: a4 is
+left holding the item id 47 as a **pointer**, which is then
+dereferenced for the damage base, rate of fire and rank slot.
+Contemporary player reports say the game **crashes** when the
+Colt is used. The weapon is unusable set dressing. A port
+should refuse to ready it rather than reproduce the fault.
+
+@17570 has a Colt case that jumps to the rank formula with d7
+unset.
+
+**M-16 (STR# 2006[4]).** Proficiency row and thresholds at A5
+`-$A2C` (t1 = 12000, t2 = 30000). No working weapon: catalog
+has only Broken M-16 (id 25) and M-16 Magazine (id 56). No
+entry in the 5-entry A5 `-$810` (2064) table. Unlike the Colt
+(id 47, which crashes), the M-16 is simply **absent**. Known:
+the panel slot and the thresholds. Not known: any fire path
+that writes `+$66` (102) index 4.
+
+---
+
+## Creature AI
+
+Creature catalog: A5 `-$104A` (4170), 17 × `$5C` (92), STR# 2001
+index. Runtime record: player `+$218` (536), stride 16, count
+`+$216` (534), cap 12. In the tick, a4 is this record (byte `+$2`
+is state), not the world object.
+
+### Catalog fields
+
+| off | holds |
+|---|---|
+| `+$00` (0) | flag (tested with event `$C0` (192)) |
+| `+$02` (2) | spawn flags (JT 241 ors `$8000` (32768) / `$4000` (16384)) |
+| `+$04` (4) | shape / sprite index; bit `$1000` (4096) marks a “greater” variant sharing art |
+| `+$06` (6) | internal HP |
+| `+$08` (8) | event-class mask (immunity) |
+| `+$0A` (10) | double-damage mask |
+| `+$0C` (12) | flag gating the pain follow-up (with bit 6 of runtime `+$2`) |
+| `+$0E` (14) | **walk speed** scale, stepped by dt through JT 145. Sentinel (type 11) and Stalker (type 14) are 0 and do not move. **Not** `+$50`. |
+| `+$10` (16) | filter bits |
+| `+$12` (18) | word passed to JT 237 (death-proximity splash) |
+| `+$14` (20) / `+$16` (22) / `+$18` (24) | `'snd '` ids |
+| `+$1C` (28) | flag gating JT 158 |
+| `+$1E` (30) | sprite low / counter (pain) |
+| `+$20` (32) | RNG divisor |
+| `+$22` (34) | walk-anim triple base (state ≠ 0): index, count, period |
+| `+$24` (36) | **not a field** — middle word of the `+$22` triple |
+| `+$26` (38) | **not a field** — third word of the `+$22` triple |
+| `+$28` (40) | idle-anim triple base (state 0): index, count, period |
+| `+$2A` (42) / `+$2C` (44) | idle-anim count / period; also seed runtime `$4` / `$6` at activate |
+| `+$2E` (46) | death-anim triple (index, count, period) |
+| `+$30` (48) | death-anim count |
+| `+$34` (52) | JT 237 **cause** for creature damage. **Not** an aggro radius |
+| `+$36` (54) | **attack period**: the creature attacks when runtime `+$08 >` catalog `+$36`. **Not** `+$58` / `+$5A` |
+| `+$38` (56) | attack gate: `!= 0` selects melee (Phantasm, Shocking Sphere, Ghast); else @8964 projectile |
+| `+$39` (57) | attack gate (skip @4654 from state 2 when set) |
+| `+$3A` (58) | attack gate (require JT 151 `<= $400` (1024) before state 2) |
+| `+$3B` (59) | facing-turn path flag |
+| `+$3C` (60) | damage addend |
+| `+$3E` (62) | damage RNG divisor. `damage = +$3C + (JT 150 remainder / +$3E)` |
+| `+$40` (64) / `+$42` (66) | `'snd '` ids (attack) |
+| `+$44` (68) | `'snd '` id |
+| `+$46` (70) | word passed to JT 237 |
+| `+$48` (72) | attack-anim triple |
+| `+$4E` (78) | flag (take `+$56` word 0 as heading on the trailing path) |
+| `+$50` (80) | **projectile** speed via JT 145 (34 or 51 on the types that shoot). **Not** walk speed |
+| `+$52` (82) | arg to @4878 |
+| `+$54` (84) | argument to @8868 |
+| `+$56` (86) | 3-word heading / sprite-facing table |
+| `+$58` (88) / `+$5A` (90) | **projectile frame periods**, compared at @354 against the projectile record `+$06` / `+$08`. **Not** creature attack cooldowns |
+
+UNKNOWN: `+$1A` (26). `+$24` is not an independent field.
+
+An earlier pass named `+$50` “motion scale, per-tick move via
+JT 145” and `+$58` / `+$5A` “period vs runtime `+$06` / `+$08`”
+as if those runtimes were the creature’s. Both are **wrong**.
+See **Disproven**.
+
+### State machine
+
+State is runtime `$2(a4) & $3F` (63). Only values 0–4 are used.
+Dispatch is in the creature tick at CODE 7 **@1434**, not @6460.
+@6460 is the walk / anim body for states 0 and 1 only.
+
+```
+@1434  70 3F              moveq   #$3F, d0          ; $3F (63)
+@1436  C0 2C 00 02        and.b   $2(a4), d0
+@1440  0C 00 00 04        cmpi.b  #$4, d0           ; $4 (4)
+@1444  62 00 01 68        bhi.w   skip
+@1458  4E FB 10 00        jmp     $5B4(pc,d1.w)     ; $5B4 (1460)
+```
+
+Table raw at @1462, `jmp` base @1460: `00 0C 00 0C 00 28 01 26 00 7C`.
+
+| state | hex | table | target | does | exits |
+|---|---|---|---|---|---|
+| 0 | `$00` (0) | `00 0C` | @1472 → @6460 | idle / walk, anim `+$28` | `@8076` to 1, or to 2 on attack |
+| 1 | `$01` (1) | `00 0C` | @1472 → @6460 | walk, anim `+$22` | `@8076` to 0 |
+| 2 | `$02` (2) | `00 28` | @1500 | attack, anim `+$48` | to 0 when @6328 completes |
+| 3 | `$03` (3) | `01 26` | @1754 | pain, timer `$6` | to 0 when the timer goes negative |
+| 4 | `$04` (4) | `00 7C` | @1584 | death, anim `+$2E` | @8280 removes the slot |
+| 5–63 | — | — | `@1444 bhi` | unused | never entered |
+
+The two bits masked off by `$3F` (63):
+
+| bit | mask | holds |
+|---|---|---|
+| 7 | `$80` (128) | path-dirty / just-activated. @5998 writes `$80` (128) at activation. The first tick runs JT 16 into `$3(a4)` then `andi.b #$3F` (63) at @1346. @8076 preserves it: `($2 & $80) \| new_state` |
+| 6 | `$40` (64) | pain-eligible this tick. Cleared at every tick start (`andi.b #$BF` (191), @1226), set from JT 150 bit 0 (@1800), consumed by @2536 together with catalog `+$0C` to enter state 3 |
+
+State writers: @5998 (spawn 0, `$2 = $80`); @8076 from @1574 (0),
+@1774 (0), @2864 (4), @3066 (3), @4538 (2), @6678 (0), @6872 (1).
+
+### Detection
+
+360 degrees. No view cone: absolute deltas only. **No line-of-sight
+test on waking.**
+
+The engine uses **two different distance metrics**. A port that
+uses one everywhere will get wake ranges wrong.
+
+| metric | formula | site | used for |
+|---|---|---|---|
+| Manhattan JT 331 | `abs(dx) + abs(dy)` | CODE 14 @4; @3578 / JT 245 | creature **wake** |
+| Octile JT 151 | `min + (max >> 1)` | CODE 4 @1362; @3242 | player-step **revert** (`< $154` (340)) |
+
+Wake thresholds are immediates, not catalog fields. Deciding
+bytes: @3652 `jsr` JT 331; @9440 `pea.l $2000` (8192); @11468
+`cmpi.w #$2` (2).
+
+| threshold | hex | cells (1024/cell) | when |
+|---|---|---|---|
+| 8192 | `$2000` | 8 | JT 249 rest / 60-tick path, and after a door command (CODE 6 JT 253 then JT 245) |
+| 2560 | `$0A00` | 2.5 | after a JT 242 draw wake |
+| 2 cells | — | 2 | player step (JT 250): cell Manhattan `<= 2` activates, `>= 8` drops (@11344) |
+
+Attack LOS is @5450, which stops only on nibble 0 (void) and
+nibble 7 (pillar). **Doors do not block sight**; a creature can
+see and shoot through a closed door.
+
+Opening a door wakes creatures within 8 cells (`$2000` (8192)).
+**Gunfire does not** — there is no call from @16404 into the wake
+path.
+
+Deactivation is @6134: mark object `+$A` with `$8000` (32768) and
+compact player `+$218` (536). A creature that loses the player is
+**removed** from the active list; it does not idle in place.
+
+### Movement
+
+Heading is runtime `+$A` (10), set by @7284 via JT 148 at the next
+JT 17 cell centre. @7284 fires only when **both** sub-cell `$100`
+(256) and `$300` (768) flags trip (the creature crossed the cell
+centre on both axes).
+
+JT 16 paths toward the player with an 8-cell flood, using the same
+door predicate as JT 161: blocked when position `> $200` (512) or
+command `== 2`. Walk speed is catalog `+$0E` × dt through JT 145.
+Blocked by another creature (@7392): no write, no slide.
+
+Creatures **cannot open doors**: no door-command writer on the
+creature tick, and JT 16 @2688 (`cmpi.w #$200` (512), `$2(a2)`)
+refuses a closed leaf. A path computed while the leaf was
+passable is stepped **without** a second check — staleness, not
+an open-door capability.
+
+### Attack
+
+@4288 when runtime `+$08 >` catalog `+$36`. Melee if `+$38 != 0`
+(Phantasm, Shocking Sphere, Ghast), else a projectile via @8964.
+Damage `= +$3C + (JT 150 remainder / +$3E)`, cause `+$34`.
+Creature damage **is** randomised; player damage is not.
+
+| type | kind | internal | displayed (÷10) |
+|---|---|---|---|
+| Headless (1) | projectile | 7–9 | 0.7–0.9 |
+| Nightmare (0) | projectile | 15–19 | 1.5–1.9 |
+| Ghast (12) | melee | 30–39 | 3.0–3.9 |
+
+### Death and respawn
+
+HP `< 0` → state 4 → @8280 removes the slot. Kill count at player
+`+$EA` (234) `+ type*4`. **No drop, no score (`+$0A`), no treasure
+(`+$0C`).** The body is **not** a nibble-6 corpse; corpse sectors
+are unrelated to dead creatures.
+
+Respawn: @14300 from JT 249 does a `monster_list` weighted pick
+and places on nibble-1 empty floor near the player, cap 12.
+
+---
+
+## Interface windows
+
+PID is Mac Toolbox windows, not a Marathon HUD. There are **no
+WIND** resources. All four main panels are `_NewCWindow`
+(`AA 45`) in CODE 3, with refCons identifying them. Inventory is
+its own window. Health / Power / Progress / Weapon Proficiencies
+are on the Player window. REST / SEARCH / MAP are controls on
+the Messages window, not a fifth panel. The three labels are
+**STR# 2010**, loaded at CODE 3 @9946 via @17836
+`_GetResource('STR#', 2010)` (`48 78 07 DA` / `2F 3C 53 54 52
+23` / `A9 A0`). DITL 2013 does **not** name them. DITL 2013
+is ALRT 2007’s first-search tutorial (614 bytes, 5 items: OK +
+four static texts about clicking Search in the Message Window;
+ALRT +8 = `$07DD` (2013)). The four panels are `_NewCWindow`,
+not built from a DITL. DITLs supply modal dialogs and alerts
+(ALRT / DLOG `itemsID`). They do not attach to the four panels
+and they do not feed those three control titles. Raw dumps:
+`out/UI_RESOURCES.md`, `out/loose-ends.txt`.
+
+| Panel | Creator | A5 ptr | refCon |
+|---|---|---|---:|
+| view | CODE 3 @13312 | `-$1586` (5510) | `$80` (128) |
+| messages | CODE 3 @9618 | `-$158E` (5518) | `$81` (129) |
+| inventory | CODE 3 @1338 | `-$1592` (5522) | `$82` (130) |
+| player | CODE 3 @6304 | `-$1596` (5526) | `$83` (131) |
+
+The Windows menu items 1–4 map to `$80` (128) / `$82` (130) /
+`$81` (129) / `$83` (131).
+
+### Layout
+
+Positions are computed from the screen port (`-$159A` (5530) +
+`$22` (34)), `_GetMBarHeight` and a width test
+(`cmpi.l #$200` (512)). `_SetRect` is Pascal order (left, top,
+right, bottom). A packed long’s **high** word is the bottom,
+not the right. A previous note had the four rectangles
+transposed.
+
+Correct rectangles at 640×480:
+
+| Panel | size | origin |
+|---|---|---|
+| view | 384 × 288 | (4, 23) |
+| messages | 384 × 119 | (4, 336) |
+| player | 238 × 184 | (396, 23) |
+| inventory | 238 × 223 | (396, 232) |
+
+The composition closes exactly: `4 + 384 + 8 + 238 + 6 = 640`
+across, and both columns run from y 23 to y 455. The view being
+384 × 288 is the only reading that satisfies the engine’s 4:3
+requirement.
+
+Three numbers describe the whole layout: margin 4, gap between
+stacked panels 6, title bar 19. The top row at y 23 is `4 + 19`,
+and the 25 between stacked panels is `6 + 19`. The column gap
+is 8. The right margin is 6, not 4, and the original stops 25
+pixels short of the bottom of the screen.
+
+procID 0, 1 or 8 on every `_NewCWindow` site — never
+`16 * 128` (2048). Observed: procID 8 (grow/zoom) on view,
+inventory, player; procID 0 on messages. Titles: view = the
+level name from STR# 2018; inventory / messages STR#
+2012[0]/[1] (`Inventory`, `Messages`); player = save name at
+`+$04`, default STR# 2012[3] `Untitled Game`. STR# 2012[2] is
+`Pathways Into Darkness`.
+
+**Anomaly.** WDEF 128 exists, 2102 bytes, and is apparently
+**unused** — every `_NewCWindow` site passes procID 0, 1 or 8,
+never `16 * 128`. Preserve it.
+
+### Player window — field to source
+
+| Element | Rect in window (l,t,r,b) | Source | Format | Draw |
+|---|---|---|---|---|
+| Health | 6, 6, 232, 20 | player `+$60` (96) / `+$62` (98) | bar from the raw pair; text divided by 10, `"%d of %d"` (@8740) or `"%d.%d of %d"` (@8750) | JT 107 @7354 → @7964 |
+| Power | 6, 26, 232, 40 | `+$194` (404) against the equipped crystal’s word 2, located via `+$192` (402) | same @7964 | JT 108 @7530 → @7964 |
+| Crystal name | 130, 52, 232, 64 | slot `+$192` (402) | STR# 2000 name | JT 105 + JT 209; JT 105 @6988 |
+| Progress | row from @19266, then +30 top | height from **level** `-$1A82` (6786) `+$84` (132) / 10 (abs); score player `+$0A` (10) of hardcoded 41 (`moveq #$29` @8944); treasure `+$0C` (12) / 10 + `K` if `< $2710` (10000), else / 10000 + `M` | **one** of STR# 2013[4] (height10 ≥ 0) or [5] (negative) — not both | @8762 + `_TETextBox` (one paragraph) |
+| Proficiencies | @19266 per row | `+$66` (102) stride 6, skipping rank 0, at most 7 rows, scrolling via @9396 | STR# 2006[index] + STR# 2007[rank−1] | JT 109 / @9462 / @8762. Not a List Manager list |
+
+The **clock** is on the **Messages** window, not the player
+window (JT 113). JT 113 `_SetPort`s `-$158E` (5518). Ticks =
+player `+$06` (6) + `$113190` (1126800) = **5h13m**; displayed
+hour is `d7+1` (0 if `d7==23`), so `+$06=0` reads `Sunday, 0613
+(6:13 AM)`. STR# 2009; format @10700
+`%s, %02d%02d (%d:%02d %s)`.
+
+### Inventory window
+
+Its own window, no DITL, not a List Manager LDEF. 20 rows
+(`#$14` (20)) before it scrolls. Line height is a literal 13
+and text size 10. There is no font metric lookup anywhere in
+the binary. Flattened through the walker at CODE 6 @5590.
+Tree at live `+$33C` (828). Disclosure = record state bit 1
+(`$0002` (2)). JT 208 reads it; JT 213 `eor.w #2` toggles it.
+Indent = `(depth+1)*18` via JT 223 — 18 per level of nesting,
+with the top level already one level in. Raw dumps:
+`out/INVENTORY_TREE.md`.
+
+Suffixes come from JT 209 (CODE 6 @106). Rule: **Inventory line
+(JT 209)**. STR# 2008[0] is the empty-magazine label only, not
+an unequipped default. Ids outside 51 to 57 never reach it.
+The class map is not `(class − 3)`.
+
+Weight via JT 217, Σ w3 / 28, STR# 2016 `%3.2f kg`. Drop is
+JT 101, Examine is JT 99, slot selection JT 102. Examine is a
+**modal popup** with the item’s picture, its name in bold and
+the text from STR# 1001 — not a message line. STR# 2011
+labels; MENU 131 items 5/6 → JT 101 / JT 99.
+
+Buttons are laid out from the **right** edge, so they read in
+the reverse of their string-list order: STR# 2011 is
+`EXAMINE`, `DROP` and shows as `DROP EXAMINE`.
+
+### Messages window
+
+Append is JT 112 @10276 into a 20 × 80 ring at A5 `-$1680`
+(5760) with the index at `-$167C` (5756). Every JT 112 feed:
+STR# **2002**, **2005** (indices 0–19), **2015** (the on/off
+item-name suffixes), **2018**, plus
+six **C-strings** in JT 78 (credits). 2000/2001 appear only as
+`%s` inside 2005 (e.g. [12]). STR# 1000 / 1002 / 1003 are
+`_ParamText` alerts, **not** the ring. REST / SEARCH / MAP
+labels are STR# 2010 (not DITL 2013). Those buttons are also
+laid out from the right edge: STR# 2010 is `REST`, `SEARCH`,
+`MAP` and shows as `MAP SEARCH REST`. Parts 1/2/3 → JT 231 /
+232 / 88. Full dumps: `out/PANEL_STRINGS.md`.
+
+### Panel displayed elements
+
+Ordered on-screen items. Source / arithmetic / format only.
+Dumps and assemblers: `out/PANEL_STRINGS.md`.
+
+**Player window** (Health / Power / Progress / Proficiencies):
+
+| # | element | source | arithmetic | format |
+|---|---|---|---|---|
+| 1 | heading Health | STR# 2013[0] | none | JT 271 + `_DrawString` |
+| 2 | health bar + text | player `+$60` / `+$62` | bar = raw pair; text both `/10` | rem(current/10)==0 → CODE 3 @8740 `%d of %d`; else @8750 `%d.%d of %d`. Zero → `0 of N` |
+| 3 | heading Power | STR# 2013[1] | none | JT 271 |
+| 4 | power bar + text | `+$194` vs crystal w2 via `+$192` | same @7964 as health; `+$192==$FF` → 0/0 | same @8740/@8750 |
+| 5 | crystal name | slot `+$192` | none | STR# 2000 via JT 209; rect 130,52,232,64 |
+| 6 | heading Progress | STR# 2013[2] | none | JT 271 when @8762 `d7==0` |
+| 7 | Progress body | level `-$1A82+$84`; player `+$0A`; player `+$0C` | height `/10` abs, sign picks sentence; score raw; treasure `<10000` → `/10`+`K` else `/10000`+`M` | **one** of STR# 2013[4] or [5]; `_TETextBox` one paragraph. Zero → `0.0m above` / `0 of 41` / `$0.0K` |
+| 8 | heading Weapon Proficiencies | STR# 2013[3] | none | JT 271 |
+| 9 | proficiency rows | `+$66` stride 6, skip rank 0, ≤7, scroll @9396 | rank index − 1 | STR# 2006[i] then STR# 2007[rank−1]; no glue; rank `_DrawString` at `right−4−StringWidth` |
+
+**Inventory window:**
+
+| # | element | source | arithmetic | format |
+|---|---|---|---|---|
+| 1 | window title | STR# 2012[0] | none | `Inventory` |
+| 2 | row name | catalog id | none | STR# 2000[id] via JT 272 (indexed string, not printf) |
+| 3 | magazine count | ids 51–57, instance `+$4` | none if word 2 ≠ 0 | C-string CODE 6 @380 ` (x%d)`; word 2 == 0 → STR# 2008[0] ` (empty)` |
+| 4 | state suffix | state bit 0 SET, then class map | not class−3; see **Inventory line** | STR# 2008: [0] ` (empty)` (Pascal length 8), [1] ` (on)`, [2] ` (in hand)`, [3] ` (ready)`, [4] ` (worn)`, [5] ` (on wrist)` |
+| 5 | weight line | Σ catalog w3 | `/ 28` (`#$1C`) | STR# 2016[0] `Total Weight: %3.2f kg.` or [1] `Weight: %3.2f kg.` |
+| 6 | buttons | STR# 2011 | laid out from the right edge | [0] `EXAMINE` [1] `DROP`; shown as `DROP EXAMINE`; @17836; rects from @17620 |
+
+**Messages window:**
+
+| # | element | source | arithmetic | format |
+|---|---|---|---|---|
+| 1 | window title | STR# 2012[1] | none | `Messages` |
+| 2 | clock | player `+$06` | `+$113190` (5h13m); day `$4F1A00`; hour `$34BC0`; min `$E10`; display hour `d7+1` | `%s, %02d%02d (%d:%02d %s)` @10700 + STR# 2009 + `AM`/`PM`. `+$06=0` → `Sunday, 0613 (6:13 AM)` |
+| 3 | ring | JT 112 | 20×80 at `-$1680` | STR# 2002, 2005[0–19], 2015, 2018, JT 78 C-strings |
+| 4 | buttons | STR# 2010 | laid out from the right edge | [0] `REST` [1] `SEARCH` [2] `MAP`; shown as `MAP SEARCH REST`; rects from @17620 |
+
+**View window:** title is the level name from STR# 2018. Player
+window title is the save name, default STR# 2012[3]
+`Untitled Game`.
+
+### Menus
+
+MBAR 128 = [128, 129, 130, 131, 132] (Apple, File, Edit,
+Actions, Windows). MENU 131 Actions: Check Map → JT 88, Search
+→ JT 232, Rest → JT 231, Drop → JT 101, Examine → JT 99.
+
+File Open and Save As reach `_HiliteMenu` only, on the @1804
+table.
 
 ---
 
@@ -2100,6 +3282,12 @@ Static game content, not per-playthrough state. No further work.
 | The Cedar Box duplicates or transforms its contents on Use | JT 214 class 0 is a no-op stub. Clone is JT 227 on the rest-time pulse, id from player `+$146`. |
 | A rest-time fallback creates a Map when the player carries none | JT 88 tests for id 0 and only alerts STR# 1002[7]. The Map in the constructed-save rest test is JT 227 cloning `+$146 == 0`. |
 | The Cedar admit list at `-$1066` is 15 words and includes Map | The empty-box loop runs 14 words (d2=`$0E`). The following 0 is the first word of the stride-`$5C` table at `-$104A` (JT 240). |
+| Item class runs 2–9 (worn gear is 6–9) | Observed w1 is 0 and 2–8. No class 1, no class 9. Class 0 is 41 of 71 rows (no-use). |
+| STR# 2008[0] is the unequipped / “none” suffix for every item | It is the empty-magazine label. Ids below 51 and above 57 branch past that block. |
+| JT 209 indexes STR# 2008 as class−3 | Subtract-3 selects a branch; the branch numbers are not the string indices. See **Inventory line**. |
+| JT 272 is printf / formats STR# 2016 as `%3.2f kg` | JT 272 appends STR# `[id][index]` with no format arguments. JT 343 is the printf. |
+| A5 `-$A2C` is eight proficiency-threshold pairs | Seven real entries (indices 0–6). Index 7 is `$000B0000` / `$000B0007` against empty STR# 2006[7], not a threshold. |
+| STR# 2008[0] is a nine-character string | Pascal length 8 (` (empty)`); nine bytes on disk including the length byte. |
 | Tag 0 is drawn / remapped to tag 1 | @13488’s remap is a placement fallback after the emit gate at @12202 / @12206 has already rejected it. |
 | The Labyrinth is visually randomised | Only s1index bit 0 varies, selector is fixed at 66, and most affected faces are tag 0 and not drawn. |
 | There is an L13 maze generator | The grid is authored. JT 164 writes only wall words: `(voidNeighbourFlag & 7) << 13 \| $100 (256) \| (rng & 1)`. |
@@ -2110,11 +3298,11 @@ Static game content, not per-playthrough state. No further work.
 | Game time runs 60× real time | 1 tick = 1/60 s, 1:1 with real time. |
 | A far plane exists in the renderer | No depth cutoff. Distant geometry is emitted and shaded to black by band 15. |
 | The player has a collision radius against the door leaf | The mover contains no radius and no `(1024 − position)` term. JT 161 is `position > $200` (512) (`bgt`, so 513+) or `command == 2`. |
-| A5 `-$1BCA` (7114) is runtime state | DATAINIT 1, no writer. Permanently **SET**. Branches **always run**: creature proximity revert @3242, VBL path CODE 1 @940, JT 164 path CODE 4 @4348. A port **must implement** them. Hardcode 1. |
-| A5 `-$1BCC` (7116) is runtime state | DATAINIT 0, no writer. Permanently **CLEAR**. Its branch (JT 239 returning `view+$14` (20) = 5) is **unreachable**. A port should **omit** it. Hardcode 0. |
+| A5 `-$1BCA` (7114) is runtime state | It is not. DATAINIT 1, no writer. **Hardcode 1.** A port **must run** the SET branches (they always run in the original): creature proximity revert @3242, VBL path CODE 1 @940, JT 164 path CODE 4 @4348. Opposite of `-$1BCC`. |
+| A5 `-$1BCC` (7116) is runtime state | It is not. DATAINIT 0, no writer. **Hardcode 0.** A port **must omit** the CLEAR branch (JT 239 returning `view+$14` (20) = 5) — it is unreachable. Opposite of `-$1BCA`. |
 | GPU affine-per-triangle reproduces the engine’s affine-per-column texture mapping | Refuted in game: near walls smear. The supporting measurement used symmetric test cases whose errors cancelled at the sampled midpoint. A triangle interpolator cannot reproduce per-column `u`. |
 | Eye height and FOV were fitted to screenshots | Both are derived from the code arithmetic (floor −614, ceiling +409; `tan(HFOV/2) = 0.8`, `tan(VFOV/2) = 0.6`). |
-| The two authored viewports are portrait / differ in FOV | Both are 4:3 (272 × 204 and 384 × 288) and both give exactly 0.8 and 0.6. |
+| The two authored viewports are portrait / differ in FOV | `_SetRect` is Pascal order: a long’s high word is the **bottom**, not the right. The immediates are already 4:3 (272×204 / 384×288). The portrait reading (204×272 / 288×384) was the transpose. Measured view at 640×480 is 384×288 at (4, 23). |
 | The player walk step is 24 | 24 is run-backward and run-strafe. Walk forward is 17; run forward is 34. |
 | player `+$134` is an unidentified dt modifier | It is the Red Cloak (catalog id 14). Doubles dt on the JT 248 door/creature/projectile path and selects rest quantum `$3138` (12600) rather than `$6270` (25200). Does not scale JT 145. |
 | The sector carries only two wall words | Six: two edges (+0 N, +2 W) and four corners. South/east are the neighbour’s slot 0/1. Emit gates @12188/@12248/@12292/@12336 read current slots 3,5,2,4. |
@@ -2125,6 +3313,31 @@ Static game content, not per-playthrough state. No further work.
 | The player has a collision radius | He is a point. `$199` (409) / `$266` (614) is a clamp against nibble-0 faces only. |
 | The billboard pitches to face the camera | Yaw-only. |
 | Sprites are uniformly floor-anchored | Bottom = `view+$0C` (12) (−614) + per-shape s1 lift; top = bottom + s1 height. |
+| The `+$C2` / `+$D6` shots and hits arrays are read with a different index space than they are written with | JT 260 uses the same 5-entry table index fire writes (`d7 = 0..4`). |
+| @616’s “already has a child” test is the general one-child rule | The general rule is w6 fill capacity against the sum of children’s w4. The child test is a Cedar Box extra. |
+| Closed containers hide their contents from everything | Too strong: the default walker @5838 descends on JT 207 alone. Only the panel and the Lead Box hard case consult the open bit. |
+| `+$19A` (410) is a readiness flag | It is the rate-of-fire timer in ticks. |
+| Proficiency affects accuracy | It affects **damage** (`base * (5 + rank - cells) / 5`). There is no to-hit roll. |
+| The player projectile list is `+$2DA` (730) | That list is the **creature** projectiles. Player fire is hitscan and never touches it. |
+| The M-79 has splash damage | All three 40mm types (58 / 59 / 60) are hitscan with no radius. |
+| DITL 2013 supplies the REST / SEARCH / MAP labels | Those three strings are STR# 2010 (`00 03` then Pascal REST / SEARCH / MAP). Fetch is CODE 3 @9946 `48 78 07 DA` into @17836 `_GetResource('STR#', 2010)`. DITL 2013 is ALRT 2007’s first-search tutorial. Id 2013 is also STR# 2013 (Progress) — different type. |
+| The four Player section headings are literals in the drawing code | STR# 2013[0] `Health` [1] `Power` [2] `Progress` [3] `Weapon Proficiencies`. `pea.l $7DD` + JT 271 at JT 107 / 108 / @8762. |
+| Progress is three separate lines (height / score / treasure) | One STR# 2013 entry ([4] or [5]) drawn as one `_TETextBox` paragraph. |
+| STR# 2013[4] and [5] are concatenated | `tst.w $84` selects exactly one: ≥ 0 → [4] above, else [5] below. |
+| The message ring is fed by STR# 1000, 1002, 1003, 2000, 2001 | Those are `_ParamText` alerts (1000/1002/1003) or `%s` names inside 2005. JT 112 feeds: 2002, 2005[0–19], 2015, 2018, JT 78 C-strings. |
+| Clock addend is 6h13m | Raw addend is `$113190` (1126800) = 5h13m. Display hour is `d7+1`, so `+$06=0` shows 6:13. |
+| JT 141 draws the Messages REST / SEARCH / MAP controls | CODE 3 @9618 is not a jump-table entry. JT 141 (CODE 3 @22422) pushes 2010 as a **DLOG** id. |
+| Catalog `+$50` is the creature’s walk speed / “motion scale, per-tick move via JT 145” | It is **projectile** speed. Walk speed is catalog `+$0E`, stepped by dt through JT 145. Sentinel (11) and Stalker (14) have `+$0E = 0`. |
+| Catalog `+$58` / `+$5A` are creature attack cooldowns / “period vs runtime `+$06` / `+$08`” | They are **projectile frame periods** (compared at @354 against the projectile record). The attack period is catalog `+$36`: attack when runtime `+$08 >` `+$36`. |
+| The creature state field is 6 bits with up to 64 states | `$2(a4) & $3F` (63) is the mask. Only states 0–4 exist (`cmpi.b #$4` / `bhi` at @1440). Bits 6 (`$40` (64), pain-eligible) and 7 (`$80` (128), path-dirty) are separate flags. |
+| CODE 7 @6460 is the creature state dispatch | @6460 is the walk / anim body for states 0 and 1 only. Dispatch is CODE 7 @1434 (`jmp $5B4` (1460) `(pc,d1.w)`, table @1462). |
+| Creature detection uses the octile JT 151 metric with a catalog threshold | Wake is Manhattan JT 331 (`abs(dx)+abs(dy)`) via @3578 / JT 245. Thresholds are immediates `$2000` (8192) / `$0A00` (2560) / cell Manhattan `<= 2`. JT 151 (`min + (max >> 1)`) is the player-step revert at @3242. Catalog `+$34` is the JT 237 cause. |
+| Creatures can open doors / the walk path’s missing door test is permission | No door-command writer on the creature tick. JT 16 @2688 (`cmpi.w #$200` (512)) refuses a closed leaf. Walk steps a previously computed path without a second check — **staleness**, not an open-door capability. |
+| w7 (table `+$E` (14)) is an automatic-fire / semi-vs-auto flag | Every weapon fires while the button is held, through the JT 9 latch. `$0100` (256) only gates the random muzzle-flash pick and the early end of the flash. |
+| The overlay descriptor has a two-bit tag | The tag is three bits (15..13) and the selector is six (12..7). |
+| The r8 exporter shears tiles wider than 256 | It does not. The wordmark looked wrong because `plant_clut` erased resource 128’s chrome run. |
+| The tile’s lift field applies to the weapon overlay | It does not. The overlay is bottom-centre of the view, scaled by the view’s own 384×288. Lift is for world billboards. |
+| Index 0 is the transparent colour | Index 0 is padding and is discarded (palette 0 is white). Index 2 is the artwork’s see-through colour. |
 
 ---
 
@@ -2154,15 +3367,24 @@ block’s role and its start at 30,540; vertical FOV and eye height
 (derived, not fitted; both viewports 4:3); the item catalog at A5
 `-$14D6` (weight = w3, printed kg = Σw3/28; w4/w6 = container
 fill/limit, not rounds; inventory word 3 = next-sibling; save
-inventory is the live tree at `+0x0A30`); Cedar Box clone (JT 227,
+inventory is the live tree at `+0x0A30`); Think C DATAINIT image
+(JT 305, 7592 bytes, mapping `image = 7592 + a5_disp`, proven
+by the 14-word Cedar list); item class domain 0 and 2–8; JT 209
+inventory line (2008[0] is empty-magazine only; class map is
+not class−3); Cedar Box clone (JT 227,
 remembered id at player `+$146`; arm/disarm on `+$144`, not
 rest-gated); live Progress panel (STR# 2013) and weapon
-proficiencies at `+$66`; `$217F` (out-of-range s1index; skip);
+proficiencies at `+$66` (seven threshold pairs at `-$A2C`); `$217F` (out-of-range s1index; skip);
 L13 maze generator (none; grid authored, JT 164 writes wall words
 only); door triggers 130 / 141 / 24 (trigger sectors: Pipes,
 gemstone-gated door, level exit via player `+$52` / JT 72 @6106);
 CODE 5 @17190 label (per-cell draw dispatcher; billboard extents
-@17522–@17650 within it).
+@17522–@17650 within it); creature AI (five states @1434; walk
+`+$0E`; Manhattan JT 331 wake; no door opening; no kill score /
+treasure / drop); the weapon table (15 words, w7 = random flash);
+the fire path (JT 8 granularity, autoload on timer expiry, hitscan
+including the M-79); the four window rectangles at 640×480; shade
+tables from each resource’s own ColorSpecs (never level-dependent).
 
 Working-state list and methodology: `docs/PID_HANDOFF.md`.
 Port mapping: `docs/UNITY_PORT.md`.
@@ -2170,29 +3392,27 @@ Port mapping: `docs/UNITY_PORT.md`.
 What remains, ranked by engine impact — see also **Still open** in
 `docs/PID_HANDOFF.md`:
 
-1. **Creature door behaviour** — whether an actively pursuing
-   creature walks through a door at position `<= 512`. Untested;
-   idle creatures proved nothing.
-2. **The unreproduced door-500 clip** — one session where the
+1. **The unreproduced door-500 clip** — one session where the
    player was blocked at position 500 with the freeze intact. Every
    geometric hypothesis searched and refuted; the traced mover
    passes at 0, 200, 350, 500 and 512. Most likely the @3242
    creature proximity revert, but player `+$216` was 0 in the save.
    Retry once; do not spend more.
-3. **t0 / t1 field details** inside the 9,112-byte block. t2 at
+2. **t0 / t1 field details** inside the 9,112-byte block. t2 at
    `+0x025C` is the world-item tree. t3 command/position are under
    **Doors**.
-4. **Creature AI** — movement, pathing, aggro, attack selection,
-   respawn. The conversation system, the Search dialog, potions,
+3. **Conversations, the Search dialog, potions,**
    per-item use effects, sound, level 24 and the endgame, text and
    dialog rendering.
 
 The catalog, the inventory tree, pickup/drop accumulators, the
-fire → magazine `+$4` path, door collision, door operation, and
-the renderer (projection, shading, floors, door leaf) are no
-longer in that unread bucket. The function inventory makes the rest
-searchable: **225** functions have zero traps and exceed 100
-bytes, and **89** A5 globals are written in exactly one place.
+weapon table, the fire path, the 640×480 window rectangles, door
+collision, door operation, and the renderer (projection, shading,
+floors, door leaf, weapon overlay) are no longer in that unread
+bucket. World pickup, drop and looting are the next port
+milestone. The function inventory makes the rest searchable:
+**225** functions have zero traps and exceed 100 bytes, and
+**89** A5 globals are written in exactly one place.
 
 Also unsolved, lower impact (do not treat as closed):
 
@@ -2220,9 +3440,41 @@ Also unsolved, lower impact (do not treat as closed):
   table. Indexed compare, unindexed write. Probable original bug;
   confirm before replicating.
 - `+0x091C` (values 0 / 1 / 2 / 12) is **untested**.
-- How Colt .45 (id 47) and the M-16 proficiency slot (STR# 2006[1]
-  and [4]) ever become nonzero: the decoded fire table at `-$810`
-  has five records and never writes those two indices.
+- Colt .45 (id 47) is **closed as usable content**: no `-$810`
+  (2064) row; @18620 leaves a4 = 47 as a pointer; contemporary
+  reports say the game crashes. Unusable set dressing; a port
+  should refuse to ready it.
+- **M-16 / STR# 2006[4].** Known: proficiency row; thresholds at
+  A5 `-$A2C` t1 = 12000, t2 = 30000; catalog has only Broken
+  M-16 (id 25) and M-16 Magazine (id 56); no `-$810` row. Not
+  known: any path that writes `+$66` index 4. Unlike the Colt,
+  the weapon is absent rather than crash-on-use.
+- Inventory state word bits 2–15: no isolated reader.
+- Negative damage past `rank + 5` cells: no clamp. JT 237’s
+  behaviour with a negative value is UNKNOWN (may heal).
+- Item id 9 is named Red Velvet Bag (STR# 2000[9]). Catalog w3
+  is 2. JT 217 skips that w3 and does not descend, so it and
+  its contents weigh nothing. The walk is unexplained; the data
+  is not a zero.
+- Class 5’s suffix collides with class 8 on `(on wrist)`.
+  Confirmed unreachable in play: no class 5 item is ever seen
+  equipped.
+- JT 225, JT 218 and JT 226, used by autoload to pick a magazine
+  and unlink it, have not been read. The port substitutes its own
+  tree walk.
+- What player `+$144` (324) does when the Cedar Box timer expires.
+- Whether the emulator runs PID at the full tick rate. Fire rates
+  in the port match the table exactly and the AK’s w9 = 6 is 600
+  rounds a minute at 60 Hz, the real weapon’s rate. The emulator
+  looks slower.
+- The Ground Floor mesh reports `wallQuads` 390 and `submeshes` 22
+  against a verified 250 and 20. Every other figure on that line
+  matches. Unexplained.
+- `plant_clut` not advancing its index is the Mac’s own rule at
+  @3214, so the original probably loses resource 128’s chrome run
+  for art drawn through the world palette. The port now draws from
+  the resource’s own table.
+- WDEF 128 (2102 bytes): shipped, apparently unused.
 - The encumbered lock (STR# 1000[0]) — JT 217 is the display, not
   the movement gate.
 
@@ -2250,3 +3502,7 @@ ceilings as geometry.
 - The fifth `$1000` (4096) bank next to A5 `-$17FA` is still open
   (see PID_HANDOFF). Texture 2 is absent from every level’s
   `door_list` (see **Doors**).
+- JT 237’s handling of negative damage (past `rank + 5` cells).
+- Unused WDEF 128; remaining combat / crystal STR# feeds.
+- Why JT 217 skips id 9 (Red Velvet Bag) and its contents.
+  Catalog w3 is 2; the skip is the walk, not a zero in the data.

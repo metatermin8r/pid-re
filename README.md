@@ -63,13 +63,23 @@ Solved to implementation depth. Numbers and sites live in `docs/FORMAT.md`.
 - **Items and Cedar Box.** Catalog 71×16 at A5 `-$14D6` (5334).
   Inventory tree at save `+0x0A30` (word 3 = next-sibling). Cedar Box
   (id 8) is JT 227 on player `+$144` (324) = 3600 ticks, not rest-gated.
+- **Weapons.** Five-record table at A5 `-$810` (2064), 15 words.
+  Fire is CODE 7 @16404; every weapon holds the trigger; w7 is a
+  random flash, not an auto flag. Damage
+  `base + (rank - cells) * base / 5`, no roll. Hitscan, M-79
+  included. Overlay is tag 6, resource `128 + w2`, bottom-centre
+  of a 384×288 view.
 - **Saves.** `dpin` 128 initialises a new file: 2,876-byte header + 25 ×
   9,112-byte world blocks starting at byte 30,540. Live X/Y are 10-bit
   fixed point; facing is a 512-unit circle (0 = west).
 - **Creatures.** Names are STR# 2001; world t0 `type` indexes those
-  names. Catalog rows exist; AI is open. Corpse dialogue: 28 `scri`
-  scripts, XOR, `scri_id = 128 + TypeAddl`. 86 `'snd '` resources
-  extract as 8-bit mono; the sound *engine* is still open.
+  names. Catalog at A5 `-$104A` (4170), 17 × `$5C` (92); walk
+  speed `+$0E`, projectile speed `+$50`. Five states, dispatch
+  CODE 7 @1434. Wake is Manhattan JT 331, not octile JT 151.
+  No door opening; no kill score / treasure / drop. Corpse
+  dialogue: 28 `scri` scripts, XOR, `scri_id = 128 + TypeAddl`.
+  86 `'snd '` resources extract as 8-bit mono; the sound *engine*
+  is still open.
 - **L13.** Authored (499 void, 521 normal, 4 change-level, 525
   walkable). JT 164 rewrites the six wall words only — no generator.
 - **Billboards.** `bottom = view+$0C` (12) (−614) + s1 lift (`+$C`);
@@ -86,10 +96,11 @@ byte). Text is Mac Roman. Cell is `$400` (1024) world units.
 
 ## Open questions
 
-`docs/PID_HANDOFF.md`. Short list: creature AI and door behaviour; the
-unreproduced door-500 clip; `type_addl` 134/135; trigger cases 18–21;
+`docs/PID_HANDOFF.md`. Short list: the unreproduced door-500 clip;
+`type_addl` 134/135; trigger cases 18–21;
 JT 246; STR# 2001 blanks 8/9/13; A5 `-$17FA` (6138) fifth bank; the
-`+$1B8` (440) poke; the 11,372 trailing packed bytes; conversations,
+`+$1B8` (440) poke; the 11,372 trailing packed bytes; JT 225 / 218 /
+226; Cedar Box `+$144` expiry; pickup / drop / looting; conversations,
 the Search dialog, potions, sound, level 24, and the endgame.
 
 ---
@@ -98,7 +109,7 @@ the Search dialog, potions, sound, level 24, and the endgame.
 
 ```
 docs/FORMAT.md           spec — offsets, enums, disproven, open questions
-docs/PID_HANDOFF.md      current working state
+docs/PID_HANDOFF.md      session handoff and current working state
 docs/UNITY_PORT.md       DERIVED vs ACCOMMODATION for the Unity port
 docs/JOURNAL.md          how it was solved, including dead ends
 formats/pid_level.ksy    Kaitai map-record parser (not the full spec)

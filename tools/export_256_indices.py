@@ -260,6 +260,41 @@ def remap_table(
     return lut
 
 
+def unique_from_resource(
+    buf: bytes, variation: int
+) -> list[tuple[int, int, int]]:
+    """First-seen ColorSpec RGB from one resource table. No other slots."""
+    unique: list[tuple[int, int, int]] = []
+    for _idx, rgb in color_specs(buf, variation):
+        if lookup_rgb(unique, rgb) == len(unique):
+            unique.append(rgb)
+    return unique
+
+
+def build_own_lut_arrays(
+    buf: bytes, variation: int
+) -> tuple[np.ndarray, np.ndarray, np.ndarray, tuple[int, int, int]]:
+    """Shade LUT from this resource's own ColorSpecs.
+
+    Unity samples lut[band][native_index]. The Mac unique list is a merge
+    of every loaded .256 plus a clut plant at unique[106..120] that does
+    not bump d6. Resource 128 is slot 0, so its later runs land in that
+    plant window and remap to d6 → shade prefill $0F. force_nonzero also
+    steals unique[0] (128 index 3 = white). Neither belongs in a
+    per-resource LUT.
+    """
+    unique = unique_from_resource(buf, variation)
+    d6 = len(unique)
+    shade = shade_table(unique, d6)
+    remap = remap_table(buf, variation, unique, d6, force_nonzero=False)
+    pal = palette_rgb8(unique, d6)
+    if d6 > SLOT_BLACK:
+        slot15 = tuple(int(x) for x in pal[SLOT_BLACK])
+    else:
+        slot15 = (0, 0, 0)
+    return remap, shade, pal, slot15
+
+
 def loaded_slots_for_level(level) -> tuple[dict[int, int], list[str]]:
     """CODE 4 @6094 + JT 180(0). texture_list, then monsters, then slot 0."""
     notes: list[str] = []
@@ -714,36 +749,28 @@ def main() -> int:
 
     if collisions:
         for st in level_state:
-            pal = palette_rgb8(st["unique"], st["d6"])
-            slot15 = tuple(int(x) for x in pal[SLOT_BLACK])
-            for (rid, var), rm in st["remaps"].items():
+            for (rid, var), _rm in st["remaps"].items():
+                d = decoded.get(rid)
+                if not d or not d.get("buf"):
+                    continue
+                remap, shade, pal, slot15 = build_own_lut_arrays(d["buf"], var)
                 name = f"lut_L{st['lv']:02d}_r{rid}_v{var}.png"
-                emit_lut_png(
-                    LUT_DIR / name,
-                    np.array(rm, dtype=np.uint8),
-                    st["shade"],
-                    pal,
-                    slot15,
-                )
+                emit_lut_png(LUT_DIR / name, remap, shade, pal, slot15)
                 lut_files.append(name)
                 pair_to_luts[rid].append(name)
     else:
         # one LUT per (rid,var); use first level that contains the pair
         emitted: set[tuple[int, int]] = set()
         for st in level_state:
-            pal = palette_rgb8(st["unique"], st["d6"])
-            slot15 = tuple(int(x) for x in pal[SLOT_BLACK])
-            for (rid, var), rm in st["remaps"].items():
+            for (rid, var), _rm in st["remaps"].items():
                 if (rid, var) in emitted:
                     continue
+                d = decoded.get(rid)
+                if not d or not d.get("buf"):
+                    continue
+                remap, shade, pal, slot15 = build_own_lut_arrays(d["buf"], var)
                 name = f"lut_r{rid}_v{var}.png"
-                emit_lut_png(
-                    LUT_DIR / name,
-                    np.array(rm, dtype=np.uint8),
-                    st["shade"],
-                    pal,
-                    slot15,
-                )
+                emit_lut_png(LUT_DIR / name, remap, shade, pal, slot15)
                 lut_files.append(name)
                 pair_to_luts[rid].append(name)
                 emitted.add((rid, var))

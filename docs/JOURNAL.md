@@ -609,7 +609,13 @@ immediates in the 68020 stream.
 
 The behavioural layer — combat, monster AI, most item effects,
 door triggers — is still unread. The catalog, the inventory
-tree, and the fire → magazine path are not. It is searchable:
+tree, and the fire → magazine path are not.
+**[later:]** the fire path (CODE 7 @16404), damage switch
+(@17570), hitscan, RoF timer, and the four `_NewCWindow` panels
+are now in `docs/FORMAT.md`. **[later:]** creature AI (state
+@1434, detection, pathing, attack, death, L13/L24 spawn) is in
+`docs/FORMAT.md` **Creature AI**. Most item effects remain open.
+It is searchable:
 225 functions have zero traps and exceed 100 bytes; 89 A5
 globals are written in exactly one place.
 
@@ -637,6 +643,10 @@ w4 for that id is 10. The M-79 is single-shot and its w6 is 5.
 The live round count is the instance record’s +$4, authored per
 world item and copied on pickup. Fire decrements player `+$19A`
 and then the magazine’s +$4; JT 257 sets `+$19A` to 1 on ready.
+**[later:]** `+$19A` is the rate-of-fire timer in ticks, not
+ammo. The decrement is the magazine **child’s word 2** (that
+record’s +$4) at CODE 7 @16730, reached as `+$198` → weapon →
+word 2 child slot. JT 257 still sets `+$19A` = 1 on ready.
 
 The error survived because the numbers looked plausible (10
 rounds in a Walther, 5 in a grenade launcher) and no independent
@@ -657,8 +667,83 @@ STR# 2013 formats player `+$0A` / `+$0C` as “scored %d of %d
 points and recovered $%d.%d%s in treasure.” That is a recap
 drawn into a GrafPort (CODE 3 @8762 `_TETextBox`), not a live
 HUD. Calling it a score system overstated what the call sites
-show. The Cedar Box’s class-0 Use path is a no-op stub; calling
+show.
+**[later:]** it *is* the live Progress panel on the Player
+window (Health / Power / Progress / Weapon Proficiencies), not
+an end-of-game recap. The Cedar Box’s class-0 Use path is a no-op stub; calling
 it a puzzle container overstated the insert gate.
+
+---
+
+## The catalog was already in the A5 image (2026-09-10)
+
+The item catalog was assumed to need an emulator dump: seventy-one
+records of initialised globals, compressed by a Think C runtime
+nobody had read because CODE 11 was labelled “no game logic” and
+skipped. The location was already in the notes — A5 `-$14D6`,
+installed by JT 305 — but the bytes had never been expanded.
+
+The expander was read from CODE 11 at file offset 4 (68020) and
+reimplemented in `tools/expand_datainit.py` from those
+instructions, not from MPW `%_DATAINIT` docs and not from the
+`.256` RLE. The packed stream is 4447 bytes at CODE 11 +454; it
+terminates on its own and emits 7592 bytes, matching CODE 0’s
+below-A5 size. Mapping is `image_offset = 7592 + a5_displacement`.
+
+The mapping was proven by prediction: the fourteen-value Cedar
+Box admit list at A5 `-$1066` was known before the image was
+cut, and the expanded bytes at image +3394 were exactly
+`2, 45, 46, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61`.
+
+Three values withheld from the extraction prompt as a blind
+test all matched: the proficiency thresholds at `-$A2C`
+(indices 0–6), the sum of catalog w2 across 71 rows (44), and
+the identity of item id 9 (Red Velvet Bag, w3 = 2).
+
+The first pass at JT 209 (CODE 6 +106) omitted eight bytes
+between the `and.w $2(a3), d0` and the `bne` — the
+compare-to-1 idiom — and annotated that branch backwards as a
+result. A second pass printed every offset. Cost of an
+incomplete listing: one extra round, and a published suffix
+rule that had the empty-magazine string as a general default
+and the sense of state bit 0 flipped.
+
+---
+
+## Reading the fire routine, and two shade-table bugs (2026-09-12)
+
+The fire rate was chased three times by feel before anyone read
+the routine. Reading CODE 7 @16404 to @17100 settled every
+question in one pass: the table at A5 `-$810` is five records
+of fifteen words; w7 is a random muzzle-flash flag, not
+semi-versus-automatic; w13 is both the frame count and the
+mirror offset because the mirrored tiles sit next to the
+unmirrored ones; the poll is coarse (JT 8 returns 0 under two
+ticks) but the timer counts down at the full rate; reload
+happens when that timer expires, not when you fire; a new
+burst overwrites the rounds just counted with w9; damage is
+`base + (rank - cells) * base / 5` with no roll; player shots
+including the M-79 are hitscan.
+
+The overlay is tag 6, resource `128 + w2`, drawn bottom centre
+of a 384×288 view. Index 0 is padding and must be discarded;
+index 2 is the artwork’s transparent colour. The tile lift is
+not used on the gun.
+
+The two shade-table bugs were found by comparing a resolved
+tile against a known-good render and matching on pixel counts,
+which are unique per colour and therefore unambiguous.
+`plant_clut` overwrote `unique[106..120]` without advancing its
+index and erased resource 128’s blue chrome; `force_nonzero`
+remapped later whites to 238 238 238. Both are fixed in
+`build_own_lut_arrays`. All 216 tables were re-emitted from
+each resource’s own ColorSpecs; 210 changed. The tables were
+never level-dependent — the merge made them look that way.
+
+The four window rectangles had been transposed. `_SetRect` is
+Pascal order, so a long’s high word is the bottom. At 640×480
+the view is 384×288 at (4, 23), and the composition closes
+exactly.
 
 ---
 
@@ -753,5 +838,17 @@ were run. Reports live under `reference/docs/`.
   `+0x0A30` (`+$33C`); slot numbers survive I/O unchanged.
   `+0x06FE` is points (`+$0A`), not a flag. STR# 2013 is a
   status-window recap (`_TETextBox` in CODE 3 @8762), not a live
-  HUD. Cedar Box class 0 is a JT 214 no-op; it does not
+  HUD. **[later:]** live Progress panel, not an end-of-game
+  recap. Cedar Box class 0 is a JT 214 no-op; it does not
   duplicate its child. Test saves in `out/item-tests/`.
+- **2026-09-10** — Think C DATAINIT image expanded from CODE 11
+  (JT 305). Mapping proven by the 14-word Cedar admit list.
+  Catalog class domain 0 and 2–8. JT 209 inventory line: 2008[0]
+  is empty-magazine only; class map is not class−3. First
+  disassembly of that routine dropped eight bytes and reversed
+  a branch. See the narrative section above.
+- **2026-09-12** — Weapon table named (15 words). Fire path
+  read in one pass after three feel-based rate chases. Shade
+  tables rebuilt from each resource’s own ColorSpecs; 210 of
+  216 changed. Window rectangles un-transposed. See the
+  narrative section above.
